@@ -37,7 +37,7 @@ const STUDENTS = [
     password: "password",
     name: "Bogue Kwon",
     portal: {
-      notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/39edb87002c48073a2d9d513dad39d90?v=d80db87002c482fd81d5084eb2a20ad8&pvs=73"
+      notionUrl: "https://embed.embednotion.com/39edb87002c4804c855ec1c9bbb7791d"
     }
   },
   {
