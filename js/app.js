@@ -48,9 +48,11 @@ function logout() {
   window.location.href = "index.html";
 }
 
-// Fills in the portal page for one student: the welcome text, and
-// the embedded Notion iframe's address. To show something other
-// than a Notion embed, this is the only function you need to touch.
+// Fills in the portal page for one student: the welcome text, the
+// embedded Notion iframe's address, and a direct link that opens
+// the same page in a new tab (a safety net if the embed ever fails
+// to load). To show something other than a Notion embed, this is
+// the only function you need to touch.
 function renderPortal(student) {
   if (!student) return;
 
@@ -59,4 +61,6 @@ function renderPortal(student) {
   const frame = document.getElementById("notion-frame");
   frame.src = student.portal.notionUrl;
   frame.title = student.name + "'s Notion portal";
+
+  document.getElementById("open-direct-link").href = student.portal.notionUrl;
 }

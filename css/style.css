@@ -257,6 +257,20 @@ body.portal-body {
 
 .portal-welcome { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 
+.portal-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.portal-link {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.portal-link:hover { color: var(--text); }
+
 .portal-logout {
   background: transparent;
   border: 1px solid var(--border);

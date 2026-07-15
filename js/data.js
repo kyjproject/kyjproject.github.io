@@ -25,19 +25,19 @@
 
 const STUDENTS = [
   {
-    username: "bogue",
-    password: "password",
-    name: "Bogue Kwon",
+    username: "alice",
+    password: "alice123",
+    name: "Alice Inthe Wonderland",
     portal: {
       notionUrl: "https://embed.embednotion.com/39edb87002c4804c855ec1c9bbb7791d"
     }
   },
   {
-    username: "kyjv9981",
+    username: "bogue",
     password: "password",
-    name: "Yong Joon Kim",
+    name: "Bogue Kwon",
     portal: {
-      notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/ebd/39edb87002c4804c855ec1c9bbb7791d?v=39edb87002c480c883ea000cdd6f9709"
+      notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/39edb87002c48073a2d9d513dad39d90?v=d80db87002c482fd81d5084eb2a20ad8&pvs=73"
     }
   },
   {
