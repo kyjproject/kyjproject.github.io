@@ -48,32 +48,15 @@ function logout() {
   window.location.href = "index.html";
 }
 
-// Builds the HTML for a student's personal portal page.
-// Add, remove, or change the panels below to change what shows up —
-// just make sure any new data also exists on each student in
-// js/data.js.
+// Fills in the portal page for one student: the welcome text, and
+// the embedded Notion iframe's address. To show something other
+// than a Notion embed, this is the only function you need to touch.
 function renderPortal(student) {
   if (!student) return;
 
-  const gradeRows = student.portal.grades.map(function (g) {
-    return `
-      <div class="grade-row">
-        <span class="grade-subject">${g.subject}</span>
-        <span class="grade-stamp">${g.grade}</span>
-      </div>`;
-  }).join("");
+  document.getElementById("welcome-text").textContent = "Welcome back, " + student.name;
 
-  document.getElementById("portal-content").innerHTML = `
-    <h1>Welcome back, ${student.name}</h1>
-
-    <div class="panel">
-      <h2>For You</h2>
-      <p>${student.portal.announcement}</p>
-    </div>
-
-    <div class="panel">
-      <h2>My Grades</h2>
-      ${gradeRows}
-    </div>
-  `;
+  const frame = document.getElementById("notion-frame");
+  frame.src = student.portal.notionUrl;
+  frame.title = student.name + "'s Notion portal";
 }
