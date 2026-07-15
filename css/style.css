@@ -20,6 +20,7 @@
 
   --radius: 8px;
   --radius-lg: 16px;
+  --form-gap: 18px;
 }
 
 * { box-sizing: border-box; }
@@ -189,7 +190,7 @@ nav > a:not(.btn-nav):hover { color: var(--text); }
 
 label {
   display: block;
-  margin: 18px 0 6px;
+  margin: var(--form-gap) 0 6px;
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -208,7 +209,7 @@ input {
 
 input::placeholder { color: var(--text-muted); }
 
-#login-form button[type="submit"] { margin-top: 10px; }
+#login-form button[type="submit"] { margin-top: var(--form-gap); }
 
 input:focus-visible,
 a:focus-visible,

@@ -63,11 +63,23 @@ sure everything underneath is meant to be public too.
 - Re-copy the link straight from Notion's "Copy this code" button
   rather than retyping or re-pasting it through something else, to
   rule out a slip.
+- Make sure the link came specifically from Share → the **Publish**
+  tab → Publish → **Embed this page** → Copy this code — not from
+  the separate "Share to web" toggle. Notion blocks plain public
+  share links from being displayed in a frame on other sites (a
+  security header tells the browser not to allow it); only the
+  dedicated Embed this page flow is meant to get around that.
+- If the link has `?v=` in it, that page contains a linked
+  database view — and Notion requires the *underlying database* to
+  be published/shared separately from the page around it, or
+  visitors just see a blank space where it should be. Open the
+  database itself (not just the page it sits on), then repeat
+  Share → Publish → Publish there too.
 - Open the portal page, open your browser's dev tools (F12) → the
   Console tab, and reload. An error mentioning "X-Frame-Options" or
-  "Content-Security-Policy" means that specific link isn't allowed
-  to be framed — make sure it came from Share → Publish → **Embed
-  this page**, not just a general "Share to web" link.
+  "Content-Security-Policy" confirms Notion itself is refusing to
+  be framed for that link — the fix is getting a proper Embed this
+  page link (see above), not anything in this site's code.
 - A third-party proxy like embednotion.com is a reliable fallback
   when a native embed won't cooperate — worth knowing its free tier
   typically caps you around 1 embedded page before asking you to
