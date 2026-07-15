@@ -37,7 +37,7 @@ const STUDENTS = [
     password: "bob123",
     name: "Bob Smith",
     portal: {
-      notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/ebd//39edb87002c4804c855ec1c9bbb7791d?v=39edb87002c480c883ea000cdd6f9709"
+      notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/ebd/39edb87002c4804c855ec1c9bbb7791d?v=39edb87002c480c883ea000cdd6f9709"
     }
   },
   {

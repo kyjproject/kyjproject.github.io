@@ -208,6 +208,8 @@ input {
 
 input::placeholder { color: var(--text-muted); }
 
+#login-form button[type="submit"] { margin-top: 10px; }
+
 input:focus-visible,
 a:focus-visible,
 button:focus-visible {

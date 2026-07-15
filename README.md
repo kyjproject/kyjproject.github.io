@@ -54,6 +54,25 @@ student-portal/
 Note: publishing a page also publishes all of its subpages, so make
 sure everything underneath is meant to be public too.
 
+## If a Notion embed doesn't show up
+
+- Check the URL for stray characters, especially a double slash
+  partway through the path. `.../ebd//abc123` (two slashes) will
+  often silently fail to load even though it looks almost right —
+  it needs to be `.../ebd/abc123` (one slash).
+- Re-copy the link straight from Notion's "Copy this code" button
+  rather than retyping or re-pasting it through something else, to
+  rule out a slip.
+- Open the portal page, open your browser's dev tools (F12) → the
+  Console tab, and reload. An error mentioning "X-Frame-Options" or
+  "Content-Security-Policy" means that specific link isn't allowed
+  to be framed — make sure it came from Share → Publish → **Embed
+  this page**, not just a general "Share to web" link.
+- A third-party proxy like embednotion.com is a reliable fallback
+  when a native embed won't cooperate — worth knowing its free tier
+  typically caps you around 1 embedded page before asking you to
+  upgrade, so it fits a single page better than a whole class list.
+
 ## Adding, editing, or removing a student
 
 Open `js/data.js`. Every student is one entry in the `STUDENTS` list:
