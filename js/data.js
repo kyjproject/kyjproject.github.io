@@ -25,25 +25,25 @@
 
 const STUDENTS = [
   {
-    username: "alice",
-    password: "alice123",
-    name: "Alice Johnson",
+    username: "bogue",
+    password: "password",
+    name: "Bogue Kwon",
     portal: {
       notionUrl: "https://embed.embednotion.com/39edb87002c4804c855ec1c9bbb7791d"
     }
   },
   {
-    username: "bob",
-    password: "bob123",
-    name: "Bob Smith",
+    username: "kyjv9981",
+    password: "password",
+    name: "Yong Joon Kim",
     portal: {
       notionUrl: "https://wealthy-mapusaurus-5ee.notion.site/ebd/39edb87002c4804c855ec1c9bbb7791d?v=39edb87002c480c883ea000cdd6f9709"
     }
   },
   {
-    username: "charlie",
-    password: "charlie123",
-    name: "Charlie Nguyen",
+    username: "hamin",
+    password: "password",
+    name: "Hamin Park",
     portal: {
       notionUrl: "https://your-workspace.notion.site/REPLACE-WITH-CHARLIES-PAGE"
     }
