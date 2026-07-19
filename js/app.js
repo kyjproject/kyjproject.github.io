@@ -105,14 +105,12 @@ function renderNavAuth() {
   }
 }
 
-// Fills in the shared bar (welcome text + the "Open in ... ↗"
-// direct link) and points this page's iframe at the given URL.
-// portal.html and calendar.html each call this with their own URL
-// and a label — that's the only difference between the two pages.
+// Fills in the shared bar's "Open in ... ↗" direct link and points
+// this page's iframe at the given URL. portal.html and calendar.html
+// each call this with their own URL and a label — that's the only
+// difference between the two pages.
 function renderEmbedPage(student, embedUrl, label) {
   if (!student) return;
-
-  document.getElementById("welcome-text").textContent = "Welcome back, " + student.name;
 
   const frame = document.getElementById("embed-frame");
   frame.src = embedUrl;
