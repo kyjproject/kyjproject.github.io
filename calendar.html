@@ -38,7 +38,7 @@
 <script>
   requireLogin();
   var student = getCurrentStudent();
-  renderEmbedPage(student, student.portal.calendarUrl, "Google Calendar");
+  renderEmbedPage(student, CALENDAR_URL, "Google Calendar");
 
   document.getElementById('logout-btn').addEventListener('click', logout);
 </script>

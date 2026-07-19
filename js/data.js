@@ -23,6 +23,13 @@
   portal page — it doesn't make the linked Notion page private.
 */
 
+// The shared class calendar — the same for every student, unlike
+// notionUrl below which is each student's own page. To get this:
+// in Google Calendar, go to the calendar's Settings -> "Integrate
+// calendar" -> copy the "Embed code" -> paste just the URL inside
+// the iframe's src="..." here.
+const CALENDAR_URL = "https://calendar.google.com/calendar/embed?src=f378c5925c22121a1f448ff08358c807fce36f9997098326218425ba70498bba%40group.calendar.google.com&ctz=Asia%2FManila";
+
 const STUDENTS = [
   {
     username: "alice",
@@ -46,6 +53,14 @@ const STUDENTS = [
     name: "Hamin Park",
     portal: {
       notionUrl: "https://your-workspace.notion.site/REPLACE-WITH-CHARLIES-PAGE"
+    }
+  },
+  {
+    username : "seohoo",
+    password: "password",
+    name: "Seohoo Lee",
+    portal: {
+      notionUrl: ""
     }
   }
 ];
