@@ -11,8 +11,8 @@
 */
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", icon: "instagram", url: "https://instagram.com/YOUR_HANDLE" },
-  { name: "Facebook", icon: "facebook", url: "https://facebook.com/YOUR_PAGE" },
+  { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/the.zenithway0/" },
+  { name: "Facebook", icon: "facebook", url: "https://www.youtube.com/@the.zenithway" },
   { name: "YouTube", icon: "youtube", url: "https://youtube.com/@YOUR_CHANNEL" },
   { name: "Discord", icon: "discord", url: "https://discord.gg/YOUR_INVITE" },
   { name: "WhatsApp", icon: "whatsapp", url: "https://wa.me/YOUR_PHONE_NUMBER" },
