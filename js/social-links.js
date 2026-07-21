@@ -11,11 +11,11 @@
 */
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/the.zenithway0/" },
-  { name: "Facebook", icon: "facebook", url: "https://www.youtube.com/@the.zenithway" },
-  { name: "YouTube", icon: "youtube", url: "https://youtube.com/@YOUR_CHANNEL" },
+  { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/the.zenithway1/" },
+  { name: "Facebook", icon: "facebook", url: "https://www.facebook.com/profile.php?id=61591752347365" },
+  { name: "YouTube", icon: "youtube", url: "https://www.youtube.com/channel/UCmvMavW17rcbvwDhRnAC36w" },
   { name: "Discord", icon: "discord", url: "https://discord.gg/YOUR_INVITE" },
   { name: "WhatsApp", icon: "whatsapp", url: "https://wa.me/YOUR_PHONE_NUMBER" },
   { name: "KakaoTalk", icon: "kakaotalk", url: "https://open.kakao.com/YOUR_LINK" },
-  { name: "Gmail", icon: "gmail", url: "mailto:you@example.com" }
+  { name: "Gmail", icon: "gmail", url: "mailto:zenithzenith0000@gmail.com" }
 ];
