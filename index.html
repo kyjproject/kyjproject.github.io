@@ -360,6 +360,78 @@
     overflow: auto;
     background: #ffffff;
   }
+
+  /* ---------- Question modal (Browse) ---------- */
+  .modal-root {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4vh 16px;
+  }
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 13, 18, 0.55);
+  }
+  .modal-card {
+    position: relative;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    width: min(720px, 100%);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 18px 14px;
+    border-bottom: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .modal-head-info { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: 1; }
+  .modal-close {
+    appearance: none;
+    border: none;
+    background: none;
+    color: var(--ink-faint);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .modal-close:hover { background: var(--rule-soft); color: var(--ink); }
+  .modal-body {
+    padding: 18px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .modal-body .qdetail-bare .status-btn-row { margin-bottom: 4px; }
+  .modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .modal-position { font-size: 12.5px; color: var(--ink-faint); font-family: var(--mono); }
+  @media (max-width: 600px) {
+    .modal-root { padding: 0; align-items: stretch; }
+    .modal-card { width: 100%; max-height: 100vh; border-radius: 0; }
+  }
+  body.modal-open { overflow: hidden; }
+  #loadMoreBtn { align-self: flex-start; }
   .qimage { display: block; max-width: 100%; height: auto; }
   .qimage-missing {
     padding: 14px 16px;
@@ -737,7 +809,7 @@
         <div class="toolbar">
           <div class="search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="searchBox" placeholder="Search question text, choices, or rationale…" />
+            <input type="text" id="searchBox" placeholder="Search text, or type Evidence#1 + Enter to jump to a question…" />
           </div>
           <select id="sortSelect">
             <option value="default">Sort: Original order</option>
@@ -771,6 +843,8 @@
     <div class="test-shell" id="reviewShell"></div>
   </div>
 </div>
+
+<div id="questionModalRoot" class="modal-root" style="display:none;"></div>
 
 <script src="data.js"></script>
 <script id="questions-data" type="application/json">[]</script>
@@ -838,6 +912,8 @@
     statuses: new Set(), // 'review' | 'done' | 'incomplete'
     sort: 'default',
     expanded: null,
+    modalList: null, // ordered array of questions the modal is navigating (Browse's current filtered list)
+    modalIndex: null, // index within modalList currently shown in the modal
     attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
     progressExpandedCategory: null, // which category's tile breakdown is open on the Progress tab
@@ -1000,7 +1076,11 @@
   }
 
   // ---------- Browse list ----------
+  const BROWSE_PAGE_SIZE = 60;
+  let browseRenderedList = []; // the list currently on screen, for the delegated click handler + modal Prev/Next
+
   function renderBrowse() {
+    state.browseShown = BROWSE_PAGE_SIZE; // any filter/search/sort change restarts pagination
     let list = currentFiltered(QUESTIONS);
     if (state.sort === 'diff-asc') list = [...list].sort((a, b) => a.difficulty - b.difficulty);
     if (state.sort === 'diff-desc') list = [...list].sort((a, b) => b.difficulty - a.difficulty);
@@ -1008,33 +1088,39 @@
     document.getElementById('resultCount').textContent =
       `${list.length} question${list.length === 1 ? '' : 's'}`;
 
-    renderQuestionListInto(document.getElementById('qlist'), list, renderBrowse);
+    renderQuestionListInto(document.getElementById('qlist'), list);
   }
 
-  // Renders a list of question cards into `container`, wires up expand/collapse
-  // and the interactive detail (choice/submit/show-answer/status) for whichever
-  // card is expanded. `onChange` re-renders the list after any state change —
-  // pass the caller's own render function so re-renders land back in the right view.
-  function renderQuestionListInto(container, list, onChange) {
+  // Renders a (paginated) list of question cards into `container`. Clicking a
+  // card opens it in the modal rather than expanding inline — Browse never
+  // has to re-render its ~1700-question list just to show one question's
+  // detail, and a single delegated click listener (wired once, in the init
+  // block at the bottom of this script) replaces what used to be one
+  // addEventListener call per card. Rendering itself is capped at
+  // BROWSE_PAGE_SIZE cards with a "Show more" button appending the rest in
+  // batches, since building/parsing HTML for ~1700 cards at once was the
+  // biggest remaining cost — most filtered views are far smaller than that,
+  // and the common "browse everything" case rarely needs to scroll past
+  // the first batch anyway.
+  function renderQuestionListInto(container, list) {
+    browseRenderedList = list;
     if (!list.length) {
       container.innerHTML = `<div class="empty-state">No questions match these filters.</div>`;
       return;
     }
 
-    container.innerHTML = list.map(q => qCardHtml(q)).join('');
+    const shown = Math.min(state.browseShown || BROWSE_PAGE_SIZE, list.length);
+    const visible = list.slice(0, shown);
+    const remaining = list.length - shown;
+    container.innerHTML = visible.map(q => qCardHtml(q)).join('') + (remaining > 0
+      ? `<button class="btn" id="loadMoreBtn">Show ${Math.min(BROWSE_PAGE_SIZE, remaining)} more (${remaining} left)</button>`
+      : '');
 
-    list.forEach(q => {
-      const head = container.querySelector(`.qcard-head[data-id="${q.id}"]`);
-      head.addEventListener('click', () => {
-        state.expanded = state.expanded === q.id ? null : q.id;
-        onChange();
-      });
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => {
+      state.browseShown = shown + BROWSE_PAGE_SIZE;
+      renderQuestionListInto(container, list);
     });
-
-    if (state.expanded) {
-      const q = QUESTIONS.find(x => x.id === state.expanded);
-      if (q) wireDetail(q, onChange, container);
-    }
   }
 
   // Renders a question's chart/table image when it has one. Command of
@@ -1063,7 +1149,6 @@
   }
 
   function qCardHtml(q) {
-    const isOpen = state.expanded === q.id;
     const status = questionStatus(q);
     const statusBadge = status !== 'incomplete'
       ? `<span class="${statusPillClass(status)}">${STATUS_LABELS[status]}</span>`
@@ -1082,7 +1167,6 @@
             <span class="qid" title="${escapeHtml(q.id)}">${escapeHtml(q.shortId)}</span>
           </div>
         </div>
-        ${isOpen ? qDetailHtml(q) : ''}
       </div>`;
   }
 
@@ -1174,10 +1258,123 @@
     return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  document.getElementById('searchBox').addEventListener('input', (e) => {
-    state.query = e.target.value;
+  // "Category#N" shorthand (e.g. "Evidence#1", "Grammar#42") jumps straight
+  // to that question's card, expanded and scrolled into view. Matches on a
+  // prefix of either the short display label ("Evidence") or the full
+  // category name ("Command of Evidence"), case-insensitively.
+  function findByShortIdQuery(query) {
+    const m = query.trim().match(/^([A-Za-z][A-Za-z\- ]*?)\s*#\s*(\d+)$/);
+    if (!m) return null;
+    const catQuery = m[1].trim().toLowerCase();
+    const num = parseInt(m[2], 10);
+    return QUESTIONS.find(q => {
+      const label = categoryLabel(q.category).toLowerCase();
+      const full = q.category.toLowerCase();
+      const shortNum = parseInt(q.shortId.split('#')[1], 10);
+      return shortNum === num && (label.startsWith(catQuery) || full.startsWith(catQuery));
+    }) || null;
+  }
+
+  function jumpToQuestion(qid) {
+    state.categories.clear();
+    state.skills.clear();
+    state.difficulties.clear();
+    state.statuses.clear();
+    state.query = '';
+    document.getElementById('searchBox').value = '';
     renderFilters();
     renderBrowse();
+    const idx = browseRenderedList.findIndex(q => q.id === qid);
+    if (idx !== -1) {
+      openQuestionModal(browseRenderedList, idx);
+    } else {
+      const q = QUESTIONS.find(x => x.id === qid);
+      if (q) openQuestionModal([q], 0);
+    }
+  }
+
+  // ---------- Question modal (Browse) ----------
+  // `list` is the ordered set the modal navigates Prev/Next through — pass
+  // whatever list the click came from (Browse's current filtered results),
+  // so paging through the modal walks the same set the user was looking at.
+  function openQuestionModal(list, index) {
+    state.modalList = list;
+    state.modalIndex = index;
+    renderQuestionModal();
+  }
+
+  function closeQuestionModal() {
+    state.modalList = null;
+    state.modalIndex = null;
+    renderQuestionModal();
+  }
+
+  function renderQuestionModal() {
+    const root = document.getElementById('questionModalRoot');
+    const list = state.modalList;
+    const q = list && list[state.modalIndex];
+    if (!q) {
+      root.style.display = 'none';
+      root.innerHTML = '';
+      document.body.classList.remove('modal-open');
+      return;
+    }
+    root.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    const total = list.length;
+    const status = questionStatus(q);
+    const statusBadge = status !== 'incomplete'
+      ? `<span class="${statusPillClass(status)}">${STATUS_LABELS[status]}</span>`
+      : '';
+    root.innerHTML = `
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card">
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${statusBadge}
+            <span class="cat-tag">${escapeHtml(q.category)}</span>
+            <span class="qid" title="${escapeHtml(q.id)}">${escapeHtml(q.shortId)}</span>
+          </div>
+          <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">${qDetailHtml(q, { bare: true })}</div>
+        <div class="modal-nav">
+          <button class="btn" id="modalPrevBtn" ${state.modalIndex === 0 ? 'disabled' : ''}>&larr; Previous</button>
+          <span class="modal-position">${state.modalIndex + 1} of ${total}</span>
+          <button class="btn" id="modalNextBtn" ${state.modalIndex === total - 1 ? 'disabled' : ''}>Next &rarr;</button>
+        </div>
+      </div>`;
+
+    root.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeQuestionModal));
+    const prevBtn = document.getElementById('modalPrevBtn');
+    if (prevBtn) prevBtn.addEventListener('click', () => { state.modalIndex--; renderQuestionModal(); });
+    const nextBtn = document.getElementById('modalNextBtn');
+    if (nextBtn) nextBtn.addEventListener('click', () => { state.modalIndex++; renderQuestionModal(); });
+    wireDetail(q, renderQuestionModal, root);
+  }
+
+  // Debounced: with ~1700 questions, re-filtering + re-rendering the facet
+  // counts and the list on every single keystroke was a real chunk of the
+  // "feels slow" complaint. Waiting a beat after typing stops removes that
+  // without making search feel laggy.
+  let searchDebounceTimer = null;
+  document.getElementById('searchBox').addEventListener('input', (e) => {
+    const value = e.target.value;
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      state.query = value;
+      renderFilters();
+      renderBrowse();
+    }, 180);
+  });
+  document.getElementById('searchBox').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const match = findByShortIdQuery(e.target.value);
+    if (match) {
+      e.preventDefault();
+      jumpToQuestion(match.id);
+    }
   });
   document.getElementById('sortSelect').addEventListener('change', (e) => {
     state.sort = e.target.value;
@@ -1192,6 +1389,23 @@
     document.getElementById('searchBox').value = '';
     renderFilters();
     renderBrowse();
+  });
+
+  // One delegated listener for the whole Browse list — opens the clicked
+  // question in the modal, navigating Prev/Next through whatever list was
+  // on screen at click time (browseRenderedList, kept in sync by
+  // renderQuestionListInto). Replaces what used to be an addEventListener
+  // call per rendered card.
+  document.getElementById('qlist').addEventListener('click', (e) => {
+    const head = e.target.closest('.qcard-head');
+    if (!head) return;
+    const qid = head.dataset.id;
+    const idx = browseRenderedList.findIndex(q => q.id === qid);
+    if (idx !== -1) openQuestionModal(browseRenderedList, idx);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && state.modalList) closeQuestionModal();
   });
 
   // ---------- Tabs ----------
