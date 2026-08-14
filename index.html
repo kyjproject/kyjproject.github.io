@@ -152,6 +152,7 @@
     padding: 0 28px;
     background: var(--paper-raised);
     border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
   }
   .tab {
     appearance: none;
@@ -300,7 +301,7 @@
   .pill-hard { color: var(--hard); background: var(--hard-bg); }
   .pill-review { color: var(--review); background: var(--review-bg); }
   .pill-done { color: var(--done); background: var(--done-bg); }
-  .status-btn-row { display: flex; gap: 8px; margin: 14px 0 4px; }
+  .status-btn-row { display: flex; gap: 8px; margin: 14px 0 4px; flex-wrap: wrap; }
   .status-btn {
     appearance: none;
     display: inline-flex;
@@ -319,6 +320,7 @@
   .status-btn:hover { border-color: var(--ink-faint); }
   .status-btn.on-review { border-color: var(--review); color: var(--review); background: var(--review-bg); }
   .status-btn.on-done { border-color: var(--done); color: var(--done); background: var(--done-bg); }
+  .status-btn.on-incomplete { border-color: var(--ink-faint); color: var(--ink); background: var(--rule-soft); }
   .qid { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); }
   .cat-tag {
     font-size: 10.5px;
@@ -339,6 +341,7 @@
   .qskill { font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
 
   .qdetail { border-top: 1px solid var(--rule); padding: 4px 20px 20px; }
+  .qdetail.qdetail-bare { border-top: none; padding: 0; }
   .qdetail .stem { font-size: 15px; padding: 14px 0 16px; }
   .stem p { margin: 0 0 12px; }
   .stem p:last-child { margin-bottom: 0; }
@@ -384,6 +387,8 @@
     flex-shrink: 0;
     width: 16px;
   }
+  .choice.choice-selected { border-color: var(--accent); background: var(--accent-soft); }
+  .choice.choice-selected .letter { color: var(--accent-ink); }
   .choice.chosen-correct { border-color: var(--correct); background: var(--correct-bg); }
   .choice.chosen-correct .letter { color: var(--correct); }
   .choice.chosen-incorrect { border-color: var(--incorrect); background: var(--incorrect-bg); }
@@ -396,7 +401,7 @@
     padding-top: 6px;
     border-top: 1px dashed var(--rule);
   }
-  .detail-actions { display: flex; gap: 8px; align-items: center; }
+  .detail-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .btn {
     appearance: none;
     border: 1px solid var(--rule);
@@ -416,7 +421,7 @@
 
   .empty-state { text-align: center; padding: 60px 20px; color: var(--ink-faint); }
 
-  /* ---------- Mock test ---------- */
+  /* ---------- Practice / Test shell ---------- */
   .test-shell { max-width: 760px; margin: 0 auto; padding: 30px 24px 60px; }
   .config-card {
     background: var(--paper-raised);
@@ -507,10 +512,10 @@
     padding: 16px 18px;
     margin-bottom: 10px;
   }
-  .review-item .row1 { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .review-item .row1 { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
   .review-item .stem { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 8px; }
 
-  /* ---------- Progress tab ---------- */
+  /* ---------- Progress / Review tabs ---------- */
   .progress-summary {
     background: var(--paper-raised);
     border: 1px solid var(--rule);
@@ -537,7 +542,7 @@
     padding: 14px 18px;
     margin-bottom: 8px;
   }
-  .cat-progress-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .cat-progress-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 10px; flex-wrap: wrap; }
   .cat-progress-row .name { font-weight: 600; font-size: 13.5px; }
   .cat-progress-row .frac { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
   .cat-progress-card { cursor: pointer; }
@@ -571,6 +576,116 @@
   .qtile.status-review { background: var(--review); border-color: var(--review); }
   .review-queue-empty { color: var(--ink-faint); font-size: 13px; padding: 4px 0 4px; }
 
+  .inline-q-panel {
+    background: var(--paper-raised);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 16px 20px 20px;
+    margin-bottom: 20px;
+  }
+  .inline-q-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .inline-q-panel-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-ink);
+    letter-spacing: 0.02em;
+  }
+  .icon-close-btn {
+    appearance: none;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink-soft);
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+  }
+  .icon-close-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+  /* ---------- Mock Exam tab ---------- */
+  .mock-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .mock-module-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .mock-timer {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 8px;
+    background: var(--rule-soft);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .mock-timer.low-time { background: var(--hard-bg); color: var(--hard); }
+  .mock-exit-link {
+    appearance: none;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+  .mock-exit-link:hover { color: var(--ink); }
+  .mock-blueprint-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px; }
+  .mock-blueprint-table th {
+    text-align: left;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .mock-blueprint-table td { padding: 6px 8px; border-bottom: 1px solid var(--rule-soft); }
+  .mock-blueprint-table tr:last-child td { border-bottom: none; }
+  .domain-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .domain-breakdown-row:last-child { border-bottom: none; }
+  .mock-routing-note {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    margin: 14px 0;
+  }
+
   @media (max-width: 760px) {
     .browse-layout { grid-template-columns: 1fr; }
     .filters { position: static; border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; }
@@ -590,8 +705,11 @@
 
   <div class="tabs">
     <button class="tab active" data-view="browse">Browse</button>
-    <button class="tab" data-view="test">Mock Test</button>
+    <button class="tab" data-view="practice">Practice</button>
+    <button class="tab" data-view="test">Test</button>
+    <button class="tab" data-view="mock">Mock Exam</button>
     <button class="tab" data-view="progress">Progress</button>
+    <button class="tab" data-view="review">Review</button>
   </div>
 
   <div class="view active" id="view-browse">
@@ -633,12 +751,24 @@
     </div>
   </div>
 
+  <div class="view" id="view-practice">
+    <div class="test-shell" id="practiceShell"></div>
+  </div>
+
   <div class="view" id="view-test">
     <div class="test-shell" id="testShell"></div>
   </div>
 
+  <div class="view" id="view-mock">
+    <div class="test-shell" id="mockShell"></div>
+  </div>
+
   <div class="view" id="view-progress">
     <div class="test-shell" id="progressShell"></div>
+  </div>
+
+  <div class="view" id="view-review">
+    <div class="test-shell" id="reviewShell"></div>
   </div>
 </div>
 
@@ -652,8 +782,25 @@
     ? SAT_QUESTIONS
     : JSON.parse(document.getElementById('questions-data').textContent);
 
+  // Short, human-friendly identifiers ("Transitions #23") assigned in source
+  // order per category. The long College Board hash id (q.id) remains the
+  // storage key for progress/attempt state so existing exported progress
+  // files keep working; shortId is purely a display label.
+  const CATEGORY_LABELS = {
+    'Command of Evidence': 'Evidence',
+    'Cross-Text': 'Cross Text',
+  };
+  function categoryLabel(cat) { return CATEGORY_LABELS[cat] || cat; }
+  (function assignShortIds() {
+    const counters = {};
+    QUESTIONS.forEach(q => {
+      counters[q.category] = (counters[q.category] || 0) + 1;
+      q.shortId = `${categoryLabel(q.category)} #${counters[q.category]}`;
+    });
+  })();
+
   // ---------- Progress persistence ----------
-  // Per-question status: 'review' (flagged) | 'done' (finished) | absent (incomplete).
+  // Per-question status: 'review' (flagged) | 'done' (complete) | absent (incomplete).
   // Saved to localStorage as a best effort — browsers/hosts vary in whether that
   // persists reliably, so Export/Import (Progress tab) is the durable backup path.
   const STORAGE_KEY = 'sat_qbank_progress_v1';
@@ -691,9 +838,11 @@
     statuses: new Set(), // 'review' | 'done' | 'incomplete'
     sort: 'default',
     expanded: null,
-    practiceChoice: {}, // questionId -> letter chosen
+    attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
     progressExpandedCategory: null, // which category's tile breakdown is open on the Progress tab
+    progressOpenQuestion: null, // qid opened inline on the Progress tab (via a tile click)
+    reviewOpenQuestion: null, // qid opened inline on the Review tab (via a tile click)
   };
 
   const testState = {
@@ -706,6 +855,17 @@
     questions: [],
     index: 0,
     answers: {},
+  };
+
+  const practiceState = {
+    phase: 'config', // config | session
+    categories: new Set(),
+    skills: new Set(),
+    difficulties: new Set(),
+    statuses: new Set(),
+    shuffle: false,
+    questions: [],
+    index: 0,
   };
 
   const allCategories = [...new Set(QUESTIONS.map(q => q.category))].sort();
@@ -728,7 +888,7 @@
     return state.progress[q.id] || 'incomplete';
   }
 
-  const STATUS_LABELS = { review: 'To review', done: 'Finished', incomplete: 'Incomplete' };
+  const STATUS_LABELS = { review: 'To review', done: 'Complete', incomplete: 'Incomplete' };
   const ALL_STATUSES = ['review', 'done', 'incomplete'];
 
   function matchesQuery(q) {
@@ -747,6 +907,17 @@
     });
   }
 
+  // Filters QUESTIONS by an arbitrary {categories, skills, difficulties, statuses}
+  // selection object — shared by the Test and Practice tabs' config screens.
+  function filterPool(sel) {
+    return QUESTIONS.filter(q =>
+      (!sel.categories.size || sel.categories.has(q.category)) &&
+      (!sel.skills.size || sel.skills.has(q.skill)) &&
+      (!sel.difficulties.size || sel.difficulties.has(q.difficulty_label)) &&
+      (!sel.statuses.size || sel.statuses.has(questionStatus(q)))
+    );
+  }
+
   function diffPillClass(label) {
     return { Easy: 'pill pill-easy', Medium: 'pill pill-medium', Hard: 'pill pill-hard' }[label] || 'pill';
   }
@@ -759,24 +930,30 @@
     const status = questionStatus(q);
     return `
       <div class="status-btn-row">
-        <button class="status-btn ${status === 'review' ? 'on-review' : ''}" data-status-qid="${q.id}" data-set-status="review">🚩 Flag for review</button>
-        <button class="status-btn ${status === 'done' ? 'on-done' : ''}" data-status-qid="${q.id}" data-set-status="done">✓ Mark finished</button>
-        ${status !== 'incomplete' ? `<button class="status-btn" data-status-qid="${q.id}" data-set-status="">Reset</button>` : ''}
+        <button class="status-btn ${status === 'review' ? 'on-review' : ''}" data-status-qid="${q.id}" data-set-status="review">🚩 Mark for review</button>
+        <button class="status-btn ${status === 'done' ? 'on-done' : ''}" data-status-qid="${q.id}" data-set-status="done">✓ Mark complete</button>
+        <button class="status-btn ${status === 'incomplete' ? 'on-incomplete' : ''}" data-status-qid="${q.id}" data-set-status="incomplete">○ Mark incomplete</button>
       </div>`;
   }
 
-  // Wires every [data-status-qid] button inside `container` (event delegation
-  // via a single listener), used anywhere status buttons are rendered outside
-  // the main qdetail flow (e.g. the mock-test results review list).
+  function applyStatusClick(qid, next) {
+    setStatus(qid, next === 'incomplete' ? null : next);
+    renderFilters();
+  }
+
+  // Wires every [data-status-qid] button inside `container` via a single
+  // delegated listener. Safe to call on every render of the same container —
+  // a dataset flag guards against attaching the same delegated listener
+  // twice on a container that persists across re-renders (its innerHTML gets
+  // replaced, but the container element itself does not).
   function wireStatusButtons(container, onChange) {
+    if (!container) return;
+    if (container.dataset && container.dataset.statusWired) return;
+    if (container.dataset) container.dataset.statusWired = '1';
     container.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-status-qid]');
       if (!btn || !container.contains(btn)) return;
-      const qid = btn.dataset.statusQid;
-      const next = btn.dataset.setStatus;
-      const current = state.progress[qid] || 'incomplete';
-      setStatus(qid, next && next !== current ? next : null);
-      renderFilters();
+      applyStatusClick(btn.dataset.statusQid, btn.dataset.setStatus);
       onChange();
     });
   }
@@ -835,9 +1012,9 @@
   }
 
   // Renders a list of question cards into `container`, wires up expand/collapse
-  // and practice-mode + status-button clicks. `onChange` re-renders the list
-  // after any state change (a status mark, picking an answer, etc.) — pass the
-  // caller's own render function so re-renders land back in the right view.
+  // and the interactive detail (choice/submit/show-answer/status) for whichever
+  // card is expanded. `onChange` re-renders the list after any state change —
+  // pass the caller's own render function so re-renders land back in the right view.
   function renderQuestionListInto(container, list, onChange) {
     if (!list.length) {
       container.innerHTML = `<div class="empty-state">No questions match these filters.</div>`;
@@ -856,7 +1033,7 @@
 
     if (state.expanded) {
       const q = QUESTIONS.find(x => x.id === state.expanded);
-      if (q) wireDetail(q, onChange);
+      if (q) wireDetail(q, onChange, container);
     }
   }
 
@@ -902,23 +1079,38 @@
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qid">${q.id}</span>
+            <span class="qid" title="${escapeHtml(q.id)}">${escapeHtml(q.shortId)}</span>
           </div>
         </div>
         ${isOpen ? qDetailHtml(q) : ''}
       </div>`;
   }
 
-  function qDetailHtml(q) {
-    const chosen = state.practiceChoice[q.id];
-    const revealed = !!chosen;
+  // Current pending/graded attempt for a question: { choice, submitted, showAnswer }.
+  function getAttempt(qid) {
+    return state.attempt[qid] || { choice: null, submitted: false, showAnswer: false };
+  }
+
+  // Shared interactive question body (image, stem, choices, submit/show-answer
+  // buttons, status buttons) used by Browse's expanded card, the Practice
+  // session, and the inline panels opened from Progress/Review tiles.
+  //
+  // Interaction model: clicking a choice only *selects* it (no reveal).
+  // "Submit" grades that selection (chosen choice turns green/red). "Show
+  // answer" independently reveals the correct choice + full per-choice
+  // rationale, whether or not anything has been submitted yet.
+  function qDetailHtml(q, opts) {
+    opts = opts || {};
+    const att = getAttempt(q.id);
     const choiceHtml = ['A', 'B', 'C', 'D'].map(letter => {
       const isCorrect = letter === q.correct_answer;
+      const isChosen = att.choice === letter;
       let cls = 'choice';
-      if (chosen === letter && isCorrect) cls += ' chosen-correct';
-      else if (chosen === letter && !isCorrect) cls += ' chosen-incorrect';
-      else if (revealed && isCorrect) cls += ' reveal-correct';
-      const rationaleLine = revealed
+      if (att.submitted && isChosen) cls += isCorrect ? ' chosen-correct' : ' chosen-incorrect';
+      else if (isChosen) cls += ' choice-selected';
+      if (att.showAnswer && isCorrect && !(att.submitted && isChosen)) cls += ' reveal-correct';
+      const showRationale = (att.submitted && isChosen) || att.showAnswer;
+      const rationaleLine = showRationale
         ? `<div class="rationale-line">${escapeHtml(q.rationale_by_choice[letter] || '')}</div>`
         : '';
       return `<div class="${cls}" data-letter="${letter}" data-qid="${q.id}">
@@ -930,36 +1122,52 @@
       </div>`;
     }).join('');
 
+    const wrapClass = opts.bare ? 'qdetail qdetail-bare' : 'qdetail';
     return `
-      <div class="qdetail">
+      <div class="${wrapClass}">
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="detail-actions">
-          <span style="font-size:12px; color:var(--ink-faint);">${escapeHtml(q.prompt)}</span>
+          <span style="font-size:12px; color:var(--ink-faint); flex:1; min-width:160px;">${escapeHtml(q.prompt)}</span>
+          <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit</button>
+          <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}</button>
         </div>
         ${statusButtonsHtml(q)}
       </div>`;
   }
 
-  function wireDetail(q, onChange) {
-    document.querySelectorAll(`.choice[data-qid="${q.id}"]`).forEach(el => {
+  // Wires a question's interactive detail body within `root` (choice select,
+  // submit, show/hide answer, status buttons). `root` scopes every query so
+  // the same question open in two different tabs at once (e.g. expanded in
+  // Browse while also open in a Progress tile panel) never cross-wires.
+  function wireDetail(q, onChange, root) {
+    root = root || document;
+    root.querySelectorAll(`.choice[data-qid="${q.id}"]`).forEach(el => {
       el.addEventListener('click', (e) => {
         e.stopPropagation();
-        state.practiceChoice[q.id] = el.dataset.letter;
+        const letter = el.dataset.letter;
+        const att = getAttempt(q.id);
+        state.attempt[q.id] = Object.assign({}, att, { choice: letter, submitted: false });
         onChange();
       });
     });
-    document.querySelectorAll(`[data-status-qid="${q.id}"]`).forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const next = el.dataset.setStatus;
-        const current = questionStatus(q);
-        setStatus(q.id, next && next !== current ? next : null);
-        renderFilters();
-        onChange();
-      });
+    const submitBtn = root.querySelector(`[data-submit-qid="${q.id}"]`);
+    if (submitBtn) submitBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const att = getAttempt(q.id);
+      if (!att.choice) return;
+      state.attempt[q.id] = Object.assign({}, att, { submitted: true });
+      onChange();
     });
+    const toggleBtn = root.querySelector(`[data-toggle-answer-qid="${q.id}"]`);
+    if (toggleBtn) toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const att = getAttempt(q.id);
+      state.attempt[q.id] = Object.assign({}, att, { showAnswer: !att.showAnswer });
+      onChange();
+    });
+    wireStatusButtons(root, onChange);
   }
 
   function escapeHtml(s) {
@@ -993,78 +1201,99 @@
       tab.classList.add('active');
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById('view-' + tab.dataset.view).classList.add('active');
+      if (tab.dataset.view === 'practice') renderPractice();
+      if (tab.dataset.view === 'test') renderTest();
+      if (tab.dataset.view === 'mock') renderMock();
       if (tab.dataset.view === 'progress') renderProgress();
+      if (tab.dataset.view === 'review') renderReview();
     });
   });
 
-  // ---------- Mock test ----------
+  // ---------- Shared scope-filter chips (Test config + Practice config) ----------
+  function categoryChipsHtml(sel) {
+    return allCategories.map(c =>
+      `<button class="chip ${sel.categories.has(c) ? 'on' : ''}" data-field="categories" data-val="${escapeHtml(c)}">${escapeHtml(c)}</button>`
+    ).join('');
+  }
+  function skillChipsHtml(sel) {
+    return allSkills.map(s =>
+      `<button class="chip ${sel.skills.has(s) ? 'on' : ''}" data-field="skills" data-val="${escapeHtml(s)}">${escapeHtml(s)}</button>`
+    ).join('');
+  }
+  function difficultyChipsHtml(sel) {
+    return allDifficulties.map(d =>
+      `<button class="chip ${sel.difficulties.has(d) ? 'on' : ''}" data-field="difficulties" data-val="${d}">${d}</button>`
+    ).join('');
+  }
+  function statusChipsHtml(sel) {
+    return ALL_STATUSES.map(s =>
+      `<button class="chip ${sel.statuses.has(s) ? 'on' : ''}" data-field="statuses" data-val="${s}">${STATUS_LABELS[s]}</button>`
+    ).join('');
+  }
+  // Delegated-free (rebound every render, but chips are recreated each render
+  // too since they live inside an innerHTML-replaced config card) toggle wiring
+  // for any chip row built from the helpers above.
+  function wireScopeChips(root, sel, onChange) {
+    root.querySelectorAll('[data-field]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const field = btn.dataset.field;
+        const val = btn.dataset.val;
+        const set = sel[field];
+        if (set.has(val)) set.delete(val); else set.add(val);
+        onChange();
+      });
+    });
+  }
+
+  // ---------- Test (real, scored test — no per-question feedback until the end) ----------
+  function testPool() { return filterPool(testState); }
+
   function renderTest() {
     const shell = document.getElementById('testShell');
-    if (testState.phase === 'config') shell.innerHTML = configHtml();
-    else if (testState.phase === 'quiz') shell.innerHTML = quizHtml();
-    else shell.innerHTML = resultsHtml();
+    if (testState.phase === 'config') shell.innerHTML = testConfigHtml();
+    else if (testState.phase === 'quiz') shell.innerHTML = testQuizHtml();
+    else shell.innerHTML = testResultsHtml();
     wireTest();
   }
 
-  function testPool() {
-    return QUESTIONS.filter(q =>
-      (!testState.categories.size || testState.categories.has(q.category)) &&
-      (!testState.skills.size || testState.skills.has(q.skill)) &&
-      (!testState.difficulties.size || testState.difficulties.has(q.difficulty_label)) &&
-      (!testState.statuses.size || testState.statuses.has(questionStatus(q)))
-    );
-  }
-
-  function configHtml() {
-    const categoryChips = allCategories.map(c =>
-      `<button class="chip ${testState.categories.has(c) ? 'on' : ''}" data-category="${escapeHtml(c)}">${escapeHtml(c)}</button>`
-    ).join('');
-    const skillChips = allSkills.map(s =>
-      `<button class="chip ${testState.skills.has(s) ? 'on' : ''}" data-skill="${escapeHtml(s)}">${escapeHtml(s)}</button>`
-    ).join('');
-    const diffChips = allDifficulties.map(d =>
-      `<button class="chip ${testState.difficulties.has(d) ? 'on' : ''}" data-diff="${d}">${d}</button>`
-    ).join('');
-    const statusChips = ALL_STATUSES.map(s =>
-      `<button class="chip ${testState.statuses.has(s) ? 'on' : ''}" data-status="${s}">${STATUS_LABELS[s]}</button>`
-    ).join('');
+  function testConfigHtml() {
     const pool = testPool();
     return `
       <div class="config-card">
-        <h2>Build a mock test</h2>
-        <p class="lede">${pool.length} question${pool.length === 1 ? '' : 's'} available with the filters below.</p>
+        <h2>Build a test</h2>
+        <p class="lede">${pool.length} question${pool.length === 1 ? '' : 's'} available with the filters below. This simulates the real thing — choices aren't graded until you submit the whole test.</p>
+        <div class="config-row">
+          <label>Scope — status (leave empty for all)</label>
+          <div class="chip-row">${statusChipsHtml(testState)}</div>
+        </div>
         <div class="config-row">
           <label>Categories (leave empty for all)</label>
-          <div class="chip-row">${categoryChips}</div>
+          <div class="chip-row">${categoryChipsHtml(testState)}</div>
         </div>
         <div class="config-row">
           <label>Skills (leave empty for all)</label>
-          <div class="chip-row">${skillChips}</div>
+          <div class="chip-row">${skillChipsHtml(testState)}</div>
         </div>
         <div class="config-row">
           <label>Difficulty (leave empty for all)</label>
-          <div class="chip-row">${diffChips}</div>
-        </div>
-        <div class="config-row">
-          <label>Status (leave empty for all)</label>
-          <div class="chip-row">${statusChips}</div>
+          <div class="chip-row">${difficultyChipsHtml(testState)}</div>
         </div>
         <div class="config-row">
           <label>Number of questions</label>
-          <input type="number" class="num-input" id="testCount" min="1" max="${Math.max(pool.length,1)}" value="${Math.min(testState.count, Math.max(pool.length,1))}" />
+          <input type="number" class="num-input" id="testCount" min="1" max="${Math.max(pool.length, 1)}" value="${Math.min(testState.count, Math.max(pool.length, 1))}" />
         </div>
         <button class="btn btn-accent" id="startTestBtn" ${pool.length ? '' : 'disabled'}>Start test</button>
       </div>`;
   }
 
-  function quizHtml() {
+  function testQuizHtml() {
     const q = testState.questions[testState.index];
     const total = testState.questions.length;
     const answered = testState.answers[q.id];
     const pct = Math.round(((testState.index) / total) * 100);
     const choiceHtml = ['A', 'B', 'C', 'D'].map(letter => {
       let cls = 'choice';
-      if (answered === letter) cls += ' chosen-correct'.replace('correct', answered === q.correct_answer ? 'correct' : 'incorrect');
+      if (answered === letter) cls += ' choice-selected';
       return `<div class="${cls}" data-letter="${letter}">
         <span class="letter">${letter}</span>
         <div>${escapeHtml(q.choices[letter])}</div>
@@ -1081,7 +1310,7 @@
         <div class="quiz-tags">
           <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
           <span class="cat-tag">${escapeHtml(q.category)}</span>
-          <span class="qid" style="align-self:center;">${escapeHtml(q.skill)}</span>
+          <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)}</span>
         </div>
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
@@ -1096,7 +1325,7 @@
       </div>`;
   }
 
-  function resultsHtml() {
+  function testResultsHtml() {
     const total = testState.questions.length;
     let correct = 0;
     testState.questions.forEach(q => { if (testState.answers[q.id] === q.correct_answer) correct++; });
@@ -1121,7 +1350,7 @@
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qskill" style="margin:0;">${escapeHtml(q.skill)}</span>
+            <span class="qskill" style="margin:0;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
           </div>
           <div class="stem">${i + 1}. ${escapeHtml(q.stem.replace(/\n\n/g, ' '))}</div>
           ${questionImageHtml(q)}
@@ -1138,42 +1367,16 @@
         <div class="score">${correct}/${total}</div>
         <div class="score-sub">${pct}% correct</div>
         <div style="max-width:280px; margin:18px auto 0; text-align:left;">${skillRows}</div>
-        <button class="btn" id="retakeBtn" style="margin-top:18px;">New mock test</button>
+        <button class="btn" id="retakeBtn" style="margin-top:18px;">New test</button>
       </div>
       <h3 style="font-family:var(--serif); font-size:16px; margin:0 0 10px;">Review</h3>
       ${reviewHtml}`;
   }
 
   function wireTest() {
+    const shell = document.getElementById('testShell');
     if (testState.phase === 'config') {
-      document.querySelectorAll('[data-category]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const c = btn.dataset.category;
-          if (testState.categories.has(c)) testState.categories.delete(c); else testState.categories.add(c);
-          renderTest();
-        });
-      });
-      document.querySelectorAll('[data-skill]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const s = btn.dataset.skill;
-          if (testState.skills.has(s)) testState.skills.delete(s); else testState.skills.add(s);
-          renderTest();
-        });
-      });
-      document.querySelectorAll('[data-diff]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const d = btn.dataset.diff;
-          if (testState.difficulties.has(d)) testState.difficulties.delete(d); else testState.difficulties.add(d);
-          renderTest();
-        });
-      });
-      document.querySelectorAll('[data-status]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const s = btn.dataset.status;
-          if (testState.statuses.has(s)) testState.statuses.delete(s); else testState.statuses.add(s);
-          renderTest();
-        });
-      });
+      wireScopeChips(shell, testState, renderTest);
       const startBtn = document.getElementById('startTestBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
         const countInput = document.getElementById('testCount');
@@ -1188,7 +1391,7 @@
       });
     } else if (testState.phase === 'quiz') {
       const q = testState.questions[testState.index];
-      document.querySelectorAll('.choice[data-letter]').forEach(el => {
+      shell.querySelectorAll('.choice[data-letter]').forEach(el => {
         el.addEventListener('click', () => {
           testState.answers[q.id] = el.dataset.letter;
           renderTest();
@@ -1203,52 +1406,519 @@
     } else {
       const retakeBtn = document.getElementById('retakeBtn');
       if (retakeBtn) retakeBtn.addEventListener('click', () => { testState.phase = 'config'; renderTest(); });
-      wireStatusButtons(document.getElementById('testShell'), renderTest);
+      wireStatusButtons(shell, renderTest);
     }
   }
 
-  // ---------- Progress tab ----------
-  function jumpToQuestion(qid) {
-    const tabBtn = document.querySelector('.tab[data-view="browse"]');
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tabBtn.classList.add('active');
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById('view-browse').classList.add('active');
+  // ---------- Practice (pick a scope, then work questions one at a time in detail) ----------
+  function practicePool() { return filterPool(practiceState); }
 
-    state.categories.clear();
-    state.skills.clear();
-    state.difficulties.clear();
-    state.statuses.clear();
-    state.query = '';
-    const searchBox = document.getElementById('searchBox');
-    if (searchBox) searchBox.value = '';
-    state.expanded = qid;
-    renderFilters();
-    renderBrowse();
-
-    requestAnimationFrame(() => {
-      const el = document.querySelector(`.qcard-head[data-id="${qid}"]`);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
+  function renderPractice() {
+    const shell = document.getElementById('practiceShell');
+    shell.innerHTML = practiceState.phase === 'config' ? practiceConfigHtml() : practiceSessionHtml();
+    wirePractice();
   }
 
+  function practiceConfigHtml() {
+    const pool = practicePool();
+    return `
+      <div class="config-card">
+        <h2>Build a practice set</h2>
+        <p class="lede">${pool.length} question${pool.length === 1 ? '' : 's'} available with the filters below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        <div class="config-row">
+          <label>Scope — status (leave empty for all)</label>
+          <div class="chip-row">${statusChipsHtml(practiceState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Category (leave empty for all)</label>
+          <div class="chip-row">${categoryChipsHtml(practiceState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Skill (leave empty for all)</label>
+          <div class="chip-row">${skillChipsHtml(practiceState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Difficulty (leave empty for all)</label>
+          <div class="chip-row">${difficultyChipsHtml(practiceState)}</div>
+        </div>
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="practiceShuffle" ${practiceState.shuffle ? 'checked' : ''} />
+            <span>Shuffle order</span>
+          </label>
+        </div>
+        <button class="btn btn-accent" id="startPracticeBtn" ${pool.length ? '' : 'disabled'} style="margin-top:8px;">Start practice (${pool.length})</button>
+      </div>`;
+  }
+
+  function practiceSessionHtml() {
+    const q = practiceState.questions[practiceState.index];
+    const total = practiceState.questions.length;
+    const pct = Math.round((practiceState.index / total) * 100);
+    return `
+      <div class="quiz-progress">
+        <span>Question ${practiceState.index + 1} of ${total}</span>
+        <button class="btn" id="practiceEndBtn" style="padding:4px 10px; font-size:12px;">End session</button>
+      </div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-card">
+        <div class="quiz-tags">
+          <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+          <span class="cat-tag">${escapeHtml(q.category)}</span>
+          <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
+        </div>
+        ${qDetailHtml(q, { bare: true })}
+        <div class="quiz-nav">
+          <button class="btn" id="practicePrevBtn" ${practiceState.index === 0 ? 'disabled' : ''}>Previous</button>
+          ${practiceState.index === total - 1
+            ? `<button class="btn btn-accent" id="practiceFinishBtn">Finish</button>`
+            : `<button class="btn btn-accent" id="practiceNextBtn">Next</button>`}
+        </div>
+      </div>`;
+  }
+
+  function wirePractice() {
+    const shell = document.getElementById('practiceShell');
+    if (practiceState.phase === 'config') {
+      wireScopeChips(shell, practiceState, renderPractice);
+      const shuffleBox = document.getElementById('practiceShuffle');
+      if (shuffleBox) shuffleBox.addEventListener('change', () => { practiceState.shuffle = shuffleBox.checked; });
+      const startBtn = document.getElementById('startPracticeBtn');
+      if (startBtn) startBtn.addEventListener('click', () => {
+        let pool = practicePool();
+        if (practiceState.shuffle) pool = [...pool].sort(() => Math.random() - 0.5);
+        practiceState.questions = pool;
+        practiceState.index = 0;
+        practiceState.phase = 'session';
+        renderPractice();
+      });
+    } else {
+      const q = practiceState.questions[practiceState.index];
+      wireDetail(q, renderPractice, shell);
+      const prevBtn = document.getElementById('practicePrevBtn');
+      if (prevBtn) prevBtn.addEventListener('click', () => { practiceState.index--; renderPractice(); });
+      const nextBtn = document.getElementById('practiceNextBtn');
+      if (nextBtn) nextBtn.addEventListener('click', () => { practiceState.index++; renderPractice(); });
+      const finishBtn = document.getElementById('practiceFinishBtn');
+      if (finishBtn) finishBtn.addEventListener('click', () => { practiceState.phase = 'config'; renderPractice(); });
+      const endBtn = document.getElementById('practiceEndBtn');
+      if (endBtn) endBtn.addEventListener('click', () => { practiceState.phase = 'config'; renderPractice(); });
+    }
+  }
+
+  // ---------- Mock Exam (full-length, mirrors the real Digital SAT R&W structure) ----------
+  // Two modules of 27 questions (54 total), 32 minutes each. Module 1 draws a
+  // medium-weighted mix from every skill; Module 2 adapts — harder-weighted if
+  // Module 1 went well, easier-weighted if it didn't — approximating (not
+  // replicating; College Board's real routing is IRT-based) the real digital
+  // SAT's multistage-adaptive design. Skill order/counts below mirror the
+  // official 4-domain, 10-skill blueprint and its published per-test count
+  // ranges (Information and Ideas 12-14, Craft and Structure 13-15, Expression
+  // of Ideas 8-12, Standard English Conventions 11-15, out of 54) — Words in
+  // Context leads each module, matching the real test's usual opening block.
+  const MOCK_MODULE_SECONDS = 32 * 60;
+  const MOCK_PASS_THRESHOLD = 0.6; // module-1 accuracy at/above this routes module 2 to the harder pool
+
+  const MOCK_BLUEPRINT = [
+    { category: 'Vocab', skill: 'Words in Context', m1: 4, m2: 4 },
+    { category: 'Functions', skill: 'Text Structure and Purpose', m1: 2, m2: 3 },
+    { category: 'Cross-Text', skill: 'Cross-Text Connections', m1: 1, m2: 1 },
+    { category: 'Main Idea', skill: 'Central Ideas and Details', m1: 2, m2: 2 },
+    { category: 'Command of Evidence', skill: 'Command of Evidence', m1: 3, m2: 3 },
+    { category: 'Inferences', skill: 'Inferences', m1: 2, m2: 2 },
+    { category: 'Grammar', skill: 'Boundaries', m1: 4, m2: 3 },
+    { category: 'Grammar', skill: 'Form, Structure, and Sense', m1: 3, m2: 3 },
+    { category: 'Transitions', skill: 'Transitions', m1: 3, m2: 3 },
+    { category: 'Notes', skill: 'Rhetorical Synthesis', m1: 3, m2: 3 },
+  ];
+  const MOCK_M1_TOTAL = MOCK_BLUEPRINT.reduce((s, r) => s + r.m1, 0);
+  const MOCK_M2_TOTAL = MOCK_BLUEPRINT.reduce((s, r) => s + r.m2, 0);
+
+  const SKILL_DOMAIN = {
+    'Central Ideas and Details': 'Information and Ideas',
+    'Command of Evidence': 'Information and Ideas',
+    'Inferences': 'Information and Ideas',
+    'Words in Context': 'Craft and Structure',
+    'Text Structure and Purpose': 'Craft and Structure',
+    'Cross-Text Connections': 'Craft and Structure',
+    'Rhetorical Synthesis': 'Expression of Ideas',
+    'Transitions': 'Expression of Ideas',
+    'Boundaries': 'Standard English Conventions',
+    'Form, Structure, and Sense': 'Standard English Conventions',
+  };
+  const MOCK_DOMAIN_ORDER = ['Information and Ideas', 'Craft and Structure', 'Expression of Ideas', 'Standard English Conventions'];
+
+  const MOCK_WEIGHTS_M1 = { Easy: 0.25, Medium: 0.5, Hard: 0.25 };
+  const MOCK_WEIGHTS_HARDER = { Easy: 0.1, Medium: 0.35, Hard: 0.55 };
+  const MOCK_WEIGHTS_EASIER = { Easy: 0.5, Medium: 0.4, Hard: 0.1 };
+
+  function shuffleInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // Picks `n` questions from `pool` biased toward `weights` (a difficulty ->
+  // fraction map), without replacement. Buckets by difficulty, takes a
+  // weight-proportional slice of each, then backfills from whatever's left
+  // over (any difficulty) if a bucket came up short — so a thin bucket (e.g.
+  // few Hard Cross-Text questions) degrades gracefully instead of returning
+  // fewer than n.
+  function pickWeighted(pool, n, weights) {
+    const buckets = { Easy: [], Medium: [], Hard: [] };
+    pool.forEach(q => buckets[q.difficulty_label].push(q));
+    Object.values(buckets).forEach(shuffleInPlace);
+
+    const order = ['Easy', 'Medium', 'Hard'];
+    const targets = {};
+    let remaining = n;
+    order.forEach((d, i) => {
+      const t = (i === order.length - 1) ? remaining : Math.min(remaining, Math.round(n * weights[d]));
+      targets[d] = Math.max(0, t);
+      remaining -= targets[d];
+    });
+
+    const picked = [];
+    order.forEach(d => picked.push(...buckets[d].splice(0, targets[d])));
+    if (picked.length < n) {
+      const leftover = shuffleInPlace([...buckets.Easy, ...buckets.Medium, ...buckets.Hard]);
+      picked.push(...leftover.slice(0, n - picked.length));
+    }
+    return picked.slice(0, n);
+  }
+
+  function buildMockModule(countField, weights, excludeIds) {
+    const used = new Set(excludeIds || []);
+    const questions = [];
+    MOCK_BLUEPRINT.forEach(row => {
+      const pool = QUESTIONS.filter(q => q.category === row.category && q.skill === row.skill && !used.has(q.id));
+      const picked = pickWeighted(pool, row[countField], weights);
+      picked.forEach(q => used.add(q.id));
+      questions.push(...picked);
+    });
+    return questions;
+  }
+
+  const mockState = {
+    phase: 'intro', // intro | module1 | break | module2 | results
+    module1Questions: [],
+    module2Questions: [],
+    index: 0,
+    answers: {}, // qid -> letter, shared across both modules
+    timeLeft: 0,
+    timerId: null,
+    module1Correct: null,
+    module1Pct: null,
+    routedHarder: null,
+  };
+
+  function formatMockTime(seconds) {
+    const s = Math.max(0, Math.ceil(seconds));
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return `${m}:${String(r).padStart(2, '0')}`;
+  }
+
+  function mockClearTimer() {
+    if (mockState.timerId) {
+      clearInterval(mockState.timerId);
+      mockState.timerId = null;
+    }
+  }
+
+  function mockStartTimer(onExpire) {
+    mockClearTimer();
+    mockState.timerId = setInterval(() => {
+      mockState.timeLeft -= 1;
+      const el = document.getElementById('mockTimer');
+      if (el) {
+        el.textContent = formatMockTime(mockState.timeLeft);
+        el.classList.toggle('low-time', mockState.timeLeft <= 60);
+      }
+      if (mockState.timeLeft <= 0) {
+        mockClearTimer();
+        onExpire();
+      }
+    }, 1000);
+  }
+
+  function mockScoreModule(questions) {
+    let correct = 0;
+    questions.forEach(q => { if (mockState.answers[q.id] === q.correct_answer) correct++; });
+    return { correct, total: questions.length, pct: questions.length ? correct / questions.length : 0 };
+  }
+
+  function startMockExam() {
+    mockState.module1Questions = buildMockModule('m1', MOCK_WEIGHTS_M1, []);
+    mockState.module2Questions = [];
+    mockState.index = 0;
+    mockState.answers = {};
+    mockState.module1Correct = null;
+    mockState.module1Pct = null;
+    mockState.routedHarder = null;
+    mockState.timeLeft = MOCK_MODULE_SECONDS;
+    mockState.phase = 'module1';
+    renderMock();
+    mockStartTimer(submitMockModule1);
+  }
+
+  function submitMockModule1() {
+    mockClearTimer();
+    const score = mockScoreModule(mockState.module1Questions);
+    mockState.module1Correct = score.correct;
+    mockState.module1Pct = score.pct;
+    mockState.routedHarder = score.pct >= MOCK_PASS_THRESHOLD;
+    mockState.phase = 'break';
+    renderMock();
+  }
+
+  function startMockModule2() {
+    const usedIds = mockState.module1Questions.map(q => q.id);
+    const weights = mockState.routedHarder ? MOCK_WEIGHTS_HARDER : MOCK_WEIGHTS_EASIER;
+    mockState.module2Questions = buildMockModule('m2', weights, usedIds);
+    mockState.index = 0;
+    mockState.timeLeft = MOCK_MODULE_SECONDS;
+    mockState.phase = 'module2';
+    renderMock();
+    mockStartTimer(submitMockModule2);
+  }
+
+  function submitMockModule2() {
+    mockClearTimer();
+    mockState.phase = 'results';
+    renderMock();
+  }
+
+  function exitMockExam() {
+    if (!confirm('Exit this mock exam? Your progress on it will be lost.')) return;
+    mockClearTimer();
+    mockState.phase = 'intro';
+    renderMock();
+  }
+
+  function mockIntroHtml() {
+    const rows = MOCK_BLUEPRINT.map(r =>
+      `<tr><td>${escapeHtml(r.skill)}</td><td>${escapeHtml(SKILL_DOMAIN[r.skill])}</td><td>${r.m1}</td><td>${r.m2}</td></tr>`
+    ).join('');
+    return `
+      <div class="config-card">
+        <h2>Full-length Mock Exam</h2>
+        <p class="lede">Two 27-question modules, 32 minutes each — ${MOCK_M1_TOTAL + MOCK_M2_TOTAL} questions total, mirroring the real Digital SAT Reading &amp; Writing structure. Module 1 is a medium-weighted mix across every skill; Module 2 adapts to how you did on Module 1 — a stronger pool if you scored well, a gentler one if you didn't — the same multistage-adaptive idea the real test uses (our routing is a reasonable approximation, not the official algorithm).</p>
+        <div class="config-row">
+          <label>Question order &amp; blueprint (both modules follow this order)</label>
+          <table class="mock-blueprint-table">
+            <thead><tr><th>Skill</th><th>Domain</th><th>Module&nbsp;1</th><th>Module&nbsp;2</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <button class="btn btn-accent" id="startMockBtn">Start Module 1 (32:00)</button>
+      </div>`;
+  }
+
+  function mockQuizHtml(questions, moduleNum) {
+    const q = questions[mockState.index];
+    const total = questions.length;
+    const answered = mockState.answers[q.id];
+    const pct = Math.round((mockState.index / total) * 100);
+    const choiceHtml = ['A', 'B', 'C', 'D'].map(letter => {
+      let cls = 'choice';
+      if (answered === letter) cls += ' choice-selected';
+      return `<div class="${cls}" data-letter="${letter}">
+        <span class="letter">${letter}</span>
+        <div>${escapeHtml(q.choices[letter])}</div>
+      </div>`;
+    }).join('');
+    const isLast = mockState.index === total - 1;
+
+    return `
+      <div class="mock-topbar">
+        <span class="mock-module-badge">Module ${moduleNum} of 2</span>
+        <span class="mock-timer" id="mockTimer">${formatMockTime(mockState.timeLeft)}</span>
+        <button class="mock-exit-link" id="mockExitBtn">Exit mock exam</button>
+      </div>
+      <div class="quiz-progress">
+        <span>Question ${mockState.index + 1} of ${total}</span>
+        <span>${Object.keys(mockState.answers).filter(id => questions.some(qq => qq.id === id)).length} answered</span>
+      </div>
+      <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-card">
+        <div class="quiz-tags">
+          <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+          <span class="cat-tag">${escapeHtml(q.skill)}</span>
+          <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)}</span>
+        </div>
+        ${questionImageHtml(q)}
+        <div class="stem">${renderStemHtml(q.stem)}</div>
+        <div style="font-size:12.5px; color:var(--ink-faint); margin:10px 0;">${escapeHtml(q.prompt)}</div>
+        <div class="choices">${choiceHtml}</div>
+        <div class="quiz-nav">
+          <button class="btn" id="mockPrevBtn" ${mockState.index === 0 ? 'disabled' : ''}>Previous</button>
+          ${isLast
+            ? `<button class="btn btn-accent" id="mockSubmitBtn">Submit Module ${moduleNum}</button>`
+            : `<button class="btn btn-accent" id="mockNextBtn">Next</button>`}
+        </div>
+      </div>`;
+  }
+
+  function mockBreakHtml() {
+    const answeredCount = mockState.module1Questions.filter(q => mockState.answers[q.id]).length;
+    return `
+      <div class="config-card" style="text-align:center;">
+        <h2>Module 1 complete</h2>
+        <p class="lede">${answeredCount} of ${mockState.module1Questions.length} questions answered. Take a breather — Module 2 is 27 more questions, 32 minutes, and its difficulty is calibrated based on Module 1. You'll see the full breakdown after Module 2.</p>
+        <button class="btn btn-accent" id="startModule2Btn">Start Module 2 (32:00)</button>
+      </div>`;
+  }
+
+  function mockResultsHtml() {
+    const all = [...mockState.module1Questions.map(q => ({ q, module: 1 })), ...mockState.module2Questions.map(q => ({ q, module: 2 }))];
+    const total = all.length;
+    let correct = 0;
+    all.forEach(({ q }) => { if (mockState.answers[q.id] === q.correct_answer) correct++; });
+    const m2Score = mockScoreModule(mockState.module2Questions);
+    const pct = total ? Math.round((correct / total) * 100) : 0;
+
+    const byDomain = {};
+    MOCK_DOMAIN_ORDER.forEach(d => { byDomain[d] = { c: 0, t: 0 }; });
+    const bySkill = {};
+    all.forEach(({ q }) => {
+      const domain = SKILL_DOMAIN[q.skill] || q.domain;
+      byDomain[domain] = byDomain[domain] || { c: 0, t: 0 };
+      byDomain[domain].t++;
+      bySkill[q.skill] = bySkill[q.skill] || { c: 0, t: 0 };
+      bySkill[q.skill].t++;
+      if (mockState.answers[q.id] === q.correct_answer) {
+        byDomain[domain].c++;
+        bySkill[q.skill].c++;
+      }
+    });
+
+    const domainRows = MOCK_DOMAIN_ORDER.filter(d => byDomain[d].t).map(d =>
+      `<div class="domain-breakdown-row"><span>${escapeHtml(d)}</span><span style="font-family:var(--mono);">${byDomain[d].c}/${byDomain[d].t}</span></div>`
+    ).join('');
+    const skillRows = Object.entries(bySkill).map(([s, v]) =>
+      `<div style="display:flex; justify-content:space-between; font-size:12.5px; padding:4px 0; color:var(--ink-soft);">
+        <span>${escapeHtml(s)}</span><span style="font-family:var(--mono);">${v.c}/${v.t}</span>
+      </div>`).join('');
+
+    const reviewHtml = all.map(({ q, module }, i) => {
+      const yours = mockState.answers[q.id];
+      const isCorrect = yours === q.correct_answer;
+      return `
+        <div class="review-item">
+          <div class="row1">
+            <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
+            <span class="mock-module-badge" style="font-size:10px;">Module ${module}</span>
+            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            <span class="qskill" style="margin:0;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
+          </div>
+          <div class="stem">${i + 1}. ${escapeHtml(q.stem.replace(/\n\n/g, ' '))}</div>
+          ${questionImageHtml(q)}
+          <div style="font-size:13px;">
+            Your answer: <strong>${yours || '—'}</strong>${!isCorrect ? ` &nbsp;&middot;&nbsp; Correct: <strong>${q.correct_answer}</strong>` : ''}
+          </div>
+          <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px;">${escapeHtml(q.rationale_by_choice[q.correct_answer] || '')}</div>
+          ${statusButtonsHtml(q)}
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="results-summary">
+        <div class="score">${correct}/${total}</div>
+        <div class="score-sub">${pct}% correct overall</div>
+        <div class="mock-routing-note">
+          Module 1: ${mockState.module1Correct}/${mockState.module1Questions.length} (${Math.round(mockState.module1Pct * 100)}%) &rarr;
+          routed to the <strong>${mockState.routedHarder ? 'harder' : 'easier'}</strong> pool for Module 2, which scored ${m2Score.correct}/${m2Score.total} (${Math.round(m2Score.pct * 100)}%).
+        </div>
+        <div style="max-width:340px; margin:18px auto 0; text-align:left;">
+          <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint); margin-bottom:4px;">By domain</div>
+          ${domainRows}
+          <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint); margin:14px 0 4px;">By skill</div>
+          ${skillRows}
+        </div>
+        <button class="btn" id="newMockBtn" style="margin-top:18px;">New mock exam</button>
+      </div>
+      <h3 style="font-family:var(--serif); font-size:16px; margin:0 0 10px;">Review</h3>
+      ${reviewHtml}`;
+  }
+
+  function renderMock() {
+    const shell = document.getElementById('mockShell');
+    if (mockState.phase === 'intro') shell.innerHTML = mockIntroHtml();
+    else if (mockState.phase === 'module1') shell.innerHTML = mockQuizHtml(mockState.module1Questions, 1);
+    else if (mockState.phase === 'break') shell.innerHTML = mockBreakHtml();
+    else if (mockState.phase === 'module2') shell.innerHTML = mockQuizHtml(mockState.module2Questions, 2);
+    else shell.innerHTML = mockResultsHtml();
+    wireMock();
+  }
+
+  function wireMock() {
+    const shell = document.getElementById('mockShell');
+    if (mockState.phase === 'intro') {
+      const startBtn = document.getElementById('startMockBtn');
+      if (startBtn) startBtn.addEventListener('click', startMockExam);
+    } else if (mockState.phase === 'module1' || mockState.phase === 'module2') {
+      const questions = mockState.phase === 'module1' ? mockState.module1Questions : mockState.module2Questions;
+      const q = questions[mockState.index];
+      shell.querySelectorAll('.choice[data-letter]').forEach(el => {
+        el.addEventListener('click', () => {
+          mockState.answers[q.id] = el.dataset.letter;
+          renderMock();
+        });
+      });
+      const prevBtn = document.getElementById('mockPrevBtn');
+      if (prevBtn) prevBtn.addEventListener('click', () => { mockState.index--; renderMock(); });
+      const nextBtn = document.getElementById('mockNextBtn');
+      if (nextBtn) nextBtn.addEventListener('click', () => { mockState.index++; renderMock(); });
+      const submitBtn = document.getElementById('mockSubmitBtn');
+      if (submitBtn) submitBtn.addEventListener('click', () => {
+        if (mockState.phase === 'module1') submitMockModule1(); else submitMockModule2();
+      });
+      const exitBtn = document.getElementById('mockExitBtn');
+      if (exitBtn) exitBtn.addEventListener('click', exitMockExam);
+    } else if (mockState.phase === 'break') {
+      const btn = document.getElementById('startModule2Btn');
+      if (btn) btn.addEventListener('click', startMockModule2);
+    } else {
+      const newBtn = document.getElementById('newMockBtn');
+      if (newBtn) newBtn.addEventListener('click', () => { mockState.phase = 'intro'; renderMock(); });
+      wireStatusButtons(shell, renderMock);
+    }
+  }
+
+  // ---------- Shared inline question panel (Progress + Review tile clicks) ----------
+  function inlineQuestionPanelHtml(q, panelId, closeId) {
+    return `
+      <div class="inline-q-panel" id="${panelId}">
+        <div class="inline-q-panel-head">
+          <span class="inline-q-panel-title">${escapeHtml(q.shortId)}</span>
+          <button class="icon-close-btn" id="${closeId}" title="Close" aria-label="Close">&#10005;</button>
+        </div>
+        ${qDetailHtml(q, { bare: true })}
+      </div>`;
+  }
+
+  // ---------- Progress tab ----------
   function diffBreakdownHtml(qs) {
     return allDifficulties.filter(d => qs.some(q => q.difficulty_label === d)).map(d => {
       const inDiff = qs.filter(q => q.difficulty_label === d);
       const doneCount = inDiff.filter(q => questionStatus(q) === 'done').length;
       const tiles = inDiff.map(q =>
-        `<button class="qtile status-${questionStatus(q)}" data-jump-qid="${q.id}" title="${q.id} — ${STATUS_LABELS[questionStatus(q)]}"></button>`
+        `<button class="qtile status-${questionStatus(q)}" data-open-qid="${q.id}" title="${escapeHtml(q.shortId)} — ${STATUS_LABELS[questionStatus(q)]}"></button>`
       ).join('');
       return `
         <div class="diff-subhead">
           <span>${d}</span>
-          <span>${doneCount}/${inDiff.length} finished</span>
+          <span>${doneCount}/${inDiff.length} complete</span>
         </div>
         <div class="qtile-grid">${tiles}</div>`;
     }).join('');
   }
 
   function renderProgress() {
+    const shell = document.getElementById('progressShell');
     const total = QUESTIONS.length;
     let done = 0, review = 0;
     QUESTIONS.forEach(q => {
@@ -1272,7 +1942,7 @@
       <div class="cat-progress-card">
         <div class="cat-progress-row" data-toggle-cat="${escapeHtml(c.cat)}">
           <span class="name"><span class="chevron ${isOpen ? 'open' : ''}">&#9656;</span>${escapeHtml(c.cat)}</span>
-          <span class="frac">${c.done}/${c.total} finished${c.review ? ` &middot; ${c.review} to review` : ''}</span>
+          <span class="frac">${c.done}/${c.total} complete${c.review ? ` &middot; ${c.review} to review` : ''}</span>
         </div>
         <div class="segbar">
           <div class="seg-done" style="width:${c.total ? (c.done / c.total) * 100 : 0}%"></div>
@@ -1282,13 +1952,17 @@
       </div>`;
     }).join('');
 
-    const flagged = QUESTIONS.filter(q => questionStatus(q) === 'review');
+    let openQ = null;
+    if (state.progressOpenQuestion) {
+      openQ = QUESTIONS.find(x => x.id === state.progressOpenQuestion) || null;
+      if (!openQ) state.progressOpenQuestion = null;
+    }
 
-    document.getElementById('progressShell').innerHTML = `
+    shell.innerHTML = `
       <div class="progress-summary">
         <h2>Your progress</h2>
         <div class="progress-stats">
-          <div class="progress-stat done"><span class="n">${done}</span><span class="l">Finished (${pct(done)}%)</span></div>
+          <div class="progress-stat done"><span class="n">${done}</span><span class="l">Complete (${pct(done)}%)</span></div>
           <div class="progress-stat review"><span class="n">${review}</span><span class="l">To review</span></div>
           <div class="progress-stat"><span class="n">${incomplete}</span><span class="l">Incomplete</span></div>
           <div class="progress-stat"><span class="n">${total}</span><span class="l">Total questions</span></div>
@@ -1308,32 +1982,33 @@
         </div>
       </div>
 
-      <h3 style="font-family: var(--serif); font-size: 16px; margin: 0 0 10px;">Flagged for review (${flagged.length})</h3>
-      <div class="qlist" id="reviewQueueList" style="margin-bottom: 24px;"></div>
+      ${openQ ? inlineQuestionPanelHtml(openQ, 'progressPanel', 'progressPanelClose') : ''}
 
       <h3 style="font-family: var(--serif); font-size: 16px; margin: 0 0 10px;">By category</h3>
       ${catRows}`;
 
-    if (flagged.length) {
-      renderQuestionListInto(document.getElementById('reviewQueueList'), flagged, renderProgress);
-    } else {
-      document.getElementById('reviewQueueList').innerHTML =
-        `<div class="review-queue-empty">Nothing flagged yet — hit "🚩 Flag for review" on any question to add it here.</div>`;
-    }
-
-    document.querySelectorAll('[data-toggle-cat]').forEach(el => {
+    shell.querySelectorAll('[data-toggle-cat]').forEach(el => {
       el.addEventListener('click', () => {
         const cat = el.dataset.toggleCat;
         state.progressExpandedCategory = state.progressExpandedCategory === cat ? null : cat;
         renderProgress();
       });
     });
-    document.querySelectorAll('[data-jump-qid]').forEach(el => {
+    shell.querySelectorAll('[data-open-qid]').forEach(el => {
       el.addEventListener('click', (e) => {
         e.stopPropagation();
-        jumpToQuestion(el.dataset.jumpQid);
+        state.progressOpenQuestion = el.dataset.openQid;
+        renderProgress();
       });
     });
+
+    if (openQ) {
+      const panel = document.getElementById('progressPanel');
+      const closeBtn = document.getElementById('progressPanelClose');
+      if (closeBtn) closeBtn.addEventListener('click', () => { state.progressOpenQuestion = null; renderProgress(); });
+      wireDetail(openQ, renderProgress, panel);
+      requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
 
     wireProgress();
   }
@@ -1396,6 +2071,7 @@
             renderFilters();
             renderBrowse();
             renderProgress();
+            renderReview();
           } catch (e) {
             alert('Could not read that file as progress JSON.');
           }
@@ -1407,18 +2083,102 @@
 
     const resetBtn = document.getElementById('resetProgressBtn');
     if (resetBtn) resetBtn.addEventListener('click', () => {
-      if (!confirm('Clear all "finished" and "to review" marks? This can\'t be undone unless you\'ve exported a backup.')) return;
+      if (!confirm('Clear all "complete" and "to review" marks? This can\'t be undone unless you\'ve exported a backup.')) return;
       state.progress = {};
       saveProgress();
       renderFilters();
       renderBrowse();
       renderProgress();
+      renderReview();
+    });
+  }
+
+  // ---------- Review tab ----------
+  // Dedicated home for everything flagged 🚩 for review — replaces the old
+  // inline "flagged" queue on the Progress tab (a tile click there now opens
+  // the same kind of inline panel directly, so a separate list was redundant).
+  function renderReview() {
+    const shell = document.getElementById('reviewShell');
+    const flagged = QUESTIONS.filter(q => questionStatus(q) === 'review');
+    const byCategory = allCategories
+      .map(cat => ({ cat, qs: flagged.filter(q => q.category === cat) }))
+      .filter(c => c.qs.length);
+
+    let openQ = null;
+    if (state.reviewOpenQuestion) {
+      openQ = QUESTIONS.find(x => x.id === state.reviewOpenQuestion) || null;
+      if (!openQ) state.reviewOpenQuestion = null;
+    }
+
+    const catBlocks = byCategory.map(c => `
+      <div class="cat-progress-card" style="cursor:default;">
+        <div class="cat-progress-row">
+          <span class="name">${escapeHtml(c.cat)}</span>
+          <span class="frac">${c.qs.length} flagged</span>
+        </div>
+        <div class="qtile-grid">${c.qs.map(q =>
+          `<button class="qtile status-review" data-open-qid="${q.id}" title="${escapeHtml(q.shortId)}"></button>`
+        ).join('')}</div>
+      </div>`).join('');
+
+    shell.innerHTML = `
+      <div class="progress-summary">
+        <h2>Review queue</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">
+          Everything flagged 🚩 for review, grouped by category. Click a square to work it right here — mark it complete or incomplete and it'll drop out of this queue.
+        </p>
+        <div class="progress-actions">
+          <button class="btn btn-accent" id="reviewPracticeBtn" ${flagged.length ? '' : 'disabled'}>Practice all flagged (${flagged.length})</button>
+        </div>
+      </div>
+
+      ${openQ ? inlineQuestionPanelHtml(openQ, 'reviewPanel', 'reviewPanelClose') : ''}
+
+      ${byCategory.length ? catBlocks : `<div class="review-queue-empty">Nothing flagged yet — hit "🚩 Mark for review" on any question to add it here.</div>`}
+    `;
+
+    shell.querySelectorAll('[data-open-qid]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        state.reviewOpenQuestion = el.dataset.openQid;
+        renderReview();
+      });
+    });
+
+    if (openQ) {
+      const panel = document.getElementById('reviewPanel');
+      const closeBtn = document.getElementById('reviewPanelClose');
+      if (closeBtn) closeBtn.addEventListener('click', () => { state.reviewOpenQuestion = null; renderReview(); });
+      wireDetail(openQ, renderReview, panel);
+      requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
+
+    const practiceBtn = document.getElementById('reviewPracticeBtn');
+    if (practiceBtn) practiceBtn.addEventListener('click', () => {
+      practiceState.statuses = new Set(['review']);
+      practiceState.categories = new Set();
+      practiceState.skills = new Set();
+      practiceState.difficulties = new Set();
+      practiceState.shuffle = false;
+      practiceState.questions = practicePool();
+      practiceState.index = 0;
+      practiceState.phase = practiceState.questions.length ? 'session' : 'config';
+
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab[data-view="practice"]').classList.add('active');
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view-practice').classList.add('active');
+      renderPractice();
     });
   }
 
   renderStats();
   renderFilters();
   renderBrowse();
+  renderPractice();
   renderTest();
+  renderMock();
+  renderProgress();
+  renderReview();
 })();
 </script>
