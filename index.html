@@ -24,8 +24,8 @@
     --correct-bg: #e5f3ea;
     --incorrect: #a1333b;
     --incorrect-bg: #f6e2e3;
-    --review: #6d4fc2;
-    --review-bg: #ece7f8;
+    --review: #8a7000;
+    --review-bg: #faf2ce;
     --done: #2f7a4f;
     --done-bg: #e5f3ea;
     --shadow: 0 1px 2px rgba(28, 36, 48, 0.06), 0 4px 14px rgba(28, 36, 48, 0.05);
@@ -56,8 +56,8 @@
       --correct-bg: #1b2b21;
       --incorrect: #e37c83;
       --incorrect-bg: #331d1f;
-      --review: #ab97e8;
-      --review-bg: #292040;
+      --review: #e0c93a;
+      --review-bg: #332c12;
       --done: #6ec48b;
       --done-bg: #1b2b21;
       --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -85,8 +85,8 @@
     --correct-bg: #1b2b21;
     --incorrect: #e37c83;
     --incorrect-bg: #331d1f;
-    --review: #ab97e8;
-    --review-bg: #292040;
+    --review: #e0c93a;
+    --review-bg: #332c12;
     --done: #6ec48b;
     --done-bg: #1b2b21;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -322,6 +322,66 @@
   .status-btn.on-done { border-color: var(--done); color: var(--done); background: var(--done-bg); }
   .status-btn.on-incomplete { border-color: var(--ink-faint); color: var(--ink); background: var(--rule-soft); }
   .qid { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); }
+  .id-chip {
+    appearance: none;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    background: var(--rule-soft);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 1.5px 6px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .id-chip:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .id-chip.id-chip-copied { border-color: var(--done); color: var(--done); background: var(--done-bg); }
+
+  .tags-section { margin-top: 14px; }
+  .tags-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 99px;
+    padding: 3px 6px 3px 10px;
+  }
+  .tag-remove {
+    appearance: none;
+    border: none;
+    background: none;
+    color: inherit;
+    opacity: 0.65;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+  .tag-remove:hover { opacity: 1; }
+  .tag-input {
+    font: inherit;
+    font-size: 12.5px;
+    border: 1px dashed var(--rule);
+    border-radius: 99px;
+    padding: 4px 10px;
+    background: transparent;
+    color: var(--ink);
+    min-width: 130px;
+  }
+  .tag-input:focus { outline: none; border-color: var(--accent); border-style: solid; }
+  .tags-empty-hint { font-size: 12px; color: var(--ink-faint); line-height: 1.4; }
   .cat-tag {
     font-size: 10.5px;
     color: var(--ink-faint);
@@ -345,6 +405,7 @@
   .qdetail .stem { font-size: 15px; padding: 14px 0 16px; }
   .stem p { margin: 0 0 12px; }
   .stem p:last-child { margin-bottom: 0; }
+  .prompt-line { font-size: 16px; color: var(--ink); font-weight: 500; margin: 4px 0 16px; }
   .text-label {
     font-size: 10.5px;
     font-weight: 700;
@@ -577,6 +638,43 @@
     font-variant-numeric: tabular-nums;
   }
   .results-summary .score-sub { color: var(--ink-faint); font-size: 13px; margin-top: 4px; }
+
+  .score-card { max-width: 420px; margin: 0 auto 24px; text-align: center; }
+  .score-card .total-score {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .score-card .total-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-faint); margin-top: 6px;
+  }
+  .score-card .score-disclaimer { font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
+  .score-bars { display: flex; gap: 18px; margin-top: 22px; text-align: left; }
+  .score-bar-row { flex: 1; }
+  .score-bar-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12.5px; color: var(--ink-soft); margin-bottom: 6px;
+  }
+  .score-bar-head .val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .score-bar-track {
+    height: 8px; border-radius: 4px; background: var(--rule-soft);
+    border: 1px solid var(--rule); overflow: hidden;
+  }
+  .score-bar-fill { height: 100%; background: var(--accent); border-radius: 4px 0 0 4px; transition: width 0.2s ease; }
+  .math-score-edit {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; margin-top: 8px;
+  }
+  .math-score-edit input {
+    width: 64px; font-family: var(--mono); font-size: 13px;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 3px 6px; color: var(--ink); text-align: right;
+  }
+  .math-score-edit input:focus { outline: none; border-color: var(--accent); }
+  .math-score-edit label { font-size: 11.5px; color: var(--ink-faint); }
   .review-item {
     background: var(--paper-raised);
     border: 1px solid var(--rule);
@@ -803,13 +901,17 @@
           <h3>Status</h3>
           <div id="statusFilters"></div>
         </div>
+        <div class="filter-group">
+          <h3>Tags</h3>
+          <div id="tagFilters"></div>
+        </div>
         <button class="clear-btn" id="clearFilters">Clear filters</button>
       </aside>
       <div class="main">
         <div class="toolbar">
           <div class="search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="searchBox" placeholder="Search text, or type Evidence#1 + Enter to jump to a question…" />
+            <input type="text" id="searchBox" placeholder="Search text, paste an ID, or type Evidence#1 — Enter to jump…" />
           </div>
           <select id="sortSelect">
             <option value="default">Sort: Original order</option>
@@ -904,6 +1006,151 @@
     saveProgress();
   }
 
+  // ---------- Tags ----------
+  // Free-form per-question labels ("weak spot", "redo", whatever) you add
+  // yourself from a question's detail view. Same storage pattern as
+  // progress: localStorage as a best-effort, Export/Import (Progress tab)
+  // as the durable backup since both live in the same exported file.
+  const TAGS_KEY = 'sat_qbank_tags_v1';
+
+  function loadTags() {
+    try {
+      const raw = localStorage.getItem(TAGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveTags() {
+    try {
+      localStorage.setItem(TAGS_KEY, JSON.stringify(state.tags));
+    } catch (e) {
+      // storage unavailable/full — tags still live in memory for this session
+    }
+  }
+
+  function getTags(qid) {
+    return state.tags[qid] || [];
+  }
+
+  function addTag(qid, rawTag) {
+    const tag = rawTag.trim();
+    if (!tag) return;
+    const existing = getTags(qid);
+    if (existing.some(t => t.toLowerCase() === tag.toLowerCase())) return;
+    state.tags[qid] = [...existing, tag];
+    saveTags();
+  }
+
+  function removeTag(qid, tag) {
+    const next = getTags(qid).filter(t => t !== tag);
+    if (next.length) state.tags[qid] = next;
+    else delete state.tags[qid];
+    saveTags();
+  }
+
+  function allTags() {
+    const set = new Set();
+    Object.values(state.tags).forEach(arr => arr.forEach(t => set.add(t)));
+    return [...set].sort((a, b) => a.localeCompare(b));
+  }
+
+  // ---------- Estimated composite score (Mock Exam results) ----------
+  // The real digital SAT is scored via IRT on an adaptive item pool we don't
+  // have — this is a hand-tuned approximation, not an official College Board
+  // conversion. Two curves because the actual test's design means your score
+  // ceiling depends on *which* Module 2 pool you were routed into: acing an
+  // easier Module 2 (routed there after a rough Module 1) still tops out well
+  // below 800, the same way it does on the real adaptive test. Anchor points
+  // are piecewise-linearly interpolated and rounded to the nearest 10, matching
+  // real SAT score granularity.
+  const RW_CURVE_HARDER = [[0, 200], [10, 320], [20, 430], [27, 490], [35, 570], [40, 630], [45, 690], [49, 740], [52, 780], [54, 800]];
+  const RW_CURVE_EASIER = [[0, 200], [10, 290], [20, 380], [27, 440], [35, 510], [40, 560], [45, 600], [49, 630], [54, 650]];
+
+  function interpCurve(curve, raw) {
+    if (raw <= curve[0][0]) return curve[0][1];
+    if (raw >= curve[curve.length - 1][0]) return curve[curve.length - 1][1];
+    for (let i = 0; i < curve.length - 1; i++) {
+      const [x0, y0] = curve[i], [x1, y1] = curve[i + 1];
+      if (raw >= x0 && raw <= x1) {
+        const t = (raw - x0) / (x1 - x0);
+        return Math.round((y0 + t * (y1 - y0)) / 10) * 10;
+      }
+    }
+    return curve[curve.length - 1][1];
+  }
+
+  function estimateRWScore(rawCorrect, routedHarder) {
+    return interpCurve(routedHarder ? RW_CURVE_HARDER : RW_CURVE_EASIER, rawCorrect);
+  }
+
+  function computeMockRWScore() {
+    const all = [...mockState.module1Questions, ...mockState.module2Questions];
+    let correct = 0;
+    all.forEach(q => { if (mockState.answers[q.id] === q.correct_answer) correct++; });
+    return estimateRWScore(correct, mockState.routedHarder);
+  }
+
+  const MATH_SCORE_KEY = 'sat_qbank_math_score_v1';
+
+  function loadMathScore() {
+    const raw = parseInt(localStorage.getItem(MATH_SCORE_KEY), 10);
+    return (Number.isFinite(raw) && raw >= 200 && raw <= 800) ? raw : 800;
+  }
+
+  function saveMathScore(val) {
+    try { localStorage.setItem(MATH_SCORE_KEY, String(val)); } catch (e) { /* best-effort */ }
+  }
+
+  // Renders the total/1600 + two subscore bars, with an editable Math score
+  // input (defaults to 800, persisted across sessions/exams). `rwScore` is
+  // fixed at render time; the Math input updates the total live via direct
+  // DOM writes (see wireScoreCard) rather than a full re-render.
+  function scoreCardHtml(rwScore) {
+    const mathScore = loadMathScore();
+    const total = rwScore + mathScore;
+    const rwPct = Math.round(((rwScore - 200) / 600) * 100);
+    const mathPct = Math.round(((mathScore - 200) / 600) * 100);
+    return `
+      <div class="score-card">
+        <div class="total-score" id="scTotal">${total}</div>
+        <div class="total-label">Estimated total score (/1600)</div>
+        <div class="score-bars">
+          <div class="score-bar-row">
+            <div class="score-bar-head"><span>Reading &amp; Writing</span><span class="val">${rwScore}</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill" style="width:${rwPct}%"></div></div>
+          </div>
+          <div class="score-bar-row">
+            <div class="score-bar-head"><span>Math</span><span class="val" id="scMathVal">${mathScore}</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill" id="scMathFill" style="width:${mathPct}%"></div></div>
+            <div class="math-score-edit">
+              <label for="scMathInput">Edit Math score</label>
+              <input type="number" id="scMathInput" min="200" max="800" step="10" value="${mathScore}">
+            </div>
+          </div>
+        </div>
+        <div class="score-disclaimer">R&amp;W score is an approximate estimate from this mock exam, not an official College Board conversion. Math score is self-reported.</div>
+      </div>`;
+  }
+
+  function wireScoreCard(rwScore) {
+    const input = document.getElementById('scMathInput');
+    if (!input) return;
+    input.addEventListener('input', () => {
+      let val = parseInt(input.value, 10);
+      if (!Number.isFinite(val)) return;
+      val = Math.max(200, Math.min(800, val));
+      saveMathScore(val);
+      const mathPct = Math.round(((val - 200) / 600) * 100);
+      document.getElementById('scMathVal').textContent = val;
+      document.getElementById('scMathFill').style.width = mathPct + '%';
+      document.getElementById('scTotal').textContent = rwScore + val;
+    });
+  }
+
   const state = {
     query: '',
     categories: new Set(),
@@ -916,6 +1163,8 @@
     modalIndex: null, // index within modalList currently shown in the modal
     attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
+    tags: loadTags(), // questionId -> ['tag1', 'tag2', ...]
+    tagsFilter: new Set(), // selected tags in the Browse sidebar (OR match)
     progressExpandedCategory: null, // which category's tile breakdown is open on the Progress tab
     progressOpenQuestion: null, // qid opened inline on the Progress tab (via a tile click)
     reviewOpenQuestion: null, // qid opened inline on the Review tab (via a tile click)
@@ -969,8 +1218,11 @@
 
   function matchesQuery(q) {
     if (!state.query) return true;
-    const hay = (q.stem + ' ' + Object.values(q.choices).join(' ') + ' ' + q.rationale_full).toLowerCase();
-    return hay.includes(state.query.toLowerCase());
+    const needle = state.query.toLowerCase().trim();
+    if (q.id.toLowerCase() === needle) return true; // exact ID match, regardless of what else is in the text
+    const hay = (q.id + ' ' + q.stem + ' ' + Object.values(q.choices).join(' ') + ' ' + q.rationale_full
+      + ' ' + getTags(q.id).join(' ')).toLowerCase();
+    return hay.includes(needle);
   }
 
   function currentFiltered(base) {
@@ -979,6 +1231,10 @@
       if (state.skills.size && !state.skills.has(q.skill)) return false;
       if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
       if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (state.tagsFilter.size) {
+        const qTags = getTags(q.id);
+        if (!qTags.some(t => state.tagsFilter.has(t))) return false;
+      }
       return matchesQuery(q);
     });
   }
@@ -1073,6 +1329,44 @@
     renderFacet('skillFilters', allSkills, state.skills, 'skills', q => q.skill);
     renderFacet('difficultyFilters', allDifficulties, state.difficulties, 'difficulties', q => q.difficulty_label, diffPillClass);
     renderFacet('statusFilters', ALL_STATUSES, state.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
+    renderTagFacet();
+  }
+
+  // Tags aren't a single-value-per-question facet like the others above (one
+  // question can carry several), so they get their own renderer: a question
+  // matches if it has *any* of the checked tags (OR, not AND).
+  function renderTagFacet() {
+    const container = document.getElementById('tagFilters');
+    const tags = allTags();
+    if (!tags.length) {
+      container.innerHTML = `<div class="tags-empty-hint">No tags yet — add some from any question's detail view.</div>`;
+      return;
+    }
+    const counts = tags.map(tag => QUESTIONS.filter(q => {
+      if (state.categories.size && !state.categories.has(q.category)) return false;
+      if (state.skills.size && !state.skills.has(q.skill)) return false;
+      if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (!matchesQuery(q)) return false;
+      return getTags(q.id).includes(tag);
+    }).length);
+
+    container.innerHTML = tags.map((tag, i) => {
+      const checked = state.tagsFilter.has(tag) ? 'checked' : '';
+      return `<label class="filter-opt">
+        <input type="checkbox" data-val="${escapeHtml(tag)}" ${checked} />
+        <span>${escapeHtml(tag)}</span>
+        <span class="count">${counts[i]}</span>
+      </label>`;
+    }).join('');
+    container.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const v = inp.dataset.val;
+        if (inp.checked) state.tagsFilter.add(v); else state.tagsFilter.delete(v);
+        renderFilters();
+        renderBrowse();
+      });
+    });
   }
 
   // ---------- Browse list ----------
@@ -1144,7 +1438,7 @@
       if (/^Text \d+$/.test(p.trim())) {
         return `<div class="text-label">${escapeHtml(p.trim())}</div>`;
       }
-      return `<p>${escapeHtml(p)}</p>`;
+      return `<p>${restoreUnderline(escapeHtml(p))}</p>`;
     }).join('');
   }
 
@@ -1157,14 +1451,15 @@
       <div class="qcard ${status !== 'incomplete' ? 'status-' + status : ''}">
         <div class="qcard-head" data-id="${q.id}">
           <div style="flex:1; min-width:0;">
-            <div class="qstem">${escapeHtml(q.stem.replace(/\n\n/g, ' '))}</div>
+            <div class="qstem">${escapeStemFlat(q.stem)}</div>
             <div class="qskill">${escapeHtml(q.skill)} &middot; ${escapeHtml(q.domain)}</div>
           </div>
           <div class="qmeta">
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qid" title="${escapeHtml(q.id)}">${escapeHtml(q.shortId)}</span>
+            <span class="qid">${escapeHtml(q.shortId)}</span>
+            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
           </div>
         </div>
       </div>`;
@@ -1211,13 +1506,35 @@
       <div class="${wrapClass}">
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
+        <div class="prompt-line">${escapeHtml(q.prompt)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="detail-actions">
-          <span style="font-size:12px; color:var(--ink-faint); flex:1; min-width:160px;">${escapeHtml(q.prompt)}</span>
           <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit</button>
           <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}</button>
+          <button class="btn" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question</button>
         </div>
         ${statusButtonsHtml(q)}
+        ${tagsSectionHtml(q)}
+      </div>`;
+  }
+
+  // Free-form tag chips (add/remove) for one question — shown wherever
+  // qDetailHtml renders (modal, inline panels). Tags feed the "Tags" filter
+  // facet in Browse and are matched by the free-text search box too.
+  function tagsSectionHtml(q) {
+    const tags = getTags(q.id);
+    const chips = tags.map(t => `
+      <span class="tag-chip">
+        ${escapeHtml(t)}
+        <button class="tag-remove" data-tag-qid="${q.id}" data-remove-tag="${escapeHtml(t)}" aria-label="Remove tag ${escapeHtml(t)}">&times;</button>
+      </span>`).join('');
+    return `
+      <div class="tags-section">
+        <div class="tags-label">Tags</div>
+        <div class="tag-list">
+          ${chips}
+          <input type="text" class="tag-input" data-tag-qid="${q.id}" placeholder="+ Add tag, Enter to save" />
+        </div>
       </div>`;
   }
 
@@ -1252,10 +1569,41 @@
       onChange();
     });
     wireStatusButtons(root, onChange);
+
+    const tagInput = root.querySelector(`.tag-input[data-tag-qid="${q.id}"]`);
+    if (tagInput) tagInput.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      addTag(q.id, tagInput.value);
+      renderFilters();
+      onChange();
+    });
+    root.querySelectorAll(`.tag-remove[data-tag-qid="${q.id}"]`).forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeTag(q.id, btn.dataset.removeTag);
+        renderFilters();
+        onChange();
+      });
+    });
   }
 
   function escapeHtml(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  // Source text can contain <u>...</u> markers (from the source PDF's own
+  // underline formatting — SAT Functions/Evidence/Cross-Text questions often
+  // reference "the underlined sentence"). escapeHtml neutralizes them like
+  // any other text first, then this restores just those two exact tags —
+  // never arbitrary markup — so real underline formatting survives escaping
+  // without reopening any injection risk.
+  function restoreUnderline(escaped) {
+    return escaped.replace(/&lt;u&gt;/g, '<u>').replace(/&lt;\/u&gt;/g, '</u>');
+  }
+
+  function escapeStemFlat(stem) {
+    return restoreUnderline(escapeHtml(stem.replace(/\n\n/g, ' ')));
   }
 
   // "Category#N" shorthand (e.g. "Evidence#1", "Grammar#42") jumps straight
@@ -1334,7 +1682,8 @@
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qid" title="${escapeHtml(q.id)}">${escapeHtml(q.shortId)}</span>
+            <span class="qid">${escapeHtml(q.shortId)}</span>
+            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
           </div>
           <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
         </div>
@@ -1354,6 +1703,52 @@
     wireDetail(q, renderQuestionModal, root);
   }
 
+  // Plain-text rendering of a question for pasting elsewhere (another chat,
+  // a doc, etc.) — <u> markers can't survive as plain text, so they're
+  // converted to **bold** instead of just dropped, since a prompt like "the
+  // function of the underlined sentence" is unanswerable without some way
+  // to tell which sentence that is. Charts/tables (Command of Evidence)
+  // aren't included — there's no image support in a plain-text clipboard
+  // paste — so those questions copy as text + choices only.
+  function questionCopyText(q) {
+    const stemText = q.stem.replace(/<u>/g, '**').replace(/<\/u>/g, '**');
+    const choicesText = ['A', 'B', 'C', 'D'].map(l => `${l}. ${q.choices[l]}`).join('\n');
+    return [stemText, q.prompt, choicesText].join('\n\n');
+  }
+
+  // Copies `text` to the clipboard and flashes "Copied!" on `el` briefly.
+  // Falls back to the old execCommand trick when the async Clipboard API
+  // isn't available (e.g. a plain http:// or file:// context).
+  function copyToClipboard(text, el) {
+    const flash = () => {
+      if (!el) return;
+      const original = el.textContent;
+      el.textContent = 'Copied!';
+      el.classList.add('id-chip-copied');
+      setTimeout(() => {
+        el.textContent = original;
+        el.classList.remove('id-chip-copied');
+      }, 900);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(flash).catch(() => fallbackCopy(text, flash));
+    } else {
+      fallbackCopy(text, flash);
+    }
+  }
+
+  function fallbackCopy(text, onDone) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) { /* best effort */ }
+    document.body.removeChild(ta);
+    onDone();
+  }
+
   // Debounced: with ~1700 questions, re-filtering + re-rendering the facet
   // counts and the list on every single keystroke was a real chunk of the
   // "feels slow" complaint. Waiting a beat after typing stops removes that
@@ -1370,7 +1765,12 @@
   });
   document.getElementById('searchBox').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
-    const match = findByShortIdQuery(e.target.value);
+    const value = e.target.value.trim();
+    // Paste/type a raw College Board ID (e.g. from the copy-ID chip) and hit
+    // Enter to jump straight to it — same idea as the "Category#N" shortcut,
+    // just keyed off the actual ID instead of the display label.
+    const byId = QUESTIONS.find(q => q.id.toLowerCase() === value.toLowerCase());
+    const match = byId || findByShortIdQuery(value);
     if (match) {
       e.preventDefault();
       jumpToQuestion(match.id);
@@ -1385,6 +1785,7 @@
     state.skills.clear();
     state.difficulties.clear();
     state.statuses.clear();
+    state.tagsFilter.clear();
     state.query = '';
     document.getElementById('searchBox').value = '';
     renderFilters();
@@ -1397,6 +1798,7 @@
   // renderQuestionListInto). Replaces what used to be an addEventListener
   // call per rendered card.
   document.getElementById('qlist').addEventListener('click', (e) => {
+    if (e.target.closest('[data-copy-id]')) return; // let the copy-ID click through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const qid = head.dataset.id;
@@ -1405,7 +1807,50 @@
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && state.modalList) closeQuestionModal();
+    if (e.key === 'Escape' && state.modalList) { closeQuestionModal(); return; }
+
+    // Don't hijack Left/Right while the user is typing somewhere (search
+    // box, tag input, the Math-score field) — those need normal cursor movement.
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+
+    if (state.modalList) {
+      if (e.key === 'ArrowRight' && state.modalIndex < state.modalList.length - 1) {
+        state.modalIndex++; renderQuestionModal();
+      } else if (e.key === 'ArrowLeft' && state.modalIndex > 0) {
+        state.modalIndex--; renderQuestionModal();
+      }
+    } else if (mockState.phase === 'module1' || mockState.phase === 'module2') {
+      // Mirrors the Previous/Next buttons — Right never auto-submits on the
+      // last question (no mockSubmitBtn to click), so a stray press there
+      // can't accidentally end the module.
+      if (e.key === 'ArrowRight') {
+        const btn = document.getElementById('mockNextBtn');
+        if (btn) btn.click();
+      } else if (e.key === 'ArrowLeft') {
+        const btn = document.getElementById('mockPrevBtn');
+        if (btn) btn.click();
+      }
+    }
+  });
+
+  // One global delegated listener covers every "click ID to copy" chip
+  // anywhere in the app (Browse cards, the modal, quiz/practice/mock views)
+  // without needing to wire it separately at each render site.
+  document.addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-copy-id]');
+    if (!chip) return;
+    e.stopPropagation();
+    copyToClipboard(chip.dataset.copyId, chip);
+  });
+
+  // Same pattern for "Copy question" buttons (qDetailHtml, Test, Mock).
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-copy-question-qid]');
+    if (!btn) return;
+    e.stopPropagation();
+    const q = QUESTIONS.find(qq => qq.id === btn.dataset.copyQuestionQid);
+    if (q) copyToClipboard(questionCopyText(q), btn);
   });
 
   // ---------- Tabs ----------
@@ -1525,10 +1970,12 @@
           <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
           <span class="cat-tag">${escapeHtml(q.category)}</span>
           <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)}</span>
+          <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
+          <button class="btn" style="padding:4px 10px; font-size:12px;" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question</button>
         </div>
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
-        <div style="font-size:12.5px; color:var(--ink-faint); margin:10px 0;">${escapeHtml(q.prompt)}</div>
+        <div class="prompt-line">${escapeHtml(q.prompt)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="quiz-nav">
           <button class="btn" id="prevBtn" ${testState.index === 0 ? 'disabled' : ''}>Previous</button>
@@ -1566,7 +2013,7 @@
             <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="qskill" style="margin:0;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
           </div>
-          <div class="stem">${i + 1}. ${escapeHtml(q.stem.replace(/\n\n/g, ' '))}</div>
+          <div class="stem">${i + 1}. ${escapeStemFlat(q.stem)}</div>
           ${questionImageHtml(q)}
           <div style="font-size:13px;">
             Your answer: <strong>${yours || '—'}</strong>${!isCorrect ? ` &nbsp;&middot;&nbsp; Correct: <strong>${q.correct_answer}</strong>` : ''}
@@ -1680,6 +2127,7 @@
           <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
           <span class="cat-tag">${escapeHtml(q.category)}</span>
           <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
+          <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
         </div>
         ${qDetailHtml(q, { bare: true })}
         <div class="quiz-nav">
@@ -1962,10 +2410,12 @@
           <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
           <span class="cat-tag">${escapeHtml(q.skill)}</span>
           <span class="qid" style="align-self:center;">${escapeHtml(q.shortId)}</span>
+          <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
+          <button class="btn" style="padding:4px 10px; font-size:12px;" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question</button>
         </div>
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
-        <div style="font-size:12.5px; color:var(--ink-faint); margin:10px 0;">${escapeHtml(q.prompt)}</div>
+        <div class="prompt-line">${escapeHtml(q.prompt)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="quiz-nav">
           <button class="btn" id="mockPrevBtn" ${mockState.index === 0 ? 'disabled' : ''}>Previous</button>
@@ -2028,7 +2478,7 @@
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             <span class="qskill" style="margin:0;">${escapeHtml(q.shortId)} &middot; ${escapeHtml(q.skill)}</span>
           </div>
-          <div class="stem">${i + 1}. ${escapeHtml(q.stem.replace(/\n\n/g, ' '))}</div>
+          <div class="stem">${i + 1}. ${escapeStemFlat(q.stem)}</div>
           ${questionImageHtml(q)}
           <div style="font-size:13px;">
             Your answer: <strong>${yours || '—'}</strong>${!isCorrect ? ` &nbsp;&middot;&nbsp; Correct: <strong>${q.correct_answer}</strong>` : ''}
@@ -2038,8 +2488,11 @@
         </div>`;
     }).join('');
 
+    const rwScore = computeMockRWScore();
+
     return `
       <div class="results-summary">
+        ${scoreCardHtml(rwScore)}
         <div class="score">${correct}/${total}</div>
         <div class="score-sub">${pct}% correct overall</div>
         <div class="mock-routing-note">
@@ -2099,6 +2552,7 @@
       const newBtn = document.getElementById('newMockBtn');
       if (newBtn) newBtn.addEventListener('click', () => { mockState.phase = 'intro'; renderMock(); });
       wireStatusButtons(shell, renderMock);
+      wireScoreCard(computeMockRWScore());
     }
   }
 
@@ -2256,9 +2710,11 @@
     if (exportBtn) exportBtn.addEventListener('click', () => {
       const payload = {
         app: 'sat-qbank-progress',
-        version: 1,
+        version: 3,
         exportedAt: new Date().toISOString(),
         progress: state.progress,
+        tags: state.tags,
+        mathScore: loadMathScore(),
       };
       const date = new Date().toISOString().slice(0, 10);
       downloadFile(`sat-progress-${date}.json`, JSON.stringify(payload, null, 2));
@@ -2275,13 +2731,24 @@
         reader.onload = () => {
           try {
             const parsed = JSON.parse(String(reader.result));
-            const incoming = parsed && typeof parsed === 'object' ? parsed.progress : null;
-            if (!incoming || typeof incoming !== 'object') {
+            const incomingProgress = parsed && typeof parsed === 'object' ? parsed.progress : null;
+            const incomingTags = parsed && typeof parsed === 'object' ? parsed.tags : null;
+            const incomingMathScore = parsed && typeof parsed === 'object' ? parsed.mathScore : null;
+            if (!incomingProgress && !incomingTags && !Number.isFinite(incomingMathScore)) {
               alert('This file doesn\'t look like a progress export.');
               return;
             }
-            state.progress = Object.assign({}, state.progress, incoming);
-            saveProgress();
+            if (incomingProgress && typeof incomingProgress === 'object') {
+              state.progress = Object.assign({}, state.progress, incomingProgress);
+              saveProgress();
+            }
+            if (incomingTags && typeof incomingTags === 'object') {
+              state.tags = Object.assign({}, state.tags, incomingTags);
+              saveTags();
+            }
+            if (Number.isFinite(incomingMathScore) && incomingMathScore >= 200 && incomingMathScore <= 800) {
+              saveMathScore(incomingMathScore);
+            }
             renderFilters();
             renderBrowse();
             renderProgress();
