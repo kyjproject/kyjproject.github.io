@@ -259,6 +259,27 @@
   }
   .tab:hover { color: var(--ink); }
   .tab.active { color: var(--accent-ink); border-bottom-color: var(--accent); }
+  .tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 5px;
+    margin-left: 6px;
+    border-radius: 99px;
+    background: var(--hard);
+    color: var(--paper);
+    font-size: 10.5px;
+    font-weight: 700;
+    font-family: var(--mono);
+    vertical-align: 2px;
+    animation: tab-badge-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes tab-badge-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
 
   .view { flex: 1; display: none; }
   .view.active { display: block; }
@@ -672,6 +693,103 @@
     .modal-card { width: 100%; max-height: 100vh; border-radius: 0; }
   }
   body.modal-open { overflow: hidden; }
+
+  .palette-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-left: 8px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  }
+  .palette-trigger:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+  .palette-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .palette-trigger svg { width: 17px; height: 17px; }
+
+  .palette-root { align-items: flex-start; padding-top: 12vh; }
+  .palette-card {
+    position: relative;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    width: min(560px, 100%);
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .palette-input-row { padding: 4px; border-bottom: 1px solid var(--rule); flex-shrink: 0; }
+  .palette-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+    padding: 12px 14px;
+    outline: none;
+  }
+  .palette-input::placeholder { color: var(--ink-faint); }
+  .palette-list { overflow-y: auto; flex: 1; padding: 6px; }
+  .palette-group-label {
+    padding: 8px 10px 4px;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+    font-weight: 700;
+  }
+  .palette-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .palette-item.active { background: var(--accent-soft); }
+  .palette-item-num {
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+  .palette-item-main { flex: 1; min-width: 0; }
+  .palette-item-title {
+    font-size: 13.5px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .palette-item-sub {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .palette-item-hint { font-size: 11px; color: var(--ink-faint); font-family: var(--mono); flex-shrink: 0; }
+  .palette-empty { padding: 24px 14px; text-align: center; color: var(--ink-faint); font-size: 13px; }
+  .palette-foot {
+    display: flex;
+    gap: 14px;
+    padding: 8px 14px;
+    border-top: 1px solid var(--rule);
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
   #loadMoreBtn { align-self: flex-start; }
   .qimage { display: block; max-width: 100%; height: auto; }
   .qimage-missing {
@@ -742,6 +860,7 @@
     border-radius: 12px;
     box-shadow: var(--shadow);
     padding: 26px;
+    margin-bottom: 20px;
   }
   .config-card h2 {
     font-family: var(--serif);
@@ -905,6 +1024,14 @@
   .segbar .seg-review { background: var(--review); }
   .progress-actions { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
   .progress-note { font-size: 11.5px; color: var(--ink-faint); margin-top: 10px; }
+
+  /* ---------- Review forecast (Progress tab) ---------- */
+  .forecast-row { display: flex; align-items: flex-end; gap: 8px; height: 70px; margin: 6px 0 4px; }
+  .forecast-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px; }
+  .forecast-bar { width: 100%; max-width: 26px; border-radius: 4px 4px 2px 2px; background: var(--accent); min-height: 3px; transition: height 0.15s ease; }
+  .forecast-col:first-child .forecast-bar { background: var(--review); }
+  .forecast-n { font-size: 10.5px; font-family: var(--mono); color: var(--ink-faint); }
+  .forecast-label { font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; }
 
   /* ---------- Profile / streak / goal / achievements ---------- */
   .profile-card { padding: 20px 26px; }
@@ -1269,6 +1396,11 @@
     font-variant-numeric: tabular-nums;
   }
   .mock-timer.low-time { background: var(--hard-bg); color: var(--hard); }
+  .timer-hide-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
   .mock-exit-link {
     appearance: none;
     background: none;
@@ -1311,6 +1443,13 @@
     color: var(--ink);
   }
   .bp-hint { font-size: 11px; color: var(--ink-faint); margin: 8px 0 0; }
+  .bp-guide { margin-top: 8px; font-size: 12px; }
+  .bp-guide summary { cursor: pointer; color: var(--ink-faint); }
+  .bp-guide summary:hover { color: var(--ink); }
+  .bp-guide-body { margin-top: 8px; padding: 10px 12px; border: 1px solid var(--rule-soft); border-radius: 6px; background: var(--paper); }
+  .bp-guide-body p { margin: 0 0 8px; line-height: 1.5; color: var(--ink-soft); }
+  .bp-guide-body p:last-child { margin-bottom: 0; }
+  .bp-guide-body code { font-size: 11px; }
   .scale-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .scale-row .mini-num-input { width: 46px; }
   .weight-custom-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
@@ -1386,6 +1525,9 @@
       <span class="theme-toggle-icon theme-toggle-icon-sun">&#9728;&#65039;</span>
       <span class="theme-toggle-icon theme-toggle-icon-moon">&#127769;</span>
     </button>
+    <button type="button" class="palette-trigger" id="paletteTriggerBtn" aria-label="Open command palette" title="Jump to&#8230; (&#8984;K / Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
   </div>
 
   <div class="tabs">
@@ -1395,7 +1537,7 @@
     <button class="tab" data-view="mock">Mock Exam</button>
     <button class="tab" data-view="profile">Profile</button>
     <button class="tab" data-view="progress">Progress</button>
-    <button class="tab" data-view="review">Review</button>
+    <button class="tab" data-view="review">Review<span class="tab-badge" id="reviewDueBadge" style="display:none;"></span></button>
     <button class="tab" data-view="notes">Notes</button>
   </div>
 
@@ -1486,6 +1628,7 @@
 </div>
 
 <div id="questionModalRoot" class="modal-root" style="display:none;"></div>
+<div id="paletteRoot" class="modal-root palette-root" style="display:none;"></div>
 
 <script src="data.js"></script>
 <script id="questions-data" type="application/json">[]</script>
@@ -1543,6 +1686,7 @@
     if (status) state.progress[qid] = status;
     else delete state.progress[qid];
     if (status === 'done') logCompletion(qid);
+    if (!status && state.fsrsCards[qid]) { delete state.fsrsCards[qid]; saveFsrsCards(); }
     saveProgress();
     renderStats();
   }
@@ -1552,13 +1696,106 @@
   // (e.g. "select all" over a few hundred filtered results) doesn't hammer
   // storage.
   function bulkSetStatus(qids, status) {
+    let fsrsChanged = false;
     qids.forEach(qid => {
       if (status) state.progress[qid] = status;
       else delete state.progress[qid];
       if (status === 'done') logCompletion(qid);
+      if (!status && state.fsrsCards[qid]) { delete state.fsrsCards[qid]; fsrsChanged = true; }
     });
+    if (fsrsChanged) saveFsrsCards();
     saveProgress();
     renderStats();
+  }
+
+  // ---------- Skill stats (weak-skill tracking) ----------
+  // Running correct/total tally per skill, fed by every graded attempt
+  // across Browse/Practice/Progress/Review (the shared submit button in
+  // wireDetail), Test (recordTestSkillStats, called once per submitted
+  // test), and Mock exams (saveMockAttempt). Used to bias question
+  // selection toward skills you're actually missing, rather than a flat
+  // random draw across the whole bank.
+  const SKILL_STATS_KEY = 'sat_qbank_skill_stats_v1';
+  const WEAK_SKILL_MIN_ATTEMPTS = 3; // below this, a skill's accuracy is too noisy to bias on — treated as neutral
+  const WEAK_SKILL_BIAS_STRENGTH = 4; // max extra weight multiplier for a skill at 0% accuracy
+
+  function loadSkillStats() {
+    try {
+      const raw = localStorage.getItem(SKILL_STATS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveSkillStats() {
+    try {
+      localStorage.setItem(SKILL_STATS_KEY, JSON.stringify(state.skillStats));
+    } catch (e) {
+      // storage unavailable/full — stats still live in memory for this session
+    }
+  }
+
+  function recordSkillAttempt(skill, correct) {
+    if (!skill) return;
+    const s = state.skillStats[skill] || { correct: 0, total: 0 };
+    s.total += 1;
+    if (correct) s.correct += 1;
+    state.skillStats[skill] = s;
+    saveSkillStats();
+  }
+
+  // Weight (>=1) to bias a skill's questions toward selection: neutral (1)
+  // until there's enough data, then scales up toward WEAK_SKILL_BIAS_STRENGTH
+  // as accuracy drops toward 0.
+  function skillWeight(skill) {
+    const s = state.skillStats[skill];
+    if (!s || s.total < WEAK_SKILL_MIN_ATTEMPTS) return 1;
+    const accuracy = s.correct / s.total;
+    return 1 + WEAK_SKILL_BIAS_STRENGTH * (1 - accuracy);
+  }
+
+  // Skills with enough attempts to trust, sorted worst-accuracy-first.
+  function weakSkills() {
+    return Object.entries(state.skillStats)
+      .filter(([, s]) => s.total >= WEAK_SKILL_MIN_ATTEMPTS)
+      .map(([skill, s]) => ({ skill, correct: s.correct, total: s.total, accuracy: s.correct / s.total }))
+      .sort((a, b) => a.accuracy - b.accuracy);
+  }
+
+  // Short human-readable readout of the worst 1-2 skills, for config-screen hints.
+  function weakSkillsSummary() {
+    return weakSkills().slice(0, 2).map(s => `${s.skill} (${Math.round(s.accuracy * 100)}%)`).join(', ');
+  }
+
+  // Weighted sample of `n` questions from `pool` without replacement, each
+  // question's chance proportional to skillWeight(q.skill) — so skills
+  // you're missing show up disproportionately often. Falls back gracefully:
+  // with no signal yet, every weight is 1 and this behaves like a plain
+  // shuffle.
+  function pickWeightedBySkill(pool, n) {
+    const remaining = pool.map(q => ({ q, w: skillWeight(q.skill) }));
+    const picked = [];
+    while (remaining.length && picked.length < n) {
+      const totalW = remaining.reduce((s, r) => s + r.w, 0);
+      let r = Math.random() * totalW;
+      let idx = remaining.length - 1;
+      for (let i = 0; i < remaining.length; i++) {
+        r -= remaining[i].w;
+        if (r <= 0) { idx = i; break; }
+      }
+      picked.push(remaining.splice(idx, 1)[0].q);
+    }
+    return picked;
+  }
+
+  // Picks `n` questions from `pool` for a Test/Practice run — weighted
+  // toward weak skills when `sel.biasWeak` is on, otherwise a plain shuffle.
+  function selectPool(sel, pool, n) {
+    if (sel.biasWeak) return pickWeightedBySkill(pool, Math.min(n, pool.length));
+    return [...pool].sort(() => Math.random() - 0.5).slice(0, Math.min(n, pool.length));
   }
 
   // ---------- Progress focus (personal domain) ----------
@@ -1932,10 +2169,11 @@
     return QUESTIONS.filter(q => questionStatus(q) === 'review');
   }
 
-  // Every flagged question paired with its card, most-overdue (or never-studied)
+  // Pairs each question with its FSRS card, most-overdue (or never-studied)
   // first — never-studied cards (due: null) sort ahead of any dated card.
-  function fsrsFlaggedWithCards() {
-    return fsrsFlaggedQuestions()
+  // Shared by the flagged-only queue and the custom-scope review builder below.
+  function withFsrsCardsSorted(questions) {
+    return questions
       .map(q => ({ q, card: getFsrsCard(q.id) }))
       .sort((a, b) => {
         const da = a.card.due ? new Date(a.card.due).getTime() : -Infinity;
@@ -1944,8 +2182,42 @@
       });
   }
 
+  function fsrsFlaggedWithCards() {
+    return withFsrsCardsSorted(fsrsFlaggedQuestions());
+  }
+
   function fsrsDueEntries(now) {
     return fsrsFlaggedWithCards().filter(x => isFsrsDue(x.card, now));
+  }
+
+  // All-time retention across every grade ever submitted in Review: the
+  // share of gradings that weren't "Again". Coarse (there's no per-review
+  // event log, just running reps/lapses counters on each card) but enough
+  // to answer "roughly how often am I forgetting these."
+  function fsrsRetentionStats() {
+    let reps = 0, lapses = 0;
+    Object.values(state.fsrsCards).forEach(c => {
+      reps += c.reps || 0;
+      lapses += c.lapses || 0;
+    });
+    return { reps, lapses, pct: reps > 0 ? Math.round(((reps - lapses) / reps) * 100) : null };
+  }
+
+  // Day-by-day forecast of the next `days` days: how many flagged cards fall
+  // due each day. Overdue and never-studied cards both land in day 0 (today)
+  // alongside anything already due, same as the "Due now" queue itself.
+  function fsrsForecast(days) {
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const buckets = new Array(days).fill(0);
+    fsrsFlaggedWithCards().forEach(x => {
+      const dueDate = x.card.due ? new Date(x.card.due) : new Date(todayStart);
+      dueDate.setHours(0, 0, 0, 0);
+      let dayIdx = Math.round((dueDate - todayStart) / 86400000);
+      if (dayIdx < 0) dayIdx = 0;
+      if (dayIdx < days) buckets[dayIdx]++;
+    });
+    return buckets;
   }
 
   // ---------- Estimated composite score (Mock Exam results) ----------
@@ -2220,6 +2492,7 @@
     modalIndex: null, // index within modalList currently shown in the modal
     attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
+    skillStats: loadSkillStats(), // skill -> { correct, total } — feeds weak-skill bias
     tags: loadTags(), // questionId -> ['tag1', 'tag2', ...] — kept for backward-compat data, no longer user-facing
     tagsFilter: new Set(), // unused now that the Tags facet is hidden; left in place harmlessly
     notes: loadNotes(), // questionId -> [{ text, ts }, ...]
@@ -2242,6 +2515,7 @@
     skills: new Set(),
     difficulties: new Set(),
     statuses: new Set(),
+    biasWeak: false, // bias question selection toward your lowest-accuracy skills
     questions: [],
     index: 0,
     answers: {},
@@ -2259,6 +2533,7 @@
     skills: new Set(),
     difficulties: new Set(),
     statuses: new Set(),
+    biasWeak: false, // bias question selection toward your lowest-accuracy skills
     shuffle: false,
     questions: [],
     index: 0,
@@ -2279,6 +2554,21 @@
     queue: [], // qids, snapshotted when the session starts
     pos: 0,
   };
+
+  // Config for the optional "Custom review" builder on the Review tab — lets
+  // you pull in questions beyond the default flagged-and-due queue (e.g.
+  // completed ones, for overlearning) with the same category/skill/difficulty
+  // scope chips Test/Practice use, plus how many and in what order. Session-only
+  // (not persisted): reopening the tab always starts from "flagged, due order".
+  const reviewCustomState = {
+    categories: new Set(),
+    skills: new Set(),
+    difficulties: new Set(),
+    statuses: new Set(['review']),
+    limit: null, // null = default (see reviewCustomPool)
+    order: 'due', // 'due' | 'random'
+  };
+  let reviewCustomOpen = false;
 
   const allCategories = [...new Set(QUESTIONS.map(q => q.category))].sort();
   const allSkills = [...new Set(QUESTIONS.map(q => q.skill))].sort();
@@ -2305,6 +2595,25 @@
       <div class="stat"><span class="n">${review}</span><span class="l">To Review</span></div>
       <div class="stat"><span class="n">${best !== null ? best : '—'}</span><span class="l">Best Score</span></div>
     `;
+    updateReviewBadge();
+  }
+
+  // Nudge badge on the Review tab itself — the count of FSRS-due flagged
+  // cards, live. Deliberately has no "dismiss" of its own: it only goes away
+  // by clearing the due queue (grading everything due), so it can't be
+  // silenced without actually doing the reviews. Piggybacks on renderStats,
+  // which already runs after every mutation that could move the due count
+  // (grading, flagging/unflagging, import, reset).
+  function updateReviewBadge() {
+    const badge = document.getElementById('reviewDueBadge');
+    if (!badge) return;
+    const due = fsrsDueEntries(new Date()).length;
+    if (due > 0) {
+      badge.textContent = due > 99 ? '99+' : String(due);
+      badge.style.display = '';
+    } else {
+      badge.style.display = 'none';
+    }
   }
 
   // ---------- Filters ----------
@@ -2779,6 +3088,7 @@
       const att = getAttempt(q.id);
       if (!att.choice) return;
       state.attempt[q.id] = Object.assign({}, att, { submitted: true });
+      recordSkillAttempt(q.skill, att.choice === q.correct_answer);
       onChange();
     });
     const toggleBtn = root.querySelector(`[data-toggle-answer-qid="${q.id}"]`);
@@ -2883,6 +3193,8 @@
   function openQuestionModal(list, index) {
     state.modalList = list;
     state.modalIndex = index;
+    const q = list && list[index];
+    if (q) recordRecentQuestion(q.id);
     renderQuestionModal();
   }
 
@@ -2890,6 +3202,278 @@
     state.modalList = null;
     state.modalIndex = null;
     renderQuestionModal();
+  }
+
+  // ---------- Recently/frequently visited questions ----------
+  // Every question the modal opens on (Browse click, palette jump, Prev/Next
+  // Copy-Question, etc. — all funnel through openQuestionModal) bumps a
+  // per-question { count, lastTs } record. The palette's empty-query state
+  // ranks by count first, recency second, so a question you keep coming
+  // back to stays put even if something else was opened more recently, but
+  // ties (the common case — most things are opened once) fall back to
+  // recency.
+  const RECENT_KEY = 'sat_qbank_recent_v1';
+  function loadRecentVisits() {
+    try {
+      const raw = localStorage.getItem(RECENT_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+  const recentVisits = loadRecentVisits(); // qid -> { count, lastTs }
+  function saveRecentVisits() {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(recentVisits)); } catch (e) { /* best-effort */ }
+  }
+  function recordRecentQuestion(qid) {
+    const entry = recentVisits[qid] || { count: 0, lastTs: 0 };
+    entry.count += 1;
+    entry.lastTs = Date.now();
+    recentVisits[qid] = entry;
+    // Keep the stored set from growing forever over months of use — trim
+    // down to the 60 most count/recency-worthy once we're well past what
+    // the palette would ever surface.
+    const keys = Object.keys(recentVisits);
+    if (keys.length > 60) {
+      keys.sort((a, b) => (recentVisits[a].count - recentVisits[b].count) || (recentVisits[a].lastTs - recentVisits[b].lastTs));
+      for (let i = 0; i < keys.length - 60; i++) delete recentVisits[keys[i]];
+    }
+    saveRecentVisits();
+  }
+  function recentQuestions(limit) {
+    const ids = Object.keys(recentVisits).sort((a, b) => {
+      const A = recentVisits[a], B = recentVisits[b];
+      return (B.count - A.count) || (B.lastTs - A.lastTs);
+    });
+    const out = [];
+    for (const id of ids) {
+      const q = QUESTIONS.find(qq => qq.id === id);
+      if (q) out.push(q);
+      if (out.length >= limit) break;
+    }
+    return out;
+  }
+
+  // ---------- Command palette ----------
+  // Cmd/Ctrl+K (or the "Jump to..." topbar button) opens a single search box
+  // over everything: jump to a tab, toggle theme/timer, clear filters, or
+  // find a question by ID/shortId/text — same matching `jumpToQuestion`
+  // already does, just reachable without first landing on Browse. With no
+  // query typed yet, it leads with recent/frequent questions instead of
+  // sitting empty. Cmd/Ctrl+1-9 jumps straight to that numbered result.
+  const paletteState = { open: false, query: '', activeIndex: 0 };
+
+  const PALETTE_COMMANDS = [
+    { id: 'nav-browse', title: 'Go to Browse', hint: 'Tab', keywords: 'browse questions', run: () => document.querySelector('.tab[data-view="browse"]').click() },
+    { id: 'nav-practice', title: 'Go to Practice', hint: 'Tab', keywords: 'practice', run: () => document.querySelector('.tab[data-view="practice"]').click() },
+    { id: 'nav-test', title: 'Go to Test', hint: 'Tab', keywords: 'test quiz', run: () => document.querySelector('.tab[data-view="test"]').click() },
+    { id: 'nav-mock', title: 'Go to Mock Exam', hint: 'Tab', keywords: 'mock exam', run: () => document.querySelector('.tab[data-view="mock"]').click() },
+    { id: 'nav-profile', title: 'Go to Profile', hint: 'Tab', keywords: 'profile', run: () => document.querySelector('.tab[data-view="profile"]').click() },
+    { id: 'nav-progress', title: 'Go to Progress', hint: 'Tab', keywords: 'progress stats', run: () => document.querySelector('.tab[data-view="progress"]').click() },
+    { id: 'nav-review', title: 'Go to Review', hint: 'Tab', keywords: 'review anki spaced repetition', run: () => document.querySelector('.tab[data-view="review"]').click() },
+    { id: 'nav-notes', title: 'Go to Notes', hint: 'Tab', keywords: 'notes', run: () => document.querySelector('.tab[data-view="notes"]').click() },
+    { id: 'toggle-theme', title: 'Toggle dark / light mode', hint: 'Theme', keywords: 'dark light theme mode', run: () => document.getElementById('themeToggleBtn').click() },
+    { id: 'clear-filters', title: 'Clear all Browse filters', hint: 'Browse', keywords: 'clear filters reset search', run: () => {
+      document.querySelector('.tab[data-view="browse"]').click();
+      document.getElementById('clearFilters').click();
+    } },
+  ];
+
+  // Same idea as `findByShortIdQuery`'s "Category#N" shorthand, but more
+  // forgiving about the separator — the palette is a fast-typing surface,
+  // so "evidence 30", "evidence#30", and "evidence30" should all land on
+  // the same question instead of only the exact "#" form.
+  function paletteParseShorthand(query) {
+    const m = query.trim().match(/^([A-Za-z][A-Za-z\- ]*?)\s*#?\s*(\d+)$/);
+    if (!m) return null;
+    const catQuery = m[1].trim().toLowerCase();
+    const num = parseInt(m[2], 10);
+    return QUESTIONS.find(q => {
+      const label = categoryLabel(q.category).toLowerCase();
+      const full = q.category.toLowerCase();
+      const shortNum = parseInt(q.shortId.split('#')[1], 10);
+      return shortNum === num && (label.startsWith(catQuery) || full.startsWith(catQuery));
+    }) || null;
+  }
+
+  function paletteQuestionMatches(needle) {
+    const byId = QUESTIONS.find(q => q.id.toLowerCase() === needle);
+    if (byId) return [byId];
+    const byShort = paletteParseShorthand(needle);
+    if (byShort) return [byShort];
+    // Otherwise, every space-separated word in the query has to appear
+    // somewhere in the question (in any order) — "tomato herbivory" or
+    // "grammar hard commas" all narrow down rather than requiring one
+    // exact phrase.
+    const words = needle.split(/\s+/).filter(Boolean);
+    const results = [];
+    for (const q of QUESTIONS) {
+      const hay = (q.shortId + ' ' + q.id + ' ' + q.category + ' ' + q.skill + ' ' + q.difficulty_label + ' ' + q.stem).toLowerCase();
+      if (words.every(w => hay.includes(w))) {
+        results.push(q);
+        if (results.length >= 8) break;
+      }
+    }
+    return results;
+  }
+
+  function paletteResults() {
+    const needle = paletteState.query.trim().toLowerCase();
+    if (!needle) {
+      return { commands: PALETTE_COMMANDS.slice(0, 6), questions: recentQuestions(6), questionsLabel: 'Recent' };
+    }
+    const commands = PALETTE_COMMANDS.filter(c => (c.title + ' ' + c.keywords).toLowerCase().includes(needle));
+    const questions = paletteQuestionMatches(needle);
+    return { commands, questions, questionsLabel: 'Questions' };
+  }
+
+  function paletteFlatItems() {
+    const { commands, questions } = paletteResults();
+    return [
+      ...commands.map(c => ({ type: 'command', data: c })),
+      ...questions.map(q => ({ type: 'question', data: q })),
+    ];
+  }
+
+  function stemPreview(stem) {
+    const text = String(stem || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return text.length > 90 ? text.slice(0, 90) + '…' : text;
+  }
+
+  function openPalette() {
+    paletteState.open = true;
+    paletteState.query = '';
+    paletteState.activeIndex = 0;
+    renderPalette();
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(() => {
+      const input = document.getElementById('paletteInput');
+      if (input) input.focus();
+    });
+  }
+
+  function closePalette() {
+    paletteState.open = false;
+    document.getElementById('paletteRoot').style.display = 'none';
+    document.getElementById('paletteRoot').innerHTML = '';
+    if (!state.modalList) document.body.classList.remove('modal-open');
+  }
+
+  function paletteRunItem(item) {
+    if (!item) return;
+    closePalette();
+    if (item.type === 'command') item.data.run();
+    else jumpToQuestion(item.data.id);
+  }
+
+  function renderPalette() {
+    const root = document.getElementById('paletteRoot');
+    if (!paletteState.open) { root.style.display = 'none'; root.innerHTML = ''; return; }
+
+    const { commands, questions, questionsLabel } = paletteResults();
+    const items = paletteFlatItems();
+    if (paletteState.activeIndex >= items.length) paletteState.activeIndex = Math.max(0, items.length - 1);
+
+    // A leading numeric badge on the first nine rows doubles as the
+    // Cmd/Ctrl+1-9 shortcut key for that row — hidden past index 9 since
+    // there's no single digit left to press.
+    const numBadge = (flatIdx) => flatIdx < 9 ? `<span class="palette-item-num">${flatIdx + 1}</span>` : '<span class="palette-item-num"></span>';
+
+    let flatIdx = -1;
+    const commandsHtml = commands.map(c => {
+      flatIdx++;
+      const active = flatIdx === paletteState.activeIndex;
+      return `<div class="palette-item ${active ? 'active' : ''}" data-palette-index="${flatIdx}">
+        ${numBadge(flatIdx)}
+        <div class="palette-item-main">
+          <div class="palette-item-title">${escapeHtml(c.title)}</div>
+        </div>
+        <div class="palette-item-hint">${escapeHtml(c.hint)}</div>
+      </div>`;
+    }).join('');
+    const questionsHtml = questions.map(q => {
+      flatIdx++;
+      const active = flatIdx === paletteState.activeIndex;
+      return `<div class="palette-item ${active ? 'active' : ''}" data-palette-index="${flatIdx}">
+        ${numBadge(flatIdx)}
+        <div class="palette-item-main">
+          <div class="palette-item-title">${escapeHtml(q.shortId)} &middot; ${escapeHtml(stemPreview(q.stem))}</div>
+          <div class="palette-item-sub">${escapeHtml(categoryLabel(q.category))} &middot; ${escapeHtml(q.skill)}</div>
+        </div>
+        <div class="palette-item-hint">${escapeHtml(q.difficulty_label || '')}</div>
+      </div>`;
+    }).join('');
+
+    const groupsHtml = (commandsHtml ? `<div class="palette-group-label">Go to</div>${commandsHtml}` : '')
+      + (questionsHtml ? `<div class="palette-group-label">${escapeHtml(questionsLabel)}</div>${questionsHtml}` : '')
+      || (paletteState.query.trim()
+        ? `<div class="palette-empty">No matches. Try an ID, a category, or "Category#N".</div>`
+        : `<div class="palette-empty">No recent questions yet — open one and it'll show up here.</div>`);
+
+    root.innerHTML = `
+      <div class="modal-backdrop" data-close-palette></div>
+      <div class="palette-card">
+        <div class="palette-input-row">
+          <input type="text" id="paletteInput" class="palette-input" placeholder="Search commands, jump to a tab, or find a question…" value="${escapeHtml(paletteState.query)}" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="palette-list" id="paletteList">${groupsHtml}</div>
+        <div class="palette-foot">
+          <span>&#8593;&#8595; navigate</span>
+          <span>&#8629; select</span>
+          <span>&#8984;1-9 jump</span>
+          <span>esc close</span>
+        </div>
+      </div>`;
+    root.style.display = 'flex';
+
+    const input = document.getElementById('paletteInput');
+    input.addEventListener('input', (e) => {
+      paletteState.query = e.target.value;
+      paletteState.activeIndex = 0;
+      renderPalette();
+      const el = document.getElementById('paletteInput');
+      if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+    });
+    input.addEventListener('keydown', (e) => {
+      const currentItems = paletteFlatItems();
+      // Cmd/Ctrl+1-9 jumps straight to that numbered row, mirroring the
+      // badge printed next to it — checked before the plain-digit case
+      // matters, since typing "3" alone still needs to reach the search box.
+      if ((e.metaKey || e.ctrlKey) && /^[1-9]$/.test(e.key)) {
+        e.preventDefault();
+        paletteRunItem(currentItems[parseInt(e.key, 10) - 1]);
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        paletteState.activeIndex = Math.min(currentItems.length - 1, paletteState.activeIndex + 1);
+        renderPalette();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        paletteState.activeIndex = Math.max(0, paletteState.activeIndex - 1);
+        renderPalette();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        paletteRunItem(currentItems[paletteState.activeIndex]);
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closePalette();
+      }
+    });
+    root.querySelectorAll('[data-palette-index]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        paletteState.activeIndex = parseInt(el.dataset.paletteIndex, 10);
+        root.querySelectorAll('.palette-item').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+      });
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.dataset.paletteIndex, 10);
+        paletteRunItem(paletteFlatItems()[idx]);
+      });
+    });
+    root.querySelectorAll('[data-close-palette]').forEach(el => el.addEventListener('click', closePalette));
   }
 
   function renderQuestionModal() {
@@ -3113,6 +3697,16 @@
   }
 
   document.addEventListener('keydown', (e) => {
+    // Cmd/Ctrl+K opens the command palette from anywhere, including while
+    // typing in another field (Browse's search box, a note, etc.) — this is
+    // the one shortcut that intentionally runs before the "don't hijack
+    // typing" guard below.
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (paletteState.open) closePalette(); else openPalette();
+      return;
+    }
+    if (e.key === 'Escape' && paletteState.open) { closePalette(); return; }
     if (e.key === 'Escape' && state.modalList) { closeQuestionModal(); return; }
 
     // Don't hijack any of the shortcuts below while the user is typing
@@ -3260,6 +3854,27 @@
     try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* best-effort */ }
   });
 
+  // ---------- Command palette trigger ----------
+  const paletteTriggerBtn = document.getElementById('paletteTriggerBtn');
+  if (paletteTriggerBtn) paletteTriggerBtn.addEventListener('click', () => openPalette());
+
+  // ---------- Timer hide/show toggle (delegated — the button is re-rendered
+  // into Test/Practice/Mock topbars on every render, so one listener here
+  // covers all of them). Re-renders whichever of those tabs is currently
+  // active so the topbar redraws with the new preference; the countdown
+  // itself (sel.timeLeft / mockState.timeLeft) is untouched, so nothing
+  // resets or pauses.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-toggle-timer-hidden]');
+    if (!btn) return;
+    setTimerDisplayHidden(!timerDisplayHidden);
+    const activeTab = document.querySelector('.tab.active');
+    const view = activeTab ? activeTab.dataset.view : null;
+    if (view === 'test') renderTest();
+    else if (view === 'practice') renderPractice();
+    else if (view === 'mock') renderMock();
+  });
+
   // ---------- Shared scope-filter chips (Test config + Practice config) ----------
   function categoryChipsHtml(sel) {
     return allCategories.map(c =>
@@ -3345,6 +3960,24 @@
     }
   }
 
+  // ---------- Timer display hide toggle (Test/Practice/Mock) ----------
+  // Purely cosmetic: blanks the on-screen digits so the clock can't be
+  // glanced at (closer to real proctored SAT conditions), but the underlying
+  // countdown, low-time warning threshold, and strict-mode auto-advance all
+  // keep running exactly as if it were visible.
+  const TIMER_HIDDEN_KEY = 'sat_qbank_timer_hidden_v1';
+  let timerDisplayHidden = localStorage.getItem(TIMER_HIDDEN_KEY) === '1';
+  function setTimerDisplayHidden(v) {
+    timerDisplayHidden = v;
+    try { localStorage.setItem(TIMER_HIDDEN_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+  }
+  function formatTimerDisplay(seconds) {
+    return timerDisplayHidden ? '••:••' : formatMockTime(seconds);
+  }
+  function timerHideToggleHtml() {
+    return `<button type="button" class="btn timer-hide-toggle" data-toggle-timer-hidden title="${timerDisplayHidden ? 'Show the countdown' : 'Hide the countdown — it keeps running underneath'}">${timerDisplayHidden ? 'Show timer' : 'Hide timer'}</button>`;
+  }
+
   // Starts (or restarts) the per-question countdown on `sel`, ticking the
   // element with id `elId` each second. No-ops if timed mode is off. Calls
   // `onExpire` once when time runs out — strict/flexible branching happens
@@ -3359,8 +3992,8 @@
       sel.timeLeft -= 1;
       const el = document.getElementById(elId);
       if (el) {
-        el.textContent = formatMockTime(sel.timeLeft);
-        el.classList.toggle('low-time', sel.timeLeft <= 10);
+        el.textContent = formatTimerDisplay(sel.timeLeft);
+        el.classList.toggle('low-time', !timerDisplayHidden && sel.timeLeft <= 10);
       }
       if (sel.timeLeft <= 0) {
         qtimerClear(sel);
@@ -3375,13 +4008,26 @@
     return `
       <div class="mock-topbar">
         <span class="mock-module-badge">${sel.timerStrict ? 'Strict timer' : 'Flexible timer'}</span>
-        <span class="mock-timer ${sel.expired ? 'low-time' : ''}" id="${elId}">${formatMockTime(sel.timeLeft)}</span>
+        <span class="mock-timer ${!timerDisplayHidden && sel.expired ? 'low-time' : ''}" id="${elId}">${formatTimerDisplay(sel.timeLeft)}</span>
+        ${timerHideToggleHtml()}
         ${sel.expired && !sel.timerStrict ? `<span style="font-size:12px; color:var(--ink-faint);">Time's up — keep going at your own pace</span>` : ''}
       </div>`;
   }
 
   // ---------- Test (real, scored test — no per-question feedback until the end) ----------
   function testPool() { return filterPool(testState); }
+
+  // Feeds skill stats from a just-finished test — only answered questions
+  // count (an unanswered one is no signal about the skill, just a skipped
+  // question). Called exactly once per test, right before phase flips to
+  // 'results', so re-renders of the results screen don't double-count.
+  function recordTestSkillStats() {
+    testState.questions.forEach(q => {
+      const yours = testState.answers[q.id];
+      if (!yours) return;
+      recordSkillAttempt(q.skill, yours === q.correct_answer);
+    });
+  }
 
   function renderTest() {
     const shell = document.getElementById('testShell');
@@ -3416,6 +4062,12 @@
         <div class="config-row">
           <label>Number of questions</label>
           <input type="number" class="num-input" id="testCount" min="1" max="${Math.max(pool.length, 1)}" value="${Math.min(testState.count, Math.max(pool.length, 1))}" />
+        </div>
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="testBiasWeak" ${testState.biasWeak ? 'checked' : ''} />
+            <span>Bias toward my weak skills${weakSkills().length ? ` — currently ${weakSkillsSummary()}` : ' (needs a few graded attempts per skill first)'}</span>
+          </label>
         </div>
         ${timedModeConfigHtml(testState, 'test')}
         <button class="btn btn-accent" id="startTestBtn" ${pool.length ? '' : 'disabled'}>Start test</button>
@@ -3523,6 +4175,7 @@
       renderTest();
     } else {
       qtimerClear(testState);
+      recordTestSkillStats();
       testState.phase = 'results';
       renderTest();
     }
@@ -3538,13 +4191,13 @@
     if (testState.phase === 'config') {
       wireScopeChips(shell, testState, renderTest);
       wireTimedModeConfig(shell, testState, 'test', renderTest);
+      const biasBox = document.getElementById('testBiasWeak');
+      if (biasBox) biasBox.addEventListener('change', () => { testState.biasWeak = biasBox.checked; });
       const startBtn = document.getElementById('startTestBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
         const countInput = document.getElementById('testCount');
         const n = Math.max(1, parseInt(countInput.value, 10) || 10);
-        const pool = testPool();
-        const shuffled = [...pool].sort(() => Math.random() - 0.5);
-        testState.questions = shuffled.slice(0, Math.min(n, shuffled.length));
+        testState.questions = selectPool(testState, testPool(), n);
         testState.index = 0;
         testState.answers = {};
         testState.phase = 'quiz';
@@ -3564,7 +4217,7 @@
       const nextBtn = document.getElementById('nextBtn');
       if (nextBtn) nextBtn.addEventListener('click', () => { testState.index++; qtimerStart(testState, 'testTimer', testTimerExpire); renderTest(); });
       const submitBtn = document.getElementById('submitBtn');
-      if (submitBtn) submitBtn.addEventListener('click', () => { qtimerClear(testState); testState.phase = 'results'; renderTest(); });
+      if (submitBtn) submitBtn.addEventListener('click', () => { qtimerClear(testState); recordTestSkillStats(); testState.phase = 'results'; renderTest(); });
     } else {
       const retakeBtn = document.getElementById('retakeBtn');
       if (retakeBtn) retakeBtn.addEventListener('click', () => { qtimerClear(testState); testState.phase = 'config'; renderTest(); });
@@ -3607,6 +4260,12 @@
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practiceShuffle" ${practiceState.shuffle ? 'checked' : ''} />
             <span>Shuffle order</span>
+          </label>
+        </div>
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="practiceBiasWeak" ${practiceState.biasWeak ? 'checked' : ''} />
+            <span>Bias toward my weak skills — puts your lowest-accuracy skills first${weakSkills().length ? ` (currently ${weakSkillsSummary()})` : ' (needs a few graded attempts per skill first)'}</span>
           </label>
         </div>
         ${timedModeConfigHtml(practiceState, 'practice')}
@@ -3670,10 +4329,13 @@
       wireTimedModeConfig(shell, practiceState, 'practice', renderPractice);
       const shuffleBox = document.getElementById('practiceShuffle');
       if (shuffleBox) shuffleBox.addEventListener('change', () => { practiceState.shuffle = shuffleBox.checked; });
+      const biasBox = document.getElementById('practiceBiasWeak');
+      if (biasBox) biasBox.addEventListener('change', () => { practiceState.biasWeak = biasBox.checked; });
       const startBtn = document.getElementById('startPracticeBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
         let pool = practicePool();
-        if (practiceState.shuffle) pool = [...pool].sort(() => Math.random() - 0.5);
+        if (practiceState.biasWeak) pool = pickWeightedBySkill(pool, pool.length);
+        else if (practiceState.shuffle) pool = [...pool].sort(() => Math.random() - 0.5);
         practiceState.questions = pool;
         practiceState.index = 0;
         practiceState.phase = 'session';
@@ -3746,6 +4408,63 @@
   };
   const MOCK_DOMAIN_ORDER = ['Information and Ideas', 'Craft and Structure', 'Expression of Ideas', 'Standard English Conventions'];
 
+  // Two-level question-mix editor. Level 1 groups the 10 skills above into 5
+  // "sections" a test-taker actually notices while reading a module — Vocab
+  // stands alone, everything else in the reading segment (Text Structure,
+  // Cross-Text, Main Idea, Command of Evidence, Inferences) folds into one
+  // "Reading" bucket, and Boundaries + Form/Structure/Sense fold into
+  // "Grammar" (matching this repo's own Grammar category). Level 2 is just
+  // the existing per-skill table, now grouped under its bucket, for anyone
+  // who wants to hand-tune the mix *within* a section instead of just its
+  // total.
+  //
+  // Why bucket "Reading" instead of leaving its 5 skills separate at level 1:
+  // individual reading sub-skills swing hard module to module in real
+  // Bluebook forms (Cross-Text is 0 or 1 with nothing in between; Text
+  // Structure ranges 0-3; Main Idea 0-4) — see db/module_composition.json,
+  // a question-by-question breakdown of Practice Tests 1-8. The *sum* of
+  // those five is far steadier (7-12 per module, mean ~9.8) than any one of
+  // them alone, which makes "Reading total" the more meaningful dial to set
+  // by hand — MOCK_BUCKET_STATS below is that same aggregation, summarized
+  // for the UI hint text. Grammar shows the same pattern in miniature: it's
+  // the single steadiest bucket of the five (5-8 per module, mean ~6.3)
+  // even though its own two skills (Boundaries, Form/Structure/Sense) don't
+  // split evenly test to test.
+  //
+  // Reliability note carried into the UI copy: of the 17 module instances
+  // behind these numbers, only one (Practice Test 8, Module 1) is verified
+  // ground truth from someone actually taking it. The rest are reconstructed
+  // by mapping third-party question-by-question audits (Walker Prep's
+  // Question Type Inventories, The Test Advantage's walkthroughs) onto this
+  // repo's categories — real official Bluebook tests, but not official
+  // College Board statistics, and with a handful of specific low-confidence
+  // spots flagged directly in db/module_composition.json. Treat the numbers
+  // here as a reasonable planning guide, not a guarantee.
+  const MOCK_BUCKET_ORDER = ['Vocab', 'Reading', 'Grammar', 'Transitions', 'Notes'];
+  const SKILL_BUCKET = {
+    'Words in Context': 'Vocab',
+    'Text Structure and Purpose': 'Reading',
+    'Cross-Text Connections': 'Reading',
+    'Central Ideas and Details': 'Reading',
+    'Command of Evidence': 'Reading',
+    'Inferences': 'Reading',
+    'Boundaries': 'Grammar',
+    'Form, Structure, and Sense': 'Grammar',
+    'Transitions': 'Transitions',
+    'Rhetorical Synthesis': 'Notes',
+  };
+  // Per-module (27-question) min/max/mean across the 17 Practice Test 1-8
+  // module instances in db/module_composition.json that have a full skill
+  // breakdown (excludes the 2 vocab-only Test 7 entries). Display only —
+  // doesn't constrain input.
+  const MOCK_BUCKET_STATS = {
+    Vocab: { min: 2, max: 8, mean: 5.1 },
+    Reading: { min: 7, max: 12, mean: 9.8 },
+    Grammar: { min: 5, max: 8, mean: 6.3 },
+    Transitions: { min: 1, max: 4, mean: 2.9 },
+    Notes: { min: 0, max: 6, mean: 2.9 },
+  };
+
   const MOCK_WEIGHTS_M1 = { Easy: 0.25, Medium: 0.5, Hard: 0.25 };
   const MOCK_WEIGHTS_HARDER = { Easy: 0.1, Medium: 0.35, Hard: 0.55 };
   const MOCK_WEIGHTS_EASIER = { Easy: 0.5, Medium: 0.4, Hard: 0.1 };
@@ -3796,6 +4515,56 @@
     const result = [...floors];
     for (let k = 0; k < remainder && k < order.length; k++) result[order[k].i]++;
     rows.forEach((r, i) => { r[field] = Math.max(0, result[i]); });
+  }
+
+  // Sum of `field` ('m1' | 'm2') across just the skills in `bucket` — the
+  // Level 1 total shown/edited in mockBucketTableHtml, purely derived from
+  // mockState.blueprint (no separate bucket-level state to keep in sync).
+  function bucketTotal(field, bucket) {
+    return mockState.blueprint.reduce((s, r) => s + (SKILL_BUCKET[r.skill] === bucket ? r[field] : 0), 0);
+  }
+
+  // Same idea as scaleBlueprintField, but scoped to one bucket's skills —
+  // editing a Level 1 total redistributes only that bucket's rows (toward
+  // their official within-bucket shape), leaving every other bucket's rows
+  // untouched.
+  function scaleBucket(field, bucket, target) {
+    const rows = mockState.blueprint;
+    target = Math.max(0, target);
+    const idxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] === bucket);
+    const officialWeights = idxs.map(i => MOCK_BLUEPRINT[i][field]);
+    const totalWeight = officialWeights.reduce((a, b) => a + b, 0);
+    const raw = idxs.map((i, k) => totalWeight ? (officialWeights[k] / totalWeight) * target : target / idxs.length);
+    const floors = raw.map(Math.floor);
+    const used = floors.reduce((a, b) => a + b, 0);
+    const remainder = target - used;
+    const order = raw.map((v, k) => ({ k, frac: v - Math.floor(v) })).sort((a, b) => b.frac - a.frac);
+    const result = [...floors];
+    for (let n = 0; n < remainder && n < order.length; n++) result[order[n].k]++;
+    idxs.forEach((i, k) => { rows[i][field] = Math.max(0, result[k]); });
+  }
+
+  // Redistributes both m1 and m2 across mockState.blueprint toward your
+  // lowest-accuracy skills (skillWeight — see skill stats), keeping each
+  // module's current total exactly the same (same largest-remainder
+  // rounding as scaleBlueprintField, just weighted by weakness instead of
+  // the official blueprint's shape).
+  function biasBlueprintTowardWeakSkills() {
+    const rows = mockState.blueprint;
+    ['m1', 'm2'].forEach(field => {
+      const target = rows.reduce((s, r) => s + r[field], 0);
+      if (!target) return;
+      const weights = rows.map(r => skillWeight(r.skill));
+      const totalWeight = weights.reduce((a, b) => a + b, 0);
+      const raw = rows.map((r, i) => totalWeight ? (weights[i] / totalWeight) * target : target / rows.length);
+      const floors = raw.map(Math.floor);
+      const used = floors.reduce((a, b) => a + b, 0);
+      const remainder = target - used;
+      const order = raw.map((v, i) => ({ i, frac: v - Math.floor(v) })).sort((a, b) => b.frac - a.frac);
+      const result = [...floors];
+      for (let k = 0; k < remainder && k < order.length; k++) result[order[k].i]++;
+      rows.forEach((r, i) => { r[field] = Math.max(0, result[i]); });
+    });
   }
 
   function shuffleInPlace(arr) {
@@ -3953,8 +4722,8 @@
       mockState.timeLeft -= 1;
       const el = document.getElementById('mockTimer');
       if (el) {
-        el.textContent = formatMockTime(mockState.timeLeft);
-        el.classList.toggle('low-time', mockState.timeLeft <= 60);
+        el.textContent = formatTimerDisplay(mockState.timeLeft);
+        el.classList.toggle('low-time', !timerDisplayHidden && mockState.timeLeft <= 60);
       }
       if (mockState.timeLeft <= 0) {
         mockClearTimer();
@@ -4075,6 +4844,11 @@
     mockState.history = [attempt, ...mockState.history].slice(0, MOCK_HISTORY_LIMIT);
     mockState.lastAttemptId = attempt.id;
     saveMockHistory();
+    [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+      const q = QUESTIONS.find(x => x.id === id);
+      const yours = attempt.answers[id];
+      if (q && yours) recordSkillAttempt(q.skill, yours === q.correct_answer);
+    });
     renderStats();
   }
 
@@ -4198,15 +4972,51 @@
       </div>`;
   }
 
-  // Editable per-skill question-count table backing mockState.blueprint.
-  // `showM1`/`showM2` hide whichever column doesn't apply to the current mode.
+  // Level 1: editable totals for the 5 sections (see MOCK_BUCKET_ORDER),
+  // each with a "typical" hint pulled from real Bluebook module audits.
+  // Editing one redistributes just that bucket's underlying skill rows
+  // (via scaleBucket) toward their official within-bucket shape, so the
+  // Level 2 table below stays in sync automatically.
+  function mockBucketTableHtml(showM1, showM2) {
+    const rows = MOCK_BUCKET_ORDER.map(bucket => {
+      const stats = MOCK_BUCKET_STATS[bucket];
+      const m1 = bucketTotal('m1', bucket);
+      const m2 = bucketTotal('m2', bucket);
+      return `<tr>
+        <td>${bucket}</td>
+        ${showM1 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bucket="${bucket}" data-bucket-field="m1" value="${m1}"></td>` : ''}
+        ${showM2 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bucket="${bucket}" data-bucket-field="m2" value="${m2}"></td>` : ''}
+        <td class="bp-avail">typical ${stats.min}&ndash;${stats.max}/module, avg ${stats.mean}</td>
+      </tr>`;
+    }).join('');
+    return `
+      <div class="config-row">
+        <div class="bp-table-head"><label>Question mix by section (Level 1)</label></div>
+        <table class="mock-blueprint-table bp-editable">
+          <thead><tr><th>Section</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Real-test range</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <details class="bp-guide">
+          <summary>Where do "typical" ranges come from, and how reliable are they?</summary>
+          <div class="bp-guide-body">
+            <p>Pulled from <code>db/module_composition.json</code> — a question-by-question breakdown of Reading &amp; Writing Modules 1 and 2 (both difficulty forms) across the 8 official Bluebook Practice Tests currently covered, 17 module instances with a complete tally.</p>
+            <p><strong>Reading</strong> bundles five skills (Text Structure and Purpose, Cross-Text Connections, Central Ideas and Details, Command of Evidence, Inferences) into one number on purpose: each swings hard on its own from module to module — Cross-Text is just 0 or 1 with nothing between, Text Structure ranges 0&ndash;3 &mdash; but their <em>sum</em> holds a steadier 7&ndash;12. <strong>Grammar</strong> (Boundaries + Form/Structure/Sense combined) is the steadiest section of the five even on its own, 5&ndash;8 per module. <strong>Vocab</strong> and <strong>Notes</strong> swing the widest, 2&ndash;8 and 0&ndash;6 respectively.</p>
+            <p><strong>Reliability:</strong> of the 17 module instances behind these numbers, only Practice Test 8 Module 1 is verified ground truth from someone who actually took it. The rest are reconstructed by mapping third-party question-by-question audits (Walker Prep's Question Type Inventories, The Test Advantage's walkthroughs) onto this repo's categories — real official Bluebook tests, but not College Board's own published statistics, and a few specific modules have flagged low-confidence spots (see the <code>flags</code> field per module in the JSON). Treat these ranges as a planning guide, not a guarantee — and if you take a module yourself, updating its entry to <code>"confidence": "verified"</code> makes the guide more trustworthy for the next person.</p>
+          </div>
+        </details>
+      </div>`;
+  }
+
+  // Level 2: editable per-skill question-count table backing
+  // mockState.blueprint directly. `showM1`/`showM2` hide whichever column
+  // doesn't apply to the current mode.
   function mockBlueprintTableHtml(showM1, showM2) {
     const rows = mockState.blueprint.map((r, i) => {
       const poolSize = QUESTIONS.filter(q => q.category === r.category && q.skill === r.skill &&
         (!mockState.statuses.size || mockState.statuses.has(questionStatus(q)))).length;
       return `<tr>
+        <td>${escapeHtml(SKILL_BUCKET[r.skill])}</td>
         <td>${escapeHtml(r.skill)}</td>
-        <td>${escapeHtml(SKILL_DOMAIN[r.skill])}</td>
         ${showM1 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bp-idx="${i}" data-bp-field="m1" value="${r.m1}"></td>` : ''}
         ${showM2 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bp-idx="${i}" data-bp-field="m2" value="${r.m2}"></td>` : ''}
         <td class="bp-avail">${poolSize} in bank</td>
@@ -4217,13 +5027,14 @@
     return `
       <div class="config-row">
         <div class="bp-table-head">
-          <label>Question mix by skill</label>
+          <label>Question mix by skill (Level 2 — within each section)</label>
           <div class="bp-actions">
+            <button type="button" class="btn" id="mockBiasWeakBtn" style="font-size:11px; padding:4px 9px;" title="Redistributes the counts below toward your lowest-accuracy skills, keeping each module's total the same">Bias toward weak skills</button>
             <button type="button" class="btn" id="mockResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix and routing threshold below back to their defaults">Reset to official</button>
           </div>
         </div>
         <table class="mock-blueprint-table bp-editable">
-          <thead><tr><th>Skill</th><th>Domain</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Pool</th></tr></thead>
+          <thead><tr><th>Section</th><th>Skill</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Pool</th></tr></thead>
           <tbody>${rows}</tbody>
           <tfoot><tr>
             <td colspan="2">Total</td>
@@ -4236,7 +5047,7 @@
           ${showM1 ? `<span>Module 1 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM1" min="0" max="200" value="${m1Total}"><button type="button" class="btn" id="mockScaleM1Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
           ${showM2 ? `<span>Module 2 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM2" min="0" max="200" value="${m2Total}"><button type="button" class="btn" id="mockScaleM2Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
         </div>
-        <p class="bp-hint">Edit any count directly, or set a target total and Apply to redistribute proportionally. If a skill runs short of "in bank" (especially once a status filter below narrows it), that skill quietly backfills from its full pool so the module still hits your requested count. "Reset to official" restores this table <em>and</em> the difficulty mix and routing threshold below to their defaults — a 27/27 split fit to the empirical average distribution of released digital SAT practice tests, not just an even spread across skills.</p>
+        <p class="bp-hint">Edit any count directly, or set a target total and Apply to redistribute proportionally — either here, or coarser via the section totals above. If a skill runs short of "in bank" (especially once a status filter below narrows it), that skill quietly backfills from its full pool so the module still hits your requested count. "Reset to official" restores this table <em>and</em> the difficulty mix and routing threshold below to their defaults — a 27/27 split fit to the empirical average distribution of released digital SAT practice tests, not just an even spread across skills.</p>
       </div>`;
   }
 
@@ -4292,6 +5103,7 @@
     }
 
     const advancedSection = `
+        ${mockBucketTableHtml(showM1, showM2)}
         ${mockBlueprintTableHtml(showM1, showM2)}
         ${weightSection}`;
 
@@ -4340,8 +5152,9 @@
     return `
       <div class="mock-topbar">
         <span class="mock-module-badge">${moduleBadge}</span>
-        <span class="mock-timer" id="mockTimer">${formatMockTime(mockState.timeLeft)}</span>
-        ${qt.timed ? `<span class="mock-timer ${qt.expired ? 'low-time' : ''}" id="mockQTimer" title="Per-question timer">${formatMockTime(qt.timeLeft)}</span>` : ''}
+        <span class="mock-timer" id="mockTimer">${formatTimerDisplay(mockState.timeLeft)}</span>
+        ${qt.timed ? `<span class="mock-timer ${!timerDisplayHidden && qt.expired ? 'low-time' : ''}" id="mockQTimer" title="Per-question timer">${formatTimerDisplay(qt.timeLeft)}</span>` : ''}
+        ${timerHideToggleHtml()}
         <button class="mock-exit-link" id="mockExitBtn">Exit mock exam</button>
       </div>
       ${qt.timed && qt.expired && !qt.timerStrict ? `<p style="font-size:12px; color:var(--ink-faint); margin:-8px 0 12px;">Question timer's up — keep going at your own pace.</p>` : ''}
@@ -4545,6 +5358,18 @@
       const advToggle = document.getElementById('mockAdvancedToggle');
       if (advToggle) advToggle.addEventListener('change', () => { mockState.advanced = advToggle.checked; renderMock(); });
 
+      // Level 1 bucket table: editing a section's total redistributes that
+      // section's skill rows underneath it, so this needs a full re-render
+      // (the Level 2 table below has to reflect the new per-skill split) —
+      // unlike the Level 2 inputs just below, which write straight through.
+      shell.querySelectorAll('[data-bucket]').forEach(inp => {
+        inp.addEventListener('change', () => {
+          const target = Math.max(0, parseInt(inp.value, 10) || 0);
+          scaleBucket(inp.dataset.bucketField, inp.dataset.bucket, target);
+          renderMock();
+        });
+      });
+
       // Blueprint table: counts are written straight into mockState.blueprint
       // on change (no re-render, so typing isn't interrupted); the live
       // totals in the table foot update via a lighter 'input' listener.
@@ -4561,6 +5386,11 @@
           shell.querySelectorAll(`[data-bp-field="${field}"]`).forEach(x => { sum += parseInt(x.value, 10) || 0; });
           totalEl.textContent = sum;
         });
+      });
+      const biasBpBtn = document.getElementById('mockBiasWeakBtn');
+      if (biasBpBtn) biasBpBtn.addEventListener('click', () => {
+        biasBlueprintTowardWeakSkills();
+        renderMock();
       });
       const resetBpBtn = document.getElementById('mockResetBlueprintBtn');
       if (resetBpBtn) resetBpBtn.addEventListener('click', () => {
@@ -4610,7 +5440,9 @@
         el.addEventListener('click', (e) => {
           e.stopPropagation();
           if (!confirm('Delete this saved mock exam record? This only removes the saved mock result — your per-question progress and tags aren\'t touched.')) return;
-          mockState.history = mockState.history.filter(a => a.id !== el.dataset.deleteAttempt);
+          const deletedId = el.dataset.deleteAttempt;
+          mockState.history = mockState.history.filter(a => a.id !== deletedId);
+          if (rwOverrides[deletedId] !== undefined) { delete rwOverrides[deletedId]; saveRWOverrides(rwOverrides); }
           saveMockHistory();
           renderMock();
           renderStats();
@@ -4619,6 +5451,8 @@
       const clearHistoryBtn = document.getElementById('clearMockHistoryBtn');
       if (clearHistoryBtn) clearHistoryBtn.addEventListener('click', () => {
         if (!confirm('Clear all saved mock exam history? This only removes saved mock results — your per-question progress and tags aren\'t touched.')) return;
+        mockState.history.forEach(a => { if (rwOverrides[a.id] !== undefined) delete rwOverrides[a.id]; });
+        saveRWOverrides(rwOverrides);
         mockState.history = [];
         saveMockHistory();
         renderMock();
@@ -5302,6 +6136,45 @@
     }).join('');
   }
 
+  // Spaced-repetition snapshot embedded in the Progress tab — due count,
+  // all-time retention (derived from each card's running reps/lapses, since
+  // there's no separate per-review event log), and a 7-day forecast of when
+  // the flagged queue will come due. Purely a summary; the actual queue and
+  // "Study due" action live on the Review tab (see reviewStatsBlockHtml's
+  // "Go to Review" button below).
+  function reviewStatsBlockHtml() {
+    const dueEntries = fsrsDueEntries(new Date());
+    const flagged = fsrsFlaggedWithCards();
+    const retention = fsrsRetentionStats();
+    const forecast = fsrsForecast(7);
+    const maxCount = Math.max(1, ...forecast);
+    const dayLabels = ['Today', '+1', '+2', '+3', '+4', '+5', '+6'];
+    const forecastCols = forecast.map((n, i) => `
+      <div class="forecast-col">
+        <span class="forecast-n">${n}</span>
+        <div class="forecast-bar" style="height:${Math.max(4, Math.round((n / maxCount) * 100))}%"></div>
+        <span class="forecast-label">${dayLabels[i]}</span>
+      </div>`).join('');
+    return `
+      <div class="progress-summary">
+        <h2>Review (spaced repetition)</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">
+          How the flagged-question queue on the Review tab is trending — head there to actually work through it.
+        </p>
+        <div class="progress-stats">
+          <div class="progress-stat due"><span class="n">${dueEntries.length}</span><span class="l">Due today</span></div>
+          <div class="progress-stat"><span class="n">${retention.pct !== null ? retention.pct + '%' : '—'}</span><span class="l">Retention (all-time)</span></div>
+          <div class="progress-stat"><span class="n">${retention.reps}</span><span class="l">Reviews graded</span></div>
+          <div class="progress-stat"><span class="n">${flagged.length}</span><span class="l">Total flagged</span></div>
+        </div>
+        <h3 style="font-family:var(--serif); font-size:14px; margin:16px 0 2px;">Next 7 days</h3>
+        <div class="forecast-row">${forecastCols}</div>
+        <div class="progress-actions">
+          <button class="btn btn-accent" id="progressGoToReviewBtn">Go to Review${dueEntries.length ? ` (${dueEntries.length} due)` : ''}</button>
+        </div>
+      </div>`;
+  }
+
   function renderProgress() {
     const shell = document.getElementById('progressShell');
     const focusQuestions = QUESTIONS.filter(q => state.progressFocus.has(q.difficulty_label));
@@ -5375,10 +6248,18 @@
         </div>
       </div>
 
+      ${reviewStatsBlockHtml()}
+
       ${openQ ? inlineQuestionPanelHtml(openQ, 'progressPanel', 'progressPanelClose') : ''}
 
       <h3 style="font-family: var(--serif); font-size: 16px; margin: 0 0 10px;">By category</h3>
       ${catRows}`;
+
+    const goToReviewBtn = document.getElementById('progressGoToReviewBtn');
+    if (goToReviewBtn) goToReviewBtn.addEventListener('click', () => {
+      const reviewTab = document.querySelector('.tab[data-view="review"]');
+      if (reviewTab) reviewTab.click();
+    });
 
     shell.querySelectorAll('[data-focus-diff]').forEach(el => {
       el.addEventListener('click', () => toggleProgressFocus(el.dataset.focusDiff));
@@ -5453,7 +6334,7 @@
     if (exportBtn) exportBtn.addEventListener('click', () => {
       const payload = {
         app: 'sat-qbank-progress',
-        version: 7,
+        version: 8,
         exportedAt: new Date().toISOString(),
         progress: state.progress,
         tags: state.tags,
@@ -5464,6 +6345,11 @@
         profile: state.profile,
         fsrsCards: state.fsrsCards,
         mockHistory: mockState.history,
+        rwOverrides: rwOverrides,
+        skillStats: state.skillStats,
+        progressFocus: [...state.progressFocus],
+        trendExcluded: [...trendExcluded],
+        recentVisits: recentVisits,
       };
       downloadFile(backupFilename(), JSON.stringify(payload, null, 2));
     });
@@ -5488,8 +6374,13 @@
             const incomingProfile = parsed && typeof parsed === 'object' ? parsed.profile : null;
             const incomingFsrsCards = parsed && typeof parsed === 'object' ? parsed.fsrsCards : null;
             const incomingMockHistory = parsed && typeof parsed === 'object' ? parsed.mockHistory : null;
+            const incomingRWOverrides = parsed && typeof parsed === 'object' ? parsed.rwOverrides : null;
+            const incomingSkillStats = parsed && typeof parsed === 'object' ? parsed.skillStats : null;
+            const incomingProgressFocus = parsed && typeof parsed === 'object' ? parsed.progressFocus : null;
+            const incomingTrendExcluded = parsed && typeof parsed === 'object' ? parsed.trendExcluded : null;
+            const incomingRecentVisits = parsed && typeof parsed === 'object' ? parsed.recentVisits : null;
             const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-            if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory) {
+            if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits) {
               alert('This file doesn\'t look like a progress export.');
               return;
             }
@@ -5535,12 +6426,52 @@
                 .slice(0, MOCK_HISTORY_LIMIT);
               saveMockHistory();
             }
+            if (incomingRWOverrides && typeof incomingRWOverrides === 'object') {
+              Object.assign(rwOverrides, incomingRWOverrides);
+              saveRWOverrides(rwOverrides);
+            }
+            if (incomingSkillStats && typeof incomingSkillStats === 'object') {
+              Object.entries(incomingSkillStats).forEach(([skill, s]) => {
+                if (!s || !Number.isFinite(s.total)) return;
+                const existing = state.skillStats[skill] || { correct: 0, total: 0 };
+                state.skillStats[skill] = {
+                  correct: existing.correct + (Number.isFinite(s.correct) ? s.correct : 0),
+                  total: existing.total + s.total,
+                };
+              });
+              saveSkillStats();
+            }
+            if (Array.isArray(incomingProgressFocus) && incomingProgressFocus.length) {
+              const valid = incomingProgressFocus.filter(d => PROGRESS_FOCUS_DIFFICULTIES.includes(d));
+              if (valid.length) {
+                state.progressFocus = new Set(valid);
+                saveProgressFocus();
+              }
+            }
+            if (Array.isArray(incomingTrendExcluded) && incomingTrendExcluded.length) {
+              incomingTrendExcluded.forEach(id => trendExcluded.add(id));
+              saveTrendExcluded(trendExcluded);
+            }
+            if (incomingRecentVisits && typeof incomingRecentVisits === 'object') {
+              Object.entries(incomingRecentVisits).forEach(([qid, v]) => {
+                if (!v || !Number.isFinite(v.count)) return;
+                const existing = recentVisits[qid];
+                if (!existing || (v.lastTs || 0) > (existing.lastTs || 0) || v.count > existing.count) {
+                  recentVisits[qid] = {
+                    count: Math.max(v.count, existing ? existing.count : 0),
+                    lastTs: Math.max(v.lastTs || 0, existing ? (existing.lastTs || 0) : 0),
+                  };
+                }
+              });
+              saveRecentVisits();
+            }
             renderFilters();
             renderBrowse();
             renderProgress();
             renderReview();
             renderNotesView();
             renderStats();
+            renderProfile();
           } catch (e) {
             alert('Could not read that file as progress JSON.');
           }
@@ -5552,16 +6483,21 @@
 
     const resetBtn = document.getElementById('resetProgressBtn');
     if (resetBtn) resetBtn.addEventListener('click', () => {
-      if (!confirm('Clear all "complete" and "to review" marks, plus your streak, XP, and achievement progress? This can\'t be undone unless you\'ve exported a backup.')) return;
+      if (!confirm('Clear all "complete" and "to review" marks, your review scheduling (Anki) data, plus your streak, XP, and achievement progress? This can\'t be undone unless you\'ve exported a backup.')) return;
       state.progress = {};
       state.completionLog = {};
+      state.fsrsCards = {};
+      state.skillStats = {};
       saveProgress();
       saveCompletionLog();
+      saveFsrsCards();
+      saveSkillStats();
       renderFilters();
       renderBrowse();
       renderProgress();
       renderReview();
       renderStats();
+      renderProfile();
     });
   }
 
@@ -5580,6 +6516,34 @@
     const due = fsrsDueEntries(new Date()).slice(0, FSRS_SESSION_CAP);
     if (!due.length) return;
     reviewSession.queue = due.map(x => x.q.id);
+    reviewSession.pos = 0;
+    reviewSession.phase = 'active';
+    state.reviewOpenQuestion = null;
+    renderReview();
+  }
+
+  // Questions matching the Custom review scope chips (categories/skills/
+  // difficulties/statuses — reuses filterPool, same contract as Test/Practice),
+  // ordered per reviewCustomState.order. Unlike the flagged-only due queue,
+  // this can include 'done' (or even 'incomplete') questions, so a plain
+  // question that has never been graded gets a blank FSRS card rather than
+  // being dropped.
+  function reviewCustomPool() {
+    const ordered = filterPool(reviewCustomState);
+    return reviewCustomState.order === 'random'
+      ? [...ordered].sort(() => Math.random() - 0.5)
+      : withFsrsCardsSorted(ordered).map(x => x.q);
+  }
+
+  function reviewCustomDefaultLimit(poolLength) {
+    return Math.max(1, Math.min(poolLength, FSRS_SESSION_CAP));
+  }
+
+  function startCustomReviewSession() {
+    const pool = reviewCustomPool();
+    if (!pool.length) return;
+    const limit = Math.max(1, Math.min(reviewCustomState.limit || reviewCustomDefaultLimit(pool.length), pool.length));
+    reviewSession.queue = pool.slice(0, limit).map(q => q.id);
     reviewSession.pos = 0;
     reviewSession.phase = 'active';
     state.reviewOpenQuestion = null;
@@ -5649,6 +6613,49 @@
         ${qDetailHtml(q, { bare: true, shortcuts: true })}
         ${canGrade ? reviewGradeButtonsHtml(q) : `<div class="fsrs-grade-hint">Submit an answer or hit "Show answer" to grade how well you knew this one.</div>`}
       </div>`;
+  }
+
+  // Optional scope builder on the idle Review screen: lets you pull completed
+  // (or any-status) questions into a study session, not just the flagged/due
+  // queue, scoped by category/skill/difficulty and capped to a chosen count —
+  // reuses the same chip helpers and filterPool contract as Test/Practice.
+  function reviewCustomHtml() {
+    const pool = reviewCustomPool();
+    const defaultLimit = reviewCustomDefaultLimit(pool.length || 1);
+    const limitVal = pool.length ? Math.max(1, Math.min(reviewCustomState.limit || defaultLimit, pool.length)) : 1;
+    return `
+      <details class="config-card" id="reviewCustomDetails" ${reviewCustomOpen ? 'open' : ''}>
+        <summary style="cursor:pointer; font-weight:600;">Custom review — pick scope &amp; how many</summary>
+        <p class="lede" style="margin-top:10px;">Study any mix of questions — including ones you've already completed — instead of just what's flagged and due.</p>
+        <div class="config-row">
+          <label>Include (leave empty for all)</label>
+          <div class="chip-row">${statusChipsHtml(reviewCustomState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Category (leave empty for all)</label>
+          <div class="chip-row">${categoryChipsHtml(reviewCustomState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Skill (leave empty for all)</label>
+          <div class="chip-row">${skillChipsHtml(reviewCustomState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Difficulty (leave empty for all)</label>
+          <div class="chip-row">${difficultyChipsHtml(reviewCustomState)}</div>
+        </div>
+        <div class="config-row">
+          <label>Order</label>
+          <div class="chip-row">
+            <button class="chip ${reviewCustomState.order === 'due' ? 'on' : ''}" data-review-order="due">Due date first</button>
+            <button class="chip ${reviewCustomState.order === 'random' ? 'on' : ''}" data-review-order="random">Random</button>
+          </div>
+        </div>
+        <div class="config-row">
+          <label>How many (${pool.length} match${pool.length === 1 ? 'es' : ''} the scope above)</label>
+          <input type="number" class="num-input" id="reviewCustomLimit" min="1" max="${Math.max(1, pool.length)}" value="${limitVal}" ${pool.length ? '' : 'disabled'} />
+        </div>
+        <button class="btn btn-accent" id="reviewCustomStartBtn" ${pool.length ? '' : 'disabled'} style="margin-top:8px;">Start custom review (${Math.min(limitVal, pool.length)})</button>
+      </details>`;
   }
 
   function wireReviewSession() {
@@ -5728,6 +6735,8 @@
         ${dueEntries.length > FSRS_SESSION_CAP ? `<p class="progress-note">${dueEntries.length - FSRS_SESSION_CAP} more due beyond this session's cap — grade this batch and start another to work through the rest.</p>` : ''}
       </div>
 
+      ${reviewCustomHtml()}
+
       ${openQ ? inlineQuestionPanelHtml(openQ, 'reviewPanel', 'reviewPanelClose') : ''}
 
       ${byCategory.length ? catBlocks : `<div class="review-queue-empty">Nothing flagged yet — hit "🚩 Mark for review" on any question to add it here.</div>`}
@@ -5769,6 +6778,23 @@
       document.getElementById('view-practice').classList.add('active');
       renderPractice();
     });
+
+    const customDetails = document.getElementById('reviewCustomDetails');
+    if (customDetails) {
+      customDetails.addEventListener('toggle', () => { reviewCustomOpen = customDetails.open; });
+      wireScopeChips(customDetails, reviewCustomState, renderReview);
+      customDetails.querySelectorAll('[data-review-order]').forEach(btn => {
+        btn.addEventListener('click', () => { reviewCustomState.order = btn.dataset.reviewOrder; renderReview(); });
+      });
+      const limitInput = document.getElementById('reviewCustomLimit');
+      if (limitInput) limitInput.addEventListener('change', () => {
+        const n = Math.round(Number(limitInput.value));
+        reviewCustomState.limit = Number.isFinite(n) && n > 0 ? n : null;
+        renderReview();
+      });
+      const startBtn = document.getElementById('reviewCustomStartBtn');
+      if (startBtn) startBtn.addEventListener('click', startCustomReviewSession);
+    }
   }
 
   // ---------- Notes tab ----------
@@ -5848,5 +6874,10 @@
   renderProgress();
   renderReview();
   renderNotesView();
+
+  // Keeps the Review tab's due-count badge fresh against a card rolling over
+  // to "due" purely from time passing (midnight, or an interval elapsing)
+  // while the tab is left open with nothing else triggering a re-render.
+  setInterval(updateReviewBadge, 5 * 60 * 1000);
 })();
 </script>
