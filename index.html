@@ -46,6 +46,10 @@
     --tier-gold-bg: #f7edcb;
     --xp: #4a6fa5;
     --xp-bg: #e3eaf3;
+    --cal-1: #cfe8d7;
+    --cal-2: #a4d6b6;
+    --cal-3: #6cbb8a;
+    --cal-4: #2f7a4f;
     --shadow: 0 1px 2px rgba(28, 36, 48, 0.06), 0 4px 14px rgba(28, 36, 48, 0.05);
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -86,6 +90,10 @@
       --tier-gold-bg: #332c12;
       --xp: #8bacd9;
       --xp-bg: #1c2735;
+      --cal-1: #1e3327;
+      --cal-2: #2a4a35;
+      --cal-3: #3f7256;
+      --cal-4: #6ec48b;
       --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
     }
   }
@@ -123,6 +131,10 @@
     --tier-gold-bg: #332c12;
     --xp: #8bacd9;
     --xp-bg: #1c2735;
+    --cal-1: #1e3327;
+    --cal-2: #2a4a35;
+    --cal-3: #3f7256;
+    --cal-4: #6ec48b;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
@@ -426,12 +438,13 @@
   .status-btn.on-review { border-color: var(--review); color: var(--review); background: var(--review-bg); }
   .status-btn.on-done { border-color: var(--done); color: var(--done); background: var(--done-bg); }
   .status-btn.on-incomplete { border-color: var(--ink-faint); color: var(--ink); background: var(--rule-soft); }
-  .status-kbd {
+  .kbd-hint {
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 600;
     line-height: 1;
     padding: 2px 5px;
+    margin-left: 6px;
     border-radius: 4px;
     border: 1px solid currentColor;
     opacity: 0.55;
@@ -831,17 +844,35 @@
     border: 1px solid var(--rule); overflow: hidden;
   }
   .score-bar-fill { height: 100%; background: var(--accent); border-radius: 4px 0 0 4px; transition: width 0.2s ease; }
-  .math-score-edit {
+  @media (max-width: 480px) {
+    .score-bars { flex-direction: column; gap: 22px; }
+  }
+  .rw-breakdown { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .rw-module-row {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 8px; margin-top: 8px;
+    font-size: 11.5px; color: var(--ink-faint); gap: 6px 8px; flex-wrap: wrap;
   }
-  .math-score-edit input {
-    width: 64px; font-family: var(--mono); font-size: 13px;
-    background: var(--paper); border: 1px solid var(--rule); border-radius: 6px;
-    padding: 3px 6px; color: var(--ink); text-align: right;
+  .rw-module-label { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .rw-module-tag {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600;
+    color: var(--ink-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 0px 4px;
+    white-space: nowrap;
   }
-  .math-score-edit input:focus { outline: none; border-color: var(--accent); }
-  .math-score-edit label { font-size: 11.5px; color: var(--ink-faint); }
+  .rw-module-val { font-family: var(--mono); color: var(--ink-soft); }
+  .rw-module-editable .rw-module-val { color: var(--ink); font-weight: 600; }
+  .rw-stepper { display: flex; align-items: center; gap: 8px; font-family: var(--mono); margin-left: auto; }
+  .rw-stepper-val { min-width: 34px; text-align: center; font-variant-numeric: tabular-nums; }
+  .rw-stepper-max { color: var(--ink-faint); font-weight: 400; }
+  .rw-step-btn {
+    width: 20px; height: 20px; flex: none; line-height: 1; border-radius: 50%;
+    border: 1px solid var(--rule); background: var(--paper); color: var(--ink-soft);
+    font-size: 14px; font-family: var(--mono); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; padding-bottom: 1px;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
+  }
+  .rw-step-btn:hover { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
+  .rw-step-btn:active { transform: scale(0.9); }
   .review-item {
     background: var(--paper-raised);
     border: 1px solid var(--rule);
@@ -999,6 +1030,93 @@
     .sg-divider { display: none; height: 1px; width: auto; }
   }
 
+  /* ---------- Activity calendar ---------- */
+  .activity-card .activity-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; flex-wrap: wrap; gap: 6px; }
+  .activity-card h2 { margin: 0; }
+  .activity-range { font-size: 11.5px; color: var(--ink-faint); }
+  .cal-scroll { overflow-x: auto; padding-bottom: 2px; }
+  .cal-grid { display: flex; gap: 3px; width: 100%; }
+  .cal-week { display: flex; flex-direction: column; gap: 3px; flex: 1 1 0; min-width: 6px; }
+  .cal-day { width: 100%; aspect-ratio: 1 / 1; border-radius: 2px; background: var(--rule-soft); }
+  .cal-day.lvl-1 { background: var(--cal-1); }
+  .cal-day.lvl-2 { background: var(--cal-2); }
+  .cal-day.lvl-3 { background: var(--cal-3); }
+  .cal-day.lvl-4 { background: var(--cal-4); }
+  .cal-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 8px; }
+  .cal-foot > span { font-size: 11.5px; color: var(--ink-faint); }
+  .cal-legend { display: flex; align-items: center; gap: 3px; font-size: 10.5px; color: var(--ink-faint); }
+  .cal-legend .cal-day { width: 10px; height: 10px; }
+
+  /* ---------- Score trend ---------- */
+  .score-trend-card .st-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 6px; }
+  .score-trend-card h2 { margin: 0; }
+  .st-best { font-size: 11.5px; color: var(--ink-faint); }
+  .st-best .n { font-family: var(--mono); font-weight: 600; color: var(--ink); }
+  .st-chart-row { display: flex; align-items: stretch; gap: 8px; }
+  .st-chart-row.st-axis-row { margin-bottom: 8px; }
+  .st-y-axis, .st-y-axis-spacer { flex: none; width: 34px; }
+  .st-y-axis {
+    display: flex; flex-direction: column; justify-content: space-between;
+    font-size: 10px; color: var(--ink-faint); text-align: right; padding: 0 2px 1px 0;
+    font-family: var(--mono);
+  }
+  .st-chart {
+    flex: 1 1 0; min-width: 0; display: flex; align-items: flex-end; gap: 6px; height: 90px;
+    padding: 0 2px; border-bottom: 1px solid var(--rule); margin-bottom: 8px;
+    background:
+      linear-gradient(var(--rule-soft), var(--rule-soft)) 0 0/100% 1px no-repeat,
+      linear-gradient(var(--rule-soft), var(--rule-soft)) 0 25%/100% 1px no-repeat,
+      linear-gradient(var(--rule-soft), var(--rule-soft)) 0 50%/100% 1px no-repeat,
+      linear-gradient(var(--rule-soft), var(--rule-soft)) 0 75%/100% 1px no-repeat;
+  }
+  .st-bar-col { flex: 1 1 0; display: flex; align-items: flex-end; justify-content: center; height: 100%; min-width: 0; }
+  .st-bar { width: 100%; max-width: 22px; background: var(--xp); border-radius: 3px 3px 0 0; min-height: 3px; position: relative; }
+  .st-bar.best { background: var(--tier-gold); }
+  .st-bar.estimated { background-image: repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 5px); }
+  .st-axis { flex: 1 1 0; min-width: 0; display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-faint); }
+  .st-empty { color: var(--ink-faint); font-size: 13px; }
+  .st-total-row { display: flex; gap: 26px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+  .st-view-toggle { margin-bottom: 12px; }
+  .st-note { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-faint); margin-top: 12px; }
+  .st-note-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex: none; max-width: none; }
+  .est-badge {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600;
+    color: var(--ink-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px;
+    margin-left: 6px; cursor: help;
+  }
+  .st-table-head {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint);
+    font-weight: 600; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule);
+  }
+  .st-table-hint { font-size: 11.5px; color: var(--ink-faint); margin: 6px 0 0; }
+  .st-table-scroll { overflow-x: auto; margin-top: 8px; }
+  .st-history-table { min-width: 600px; }
+  .st-history-table th:first-child, .st-history-table td:first-child { text-align: center; width: 56px; }
+  .st-history-table th:nth-child(n+4):nth-child(-n+8), .st-history-table td:nth-child(n+4):nth-child(-n+8) { text-align: right; }
+  .st-table-note { color: var(--ink-faint); font-size: 11.5px; text-transform: capitalize; }
+  .st-assumed-cell { color: var(--ink-faint); font-style: italic; }
+  .st-include-cb { cursor: pointer; }
+  .st-row-excluded { opacity: 0.45; }
+  .st-row-excluded td { text-decoration: line-through; text-decoration-color: var(--ink-faint); }
+  .st-row-excluded td:first-child { text-decoration: none; }
+
+  /* ---------- Weak-spot callout ---------- */
+  .weak-spot-card { display: flex; align-items: center; gap: 16px; padding: 18px 26px; }
+  .ws-icon {
+    flex: none; width: 40px; height: 40px; border-radius: 10px;
+    background: var(--hard-bg); color: var(--hard);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ws-body { flex: 1 1 auto; min-width: 0; }
+  .ws-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint); font-weight: 600; }
+  .ws-cat { font-family: var(--serif); font-size: 16px; margin: 2px 0 4px; }
+  .ws-sub { font-size: 12.5px; color: var(--ink-faint); }
+  .ws-cta { flex: none; }
+  @media (max-width: 560px) {
+    .weak-spot-card { flex-direction: column; align-items: flex-start; }
+    .ws-cta { align-self: stretch; }
+  }
+
   .progress-focus-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
   .progress-focus-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint); font-weight: 600; }
   .progress-focus-hint { font-size: 11px; color: var(--ink-faint); flex-basis: 100%; }
@@ -1041,7 +1159,45 @@
   .qtile:hover { border-color: var(--ink-faint); transform: scale(1.25); }
   .qtile.status-done { background: var(--done); border-color: var(--done); }
   .qtile.status-review { background: var(--review); border-color: var(--review); }
+  .qtile.fsrs-scheduled { background: var(--paper); border-color: var(--review); border-style: dashed; }
   .review-queue-empty { color: var(--ink-faint); font-size: 13px; padding: 4px 0 4px; }
+
+  /* ---------- FSRS review session ---------- */
+  .progress-stat.due .n { color: var(--hard); }
+  .progress-stat.scheduled .n { color: var(--accent-ink); }
+  .review-session-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .review-session-head .rs-count { font-size: 13px; color: var(--ink-faint); }
+  .review-session-tag { margin: 0 0 10px; }
+  .fsrs-grade-hint { font-size: 12.5px; color: var(--ink-faint); margin: 14px 0 4px; }
+  .fsrs-grade-row { display: flex; gap: 8px; margin: 14px 0 4px; flex-wrap: wrap; }
+  .fsrs-grade-btn {
+    flex: 1 1 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 9px 8px;
+    border-radius: 9px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.12s ease, transform 0.06s ease;
+  }
+  .fsrs-grade-btn:hover { transform: translateY(-1px); }
+  .fsrs-grade-btn .fsrs-grade-label { font-size: 13px; font-weight: 600; }
+  .fsrs-grade-btn .fsrs-grade-interval { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+  .fsrs-grade-btn.fsrs-again { border-color: var(--hard); }
+  .fsrs-grade-btn.fsrs-again .fsrs-grade-label { color: var(--hard); }
+  .fsrs-grade-btn.fsrs-hard { border-color: var(--medium); }
+  .fsrs-grade-btn.fsrs-hard .fsrs-grade-label { color: var(--medium); }
+  .fsrs-grade-btn.fsrs-good { border-color: var(--accent); }
+  .fsrs-grade-btn.fsrs-good .fsrs-grade-label { color: var(--accent-ink); }
+  .fsrs-grade-btn.fsrs-easy { border-color: var(--done); }
+  .fsrs-grade-btn.fsrs-easy .fsrs-grade-label { color: var(--done); }
+  .review-session-done { text-align: center; padding: 30px 10px; }
+  .review-session-done h3 { font-family: var(--serif); font-size: 20px; margin: 0 0 8px; }
+  .review-session-done p { color: var(--ink-faint); margin: 0 0 18px; }
 
   .inline-q-panel {
     background: var(--paper-raised);
@@ -1237,6 +1393,7 @@
     <button class="tab" data-view="practice">Practice</button>
     <button class="tab" data-view="test">Test</button>
     <button class="tab" data-view="mock">Mock Exam</button>
+    <button class="tab" data-view="profile">Profile</button>
     <button class="tab" data-view="progress">Progress</button>
     <button class="tab" data-view="review">Review</button>
     <button class="tab" data-view="notes">Notes</button>
@@ -1296,6 +1453,10 @@
 
   <div class="view" id="view-mock">
     <div class="test-shell" id="mockShell"></div>
+  </div>
+
+  <div class="view" id="view-profile">
+    <div class="test-shell" id="profileShell"></div>
   </div>
 
   <div class="view" id="view-progress">
@@ -1632,6 +1793,161 @@
     return out.sort((a, b) => b.ts - a.ts);
   }
 
+  // ---------- FSRS spaced repetition (Review queue scheduling) ----------
+  // A from-scratch implementation of FSRS-4.5 (github.com/open-spaced-repetition) —
+  // the same memory model Anki's "FSRS" scheduler uses. Applies only to whatever's
+  // currently flagged status 'review': flagging is still how a question enters the
+  // pile (unchanged), this decides *when* each flagged question should resurface
+  // instead of showing the whole pile every time — so a queue that's "piled up" is
+  // just a queue where a lot of cards happen to be due at once, not a UI problem.
+  //
+  // Deliberately day-granularity only (no Anki-style sub-day learning steps): each
+  // grade schedules a next *date*, minimum one day out, even on "Again". That's a
+  // legitimate simplification of core FSRS (Anki's own "review-only" cards work the
+  // same way) and it fits this app's usage pattern — periodic sessions, not a
+  // continuously-open queue — while keeping the scheduling math itself exact.
+  const FSRS_W = [0.40255, 1.18385, 3.173, 15.69105, 7.1949, 0.5345, 1.4604, 0.0046,
+    1.54575, 0.1192, 1.01925, 1.9395, 0.11, 0.29605, 2.2698, 0.2315, 2.9898, 0.51655, 0.6621];
+  const FSRS_DECAY = -0.5;
+  const FSRS_FACTOR = 19 / 81; // chosen so (1+FSRS_FACTOR)^FSRS_DECAY == 0.9 — i.e. R(t=stability) == 90%
+  const FSRS_REQUEST_RETENTION = 0.9;
+  const FSRS_MAX_INTERVAL_DAYS = 730;
+  const FSRS_RATING = { AGAIN: 1, HARD: 2, GOOD: 3, EASY: 4 };
+  const FSRS_RATING_LABELS = { 1: 'Again', 2: 'Hard', 3: 'Good', 4: 'Easy' };
+  const FSRS_SESSION_CAP = 40; // a session pulls at most this many due cards at once, however large the pile is
+
+  function fsrsClampDifficulty(d) { return Math.min(10, Math.max(1, d)); }
+  function fsrsInitStability(g) { return Math.max(0.1, FSRS_W[g - 1]); }
+  function fsrsInitDifficulty(g) { return fsrsClampDifficulty(FSRS_W[4] - Math.exp(FSRS_W[5] * (g - 1)) + 1); }
+
+  const FSRS_EASY_DIFFICULTY = fsrsInitDifficulty(FSRS_RATING.EASY); // mean-reversion anchor
+
+  function fsrsNextDifficulty(d, g) {
+    const dPrime = d + (-FSRS_W[6] * (g - 3)) * ((10 - d) / 9);
+    return fsrsClampDifficulty(FSRS_W[7] * FSRS_EASY_DIFFICULTY + (1 - FSRS_W[7]) * dPrime);
+  }
+
+  // Probability of recall after `elapsedDays` at a given memory `stability` —
+  // the forgetting curve. By construction, R(stability, stability) == 0.9.
+  function fsrsRetrievability(elapsedDays, stability) {
+    if (stability <= 0) return 0;
+    return Math.pow(1 + FSRS_FACTOR * elapsedDays / stability, FSRS_DECAY);
+  }
+
+  function fsrsStabilityAfterSuccess(s, d, r, g) {
+    const hardPenalty = g === FSRS_RATING.HARD ? FSRS_W[15] : 1;
+    const easyBonus = g === FSRS_RATING.EASY ? FSRS_W[16] : 1;
+    const alpha = 1 + (11 - d) * Math.pow(s, -FSRS_W[9]) * (Math.exp(FSRS_W[10] * (1 - r)) - 1)
+      * hardPenalty * easyBonus * Math.exp(FSRS_W[8]);
+    return Math.max(0.1, s * alpha);
+  }
+
+  function fsrsStabilityAfterFailure(s, d, r) {
+    const sFail = FSRS_W[11] * Math.pow(d, -FSRS_W[12]) * (Math.pow(s + 1, FSRS_W[13]) - 1) * Math.exp(FSRS_W[14] * (1 - r));
+    return Math.max(0.1, Math.min(sFail, s));
+  }
+
+  function fsrsIntervalDays(stability) {
+    const days = (stability / FSRS_FACTOR) * (Math.pow(FSRS_REQUEST_RETENTION, 1 / FSRS_DECAY) - 1);
+    return Math.min(FSRS_MAX_INTERVAL_DAYS, Math.max(1, Math.round(days)));
+  }
+
+  function fsrsBlankCard() {
+    return { state: 'new', stability: 0, difficulty: 0, due: null, last_review: null, reps: 0, lapses: 0 };
+  }
+
+  // Pure: returns a new card, never mutates `card`. Used both for the real
+  // grade (persisted) and for the button-preview intervals (discarded).
+  function fsrsGradeCard(card, rating, now) {
+    const c = Object.assign({}, card);
+    if (c.state !== 'review' || !c.last_review) {
+      c.difficulty = fsrsInitDifficulty(rating);
+      c.stability = fsrsInitStability(rating);
+    } else {
+      const elapsed = Math.max(0, (now - new Date(c.last_review)) / 86400000);
+      const r = fsrsRetrievability(elapsed, c.stability);
+      const nextD = fsrsNextDifficulty(c.difficulty, rating);
+      c.stability = rating === FSRS_RATING.AGAIN
+        ? fsrsStabilityAfterFailure(c.stability, nextD, r)
+        : fsrsStabilityAfterSuccess(c.stability, nextD, r, rating);
+      c.difficulty = nextD;
+    }
+    const intervalDays = fsrsIntervalDays(c.stability);
+    c.state = 'review';
+    c.reps = (c.reps || 0) + 1;
+    c.lapses = (c.lapses || 0) + (rating === FSRS_RATING.AGAIN ? 1 : 0);
+    c.last_review = now.toISOString();
+    c.due = new Date(now.getTime() + intervalDays * 86400000).toISOString();
+    c.lastIntervalDays = intervalDays;
+    return c;
+  }
+
+  // Interval preview (in days) for each of the 4 ratings, without persisting
+  // anything — powers the "Again 1d / Hard 2d / Good 4d / Easy 9d" button hints.
+  function fsrsPreviewIntervals(card, now) {
+    const preview = {};
+    [1, 2, 3, 4].forEach(g => { preview[g] = fsrsGradeCard(card, g, now).lastIntervalDays; });
+    return preview;
+  }
+
+  function fsrsFormatDays(days) {
+    if (days < 30) return `${days}d`;
+    if (days < 365) { const mo = days / 30; return `${mo < 10 ? mo.toFixed(1) : Math.round(mo)}mo`; }
+    const yr = days / 365; return `${yr < 10 ? yr.toFixed(1) : Math.round(yr)}y`;
+  }
+
+  const FSRS_KEY = 'sat_qbank_fsrs_v1';
+
+  function loadFsrsCards() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(FSRS_KEY));
+      return (raw && typeof raw === 'object' && !Array.isArray(raw)) ? raw : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveFsrsCards() {
+    try {
+      localStorage.setItem(FSRS_KEY, JSON.stringify(state.fsrsCards));
+    } catch (e) {
+      // storage unavailable/full — scheduling still lives in memory for this session
+    }
+  }
+
+  function getFsrsCard(qid) {
+    return state.fsrsCards[qid] || fsrsBlankCard();
+  }
+
+  function isFsrsDue(card, now) {
+    return card.state !== 'review' || !card.due || new Date(card.due) <= now;
+  }
+
+  function gradeFsrsQuestion(qid, rating) {
+    state.fsrsCards[qid] = fsrsGradeCard(getFsrsCard(qid), rating, new Date());
+    saveFsrsCards();
+  }
+
+  function fsrsFlaggedQuestions() {
+    return QUESTIONS.filter(q => questionStatus(q) === 'review');
+  }
+
+  // Every flagged question paired with its card, most-overdue (or never-studied)
+  // first — never-studied cards (due: null) sort ahead of any dated card.
+  function fsrsFlaggedWithCards() {
+    return fsrsFlaggedQuestions()
+      .map(q => ({ q, card: getFsrsCard(q.id) }))
+      .sort((a, b) => {
+        const da = a.card.due ? new Date(a.card.due).getTime() : -Infinity;
+        const db = b.card.due ? new Date(b.card.due).getTime() : -Infinity;
+        return da - db;
+      });
+  }
+
+  function fsrsDueEntries(now) {
+    return fsrsFlaggedWithCards().filter(x => isFsrsDue(x.card, now));
+  }
+
   // ---------- Estimated composite score (Mock Exam results) ----------
   // The real digital SAT is scored via IRT on an adaptive item pool we don't
   // have — this is a hand-tuned approximation, not an official College Board
@@ -1661,69 +1977,234 @@
     return interpCurve(routedHarder ? RW_CURVE_HARDER : RW_CURVE_EASIER, rawCorrect);
   }
 
-  function computeMockRWScore(data) {
+  // Like Albert's DSAT calculator, the score is always built from two
+  // module raw scores (0-27 each), summed and run through the curve above —
+  // never edited as a single final number. For a full adaptive attempt both
+  // module raw scores are real (from your actual answers). For a
+  // single-module attempt (Module 1 only / Module 2 only) only one module's
+  // raw score is real; the other is a hypothetical you can dial in with a
+  // +/- stepper (see rwOverrides), defaulting to a guess that mirrors your
+  // real module's accuracy rate. Routing (which curve — harder/easier pool —
+  // applies) is fixed by what actually happened: the real routedHarder flag
+  // for Module-2-only attempts (you picked the pool explicitly), or Module 1's
+  // accuracy vs. the pass threshold for Module-1-only attempts (the same rule
+  // live adaptive routing uses) — it does not change as you adjust the guess.
+  const MOCK_MODULE_LEN = 27;
+
+  function computeAttemptRW(data, assumedOtherRaw) {
     const d = data || mockState;
-    const all = [...d.module1Questions, ...d.module2Questions];
-    let correct = 0;
-    all.forEach(q => { if (d.answers[q.id] === q.correct_answer) correct++; });
-    return estimateRWScore(correct, d.routedHarder);
+    const m1Qs = d.module1Questions, m2Qs = d.module2Questions;
+    const m1Len = m1Qs.length, m2Len = m2Qs.length;
+    if (!m1Len && !m2Len) return null;
+    let m1Correct = 0, m2Correct = 0;
+    m1Qs.forEach(q => { if (d.answers[q.id] === q.correct_answer) m1Correct++; });
+    m2Qs.forEach(q => { if (d.answers[q.id] === q.correct_answer) m2Correct++; });
+
+    if (m1Len > 0 && m2Len > 0) {
+      return { m1: m1Correct, m2: m2Correct, m1Real: true, m2Real: true, assumed: false, routedHarder: !!d.routedHarder, score: estimateRWScore(m1Correct + m2Correct, d.routedHarder) };
+    }
+    const guess = (correct, len) => Math.max(0, Math.min(MOCK_MODULE_LEN, Number.isFinite(assumedOtherRaw) ? assumedOtherRaw : Math.round((correct / len) * MOCK_MODULE_LEN)));
+    if (m1Len > 0) {
+      const m2Guess = guess(m1Correct, m1Len);
+      const routedHarder = (m1Correct / m1Len) >= MOCK_PASS_THRESHOLD;
+      return { m1: m1Correct, m2: m2Guess, m1Real: true, m2Real: false, assumed: true, routedHarder, score: estimateRWScore(m1Correct + m2Guess, routedHarder) };
+    }
+    const m1Guess = guess(m2Correct, m2Len);
+    const routedHarder = !!d.routedHarder;
+    return { m1: m1Guess, m2: m2Correct, m1Real: false, m2Real: true, assumed: true, routedHarder, score: estimateRWScore(m1Guess + m2Correct, routedHarder) };
   }
 
-  const MATH_SCORE_KEY = 'sat_qbank_math_score_v1';
+  const RW_OVERRIDE_KEY = 'sat_qbank_rw_overrides_v2'; // attemptId -> assumed raw score (0-27) for the module not actually taken
+
+  function loadRWOverrides() {
+    try {
+      const raw = localStorage.getItem(RW_OVERRIDE_KEY);
+      const parsed = raw ? JSON.parse(raw) : {};
+      return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveRWOverrides(map) {
+    try { localStorage.setItem(RW_OVERRIDE_KEY, JSON.stringify(map)); } catch (e) { /* best-effort */ }
+  }
+
+  const rwOverrides = loadRWOverrides();
+
+  function setRWOverride(attemptId, assumedRaw) {
+    if (!attemptId) return;
+    rwOverrides[attemptId] = assumedRaw;
+    saveRWOverrides(rwOverrides);
+  }
+
+  // Effective R&W breakdown for a saved history attempt: your stored assumed
+  // guess for the untaken module if you've set one, else computeAttemptRW's
+  // default mirrored guess.
+  function effectiveRWScore(attempt, resolved) {
+    const data = resolved || resolveMockAttempt(attempt);
+    const override = rwOverrides[attempt.id];
+    const hasOverride = Number.isFinite(override);
+    const result = computeAttemptRW(data, hasOverride ? override : undefined);
+    return result ? Object.assign({}, result, { overridden: hasOverride && result.assumed }) : null;
+  }
+
+  // Math has no mock-exam attempt data anywhere in this app (the question
+  // bank + mock exam are R&W-only), so both Math modules are always
+  // self-reported — same as Albert's calculator, which asks for Module 1 and
+  // Module 2 raw scores (0-22 each, 44 total) for Math too rather than one
+  // flat number. Approximated curve (not an official College Board table);
+  // see the disclaimer on the score card.
+  const MATH_MODULE_LEN = 22;
+  const MATH_CURVE = [[0, 200], [5, 290], [10, 380], [15, 470], [20, 560], [25, 630], [30, 690], [35, 740], [40, 780], [44, 800]];
+  const MATH_MODULES_KEY = 'sat_qbank_math_modules_v1';
+
+  function loadMathModules() {
+    try {
+      const raw = localStorage.getItem(MATH_MODULES_KEY);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if (parsed && Number.isFinite(parsed.m1) && Number.isFinite(parsed.m2)) {
+        return {
+          m1: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(parsed.m1))),
+          m2: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(parsed.m2))),
+        };
+      }
+    } catch (e) { /* fall through to default */ }
+    return { m1: MATH_MODULE_LEN, m2: MATH_MODULE_LEN }; // default: full marks (800) — matches the prior flat 800 default
+  }
+
+  function saveMathModules(mods) {
+    try { localStorage.setItem(MATH_MODULES_KEY, JSON.stringify(mods)); } catch (e) { /* best-effort */ }
+  }
+
+  function setMathModule(field, val) {
+    const mods = loadMathModules();
+    mods[field] = Math.max(0, Math.min(MATH_MODULE_LEN, val));
+    saveMathModules(mods);
+    return mods;
+  }
+
+  function computeMathScore(mods) {
+    const m = mods || loadMathModules();
+    return interpCurve(MATH_CURVE, m.m1 + m.m2);
+  }
 
   function loadMathScore() {
-    const raw = parseInt(localStorage.getItem(MATH_SCORE_KEY), 10);
-    return (Number.isFinite(raw) && raw >= 200 && raw <= 800) ? raw : 800;
+    return computeMathScore();
   }
 
-  function saveMathScore(val) {
-    try { localStorage.setItem(MATH_SCORE_KEY, String(val)); } catch (e) { /* best-effort */ }
+  // Renders each row's Module 1 / Module 2 breakdown, Albert-style: a fixed
+  // "x / len" for a module you actually took, a +/- stepper for one you
+  // didn't (or, for Math, always — there's no Math attempt data at all here).
+  function moduleBreakdownHtml(section, len, rows) {
+    const rowHtml = rows.map(r => {
+      if (!r.editable) {
+        return `<div class="rw-module-row"><span class="rw-module-label">${r.label}${r.tag ? ` <span class="rw-module-tag">${r.tag}</span>` : ''}</span><span class="rw-module-val">${r.val} / ${len}</span></div>`;
+      }
+      return `
+        <div class="rw-module-row rw-module-editable">
+          <span class="rw-module-label">${r.label}${r.tag ? ` <span class="rw-module-tag">${r.tag}</span>` : ''}</span>
+          <div class="rw-stepper">
+            <button type="button" class="rw-step-btn" data-step-section="${section}" data-step-field="${r.field}" data-step-delta="-1" aria-label="Decrease ${r.label}">&minus;</button>
+            <span class="rw-stepper-val"><span class="rw-module-val" id="sc${section}ModVal-${r.field}">${r.val}</span><span class="rw-stepper-max"> / ${len}</span></span>
+            <button type="button" class="rw-step-btn" data-step-section="${section}" data-step-field="${r.field}" data-step-delta="1" aria-label="Increase ${r.label}">+</button>
+          </div>
+        </div>`;
+    }).join('');
+    return `<div class="rw-breakdown">${rowHtml}</div>`;
   }
 
-  // Renders the total/1600 + two subscore bars, with an editable Math score
-  // input (defaults to 800, persisted across sessions/exams). `rwScore` is
-  // fixed at render time; the Math input updates the total live via direct
-  // DOM writes (see wireScoreCard) rather than a full re-render.
-  function scoreCardHtml(rwScore) {
-    const mathScore = loadMathScore();
+  // Renders the total/1600 + two subscore bars, each broken into its Module 1
+  // / Module 2 raw scores — same interaction model as Albert's DSAT
+  // calculator (module raw scores in, section score out), rather than editing
+  // a single final number. R&W: `opts.rw` (from computeAttemptRW/
+  // effectiveRWScore) says which module was actually taken (fixed) vs.
+  // assumed (editable, only present for a single-module attempt — persisted
+  // per attempt via setRWOverride). Math: always both-editable self-report,
+  // since this app has no Math mock-exam attempts at all.
+  function scoreCardHtml(rwScore, opts) {
+    opts = opts || {};
+    const mathMods = loadMathModules();
+    const mathScore = computeMathScore(mathMods);
     const total = rwScore + mathScore;
     const rwPct = Math.round(((rwScore - 200) / 600) * 100);
     const mathPct = Math.round(((mathScore - 200) / 600) * 100);
+    const rw = opts.rw;
+    const rwEditable = !!opts.attemptId;
+    const rwBreakdown = rw ? moduleBreakdownHtml('Rw', MOCK_MODULE_LEN, [
+      { label: 'Module 1', val: rw.m1, field: 'm1', editable: rwEditable && !rw.m1Real, tag: rw.assumed ? (rw.m1Real ? 'actual' : 'assumed') : '' },
+      { label: 'Module 2', val: rw.m2, field: 'm2', editable: rwEditable && !rw.m2Real, tag: rw.assumed ? (rw.m2Real ? 'actual' : 'assumed') : '' },
+    ]) : '';
+    const mathBreakdown = moduleBreakdownHtml('Math', MATH_MODULE_LEN, [
+      { label: 'Module 1', val: mathMods.m1, field: 'm1', editable: true, tag: 'self-reported' },
+      { label: 'Module 2', val: mathMods.m2, field: 'm2', editable: true, tag: 'self-reported' },
+    ]);
     return `
       <div class="score-card">
         <div class="total-score" id="scTotal">${total}</div>
         <div class="total-label">Estimated total score (/1600)</div>
         <div class="score-bars">
           <div class="score-bar-row">
-            <div class="score-bar-head"><span>Reading &amp; Writing</span><span class="val">${rwScore}</span></div>
-            <div class="score-bar-track"><div class="score-bar-fill" style="width:${rwPct}%"></div></div>
+            <div class="score-bar-head">
+              <span>Reading &amp; Writing${rw && rw.assumed ? ' <span class="est-badge" title="Includes an assumed module score for the module you didn’t take in this attempt.">assumed</span>' : ''}</span>
+              <span class="val" id="scRwVal">${rwScore}</span>
+            </div>
+            <div class="score-bar-track"><div class="score-bar-fill" id="scRwFill" style="width:${rwPct}%"></div></div>
+            ${rwBreakdown}
           </div>
           <div class="score-bar-row">
             <div class="score-bar-head"><span>Math</span><span class="val" id="scMathVal">${mathScore}</span></div>
             <div class="score-bar-track"><div class="score-bar-fill" id="scMathFill" style="width:${mathPct}%"></div></div>
-            <div class="math-score-edit">
-              <label for="scMathInput">Edit Math score</label>
-              <input type="number" id="scMathInput" min="200" max="800" step="10" value="${mathScore}">
-            </div>
+            ${mathBreakdown}
           </div>
         </div>
-        <div class="score-disclaimer">R&amp;W score is an approximate estimate from this mock exam, not an official College Board conversion. Math score is self-reported.</div>
+        <div class="score-disclaimer">Both scores are built from Module 1 + Module 2 raw scores (out of ${MOCK_MODULE_LEN} for R&amp;W, ${MATH_MODULE_LEN} for Math) run through an approximate curve, the same way Albert's DSAT calculator works — not an official College Board conversion. You can only edit the module(s) you didn't actually take here; Math is always self-reported since there's no Math mock exam in this app.</div>
       </div>`;
   }
 
-  function wireScoreCard(rwScore) {
-    const input = document.getElementById('scMathInput');
-    if (!input) return;
-    input.addEventListener('input', () => {
-      let val = parseInt(input.value, 10);
-      if (!Number.isFinite(val)) return;
-      val = Math.max(200, Math.min(800, val));
-      saveMathScore(val);
-      const mathPct = Math.round(((val - 200) / 600) * 100);
-      document.getElementById('scMathVal').textContent = val;
-      document.getElementById('scMathFill').style.width = mathPct + '%';
-      document.getElementById('scTotal').textContent = rwScore + val;
+  function wireScoreCard(rwScore, opts) {
+    opts = opts || {};
+    const recomputeTotal = () => {
+      const mv = parseInt(document.getElementById('scMathVal').textContent, 10);
+      const rv = parseInt(document.getElementById('scRwVal').textContent, 10);
+      document.getElementById('scTotal').textContent = mv + rv;
+    };
+
+    let mathMods = loadMathModules();
+    document.querySelectorAll('.rw-step-btn[data-step-section="Math"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const field = btn.dataset.stepField;
+        const delta = parseInt(btn.dataset.stepDelta, 10);
+        mathMods = setMathModule(field, mathMods[field] + delta);
+        document.getElementById(`scMathModVal-${field}`).textContent = mathMods[field];
+        const newScore = computeMathScore(mathMods);
+        const pct = Math.round(((newScore - 200) / 600) * 100);
+        document.getElementById('scMathVal').textContent = newScore;
+        document.getElementById('scMathFill').style.width = pct + '%';
+        recomputeTotal();
+      });
     });
+
+    const rw = opts.rw;
+    if (opts.attemptId && rw && rw.assumed) {
+      const realField = rw.m1Real ? 'm1' : 'm2';
+      const assumedField = rw.m1Real ? 'm2' : 'm1';
+      const realVal = rw.m1Real ? rw.m1 : rw.m2;
+      let assumedVal = rw.m1Real ? rw.m2 : rw.m1;
+      document.querySelectorAll(`.rw-step-btn[data-step-section="Rw"][data-step-field="${assumedField}"]`).forEach(btn => {
+        btn.addEventListener('click', () => {
+          const delta = parseInt(btn.dataset.stepDelta, 10);
+          assumedVal = Math.max(0, Math.min(MOCK_MODULE_LEN, assumedVal + delta));
+          setRWOverride(opts.attemptId, assumedVal);
+          document.getElementById(`scRwModVal-${assumedField}`).textContent = assumedVal;
+          const newScore = estimateRWScore(realVal + assumedVal, rw.routedHarder);
+          const pct = Math.round(((newScore - 200) / 600) * 100);
+          document.getElementById('scRwVal').textContent = newScore;
+          document.getElementById('scRwFill').style.width = pct + '%';
+          recomputeTotal();
+        });
+      });
+    }
   }
 
   const state = {
@@ -1751,6 +2232,7 @@
     completionLog: loadCompletionLog(), // questionId -> ISO timestamp of first completion
     dailyGoal: loadDailyGoal(), // questions/day target, drives the Progress tab goal ring
     profile: loadProfile(), // { name }
+    fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
   };
 
   const testState = {
@@ -1788,6 +2270,16 @@
     expired: false,
   };
 
+  // A "study due" session on the Review tab — a fixed snapshot of due-card ids
+  // (see startReviewSession) grading through FSRS instead of the generic
+  // Practice flow, since only this session's Again/Hard/Good/Easy buttons feed
+  // the scheduler.
+  const reviewSession = {
+    phase: 'idle', // idle | active | done
+    queue: [], // qids, snapshotted when the session starts
+    pos: 0,
+  };
+
   const allCategories = [...new Set(QUESTIONS.map(q => q.category))].sort();
   const allSkills = [...new Set(QUESTIONS.map(q => q.skill))].sort();
   const allDifficulties = ['Easy', 'Medium', 'Hard'];
@@ -1797,7 +2289,8 @@
   // live as you mark questions and take mock exams (see setStatus/saveMockAttempt).
   function bestMockRWScore() {
     if (!mockState.history.length) return null;
-    return Math.max(...mockState.history.map(a => computeMockRWScore(resolveMockAttempt(a))));
+    const scores = mockState.history.map(a => effectiveRWScore(a)).filter(Boolean).map(s => s.score);
+    return scores.length ? Math.max(...scores) : null;
   }
 
   function renderStats() {
@@ -1872,9 +2365,9 @@
   function statusButtonsHtml(q, opts) {
     const status = questionStatus(q);
     const kbd = (opts && opts.shortcuts) ? {
-      review: '<kbd class="status-kbd">A</kbd>',
-      done: '<kbd class="status-kbd">D</kbd>',
-      incomplete: '<kbd class="status-kbd">S</kbd>',
+      review: '<kbd class="kbd-hint">A</kbd>',
+      done: '<kbd class="kbd-hint">D</kbd>',
+      incomplete: '<kbd class="kbd-hint">S</kbd>',
     } : { review: '', done: '', incomplete: '' };
     return `
       <div class="status-btn-row">
@@ -2178,8 +2671,12 @@
   // rationale, whether or not anything has been submitted yet.
   function qDetailHtml(q, opts) {
     opts = opts || {};
+    // Only rendered when `opts.shortcuts` is set (the modal and the
+    // Progress/Review/Notes inline panels) — see the big keydown listener
+    // below for what actually fires each key.
+    const kbd = (label) => opts.shortcuts ? `<kbd class="kbd-hint">${label}</kbd>` : '';
     const att = getAttempt(q.id);
-    const choiceHtml = ['A', 'B', 'C', 'D'].map(letter => {
+    const choiceHtml = ['A', 'B', 'C', 'D'].map((letter, idx) => {
       const isCorrect = letter === q.correct_answer;
       const isChosen = att.choice === letter;
       let cls = 'choice';
@@ -2196,6 +2693,7 @@
           <div>${escapeHtml(q.choices[letter])}</div>
           ${rationaleLine}
         </div>
+        ${kbd(idx + 1)}
       </div>`;
     }).join('');
 
@@ -2207,12 +2705,12 @@
         <div class="prompt-line">${escapeHtml(q.prompt)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="detail-actions">
-          <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit</button>
-          <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}</button>
-          <button class="btn" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question</button>
+          <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit${kbd('Enter')}</button>
+          <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd('Space')}</button>
+          <button class="btn" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question${kbd('C')}</button>
         </div>
         ${statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
-        ${notesSectionHtml(q)}
+        ${notesSectionHtml(q, opts)}
       </div>`;
   }
 
@@ -2241,7 +2739,8 @@
   // Notes tab and are matched by the free-text search box too. Unlike the
   // old tag chips, a question can carry any number of notes and they aren't
   // deduplicated.
-  function notesSectionHtml(q) {
+  function notesSectionHtml(q, opts) {
+    opts = opts || {};
     const notes = getNotes(q.id);
     const items = notes.map(n => `
       <div class="note-item">
@@ -2250,7 +2749,7 @@
       </div>`).join('');
     return `
       <div class="notes-section">
-        <div class="notes-label">Notes</div>
+        <div class="notes-label">Notes${opts.shortcuts ? '<kbd class="kbd-hint">N</kbd>' : ''}</div>
         <div class="note-list">
           ${items}
           ${notes.length ? '' : '<div class="notes-empty-hint">No notes yet — add one below.</div>'}
@@ -2418,8 +2917,8 @@
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
-            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
+            <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
+            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
           </div>
           <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
         </div>
@@ -2566,70 +3065,71 @@
     renderBulkBar(browseRenderedList);
   });
 
-  // Single-question panels that can have exactly one question open at a
-  // time outside the modal — Progress/Review/Notes tabs, each populated by
-  // clicking a tile or list row — eligible for the A/S/D marking keys below.
-  // Only the panel on the tab that's actually on screen counts (a stale
-  // state.xOpenQuestion left over from a tab the user has since left
-  // shouldn't eat keystrokes on whatever tab they're looking at now). The
-  // Review tab's panel also auto-advances to the next flagged question on
-  // marking — that queue is meant to shrink as you clear it, same as the
-  // modal below.
-  function activeInlinePanel() {
-    const candidates = [
-      { key: 'reviewOpenQuestion', viewId: 'view-review', render: renderReview, advanceQueue: true },
-      { key: 'progressOpenQuestion', viewId: 'view-progress', render: renderProgress, advanceQueue: false },
-      { key: 'notesOpenQuestion', viewId: 'view-notes', render: renderNotesView, advanceQueue: false },
+  // The DOM node currently showing one question's full detail (choices,
+  // submit, status buttons, notes) that the keyboard shortcuts below should
+  // act on — the modal, or whichever of the Progress/Review/Notes inline
+  // panels is open on the tab that's actually on screen right now (a panel
+  // left open on a tab the user has since navigated away from doesn't
+  // count — its DOM sticks around hidden, so this checks the tab is
+  // .active too, not just that the panel element exists).
+  function activeDetailRoot() {
+    if (state.modalList) return document.getElementById('questionModalRoot');
+    const panels = [
+      { viewId: 'view-review', rootId: 'reviewPanel' },
+      { viewId: 'view-review', rootId: 'reviewSessionPanel' },
+      { viewId: 'view-progress', rootId: 'progressPanel' },
+      { viewId: 'view-notes', rootId: 'notesPanel' },
     ];
-    for (const c of candidates) {
-      const qid = state[c.key];
-      if (!qid) continue;
-      const view = document.getElementById(c.viewId);
+    for (const p of panels) {
+      const view = document.getElementById(p.viewId);
       if (!view || !view.classList.contains('active')) continue;
-      if (!QUESTIONS.find(x => x.id === qid)) continue;
-      return Object.assign({ qid }, c);
+      const root = document.getElementById(p.rootId);
+      if (root) return root;
     }
     return null;
+  }
+
+  // Clicking a <button> focuses it as a side effect, and a focused element
+  // that isn't fully in view gets auto-scrolled into view by the browser —
+  // fine for a mouse click (you're already looking at the button) but
+  // jarring for a keyboard shortcut fired while reading a passage further
+  // down, since it yanks the view down to whatever button you just
+  // triggered blind. `fn` runs synchronously (these handlers all update
+  // state and re-render before returning, nothing async), so recording
+  // scroll position right before and restoring it right after happens
+  // within the same frame — the browser's auto-scroll never gets painted.
+  function runWithoutScrollJump(fn) {
+    const winX = window.scrollX, winY = window.scrollY;
+    const scroller = document.querySelector('.modal-body');
+    const scrollerTop = scroller ? scroller.scrollTop : null;
+    fn();
+    window.scrollTo(winX, winY);
+    if (scrollerTop !== null) {
+      // A status/submit/answer click re-renders the modal body from
+      // scratch, so the old `scroller` node is gone — re-query the new one.
+      const scrollerNow = document.querySelector('.modal-body');
+      if (scrollerNow) scrollerNow.scrollTop = scrollerTop;
+    }
   }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && state.modalList) { closeQuestionModal(); return; }
 
-    // Don't hijack Left/Right/A/S/D while the user is typing somewhere
-    // (search box, tag input, the Math-score field) — those need normal
-    // text entry.
+    // Don't hijack any of the shortcuts below while the user is typing
+    // somewhere (search box, tag input, a note, the Math-score field) —
+    // those need normal text entry.
     const tag = (e.target.tagName || '').toLowerCase();
     if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
 
-    const inlinePanel = state.modalList ? null : activeInlinePanel();
-
     if (state.modalList) {
-      const q = state.modalList[state.modalIndex];
-      const canAdvance = state.modalIndex < state.modalList.length - 1;
-      // A / S / D sit together on the left home row — reachable blind,
-      // right next to each other — for the three question statuses, while
-      // Left/Right (opposite hand) page through freely without marking
-      // anything. Setting a status advances to the next question
-      // automatically (unless already on the last one), Anki-style, so
-      // working through a batch is just "glance, tap a key" on repeat.
-      if (e.key === 'ArrowRight' && canAdvance) {
-        state.modalIndex++; renderQuestionModal();
+      // Left/Right are the only way to move between questions — kept
+      // deliberately separate from grading below, so marking a question
+      // never sweeps you on to the next one before you're ready.
+      if (e.key === 'ArrowRight' && state.modalIndex < state.modalList.length - 1) {
+        state.modalIndex++; renderQuestionModal(); return;
       } else if (e.key === 'ArrowLeft' && state.modalIndex > 0) {
-        state.modalIndex--; renderQuestionModal();
-      } else if (q && /^[asd]$/i.test(e.key)) {
-        const status = { a: 'review', s: 'incomplete', d: 'done' }[e.key.toLowerCase()];
-        applyStatusClick(q.id, status);
-        if (canAdvance) state.modalIndex++;
-        renderQuestionModal();
+        state.modalIndex--; renderQuestionModal(); return;
       }
-    } else if (inlinePanel && /^[asd]$/i.test(e.key)) {
-      const status = { a: 'review', s: 'incomplete', d: 'done' }[e.key.toLowerCase()];
-      applyStatusClick(inlinePanel.qid, status);
-      if (inlinePanel.advanceQueue) {
-        const remaining = QUESTIONS.filter(x => questionStatus(x) === 'review' && x.id !== inlinePanel.qid);
-        state[inlinePanel.key] = remaining.length ? remaining[0].id : null;
-      }
-      inlinePanel.render();
     } else if (mockState.phase === 'module1' || mockState.phase === 'module2') {
       // Mirrors the Previous/Next buttons — Right never auto-submits on the
       // last question (no mockSubmitBtn to click), so a stray press there
@@ -2637,10 +3137,74 @@
       if (e.key === 'ArrowRight') {
         const btn = document.getElementById('mockNextBtn');
         if (btn) btn.click();
+        return;
       } else if (e.key === 'ArrowLeft') {
         const btn = document.getElementById('mockPrevBtn');
         if (btn) btn.click();
+        return;
       }
+    }
+
+    // Everything below acts on whichever single question is on screen (the
+    // modal, or an inline panel) by clicking/focusing the exact element a
+    // mouse would — so it's just triggering the same wiring qDetailHtml
+    // already has, not a separate state-update path to keep in sync.
+    // Positions roughly mirror a physical keyboard: 1-4 sit above the
+    // choices they pick (Anki-style grading keys, repurposed for "which
+    // answer" — except inside a review session once the answer's shown,
+    // where they revert to actual Anki-style grading, see below); A/S/D sit
+    // together on the left home row for the three question statuses; the
+    // rest (Enter/Space/C/I/U/N) are one mnemonic letter or the obviously-
+    // right key for what they do.
+    const root = activeDetailRoot();
+    if (!root) return;
+
+    // Inside an active review session, once the answer's up, 1-4 stop picking
+    // a choice and start grading the card (Again/Hard/Good/Easy) instead —
+    // same as Anki, where number keys are inert until the answer is shown.
+    const sessionQ = root.id === 'reviewSessionPanel' ? reviewSessionCurrentQuestion() : null;
+    if (sessionQ) {
+      const att = getAttempt(sessionQ.id);
+      const gradeIdx = ['1', '2', '3', '4'].indexOf(e.key);
+      if (gradeIdx !== -1 && (att.submitted || att.showAnswer)) {
+        const gradeBtn = root.querySelector(`[data-fsrs-grade="${gradeIdx + 1}"]`);
+        if (gradeBtn) runWithoutScrollJump(() => gradeBtn.click());
+        return;
+      }
+    }
+
+    const choiceIdx = ['1', '2', '3', '4'].indexOf(e.key);
+    if (choiceIdx !== -1) {
+      const choice = root.querySelectorAll('.choice')[choiceIdx];
+      if (choice) runWithoutScrollJump(() => choice.click());
+    } else if (e.key === 'Enter') {
+      const btn = root.querySelector('[data-submit-qid]');
+      if (btn) runWithoutScrollJump(() => btn.click());
+    } else if (e.key === ' ') {
+      e.preventDefault();
+      const btn = root.querySelector('[data-toggle-answer-qid]');
+      if (btn) runWithoutScrollJump(() => btn.click());
+    } else if (/^[asd]$/i.test(e.key)) {
+      const status = { a: 'review', s: 'incomplete', d: 'done' }[e.key.toLowerCase()];
+      const btn = root.querySelector(`[data-set-status="${status}"]`);
+      if (btn) runWithoutScrollJump(() => btn.click());
+    } else if (e.key.toLowerCase() === 'c') {
+      const btn = root.querySelector('[data-copy-question-qid]');
+      if (btn) runWithoutScrollJump(() => btn.click());
+    } else if (e.key.toLowerCase() === 'i') {
+      const chip = root.querySelector('.id-chip[data-copy-id]');
+      if (chip) runWithoutScrollJump(() => chip.click());
+    } else if (e.key.toLowerCase() === 'u') {
+      // The short display label ("Evidence #1", etc.) — .qid in the modal
+      // head, .inline-q-panel-title in the Progress/Review/Notes panels.
+      const chip = root.querySelector('.qid[data-copy-id], .inline-q-panel-title[data-copy-id]');
+      if (chip) runWithoutScrollJump(() => chip.click());
+    } else if (e.key.toLowerCase() === 'n') {
+      const input = root.querySelector('.note-input');
+      // Focusing this one directly (not via .click()) so preventScroll can
+      // just be passed straight through — no need for the record/restore
+      // dance above.
+      if (input) input.focus({ preventScroll: true });
     }
   });
 
@@ -2673,6 +3237,7 @@
       if (tab.dataset.view === 'practice') renderPractice();
       if (tab.dataset.view === 'test') renderTest();
       if (tab.dataset.view === 'mock') renderMock();
+      if (tab.dataset.view === 'profile') renderProfile();
       if (tab.dataset.view === 'progress') renderProgress();
       if (tab.dataset.view === 'review') renderReview();
       if (tab.dataset.view === 'notes') renderNotesView();
@@ -3134,25 +3699,38 @@
   // medium-weighted mix from every skill; Module 2 adapts — harder-weighted if
   // Module 1 went well, easier-weighted if it didn't — approximating (not
   // replicating; College Board's real routing is IRT-based) the real digital
-  // SAT's multistage-adaptive design. Skill order/counts below mirror the
-  // official 4-domain, 10-skill blueprint and its published per-test count
-  // ranges (Information and Ideas 12-14, Craft and Structure 13-15, Expression
-  // of Ideas 8-12, Standard English Conventions 11-15, out of 54) — Words in
-  // Context leads each module, matching the real test's usual opening block.
+  // SAT's multistage-adaptive design.
+  //
+  // Per-skill counts below are fit to the *empirical* average distribution
+  // across College Board's released digital SAT practice tests (Words in
+  // Context ~10.6/54, Form/Structure/Sense ~7.8, Boundaries+Transitions+
+  // Rhetorical Synthesis ~5.6 each, Central Ideas ~4.6, Command of Evidence
+  // (textual+quantitative combined here) ~7.6, Inferences ~3.6, Text
+  // Structure and Purpose ~2.2, Cross-Text Connections ~1 — source:
+  // prepscholar's per-type breakdown of released practice tests), rounded to
+  // whole numbers via largest-remainder so the total lands exactly on 54,
+  // then split 27/27 across modules the same way. That's why a couple of
+  // rows look lopsided (e.g. Cross-Text is 1/0, not 1/1) — real forms
+  // typically run a single Cross-Text pair total, not one per module. This
+  // sits within the official 4-domain published ranges too (Information and
+  // Ideas 12-14, Craft and Structure 13-15, Expression of Ideas 8-12,
+  // Standard English Conventions 11-15, out of 54 — College Board's Digital
+  // SAT Suite Assessments Specifications Overview) — those ranges are exact,
+  // the per-skill split within a domain is the empirical estimate.
   const MOCK_MODULE_SECONDS = 32 * 60;
   const MOCK_PASS_THRESHOLD = 0.6; // module-1 accuracy at/above this routes module 2 to the harder pool
 
   const MOCK_BLUEPRINT = [
-    { category: 'Vocab', skill: 'Words in Context', m1: 4, m2: 4 },
-    { category: 'Functions', skill: 'Text Structure and Purpose', m1: 2, m2: 3 },
-    { category: 'Cross-Text', skill: 'Cross-Text Connections', m1: 1, m2: 1 },
-    { category: 'Main Idea', skill: 'Central Ideas and Details', m1: 2, m2: 2 },
-    { category: 'Command of Evidence', skill: 'Command of Evidence', m1: 3, m2: 3 },
+    { category: 'Vocab', skill: 'Words in Context', m1: 6, m2: 5 },
+    { category: 'Functions', skill: 'Text Structure and Purpose', m1: 1, m2: 1 },
+    { category: 'Cross-Text', skill: 'Cross-Text Connections', m1: 1, m2: 0 },
+    { category: 'Main Idea', skill: 'Central Ideas and Details', m1: 3, m2: 2 },
+    { category: 'Command of Evidence', skill: 'Command of Evidence', m1: 4, m2: 4 },
     { category: 'Inferences', skill: 'Inferences', m1: 2, m2: 2 },
-    { category: 'Grammar', skill: 'Boundaries', m1: 4, m2: 3 },
-    { category: 'Grammar', skill: 'Form, Structure, and Sense', m1: 3, m2: 3 },
-    { category: 'Transitions', skill: 'Transitions', m1: 3, m2: 3 },
-    { category: 'Notes', skill: 'Rhetorical Synthesis', m1: 3, m2: 3 },
+    { category: 'Grammar', skill: 'Boundaries', m1: 2, m2: 3 },
+    { category: 'Grammar', skill: 'Form, Structure, and Sense', m1: 4, m2: 4 },
+    { category: 'Transitions', skill: 'Transitions', m1: 2, m2: 3 },
+    { category: 'Notes', skill: 'Rhetorical Synthesis', m1: 2, m2: 3 },
   ];
   const SKILL_DOMAIN = {
     'Central Ideas and Details': 'Information and Ideas',
@@ -3318,6 +3896,7 @@
   function resolveMockAttempt(attempt) {
     const byId = id => QUESTIONS.find(q => q.id === id);
     return {
+      id: attempt.id,
       module1Questions: attempt.module1Ids.map(byId).filter(Boolean),
       module2Questions: attempt.module2Ids.map(byId).filter(Boolean),
       answers: attempt.answers || {},
@@ -3341,6 +3920,7 @@
     routedHarder: null,
     history: loadMockHistory(), // past completed exams, most recent first
     viewingAttemptId: null, // history record id being viewed read-only (phase 'historyResults')
+    lastAttemptId: null, // id of the attempt just saved by saveMockAttempt, for the live (non-history) results screen
 
     // ---- config (set on the 'intro' screen, read when Start is clicked) ----
     mode: 'adaptive', // adaptive (M1 -> routed M2) | module1 (M1 only) | module2 (M2 only, explicit pool)
@@ -3350,6 +3930,7 @@
     blueprint: cloneDefaultBlueprint(), // editable per-skill {category, skill, m1, m2} counts
     weightConfig: defaultWeightConfig(), // per-slot ('m1' | 'm2harder' | 'm2easier') difficulty-mix preset/custom
     qtimer: { timed: false, timerSeconds: 60, timerStrict: true, timeLeft: 0, timerId: null, expired: false }, // opt-in per-question timer, layered alongside the module clock
+    advanced: false, // whether the folded module-mix/weighting/adaptive-threshold section is expanded
   };
 
   function formatMockTime(seconds) {
@@ -3492,6 +4073,7 @@
       routedHarder: mockState.routedHarder,
     };
     mockState.history = [attempt, ...mockState.history].slice(0, MOCK_HISTORY_LIMIT);
+    mockState.lastAttemptId = attempt.id;
     saveMockHistory();
     renderStats();
   }
@@ -3637,7 +4219,7 @@
         <div class="bp-table-head">
           <label>Question mix by skill</label>
           <div class="bp-actions">
-            <button type="button" class="btn" id="mockResetBlueprintBtn" style="font-size:11px; padding:4px 9px;">Reset to official (27)</button>
+            <button type="button" class="btn" id="mockResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix and routing threshold below back to their defaults">Reset to official</button>
           </div>
         </div>
         <table class="mock-blueprint-table bp-editable">
@@ -3654,7 +4236,7 @@
           ${showM1 ? `<span>Module 1 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM1" min="0" max="200" value="${m1Total}"><button type="button" class="btn" id="mockScaleM1Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
           ${showM2 ? `<span>Module 2 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM2" min="0" max="200" value="${m2Total}"><button type="button" class="btn" id="mockScaleM2Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
         </div>
-        <p class="bp-hint">Edit any count directly, or set a target total and Apply to redistribute proportionally. If a skill runs short of "in bank" (especially once a status filter below narrows it), that skill quietly backfills from its full pool so the module still hits your requested count.</p>
+        <p class="bp-hint">Edit any count directly, or set a target total and Apply to redistribute proportionally. If a skill runs short of "in bank" (especially once a status filter below narrows it), that skill quietly backfills from its full pool so the module still hits your requested count. "Reset to official" restores this table <em>and</em> the difficulty mix and routing threshold below to their defaults — a 27/27 split fit to the empirical average distribution of released digital SAT practice tests, not just an even spread across skills.</p>
       </div>`;
   }
 
@@ -3709,6 +4291,10 @@
       weightSection = mockModule2PoolChipsHtml() + weightPickerHtml(mockState.module2Pool === 'harder' ? 'm2harder' : 'm2easier', 'Module 2 difficulty mix');
     }
 
+    const advancedSection = `
+        ${mockBlueprintTableHtml(showM1, showM2)}
+        ${weightSection}`;
+
     return `
       <div class="config-card">
         <h2>Mock Exam</h2>
@@ -3721,8 +4307,13 @@
           <label>Scope — status (leave empty for all)</label>
           <div class="chip-row">${statusChipsHtml(mockState)}</div>
         </div>
-        ${mockBlueprintTableHtml(showM1, showM2)}
-        ${weightSection}
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="mockAdvancedToggle" ${mockState.advanced ? 'checked' : ''} />
+            <span>Customize question mix &amp; difficulty — module counts, weighting, adaptive threshold</span>
+          </label>
+        </div>
+        ${mockState.advanced ? advancedSection : ''}
         ${timedModeConfigHtml(mockState.qtimer, 'mockQ')}
         <button class="btn btn-accent" id="startMockBtn">${startLabel}</button>
       </div>
@@ -3869,29 +4460,35 @@
         </div>`;
     }).join('');
 
-    // A composite /1600 estimate only makes sense for a full adaptive attempt
-    // (its curve is calibrated against all 54 questions); Module-1-only and
-    // Module-2-only attempts show just the raw score for this module instead.
+    // A full adaptive attempt (both modules) scores directly off the two real
+    // module raw scores. A single-module attempt still gets a composite score
+    // — using an assumed raw score for the module you didn't take (see
+    // computeAttemptRW) — rather than no score at all; that module's stepper
+    // is editable so the assumption can be corrected.
     const mode = data.mode || 'adaptive';
-    const showComposite = mode === 'adaptive' && data.module1Questions.length > 0 && data.module2Questions.length > 0;
-    const rwScore = showComposite ? computeMockRWScore(data) : null;
+    const isFullAdaptive = mode === 'adaptive' && data.module1Questions.length > 0 && data.module2Questions.length > 0;
+    const attemptId = isHistory ? data.id : mockState.lastAttemptId;
+    const override = attemptId ? rwOverrides[attemptId] : undefined;
+    const rw = computeAttemptRW(data, Number.isFinite(override) ? override : undefined);
+    const showComposite = !!rw;
+    const rwScore = rw ? rw.score : null;
 
     let routingNoteHtml;
-    if (showComposite) {
+    if (isFullAdaptive) {
       routingNoteHtml = `
         <div class="mock-routing-note">
           Module 1: ${data.module1Correct}/${data.module1Questions.length} (${Math.round(data.module1Pct * 100)}%) &rarr;
           routed to the <strong>${data.routedHarder ? 'harder' : 'easier'}</strong> pool for Module 2, which scored ${m2Score.correct}/${m2Score.total} (${Math.round(m2Score.pct * 100)}%).
         </div>`;
     } else if (mode === 'module1') {
-      routingNoteHtml = `<div class="mock-routing-note">Module 1 only — no Module 2 in this attempt, so no adaptive routing and no composite R&amp;W estimate (that curve is calibrated against the full 54-question exam).</div>`;
+      routingNoteHtml = `<div class="mock-routing-note">Module 1 only — no Module 2 in this attempt, so no adaptive routing. Module 2's score above is an assumption — use its +/&minus; buttons to adjust it.</div>`;
     } else {
-      routingNoteHtml = `<div class="mock-routing-note">Module 2 only — drawn straight from the <strong>${data.routedHarder ? 'harder' : 'easier'}</strong> pool (no Module 1 in this attempt, so no composite R&amp;W estimate).</div>`;
+      routingNoteHtml = `<div class="mock-routing-note">Module 2 only — drawn straight from the <strong>${data.routedHarder ? 'harder' : 'easier'}</strong> pool (no Module 1 in this attempt). Module 1's score above is an assumption — use its +/&minus; buttons to adjust it.</div>`;
     }
 
     return `
       <div class="results-summary">
-        ${showComposite ? scoreCardHtml(rwScore) : ''}
+        ${showComposite ? scoreCardHtml(rwScore, { rw, attemptId }) : ''}
         <div class="score">${correct}/${total}</div>
         <div class="score-sub">${pct}% correct${showComposite ? ' overall' : ' in this attempt'}</div>
         ${routingNoteHtml}
@@ -3945,6 +4542,8 @@
       });
       wireScopeChips(shell, mockState, renderMock);
       wireTimedModeConfig(shell, mockState.qtimer, 'mockQ', renderMock);
+      const advToggle = document.getElementById('mockAdvancedToggle');
+      if (advToggle) advToggle.addEventListener('change', () => { mockState.advanced = advToggle.checked; renderMock(); });
 
       // Blueprint table: counts are written straight into mockState.blueprint
       // on change (no re-render, so typing isn't interrupted); the live
@@ -3964,7 +4563,12 @@
         });
       });
       const resetBpBtn = document.getElementById('mockResetBlueprintBtn');
-      if (resetBpBtn) resetBpBtn.addEventListener('click', () => { mockState.blueprint = cloneDefaultBlueprint(); renderMock(); });
+      if (resetBpBtn) resetBpBtn.addEventListener('click', () => {
+        mockState.blueprint = cloneDefaultBlueprint();
+        mockState.weightConfig = defaultWeightConfig();
+        mockState.passThreshold = MOCK_PASS_THRESHOLD;
+        renderMock();
+      });
       const scaleM1Btn = document.getElementById('mockScaleM1Btn');
       if (scaleM1Btn) scaleM1Btn.addEventListener('click', () => {
         const target = Math.max(0, parseInt(document.getElementById('mockScaleM1').value, 10) || 0);
@@ -4056,7 +4660,10 @@
         renderMock();
       });
       wireStatusButtons(shell, renderMock);
-      wireScoreCard(computeMockRWScore(data));
+      const scAttemptId = isHistory ? data.id : mockState.lastAttemptId;
+      const scOverride = scAttemptId ? rwOverrides[scAttemptId] : undefined;
+      const scRw = computeAttemptRW(data, Number.isFinite(scOverride) ? scOverride : undefined);
+      wireScoreCard(scRw ? scRw.score : null, { rw: scRw, attemptId: scAttemptId });
       shell.querySelectorAll('[data-scroll-to]').forEach(el => {
         el.addEventListener('click', () => {
           const target = document.getElementById(el.dataset.scrollTo);
@@ -4087,7 +4694,10 @@
     return `
       <div class="inline-q-panel" id="${panelId}">
         <div class="inline-q-panel-head">
-          <span class="inline-q-panel-title" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="inline-q-panel-title" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
+            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
+          </div>
           <button class="icon-close-btn" id="${closeId}" title="Close" aria-label="Close">&#10005;</button>
         </div>
         ${qDetailHtml(q, { bare: true, shortcuts: true })}
@@ -4343,6 +4953,338 @@
       </div>`;
   }
 
+  // ---------- Activity calendar (Profile tab) ----------
+  // GitHub-style heatmap of state.completionLog, grouped by local date. A
+  // fixed number of weeks ending today, padded back to the preceding Sunday
+  // so the grid always renders full week-columns.
+  const ACTIVITY_WEEKS = 18;
+
+  function activityCalendarHtml() {
+    const counts = dailyCompletionCounts();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const start = new Date(today);
+    start.setDate(start.getDate() - (ACTIVITY_WEEKS * 7 - 1));
+    start.setDate(start.getDate() - start.getDay());
+
+    const days = [];
+    let total = 0;
+    for (const cursor = new Date(start); cursor <= today; cursor.setDate(cursor.getDate() + 1)) {
+      const key = dateKey(cursor);
+      const count = counts[key] || 0;
+      total += count;
+      days.push({ date: new Date(cursor), count });
+    }
+
+    const level = c => c <= 0 ? 0 : c < 3 ? 1 : c < 6 ? 2 : c < 10 ? 3 : 4;
+    const fmt = d => d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+
+    const weeks = [];
+    for (let i = 0; i < days.length; i += 7) weeks.push(days.slice(i, i + 7));
+    const weeksHtml = weeks.map(w => `
+      <div class="cal-week">${w.map(d => `<div class="cal-day lvl-${level(d.count)}" title="${d.count} completed &middot; ${fmt(d.date)}"></div>`).join('')}</div>`
+    ).join('');
+
+    return `
+      <div class="progress-summary activity-card">
+        <div class="activity-head">
+          <h2>Activity</h2>
+          <span class="activity-range">${fmt(start)} &ndash; ${fmt(today)}</span>
+        </div>
+        <div class="cal-scroll"><div class="cal-grid">${weeksHtml}</div></div>
+        <div class="cal-foot">
+          <span>${total} question${total === 1 ? '' : 's'} completed in the last ${ACTIVITY_WEEKS} weeks</span>
+          <div class="cal-legend">
+            Less
+            <span class="cal-day lvl-0"></span><span class="cal-day lvl-1"></span><span class="cal-day lvl-2"></span><span class="cal-day lvl-3"></span><span class="cal-day lvl-4"></span>
+            More
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // ---------- Score trend (Profile tab) ----------
+  // R&W is per-attempt (mockState.history), via effectiveRWScore — your
+  // assumed-module override if set, else computeAttemptRW's default mirrored
+  // guess for single-module attempts. Math is a single self-reported value
+  // with no history of its own, so it's folded into a flat +Math offset in
+  // the "Total" view rather than plotted over time on its own.
+  const SCORE_TREND_ATTEMPTS = 12;
+  const TREND_VIEW_KEY = 'sat_qbank_trend_view_v1'; // 'rw' | 'total'
+  const TREND_EXCLUDED_KEY = 'sat_qbank_trend_excluded_v1'; // attempt ids left out of the chart/stats
+
+  function loadTrendView() {
+    return localStorage.getItem(TREND_VIEW_KEY) === 'total' ? 'total' : 'rw';
+  }
+
+  function saveTrendView(v) {
+    try { localStorage.setItem(TREND_VIEW_KEY, v); } catch (e) { /* best-effort */ }
+  }
+
+  function loadTrendExcluded() {
+    try {
+      const raw = localStorage.getItem(TREND_EXCLUDED_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return new Set(Array.isArray(parsed) ? parsed : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  function saveTrendExcluded(set) {
+    try { localStorage.setItem(TREND_EXCLUDED_KEY, JSON.stringify([...set])); } catch (e) { /* best-effort */ }
+  }
+
+  const trendExcluded = loadTrendExcluded();
+
+  function setTrendIncluded(attemptId, included) {
+    if (included) trendExcluded.delete(attemptId); else trendExcluded.add(attemptId);
+    saveTrendExcluded(trendExcluded);
+  }
+
+  function scoreTrendHtml() {
+    const attempts = mockState.history.slice(0, SCORE_TREND_ATTEMPTS).slice().reverse();
+    if (!attempts.length) {
+      return `
+        <div class="progress-summary score-trend-card">
+          <div class="st-head"><h2>Score trend</h2></div>
+          <div class="st-empty">No mock exams yet — take one from the Mock Exam tab to start tracking your estimated score over time.</div>
+        </div>`;
+    }
+
+    // `allScored` backs the table (every recent attempt, whether or not it's
+    // counted); `scored` — the included subset — backs the chart/stats, so
+    // unchecking a bad attempt (sick day, distracted run, whatever) drops it
+    // from the trend without deleting the mock exam itself.
+    const allScored = attempts.map(a => {
+      const eff = effectiveRWScore(a);
+      if (!eff) return null;
+      return {
+        id: a.id, date: new Date(a.completedAt), rw: eff.score, assumed: eff.assumed, overridden: eff.overridden,
+        mode: a.mode || 'adaptive', m1: eff.m1, m2: eff.m2, m1Real: eff.m1Real, m2Real: eff.m2Real,
+        included: !trendExcluded.has(a.id),
+      };
+    }).filter(Boolean);
+    if (!allScored.length) {
+      return `
+        <div class="progress-summary score-trend-card">
+          <div class="st-head"><h2>Score trend</h2></div>
+          <div class="st-empty">No scoreable mock exams yet.</div>
+        </div>`;
+    }
+    const scored = allScored.filter(s => s.included);
+
+    const view = loadTrendView();
+    const mathScore = loadMathScore();
+    const valueOf = s => view === 'total' ? s.rw + mathScore : s.rw;
+    const lo = view === 'total' ? 400 : 200;
+    const hi = view === 'total' ? 1600 : 800;
+    const fmt = d => d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+
+    // 5 evenly spaced ticks top-to-bottom, matching the .st-chart gridlines
+    // (0/25/50/75/100%) so labels and lines line up exactly.
+    const yTicks = [0, 1, 2, 3, 4].map(i => Math.round(hi - (i * (hi - lo)) / 4));
+    const yAxisHtml = yTicks.map(t => `<span>${t}</span>`).join('');
+
+    let chartHtml;
+    if (!scored.length) {
+      chartHtml = `<div class="st-empty">Every mock exam below is excluded from the chart — check one in the table to include it.</div>`;
+    } else {
+      const best = Math.max(...scored.map(valueOf));
+      const latest = scored[scored.length - 1];
+      const barsHtml = scored.map(s => {
+        const v = valueOf(s);
+        const pct = Math.max(4, Math.round(((v - lo) / (hi - lo)) * 100));
+        const label = `${fmt(s.date)}: ${v} ${view === 'total' ? 'total' : 'R&W'}${s.assumed ? ' (includes an assumed module score)' : ''}`;
+        return `<div class="st-bar-col"><div class="st-bar ${v === best ? 'best' : ''} ${s.assumed ? 'estimated' : ''}" style="height:${pct}%" title="${escapeHtml(label)}"></div></div>`;
+      }).join('');
+      chartHtml = `
+        <span class="st-best">Best ${view === 'total' ? 'total' : 'R&amp;W'} <span class="n">${best}</span></span>
+        <div class="st-chart-row">
+          <div class="st-y-axis">${yAxisHtml}</div>
+          <div class="st-chart">${barsHtml}</div>
+        </div>
+        <div class="st-chart-row st-axis-row">
+          <div class="st-y-axis-spacer"></div>
+          <div class="st-axis"><span>${fmt(scored[0].date)}</span><span>${fmt(latest.date)}</span></div>
+        </div>
+        <div class="st-total-row">
+          <div class="progress-stat"><span class="n">${latest.rw}</span><span class="l">Latest R&amp;W</span></div>
+          <div class="progress-stat"><span class="n">${mathScore}</span><span class="l">Math (self-reported)</span></div>
+          <div class="progress-stat"><span class="n">${latest.rw + mathScore}</span><span class="l">Latest total (/1600)</span></div>
+        </div>`;
+    }
+
+    const noteHtml = scored.some(s => s.assumed)
+      ? `<div class="st-note"><span class="st-bar estimated st-note-swatch"></span>Includes an assumed module score for a single-module attempt — open that exam's results to adjust it with its +/&minus; buttons.</div>`
+      : '';
+
+    const tableRowsHtml = allScored.slice().reverse().map(s => {
+      const total = s.rw + mathScore;
+      const noteParts = [];
+      if (s.overridden) noteParts.push('edited');
+      else if (s.assumed) noteParts.push('assumed');
+      const modCell = (val, real) => `<td class="bp-total${real ? '' : ' st-assumed-cell'}">${val}${real ? '' : '*'}</td>`;
+      return `
+        <tr class="${s.included ? '' : 'st-row-excluded'}">
+          <td><input type="checkbox" class="st-include-cb" data-trend-include="${s.id}" ${s.included ? 'checked' : ''} title="Include this exam in the chart above"></td>
+          <td>${fmt(s.date)}</td>
+          <td>${escapeHtml(MOCK_MODE_LABELS[s.mode] || s.mode)}</td>
+          ${modCell(s.m1, s.m1Real)}
+          ${modCell(s.m2, s.m2Real)}
+          <td class="bp-total">${s.rw}</td>
+          <td class="bp-total st-assumed-cell">${mathScore}*</td>
+          <td class="bp-total">${total}</td>
+          <td class="st-table-note">${noteParts.join(', ')}</td>
+        </tr>`;
+    }).join('');
+
+    return `
+      <div class="progress-summary score-trend-card">
+        <div class="st-head">
+          <h2>Score trend</h2>
+        </div>
+        <div class="chip-row st-view-toggle">
+          <button class="chip ${view === 'rw' ? 'on' : ''}" data-trend-view="rw">R&amp;W only</button>
+          <button class="chip ${view === 'total' ? 'on' : ''}" data-trend-view="total">Total (assumes Math ${mathScore})</button>
+        </div>
+        ${chartHtml}
+        ${noteHtml}
+        <div class="st-table-head">Score history</div>
+        <p class="st-table-hint">Uncheck an exam to leave it out of the chart and stats above without deleting it. <span class="st-assumed-cell">*</span> marks a value that's assumed or self-reported rather than from an actual answer — Math is always self-reported here, since there's no Math mock exam.</p>
+        <div class="st-table-scroll">
+          <table class="mock-blueprint-table st-history-table">
+            <thead><tr><th>In chart</th><th>Date</th><th>Mode</th><th>M1</th><th>M2</th><th>R&amp;W</th><th>Math</th><th>Total</th><th>Note</th></tr></thead>
+            <tbody>${tableRowsHtml}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  // ---------- Weak-spot callout (Profile tab) ----------
+  // Prefers the category with the highest share of 🚩-for-review questions
+  // among attempted ones (a direct signal of struggle); falls back to the
+  // least-covered category once nothing's been flagged yet.
+  function computeWeakSpot() {
+    const byCategory = allCategories.map(cat => {
+      const qs = QUESTIONS.filter(q => q.category === cat);
+      const done = qs.filter(q => questionStatus(q) === 'done').length;
+      const review = qs.filter(q => questionStatus(q) === 'review').length;
+      const attempted = done + review;
+      return {
+        cat, total: qs.length, done, review, attempted,
+        reviewRatio: attempted ? review / attempted : 0,
+        completion: qs.length ? done / qs.length : 0,
+      };
+    }).filter(c => c.total > 0);
+
+    const withReviews = byCategory.filter(c => c.review > 0);
+    if (withReviews.length) {
+      withReviews.sort((a, b) => b.reviewRatio - a.reviewRatio || b.review - a.review);
+      return { type: 'review', ...withReviews[0] };
+    }
+
+    if (!byCategory.some(c => c.attempted > 0)) return { type: 'none' };
+
+    const incomplete = byCategory.filter(c => c.completion < 1).sort((a, b) => a.completion - b.completion);
+    if (!incomplete.length) return { type: 'complete' };
+    return { type: 'least-complete', ...incomplete[0] };
+  }
+
+  function weakSpotHtml() {
+    const ws = computeWeakSpot();
+
+    if (ws.type === 'none') {
+      return `
+        <div class="progress-summary weak-spot-card">
+          <div class="ws-icon">${achIcon('target', false)}</div>
+          <div class="ws-body">
+            <div class="ws-label">Focus area</div>
+            <div class="ws-cat">Complete a few questions to get started</div>
+            <div class="ws-sub">Once you've answered some, we'll flag the category that needs the most work.</div>
+          </div>
+        </div>`;
+    }
+    if (ws.type === 'complete') {
+      return `
+        <div class="progress-summary weak-spot-card">
+          <div class="ws-icon">${achIcon('star', true)}</div>
+          <div class="ws-body">
+            <div class="ws-label">Focus area</div>
+            <div class="ws-cat">Every category complete</div>
+            <div class="ws-sub">Nothing left to flag — check the Review queue for anything still marked for review.</div>
+          </div>
+        </div>`;
+    }
+
+    const isReview = ws.type === 'review';
+    const pct = Math.round((isReview ? ws.reviewRatio : ws.completion) * 100);
+    const sub = isReview
+      ? `${ws.review} of ${ws.attempted} attempted question${ws.attempted === 1 ? '' : 's'} flagged for review (${pct}%) — the highest of any category.`
+      : `${ws.done} of ${ws.total} question${ws.total === 1 ? '' : 's'} complete (${pct}%) — your least-covered category.`;
+
+    return `
+      <div class="progress-summary weak-spot-card">
+        <div class="ws-icon">${achIcon('mountain', true)}</div>
+        <div class="ws-body">
+          <div class="ws-label">Focus area</div>
+          <div class="ws-cat">${escapeHtml(ws.cat)}</div>
+          <div class="ws-sub">${sub}</div>
+        </div>
+        <button class="btn ws-cta" id="weakSpotJump" data-jump-cat="${escapeHtml(ws.cat)}">Open in Progress</button>
+      </div>`;
+  }
+
+  // ---------- Profile tab ----------
+  function renderProfile() {
+    const shell = document.getElementById('profileShell');
+    const stats = computeGamificationStats();
+
+    shell.innerHTML = `
+      ${profileCardHtml(stats)}
+      ${streakGoalCardHtml(stats)}
+      ${activityCalendarHtml()}
+      ${scoreTrendHtml()}
+      ${weakSpotHtml()}
+      ${achievementsCardHtml(stats)}`;
+
+    const nameInput = document.getElementById('profileNameInput');
+    if (nameInput) {
+      nameInput.addEventListener('change', () => {
+        const val = nameInput.value.trim().slice(0, 24);
+        state.profile = { name: val || DEFAULT_PROFILE_NAME };
+        saveProfile();
+        renderProfile();
+      });
+    }
+    shell.querySelectorAll('[data-goal]').forEach(el => {
+      el.addEventListener('click', () => {
+        state.dailyGoal = parseInt(el.dataset.goal, 10);
+        saveDailyGoal(state.dailyGoal);
+        renderProfile();
+      });
+    });
+    const wsBtn = document.getElementById('weakSpotJump');
+    if (wsBtn) {
+      wsBtn.addEventListener('click', () => {
+        state.progressExpandedCategory = wsBtn.dataset.jumpCat;
+        document.querySelector('.tab[data-view="progress"]').click();
+      });
+    }
+    shell.querySelectorAll('[data-trend-view]').forEach(el => {
+      el.addEventListener('click', () => {
+        saveTrendView(el.dataset.trendView);
+        renderProfile();
+      });
+    });
+    shell.querySelectorAll('[data-trend-include]').forEach(el => {
+      el.addEventListener('change', () => {
+        setTrendIncluded(el.dataset.trendInclude, el.checked);
+        renderProfile();
+      });
+    });
+  }
+
   // ---------- Progress tab ----------
   function diffBreakdownHtml(qs) {
     return allDifficulties.filter(d => qs.some(q => q.difficulty_label === d)).map(d => {
@@ -4402,13 +5344,7 @@
       if (!openQ) state.progressOpenQuestion = null;
     }
 
-    const gamificationStats = computeGamificationStats();
-
     shell.innerHTML = `
-      ${profileCardHtml(gamificationStats)}
-      ${streakGoalCardHtml(gamificationStats)}
-      ${achievementsCardHtml(gamificationStats)}
-
       <div class="progress-summary">
         <h2>Your progress</h2>
         <div class="progress-focus-row">
@@ -4444,22 +5380,6 @@
       <h3 style="font-family: var(--serif); font-size: 16px; margin: 0 0 10px;">By category</h3>
       ${catRows}`;
 
-    const nameInput = document.getElementById('profileNameInput');
-    if (nameInput) {
-      nameInput.addEventListener('change', () => {
-        const val = nameInput.value.trim().slice(0, 24);
-        state.profile = { name: val || DEFAULT_PROFILE_NAME };
-        saveProfile();
-        renderProgress();
-      });
-    }
-    shell.querySelectorAll('[data-goal]').forEach(el => {
-      el.addEventListener('click', () => {
-        state.dailyGoal = parseInt(el.dataset.goal, 10);
-        saveDailyGoal(state.dailyGoal);
-        renderProgress();
-      });
-    });
     shell.querySelectorAll('[data-focus-diff]').forEach(el => {
       el.addEventListener('click', () => toggleProgressFocus(el.dataset.focusDiff));
     });
@@ -4487,6 +5407,21 @@
     }
 
     wireProgress();
+  }
+
+  // Human-sortable, human-identifiable backup filename: profile name (when
+  // customized) + date + time, so repeated same-day exports don't collide or
+  // get silently numbered "(1)", "(2)" by the browser, and a Downloads folder
+  // full of exports stays easy to scan by who/when at a glance.
+  function backupFilename() {
+    const slug = (state.profile && state.profile.name && state.profile.name !== DEFAULT_PROFILE_NAME)
+      ? '-' + state.profile.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 24)
+      : '';
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const date = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+    const time = `${pad(now.getHours())}${pad(now.getMinutes())}`;
+    return `sat-qbank-backup${slug}-${date}-${time}.json`;
   }
 
   async function downloadFile(filename, text) {
@@ -4518,18 +5453,19 @@
     if (exportBtn) exportBtn.addEventListener('click', () => {
       const payload = {
         app: 'sat-qbank-progress',
-        version: 5,
+        version: 7,
         exportedAt: new Date().toISOString(),
         progress: state.progress,
         tags: state.tags,
         notes: state.notes,
-        mathScore: loadMathScore(),
+        mathModules: loadMathModules(),
         completionLog: state.completionLog,
         dailyGoal: state.dailyGoal,
         profile: state.profile,
+        fsrsCards: state.fsrsCards,
+        mockHistory: mockState.history,
       };
-      const date = new Date().toISOString().slice(0, 10);
-      downloadFile(`sat-progress-${date}.json`, JSON.stringify(payload, null, 2));
+      downloadFile(backupFilename(), JSON.stringify(payload, null, 2));
     });
 
     const importBtn = document.getElementById('importProgressBtn');
@@ -4546,11 +5482,14 @@
             const incomingProgress = parsed && typeof parsed === 'object' ? parsed.progress : null;
             const incomingTags = parsed && typeof parsed === 'object' ? parsed.tags : null;
             const incomingNotes = parsed && typeof parsed === 'object' ? parsed.notes : null;
-            const incomingMathScore = parsed && typeof parsed === 'object' ? parsed.mathScore : null;
+            const incomingMathModules = parsed && typeof parsed === 'object' ? parsed.mathModules : null;
             const incomingCompletionLog = parsed && typeof parsed === 'object' ? parsed.completionLog : null;
             const incomingDailyGoal = parsed && typeof parsed === 'object' ? parsed.dailyGoal : null;
             const incomingProfile = parsed && typeof parsed === 'object' ? parsed.profile : null;
-            if (!incomingProgress && !incomingTags && !incomingNotes && !Number.isFinite(incomingMathScore) && !incomingCompletionLog) {
+            const incomingFsrsCards = parsed && typeof parsed === 'object' ? parsed.fsrsCards : null;
+            const incomingMockHistory = parsed && typeof parsed === 'object' ? parsed.mockHistory : null;
+            const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
+            if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory) {
               alert('This file doesn\'t look like a progress export.');
               return;
             }
@@ -4566,8 +5505,11 @@
               state.notes = Object.assign({}, state.notes, incomingNotes);
               saveNotes();
             }
-            if (Number.isFinite(incomingMathScore) && incomingMathScore >= 200 && incomingMathScore <= 800) {
-              saveMathScore(incomingMathScore);
+            if (hasIncomingMathModules) {
+              saveMathModules({
+                m1: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(incomingMathModules.m1))),
+                m2: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(incomingMathModules.m2))),
+              });
             }
             if (incomingCompletionLog && typeof incomingCompletionLog === 'object') {
               state.completionLog = Object.assign({}, state.completionLog, incomingCompletionLog);
@@ -4580,6 +5522,18 @@
             if (incomingProfile && typeof incomingProfile === 'object' && typeof incomingProfile.name === 'string' && incomingProfile.name.trim()) {
               state.profile = { name: incomingProfile.name.trim().slice(0, 24) };
               saveProfile();
+            }
+            if (incomingFsrsCards && typeof incomingFsrsCards === 'object') {
+              state.fsrsCards = Object.assign({}, state.fsrsCards, incomingFsrsCards);
+              saveFsrsCards();
+            }
+            if (Array.isArray(incomingMockHistory) && incomingMockHistory.length) {
+              const byId = new Map(mockState.history.map(a => [a.id, a]));
+              incomingMockHistory.forEach(a => { if (a && a.id) byId.set(a.id, a); });
+              mockState.history = [...byId.values()]
+                .sort((a, b) => (b.completedAt || '').localeCompare(a.completedAt || ''))
+                .slice(0, MOCK_HISTORY_LIMIT);
+              saveMockHistory();
             }
             renderFilters();
             renderBrowse();
@@ -4615,12 +5569,126 @@
   // Dedicated home for everything flagged 🚩 for review — replaces the old
   // inline "flagged" queue on the Progress tab (a tile click there now opens
   // the same kind of inline panel directly, so a separate list was redundant).
-  function renderReview() {
+  // Scheduling within this queue is FSRS-driven — see the "FSRS spaced
+  // repetition" section above for the algorithm itself.
+  function reviewSessionCurrentQuestion() {
+    if (reviewSession.phase !== 'active') return null;
+    return QUESTIONS.find(q => q.id === reviewSession.queue[reviewSession.pos]) || null;
+  }
+
+  function startReviewSession() {
+    const due = fsrsDueEntries(new Date()).slice(0, FSRS_SESSION_CAP);
+    if (!due.length) return;
+    reviewSession.queue = due.map(x => x.q.id);
+    reviewSession.pos = 0;
+    reviewSession.phase = 'active';
+    state.reviewOpenQuestion = null;
+    renderReview();
+  }
+
+  function endReviewSession() {
+    reviewSession.phase = 'idle';
+    reviewSession.queue = [];
+    reviewSession.pos = 0;
+    renderReview();
+  }
+
+  // Grades the card via FSRS, clears its in-progress attempt, and advances —
+  // the queue is a fixed snapshot from session start, so a graded card simply
+  // isn't revisited this session even if (with day-granularity scheduling) it
+  // would technically still show as "due" a few seconds from now.
+  function reviewSessionGrade(qid, rating) {
+    gradeFsrsQuestion(qid, rating);
+    state.attempt[qid] = { choice: null, submitted: false, showAnswer: false };
+    reviewSession.pos += 1;
+    if (reviewSession.pos >= reviewSession.queue.length) reviewSession.phase = 'done';
+    renderStats();
+    renderReview();
+  }
+
+  // Reuses the 1-4 keys (see the global keydown handler below): they pick a
+  // choice before the answer's shown, then grade the card after — same as
+  // Anki, where number keys mean nothing until the answer is up.
+  function reviewGradeButtonsHtml(q) {
+    const preview = fsrsPreviewIntervals(getFsrsCard(q.id), new Date());
+    const btn = (rating, cls) => `
+      <button class="fsrs-grade-btn ${cls}" data-fsrs-grade-qid="${q.id}" data-fsrs-grade="${rating}">
+        <span class="fsrs-grade-label">${FSRS_RATING_LABELS[rating]}<kbd class="kbd-hint">${rating}</kbd></span>
+        <span class="fsrs-grade-interval">${fsrsFormatDays(preview[rating])}</span>
+      </button>`;
+    return `
+      <div class="fsrs-grade-row">
+        ${btn(FSRS_RATING.AGAIN, 'fsrs-again')}
+        ${btn(FSRS_RATING.HARD, 'fsrs-hard')}
+        ${btn(FSRS_RATING.GOOD, 'fsrs-good')}
+        ${btn(FSRS_RATING.EASY, 'fsrs-easy')}
+      </div>`;
+  }
+
+  function reviewSessionBodyHtml() {
+    if (reviewSession.phase === 'done') {
+      return `
+        <div class="review-session-done">
+          <h3>Session complete</h3>
+          <p>Graded ${reviewSession.queue.length} question${reviewSession.queue.length === 1 ? '' : 's'}.</p>
+          <button class="btn btn-accent" id="reviewSessionCloseBtn">Back to review queue</button>
+        </div>`;
+    }
+    const q = reviewSessionCurrentQuestion();
+    if (!q) return '';
+    const att = getAttempt(q.id);
+    const canGrade = att.submitted || att.showAnswer;
+    return `
+      <div class="inline-q-panel" id="reviewSessionPanel">
+        <div class="review-session-head">
+          <span class="rs-count">Reviewing ${reviewSession.pos + 1} of ${reviewSession.queue.length}</span>
+          <button class="btn" id="reviewSessionEndBtn">End session</button>
+        </div>
+        <div class="bar review-session-tag"><div class="bar-fill" style="width:${Math.round((reviewSession.pos / reviewSession.queue.length) * 100)}%"></div></div>
+        <div class="cat-tag" style="margin:0 0 10px;">${escapeHtml(q.category)} &middot; ${escapeHtml(q.shortId)}</div>
+        ${qDetailHtml(q, { bare: true, shortcuts: true })}
+        ${canGrade ? reviewGradeButtonsHtml(q) : `<div class="fsrs-grade-hint">Submit an answer or hit "Show answer" to grade how well you knew this one.</div>`}
+      </div>`;
+  }
+
+  function wireReviewSession() {
     const shell = document.getElementById('reviewShell');
-    const flagged = QUESTIONS.filter(q => questionStatus(q) === 'review');
+    shell.innerHTML = reviewSessionBodyHtml();
+
+    if (reviewSession.phase === 'done') {
+      const closeBtn = document.getElementById('reviewSessionCloseBtn');
+      if (closeBtn) closeBtn.addEventListener('click', endReviewSession);
+      return;
+    }
+
+    const q = reviewSessionCurrentQuestion();
+    if (!q) return;
+    const panel = document.getElementById('reviewSessionPanel');
+    wireDetail(q, renderReview, panel);
+    shell.querySelectorAll('[data-fsrs-grade-qid]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        reviewSessionGrade(btn.dataset.fsrsGradeQid, Number(btn.dataset.fsrsGrade));
+      });
+    });
+    const endBtn = document.getElementById('reviewSessionEndBtn');
+    if (endBtn) endBtn.addEventListener('click', endReviewSession);
+  }
+
+  function renderReview() {
+    if (reviewSession.phase !== 'idle') { wireReviewSession(); return; }
+
+    const shell = document.getElementById('reviewShell');
+    const now = new Date();
+    const flaggedWithCards = fsrsFlaggedWithCards();
+    const dueEntries = flaggedWithCards.filter(x => isFsrsDue(x.card, now));
+    const scheduledEntries = flaggedWithCards.filter(x => !isFsrsDue(x.card, now));
+    const newCount = flaggedWithCards.filter(x => x.card.state !== 'review').length;
+    const sessionSize = Math.min(dueEntries.length, FSRS_SESSION_CAP);
+
     const byCategory = allCategories
-      .map(cat => ({ cat, qs: flagged.filter(q => q.category === cat) }))
-      .filter(c => c.qs.length);
+      .map(cat => ({ cat, entries: flaggedWithCards.filter(x => x.q.category === cat) }))
+      .filter(c => c.entries.length);
 
     let openQ = null;
     if (state.reviewOpenQuestion) {
@@ -4632,10 +5700,10 @@
       <div class="cat-progress-card" style="cursor:default;">
         <div class="cat-progress-row">
           <span class="name">${escapeHtml(c.cat)}</span>
-          <span class="frac">${c.qs.length} flagged</span>
+          <span class="frac">${c.entries.length} flagged</span>
         </div>
-        <div class="qtile-grid">${c.qs.map(q =>
-          `<button class="qtile status-review" data-open-qid="${q.id}" title="${escapeHtml(q.shortId)}"></button>`
+        <div class="qtile-grid">${c.entries.map(x =>
+          `<button class="qtile ${isFsrsDue(x.card, now) ? 'status-review' : 'fsrs-scheduled'}" data-open-qid="${x.q.id}" title="${escapeHtml(x.q.shortId)} — ${isFsrsDue(x.card, now) ? 'due now' : 'due ' + new Date(x.card.due).toLocaleDateString()}"></button>`
         ).join('')}</div>
       </div>`).join('');
 
@@ -4643,11 +5711,21 @@
       <div class="progress-summary">
         <h2>Review queue</h2>
         <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">
-          Everything flagged 🚩 for review, grouped by category. Click a square to work it right here — mark it complete or incomplete and it'll drop out of this queue.
+          Everything flagged 🚩 for review, scheduled with spaced repetition (FSRS — the same memory
+          model Anki uses) so it resurfaces right around when you're about to forget it, instead of
+          dumping the whole pile on you every time.
         </p>
-        <div class="progress-actions">
-          <button class="btn btn-accent" id="reviewPracticeBtn" ${flagged.length ? '' : 'disabled'}>Practice all flagged (${flagged.length})</button>
+        <div class="progress-stats">
+          <div class="progress-stat due"><span class="n">${dueEntries.length}</span><span class="l">Due now</span></div>
+          <div class="progress-stat scheduled"><span class="n">${scheduledEntries.length}</span><span class="l">Scheduled</span></div>
+          <div class="progress-stat"><span class="n">${newCount}</span><span class="l">Never studied</span></div>
+          <div class="progress-stat"><span class="n">${flaggedWithCards.length}</span><span class="l">Total flagged</span></div>
         </div>
+        <div class="progress-actions">
+          <button class="btn btn-accent" id="reviewStudyBtn" ${sessionSize ? '' : 'disabled'}>Study due (${sessionSize}${dueEntries.length > sessionSize ? ` of ${dueEntries.length}` : ''})</button>
+          <button class="btn" id="reviewPracticeBtn" ${flaggedWithCards.length ? '' : 'disabled'}>Practice all flagged (${flaggedWithCards.length})</button>
+        </div>
+        ${dueEntries.length > FSRS_SESSION_CAP ? `<p class="progress-note">${dueEntries.length - FSRS_SESSION_CAP} more due beyond this session's cap — grade this batch and start another to work through the rest.</p>` : ''}
       </div>
 
       ${openQ ? inlineQuestionPanelHtml(openQ, 'reviewPanel', 'reviewPanelClose') : ''}
@@ -4670,6 +5748,9 @@
       wireDetail(openQ, renderReview, panel);
       requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     }
+
+    const studyBtn = document.getElementById('reviewStudyBtn');
+    if (studyBtn) studyBtn.addEventListener('click', startReviewSession);
 
     const practiceBtn = document.getElementById('reviewPracticeBtn');
     if (practiceBtn) practiceBtn.addEventListener('click', () => {
@@ -4763,6 +5844,7 @@
   renderPractice();
   renderTest();
   renderMock();
+  renderProfile();
   renderProgress();
   renderReview();
   renderNotesView();
