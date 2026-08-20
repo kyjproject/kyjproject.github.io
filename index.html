@@ -1452,9 +1452,153 @@
   .bp-guide-body code { font-size: 11px; }
   .scale-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .scale-row .mini-num-input { width: 46px; }
-  .weight-custom-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-  .weight-custom-row label { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); text-transform: none; letter-spacing: normal; font-weight: 500; margin: 0; }
-  .weight-pct-hint { font-size: 11px; color: var(--ink-faint); }
+  .bp-count-cell { display: flex; align-items: center; gap: 6px; }
+  .bp-count-cell .bp-pct { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); white-space: nowrap; width: 30px; flex: none; }
+  .bp-count-cell .mini-num-input { width: 42px; flex: none; }
+  .mock-blueprint-table .bp-total .bp-pct { font-size: 11px; color: var(--ink-faint); }
+
+  /* ---------- Analysis tab ---------- */
+  .an-table-scroll { overflow-x: auto; }
+  .an-faint { font-size: 11px; color: var(--ink-faint); }
+  .an-trend-up { color: var(--correct); font-weight: 600; white-space: nowrap; }
+  .an-trend-down { color: var(--incorrect); font-weight: 600; white-space: nowrap; }
+  .an-trend-flat { color: var(--ink-faint); white-space: nowrap; }
+  .an-heat-cell { text-align: center; font-family: var(--mono); font-size: 12px; border-radius: 3px; }
+  .an-small-btn { padding: 4px 10px; font-size: 12px; }
+  .an-missed-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--rule-soft); }
+  .an-missed-row:last-child { border-bottom: none; }
+
+  .bp-slider {
+    flex: 1 1 60px;
+    min-width: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 14px;
+    background: transparent;
+    outline: none;
+  }
+  .bp-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--rule);
+  }
+  .bp-slider::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--rule);
+  }
+  .bp-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .bp-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--paper);
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .bp-slider:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .bp-slider:focus-visible::-moz-range-thumb { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dist-bar-block { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 10px; }
+  .dist-bar-row { display: flex; align-items: center; gap: 8px; }
+  .dist-bar-label { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); width: 22px; flex: none; }
+  .dist-bar {
+    flex: 1;
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--rule-soft);
+  }
+  .dist-bar-seg { height: 100%; }
+  .dist-bar-legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 10px; }
+  .dist-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-faint); }
+  .dist-legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  /* Interactive drag-to-split distribution bar (default Level 1/2 view). */
+  /* Gap must clear a below-placed narrow label on one row (bar bottom + 7px
+     gap + ~17px label height = 24px) stacked against an above-placed label
+     on the next row (25px + ~17px label height = 42px) simultaneously, or
+     the two rows' labels collide — 58px clears both with a few px to spare. */
+  .idist-block { display: flex; flex-direction: column; gap: 58px; margin: 25px 0 34px; }
+  .idist-row { display: flex; align-items: center; gap: 10px; }
+  .idist-row-label { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); width: 22px; flex: none; }
+  .idist-bar {
+    position: relative;
+    flex: 1;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--rule-soft);
+    /* overflow stays visible (not hidden) — segment labels sit above/below
+       the bar itself and would get clipped by a hidden overflow here.
+       Rounded corners come from the end segments' own border-radius
+       instead (see .idist-seg:first-child / :last-child below). */
+  }
+  .idist-seg {
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+  .idist-seg:first-of-type { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+  .idist-seg:last-of-type { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+  .idist-seg-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    font-size: 11px;
+    color: var(--ink-soft);
+    pointer-events: none;
+  }
+  .idist-seg--narrow .idist-seg-label { top: calc(100% + 7px); }
+  .idist-seg-swatch { width: 7px; height: 7px; border-radius: 2px; flex: none; }
+  .idist-seg-name { color: var(--ink-faint); }
+  .idist-seg-count { font-family: var(--mono); font-weight: 600; color: var(--ink); }
+  .idist-handle {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 14px;
+    transform: translateX(-50%);
+    cursor: col-resize;
+    touch-action: none;
+    z-index: 2;
+  }
+  .idist-handle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    bottom: 15%;
+    width: 2.5px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--paper) 70%, transparent);
+    transition: background 0.1s ease, bottom 0.1s ease, top 0.1s ease;
+  }
+  .idist-handle:hover::before, .idist-handle:focus-visible::before, .idist-handle.idist-dragging::before {
+    top: 6%;
+    bottom: 6%;
+    background: var(--paper);
+  }
+  .idist-handle:focus-visible { outline: none; }
+  .idist-view-toggle { display: flex; gap: 6px; margin: 0 0 12px; }
+  .idist-nested { margin: 14px 0 0 2px; padding-left: 14px; border-left: 2px solid var(--rule-soft); }
   .config-subrow { margin: 10px 0 0 0; padding-left: 2px; }
   .mock-mode-desc { font-size: 11.5px; color: var(--ink-faint); margin: 8px 0 0; }
   .domain-breakdown-row {
@@ -1537,6 +1681,7 @@
     <button class="tab" data-view="mock">Mock Exam</button>
     <button class="tab" data-view="profile">Profile</button>
     <button class="tab" data-view="progress">Progress</button>
+    <button class="tab" data-view="analysis">Analysis</button>
     <button class="tab" data-view="review">Review<span class="tab-badge" id="reviewDueBadge" style="display:none;"></span></button>
     <button class="tab" data-view="notes">Notes</button>
   </div>
@@ -1605,6 +1750,10 @@
     <div class="test-shell" id="progressShell"></div>
   </div>
 
+  <div class="view" id="view-analysis">
+    <div class="test-shell" id="analysisShell"></div>
+  </div>
+
   <div class="view" id="view-review">
     <div class="test-shell" id="reviewShell"></div>
   </div>
@@ -1645,15 +1794,21 @@
   // storage key for progress/attempt state so existing exported progress
   // files keep working; shortId is purely a display label.
   const CATEGORY_LABELS = {
-    'Command of Evidence': 'Evidence',
+    'Quantitative Evidence': 'Evidence',
+    'Textual Evidence': 'Evidence',
     'Cross-Text': 'Cross Text',
   };
   function categoryLabel(cat) { return CATEGORY_LABELS[cat] || cat; }
+  // Counters are keyed by the short label, not the raw category, so that
+  // Command of Evidence's two categories (Quantitative/Textual — split out
+  // so they can be browsed/practiced/tested separately) still share one
+  // continuous "Evidence #1..258" numbering instead of each restarting at 1.
   (function assignShortIds() {
     const counters = {};
     QUESTIONS.forEach(q => {
-      counters[q.category] = (counters[q.category] || 0) + 1;
-      q.shortId = `${categoryLabel(q.category)} #${counters[q.category]}`;
+      const label = categoryLabel(q.category);
+      counters[label] = (counters[label] || 0) + 1;
+      q.shortId = `${label} #${counters[label]}`;
     });
   })();
 
@@ -1718,6 +1873,7 @@
   const SKILL_STATS_KEY = 'sat_qbank_skill_stats_v1';
   const WEAK_SKILL_MIN_ATTEMPTS = 3; // below this, a skill's accuracy is too noisy to bias on — treated as neutral
   const WEAK_SKILL_BIAS_STRENGTH = 4; // max extra weight multiplier for a skill at 0% accuracy
+  const SKILL_RECENT_WINDOW = 12; // how many of a skill's most recent graded attempts feed its "current" accuracy
 
   function loadSkillStats() {
     try {
@@ -1738,36 +1894,159 @@
     }
   }
 
+  // `recent` is a capped rolling log ({ ts, correct }) of a skill's last
+  // SKILL_RECENT_WINDOW graded attempts — lets the bias react to "you just
+  // turned this skill around" or "you've been slipping lately" instead of
+  // one all-time accuracy number that a strong start can mask forever.
+  // `lastAttemptTs` alone drives staleness (skillStalenessWeight) even once
+  // `recent` ages out old entries.
   function recordSkillAttempt(skill, correct) {
     if (!skill) return;
-    const s = state.skillStats[skill] || { correct: 0, total: 0 };
+    const s = state.skillStats[skill] || { correct: 0, total: 0, recent: [], lastAttemptTs: null };
     s.total += 1;
     if (correct) s.correct += 1;
+    s.recent = Array.isArray(s.recent) ? s.recent : [];
+    s.recent.push({ ts: Date.now(), correct: !!correct });
+    if (s.recent.length > SKILL_RECENT_WINDOW) s.recent.shift();
+    s.lastAttemptTs = Date.now();
     state.skillStats[skill] = s;
     saveSkillStats();
   }
 
+  // Accuracy over just the recent window — null if there isn't one yet
+  // (older saved data predates `recent`, or too few attempts since). Callers
+  // fall back to all-time accuracy in that case.
+  function skillRecentAccuracy(skill) {
+    const s = state.skillStats[skill];
+    if (!s || !Array.isArray(s.recent) || s.recent.length < WEAK_SKILL_MIN_ATTEMPTS) return null;
+    const correct = s.recent.filter(a => a.correct).length;
+    return correct / s.recent.length;
+  }
+
   // Weight (>=1) to bias a skill's questions toward selection: neutral (1)
   // until there's enough data, then scales up toward WEAK_SKILL_BIAS_STRENGTH
-  // as accuracy drops toward 0.
-  function skillWeight(skill) {
+  // as accuracy drops toward 0. Prefers recent-window accuracy (reacts to a
+  // skill you've since improved — or backslid — on) over the all-time
+  // figure, falling back to all-time for data saved before `recent` existed.
+  function skillAccuracyWeight(skill) {
     const s = state.skillStats[skill];
-    if (!s || s.total < WEAK_SKILL_MIN_ATTEMPTS) return 1;
+    if (!s) return 1;
+    const recentAcc = skillRecentAccuracy(skill);
+    if (recentAcc != null) return 1 + WEAK_SKILL_BIAS_STRENGTH * (1 - recentAcc);
+    if (s.total < WEAK_SKILL_MIN_ATTEMPTS) return 1;
     const accuracy = s.correct / s.total;
     return 1 + WEAK_SKILL_BIAS_STRENGTH * (1 - accuracy);
   }
 
+  // Third bias signal, independent of accuracy and raw attempt count: a
+  // skill you haven't touched in a while is due for a refresh regardless of
+  // how well you were doing on it last time — spaced-repetition logic
+  // applied at the skill level rather than the individual-card level FSRS
+  // already handles on the Review tab. Ramps up gradually past the
+  // threshold rather than jumping straight to full strength, and caps out
+  // so a skill idle for months doesn't dominate every other signal.
+  const STALE_DAYS_THRESHOLD = 10; // a previously-attempted skill untouched this long counts as "stale"
+  const STALE_BIAS_STRENGTH = 2; // max extra weight multiplier for a very stale skill
+  function skillStalenessWeight(skill) {
+    const s = state.skillStats[skill];
+    if (!s || !s.lastAttemptTs || !s.total) return 1; // never attempted — skillUnderuseWeight already covers this case
+    const daysSince = (Date.now() - s.lastAttemptTs) / 86400000;
+    if (daysSince <= STALE_DAYS_THRESHOLD) return 1;
+    return 1 + Math.min(STALE_BIAS_STRENGTH, ((daysSince - STALE_DAYS_THRESHOLD) / STALE_DAYS_THRESHOLD) * STALE_BIAS_STRENGTH);
+  }
+
+  // Skills gone stale long enough to flag, sorted longest-idle-first —
+  // mirrors weakSkills()/underusedSkills() for the config-screen hint.
+  function staleSkills() {
+    return allSkills
+      .map(skill => {
+        const s = state.skillStats[skill];
+        if (!s || !s.lastAttemptTs || !s.total) return null;
+        const daysSince = (Date.now() - s.lastAttemptTs) / 86400000;
+        return daysSince > STALE_DAYS_THRESHOLD ? { skill, daysSince } : null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.daysSince - a.daysSince);
+  }
+
+  function staleSkillsSummary() {
+    return staleSkills().slice(0, 2).map(s => `${s.skill} (${Math.round(s.daysSince)}d ago)`).join(', ');
+  }
+
+  // Second, independent bias signal: a skill you're quietly avoiding — its
+  // attempted-question count sits far below the average across all skills —
+  // gets nudged up too, even if its accuracy (on the few attempts it has) is
+  // fine. Needs a decent overall sample first (else one early skill looks
+  // "avoided" purely because the session just started).
+  const UNDERUSE_RATIO_THRESHOLD = 0.4; // below this fraction of the average attempt count counts as "avoided"
+  const UNDERUSE_BIAS_STRENGTH = 3; // max extra weight multiplier for a skill at ~0 attempts while others are well-practiced
+  function skillUnderuseWeight(skill) {
+    if (!allSkills.length) return 1;
+    const totals = allSkills.map(sk => (state.skillStats[sk] && state.skillStats[sk].total) || 0);
+    const avg = totals.reduce((a, b) => a + b, 0) / totals.length;
+    if (avg < WEAK_SKILL_MIN_ATTEMPTS) return 1; // not enough overall data yet to tell "avoided" from "just starting"
+    const mine = (state.skillStats[skill] && state.skillStats[skill].total) || 0;
+    const ratio = mine / avg;
+    if (ratio >= UNDERUSE_RATIO_THRESHOLD) return 1;
+    return 1 + UNDERUSE_BIAS_STRENGTH * (1 - ratio / UNDERUSE_RATIO_THRESHOLD);
+  }
+
+  // Combined bias weight used everywhere selection is biased: recent
+  // accuracy, under-practiced, and stale are independent signals, so they
+  // multiply rather than pick one — a skill that's rarely attempted, badly
+  // missed lately, AND hasn't been touched in weeks gets nudged hardest.
+  function skillWeight(skill) {
+    return skillAccuracyWeight(skill) * skillUnderuseWeight(skill) * skillStalenessWeight(skill);
+  }
+
+  // Skills whose attempted-question count sits well below the bank-wide
+  // average — the ones a test-taker is quietly avoiding — sorted
+  // least-attempted-first. Empty until there's enough overall signal (see
+  // skillUnderuseWeight).
+  function underusedSkills() {
+    const totals = allSkills.map(sk => (state.skillStats[sk] && state.skillStats[sk].total) || 0);
+    const avg = totals.reduce((a, b) => a + b, 0) / (totals.length || 1);
+    if (avg < WEAK_SKILL_MIN_ATTEMPTS) return [];
+    return allSkills
+      .map(skill => ({ skill, total: (state.skillStats[skill] && state.skillStats[skill].total) || 0 }))
+      .filter(s => s.total / avg < UNDERUSE_RATIO_THRESHOLD)
+      .sort((a, b) => a.total - b.total);
+  }
+
+  function underusedSkillsSummary() {
+    return underusedSkills().slice(0, 2).map(s => `${s.skill} (${s.total} done)`).join(', ');
+  }
+
   // Skills with enough attempts to trust, sorted worst-accuracy-first.
+  // Reports recent-window accuracy where available (matching
+  // skillAccuracyWeight) so the hint agrees with what's actually driving
+  // selection, falling back to all-time for older saved data.
   function weakSkills() {
     return Object.entries(state.skillStats)
-      .filter(([, s]) => s.total >= WEAK_SKILL_MIN_ATTEMPTS)
-      .map(([skill, s]) => ({ skill, correct: s.correct, total: s.total, accuracy: s.correct / s.total }))
+      .map(([skill, s]) => {
+        const recentAcc = skillRecentAccuracy(skill);
+        const accuracy = recentAcc != null ? recentAcc : (s.total ? s.correct / s.total : null);
+        const n = recentAcc != null ? s.recent.length : s.total;
+        return { skill, accuracy, n };
+      })
+      .filter(s => s.accuracy != null && s.n >= WEAK_SKILL_MIN_ATTEMPTS)
       .sort((a, b) => a.accuracy - b.accuracy);
   }
 
   // Short human-readable readout of the worst 1-2 skills, for config-screen hints.
   function weakSkillsSummary() {
     return weakSkills().slice(0, 2).map(s => `${s.skill} (${Math.round(s.accuracy * 100)}%)`).join(', ');
+  }
+
+  // Config-screen hint for the "bias" checkbox/button, shared by Test,
+  // Practice, and Mock — reports whichever of the three independent signals
+  // (low recent accuracy, quietly avoided, or gone stale) currently has data.
+  function biasHintHtml() {
+    const parts = [];
+    if (weakSkills().length) parts.push(`weakest: ${weakSkillsSummary()}`);
+    if (underusedSkills().length) parts.push(`least-practiced: ${underusedSkillsSummary()}`);
+    if (staleSkills().length) parts.push(`stalest: ${staleSkillsSummary()}`);
+    return parts.length ? ` — currently ${parts.join(' · ')}` : ' (needs a few graded attempts per skill first)';
   }
 
   // Weighted sample of `n` questions from `pool` without replacement, each
@@ -2329,11 +2608,19 @@
   // see the disclaimer on the score card.
   const MATH_MODULE_LEN = 22;
   const MATH_CURVE = [[0, 200], [5, 290], [10, 380], [15, 470], [20, 560], [25, 630], [30, 690], [35, 740], [40, 780], [44, 800]];
-  const MATH_MODULES_KEY = 'sat_qbank_math_modules_v1';
 
-  function loadMathModules() {
+  // Math self-report is per-attempt (attemptId -> {m1,m2}), same idea as
+  // rwOverrides, so dialing in one mock exam's Math score doesn't bleed into
+  // every other exam's score card and the trend table. v1 stored a single
+  // flat {m1,m2} shared by *every* attempt — that's the bug this replaces;
+  // v1's value (if any) is read once as a seed default for attempts that
+  // don't have their own v2 entry yet, so existing self-reports aren't lost.
+  const MATH_MODULES_KEY = 'sat_qbank_math_modules_v2';
+  const MATH_MODULES_LEGACY_KEY = 'sat_qbank_math_modules_v1';
+
+  function loadLegacyMathDefault() {
     try {
-      const raw = localStorage.getItem(MATH_MODULES_KEY);
+      const raw = localStorage.getItem(MATH_MODULES_LEGACY_KEY);
       const parsed = raw ? JSON.parse(raw) : null;
       if (parsed && Number.isFinite(parsed.m1) && Number.isFinite(parsed.m2)) {
         return {
@@ -2341,18 +2628,48 @@
           m2: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(parsed.m2))),
         };
       }
-    } catch (e) { /* fall through to default */ }
-    return { m1: MATH_MODULE_LEN, m2: MATH_MODULE_LEN }; // default: full marks (800) — matches the prior flat 800 default
+    } catch (e) { /* fall through */ }
+    return null;
   }
 
-  function saveMathModules(mods) {
-    try { localStorage.setItem(MATH_MODULES_KEY, JSON.stringify(mods)); } catch (e) { /* best-effort */ }
+  function loadMathOverrides() {
+    try {
+      const raw = localStorage.getItem(MATH_MODULES_KEY);
+      const parsed = raw ? JSON.parse(raw) : {};
+      return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
   }
 
-  function setMathModule(field, val) {
-    const mods = loadMathModules();
+  function saveMathOverrides(map) {
+    try { localStorage.setItem(MATH_MODULES_KEY, JSON.stringify(map)); } catch (e) { /* best-effort */ }
+  }
+
+  const mathOverrides = loadMathOverrides();
+  // Default for an attempt with no self-report saved yet: the old flat value
+  // if one exists (so upgrading doesn't reset everyone to full marks), else
+  // full marks (800) — matches the prior default.
+  const MATH_DEFAULT_MODS = loadLegacyMathDefault() || { m1: MATH_MODULE_LEN, m2: MATH_MODULE_LEN };
+
+  function loadMathModules(attemptId) {
+    const stored = attemptId ? mathOverrides[attemptId] : null;
+    if (stored && Number.isFinite(stored.m1) && Number.isFinite(stored.m2)) {
+      return {
+        m1: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(stored.m1))),
+        m2: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(stored.m2))),
+      };
+    }
+    return { ...MATH_DEFAULT_MODS };
+  }
+
+  function setMathModule(attemptId, field, val) {
+    const mods = loadMathModules(attemptId);
     mods[field] = Math.max(0, Math.min(MATH_MODULE_LEN, val));
-    saveMathModules(mods);
+    if (attemptId) {
+      mathOverrides[attemptId] = mods;
+      saveMathOverrides(mathOverrides);
+    }
     return mods;
   }
 
@@ -2361,8 +2678,8 @@
     return interpCurve(MATH_CURVE, m.m1 + m.m2);
   }
 
-  function loadMathScore() {
-    return computeMathScore();
+  function loadMathScore(attemptId) {
+    return computeMathScore(loadMathModules(attemptId));
   }
 
   // Renders each row's Module 1 / Module 2 breakdown, Albert-style: a fixed
@@ -2393,10 +2710,12 @@
   // effectiveRWScore) says which module was actually taken (fixed) vs.
   // assumed (editable, only present for a single-module attempt — persisted
   // per attempt via setRWOverride). Math: always both-editable self-report,
-  // since this app has no Math mock-exam attempts at all.
+  // since this app has no Math mock-exam attempts at all — persisted per
+  // attempt too (opts.attemptId), so editing one exam's Math self-report
+  // doesn't change any other exam's score.
   function scoreCardHtml(rwScore, opts) {
     opts = opts || {};
-    const mathMods = loadMathModules();
+    const mathMods = loadMathModules(opts.attemptId);
     const mathScore = computeMathScore(mathMods);
     const total = rwScore + mathScore;
     const rwPct = Math.round(((rwScore - 200) / 600) * 100);
@@ -2442,12 +2761,12 @@
       document.getElementById('scTotal').textContent = mv + rv;
     };
 
-    let mathMods = loadMathModules();
+    let mathMods = loadMathModules(opts.attemptId);
     document.querySelectorAll('.rw-step-btn[data-step-section="Math"]').forEach(btn => {
       btn.addEventListener('click', () => {
         const field = btn.dataset.stepField;
         const delta = parseInt(btn.dataset.stepDelta, 10);
-        mathMods = setMathModule(field, mathMods[field] + delta);
+        mathMods = setMathModule(opts.attemptId, field, mathMods[field] + delta);
         document.getElementById(`scMathModVal-${field}`).textContent = mathMods[field];
         const newScore = computeMathScore(mathMods);
         const pct = Math.round(((newScore - 200) / 600) * 100);
@@ -2573,6 +2892,13 @@
   const allCategories = [...new Set(QUESTIONS.map(q => q.category))].sort();
   const allSkills = [...new Set(QUESTIONS.map(q => q.skill))].sort();
   const allDifficulties = ['Easy', 'Medium', 'Hard'];
+
+  // skill -> { category, domain } — the first question found with that skill
+  // stands in for all of them (category/domain don't vary within a skill).
+  // Used by the Analysis tab to label skillStats entries, which are keyed by
+  // skill alone.
+  const SKILL_META = new Map();
+  QUESTIONS.forEach(q => { if (!SKILL_META.has(q.skill)) SKILL_META.set(q.skill, { category: q.category, domain: q.domain }); });
 
   // ---------- Stats ----------
   // Personalized progress snapshot rather than fixed catalog metadata — updates
@@ -3272,6 +3598,7 @@
     { id: 'nav-mock', title: 'Go to Mock Exam', hint: 'Tab', keywords: 'mock exam', run: () => document.querySelector('.tab[data-view="mock"]').click() },
     { id: 'nav-profile', title: 'Go to Profile', hint: 'Tab', keywords: 'profile', run: () => document.querySelector('.tab[data-view="profile"]').click() },
     { id: 'nav-progress', title: 'Go to Progress', hint: 'Tab', keywords: 'progress stats', run: () => document.querySelector('.tab[data-view="progress"]').click() },
+    { id: 'nav-analysis', title: 'Go to Analysis', hint: 'Tab', keywords: 'analysis skill mastery weak spots heatmap trend missed', run: () => document.querySelector('.tab[data-view="analysis"]').click() },
     { id: 'nav-review', title: 'Go to Review', hint: 'Tab', keywords: 'review anki spaced repetition', run: () => document.querySelector('.tab[data-view="review"]').click() },
     { id: 'nav-notes', title: 'Go to Notes', hint: 'Tab', keywords: 'notes', run: () => document.querySelector('.tab[data-view="notes"]').click() },
     { id: 'toggle-theme', title: 'Toggle dark / light mode', hint: 'Theme', keywords: 'dark light theme mode', run: () => document.getElementById('themeToggleBtn').click() },
@@ -3833,6 +4160,7 @@
       if (tab.dataset.view === 'mock') renderMock();
       if (tab.dataset.view === 'profile') renderProfile();
       if (tab.dataset.view === 'progress') renderProgress();
+      if (tab.dataset.view === 'analysis') renderAnalysis();
       if (tab.dataset.view === 'review') renderReview();
       if (tab.dataset.view === 'notes') renderNotesView();
     });
@@ -4066,7 +4394,7 @@
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="testBiasWeak" ${testState.biasWeak ? 'checked' : ''} />
-            <span>Bias toward my weak skills${weakSkills().length ? ` — currently ${weakSkillsSummary()}` : ' (needs a few graded attempts per skill first)'}</span>
+            <span>Bias toward weak, avoided &amp; stale skills${biasHintHtml()}</span>
           </label>
         </div>
         ${timedModeConfigHtml(testState, 'test')}
@@ -4265,7 +4593,7 @@
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practiceBiasWeak" ${practiceState.biasWeak ? 'checked' : ''} />
-            <span>Bias toward my weak skills — puts your lowest-accuracy skills first${weakSkills().length ? ` (currently ${weakSkillsSummary()})` : ' (needs a few graded attempts per skill first)'}</span>
+            <span>Bias toward weak, avoided &amp; stale skills — puts your lowest-accuracy, least-attempted, and longest-idle skills first${biasHintHtml()}</span>
           </label>
         </div>
         ${timedModeConfigHtml(practiceState, 'practice')}
@@ -4363,40 +4691,46 @@
   // replicating; College Board's real routing is IRT-based) the real digital
   // SAT's multistage-adaptive design.
   //
-  // Per-skill counts below are fit to the *empirical* average distribution
-  // across College Board's released digital SAT practice tests (Words in
-  // Context ~10.6/54, Form/Structure/Sense ~7.8, Boundaries+Transitions+
-  // Rhetorical Synthesis ~5.6 each, Central Ideas ~4.6, Command of Evidence
-  // (textual+quantitative combined here) ~7.6, Inferences ~3.6, Text
-  // Structure and Purpose ~2.2, Cross-Text Connections ~1 — source:
-  // prepscholar's per-type breakdown of released practice tests), rounded to
-  // whole numbers via largest-remainder so the total lands exactly on 54,
-  // then split 27/27 across modules the same way. That's why a couple of
-  // rows look lopsided (e.g. Cross-Text is 1/0, not 1/1) — real forms
-  // typically run a single Cross-Text pair total, not one per module. This
-  // sits within the official 4-domain published ranges too (Information and
-  // Ideas 12-14, Craft and Structure 13-15, Expression of Ideas 8-12,
-  // Standard English Conventions 11-15, out of 54 — College Board's Digital
-  // SAT Suite Assessments Specifications Overview) — those ranges are exact,
-  // the per-skill split within a domain is the empirical estimate.
+  // Per-skill counts below are a user-set target shape (not a pure empirical
+  // average): Vocab 4, Reading 12, Grammar 4, Transitions 4, Notes 3 per
+  // module (27 total) — same target for every module (m1, m2-harder,
+  // m2-easier alike). Reading's internal 5-way split and Grammar's 2-way
+  // split follow the real proportions in db/module_composition.json's 8
+  // live-test audited modules (Reading: Text Structure 13, Cross-Text 4,
+  // Central Ideas 17, Command of Evidence 15 textual + 14 quantitative,
+  // Inferences 15 — summed counts, not percentages; Grammar's Boundaries/
+  // Form-Structure-Sense split has no equivalent audited data yet, so it
+  // keeps the earlier empirical ratio, ~5:8), distributed to the new totals
+  // via distributeToTarget same as everywhere else in this file.
+  //
+  // Vocab is the one section that actually varies per generated module
+  // rather than sitting at a fixed default — see VOCAB_DRAW_WEIGHTS and
+  // cloneDefaultBlueprint below: 3 and 5 are real, roughly-equally-likely,
+  // but rare alternatives to the typical 4, matching what real modules
+  // actually do (see MOCK_BUCKET_STATS's 4-6 range for the currently-live
+  // tests). Reading silently absorbs whichever way vocab moves that draw
+  // (a module's vocab+reading total is pinned at 16) so the module still
+  // totals MOCK_MODULE_LEN; Grammar/Transitions/Notes stay fixed.
   const MOCK_MODULE_SECONDS = 32 * 60;
   const MOCK_PASS_THRESHOLD = 0.6; // module-1 accuracy at/above this routes module 2 to the harder pool
 
   const MOCK_BLUEPRINT = [
-    { category: 'Vocab', skill: 'Words in Context', m1: 6, m2: 5 },
-    { category: 'Functions', skill: 'Text Structure and Purpose', m1: 1, m2: 1 },
-    { category: 'Cross-Text', skill: 'Cross-Text Connections', m1: 1, m2: 0 },
-    { category: 'Main Idea', skill: 'Central Ideas and Details', m1: 3, m2: 2 },
-    { category: 'Command of Evidence', skill: 'Command of Evidence', m1: 4, m2: 4 },
+    { category: 'Vocab', skill: 'Words in Context', m1: 4, m2: 4 },
+    { category: 'Functions', skill: 'Text Structure and Purpose', m1: 2, m2: 2 },
+    { category: 'Cross-Text', skill: 'Cross-Text Connections', m1: 1, m2: 1 },
+    { category: 'Main Idea', skill: 'Central Ideas and Details', m1: 3, m2: 3 },
+    { category: 'Quantitative Evidence', skill: 'Command of Evidence (Quantitative)', m1: 2, m2: 2 },
+    { category: 'Textual Evidence', skill: 'Command of Evidence (Textual)', m1: 2, m2: 2 },
     { category: 'Inferences', skill: 'Inferences', m1: 2, m2: 2 },
-    { category: 'Grammar', skill: 'Boundaries', m1: 2, m2: 3 },
-    { category: 'Grammar', skill: 'Form, Structure, and Sense', m1: 4, m2: 4 },
-    { category: 'Transitions', skill: 'Transitions', m1: 2, m2: 3 },
-    { category: 'Notes', skill: 'Rhetorical Synthesis', m1: 2, m2: 3 },
+    { category: 'Grammar', skill: 'Boundaries', m1: 2, m2: 2 },
+    { category: 'Grammar', skill: 'Form, Structure, and Sense', m1: 2, m2: 2 },
+    { category: 'Transitions', skill: 'Transitions', m1: 4, m2: 4 },
+    { category: 'Notes', skill: 'Rhetorical Synthesis', m1: 3, m2: 3 },
   ];
   const SKILL_DOMAIN = {
     'Central Ideas and Details': 'Information and Ideas',
-    'Command of Evidence': 'Information and Ideas',
+    'Command of Evidence (Quantitative)': 'Information and Ideas',
+    'Command of Evidence (Textual)': 'Information and Ideas',
     'Inferences': 'Information and Ideas',
     'Words in Context': 'Craft and Structure',
     'Text Structure and Purpose': 'Craft and Structure',
@@ -4418,51 +4752,93 @@
   // who wants to hand-tune the mix *within* a section instead of just its
   // total.
   //
-  // Why bucket "Reading" instead of leaving its 5 skills separate at level 1:
+  // Why bucket "Reading" instead of leaving its 6 skills separate at level 1:
   // individual reading sub-skills swing hard module to module in real
   // Bluebook forms (Cross-Text is 0 or 1 with nothing in between; Text
   // Structure ranges 0-3; Main Idea 0-4) — see db/module_composition.json,
-  // a question-by-question breakdown of Practice Tests 1-8. The *sum* of
-  // those five is far steadier (7-12 per module, mean ~9.8) than any one of
-  // them alone, which makes "Reading total" the more meaningful dial to set
-  // by hand — MOCK_BUCKET_STATS below is that same aggregation, summarized
-  // for the UI hint text. Grammar shows the same pattern in miniature: it's
-  // the single steadiest bucket of the five (5-8 per module, mean ~6.3)
-  // even though its own two skills (Boundaries, Form/Structure/Sense) don't
-  // split evenly test to test.
+  // a question-by-question breakdown of Practice Tests currently live in
+  // Bluebook (4-8 as of this writing; see below on retired tests). The
+  // *sum* of those five reading skills is far steadier (7-11 per module,
+  // mean ~9.8) than any one of them alone, which makes "Reading total" the
+  // more meaningful dial to set by hand — MOCK_BUCKET_STATS below is that
+  // same aggregation, summarized for the UI hint text. Grammar shows the
+  // same pattern in miniature: it's the single steadiest bucket of the five
+  // (6-7 per module, mean ~6.1) even though its own two skills (Boundaries,
+  // Form/Structure/Sense) don't split evenly test to test.
   //
-  // Reliability note carried into the UI copy: of the 17 module instances
+  // Reliability note carried into the UI copy: of the 8 module instances
   // behind these numbers, only one (Practice Test 8, Module 1) is verified
   // ground truth from someone actually taking it. The rest are reconstructed
   // by mapping third-party question-by-question audits (Walker Prep's
   // Question Type Inventories, The Test Advantage's walkthroughs) onto this
   // repo's categories — real official Bluebook tests, but not official
-  // College Board statistics, and with a handful of specific low-confidence
-  // spots flagged directly in db/module_composition.json. Treat the numbers
-  // here as a reasonable planning guide, not a guarantee.
+  // College Board statistics.
+  //
+  // Practice Tests 1, 2, and 3 are deliberately excluded from this sample —
+  // not a data-quality call, but because College Board actually retired them
+  // from Bluebook on 2025-02-03 (the first removal since the digital SAT
+  // launched); they're no longer selectable by a test-taker today, so
+  // counting them toward "what's typical right now" would be misleading even
+  // though the underlying data is real. They're kept in
+  // db/module_composition.json (each flagged "retired": true) for historical
+  // reference, just excluded from this aggregation — see that file's
+  // _readme for the full retirement history, including which current tests
+  // (8-10) recycle some of their questions without preserving their module
+  // composition. With only 8 module instances behind these ranges (versus
+  // 14-19 before this exclusion), treat them as an even rougher planning
+  // guide than usual until more of Tests 4-11 get audited.
   const MOCK_BUCKET_ORDER = ['Vocab', 'Reading', 'Grammar', 'Transitions', 'Notes'];
+  // Fixed per-section colors for the distribution bars — chosen to read
+  // clearly against both the light and dark theme backgrounds. Level 2's
+  // bar reuses these per skill (via SKILL_BUCKET), varying only opacity
+  // across skills within the same section, so the two bars visually nest.
+  const SECTION_COLORS = {
+    Vocab: '#6366f1',
+    Reading: '#0ea5e9',
+    Grammar: '#f59e0b',
+    Transitions: '#ec4899',
+    Notes: '#10b981',
+  };
+  // Compact names for the interactive bar's in-segment labels, where a full
+  // skill name (e.g. "Command of Evidence (Quantitative)") wouldn't fit.
+  // Level 1 sections are already short enough to use as-is.
+  const SKILL_SHORT_LABEL = {
+    'Words in Context': 'Vocab',
+    'Text Structure and Purpose': 'Structure',
+    'Cross-Text Connections': 'Cross-Text',
+    'Central Ideas and Details': 'Main Idea',
+    'Command of Evidence (Quantitative)': 'CoE (Quant)',
+    'Command of Evidence (Textual)': 'CoE (Text)',
+    'Inferences': 'Inferences',
+    'Boundaries': 'Boundaries',
+    'Form, Structure, and Sense': 'Form/Structure',
+    'Transitions': 'Transitions',
+    'Rhetorical Synthesis': 'Notes',
+  };
   const SKILL_BUCKET = {
     'Words in Context': 'Vocab',
     'Text Structure and Purpose': 'Reading',
     'Cross-Text Connections': 'Reading',
     'Central Ideas and Details': 'Reading',
-    'Command of Evidence': 'Reading',
+    'Command of Evidence (Quantitative)': 'Reading',
+    'Command of Evidence (Textual)': 'Reading',
     'Inferences': 'Reading',
     'Boundaries': 'Grammar',
     'Form, Structure, and Sense': 'Grammar',
     'Transitions': 'Transitions',
     'Rhetorical Synthesis': 'Notes',
   };
-  // Per-module (27-question) min/max/mean across the 17 Practice Test 1-8
-  // module instances in db/module_composition.json that have a full skill
-  // breakdown (excludes the 2 vocab-only Test 7 entries). Display only —
-  // doesn't constrain input.
+  // Per-module (27-question) min/max/mean across the 8 currently-live
+  // Practice Test 4-8 module instances in db/module_composition.json that
+  // have a full skill breakdown and aren't flagged "retired" (excludes the
+  // 2 vocab-only Test 7 entries, and all of retired Tests 1-3). Display
+  // only — doesn't constrain input.
   const MOCK_BUCKET_STATS = {
-    Vocab: { min: 2, max: 8, mean: 5.1 },
-    Reading: { min: 7, max: 12, mean: 9.8 },
-    Grammar: { min: 5, max: 8, mean: 6.3 },
-    Transitions: { min: 1, max: 4, mean: 2.9 },
-    Notes: { min: 0, max: 6, mean: 2.9 },
+    Vocab: { min: 4, max: 6, mean: 4.6 },
+    Reading: { min: 7, max: 11, mean: 9.8 },
+    Grammar: { min: 6, max: 7, mean: 6.1 },
+    Transitions: { min: 1, max: 4, mean: 3.3 },
+    Notes: { min: 2, max: 6, mean: 3.3 },
   };
 
   const MOCK_WEIGHTS_M1 = { Easy: 0.25, Medium: 0.5, Hard: 0.25 };
@@ -4494,27 +4870,77 @@
     return WEIGHT_PRESETS[cfg.preset];
   }
 
-  function cloneDefaultBlueprint() {
-    return MOCK_BLUEPRINT.map(r => ({ ...r }));
+  // Weighted random draw centered on `mean`: the mean itself is most likely,
+  // each step away halves-ish in probability (DRAW_DECAY), and the tail
+  // technically extends all the way to 0 and MOCK_MODULE_LEN — never
+  // literally impossible for a section averaging 4 to occasionally draw
+  // something wild like 12, just so astronomically unlikely (decay^8 for an
+  // 8-away draw) that it will essentially never happen in practice. That's
+  // the honest way to model "average 4" — a hard clamp to {3,4,5} would
+  // quietly claim outcomes outside that range are impossible, which no real
+  // test data supports (an average is a center of mass, not a cap).
+  const DRAW_DECAY = 0.22; // tuned so mean±1 lands close to a rare-but-real ~15% each side
+  function drawCount(mean) {
+    const weights = [];
+    for (let k = 0; k <= MOCK_MODULE_LEN; k++) weights.push(Math.pow(DRAW_DECAY, Math.abs(k - mean)));
+    const total = weights.reduce((a, b) => a + b, 0);
+    let r = Math.random() * total;
+    for (let k = 0; k <= MOCK_MODULE_LEN; k++) {
+      r -= weights[k];
+      if (r <= 0) return k;
+    }
+    return Math.round(mean);
   }
 
-  // Redistributes `field` ('m1' | 'm2') across mockState.blueprint to sum to
-  // exactly `target`, keeping each row's share proportional to its slot in
-  // the *official* blueprint (so the shape stays realistic even after
-  // repeated rescales) — largest-remainder rounding guarantees the sum lands
-  // exactly on target rather than drifting by a question or two.
-  function scaleBlueprintField(field, target) {
-    const rows = mockState.blueprint;
-    target = Math.max(0, target);
-    const totalWeight = MOCK_BLUEPRINT.reduce((s, r) => s + r[field], 0);
-    const raw = rows.map((r, i) => totalWeight ? (MOCK_BLUEPRINT[i][field] / totalWeight) * target : target / rows.length);
+  // Builds a fresh blueprint from MOCK_BLUEPRINT's canonical shape, but with
+  // Vocab, Grammar, Transitions, and Notes each independently redrawn (per
+  // drawCount, around their canonical mean) for m1 and for m2 — real test
+  // forms vary all five sections module to module, not just vocab. Reading
+  // absorbs whatever's left (MOCK_MODULE_LEN minus the other four draws),
+  // then its own 6 skills get rescaled proportionally to that new total —
+  // it's the natural shock absorber both because it's the biggest section
+  // and because (per db/module_composition.json) its own sub-skills
+  // already swing the hardest test to test. A defensive floor keeps Reading
+  // from going negative in the practically-impossible case the other four
+  // draws overshoot. Called both to seed mockState.blueprint on load and by
+  // "Reset to official" — each call is a fresh random sample, so resetting
+  // twice can legitimately land on different numbers, same as two real test
+  // forms would.
+  function cloneDefaultBlueprint() {
+    const rows = MOCK_BLUEPRINT.map(r => ({ ...r }));
+    const canonicalMean = {};
+    rows.forEach(r => { canonicalMean[r.skill] = { m1: r.m1, m2: r.m2 }; });
+    const readingIdxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] === 'Reading');
+    const independentIdxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] !== 'Reading');
+
+    ['m1', 'm2'].forEach(field => {
+      let othersTotal = 0;
+      independentIdxs.forEach(i => {
+        const drawn = drawCount(canonicalMean[rows[i].skill][field]);
+        rows[i][field] = drawn;
+        othersTotal += drawn;
+      });
+      const readingTarget = Math.max(0, MOCK_MODULE_LEN - othersTotal);
+      const result = distributeToTarget(readingIdxs.map(i => MOCK_BLUEPRINT[i][field]), readingTarget);
+      readingIdxs.forEach((i, k) => { rows[i][field] = result[k]; });
+    });
+    return rows;
+  }
+
+  // Splits `target` across `weights` proportionally, largest-remainder
+  // rounding so the integers sum to exactly `target` (never off by a
+  // question from rounding). Shared by every redistribution below.
+  function distributeToTarget(weights, target) {
+    target = Math.max(0, Math.round(target));
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    const raw = weights.map(w => totalWeight ? (w / totalWeight) * target : target / weights.length);
     const floors = raw.map(Math.floor);
     const used = floors.reduce((a, b) => a + b, 0);
     const remainder = target - used;
     const order = raw.map((v, i) => ({ i, frac: v - Math.floor(v) })).sort((a, b) => b.frac - a.frac);
     const result = [...floors];
     for (let k = 0; k < remainder && k < order.length; k++) result[order[k].i]++;
-    rows.forEach((r, i) => { r[field] = Math.max(0, result[i]); });
+    return result;
   }
 
   // Sum of `field` ('m1' | 'm2') across just the skills in `bucket` — the
@@ -4524,46 +4950,118 @@
     return mockState.blueprint.reduce((s, r) => s + (SKILL_BUCKET[r.skill] === bucket ? r[field] : 0), 0);
   }
 
-  // Same idea as scaleBlueprintField, but scoped to one bucket's skills —
-  // editing a Level 1 total redistributes only that bucket's rows (toward
-  // their official within-bucket shape), leaving every other bucket's rows
-  // untouched.
+  // Redistributes just one bucket's rows toward their official
+  // within-bucket shape, leaving every other bucket's rows untouched. Used
+  // internally by setBucketCount below, after the *other* buckets have
+  // already absorbed the delta.
   function scaleBucket(field, bucket, target) {
     const rows = mockState.blueprint;
-    target = Math.max(0, target);
     const idxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] === bucket);
-    const officialWeights = idxs.map(i => MOCK_BLUEPRINT[i][field]);
-    const totalWeight = officialWeights.reduce((a, b) => a + b, 0);
-    const raw = idxs.map((i, k) => totalWeight ? (officialWeights[k] / totalWeight) * target : target / idxs.length);
-    const floors = raw.map(Math.floor);
-    const used = floors.reduce((a, b) => a + b, 0);
-    const remainder = target - used;
-    const order = raw.map((v, k) => ({ k, frac: v - Math.floor(v) })).sort((a, b) => b.frac - a.frac);
-    const result = [...floors];
-    for (let n = 0; n < remainder && n < order.length; n++) result[order[n].k]++;
-    idxs.forEach((i, k) => { rows[i][field] = Math.max(0, result[k]); });
+    const result = distributeToTarget(idxs.map(i => MOCK_BLUEPRINT[i][field]), target);
+    idxs.forEach((i, k) => { rows[i][field] = result[k]; });
   }
 
-  // Redistributes both m1 and m2 across mockState.blueprint toward your
-  // lowest-accuracy skills (skillWeight — see skill stats), keeping each
-  // module's current total exactly the same (same largest-remainder
-  // rounding as scaleBlueprintField, just weighted by weakness instead of
-  // the official blueprint's shape).
+  // The mock exam's module length is fixed at MOCK_MODULE_LEN (27 — matches
+  // the real digital SAT), never user-editable as a raw total. Only the
+  // *distribution* across sections (Level 1) and skills (Level 2) can be
+  // adjusted, so any edit to one bucket/skill has to take its delta from (or
+  // give it back to) every other row, proportional to their current counts —
+  // that's what keeps the module's total pinned at MOCK_MODULE_LEN no matter
+  // which row you edit.
+  function setBucketCount(field, bucket, rawTarget) {
+    const rows = mockState.blueprint;
+    const target = Math.max(0, Math.min(MOCK_MODULE_LEN, Math.round(rawTarget) || 0));
+    const otherIdxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] !== bucket);
+    const otherResult = distributeToTarget(otherIdxs.map(i => rows[i][field]), MOCK_MODULE_LEN - target);
+    otherIdxs.forEach((i, k) => { rows[i][field] = otherResult[k]; });
+    scaleBucket(field, bucket, target);
+  }
+
+  // Level 2 only ever shows Reading's and Grammar's skills now (the only
+  // two sections with more than one to subdivide), so editing one skill's
+  // count must keep its *section's* total exactly where it was — the delta
+  // comes from (or goes to) just the other skill(s) in that same section,
+  // never spilling into Level 1's section totals or any other section's
+  // rows. Bounded by the section's own current total, not the whole
+  // module's — you can't set one Reading skill to 20 if Reading itself
+  // only has 12 questions to divide up.
+  function setSkillCount(field, idx, rawVal) {
+    const rows = mockState.blueprint;
+    const section = SKILL_BUCKET[rows[idx].skill];
+    const sectionTotal = bucketTotal(field, section);
+    const val = Math.max(0, Math.min(sectionTotal, Math.round(rawVal) || 0));
+    const otherIdxs = rows.map((r, i) => i).filter(i => i !== idx && SKILL_BUCKET[rows[i].skill] === section);
+    const otherResult = distributeToTarget(otherIdxs.map(i => rows[i][field]), sectionTotal - val);
+    otherIdxs.forEach((i, k) => { rows[i][field] = otherResult[k]; });
+    rows[idx][field] = val;
+  }
+
+  // Like distributeToTarget, but every item is clamped to [mins[i], maxs[i]]
+  // — used so biasing toward weak sections can't collapse a module down to
+  // almost nothing but its weakest one. Water-filling: start everyone at
+  // their floor, then hand out the remainder above that weighted by `weights`,
+  // and if an item hits its ceiling before its full share lands, the
+  // overflow rolls onto whoever still has headroom left — repeats until
+  // either the target is fully placed or nobody has room left (only
+  // possible if sum(maxs) < target, which callers are expected to avoid).
+  function distributeToTargetBounded(weights, target, mins, maxs) {
+    target = Math.max(0, Math.round(target));
+    const alloc = mins.slice();
+    let remaining = target - alloc.reduce((a, b) => a + b, 0);
+    if (remaining < 0) return distributeToTarget(weights, target).map((v, i) => Math.max(0, Math.min(v, maxs[i])));
+    let active = weights.map((w, i) => ({ i, w, headroom: maxs[i] - mins[i] })).filter(a => a.headroom > 0);
+    while (remaining > 0 && active.length) {
+      const shares = distributeToTarget(active.map(a => a.w), remaining);
+      let leftover = 0;
+      const stillActive = [];
+      active.forEach((a, k) => {
+        const give = Math.min(shares[k], a.headroom);
+        alloc[a.i] += give;
+        leftover += shares[k] - give;
+        const headroom = a.headroom - give;
+        if (headroom > 0) stillActive.push({ i: a.i, w: a.w, headroom });
+      });
+      active = stillActive;
+      remaining = leftover;
+    }
+    return alloc;
+  }
+
+  // A section's own weakness signal for Stage 1 below: its single weakest
+  // skill's weight (max, not average) — one bad skill in an otherwise-fine
+  // section should still pull that section's total up, not get diluted out
+  // by averaging with skills that are already solid.
+  function sectionWeaknessWeight(section) {
+    const weights = mockState.blueprint.filter(r => SKILL_BUCKET[r.skill] === section).map(r => skillWeight(r.skill));
+    return Math.max(...weights);
+  }
+
+  // Two-stage bias, run independently for m1 and m2. Stage 1 spreads the 5
+  // *section* totals toward whichever section holds your weakest skill,
+  // bounded to MOCK_BUCKET_STATS's observed real-test min/max per section —
+  // without that bound, a single very-weak Grammar skill could pull the
+  // whole module toward all-Grammar, which no real module looks like. Stage
+  // 2 then spreads each multi-skill section's own (now-fixed) total across
+  // its individual skills by their own weight, unbounded — real modules
+  // already show 0 for some skills sometimes (Cross-Text most often), so no
+  // floor is imposed at this finer level.
   function biasBlueprintTowardWeakSkills() {
     const rows = mockState.blueprint;
     ['m1', 'm2'].forEach(field => {
       const target = rows.reduce((s, r) => s + r[field], 0);
       if (!target) return;
-      const weights = rows.map(r => skillWeight(r.skill));
-      const totalWeight = weights.reduce((a, b) => a + b, 0);
-      const raw = rows.map((r, i) => totalWeight ? (weights[i] / totalWeight) * target : target / rows.length);
-      const floors = raw.map(Math.floor);
-      const used = floors.reduce((a, b) => a + b, 0);
-      const remainder = target - used;
-      const order = raw.map((v, i) => ({ i, frac: v - Math.floor(v) })).sort((a, b) => b.frac - a.frac);
-      const result = [...floors];
-      for (let k = 0; k < remainder && k < order.length; k++) result[order[k].i]++;
-      rows.forEach((r, i) => { r[field] = Math.max(0, result[i]); });
+
+      const sectionWeights = MOCK_BUCKET_ORDER.map(sectionWeaknessWeight);
+      const mins = MOCK_BUCKET_ORDER.map(b => MOCK_BUCKET_STATS[b].min);
+      const maxs = MOCK_BUCKET_ORDER.map(b => MOCK_BUCKET_STATS[b].max);
+      const sectionTargets = distributeToTargetBounded(sectionWeights, target, mins, maxs);
+
+      MOCK_BUCKET_ORDER.forEach((section, si) => {
+        const idxs = rows.map((r, i) => i).filter(i => SKILL_BUCKET[rows[i].skill] === section);
+        const weights = idxs.map(i => skillWeight(rows[i].skill));
+        const result = distributeToTarget(weights, sectionTargets[si]);
+        idxs.forEach((i, k) => { rows[i][field] = result[k]; });
+      });
     });
   }
 
@@ -4699,7 +5197,10 @@
     blueprint: cloneDefaultBlueprint(), // editable per-skill {category, skill, m1, m2} counts
     weightConfig: defaultWeightConfig(), // per-slot ('m1' | 'm2harder' | 'm2easier') difficulty-mix preset/custom
     qtimer: { timed: false, timerSeconds: 60, timerStrict: true, timeLeft: 0, timerId: null, expired: false }, // opt-in per-question timer, layered alongside the module clock
-    advanced: false, // whether the folded module-mix/weighting/adaptive-threshold section is expanded
+    advancedDistribution: false, // whether the folded Level 1 section question-count controls are expanded
+    showSkillMix: false, // nested under advancedDistribution: also expand Level 2 (within-section skill mix), Reading & Grammar only
+    distributionView: 'slider', // 'slider' (default, draggable bar) | 'table' (slider+number-input rows, the older view)
+    advancedDifficulty: false, // whether the folded difficulty-mix/adaptive-threshold section is expanded
   };
 
   function formatMockTime(seconds) {
@@ -4974,9 +5475,407 @@
 
   // Level 1: editable totals for the 5 sections (see MOCK_BUCKET_ORDER),
   // each with a "typical" hint pulled from real Bluebook module audits.
-  // Editing one redistributes just that bucket's underlying skill rows
-  // (via scaleBucket) toward their official within-bucket shape, so the
-  // Level 2 table below stays in sync automatically.
+  // Editing one calls setBucketCount, which pulls the delta from every
+  // other section proportionally (keeping the module's overall total fixed
+  // at MOCK_MODULE_LEN) and redistributes the edited section's own skill
+  // rows toward their official within-section shape — so the Level 2 table
+  // below stays in sync automatically.
+  // n/total as a compact "NN%" string — used throughout the Level 1/Level 2
+  // tables so counts don't force the reader to do the division themselves.
+  function pctOf(n, total) {
+    return total ? `${Math.round((n / total) * 100)}%` : '—';
+  }
+
+  function hexToRgb(hex) {
+    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return m ? { r: parseInt(m[1], 16), g: parseInt(m[2], 16), b: parseInt(m[3], 16) } : { r: 0, g: 0, b: 0 };
+  }
+
+  // Paired range-slider + number-input control for one section/skill count,
+  // both carrying the same data-* identifying attributes so a single
+  // delegated handler (see wireCountCell in wireMock) can keep them in sync
+  // and commit through setBucketCount/setSkillCount on release. `kind` is
+  // 'bucket' (Level 1) or 'bp' (Level 2); `key` is the bucket name or
+  // blueprint row index; `field` is 'm1' | 'm2'. `max` defaults to the whole
+  // module (Level 1) but Level 2 callers pass their section's own current
+  // total, since that's the real ceiling setSkillCount enforces.
+  function countCellHtml(kind, key, field, value, max) {
+    max = max == null ? MOCK_MODULE_LEN : max;
+    const keyAttr = kind === 'bucket' ? `data-bucket="${escapeHtml(String(key))}"` : `data-bp-idx="${key}"`;
+    const fieldAttr = kind === 'bucket' ? `data-bucket-field="${field}"` : `data-bp-field="${field}"`;
+    return `
+      <div class="bp-count-cell">
+        <input type="range" class="bp-slider" min="0" max="${max}" step="1" ${keyAttr} ${fieldAttr} value="${value}">
+        <input type="number" class="mini-num-input bp-num" min="0" max="${max}" ${keyAttr} ${fieldAttr} value="${value}">
+        <span class="bp-pct">${pctOf(value, MOCK_MODULE_LEN)}</span>
+      </div>`;
+  }
+
+  // Horizontal stacked bar showing each row's share of one module's
+  // MOCK_MODULE_LEN questions — a quick visual read of the distribution to
+  // go with the exact counts in the table, redrawn on every render (so
+  // dragging a slider and releasing it updates the bar along with
+  // everything else it rebalances). `rows` is [{ label, value, color }],
+  // widths normalized against MOCK_MODULE_LEN (not against their own sum),
+  // so a set that doesn't add up to 27 visibly leaves the bar short rather
+  // than silently rescaling to fill it.
+  function distributionBarHtml(rows, moduleLabel) {
+    const segs = rows.filter(r => r.value > 0).map(r =>
+      `<div class="dist-bar-seg" style="width:${(r.value / MOCK_MODULE_LEN) * 100}%; background:${r.color};" title="${escapeHtml(r.label)}: ${r.value} (${pctOf(r.value, MOCK_MODULE_LEN)})"></div>`
+    ).join('');
+    return `
+      <div class="dist-bar-row">
+        <span class="dist-bar-label">${escapeHtml(moduleLabel)}</span>
+        <div class="dist-bar">${segs}</div>
+      </div>`;
+  }
+
+  // Level 2's bar reuses each row's section color, but fades opacity by the
+  // row's position within its section (1.0 down to ~0.45) so a
+  // multi-skill section like Reading still reads as one family of color
+  // while its individual skills stay visually distinguishable.
+  function skillDistributionBarsHtml(showM1, showM2) {
+    const withinSectionIndex = {};
+    const rows = mockState.blueprint.map(r => {
+      const section = SKILL_BUCKET[r.skill];
+      const i = withinSectionIndex[section] || 0;
+      withinSectionIndex[section] = i + 1;
+      return { r, section, i };
+    });
+    const sectionCounts = {};
+    rows.forEach(({ section }) => { sectionCounts[section] = (sectionCounts[section] || 0) + 1; });
+    const colored = (field) => rows.map(({ r, section, i }) => {
+      const n = sectionCounts[section];
+      const opacity = n > 1 ? 1 - (i / n) * 0.55 : 1;
+      const { r: cr, g: cg, b: cb } = hexToRgb(SECTION_COLORS[section]);
+      return { label: r.skill, value: r[field], color: `rgba(${cr},${cg},${cb},${opacity.toFixed(2)})` };
+    });
+    return `
+      <div class="dist-bar-block">
+        ${showM1 ? distributionBarHtml(colored('m1'), 'M1') : ''}
+        ${showM2 ? distributionBarHtml(colored('m2'), 'M2') : ''}
+      </div>`;
+  }
+
+  // --- Interactive stacked-bar distribution editor (default view) ---------
+  // Direct manipulation instead of a table of number inputs: one horizontal
+  // bar per module, its whole width standing for `barTotal` questions,
+  // divided into colored segments with a label (swatch + name + count)
+  // riding on each one. A thin handle sits at every internal boundary;
+  // dragging it moves the split between just its two neighboring segments,
+  // like resizing adjacent panes — every other segment on the bar stays
+  // exactly where it was. That pairwise behavior is deliberate and different
+  // from the table view's sliders (which redistribute *all* other rows
+  // proportionally): here you're grabbing the wall between two specific
+  // things, so only those two things should move.
+
+  // Below this width share, a segment's label can't fit inside it — drop to
+  // just the count, and move the full swatch+name+count label to sit under
+  // the bar instead of overlapping the segment.
+  const IDIST_NARROW_THRESHOLD = 0.12;
+
+  function interactiveDistBarHtml(barId, field, segments, barTotal, rowLabel) {
+    let cum = 0;
+    const segHtml = segments.map((seg, i) => {
+      const widthPct = barTotal > 0 ? (seg.count / barTotal) * 100 : 0;
+      const leftPct = cum;
+      cum += widthPct;
+      const narrow = widthPct < IDIST_NARROW_THRESHOLD * 100;
+      return `
+        <div class="idist-seg${narrow ? ' idist-seg--narrow' : ''}" data-idist-idx="${i}"
+             style="left:${leftPct}%; width:${widthPct}%; background:${seg.color};">
+          <div class="idist-seg-label">
+            <span class="idist-seg-swatch" style="background:${seg.color}"></span>
+            <span class="idist-seg-name">${escapeHtml(seg.shortLabel)}</span>
+            <span class="idist-seg-count">${seg.count}</span>
+          </div>
+        </div>`;
+    }).join('');
+    let handleCum = 0;
+    const handleHtml = segments.slice(0, -1).map((seg, i) => {
+      handleCum += barTotal > 0 ? (seg.count / barTotal) * 100 : 0;
+      return `<div class="idist-handle" data-idist-handle="${i}" style="left:${handleCum}%;"
+                   tabindex="0" role="slider" aria-label="Split between ${escapeHtml(seg.label)} and ${escapeHtml(segments[i + 1].label)}"></div>`;
+    }).join('');
+    return `
+      <div class="idist-row">
+        ${rowLabel ? `<span class="idist-row-label">${escapeHtml(rowLabel)}</span>` : ''}
+        <div class="idist-bar" data-idist-id="${barId}" data-idist-field="${field}" data-idist-total="${barTotal}">
+          ${segHtml}${handleHtml}
+        </div>
+      </div>`;
+  }
+
+  // Level 1: whole-module bar, one segment per section (Vocab/Reading/
+  // Grammar/Transitions/Notes), total pinned at MOCK_MODULE_LEN.
+  function level1DistBarHtml(field) {
+    const segments = MOCK_BUCKET_ORDER.map(bucket => ({
+      key: bucket, label: bucket, shortLabel: bucket, color: SECTION_COLORS[bucket], count: bucketTotal(field, bucket),
+    }));
+    return interactiveDistBarHtml('level1', field, segments, MOCK_MODULE_LEN, field === 'm1' ? 'M1' : 'M2');
+  }
+
+  // Blueprint row indices belonging to one section, in stable order —
+  // shared between rendering (level2DistBarHtml) and the drag handler
+  // (wireDistBars) so "segment position i" always means the same row in
+  // both places.
+  function level2SectionIdxs(section) {
+    return mockState.blueprint.map((r, i) => i).filter(i => SKILL_BUCKET[mockState.blueprint[i].skill] === section);
+  }
+
+  // Level 2: one bar per multi-skill section (Reading, Grammar — the only
+  // two with more than one skill; Vocab/Transitions/Notes have nothing to
+  // subdivide), total pinned at that section's own current sum so the bar
+  // always fills edge-to-edge regardless of the section's share of 27.
+  function level2DistBarHtml(section, field) {
+    const idxs = level2SectionIdxs(section);
+    const total = idxs.reduce((s, i) => s + mockState.blueprint[i][field], 0);
+    const segments = idxs.map(i => {
+      const r = mockState.blueprint[i];
+      return { key: i, label: r.skill, shortLabel: SKILL_SHORT_LABEL[r.skill] || r.skill, color: SECTION_COLORS[section], count: r[field] };
+    });
+    // Fade each skill's color by its position, same treatment as skillDistributionBarsHtml.
+    segments.forEach((seg, i) => {
+      const { r: cr, g: cg, b: cb } = hexToRgb(SECTION_COLORS[section]);
+      const opacity = segments.length > 1 ? 1 - (i / segments.length) * 0.55 : 1;
+      seg.color = `rgba(${cr},${cg},${cb},${opacity.toFixed(2)})`;
+    });
+    return interactiveDistBarHtml(`level2-${section}`, field, segments, total, field === 'm1' ? 'M1' : 'M2');
+  }
+
+  // Commits a Level 1 drag: bucketA gains/loses questions, bucketB takes the
+  // opposite delta, every other bucket untouched. Each bucket's own skills
+  // are rescaled proportionally to its new total (scaleBucket), same as a
+  // manual Level 1 edit in the table view would do.
+  function commitLevel1Pair(field, bucketA, bucketB, newCountA) {
+    const oldA = bucketTotal(field, bucketA);
+    const oldB = bucketTotal(field, bucketB);
+    const pairSum = oldA + oldB;
+    newCountA = Math.max(0, Math.min(pairSum, newCountA));
+    scaleBucket(field, bucketA, newCountA);
+    scaleBucket(field, bucketB, pairSum - newCountA);
+  }
+
+  // Commits a Level 2 drag: two specific skill rows trade questions
+  // directly, nothing else on the blueprint changes (their section's total,
+  // and every other section, stay exactly as they were).
+  function commitLevel2Pair(field, idxA, idxB, newValA) {
+    const rows = mockState.blueprint;
+    const pairSum = rows[idxA][field] + rows[idxB][field];
+    newValA = Math.max(0, Math.min(pairSum, newValA));
+    rows[idxA][field] = newValA;
+    rows[idxB][field] = pairSum - newValA;
+  }
+
+  const DIFFICULTY_ORDER = ['Easy', 'Medium', 'Hard'];
+
+  // Whichever preset (or custom mix) is active for `key`, resolved to three
+  // exact integers summing to 100 — via distributeToTarget rather than
+  // rounding each independently, so they can never land on e.g. 33/33/33=99.
+  // Rendering and the drag handler both call this, so what you see is
+  // always exactly what a drag starts from.
+  function resolvedDifficultyCounts(key) {
+    const cfg = mockState.weightConfig[key];
+    const resolved = normalizeWeights(cfg.preset === 'custom' ? cfg.custom : WEIGHT_PRESETS[cfg.preset]);
+    return distributeToTarget(DIFFICULTY_ORDER.map(d => resolved[d]), 100);
+  }
+
+  // Commits a difficulty-bar drag. Touching the bar always means "I'm
+  // customizing now" — even if a named preset (Balanced/Harder/Easier) was
+  // active, dragging seeds cfg.custom from that preset's own resolved
+  // values (via resolvedDifficultyCounts) and flips to 'custom', the same
+  // way picking up any slider implies leaving "preset" behind.
+  function commitDifficultyPair(key, diffA, diffB, newValA) {
+    const counts = resolvedDifficultyCounts(key);
+    const idxA = DIFFICULTY_ORDER.indexOf(diffA);
+    const idxB = DIFFICULTY_ORDER.indexOf(diffB);
+    const pairSum = counts[idxA] + counts[idxB];
+    newValA = Math.max(0, Math.min(pairSum, newValA));
+    counts[idxA] = newValA;
+    counts[idxB] = pairSum - newValA;
+    mockState.weightConfig[key].custom = { Easy: counts[0], Medium: counts[1], Hard: counts[2] };
+    mockState.weightConfig[key].preset = 'custom';
+  }
+
+  // The difficulty-mix bar for one weight slot ('m1' | 'm2harder' |
+  // 'm2easier') — same interactive drag-to-split component as Level 1/2,
+  // just with Easy/Medium/Hard as its three segments instead of sections or
+  // skills, and a fixed 100-unit total (a percentage split) instead of a
+  // question count.
+  function difficultyDistBarHtml(key) {
+    const counts = resolvedDifficultyCounts(key);
+    const segments = DIFFICULTY_ORDER.map((d, i) => ({
+      key: d, label: d, shortLabel: d, color: DIFFICULTY_COLORS[d], count: counts[i],
+    }));
+    return interactiveDistBarHtml(`difficulty-${key}`, key, segments, 100);
+  }
+
+  // Drag-to-split interaction for every .idist-handle on the page. Wired on
+  // plain mouse + touch events rather than the Pointer Events API — mouse
+  // events are the one thing every environment reliably dispatches for a
+  // drag (including automated/synthetic input, which doesn't always
+  // synthesize pointer events even though real hardware mouse/touch input
+  // does), and pairing them with touch events separately covers mobile
+  // without relying on a browser's mouse-event touch shimming. One
+  // down/move/up cycle per drag: while the button's held, only the DOM
+  // updates directly (the two neighboring segments' width/left, their count
+  // labels, the handle's own position, and a live narrow/not-narrow toggle
+  // for label placement) — no mockState writes and no re-render mid-drag,
+  // so it tracks the pointer at native speed instead of fighting a redraw
+  // every frame. The actual commit (setBucketCount-equivalent for Level 1
+  // via commitLevel1Pair, or a direct pair swap for Level 2 via
+  // commitLevel2Pair) — and the renderMock() that syncs every other view of
+  // the same data (the other module's bar, the table view, totals) —
+  // happens exactly once, on release.
+  function wireDistBars(shell) {
+    shell.querySelectorAll('.idist-handle').forEach(handle => {
+      const startDrag = (startClientX) => {
+        const bar = handle.closest('.idist-bar');
+        if (!bar) return null;
+        const barId = bar.dataset.idistId;
+        const field = bar.dataset.idistField;
+        const handleIdx = parseInt(handle.dataset.idistHandle, 10);
+        const segEls = Array.from(bar.querySelectorAll('.idist-seg'));
+        const segA = segEls[handleIdx];
+        const segB = segEls[handleIdx + 1];
+        if (!segA || !segB) return null;
+
+        let barTotal, keyA, keyB, startCountA, startCountB;
+        if (barId === 'level1') {
+          barTotal = MOCK_MODULE_LEN;
+          keyA = MOCK_BUCKET_ORDER[handleIdx];
+          keyB = MOCK_BUCKET_ORDER[handleIdx + 1];
+          startCountA = bucketTotal(field, keyA);
+          startCountB = bucketTotal(field, keyB);
+        } else if (barId.startsWith('level2-')) {
+          const section = barId.slice('level2-'.length);
+          const sectionIdxs = level2SectionIdxs(section);
+          barTotal = sectionIdxs.reduce((s, i) => s + mockState.blueprint[i][field], 0);
+          keyA = sectionIdxs[handleIdx];
+          keyB = sectionIdxs[handleIdx + 1];
+          startCountA = mockState.blueprint[keyA][field];
+          startCountB = mockState.blueprint[keyB][field];
+        } else {
+          // difficulty-<key>: field holds the weightConfig key here, not
+          // 'm1'/'m2' — same data-idist-field slot, reused with different
+          // meaning per bar type (see difficultyDistBarHtml).
+          barTotal = 100;
+          keyA = DIFFICULTY_ORDER[handleIdx];
+          keyB = DIFFICULTY_ORDER[handleIdx + 1];
+          const counts = resolvedDifficultyCounts(field);
+          startCountA = counts[handleIdx];
+          startCountB = counts[handleIdx + 1];
+        }
+        const pairSum = startCountA + startCountB;
+        const barRect = bar.getBoundingClientRect();
+        const pxPerUnit = barTotal > 0 ? barRect.width / barTotal : 0;
+        const startLeftPct = parseFloat(segA.style.left) || 0;
+        const countElA = segA.querySelector('.idist-seg-count');
+        const countElB = segB.querySelector('.idist-seg-count');
+        const narrowPct = IDIST_NARROW_THRESHOLD * 100;
+        let finalA = startCountA;
+        handle.classList.add('idist-dragging');
+
+        const move = (clientX) => {
+          if (!pxPerUnit) return;
+          const deltaUnits = Math.round((clientX - startClientX) / pxPerUnit);
+          const newA = Math.max(0, Math.min(pairSum, startCountA + deltaUnits));
+          const newB = pairSum - newA;
+          finalA = newA;
+          const widthA = (newA / barTotal) * 100;
+          const widthB = (newB / barTotal) * 100;
+          const boundaryPct = startLeftPct + widthA;
+          segA.style.width = widthA + '%';
+          segB.style.left = boundaryPct + '%';
+          segB.style.width = widthB + '%';
+          handle.style.left = boundaryPct + '%';
+          if (countElA) countElA.textContent = newA;
+          if (countElB) countElB.textContent = newB;
+          segA.classList.toggle('idist-seg--narrow', widthA < narrowPct);
+          segB.classList.toggle('idist-seg--narrow', widthB < narrowPct);
+        };
+        const end = () => {
+          handle.classList.remove('idist-dragging');
+          if (finalA !== startCountA) {
+            if (barId === 'level1') commitLevel1Pair(field, keyA, keyB, finalA);
+            else if (barId.startsWith('level2-')) commitLevel2Pair(field, keyA, keyB, finalA);
+            else commitDifficultyPair(field, keyA, keyB, finalA);
+            renderMock();
+          }
+        };
+        return { move, end };
+      };
+
+      handle.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        e.preventDefault();
+        const drag = startDrag(e.clientX);
+        if (!drag) return;
+        const onMouseMove = (ev) => drag.move(ev.clientX);
+        // mouseup always carries the true release coordinate — do one last
+        // move() with it before committing, rather than trusting only
+        // whatever the most recent mousemove happened to report. Real drags
+        // don't always fire a mousemove at the exact pixel a button was
+        // released on (sampling gaps on fast drags, synthetic/automated
+        // input, etc.), so relying solely on the mousemove trail can commit
+        // a slightly-stale position.
+        const onMouseUp = (ev) => {
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', onMouseUp);
+          drag.move(ev.clientX);
+          drag.end();
+        };
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+      });
+
+      handle.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        if (!touch) return;
+        const drag = startDrag(touch.clientX);
+        if (!drag) return;
+        const onTouchMove = (ev) => { if (ev.touches[0]) drag.move(ev.touches[0].clientX); };
+        // Same reasoning as mouseup above — changedTouches carries the
+        // final touch position even though the touch itself has ended.
+        const onTouchEnd = (ev) => {
+          document.removeEventListener('touchmove', onTouchMove);
+          document.removeEventListener('touchend', onTouchEnd);
+          document.removeEventListener('touchcancel', onTouchEnd);
+          if (ev.changedTouches && ev.changedTouches[0]) drag.move(ev.changedTouches[0].clientX);
+          drag.end();
+        };
+        document.addEventListener('touchmove', onTouchMove, { passive: true });
+        document.addEventListener('touchend', onTouchEnd);
+        document.addEventListener('touchcancel', onTouchEnd);
+      }, { passive: true });
+    });
+  }
+
+  // Shared by both Level 1 views (slider and table) — the empirical
+  // sourcing/reliability write-up doesn't depend on which one's on screen.
+  function distributionGuideHtml() {
+    return `
+      <details class="bp-guide">
+        <summary>Where do "typical" ranges come from, and how reliable are they?</summary>
+        <div class="bp-guide-body">
+          <p>Pulled from <code>db/module_composition.json</code> — a question-by-question breakdown of Reading &amp; Writing Modules 1 and 2 (both difficulty forms) across currently-live official Bluebook Practice Tests, 8 module instances with a complete tally (Tests 4&ndash;8; Tests 9&ndash;11 have no audit yet). Practice Tests 1, 2, and 3 are deliberately left out — not for data quality, but because College Board actually retired them from Bluebook on 2025-02-03. They're no longer selectable by a test-taker today, so they'd misrepresent "what's typical right now" even though the underlying data is real; they're kept in the JSON, flagged <code>"retired": true</code>, for historical reference. With only 8 module instances left, these ranges lean on a thinner sample than before — expect them to move as more of Tests 4&ndash;11 get audited.</p>
+          <p><strong>Reading</strong> bundles six skills (Text Structure and Purpose, Cross-Text Connections, Central Ideas and Details, Command of Evidence — textual and quantitative counted separately — and Inferences) into one number on purpose: each swings hard on its own from module to module — Cross-Text is just 0 or 1 with nothing between, Text Structure ranges 0&ndash;3 &mdash; but their <em>sum</em> holds a steadier 7&ndash;11. <strong>Grammar</strong> (Boundaries + Form/Structure/Sense combined) is the steadiest section of the five even on its own, 6&ndash;7 per module. <strong>Notes</strong> is the widest-swinging section, 2&ndash;6.</p>
+          <p><strong>Reliability:</strong> of the 8 module instances behind these numbers, only Practice Test 8 Module 1 is verified ground truth from someone who actually took it. The rest are reconstructed by mapping third-party question-by-question audits (Walker Prep's Question Type Inventories, The Test Advantage's walkthroughs) onto this repo's categories — real official Bluebook tests, but not College Board's own published statistics. A couple of these third-party sources also confusingly number a completely different, non-adaptive "linear" practice-test format (33 questions/module, for paper accommodations) the same way as the Bluebook tests — every module in this file was double-checked to be the 27-question Bluebook version, not that one. Treat these ranges as a planning guide, not a guarantee — and if you take a module yourself, updating its entry to <code>"confidence": "verified"</code> makes the guide more trustworthy for the next person.</p>
+        </div>
+      </details>`;
+  }
+
+  // Level 1, slider view (default): one drag-to-split bar per shown module.
+  function mockLevel1SliderHtml(showM1, showM2) {
+    return `
+      <div class="idist-block">
+        ${showM1 ? level1DistBarHtml('m1') : ''}
+        ${showM2 ? level1DistBarHtml('m2') : ''}
+      </div>`;
+  }
+
+  // Level 1, table view (the original numeric-input form, kept as an
+  // alternative — switch via the Slider/Table toggle above it).
   function mockBucketTableHtml(showM1, showM2) {
     const rows = MOCK_BUCKET_ORDER.map(bucket => {
       const stats = MOCK_BUCKET_STATS[bucket];
@@ -4984,94 +5883,94 @@
       const m2 = bucketTotal('m2', bucket);
       return `<tr>
         <td>${bucket}</td>
-        ${showM1 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bucket="${bucket}" data-bucket-field="m1" value="${m1}"></td>` : ''}
-        ${showM2 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bucket="${bucket}" data-bucket-field="m2" value="${m2}"></td>` : ''}
+        ${showM1 ? `<td>${countCellHtml('bucket', bucket, 'm1', m1)}</td>` : ''}
+        ${showM2 ? `<td>${countCellHtml('bucket', bucket, 'm2', m2)}</td>` : ''}
         <td class="bp-avail">typical ${stats.min}&ndash;${stats.max}/module, avg ${stats.mean}</td>
       </tr>`;
     }).join('');
+    const barRows = (field) => MOCK_BUCKET_ORDER.map(bucket => ({ label: bucket, value: bucketTotal(field, bucket), color: SECTION_COLORS[bucket] }));
     return `
-      <div class="config-row">
-        <div class="bp-table-head"><label>Question mix by section (Level 1)</label></div>
-        <table class="mock-blueprint-table bp-editable">
-          <thead><tr><th>Section</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Real-test range</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <details class="bp-guide">
-          <summary>Where do "typical" ranges come from, and how reliable are they?</summary>
-          <div class="bp-guide-body">
-            <p>Pulled from <code>db/module_composition.json</code> — a question-by-question breakdown of Reading &amp; Writing Modules 1 and 2 (both difficulty forms) across the 8 official Bluebook Practice Tests currently covered, 17 module instances with a complete tally.</p>
-            <p><strong>Reading</strong> bundles five skills (Text Structure and Purpose, Cross-Text Connections, Central Ideas and Details, Command of Evidence, Inferences) into one number on purpose: each swings hard on its own from module to module — Cross-Text is just 0 or 1 with nothing between, Text Structure ranges 0&ndash;3 &mdash; but their <em>sum</em> holds a steadier 7&ndash;12. <strong>Grammar</strong> (Boundaries + Form/Structure/Sense combined) is the steadiest section of the five even on its own, 5&ndash;8 per module. <strong>Vocab</strong> and <strong>Notes</strong> swing the widest, 2&ndash;8 and 0&ndash;6 respectively.</p>
-            <p><strong>Reliability:</strong> of the 17 module instances behind these numbers, only Practice Test 8 Module 1 is verified ground truth from someone who actually took it. The rest are reconstructed by mapping third-party question-by-question audits (Walker Prep's Question Type Inventories, The Test Advantage's walkthroughs) onto this repo's categories — real official Bluebook tests, but not College Board's own published statistics, and a few specific modules have flagged low-confidence spots (see the <code>flags</code> field per module in the JSON). Treat these ranges as a planning guide, not a guarantee — and if you take a module yourself, updating its entry to <code>"confidence": "verified"</code> makes the guide more trustworthy for the next person.</p>
-          </div>
-        </details>
+      <div class="dist-bar-block">
+        ${showM1 ? distributionBarHtml(barRows('m1'), 'M1') : ''}
+        ${showM2 ? distributionBarHtml(barRows('m2'), 'M2') : ''}
+      </div>
+      <div class="dist-bar-legend">${MOCK_BUCKET_ORDER.map(b => `<span class="dist-legend-item"><span class="dist-legend-swatch" style="background:${SECTION_COLORS[b]};"></span>${escapeHtml(b)}</span>`).join('')}</div>
+      <table class="mock-blueprint-table bp-editable">
+        <thead><tr><th>Section</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Real-test range</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  // Level 2, slider view: two drag-to-split bars (Reading, Grammar) — the
+  // only two sections with more than one skill to subdivide.
+  function mockLevel2SliderHtml(showM1, showM2) {
+    return `
+      <div class="idist-block">
+        <p class="bp-hint" style="margin:0 0 2px; font-weight:600; color:var(--ink-soft);">Reading</p>
+        ${showM1 ? level2DistBarHtml('Reading', 'm1') : ''}
+        ${showM2 ? level2DistBarHtml('Reading', 'm2') : ''}
+        <p class="bp-hint" style="margin:8px 0 2px; font-weight:600; color:var(--ink-soft);">Grammar</p>
+        ${showM1 ? level2DistBarHtml('Grammar', 'm1') : ''}
+        ${showM2 ? level2DistBarHtml('Grammar', 'm2') : ''}
       </div>`;
   }
 
-  // Level 2: editable per-skill question-count table backing
-  // mockState.blueprint directly. `showM1`/`showM2` hide whichever column
-  // doesn't apply to the current mode.
+  // Level 2, table view: same numeric-input table as before, but filtered
+  // to just Reading's and Grammar's skills — Vocab/Transitions/Notes have
+  // nothing to subdivide, so a Level 2 row for them would just repeat
+  // Level 1's own number.
   function mockBlueprintTableHtml(showM1, showM2) {
-    const rows = mockState.blueprint.map((r, i) => {
+    const idxs = mockState.blueprint.map((r, i) => i).filter(i => {
+      const section = SKILL_BUCKET[mockState.blueprint[i].skill];
+      return section === 'Reading' || section === 'Grammar';
+    });
+    const rows = idxs.map(i => {
+      const r = mockState.blueprint[i];
       const poolSize = QUESTIONS.filter(q => q.category === r.category && q.skill === r.skill &&
         (!mockState.statuses.size || mockState.statuses.has(questionStatus(q)))).length;
       return `<tr>
         <td>${escapeHtml(SKILL_BUCKET[r.skill])}</td>
         <td>${escapeHtml(r.skill)}</td>
-        ${showM1 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bp-idx="${i}" data-bp-field="m1" value="${r.m1}"></td>` : ''}
-        ${showM2 ? `<td><input type="number" class="mini-num-input" min="0" max="40" data-bp-idx="${i}" data-bp-field="m2" value="${r.m2}"></td>` : ''}
+        ${showM1 ? `<td>${countCellHtml('bp', i, 'm1', r.m1, bucketTotal('m1', SKILL_BUCKET[r.skill]))}</td>` : ''}
+        ${showM2 ? `<td>${countCellHtml('bp', i, 'm2', r.m2, bucketTotal('m2', SKILL_BUCKET[r.skill]))}</td>` : ''}
         <td class="bp-avail">${poolSize} in bank</td>
       </tr>`;
     }).join('');
-    const m1Total = mockState.blueprint.reduce((s, r) => s + r.m1, 0);
-    const m2Total = mockState.blueprint.reduce((s, r) => s + r.m2, 0);
+    const m1Total = idxs.reduce((s, i) => s + mockState.blueprint[i].m1, 0);
+    const m2Total = idxs.reduce((s, i) => s + mockState.blueprint[i].m2, 0);
     return `
-      <div class="config-row">
-        <div class="bp-table-head">
-          <label>Question mix by skill (Level 2 — within each section)</label>
-          <div class="bp-actions">
-            <button type="button" class="btn" id="mockBiasWeakBtn" style="font-size:11px; padding:4px 9px;" title="Redistributes the counts below toward your lowest-accuracy skills, keeping each module's total the same">Bias toward weak skills</button>
-            <button type="button" class="btn" id="mockResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix and routing threshold below back to their defaults">Reset to official</button>
-          </div>
-        </div>
-        <table class="mock-blueprint-table bp-editable">
-          <thead><tr><th>Section</th><th>Skill</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Pool</th></tr></thead>
-          <tbody>${rows}</tbody>
-          <tfoot><tr>
-            <td colspan="2">Total</td>
-            ${showM1 ? `<td class="bp-total" id="mockM1Total">${m1Total}</td>` : ''}
-            ${showM2 ? `<td class="bp-total" id="mockM2Total">${m2Total}</td>` : ''}
-            <td></td>
-          </tr></tfoot>
-        </table>
-        <div class="config-subrow scale-row">
-          ${showM1 ? `<span>Module 1 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM1" min="0" max="200" value="${m1Total}"><button type="button" class="btn" id="mockScaleM1Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
-          ${showM2 ? `<span>Module 2 total &rarr;</span><input type="number" class="mini-num-input" id="mockScaleM2" min="0" max="200" value="${m2Total}"><button type="button" class="btn" id="mockScaleM2Btn" style="font-size:11px; padding:4px 9px;">Apply</button>` : ''}
-        </div>
-        <p class="bp-hint">Edit any count directly, or set a target total and Apply to redistribute proportionally — either here, or coarser via the section totals above. If a skill runs short of "in bank" (especially once a status filter below narrows it), that skill quietly backfills from its full pool so the module still hits your requested count. "Reset to official" restores this table <em>and</em> the difficulty mix and routing threshold below to their defaults — a 27/27 split fit to the empirical average distribution of released digital SAT practice tests, not just an even spread across skills.</p>
-      </div>`;
+      ${skillDistributionBarsHtml(showM1, showM2)}
+      <table class="mock-blueprint-table bp-editable">
+        <thead><tr><th>Section</th><th>Skill</th>${showM1 ? '<th>Module&nbsp;1</th>' : ''}${showM2 ? '<th>Module&nbsp;2</th>' : ''}<th>Pool</th></tr></thead>
+        <tbody>${rows}</tbody>
+        <tfoot><tr>
+          <td colspan="2">Reading + Grammar total</td>
+          ${showM1 ? `<td class="bp-total" id="mockM1Total">${m1Total}</td>` : ''}
+          ${showM2 ? `<td class="bp-total" id="mockM2Total">${m2Total}</td>` : ''}
+          <td></td>
+        </tr></tfoot>
+      </table>
+      <p class="bp-hint">Edit any count directly and the other skill in its section quietly takes (or gives back) the difference, keeping that section's own total — and so the module's ${MOCK_MODULE_LEN}-question total — unchanged. If a skill runs short of "in bank" (especially once a status filter below narrows it), it quietly backfills from its full pool so the module still hits its count.</p>`;
   }
 
   // Reusable difficulty-mix picker for one weight slot ('m1' | 'm2harder' |
-  // 'm2easier') — a preset chip row, plus editable Easy/Medium/Hard fields
-  // when "Custom" is picked (values are relative, not required to sum to 100).
+  // 'm2easier') — a preset chip row (snaps the bar to a fixed mix), plus the
+  // same drag-to-split bar Level 1/2 use, always live and always draggable.
+  // Dragging it works regardless of which chip is active — see
+  // commitDifficultyPair — so there's no separate "now edit it" step the
+  // way the old per-Easy/Medium/Hard number rows needed.
+  const DIFFICULTY_COLORS = { Easy: 'var(--easy)', Medium: 'var(--medium)', Hard: 'var(--hard)' };
+
   function weightPickerHtml(key, label) {
     const cfg = mockState.weightConfig[key];
     const chips = Object.keys(WEIGHT_PRESET_LABELS).map(p =>
       `<button class="chip ${cfg.preset === p ? 'on' : ''}" data-weight-key="${key}" data-weight-preset="${p}">${WEIGHT_PRESET_LABELS[p]}</button>`
     ).join('');
-    const customRow = cfg.preset === 'custom' ? `
-      <div class="weight-custom-row">
-        ${['Easy', 'Medium', 'Hard'].map(d => `
-          <label>${d}
-            <input type="number" class="mini-num-input" min="0" max="100" data-weight-key="${key}" data-weight-diff="${d}" value="${cfg.custom[d]}">
-          </label>`).join('')}
-        <span class="weight-pct-hint">relative weights — needn't sum to 100</span>
-      </div>` : '';
     return `
       <div class="config-row">
         <label>${label}</label>
         <div class="chip-row">${chips}</div>
-        ${customRow}
+        <div class="idist-block" style="margin:22px 0 6px;">${difficultyDistBarHtml(key)}</div>
       </div>`;
   }
 
@@ -5102,10 +6001,38 @@
       weightSection = mockModule2PoolChipsHtml() + weightPickerHtml(mockState.module2Pool === 'harder' ? 'm2harder' : 'm2easier', 'Module 2 difficulty mix');
     }
 
-    const advancedSection = `
-        ${mockBucketTableHtml(showM1, showM2)}
-        ${mockBlueprintTableHtml(showM1, showM2)}
-        ${weightSection}`;
+    const viewToggle = `
+      <div class="idist-view-toggle">
+        <button type="button" class="chip ${mockState.distributionView === 'slider' ? 'on' : ''}" data-dist-view="slider">Slider view</button>
+        <button type="button" class="chip ${mockState.distributionView === 'table' ? 'on' : ''}" data-dist-view="table">Table view</button>
+      </div>`;
+    const level1Body = mockState.distributionView === 'slider'
+      ? mockLevel1SliderHtml(showM1, showM2)
+      : mockBucketTableHtml(showM1, showM2);
+    const level2Body = mockState.distributionView === 'slider'
+      ? mockLevel2SliderHtml(showM1, showM2)
+      : mockBlueprintTableHtml(showM1, showM2);
+
+    const distributionSection = `
+        <div class="config-row">
+          <div class="bp-table-head">
+            <label>Question mix by section (Level 1)</label>
+            <div class="bp-actions">
+              <button type="button" class="btn" id="mockBiasWeakBtn" style="font-size:11px; padding:4px 9px;" title="Bias every skill's count toward whichever you're weakest, least-practiced, or most overdue on, section by section then skill by skill within each — keeps the shape of a real module while leaning the questions toward what needs work">Bias toward weak, avoided &amp; stale</button>
+              <button type="button" class="btn" id="mockResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix and routing threshold below back to their defaults">Reset to official</button>
+            </div>
+          </div>
+          ${viewToggle}
+          ${level1Body}
+          ${distributionGuideHtml()}
+        </div>
+        <div class="config-row" style="margin:16px 0 0;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="mockShowSkillMixToggle" ${mockState.showSkillMix ? 'checked' : ''} />
+            <span>Also customize skill mix within Reading &amp; Grammar (Level 2)</span>
+          </label>
+        </div>
+        ${mockState.showSkillMix ? `<div class="idist-nested"><div class="config-row">${level2Body}</div></div>` : ''}`;
 
     return `
       <div class="config-card">
@@ -5121,11 +6048,18 @@
         </div>
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="mockAdvancedToggle" ${mockState.advanced ? 'checked' : ''} />
-            <span>Customize question mix &amp; difficulty — module counts, weighting, adaptive threshold</span>
+            <input type="checkbox" id="mockAdvDistToggle" ${mockState.advancedDistribution ? 'checked' : ''} />
+            <span>Custom distribution — how many questions per section</span>
           </label>
         </div>
-        ${mockState.advanced ? advancedSection : ''}
+        ${mockState.advancedDistribution ? distributionSection : ''}
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="mockAdvDiffToggle" ${mockState.advancedDifficulty ? 'checked' : ''} />
+            <span>Custom difficulty — Easy/Medium/Hard mix &amp; adaptive routing threshold</span>
+          </label>
+        </div>
+        ${mockState.advancedDifficulty ? weightSection : ''}
         ${timedModeConfigHtml(mockState.qtimer, 'mockQ')}
         <button class="btn btn-accent" id="startMockBtn">${startLabel}</button>
       </div>
@@ -5355,41 +6289,78 @@
       });
       wireScopeChips(shell, mockState, renderMock);
       wireTimedModeConfig(shell, mockState.qtimer, 'mockQ', renderMock);
-      const advToggle = document.getElementById('mockAdvancedToggle');
-      if (advToggle) advToggle.addEventListener('change', () => { mockState.advanced = advToggle.checked; renderMock(); });
-
-      // Level 1 bucket table: editing a section's total redistributes that
-      // section's skill rows underneath it, so this needs a full re-render
-      // (the Level 2 table below has to reflect the new per-skill split) —
-      // unlike the Level 2 inputs just below, which write straight through.
-      shell.querySelectorAll('[data-bucket]').forEach(inp => {
-        inp.addEventListener('change', () => {
-          const target = Math.max(0, parseInt(inp.value, 10) || 0);
-          scaleBucket(inp.dataset.bucketField, inp.dataset.bucket, target);
-          renderMock();
-        });
+      const advDistToggle = document.getElementById('mockAdvDistToggle');
+      if (advDistToggle) advDistToggle.addEventListener('change', () => {
+        mockState.advancedDistribution = advDistToggle.checked;
+        // Unchecking means "go back to normal" — without this, any hand-edit
+        // (drag, typed number, bias) stays silently baked into
+        // mockState.blueprint even though the UI that showed it is gone, so
+        // the mock exam would keep using it despite the box reading
+        // unchecked. Only the distribution itself resets here; difficulty
+        // mix/threshold belong to the separate difficulty checkbox and its
+        // own reset.
+        if (!advDistToggle.checked) mockState.blueprint = cloneDefaultBlueprint();
+        renderMock();
       });
+      const advDiffToggle = document.getElementById('mockAdvDiffToggle');
+      if (advDiffToggle) advDiffToggle.addEventListener('change', () => { mockState.advancedDifficulty = advDiffToggle.checked; renderMock(); });
+      const showSkillMixToggle = document.getElementById('mockShowSkillMixToggle');
+      if (showSkillMixToggle) showSkillMixToggle.addEventListener('change', () => { mockState.showSkillMix = showSkillMixToggle.checked; renderMock(); });
+      shell.querySelectorAll('[data-dist-view]').forEach(btn => {
+        btn.addEventListener('click', () => { mockState.distributionView = btn.dataset.distView; renderMock(); });
+      });
+      wireDistBars(shell);
 
-      // Blueprint table: counts are written straight into mockState.blueprint
-      // on change (no re-render, so typing isn't interrupted); the live
-      // totals in the table foot update via a lighter 'input' listener.
-      shell.querySelectorAll('[data-bp-idx]').forEach(inp => {
-        inp.addEventListener('change', () => {
-          const idx = parseInt(inp.dataset.bpIdx, 10);
-          mockState.blueprint[idx][inp.dataset.bpField] = Math.max(0, parseInt(inp.value, 10) || 0);
-        });
-        inp.addEventListener('input', () => {
-          const field = inp.dataset.bpField;
-          const totalEl = document.getElementById(field === 'm1' ? 'mockM1Total' : 'mockM2Total');
-          if (!totalEl) return;
-          let sum = 0;
-          shell.querySelectorAll(`[data-bp-field="${field}"]`).forEach(x => { sum += parseInt(x.value, 10) || 0; });
-          totalEl.textContent = sum;
-        });
+      // Level 1 (section) and Level 2 (skill) count controls: each is a
+      // slider paired with a number input sharing the same data-bucket/
+      // data-bp-idx + data-*-field attributes (see countCellHtml). Dragging
+      // or typing only syncs the pair and the live count/% label — no
+      // rebalance yet, so the slider under the pointer never gets replaced
+      // mid-drag. Only on release/blur ('change') does it commit through
+      // setBucketCount/setSkillCount, which pulls the delta from every
+      // other row and triggers the full re-render that reflects the
+      // rebalance everywhere (other rows, both tables, both bars).
+      shell.querySelectorAll('.bp-count-cell').forEach(cell => {
+        const slider = cell.querySelector('input[type="range"]');
+        const num = cell.querySelector('input[type="number"]');
+        const pctEl = cell.querySelector('.bp-pct');
+        if (!slider || !num) return;
+        const isBucket = slider.dataset.bucket !== undefined;
+        const field = slider.dataset.bucketField || slider.dataset.bpField;
+        // Level 2 rows are capped by their own section's total, not the
+        // whole module's (see setSkillCount) — clamp the live drag/type
+        // preview to match, so the slider never previews a value commit
+        // will immediately reject.
+        const cap = isBucket ? MOCK_MODULE_LEN : bucketTotal(field, SKILL_BUCKET[mockState.blueprint[parseInt(slider.dataset.bpIdx, 10)].skill]);
+        const sync = (val) => {
+          val = Math.max(0, Math.min(cap, val));
+          slider.value = val;
+          num.value = val;
+          if (pctEl) pctEl.textContent = pctOf(val, MOCK_MODULE_LEN);
+          if (!isBucket) {
+            const totalEl = document.getElementById(field === 'm1' ? 'mockM1Total' : 'mockM2Total');
+            if (totalEl) {
+              let sum = 0;
+              shell.querySelectorAll(`.bp-num[data-bp-field="${field}"]`).forEach(x => { sum += parseInt(x.value, 10) || 0; });
+              totalEl.textContent = sum;
+            }
+          }
+        };
+        slider.addEventListener('input', () => sync(parseInt(slider.value, 10) || 0));
+        num.addEventListener('input', () => sync(parseInt(num.value, 10) || 0));
+        const commit = () => {
+          const val = parseInt(num.value, 10) || 0;
+          if (isBucket) setBucketCount(field, slider.dataset.bucket, val);
+          else setSkillCount(field, parseInt(slider.dataset.bpIdx, 10), val);
+          renderMock();
+        };
+        slider.addEventListener('change', commit);
+        num.addEventListener('change', commit);
       });
       const biasBpBtn = document.getElementById('mockBiasWeakBtn');
       if (biasBpBtn) biasBpBtn.addEventListener('click', () => {
         biasBlueprintTowardWeakSkills();
+        mockState.showSkillMix = true; // the bias reaches into Reading/Grammar's own skills too — show that part of the result, not just the section totals
         renderMock();
       });
       const resetBpBtn = document.getElementById('mockResetBlueprintBtn');
@@ -5399,29 +6370,12 @@
         mockState.passThreshold = MOCK_PASS_THRESHOLD;
         renderMock();
       });
-      const scaleM1Btn = document.getElementById('mockScaleM1Btn');
-      if (scaleM1Btn) scaleM1Btn.addEventListener('click', () => {
-        const target = Math.max(0, parseInt(document.getElementById('mockScaleM1').value, 10) || 0);
-        scaleBlueprintField('m1', target);
-        renderMock();
-      });
-      const scaleM2Btn = document.getElementById('mockScaleM2Btn');
-      if (scaleM2Btn) scaleM2Btn.addEventListener('click', () => {
-        const target = Math.max(0, parseInt(document.getElementById('mockScaleM2').value, 10) || 0);
-        scaleBlueprintField('m2', target);
-        renderMock();
-      });
 
       // Weight pickers (Module 1 / harder pool / easier pool, whichever are shown).
       shell.querySelectorAll('[data-weight-preset]').forEach(btn => {
         btn.addEventListener('click', () => {
           mockState.weightConfig[btn.dataset.weightKey].preset = btn.dataset.weightPreset;
           renderMock();
-        });
-      });
-      shell.querySelectorAll('[data-weight-diff]').forEach(inp => {
-        inp.addEventListener('change', () => {
-          mockState.weightConfig[inp.dataset.weightKey].custom[inp.dataset.weightDiff] = Math.max(0, parseInt(inp.value, 10) || 0);
         });
       });
       const thresholdInput = document.getElementById('mockPassThreshold');
@@ -5840,9 +6794,9 @@
   // ---------- Score trend (Profile tab) ----------
   // R&W is per-attempt (mockState.history), via effectiveRWScore — your
   // assumed-module override if set, else computeAttemptRW's default mirrored
-  // guess for single-module attempts. Math is a single self-reported value
-  // with no history of its own, so it's folded into a flat +Math offset in
-  // the "Total" view rather than plotted over time on its own.
+  // guess for single-module attempts. Math is also self-reported per attempt
+  // (loadMathScore(a.id) — see MATH_MODULES_KEY), so each row in the table
+  // and each bar in the "Total" view uses that exam's own self-report.
   const SCORE_TREND_ATTEMPTS = 12;
   const TREND_VIEW_KEY = 'sat_qbank_trend_view_v1'; // 'rw' | 'total'
   const TREND_EXCLUDED_KEY = 'sat_qbank_trend_excluded_v1'; // attempt ids left out of the chart/stats
@@ -5896,6 +6850,7 @@
       return {
         id: a.id, date: new Date(a.completedAt), rw: eff.score, assumed: eff.assumed, overridden: eff.overridden,
         mode: a.mode || 'adaptive', m1: eff.m1, m2: eff.m2, m1Real: eff.m1Real, m2Real: eff.m2Real,
+        mathScore: loadMathScore(a.id), // self-reported per attempt — see MATH_MODULES_KEY
         included: !trendExcluded.has(a.id),
       };
     }).filter(Boolean);
@@ -5909,8 +6864,7 @@
     const scored = allScored.filter(s => s.included);
 
     const view = loadTrendView();
-    const mathScore = loadMathScore();
-    const valueOf = s => view === 'total' ? s.rw + mathScore : s.rw;
+    const valueOf = s => view === 'total' ? s.rw + s.mathScore : s.rw;
     const lo = view === 'total' ? 400 : 200;
     const hi = view === 'total' ? 1600 : 800;
     const fmt = d => d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
@@ -5944,8 +6898,8 @@
         </div>
         <div class="st-total-row">
           <div class="progress-stat"><span class="n">${latest.rw}</span><span class="l">Latest R&amp;W</span></div>
-          <div class="progress-stat"><span class="n">${mathScore}</span><span class="l">Math (self-reported)</span></div>
-          <div class="progress-stat"><span class="n">${latest.rw + mathScore}</span><span class="l">Latest total (/1600)</span></div>
+          <div class="progress-stat"><span class="n">${latest.mathScore}</span><span class="l">Math (self-reported)</span></div>
+          <div class="progress-stat"><span class="n">${latest.rw + latest.mathScore}</span><span class="l">Latest total (/1600)</span></div>
         </div>`;
     }
 
@@ -5954,7 +6908,7 @@
       : '';
 
     const tableRowsHtml = allScored.slice().reverse().map(s => {
-      const total = s.rw + mathScore;
+      const total = s.rw + s.mathScore;
       const noteParts = [];
       if (s.overridden) noteParts.push('edited');
       else if (s.assumed) noteParts.push('assumed');
@@ -5967,7 +6921,7 @@
           ${modCell(s.m1, s.m1Real)}
           ${modCell(s.m2, s.m2Real)}
           <td class="bp-total">${s.rw}</td>
-          <td class="bp-total st-assumed-cell">${mathScore}*</td>
+          <td class="bp-total st-assumed-cell">${s.mathScore}*</td>
           <td class="bp-total">${total}</td>
           <td class="st-table-note">${noteParts.join(', ')}</td>
         </tr>`;
@@ -5980,7 +6934,7 @@
         </div>
         <div class="chip-row st-view-toggle">
           <button class="chip ${view === 'rw' ? 'on' : ''}" data-trend-view="rw">R&amp;W only</button>
-          <button class="chip ${view === 'total' ? 'on' : ''}" data-trend-view="total">Total (assumes Math ${mathScore})</button>
+          <button class="chip ${view === 'total' ? 'on' : ''}" data-trend-view="total">Total (R&amp;W + self-reported Math)</button>
         </div>
         ${chartHtml}
         ${noteHtml}
@@ -6339,7 +7293,7 @@
         progress: state.progress,
         tags: state.tags,
         notes: state.notes,
-        mathModules: loadMathModules(),
+        mathOverrides: mathOverrides,
         completionLog: state.completionLog,
         dailyGoal: state.dailyGoal,
         profile: state.profile,
@@ -6368,7 +7322,8 @@
             const incomingProgress = parsed && typeof parsed === 'object' ? parsed.progress : null;
             const incomingTags = parsed && typeof parsed === 'object' ? parsed.tags : null;
             const incomingNotes = parsed && typeof parsed === 'object' ? parsed.notes : null;
-            const incomingMathModules = parsed && typeof parsed === 'object' ? parsed.mathModules : null;
+            const incomingMathOverrides = parsed && typeof parsed === 'object' ? parsed.mathOverrides : null;
+            const incomingMathModules = parsed && typeof parsed === 'object' ? parsed.mathModules : null; // legacy (v1) flat export, pre-per-attempt
             const incomingCompletionLog = parsed && typeof parsed === 'object' ? parsed.completionLog : null;
             const incomingDailyGoal = parsed && typeof parsed === 'object' ? parsed.dailyGoal : null;
             const incomingProfile = parsed && typeof parsed === 'object' ? parsed.profile : null;
@@ -6379,8 +7334,9 @@
             const incomingProgressFocus = parsed && typeof parsed === 'object' ? parsed.progressFocus : null;
             const incomingTrendExcluded = parsed && typeof parsed === 'object' ? parsed.trendExcluded : null;
             const incomingRecentVisits = parsed && typeof parsed === 'object' ? parsed.recentVisits : null;
+            const hasIncomingMathOverrides = incomingMathOverrides && typeof incomingMathOverrides === 'object' && !Array.isArray(incomingMathOverrides);
             const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-            if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits) {
+            if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits) {
               alert('This file doesn\'t look like a progress export.');
               return;
             }
@@ -6396,8 +7352,15 @@
               state.notes = Object.assign({}, state.notes, incomingNotes);
               saveNotes();
             }
-            if (hasIncomingMathModules) {
-              saveMathModules({
+            if (hasIncomingMathOverrides) {
+              Object.assign(mathOverrides, incomingMathOverrides);
+              saveMathOverrides(mathOverrides);
+            } else if (hasIncomingMathModules) {
+              // Legacy (v1) export: one flat value that used to apply to every
+              // attempt. Seed it as the default for any attempt without its
+              // own per-attempt self-report, rather than overwriting real ones.
+              try { localStorage.setItem(MATH_MODULES_LEGACY_KEY, JSON.stringify(incomingMathModules)); } catch (e) { /* best-effort */ }
+              Object.assign(MATH_DEFAULT_MODS, {
                 m1: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(incomingMathModules.m1))),
                 m2: Math.max(0, Math.min(MATH_MODULE_LEN, Math.round(incomingMathModules.m2))),
               });
@@ -6433,10 +7396,15 @@
             if (incomingSkillStats && typeof incomingSkillStats === 'object') {
               Object.entries(incomingSkillStats).forEach(([skill, s]) => {
                 if (!s || !Number.isFinite(s.total)) return;
-                const existing = state.skillStats[skill] || { correct: 0, total: 0 };
+                const existing = state.skillStats[skill] || { correct: 0, total: 0, recent: [], lastAttemptTs: null };
+                const mergedRecent = [...(Array.isArray(existing.recent) ? existing.recent : []), ...(Array.isArray(s.recent) ? s.recent : [])]
+                  .sort((a, b) => (a.ts || 0) - (b.ts || 0))
+                  .slice(-SKILL_RECENT_WINDOW);
                 state.skillStats[skill] = {
                   correct: existing.correct + (Number.isFinite(s.correct) ? s.correct : 0),
                   total: existing.total + s.total,
+                  recent: mergedRecent,
+                  lastAttemptTs: Math.max(existing.lastAttemptTs || 0, s.lastAttemptTs || 0) || null,
                 };
               });
               saveSkillStats();
@@ -6468,6 +7436,7 @@
             renderFilters();
             renderBrowse();
             renderProgress();
+            renderAnalysis();
             renderReview();
             renderNotesView();
             renderStats();
@@ -6495,10 +7464,320 @@
       renderFilters();
       renderBrowse();
       renderProgress();
+      renderAnalysis();
       renderReview();
       renderStats();
       renderProfile();
     });
+  }
+
+  // ---------- Analysis tab ----------
+  // Deeper, cross-session performance analysis. Reuses two data sources that
+  // already exist rather than tracking anything new: state.skillStats (fed
+  // by every graded question anywhere in the app — see recordSkillAttempt)
+  // for the skill mastery table, and mockState.history (every saved mock
+  // exam's full per-question answers) for the category/difficulty grid,
+  // domain trend, and missed-question digest, since that's the only place
+  // difficulty and correctness are both durably recorded together.
+
+  // Compares the older half of a skill's recent-window log to the newer
+  // half — a lightweight "is this improving or backsliding" signal, distinct
+  // from skillRecentAccuracy's single blended number. Null until there's
+  // enough of the window filled to split meaningfully.
+  function skillTrend(skill) {
+    const s = state.skillStats[skill];
+    if (!s || !Array.isArray(s.recent) || s.recent.length < 6) return null;
+    const half = Math.floor(s.recent.length / 2);
+    const acc = arr => arr.filter(a => a.correct).length / arr.length;
+    const diff = acc(s.recent.slice(half)) - acc(s.recent.slice(0, half));
+    if (Math.abs(diff) < 0.05) return { dir: 'flat', diff };
+    return { dir: diff > 0 ? 'up' : 'down', diff };
+  }
+
+  function relativeDays(ts) {
+    if (!ts) return '—';
+    const days = Math.floor((Date.now() - ts) / 86400000);
+    if (days <= 0) return 'today';
+    if (days === 1) return '1 day ago';
+    return `${days} days ago`;
+  }
+
+  function heatClass(pct) {
+    if (pct == null) return '';
+    return pct >= 80 ? 'easy' : pct >= 60 ? 'medium' : 'hard';
+  }
+
+  // Every skill in the bank, weakest-accuracy-first, attempted skills before
+  // untouched ones. Mirrors weakSkills()' accuracy logic (recent-window
+  // preferred, falling back to all-time) so this table agrees with whatever
+  // "bias toward weak skills" is actually doing.
+  function skillMasteryRows() {
+    return allSkills.map(skill => {
+      const s = state.skillStats[skill];
+      const meta = SKILL_META.get(skill) || {};
+      if (!s || !s.total) return { skill, meta, attempted: false };
+      const recentAcc = skillRecentAccuracy(skill);
+      const usingRecent = recentAcc != null;
+      const accuracy = usingRecent ? recentAcc : s.correct / s.total;
+      return {
+        skill, meta, attempted: true, accuracy, usingRecent,
+        total: s.total, lastAttemptTs: s.lastAttemptTs, trend: skillTrend(skill),
+      };
+    }).sort((a, b) => {
+      if (a.attempted !== b.attempted) return a.attempted ? -1 : 1;
+      if (!a.attempted) return a.skill.localeCompare(b.skill);
+      return a.accuracy - b.accuracy;
+    });
+  }
+
+  function skillMasteryHtml() {
+    const rows = skillMasteryRows();
+    const attempted = rows.filter(r => r.attempted);
+    const untouched = rows.filter(r => !r.attempted);
+
+    const bodyRows = attempted.map(r => {
+      const pct = Math.round(r.accuracy * 100);
+      const cls = heatClass(pct);
+      const trendHtml = !r.trend || r.trend.dir === 'flat'
+        ? `<span class="an-trend-flat">steady</span>`
+        : r.trend.dir === 'up'
+          ? `<span class="an-trend-up">&#9650; ${Math.round(r.trend.diff * 100)}pt</span>`
+          : `<span class="an-trend-down">&#9660; ${Math.round(Math.abs(r.trend.diff) * 100)}pt</span>`;
+      return `
+        <tr>
+          <td>${escapeHtml(r.skill)}</td>
+          <td class="an-faint">${escapeHtml(r.meta.category || '')}</td>
+          <td><span class="pill pill-${cls}">${pct}%</span>${r.usingRecent ? ' <span class="an-faint">recent</span>' : ''}</td>
+          <td class="bp-total">${r.total}</td>
+          <td>${trendHtml}</td>
+          <td class="an-faint">${relativeDays(r.lastAttemptTs)}</td>
+          <td><button class="btn an-small-btn" data-practice-skill="${escapeHtml(r.skill)}">Practice</button></td>
+        </tr>`;
+    }).join('');
+
+    const untouchedNote = untouched.length
+      ? `<p class="an-faint" style="margin:12px 0 0;">Not attempted yet: ${untouched.map(r => escapeHtml(r.skill)).join(', ')}</p>`
+      : '';
+
+    return `
+      <div class="progress-summary">
+        <h2>Skill mastery</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Accuracy per skill across everything you've answered — Browse, Practice, Test, and Mock Exam alike. Sorted weakest first; the same signal behind "bias toward weak skills."</p>
+        ${attempted.length ? `
+        <div class="an-table-scroll">
+          <table class="mock-blueprint-table">
+            <thead><tr><th>Skill</th><th>Category</th><th>Accuracy</th><th>Attempts</th><th>Trend</th><th>Last practiced</th><th></th></tr></thead>
+            <tbody>${bodyRows}</tbody>
+          </table>
+        </div>` : `<div class="st-empty">Answer a few questions anywhere in the app to start building this table — each skill needs at least ${WEAK_SKILL_MIN_ATTEMPTS} graded attempts before its accuracy is trustworthy.</div>`}
+        ${untouchedNote}
+      </div>`;
+  }
+
+  // category -> difficulty_label -> {c,t}, built from every saved mock
+  // exam's answers — the only durable record that ties difficulty to
+  // correctness (skillStats only tracks skill-level, not difficulty).
+  function categoryDifficultyGrid() {
+    const byId = id => QUESTIONS.find(x => x.id === id);
+    const grid = {};
+    mockState.history.forEach(attempt => {
+      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+        const q = byId(id);
+        if (!q) return;
+        const yours = attempt.answers[id];
+        if (!yours) return;
+        grid[q.category] = grid[q.category] || {};
+        const cell = grid[q.category][q.difficulty_label] = grid[q.category][q.difficulty_label] || { c: 0, t: 0 };
+        cell.t++;
+        if (yours === q.correct_answer) cell.c++;
+      });
+    });
+    return grid;
+  }
+
+  function categoryDifficultyHtml() {
+    if (!mockState.history.length) {
+      return `
+        <div class="progress-summary">
+          <h2>Accuracy by category &amp; difficulty</h2>
+          <div class="st-empty">Take a mock exam to unlock this breakdown — it's built from mock exam answers, the one place category and difficulty are both scored together.</div>
+        </div>`;
+    }
+    const grid = categoryDifficultyGrid();
+    const cats = Object.keys(grid).map(cat => {
+      const cells = allDifficulties.map(d => grid[cat][d] || null);
+      const overallT = cells.reduce((s, c) => s + (c ? c.t : 0), 0);
+      const overallC = cells.reduce((s, c) => s + (c ? c.c : 0), 0);
+      return { cat, cells, overallPct: overallT ? overallC / overallT : null };
+    }).sort((a, b) => (a.overallPct == null ? 1 : a.overallPct) - (b.overallPct == null ? 1 : b.overallPct));
+
+    const rows = cats.map(({ cat, cells }) => {
+      const tds = cells.map(c => {
+        if (!c || !c.t) return `<td class="an-heat-cell an-faint">&mdash;</td>`;
+        const pct = Math.round((c.c / c.t) * 100);
+        const cls = heatClass(pct);
+        return `<td class="an-heat-cell" style="background:var(--${cls}-bg); color:var(--${cls});">${pct}% <span class="an-faint">(${c.t})</span></td>`;
+      }).join('');
+      return `<tr><td>${escapeHtml(cat)}</td>${tds}</tr>`;
+    }).join('');
+
+    return `
+      <div class="progress-summary">
+        <h2>Accuracy by category &amp; difficulty</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">From your ${mockState.history.length} saved mock exam${mockState.history.length === 1 ? '' : 's'}. Weakest categories first — watch for ones that are fine on Easy but fall apart on Hard.</p>
+        <div class="an-table-scroll">
+          <table class="mock-blueprint-table">
+            <thead><tr><th>Category</th>${allDifficulties.map(d => `<th>${d}</th>`).join('')}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  // Per-domain accuracy across every saved mock exam, plus a coarse trend
+  // (first half of your exam history vs. the second half) so a domain's
+  // trajectory shows up even though any single exam's breakdown (see
+  // mockResultsHtml) can't show it.
+  function domainTrendRows() {
+    if (!mockState.history.length) return null;
+    const byId = id => QUESTIONS.find(x => x.id === id);
+    const chron = mockState.history.slice().reverse(); // oldest first
+    const mid = Math.floor(chron.length / 2);
+    const agg = {};
+    MOCK_DOMAIN_ORDER.forEach(d => { agg[d] = { all: { c: 0, t: 0 }, early: { c: 0, t: 0 }, late: { c: 0, t: 0 } }; });
+    chron.forEach((attempt, idx) => {
+      const bucket = idx < mid ? 'early' : 'late';
+      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+        const q = byId(id);
+        if (!q) return;
+        const yours = attempt.answers[id];
+        if (!yours) return;
+        const domain = SKILL_DOMAIN[q.skill] || q.domain;
+        if (!agg[domain]) return;
+        const correct = yours === q.correct_answer;
+        agg[domain].all.t++; if (correct) agg[domain].all.c++;
+        agg[domain][bucket].t++; if (correct) agg[domain][bucket].c++;
+      });
+    });
+    return MOCK_DOMAIN_ORDER.map(d => {
+      const a = agg[d];
+      if (!a.all.t) return null;
+      const pct = Math.round((a.all.c / a.all.t) * 100);
+      let trend = null;
+      if (a.early.t >= 3 && a.late.t >= 3) {
+        trend = Math.round((a.late.c / a.late.t) * 100) - Math.round((a.early.c / a.early.t) * 100);
+      }
+      return { domain: d, pct, n: a.all.t, trend };
+    }).filter(Boolean);
+  }
+
+  function domainTrendHtml() {
+    const rows = domainTrendRows();
+    if (!rows || !rows.length) {
+      return `
+        <div class="progress-summary">
+          <h2>Domain trend across mock exams</h2>
+          <div class="st-empty">Take a mock exam to see how each Reading &amp; Writing domain is trending over time, not just on your last attempt.</div>
+        </div>`;
+    }
+    const rowsHtml = rows.map(r => {
+      const cls = heatClass(r.pct);
+      const trendHtml = r.trend == null
+        ? `<span class="an-faint">not enough exams yet</span>`
+        : r.trend > 1 ? `<span class="an-trend-up">&#9650; ${r.trend}pt</span>`
+        : r.trend < -1 ? `<span class="an-trend-down">&#9660; ${Math.abs(r.trend)}pt</span>`
+        : `<span class="an-trend-flat">steady</span>`;
+      return `
+        <div class="domain-breakdown-row">
+          <span>${escapeHtml(r.domain)}</span>
+          <span><span class="pill pill-${cls}">${r.pct}%</span> <span class="an-faint">(${r.n})</span>&nbsp;&nbsp;${trendHtml}</span>
+        </div>`;
+    }).join('');
+    return `
+      <div class="progress-summary">
+        <h2>Domain trend across mock exams</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Accuracy per domain across all ${mockState.history.length} saved mock exam${mockState.history.length === 1 ? '' : 's'}. Trend compares your earliest exams to your most recent.</p>
+        ${rowsHtml}
+      </div>`;
+  }
+
+  // skill -> distinct missed question ids, across every saved mock exam
+  // (deduped by question, so retaking the same missed question twice only
+  // counts once toward "flag for review").
+  function missedSkillDigest() {
+    const byId = id => QUESTIONS.find(x => x.id === id);
+    const bySkill = {};
+    mockState.history.forEach(attempt => {
+      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+        const q = byId(id);
+        if (!q) return;
+        const yours = attempt.answers[id];
+        if (yours && yours !== q.correct_answer) {
+          bySkill[q.skill] = bySkill[q.skill] || new Set();
+          bySkill[q.skill].add(id);
+        }
+      });
+    });
+    return Object.entries(bySkill)
+      .map(([skill, set]) => ({ skill, qids: [...set], count: set.size }))
+      .sort((a, b) => b.count - a.count);
+  }
+
+  function missedDigestHtml() {
+    const digest = missedSkillDigest();
+    if (!digest.length) {
+      return `
+        <div class="progress-summary">
+          <h2>Most-missed skills</h2>
+          <div class="st-empty">No missed mock exam questions yet — this fills in once you've taken a mock exam.</div>
+        </div>`;
+    }
+    const rows = digest.slice(0, 10).map(d => {
+      const toFlag = d.qids.filter(id => questionStatus(QUESTIONS.find(q => q.id === id)) !== 'review').length;
+      return `
+        <div class="an-missed-row">
+          <span>${escapeHtml(d.skill)} <span class="an-faint">&middot; ${d.count} missed question${d.count === 1 ? '' : 's'}</span></span>
+          <button class="btn an-small-btn" data-flag-skill="${escapeHtml(d.skill)}" ${toFlag ? '' : 'disabled'}>${toFlag ? `Flag ${toFlag} for review` : 'All flagged'}</button>
+        </div>`;
+    }).join('');
+    return `
+      <div class="progress-summary">
+        <h2>Most-missed skills</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Skills behind the most missed mock exam questions, worst first. One click adds them to your Review queue.</p>
+        ${rows}
+      </div>`;
+  }
+
+  function wireAnalysis(shell) {
+    shell.querySelectorAll('[data-practice-skill]').forEach(el => {
+      el.addEventListener('click', () => {
+        practiceState.phase = 'config';
+        practiceState.categories = new Set();
+        practiceState.skills = new Set([el.dataset.practiceSkill]);
+        practiceState.difficulties = new Set();
+        practiceState.statuses = new Set();
+        document.querySelector('.tab[data-view="practice"]').click();
+      });
+    });
+    shell.querySelectorAll('[data-flag-skill]').forEach(el => {
+      el.addEventListener('click', () => {
+        const entry = missedSkillDigest().find(d => d.skill === el.dataset.flagSkill);
+        if (!entry) return;
+        bulkSetStatus(entry.qids, 'review');
+        renderStats();
+        renderAnalysis();
+      });
+    });
+  }
+
+  function renderAnalysis() {
+    const shell = document.getElementById('analysisShell');
+    shell.innerHTML = `
+      ${skillMasteryHtml()}
+      ${categoryDifficultyHtml()}
+      ${domainTrendHtml()}
+      ${missedDigestHtml()}`;
+    wireAnalysis(shell);
   }
 
   // ---------- Review tab ----------
@@ -6872,6 +8151,7 @@
   renderMock();
   renderProfile();
   renderProgress();
+  renderAnalysis();
   renderReview();
   renderNotesView();
 
