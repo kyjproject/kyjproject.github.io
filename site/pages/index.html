@@ -713,6 +713,94 @@
   .palette-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .palette-trigger svg { width: 17px; height: 17px; }
 
+  .feedback-wrap { position: relative; display: inline-flex; margin-left: 8px; }
+  .feedback-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  }
+  .feedback-trigger:hover, .feedback-trigger.active { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+  .feedback-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .feedback-trigger svg { width: 18px; height: 18px; }
+
+  .feedback-popover {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    width: 288px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    padding: 14px;
+    z-index: 40;
+  }
+  .feedback-popover-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .feedback-popover-title { font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--ink); }
+  .feedback-popover-close {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: -2px -2px 0 0;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    color: var(--ink-faint);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .feedback-popover-close:hover { background: var(--rule-soft); color: var(--ink); }
+  .feedback-popover-text { font-family: var(--sans); font-size: 12px; line-height: 1.45; color: var(--ink-soft); margin: 0 0 10px; }
+  .feedback-email-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper);
+    padding: 6px 6px 6px 10px;
+  }
+  .feedback-email-link {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-ink);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .feedback-email-link:hover { text-decoration: underline; }
+  .feedback-copy-btn {
+    flex: none;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 5px 9px;
+    cursor: pointer;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  }
+  .feedback-copy-btn:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+  .feedback-copy-btn.id-chip-copied { border-color: var(--done); color: var(--done); background: var(--done-bg); }
+
   .palette-root { align-items: flex-start; padding-top: 12vh; }
   .palette-card {
     position: relative;
@@ -1672,6 +1760,22 @@
     <button type="button" class="palette-trigger" id="paletteTriggerBtn" aria-label="Open command palette" title="Jump to&#8230; (&#8984;K / Ctrl+K)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
     </button>
+    <div class="feedback-wrap">
+      <button type="button" class="feedback-trigger" id="feedbackTriggerBtn" aria-haspopup="true" aria-expanded="false" aria-label="Feature suggestions &amp; feedback" title="Feature suggestions &amp; feedback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.05V17h6v-.25c0-.85.4-1.55 1-2.05A7 7 0 0 0 12 2Z"></path></svg>
+      </button>
+      <div class="feedback-popover" id="feedbackPopover" style="display:none;">
+        <div class="feedback-popover-head">
+          <div class="feedback-popover-title">Feature suggestions &amp; feedback</div>
+          <button type="button" class="feedback-popover-close" data-close-feedback aria-label="Close">&times;</button>
+        </div>
+        <p class="feedback-popover-text">Got an idea, a question, or found a bug? Email me:</p>
+        <div class="feedback-email-row">
+          <a class="feedback-email-link" href="mailto:yongjoon9981@gmail.com?subject=SAT%20Database%20feature%20suggestion">yongjoon9981@gmail.com</a>
+          <button type="button" class="feedback-copy-btn" data-copy-id="yongjoon9981@gmail.com" title="Copy email address" aria-label="Copy email address">Copy</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="tabs">
@@ -4035,6 +4139,7 @@
     }
     if (e.key === 'Escape' && paletteState.open) { closePalette(); return; }
     if (e.key === 'Escape' && state.modalList) { closeQuestionModal(); return; }
+    if (e.key === 'Escape' && isFeedbackOpen()) { closeFeedbackPopover(); return; }
 
     // Don't hijack any of the shortcuts below while the user is typing
     // somewhere (search box, tag input, a note, the Math-score field) —
@@ -4196,6 +4301,30 @@
   // ---------- Command palette trigger ----------
   const paletteTriggerBtn = document.getElementById('paletteTriggerBtn');
   if (paletteTriggerBtn) paletteTriggerBtn.addEventListener('click', () => openPalette());
+
+  // ---------- Feedback popover ----------
+  // Copying the email reuses the global [data-copy-id] delegated listener
+  // (wired earlier for question-ID chips) — no separate copy handler needed.
+  const feedbackTriggerBtn = document.getElementById('feedbackTriggerBtn');
+  const feedbackPopover = document.getElementById('feedbackPopover');
+  function isFeedbackOpen() { return !!feedbackPopover && feedbackPopover.style.display !== 'none'; }
+  function openFeedbackPopover() {
+    if (!feedbackPopover) return;
+    feedbackPopover.style.display = 'block';
+    if (feedbackTriggerBtn) { feedbackTriggerBtn.classList.add('active'); feedbackTriggerBtn.setAttribute('aria-expanded', 'true'); }
+  }
+  function closeFeedbackPopover() {
+    if (!feedbackPopover) return;
+    feedbackPopover.style.display = 'none';
+    if (feedbackTriggerBtn) { feedbackTriggerBtn.classList.remove('active'); feedbackTriggerBtn.setAttribute('aria-expanded', 'false'); }
+  }
+  if (feedbackTriggerBtn) feedbackTriggerBtn.addEventListener('click', () => {
+    if (isFeedbackOpen()) closeFeedbackPopover(); else openFeedbackPopover();
+  });
+  if (feedbackPopover) feedbackPopover.querySelectorAll('[data-close-feedback]').forEach(el => el.addEventListener('click', closeFeedbackPopover));
+  document.addEventListener('click', (e) => {
+    if (isFeedbackOpen() && !e.target.closest('.feedback-wrap')) closeFeedbackPopover();
+  });
 
   // ---------- Timer hide/show toggle (delegated — the button is re-rendered
   // into Test/Practice/Mock topbars on every render, so one listener here

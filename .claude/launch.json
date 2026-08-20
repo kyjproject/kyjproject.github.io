@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8934", "--directory", "site/pages"],
       "port": 8934
+    },
+    {
+      "name": "sat-db-static-debug",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8935", "--directory", "site/pages"],
+      "port": 8935
     }
   ]
 }
