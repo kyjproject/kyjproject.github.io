@@ -1,0 +1,690 @@
+{
+  "_readme": [
+    "Per-module skill counts for the digital SAT Reading & Writing section, one entry per practice test.",
+    "Every practice test has three module records: module_1 (fixed difficulty), module_2_easier and",
+    "module_2_harder (the two versions a test-taker is routed into based on Module 1 performance).",
+    "Categories match this repo's existing db/categories/*.json buckets exactly (see README.md's category",
+    "table), with Command of Evidence split into qualitative/quantitative since that split is visible",
+    "question-by-question and the user asked for it split. Every module's nine counts sum to 27.",
+    "",
+    "confidence values:",
+    "  verified      - the user (or another trusted first-hand source) took this exact module and reported",
+    "                  the tally directly. Treat as ground truth.",
+    "  reconstructed - Claude mapped a third-party question-by-question tag list (Walker Prep's Question",
+    "                  Type Inventory, or The Test Advantage's walkthroughs) onto this repo's categories.",
+    "                  The source used its own taxonomy (e.g. 'Logical Operations: Support', 'Reading",
+    "                  Comprehension') which had to be translated - see 'flags' on individual modules for",
+    "                  where that translation was ambiguous. Not independently verified against Bluebook.",
+    "  partial       - only the vocab (Words in Context) count is confirmed; every other field is null.",
+    "  missing       - no source with a per-question breakdown was found for this module as of 2026-08-19.",
+    "",
+    "Known gaps: Module 2 is unpublished by any source found for Test 4 and Test 8 (both forms) and for",
+    "Test 7's easier form. Tests 9-11 have no question-by-question audit anywhere yet - they're recent",
+    "enough (Test 9/10 Feb 2025, Test 11 Feb 2026) that no third-party analyst has hand-tagged them.",
+    "Per the project's own Phase 2 TODO ('systematically add new database entries, must be 100% clean",
+    "data, needs strict approval') - treat every 'reconstructed' entry as a draft to confirm by actually",
+    "taking that module, the way Test 8 Module 1 already was.",
+    "",
+    "A NOTE ON TWO SEPARATE FORMATS: College Board also publishes 'linear (non-adaptive)' SAT practice",
+    "test PDFs for students with paper accommodations - a genuinely different format (33 questions per",
+    "R&W module, 39 minutes, no Module 2 routing) that confusingly reuses the same test numbers as the",
+    "Bluebook app tests (e.g. there's a linear 'SAT Practice Test #8' PDF that is NOT the same content as",
+    "Bluebook's adaptive Practice Test 8). Every source used in this file explicitly audited the Bluebook",
+    "app version, and every full entry below is verified to sum to 27 questions - this file has no linear-",
+    "format contamination. Worth knowing if you're ever cross-referencing against another source, since",
+    "it's an easy mix-up.",
+    "",
+    "RETIRED TESTS (2025-02-03): College Board removed Practice Tests 1, 2, and 3 from the Bluebook app on",
+    "this date - the first removal since the digital SAT launched. In their place: Test 7 (entirely new)",
+    "and Tests 8-10 (a mix of new questions and questions recycled from the removed 1-3). Test 4 was never",
+    "removed. Test 11 was added later, independently. Practically: a student today cannot select 'Practice",
+    "Test 1/2/3' in Bluebook anymore - they don't exist as standalone tests, though some of their content",
+    "lives on reshuffled into 8/9/10 in a way that does NOT preserve these modules' counts for those tests.",
+    "Every module belonging to Tests 1, 2, and 3 below carries \"retired\": true and a \"retired_since\" date",
+    "for this reason. They're kept in the file (real official Bluebook data, useful historical/comparison",
+    "reference) but should be EXCLUDED from any 'typical range for the current test' aggregate statistic -",
+    "the mock exam UI's MOCK_BUCKET_STATS in site/index.template.html only aggregates non-retired modules.",
+    "Test 8's Module 1 entry stays verified/trustworthy regardless of this recycling, since it reflects",
+    "whatever was actually served on a real live attempt, recycled content or not."
+  ],
+  "categories": [
+    "vocab",
+    "functions",
+    "cross_text",
+    "main_idea",
+    "command_of_evidence_qualitative",
+    "command_of_evidence_quantitative",
+    "inferences",
+    "grammar",
+    "transitions",
+    "notes"
+  ],
+  "category_meta": {
+    "vocab": {
+      "domain": "Craft and Structure",
+      "skill": "Words in Context"
+    },
+    "functions": {
+      "domain": "Craft and Structure",
+      "skill": "Text Structure and Purpose"
+    },
+    "cross_text": {
+      "domain": "Craft and Structure",
+      "skill": "Cross-Text Connections"
+    },
+    "main_idea": {
+      "domain": "Information and Ideas",
+      "skill": "Central Ideas and Details"
+    },
+    "command_of_evidence_qualitative": {
+      "domain": "Information and Ideas",
+      "skill": "Command of Evidence (Textual)"
+    },
+    "command_of_evidence_quantitative": {
+      "domain": "Information and Ideas",
+      "skill": "Command of Evidence (Quantitative)"
+    },
+    "inferences": {
+      "domain": "Information and Ideas",
+      "skill": "Inferences"
+    },
+    "grammar": {
+      "domain": "Standard English Conventions",
+      "skill": "Boundaries / Form, Structure, and Sense"
+    },
+    "transitions": {
+      "domain": "Expression of Ideas",
+      "skill": "Transitions"
+    },
+    "notes": {
+      "domain": "Expression of Ideas",
+      "skill": "Rhetorical Synthesis"
+    }
+  },
+  "tests": {
+    "1": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI (read directly from source page)",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-bluebook-practice-test",
+        "counts": {
+          "vocab": 2,
+          "functions": 2,
+          "cross_text": 1,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 4,
+          "command_of_evidence_quantitative": 1,
+          "inferences": 1,
+          "grammar": 7,
+          "transitions": 4,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": [
+          "main_idea includes 2 questions tagged 'Reading Comprehension' by the source, mapped here to Central Ideas and Details.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI (read directly from source page)",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question",
+        "counts": {
+          "vocab": 8,
+          "functions": 0,
+          "cross_text": 0,
+          "main_idea": 1,
+          "command_of_evidence_qualitative": 4,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 3,
+          "grammar": 6,
+          "transitions": 3,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": [
+          "Both Module 2 forms of Test 1 have 8 vocab questions, the highest in the whole dataset.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI (read directly from source page)",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question",
+        "counts": {
+          "vocab": 8,
+          "functions": 0,
+          "cross_text": 0,
+          "main_idea": 1,
+          "command_of_evidence_qualitative": 3,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 4,
+          "grammar": 7,
+          "transitions": 3,
+          "notes": 1
+        },
+        "total": 27,
+        "flags": [
+          "Both Module 2 forms of Test 1 have 8 vocab questions, the highest in the whole dataset.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      }
+    },
+    "2": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-bluebook-practice-test-764",
+        "counts": {
+          "vocab": 4,
+          "functions": 2,
+          "cross_text": 0,
+          "main_idea": 4,
+          "command_of_evidence_qualitative": 3,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 1,
+          "grammar": 6,
+          "transitions": 1,
+          "notes": 6
+        },
+        "total": 27,
+        "flags": [
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI (read directly from source page)",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-549",
+        "counts": {
+          "vocab": 4,
+          "functions": 0,
+          "cross_text": 1,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 4,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 3,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": [
+          "main_idea includes 2 questions tagged 'Reading Comprehension'.",
+          "One hybrid-tagged question ('Punctuation + Transitions') counted under transitions rather than grammar - a coin-flip call.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI (read directly from source page)",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-549",
+        "counts": {
+          "vocab": 7,
+          "functions": 0,
+          "cross_text": 1,
+          "main_idea": 1,
+          "command_of_evidence_qualitative": 4,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 2,
+          "grammar": 8,
+          "transitions": 4,
+          "notes": 0
+        },
+        "total": 27,
+        "flags": [
+          "Lower confidence: the source's own question list ends '...24-27 Transition' with no Notes/Rhetorical Synthesis tag at all, which breaks the pattern every other module follows (2-6 Notes at the end). Likely a tagging gap in the source rather than a real zero - worth confirming by taking this module directly.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      }
+    },
+    "3": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-ddb",
+        "counts": {
+          "vocab": 5,
+          "functions": 1,
+          "cross_text": 0,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 1,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 3,
+          "grammar": 7,
+          "transitions": 3,
+          "notes": 4
+        },
+        "total": 27,
+        "flags": [
+          "main_idea includes 2 questions tagged 'Reading Comprehension'.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-917",
+        "counts": {
+          "vocab": 5,
+          "functions": 3,
+          "cross_text": 1,
+          "main_idea": 1,
+          "command_of_evidence_qualitative": 6,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 1,
+          "grammar": 5,
+          "transitions": 1,
+          "notes": 4
+        },
+        "total": 27,
+        "flags": [
+          "Source didn't distinguish graph/infographic evidence questions here, so all 6 Command of Evidence questions defaulted to qualitative - possible some should be quantitative.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "reconstructed",
+        "retired": true,
+        "retired_since": "2025-02-03",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-917",
+        "counts": {
+          "vocab": 6,
+          "functions": 2,
+          "cross_text": 1,
+          "main_idea": 2,
+          "command_of_evidence_qualitative": 6,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 0,
+          "grammar": 6,
+          "transitions": 2,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": [
+          "inferences = 0 is unconfirmed - the source's summary bundled several questions as generic 'Logical Operations: Support' without splitting out any Deduction (Inferences) questions, which is unusual. Possible mis-mapping.",
+          "Retired from Bluebook on 2025-02-03 along with Tests 2 and 3 — the first removal of any test since the digital SAT launched. Not selectable in the app anymore; some of its questions were reshuffled into the current Tests 8-10, but not in a way that preserves this module's counts for those tests. Excluded from the mock exam's \"typical range\" aggregate stats for this reason — kept here for historical reference only."
+        ]
+      }
+    },
+    "4": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-324",
+        "counts": {
+          "vocab": 6,
+          "functions": 0,
+          "cross_text": 0,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 2,
+          "grammar": 7,
+          "transitions": 1,
+          "notes": 6
+        },
+        "total": 27,
+        "flags": []
+      },
+      "module_2_harder": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "Not published by any source found."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "Not published by any source found."
+        ]
+      }
+    },
+    "5": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-38f",
+        "counts": {
+          "vocab": 4,
+          "functions": 2,
+          "cross_text": 0,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 1,
+          "inferences": 2,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 3
+        },
+        "total": 27,
+        "flags": [
+          "main_idea includes 1 question tagged 'Reading Comprehension'."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-e05",
+        "counts": {
+          "vocab": 5,
+          "functions": 2,
+          "cross_text": 1,
+          "main_idea": 0,
+          "command_of_evidence_qualitative": 1,
+          "command_of_evidence_quantitative": 3,
+          "inferences": 3,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": [
+          "Corrected 2026-08-19 after direct raw-page re-verification: transitions is 4 (Q22-25), notes is 2 (Q26-27) — the original entry had guessed notes=3/transitions=3 when Q27's tag wasn't visible in an earlier fetch. Now confirmed against the full source page."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-e05",
+        "counts": {
+          "vocab": 5,
+          "functions": 2,
+          "cross_text": 1,
+          "main_idea": 0,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 4,
+          "inferences": 1,
+          "grammar": 6,
+          "transitions": 3,
+          "notes": 3
+        },
+        "total": 27,
+        "flags": [
+          "Corrected 2026-08-19 after direct raw-page re-verification: of the 6 Command of Evidence questions, 4 are graph/infographic-based (quantitative) and 2 are plain-text (qualitative) — the original entry had defaulted all 6 to qualitative for lack of detail. Now confirmed against the full source page."
+        ]
+      }
+    },
+    "6": {
+      "module_1": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-ea6",
+        "counts": {
+          "vocab": 4,
+          "functions": 3,
+          "cross_text": 1,
+          "main_idea": 1,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 2,
+          "inferences": 2,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 2
+        },
+        "total": 27,
+        "flags": []
+      },
+      "module_2_harder": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-173",
+        "counts": {
+          "vocab": 4,
+          "functions": 2,
+          "cross_text": 0,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 2,
+          "inferences": 1,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 3
+        },
+        "total": 27,
+        "flags": [
+          "main_idea includes 2 questions tagged 'Details' alongside 1 tagged 'Main Idea'."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "reconstructed",
+        "source": "Walker Prep QTI",
+        "source_url": "https://walkerprep.substack.com/p/digital-sat-reading-and-writing-question-173",
+        "counts": {
+          "vocab": 4,
+          "functions": 2,
+          "cross_text": 0,
+          "main_idea": 3,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 2,
+          "inferences": 1,
+          "grammar": 6,
+          "transitions": 4,
+          "notes": 3
+        },
+        "total": 27,
+        "flags": [
+          "Corrected 2026-08-19 after direct raw-page re-verification: Command of Evidence splits 2 qualitative / 2 quantitative (not 5/0), and there is 1 Inferences question (not 0) — the original entry had used a low-confidence default for both. Now confirmed against the full source page."
+        ]
+      }
+    },
+    "7": {
+      "module_1": {
+        "confidence": "partial",
+        "source": "The Test Advantage vocabulary walkthrough (count only, no full breakdown published)",
+        "source_url": "https://thetestadvantage.com/blog-details/145",
+        "counts": {
+          "vocab": 4,
+          "functions": null,
+          "cross_text": null,
+          "main_idea": null,
+          "command_of_evidence_qualitative": null,
+          "command_of_evidence_quantitative": null,
+          "inferences": null,
+          "grammar": null,
+          "transitions": null,
+          "notes": null
+        },
+        "total": null,
+        "flags": [
+          "Only the vocab count is confirmed; the other 23 questions have not been tagged by any source found."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "partial",
+        "source": "The Test Advantage vocabulary walkthrough (count only, no full breakdown published)",
+        "source_url": "https://thetestadvantage.com/blog-details/150",
+        "counts": {
+          "vocab": 4,
+          "functions": null,
+          "cross_text": null,
+          "main_idea": null,
+          "command_of_evidence_qualitative": null,
+          "command_of_evidence_quantitative": null,
+          "inferences": null,
+          "grammar": null,
+          "transitions": null,
+          "notes": null
+        },
+        "total": null,
+        "flags": [
+          "Only the vocab count is confirmed; the other 23 questions have not been tagged by any source found."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "Not published by any source found."
+        ]
+      }
+    },
+    "8": {
+      "module_1": {
+        "confidence": "verified",
+        "source": "User-administered, self-reported exact tally after taking this module directly",
+        "source_url": null,
+        "counts": {
+          "vocab": 5,
+          "functions": 0,
+          "cross_text": 1,
+          "main_idea": 4,
+          "command_of_evidence_qualitative": 2,
+          "command_of_evidence_quantitative": 0,
+          "inferences": 3,
+          "grammar": 6,
+          "transitions": 2,
+          "notes": 4
+        },
+        "total": 27,
+        "flags": [
+          "Ground truth. functions = 0 is a real observed value (this module has zero Text Structure and Purpose questions), not a data gap."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "Not published by any source found."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "Not published by any source found."
+        ]
+      }
+    },
+    "9": {
+      "module_1": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025."
+        ]
+      }
+    },
+    "10": {
+      "module_1": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025. Note: CrackSAT.net has an unrelated page titled 'Practice Test 10' that is its own standalone Words-in-Context drill set, not this official test - do not confuse the two."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2025."
+        ]
+      }
+    },
+    "11": {
+      "module_1": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2026, the newest form."
+        ]
+      },
+      "module_2_harder": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2026, the newest form."
+        ]
+      },
+      "module_2_easier": {
+        "confidence": "missing",
+        "source": null,
+        "source_url": null,
+        "counts": null,
+        "total": null,
+        "flags": [
+          "No question-by-question audit found anywhere; test released Feb 2026, the newest form."
+        ]
+      }
+    }
+  }
+}

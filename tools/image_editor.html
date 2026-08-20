@@ -1,0 +1,393 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Command of Evidence — Image Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+    flex-wrap: wrap;
+  }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  input#searchBox {
+    font: inherit;
+    font-family: var(--mono);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 260px;
+  }
+  input#searchBox:focus { outline: none; border-color: var(--accent); }
+  .btn {
+    appearance: none;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--paper-raised);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  #folderStatus { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #folderStatus.ok { color: var(--done); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+  #navRow { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  #posLabel { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); }
+
+  #qInfo {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  #qInfo .idRow { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .pill {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2.5px 8px;
+    border-radius: 99px;
+  }
+  .pill-hasimg { color: var(--done); background: var(--done-bg); }
+  .pill-noimg { color: var(--warn); background: var(--warn-bg); }
+  #qInfo .shortId { font-weight: 700; }
+  #qInfo .rawId { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); cursor: pointer; }
+  #qInfo .rawId:hover { color: var(--accent-ink); }
+  #qInfo .stemText { color: var(--ink-soft); font-size: 13px; }
+  #qInfo .choices { margin-top: 8px; font-size: 12.5px; color: var(--ink-faint); }
+  #qInfo .choices div { margin-top: 2px; }
+
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 800px) { .panels { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 0 0 10px;
+  }
+  .panel img {
+    max-width: 100%;
+    border-radius: 6px;
+    background: #fff;
+    display: block;
+  }
+  .panel .empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+  }
+  #pasteZone {
+    border: 2px dashed var(--rule);
+    cursor: text;
+  }
+  #pasteZone:focus { outline: none; border-color: var(--accent); }
+  #pasteZone.has-image { border-style: solid; }
+  .pasteHint { color: var(--ink-faint); font-size: 13px; }
+  .paste-actions { margin-top: 12px; display: flex; align-items: center; gap: 10px; }
+  #saveStatus { font-size: 12.5px; color: var(--ink-faint); }
+  #saveStatus.ok { color: var(--done); }
+  #saveStatus.bad { color: var(--bad); }
+
+  .help {
+    margin-top: 20px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+  .help code { font-family: var(--mono); background: var(--rule-soft); padding: 1px 5px; border-radius: 4px; }
+</style>
+
+<header>
+  <h1>📷 Image Editor</h1>
+  <input type="text" id="searchBox" placeholder="Paste ID or shortId, Enter to jump…" />
+  <button class="btn" id="pickFolderBtn">Select images/command_of_evidence folder</button>
+  <span id="folderStatus">No folder selected — Save will download instead</span>
+</header>
+
+<main>
+  <div id="navRow">
+    <button class="btn" id="prevBtn">&larr; Prev</button>
+    <span id="posLabel"></span>
+    <button class="btn" id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div id="qInfo"></div>
+
+  <div class="panels">
+    <div class="panel">
+      <h3>Current image</h3>
+      <div id="currentImgWrap"></div>
+    </div>
+    <div class="panel" id="pasteZone" tabindex="0">
+      <h3>Paste replacement (click here, then &#8984;V / Ctrl+V)</h3>
+      <div id="pasteHint" class="pasteHint">Copy a cropped image (screenshot tool, Preview, etc.), click this box, then paste.</div>
+      <img id="pastedImg" style="display:none;" />
+      <div class="paste-actions">
+        <button class="btn btn-accent" id="saveBtn" disabled>Save (overwrite)</button>
+        <button class="btn" id="clearPasteBtn" disabled>Clear</button>
+        <span id="saveStatus"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="help">
+    Workflow: <strong>1)</strong> click "Select images/command_of_evidence folder" once and pick that exact folder
+    (Chrome/Edge only — grants direct write access, no manual file moving). <strong>2)</strong> search or Prev/Next to
+    the question you want to fix. <strong>3)</strong> crop/copy a new image anywhere (screenshot tool, Preview, an
+    image editor). <strong>4)</strong> click the paste box on the right, press &#8984;V, then Save — it overwrites
+    <code>images/command_of_evidence/&lt;id&gt;.png</code> directly. If your browser doesn't support folder access,
+    Save instead downloads the file — move it into that folder yourself, matching the filename shown.
+    <br /><br />
+    After editing images here, re-run <code>python3 scripts/build_github_pages.py</code> (and <code>build_site.py</code>
+    if you also update the Claude Artifact) to pick up the changes in the actual site.
+  </div>
+</main>
+
+<script>
+(async function () {
+  let QUESTIONS = [];
+  let list = [];
+  let idx = 0;
+  let dirHandle = null;
+  let pastedBlob = null;
+
+  function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  // Same shortId scheme as the main site (site/index.template.html) —
+  // computed client-side there too, since it's not stored in the JSON.
+  // Keeping the exact same logic here (same category label map, same
+  // per-category counting order) is what makes an ID typed/pasted here
+  // match "Evidence #N" in the main site for the same question.
+  const CATEGORY_LABELS = { 'Command of Evidence': 'Evidence', 'Cross-Text': 'Cross Text' };
+  function categoryLabel(cat) { return CATEGORY_LABELS[cat] || cat; }
+  function assignShortIds(questions) {
+    const counters = {};
+    questions.forEach(q => {
+      counters[q.category] = (counters[q.category] || 0) + 1;
+      q.shortId = `${categoryLabel(q.category)} #${counters[q.category]}`;
+    });
+  }
+
+  async function init() {
+    const res = await fetch('../db/all_questions.json');
+    QUESTIONS = await res.json();
+    assignShortIds(QUESTIONS);
+    list = QUESTIONS
+      .filter(q => q.category === 'Command of Evidence')
+      .sort((a, b) => a.page - b.page);
+    if (!list.length) {
+      document.getElementById('qInfo').innerHTML = '<div class="empty">No Command of Evidence questions found — check this page is served from tools/ alongside db/ and images/.</div>';
+      return;
+    }
+    render();
+  }
+
+  function render() {
+    const q = list[idx];
+    document.getElementById('posLabel').textContent = `${idx + 1} of ${list.length}`;
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === list.length - 1;
+
+    const choiceRows = ['A', 'B', 'C', 'D'].map(l =>
+      `<div><strong>${l}.</strong> ${escapeHtml(q.choices[l])}</div>`
+    ).join('');
+
+    document.getElementById('qInfo').innerHTML = `
+      <div class="idRow">
+        <span class="pill ${q.has_image ? 'pill-hasimg' : 'pill-noimg'}">${q.has_image ? 'Has image' : 'No image yet'}</span>
+        <span class="shortId">${escapeHtml(q.shortId)}</span>
+        <span class="rawId" id="rawIdCopy" title="Click to copy">${escapeHtml(q.id)}</span>
+      </div>
+      <div class="stemText">${escapeHtml(q.stem.slice(0, 260))}${q.stem.length > 260 ? '…' : ''}</div>
+      <div class="choices">${choiceRows}</div>
+    `;
+    document.getElementById('rawIdCopy').addEventListener('click', () => {
+      navigator.clipboard?.writeText(q.id).catch(() => {});
+    });
+
+    const wrap = document.getElementById('currentImgWrap');
+    if (q.has_image) {
+      wrap.innerHTML = `<img src="../images/command_of_evidence/${q.id}.png?t=${Date.now()}" alt="Current image for ${q.id}" />`;
+    } else {
+      wrap.innerHTML = `<div class="empty">This question has no image yet — paste one on the right to add it.</div>`;
+    }
+
+    clearPaste();
+  }
+
+  function clearPaste() {
+    pastedBlob = null;
+    const img = document.getElementById('pastedImg');
+    img.style.display = 'none';
+    img.src = '';
+    document.getElementById('pasteHint').style.display = 'block';
+    document.getElementById('saveBtn').disabled = true;
+    document.getElementById('clearPasteBtn').disabled = true;
+    document.getElementById('saveStatus').textContent = '';
+    document.getElementById('saveStatus').className = '';
+    document.getElementById('pasteZone').classList.remove('has-image');
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+  document.getElementById('nextBtn').addEventListener('click', () => { if (idx < list.length - 1) { idx++; render(); } });
+
+  document.getElementById('searchBox').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const val = e.target.value.trim().toLowerCase();
+    if (!val) return;
+    const compact = val.replace(/\s+/g, '');
+    const found = list.findIndex(q =>
+      q.id.toLowerCase() === val || q.shortId.toLowerCase().replace(/\s+/g, '') === compact
+    );
+    if (found !== -1) {
+      idx = found;
+      render();
+      e.target.value = '';
+    } else {
+      alert('No Command of Evidence question with that ID/shortId found.');
+    }
+  });
+
+  document.getElementById('pickFolderBtn').addEventListener('click', async () => {
+    if (!window.showDirectoryPicker) {
+      alert('This browser doesn\'t support direct folder access (use Chrome or Edge). Save will download the file instead — move it into images/command_of_evidence/ yourself.');
+      return;
+    }
+    try {
+      dirHandle = await window.showDirectoryPicker();
+      const status = document.getElementById('folderStatus');
+      status.textContent = `Folder selected: "${dirHandle.name}" — make sure that's images/command_of_evidence`;
+      status.classList.add('ok');
+    } catch (e) {
+      // picker cancelled — leave as-is
+    }
+  });
+
+  const pasteZone = document.getElementById('pasteZone');
+  pasteZone.addEventListener('paste', (e) => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (const item of items) {
+      if (item.type.startsWith('image/')) {
+        pastedBlob = item.getAsFile();
+        const url = URL.createObjectURL(pastedBlob);
+        const img = document.getElementById('pastedImg');
+        img.src = url;
+        img.style.display = 'block';
+        document.getElementById('pasteHint').style.display = 'none';
+        document.getElementById('saveBtn').disabled = false;
+        document.getElementById('clearPasteBtn').disabled = false;
+        document.getElementById('saveStatus').textContent = '';
+        document.getElementById('saveStatus').className = '';
+        pasteZone.classList.add('has-image');
+        e.preventDefault();
+        return;
+      }
+    }
+  });
+
+  document.getElementById('clearPasteBtn').addEventListener('click', clearPaste);
+
+  document.getElementById('saveBtn').addEventListener('click', async () => {
+    if (!pastedBlob) return;
+    const q = list[idx];
+    const filename = `${q.id}.png`;
+    const status = document.getElementById('saveStatus');
+
+    if (dirHandle) {
+      try {
+        const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(pastedBlob);
+        await writable.close();
+        status.textContent = `Saved ${filename} ✓`;
+        status.className = 'ok';
+        q.has_image = true; // reflect immediately even though the underlying JSON on disk is unchanged
+        setTimeout(render, 500);
+      } catch (e) {
+        status.textContent = 'Save failed: ' + e.message;
+        status.className = 'bad';
+      }
+    } else {
+      const url = URL.createObjectURL(pastedBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      status.textContent = `Downloaded ${filename} — move it into images/command_of_evidence/`;
+      status.className = 'ok';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (document.activeElement && document.activeElement.id === 'searchBox') return;
+    if (e.key === 'ArrowLeft' && document.activeElement.id !== 'pasteZone') document.getElementById('prevBtn').click();
+    if (e.key === 'ArrowRight' && document.activeElement.id !== 'pasteZone') document.getElementById('nextBtn').click();
+  });
+
+  init();
+})();
+</script>
