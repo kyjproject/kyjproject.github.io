@@ -1,0 +1,44 @@
+name: Deploy GitHub Pages
+
+# Publishes the contents of site/pages/ (the already-built, GitHub-Pages-ready
+# copy of the app) as the live site — without needing that folder pushed to
+# the repo root, which is normally required for a <user>.github.io repo since
+# branch-based Pages deployment there only serves from the root of `main`.
+# This bypasses that entirely by uploading an arbitrary folder as the Pages
+# artifact instead.
+#
+# One-time setup this workflow can't do for you: in the repo's Settings ->
+# Pages -> "Build and deployment", set Source to "GitHub Actions" (it
+# probably currently says "Deploy from a branch"). After that, every push to
+# main that touches site/pages/ redeploys automatically — push normally, no
+# separate step needed.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/pages/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/pages
+      - id: deployment
+        uses: actions/deploy-pages@v4
