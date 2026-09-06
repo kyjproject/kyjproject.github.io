@@ -2166,7 +2166,12 @@
   @media (max-width: 760px) {
     .browse-layout { grid-template-columns: 1fr; }
     .filters { position: static; border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; }
-    .qmeta { width: auto; flex-direction: row; align-items: center; }
+    /* qmeta (difficulty pill, category tag, "Evidence #N", id chip) is a
+       fixed-width right-hand column on desktop. On mobile it's already
+       effectively its own row below the title (qstem shrinks to 0 first) —
+       make that official with flex-basis: 100% and let it wrap internally,
+       otherwise its content overflows the card and the id chip gets clipped. */
+    .qmeta { width: auto; flex: 1 1 100%; min-width: 0; flex-direction: row; align-items: center; flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; }
     .qcard-head { flex-wrap: wrap; }
 
     /* ---------- Mobile ---------- */
@@ -2312,6 +2317,7 @@
              underlying tag storage/matching code is still in the JS below,
              just no longer wired to any visible control. -->
         <button class="clear-btn" id="clearFilters">Clear filters</button>
+        <button class="clear-btn" id="shortcutsTourBtn" type="button" style="margin-top:8px;">&#8963;&#65039; Keyboard shortcuts</button>
       </aside>
       <div class="main">
         <div class="toolbar">
@@ -2382,7 +2388,7 @@
           What everything does and where to find it. Start with the four steps below, then skim whichever section matches what you're trying to do. (Looking for the full feature list and history instead? Skip to <strong>What's new</strong> further down.)
         </p>
         <button type="button" class="btn btn-accent" id="startTourBtn">&#9654; Start interactive tour</button>
-        <p class="tour-launch-note">~2 minutes — walks through the real tabs and buttons, right here in the app.</p>
+        <p class="tour-launch-note">~2 minutes — walks through the real tabs and buttons, right here in the app. Stuck on a specific page later? Press <strong>&#8984;K / Ctrl+K</strong> and search "help" for a focused tour of just that page, or "shortcuts" for the full keyboard reference.</p>
       </div>
 
       <div class="config-card">
@@ -2457,7 +2463,7 @@
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Export / Import / kyj-cloud</span></div>
-            <div class="log-item-desc">All progress lives in this browser's storage by default — use <strong>Export progress (.json)</strong> on your Profile tab to back it up and <strong>Import progress</strong> to restore or move it to another device. Optionally, sign up for <strong>kyj-cloud</strong> (the cloud icon in the topbar, or the card on your Profile tab) to sync the same progress across devices instead — a username + password, autosaving every few minutes while you're logged in.</div>
+            <div class="log-item-desc">All progress lives in this browser's storage by default — use <strong>Export progress (.json)</strong> on your Profile tab to back it up and <strong>Import progress</strong> to restore or move it to another device. Optionally, sign up for <strong>kyj-cloud</strong> (the cloud icon in the topbar, or the card on your Profile tab) to sync the same progress across devices instead — a username + password, nothing syncs automatically, so press <strong>Save progress now</strong> whenever you want this device's progress pushed up.</div>
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Dark theme</span></div>
@@ -2571,37 +2577,28 @@
             <div class="log-item-desc">A full walkthrough — and an interactive tour — for anyone new to the app.</div></div>
           <div class="log-item"><div class="log-item-head"><span class="log-item-name">Propose tab</span></div>
             <div class="log-item-desc">Log in (same account as cloud save) and submit a new question straight from the site — it's queued for the site owner to approve, never added automatically.</div></div>
+          <div class="log-item"><div class="log-item-head"><span class="log-item-name">Contextual help &amp; a shortcuts tour</span></div>
+            <div class="log-item-desc">Press &#8984;K / Ctrl+K and search "help" anywhere for a focused tour of whatever page you're on — Practice, Test, Mock Exam, Profile, Analysis, Review, Notes, and Propose all have their own now, covering the customization options and kyj-cloud sync in depth. Search "shortcuts" (or the &#8963;&#65039; button on Browse) for a walkthrough of every keybinding, with the on-screen button each one presses.</div></div>
+          <div class="log-item"><div class="log-item-head"><span class="log-item-name">Test, rebuilt</span></div>
+            <div class="log-item-desc">Runs on the same engine as Mock Exam now — pick any number of questions and control the distribution, instead of two fixed timed modules.</div></div>
+          <div class="log-item"><div class="log-item-head"><span class="log-item-name">A new look</span></div>
+            <div class="log-item-desc">The whole site got a visual refresh — new structure and design throughout.</div></div>
+          <div class="log-item"><div class="log-item-head"><span class="log-item-name">Works on your phone</span></div>
+            <div class="log-item-desc">The layout now adapts properly to smaller screens.</div></div>
         </div>
       </div>
 
       <div class="config-card">
         <h2>What's next</h2>
-        <p class="lede">The project's own todo list, unshipped — later phases are deliberately on hold.</p>
-
-        <div class="log-roadmap-phase">
-          <div class="log-phase-head"><h3>Phase 2</h3><span class="log-lock open">in progress</span></div>
-          <ul>
-            <li>Signing in, with notifications</li>
-            <li class="done">A features page — you're looking at it</li>
-            <li class="done">Option to hide difficulty labels on Test and Mock Exam</li>
-            <li class="done">Keyboard shortcuts throughout the app</li>
-            <li class="done">Mark for review on Test and Mock Exam</li>
-            <li class="done">Fixed: the page no longer jumps around when you pick an answer</li>
-            <li class="done">Bluebook-style test interface</li>
-            <li class="done">A safe, careful way to add new questions to the bank</li>
-            <li>Test rebuilt to work like Mock Exam — any number of questions, your choice of settings, random order</li>
-            <li>General bug fixing</li>
-            <li>Polish on the Bluebook-style interface, to match the real thing even closer</li>
-            <li>Improvements to the timer</li>
-            <li>A proper tutorial</li>
-            <li>Mobile-friendly layout</li>
-          </ul>
-        </div>
+        <p class="lede">The project's own todo list, unshipped — these phases are deliberately on hold for now.</p>
 
         <div class="log-roadmap-phase">
           <div class="log-phase-head"><h3>Phase 3</h3><span class="log-lock">on hold</span></div>
           <ul>
-            <li>Save, name, and share your own custom practice/test setups</li>
+            <li>Polish on the Bluebook-style interface, to match the real thing even closer</li>
+            <li>Timer improvements</li>
+            <li>Save, name, and share your own custom practice/test setups — plus community-made ones, Anki-style</li>
+            <li>General bug fixing</li>
             <li>A simple way to see your own stats at a glance</li>
             <li>Math questions added to the app</li>
           </ul>
@@ -2612,9 +2609,9 @@
           <ul>
             <li>Tagging questions yourself, so you can practice similar ones together</li>
             <li>Tag-based Mock Exam, Practice, and Test</li>
-            <li>Remaining technical fixes</li>
             <li>A way to flag a question and report a problem with it</li>
             <li>More practice tests to pull from, closer to real official ones plus newer released material</li>
+            <li>A testimonials page</li>
           </ul>
         </div>
       </div>
@@ -4482,7 +4479,8 @@
     { id: 'nav-analysis', title: 'Go to Analysis', hint: 'Tab', keywords: 'analysis progress completion tile focus export import reset backup skill mastery weak spots heatmap trend missed', run: () => document.querySelector('.tab[data-view="analysis"]').click() },
     { id: 'nav-review', title: 'Go to Review', hint: 'Tab', keywords: 'review anki spaced repetition', run: () => document.querySelector('.tab[data-view="review"]').click() },
     { id: 'nav-notes', title: 'Go to Notes', hint: 'Tab', keywords: 'notes', run: () => document.querySelector('.tab[data-view="notes"]').click() },
-    { id: 'start-tour', title: 'Start interactive tour', hint: 'Tour', keywords: 'tour tutorial walkthrough onboarding help guide interactive', run: () => startTour() },
+    { id: 'start-tour', title: 'Take the full tour', hint: 'Tour', keywords: 'tour tutorial walkthrough onboarding guide interactive main', run: () => startTour('main') },
+    { id: 'shortcuts-tour', title: 'Keyboard shortcuts', hint: 'Tour', keywords: 'shortcuts keyboard keybindings hotkeys hot keys asdf tutorial reference cheat sheet', run: () => startTour('shortcuts') },
     { id: 'nav-propose', title: 'Go to Propose', hint: 'Tab', keywords: 'propose submit new question suggest write contribute', run: () => document.querySelector('.tab[data-view="propose"]').click() },
     { id: 'toggle-theme', title: 'Toggle dark / light mode', hint: 'Theme', keywords: 'dark light theme mode', run: () => document.getElementById('themeToggleBtn').click() },
     { id: 'clear-filters', title: 'Clear all Browse filters', hint: 'Browse', keywords: 'clear filters reset search', run: () => {
@@ -4547,12 +4545,20 @@
     return results;
   }
 
+  // Computed fresh on every open/keystroke rather than baked into
+  // PALETTE_COMMANDS, since which page it should tour changes with whatever
+  // tab is currently active — see currentPageTourKey() by the tour engine.
+  function contextualHelpCommand() {
+    const key = currentPageTourKey();
+    return { id: 'help-page', title: `Help me use — ${PAGE_TOUR_LABELS[key] || 'this page'}`, hint: 'Help', keywords: 'help tutorial guide tour page this ?', run: () => startTour(key) };
+  }
+
   function paletteResults() {
     const needle = paletteState.query.trim().toLowerCase();
     if (!needle) {
-      return { commands: PALETTE_COMMANDS.slice(0, 6), questions: recentQuestions(6), questionsLabel: 'Recent' };
+      return { commands: [contextualHelpCommand(), ...PALETTE_COMMANDS].slice(0, 6), questions: recentQuestions(6), questionsLabel: 'Recent' };
     }
-    const commands = PALETTE_COMMANDS.filter(c => (c.title + ' ' + c.keywords).toLowerCase().includes(needle));
+    const commands = [contextualHelpCommand(), ...PALETTE_COMMANDS].filter(c => (c.title + ' ' + c.keywords).toLowerCase().includes(needle));
     const questions = paletteQuestionMatches(needle);
     return { commands, questions, questionsLabel: 'Questions' };
   }
@@ -4950,7 +4956,7 @@
       if (e.key === 'Escape') { endTour(); return; }
       if (e.key === 'ArrowRight' || e.key === 'Enter') {
         e.preventDefault();
-        if (tourStepIndex === TOUR_STEPS.length - 1) endTour(); else goToTourStep(tourStepIndex + 1);
+        if (tourStepIndex === currentTourSteps.length - 1) endTour(); else goToTourStep(tourStepIndex + 1);
         return;
       }
       if (e.key === 'ArrowLeft') { e.preventDefault(); goToTourStep(tourStepIndex - 1); return; }
@@ -5177,24 +5183,154 @@
   // switches to a tab, then a spotlight (one element with a huge box-shadow
   // that doubles as the dimmed backdrop) rings the element being talked
   // about. `selector` may be a comma-separated list — the highlight spans
-  // the union of every match (e.g. the whole cluster of topbar icons).
+  // the union of every match (e.g. the whole cluster of topbar icons); a
+  // step with neither `view` nor `selector` (or whose selector matches
+  // nothing) just centers the tooltip with no highlight.
+  //
+  // There isn't just one tour: `main` is the broad orientation (every tab,
+  // once each); everything else is a focused, contextual tour of a single
+  // page, reachable from that page directly (Home's button only starts
+  // `main`) or from anywhere via the command palette — search "help" and
+  // it offers whichever page you're currently on, "shortcuts" always offers
+  // the keybinding walkthrough. See currentPageTourKey()/PAGE_TOURS below.
   const TOUR_SEEN_KEY = 'sat_qbank_tour_seen_v1';
-  const TOUR_STEPS = [
-    { title: 'Welcome to KYJ-SAT', body: "A ~2 minute tour of every tab, plus the handful of buttons worth knowing about. Use Next/Back any time, or Skip tour to bail out." },
-    { view: 'browse', selector: '#statRow', title: 'Your stats, always visible', body: 'Completed, To review, and Best score sit in the topbar on every tab, so you never lose track of where you stand.' },
-    { view: 'browse', selector: '#searchBox', title: 'Full-text search', body: "Search across question stems, choices, and rationale — or paste a question ID, or type a display ID like \"Evidence #1\" to jump straight to it." },
-    { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, and status from the sidebar. Click any question in the list to expand its full interactive detail, choices and rationale included.' },
-    { view: 'practice', selector: '.tab[data-view="practice"]', title: 'Practice', body: 'Pick a scope — category, skill, or difficulty, optionally shuffled — and work through it one question at a time. Picking a choice only selects it; hit Submit to grade it, or Show answer any time.' },
-    { view: 'test', selector: '.tab[data-view="test"]', title: 'Test', body: "Mock Exam's distribution engine — editable section/skill counts and difficulty mix, any total question count — as one flat, shuffled quiz instead of two timed modules. Nothing is graded until you submit the whole thing, then a scored results page with a per-skill breakdown. Mark any question for review and jump between questions with the navigator, or flip on \"Use Bluebook-style interface\" for a full-screen kiosk view built to look and behave like the real College Board testing app." },
-    { view: 'mock', selector: '.tab[data-view="mock"]', title: 'Mock Exam', body: 'A fully configurable digital-SAT-style Reading & Writing mock: an adaptive full exam, or either module standalone, with editable per-skill counts and an estimated composite score out of 1600. Same Mark for review, question navigator, and optional Bluebook-style kiosk view as Test.' },
-    { view: 'profile', selector: '.tab[data-view="profile"]', title: 'Profile', body: "XP, levels, streaks, a daily goal, and achievements — all derived automatically from progress you're already logging, plus your activity calendar and score trend. Three more sections live tucked under here too: Analysis, Review, and Notes." },
-    { view: 'analysis', selector: '.subtab[data-view="analysis"]', title: 'Analysis', body: 'Completion tracking and performance breakdowns in one place: mark any question complete, to review, or incomplete, and track it here with an overall completion bar, a per-category tile grid, and a Focus selector to scope by difficulty — plus a skill-mastery table with an improving/backsliding trend signal, a category × difficulty grid, and a missed-question digest pulled from your mock-exam history.' },
-    { view: 'review', selector: '.subtab[data-view="review"]', title: 'Review — spaced repetition', body: "Everything flagged for review gets scheduled by a real FSRS engine, the same memory model Anki's scheduler uses. Study due only ever shows what's actually due, however big the backlog gets." },
-    { view: 'notes', selector: '.subtab[data-view="notes"]', title: 'Notes', body: 'Every note and tag you add to a question, anywhere in the bank, compiled here into one searchable list.' },
-    { selector: '#themeToggleBtn, #paletteTriggerBtn, #cloudSaveWrap, .feedback-wrap', title: 'Topbar tools', body: 'Dark mode, the ⌘K / Ctrl+K command palette (jump anywhere without touching the mouse), optional cloud sync, and one-click feedback — all live here, on every tab.' },
-    { view: 'home', selector: '.tab[data-view="home"]', title: 'Home', body: "Come back here any time for a getting-started refresher, or to see everything the app can do and when it showed up." },
-    { title: "That's the tour", body: "Pick a tab and get going — Browse is a good place to start cold, or jump straight into Practice if you already know what you want to work on.", finish: true },
-  ];
+  // Shared closing beat so every contextual tour ends by pointing back at
+  // the two ways to find another one (palette search, or this same button).
+  const TOUR_REMINDER_STEP = { title: 'One thing to remember', body: 'Press ⌘K / Ctrl+K anywhere in the app — search "help" for a tour of whatever page you\'re on, or "shortcuts" for the full keyboard reference.', finish: true };
+
+  const TOURS = {
+    main: [
+      { title: 'Welcome to KYJ-SAT', body: "A ~2 minute tour of every tab, plus the handful of buttons worth knowing about. Tip: once you're done, press ⌘K / Ctrl+K and search \"help\" any time for a deeper, focused tour of whatever page you're on." },
+      { view: 'browse', selector: '#statRow', title: 'Your stats, always visible', body: 'Completed, To review, and Best score sit in the topbar on every tab, so you never lose track of where you stand.' },
+      { view: 'browse', selector: '#searchBox', title: 'Full-text search', body: "Search across question stems, choices, and rationale — or paste a question ID, or type a display ID like \"Evidence #1\" to jump straight to it." },
+      { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, and status from the sidebar. Click any question in the list to expand its full interactive detail, choices and rationale included.' },
+      { view: 'practice', selector: '.tab[data-view="practice"]', title: 'Practice', body: 'Pick a scope — category, skill, or difficulty, optionally shuffled — and work through it one question at a time. Picking a choice only selects it; hit Submit to grade it, or Show answer any time.' },
+      { view: 'test', selector: '.tab[data-view="test"]', title: 'Test', body: "Mock Exam's distribution engine — editable section/skill counts and difficulty mix, any total question count — as one flat, shuffled quiz. Nothing is graded until you submit the whole thing, then a scored results page with a per-skill breakdown." },
+      { view: 'mock', selector: '.tab[data-view="mock"]', title: 'Mock Exam', body: 'A fully configurable digital-SAT-style Reading & Writing mock: an adaptive full exam, or either module standalone, with editable per-skill counts and an estimated composite score out of 1600.' },
+      { view: 'profile', selector: '.tab[data-view="profile"]', title: 'Profile', body: "XP, levels, streaks, a daily goal, achievements, and kyj-cloud (sync progress across devices) — plus Analysis, Review, and Notes, tucked under three subtabs right here." },
+      { view: 'analysis', selector: '.subtab[data-view="analysis"]', title: 'Analysis', body: 'Completion tracking (an overall bar, a per-category tile grid, a Focus selector by difficulty) plus performance breakdowns: skill mastery, a trend signal, and a missed-question digest pulled from your mock-exam history.' },
+      { view: 'review', selector: '.subtab[data-view="review"]', title: 'Review — spaced repetition', body: "Everything flagged for review gets scheduled by a real FSRS engine, the same memory model Anki's scheduler uses. Study due only ever shows what's actually due, however big the backlog gets." },
+      { view: 'notes', selector: '.subtab[data-view="notes"]', title: 'Notes', body: 'Every note and tag you add to a question, anywhere in the bank, compiled here into one searchable list.' },
+      { view: 'propose', selector: '.tab[data-view="propose"]', title: 'Propose', body: "Log in (same account as kyj-cloud) and write a new question right in the app — it's queued for the site owner to review, never added to the live bank automatically." },
+      { selector: '#themeToggleBtn, #paletteTriggerBtn, #cloudSaveWrap, .feedback-wrap', title: 'Topbar tools', body: 'Dark mode, the ⌘K / Ctrl+K command palette, kyj-cloud, and one-click feedback — all live here, on every tab.' },
+      { view: 'home', selector: '.tab[data-view="home"]', title: 'Home', body: "Come back here any time for a getting-started refresher, or to see everything the app can do and when it showed up." },
+      { title: "One thing to remember", body: "Press ⌘K / Ctrl+K anywhere — search \"help\" for a focused tour of whatever page you're on, or \"shortcuts\" for the full keyboard reference. Then pick a tab and get going — Browse is a good place to start cold, or jump straight into Practice.", finish: true },
+    ],
+
+    browse: [
+      { view: 'browse', selector: '#searchBox', title: 'Search & jump', body: 'Full-text search across stems, choices, and rationale. Paste a College Board question ID, or type a short id like "Evidence #1", and press Enter to jump straight to it.' },
+      { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, and status — pick from any of the four sidebar groups, they all narrow the list together.' },
+      { view: 'browse', selector: '#sortSelect', title: 'Sort', body: 'Reorder by difficulty (easiest or hardest first), or back to original source order — independent of whatever filters are active.' },
+      { view: 'browse', selector: 'label:has(#selectAllBox)', title: 'Bulk actions', body: 'Tick a batch of questions (or "Select all" for everything currently filtered), then mark them all complete, for review, or incomplete in one go — a bulk action bar appears the moment anything\'s selected.' },
+      { view: 'browse', selector: '.qcard', title: 'Expand a question', body: 'Click any card to open its full interactive detail: every choice, the full rationale plus a rationale per choice, tags, notes, and the chart/table image if it has one.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    practice: [
+      { view: 'practice', selector: '.chip-row', title: 'Scope', body: 'Narrow the pool by status, category, skill, and difficulty — leave any group empty to include everything there. Nothing here is graded until you hit Submit on a question.' },
+      { view: 'practice', selector: '#practiceCount, label:has(#practiceShuffle)', title: 'How many, in what order', body: 'Set a question count and optionally shuffle it — the count updates live as you narrow (or widen) the scope above.' },
+      { view: 'practice', selector: 'label:has(#practiceBiasWeak), #practiceBiasWeakBtn', title: 'Customization: weak-skill bias', body: 'Turn this on and question selection leans toward whichever skills you\'re actually missing — combining recent accuracy, how long a skill has sat untouched, and skills you\'ve been quietly avoiding.' },
+      { view: 'practice', selector: 'label:has(#practiceAdvDistToggle), label:has(#practiceAdvDiffToggle)', title: 'Customization: distribution & difficulty', body: 'Custom question distribution swaps the category/skill chips for an editable per-skill count table (drag a slider or type a number, rescale the total in one click). Custom difficulty replaces the Easy/Medium/Hard filter with your own weighted mix.' },
+      { view: 'practice', selector: '#startPracticeBtn', title: 'Start practice', body: 'Once a question\'s up: A/S/D/F picks a choice, Enter submits, Space toggles the answer — see the full keyboard reference (⌨️ button in the sidebar, or search "shortcuts" in ⌘K) for everything else.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    test: [
+      { view: 'test', selector: '.chip-row', title: 'Scope by status', body: 'Same distribution engine as Mock Exam, run as one flat quiz instead of two timed modules — scope by status here (leave empty for the whole bank).' },
+      { view: 'test', selector: '#testCount, label:has(#testShuffleOrder)', title: 'Count & order', body: 'Pick any total question count and optionally shuffle it.' },
+      { view: 'test', selector: 'label:has(#testAdvDistToggle), label:has(#testAdvDiffToggle)', title: 'Customization: distribution & difficulty', body: 'Custom question distribution opens an editable per-skill count table (rescale the whole thing to a new total in one click). Custom difficulty swaps in your own Easy/Medium/Hard weighting instead of a straight filter.' },
+      { view: 'test', selector: 'label:has(#testUseBluebook), label:has(#testShortcuts)', title: 'Bluebook mode & shortcuts', body: 'Use Bluebook-style interface runs this attempt full-screen, built to look like the real digital SAT app. Enable keyboard shortcuts opts into A/S/D/F for choices and Enter/→/← to navigate — off by default since Test simulates a proctored exam.' },
+      { view: 'test', selector: 'label:has(#testTimed), label:has(#testMetadataToggle)', title: 'Timer & metadata', body: 'Timed mode adds a per-question countdown. Show question metadata reveals each question\'s category/skill/difficulty on screen — leave it off to practice blind, closer to the real thing.' },
+      { view: 'test', selector: '#startTestBtn', title: 'Start test', body: "Choices are just marked selected as you go — nothing is graded until you submit the whole test, then you get a scored results page with a per-skill breakdown. Mark for review and a question navigator are both available mid-test too." },
+      TOUR_REMINDER_STEP,
+    ],
+
+    mock: [
+      { view: 'mock', selector: '[data-mock-mode]', title: 'Mode', body: 'Adaptive full exam routes Module 2 harder or easier based on your Module 1 accuracy — approximating (not replicating) the real digital SAT\'s multistage-adaptive design. Or drill Module 1 or Module 2 alone, on demand.' },
+      { view: 'mock', selector: '.chip-row', title: 'Scope by status', body: 'Scope the question pool by status — e.g. only "Incomplete" — with a per-skill fallback to the full bank if a skill runs thin.' },
+      { view: 'mock', selector: 'label:has(#mockUseBluebook), label:has(#mockShortcuts)', title: 'Bluebook mode & shortcuts', body: 'Use Bluebook-style interface runs the exam full-screen, built to look and behave like the real College Board testing app. Enable keyboard shortcuts opts into A/S/D/F + Enter/→/← for the regular (non-Bluebook) layout.' },
+      { view: 'mock', selector: 'label:has(#mockAdvDistToggle), label:has(#mockAdvDiffToggle)', title: 'Customization: distribution & difficulty', body: 'Custom question distribution makes every skill\'s per-module count directly editable (defaults to the official 27/27 blueprint, one click to reset). Custom difficulty swaps in your own weighted Easy/Medium/Hard mix per module.' },
+      { view: 'mock', selector: 'label:has(#mockQTimed), label:has(#mockMetadataToggle)', title: 'Timer & metadata', body: 'An opt-in per-question timer layers on top of the real 32-minute module clock either way. Show question metadata reveals category/skill/difficulty on screen if you want it.' },
+      { view: 'mock', selector: '#startMockBtn', title: 'Start', body: 'A full adaptive attempt scores an estimated composite out of 1600; a module-only attempt gets a raw per-skill breakdown instead. Past attempts save locally and stay reviewable, read-only, from the history list.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    profile: [
+      { view: 'profile', selector: '.profile-card', title: 'Level & XP', body: 'XP, your level, and a title, all derived automatically from progress you\'re already logging elsewhere — nothing to track twice. Give yourself a name here too.' },
+      { view: 'profile', selector: '#exportProgressBtn, #importProgressBtn, #resetProgressBtn', title: 'Local sync', body: 'Progress lives in this browser by default, which isn\'t guaranteed to survive forever — Export periodically as a backup, Import to restore it or move to another device.' },
+      { view: 'profile', selector: '#profileCloudSaveBtn', title: 'kyj-cloud sync', body: 'Sign up with just a username and password to sync the same progress across every device you use — no email, no real security (this is a personal/shared tracker, not something holding anything sensitive), just a fast way to not lose your place. Local progress keeps working the exact same way whether or not you ever log in; the same account also unlocks the Propose tab.' },
+      { view: 'profile', selector: '[data-goal]', title: 'Streaks & daily goal', body: 'A current/longest streak counter, and a daily question-count goal you can change any time by clicking a different number.' },
+      { selector: '.activity-card, .cal-grid', title: 'Activity calendar', body: 'A GitHub-style heatmap of which days you\'ve actually studied.' },
+      { selector: '.achievements-card, .ach-grid', title: 'Achievements', body: 'Unlocked automatically as you hit milestones — hover any locked one to see exactly what it takes.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    analysis: [
+      { view: 'analysis', selector: '#progressFocusChips', title: 'Focus', body: 'Scope every stat below to just the difficulties you pick — e.g. "Hard only" — to track completion within your current focus instead of the whole bank. Persists across reloads.' },
+      { view: 'analysis', selector: '.progress-stats', title: 'Completion at a glance', body: 'Complete / To review / Incomplete / Total, for whatever Focus is selected above.' },
+      { view: 'analysis', selector: '.cat-progress-card', title: 'Per-category breakdown', body: 'Click any category to expand a tile grid — one small square per question, colored by status — grouped by difficulty. Click a tile to open that question right there inline.' },
+      { view: 'analysis', selector: '#analysisShell', title: 'Skill mastery & trends', body: 'Below the completion tracking: a skill-by-skill accuracy table with an improving/backsliding trend signal, a category × difficulty grid, a domain trend across your mock-exam history, and a missed-question digest — the fastest way to see what\'s actually going wrong.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    review: [
+      { view: 'review', selector: '.subtab[data-view="review"]', title: 'How this works', body: 'Everything flagged 🚩 for review gets scheduled by a from-scratch FSRS-4.5 implementation — the same memory model Anki\'s "FSRS" scheduler uses — so the queue resurfaces each question right around when you\'re about to forget it, instead of dumping the whole pile on you every time.' },
+      { view: 'review', selector: '#reviewStudyBtn', title: 'Study due', body: 'Launches a graded session (capped at 40 cards at a time, however big the backlog is): pick a choice, Submit or Show answer, then grade Again/Hard/Good/Easy — each button previews the resulting interval (e.g. "Good 4d") before you pick it.' },
+      { view: 'review', selector: '#reviewPracticeBtn', title: 'Practice all flagged', body: 'A plain no-grading run-through of the whole flagged set, regardless of what\'s actually due today — for when you just want to skim everything you\'ve marked.' },
+      { view: 'review', selector: '#reviewCustomDetails', title: 'Custom review', body: 'Pick your own scope (category/skill/difficulty/status) and session size instead of the default due-today queue.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    notes: [
+      { view: 'notes', selector: '#notesSearchBox', title: 'Search your notes', body: 'Every note you\'ve jotted down on any question, anywhere in the bank, searchable in one place — add more from any question\'s detail view.' },
+      { view: 'notes', selector: '#notesList, #notesPanelContainer', title: 'Jump back in', body: 'Click a note to open that question right there, with the same interactive detail as everywhere else.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    propose: [
+      { view: 'propose', selector: '#proposeLoginBtn, #proposeSubmitBtn', title: 'Propose a question', body: 'Log in with the same account as kyj-cloud (sign up there first if you don\'t have one) to write a new question right in the app: category, skill, difficulty, tags, the passage/stem, a prompt, four choices with the correct one marked, and a rationale for each choice.' },
+      { view: 'propose', selector: 'label:has(#proposeHasImage), #proposePasteZone', title: 'Charts & tables', body: 'If the question needs a chart or table, check "has an image" and either paste one (copy an image, click the box, ⌘V/Ctrl+V) or upload a PNG/SVG file.' },
+      { view: 'propose', selector: '#proposeSubmitBtn', title: 'Review queue', body: 'Submitting never adds anything to the live bank automatically — it queues up for the site owner to approve or reject first.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    // A tour of the keybindings themselves rather than one page — opens a
+    // real question (via `before`) so each step can ring the exact button
+    // its key maps to. Reachable from anywhere (⌘K → "shortcuts") or the
+    // sidebar button on Browse.
+    shortcuts: [
+      { title: 'Keyboard shortcuts', body: "Every shortcut in the app, with the button each one presses. Most only apply once a question's detail view is open (Browse, Practice, a quiz, Review) — this tour opens a sample one so you can see exactly what lights up." },
+      { selector: '#paletteTriggerBtn', title: 'Global: ⌘K / Ctrl+K', body: 'Opens the command palette from anywhere, including mid-keystroke in a text field — search a tab name, a question, "help", or "shortcuts" (i.e. this tour) to jump straight to it. Esc closes whatever\'s currently open.' },
+      {
+        before: () => { if (!state.modalList) { const q = QUESTIONS[0]; if (q) jumpToQuestion(q.id); } },
+        selector: '#questionModalRoot .choice',
+        title: 'A / S / D / F — pick a choice',
+        body: 'Home-row keys pick the four choices in order, left hand, no reaching for the mouse.',
+      },
+      { selector: '#questionModalRoot [data-submit-qid], #questionModalRoot [data-toggle-answer-qid]', title: 'Enter & Space', body: 'Enter submits your pick. Space toggles Show/Hide answer — works independently of Submit, any time.' },
+      { selector: '#questionModalRoot [data-set-status]', title: 'J / K / L — mark status', body: 'J flags 🚩 for review, K marks ✓ complete, L marks ○ incomplete — the same three actions as the status buttons, one key each.' },
+      { selector: '#questionModalRoot .modal-nav, #questionModalRoot .modal-position', title: 'G / H (or ← / →) — prev/next', body: 'Move between questions in whatever list you opened this one from, without closing the detail view.' },
+      { selector: '#questionModalRoot [data-copy-question-qid], #questionModalRoot .id-chip', title: 'C / I / U / N', body: 'C copies the full question text, I copies its College Board ID, U copies the short display id (e.g. "Evidence #1"), and N jumps your cursor straight into the note field. E/R scroll the passage up/down without leaving home row.' },
+      { title: 'Quiz screens: opt-in shortcuts', body: 'Test and Mock Exam simulate a proctored exam, so A/S/D/F (choices) and Enter/→/H (next) + ←/G (previous) are off by default there — flip on "Enable keyboard shortcuts" in either one\'s setup screen to use them.' },
+      { title: 'Review sessions: 1 / 2 / 3 / 4', body: 'Once a card\'s answer is showing in a Review session, number keys grade it — 1 Again, 2 Hard, 3 Good, 4 Easy — same layout as Anki.' },
+      TOUR_REMINDER_STEP,
+    ],
+  };
+
+  // Which page the palette's contextual "Help" command should open — reads
+  // the actual active tab/subtab rather than tracking it separately, so it
+  // can never drift out of sync with what's on screen.
+  const PAGE_TOUR_LABELS = { home: 'Home', browse: 'Browse', practice: 'Practice', test: 'Test', mock: 'Mock Exam', profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', propose: 'Propose' };
+  function currentPageTourKey() {
+    const activeSubtab = document.querySelector('.subtab.active');
+    if (activeSubtab && TOURS[activeSubtab.dataset.view]) return activeSubtab.dataset.view;
+    const activeTab = document.querySelector('.tabs > .tab.active');
+    const view = activeTab ? activeTab.dataset.view : 'home';
+    return TOURS[view] ? view : 'home';
+  }
+
+  let currentTourKey = 'main';
+  let currentTourSteps = TOURS.main;
   let tourStepIndex = 0;
   let tourResizeHandler = null;
 
@@ -5213,7 +5349,7 @@
   }
 
   function positionTourStep() {
-    const step = TOUR_STEPS[tourStepIndex];
+    const step = currentTourSteps[tourStepIndex];
     const highlight = document.getElementById('tourHighlight');
     const tooltip = document.getElementById('tourTooltip');
     const rect = step.selector ? tourUnionRect(step.selector) : null;
@@ -5266,8 +5402,8 @@
   }
 
   function renderTourStep() {
-    const step = TOUR_STEPS[tourStepIndex];
-    const total = TOUR_STEPS.length;
+    const step = currentTourSteps[tourStepIndex];
+    const total = currentTourSteps.length;
     const isLast = tourStepIndex === total - 1;
     const tooltip = document.getElementById('tourTooltip');
     tooltip.innerHTML = `
@@ -5275,7 +5411,7 @@
         <span class="tour-step-count">Step ${tourStepIndex + 1} of ${total}</span>
         <button type="button" class="tour-skip" id="tourSkipBtn">Skip tour</button>
       </div>
-      <div class="tour-progress">${TOUR_STEPS.map((_, i) => `<span class="${i <= tourStepIndex ? 'done' : ''}"></span>`).join('')}</div>
+      <div class="tour-progress">${currentTourSteps.map((_, i) => `<span class="${i <= tourStepIndex ? 'done' : ''}"></span>`).join('')}</div>
       <div class="tour-title">${escapeHtml(step.title)}</div>
       <div class="tour-body">${escapeHtml(step.body)}</div>
       <div class="tour-actions">
@@ -5289,22 +5425,35 @@
   }
 
   function goToTourStep(i) {
-    if (i < 0 || i >= TOUR_STEPS.length) return;
+    if (i < 0 || i >= currentTourSteps.length) return;
     tourStepIndex = i;
-    const step = TOUR_STEPS[tourStepIndex];
+    const step = currentTourSteps[tourStepIndex];
     if (step.view) {
       const tabBtn = document.querySelector('.tab[data-view="' + step.view + '"]');
       if (tabBtn && !tabBtn.classList.contains('active')) tabBtn.click();
     }
+    // A step can run arbitrary setup before it's measured/shown — e.g. the
+    // shortcuts tour opening a real question so it has something to ring.
+    if (step.before) step.before();
     // The tab-switch render above is synchronous (plain innerHTML, no
     // framework), and getBoundingClientRect forces a synchronous layout —
     // no need to wait a frame for either one before measuring/scrolling.
-    const target = step.selector ? document.querySelector(step.selector.split(',')[0].trim()) : null;
+    // Pass the full (possibly comma-separated) selector through as-is —
+    // querySelector already returns the first match among any alternative,
+    // so splitting off just the first alternative broke scrolling whenever
+    // that particular alternative didn't exist (e.g. a stale class name)
+    // even though a later alternative in the list did and rendered fine.
+    const target = step.selector ? document.querySelector(step.selector) : null;
     if (target && target.scrollIntoView) target.scrollIntoView({ block: 'center' });
     renderTourStep();
   }
 
-  function startTour() {
+  // key defaults to 'main' (Home's "Start interactive tour" button, and the
+  // palette's "Take the full tour"); any other TOURS key runs that page's
+  // own focused walkthrough instead — see currentPageTourKey() above.
+  function startTour(key) {
+    currentTourKey = (key && TOURS[key]) ? key : 'main';
+    currentTourSteps = TOURS[currentTourKey];
     document.getElementById('tourRoot').style.display = 'block';
     goToTourStep(0);
     tourResizeHandler = () => positionTourStep();
@@ -5325,7 +5474,9 @@
   function isTourOpen() { return document.getElementById('tourRoot').style.display !== 'none'; }
 
   const startTourBtn = document.getElementById('startTourBtn');
-  if (startTourBtn) startTourBtn.addEventListener('click', startTour);
+  if (startTourBtn) startTourBtn.addEventListener('click', () => startTour('main'));
+  const shortcutsTourBtn = document.getElementById('shortcutsTourBtn');
+  if (shortcutsTourBtn) shortcutsTourBtn.addEventListener('click', () => startTour('shortcuts'));
 
   // ---------- Cloud Save (username/password accounts, backed by a Google
   // Apps Script relay that does the actual GitHub commit — see
@@ -5334,14 +5485,16 @@
   // system holding anything sensitive, so accounts are just a username +
   // password checked by the script against a users.json file it keeps in the
   // repo. Credentials are kept in localStorage (not sessionStorage) so
-  // autosave can keep running across reloads without asking again — "Log
-  // out" clears them. Local Export/Import and localStorage progress work
-  // exactly as before regardless of whether anyone ever logs in; logging in
+  // logging in survives a reload without asking again — "Log out" clears
+  // them. There's no autosave or periodic sync of any kind: a save only ever
+  // happens when the user presses "Save progress now", so this never fires
+  // in the background while someone's mid-question. Local Export/Import and
+  // localStorage progress work exactly as before regardless of whether
+  // anyone ever logs in; logging in
   // only adds the option of syncing that same data through GitHub too.
   const CLOUD_SAVE_USERNAME_KEY = 'sat_qbank_cloud_save_username_v1';
   const CLOUD_SAVE_PASSWORD_KEY = 'sat_qbank_cloud_save_password_v1';
   const CLOUD_SAVE_LAST_KEY = 'sat_qbank_cloud_save_last_v1';
-  const CLOUD_AUTOSAVE_INTERVAL_MS = 5 * 60 * 1000;
 
   function getCloudUsername() {
     try { return localStorage.getItem(CLOUD_SAVE_USERNAME_KEY) || ''; } catch (e) { return ''; }
@@ -5398,56 +5551,37 @@
 
   let cloudSaveMode = 'login'; // 'login' | 'signup' — which tab the logged-out form shows
   let cloudLoadOffer = null; // { data, at } set right after a fresh login/signup that found existing cloud progress
-  let cloudAutosaveTimer = null;
-  let lastAutosavedJson = null;
 
-  function startCloudAutosave() {
-    if (cloudAutosaveTimer) return;
-    cloudAutosaveTimer = setInterval(() => {
-      if (!isCloudLoggedIn()) { stopCloudAutosave(); return; }
-      const json = JSON.stringify(buildBackupPayload());
-      if (json === lastAutosavedJson) return; // nothing changed since the last save — skip the commit
-      performCloudSave({ silent: true });
-    }, CLOUD_AUTOSAVE_INTERVAL_MS);
-  }
-  function stopCloudAutosave() {
-    if (cloudAutosaveTimer) { clearInterval(cloudAutosaveTimer); cloudAutosaveTimer = null; }
-  }
-
-  async function performCloudSave(opts) {
-    const silent = !!(opts && opts.silent);
+  // Sync only ever happens when the user presses "Save progress now" — no
+  // background/periodic autosave, so it never fires while they're mid-task.
+  async function performCloudSave() {
     const username = getCloudUsername();
     const password = getCloudPassword();
     if (!username || !password) return false;
     const payload = buildBackupPayload();
-    const json = JSON.stringify(payload);
     const btn = document.getElementById('cloudSaveNowBtn');
     const statusEl = document.getElementById('cloudSaveStatus');
-    if (!silent) {
-      if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
-      if (statusEl) { statusEl.className = 'cloud-save-status'; statusEl.textContent = 'Saving…'; }
-    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+    if (statusEl) { statusEl.className = 'cloud-save-status'; statusEl.textContent = 'Saving…'; }
     try {
       const result = await cloudSaveRequest('save', {
         username, password,
         message: `Update ${username} progress — ${new Date().toLocaleString()}`,
         data: payload,
       });
-      lastAutosavedJson = json;
       setCloudSaveLast({ at: new Date().toISOString(), commitUrl: result.commitUrl || null });
       updateCloudSaveTriggerState();
-      if (!silent) { renderCloudSavePopover(); renderProfile(); }
+      renderCloudSavePopover();
+      renderProfile();
       return true;
     } catch (err) {
-      if (!silent) {
-        const freshStatus = document.getElementById('cloudSaveStatus');
-        if (freshStatus) {
-          freshStatus.className = 'cloud-save-status err';
-          freshStatus.textContent = 'Save failed: ' + ((err && err.message) || err);
-        }
-        const freshBtn = document.getElementById('cloudSaveNowBtn');
-        if (freshBtn) { freshBtn.disabled = false; freshBtn.textContent = 'Save progress now'; }
+      const freshStatus = document.getElementById('cloudSaveStatus');
+      if (freshStatus) {
+        freshStatus.className = 'cloud-save-status err';
+        freshStatus.textContent = 'Save failed: ' + ((err && err.message) || err);
       }
+      const freshBtn = document.getElementById('cloudSaveNowBtn');
+      if (freshBtn) { freshBtn.disabled = false; freshBtn.textContent = 'Save progress now'; }
       return false;
     }
   }
@@ -5486,6 +5620,9 @@
           <input type="password" id="cloudPasswordConfirmInput" autocomplete="new-password" />
         </div>` : ''}
         <button type="button" class="cloud-save-btn primary" id="cloudSubmitBtn">${cloudSaveMode === 'signup' ? 'Create account' : 'Log in'}</button>
+        ${cloudSaveMode === 'signup' ? `
+        <p class="cloud-save-text" style="margin-top:8px; font-size:12px; color:var(--ink-faint);">⚠️ Don't reuse a password from an email, bank, or any other real account. This site stores it as a hash in a <strong>public</strong> GitHub repo — not encrypted, not private. Pick something you've never used elsewhere.</p>` : `
+        <p class="cloud-save-text" style="margin-top:8px; font-size:12px; color:var(--ink-faint);">Forgot your password? Email <a href="mailto:yongjoon9981@gmail.com">yongjoon9981@gmail.com</a> with your username and I'll fix this.</p>`}
         <div class="cloud-save-status" id="cloudSaveStatus"></div>`;
 
       cloudSavePopover.querySelectorAll('[data-cloud-tab]').forEach(el => {
@@ -5535,7 +5672,6 @@
             if (loadResult.data) offer = { data: loadResult.data, at: loadResult.updatedAt || null };
           } catch (e) { /* no cloud data yet, or the load failed — not fatal, just skip the offer */ }
           cloudLoadOffer = offer;
-          startCloudAutosave();
           updateCloudSaveTriggerState();
           renderCloudSavePopover();
           renderProfile();
@@ -5578,9 +5714,10 @@
 
     const username = getCloudUsername();
     cloudSavePopover.innerHTML = `${closeHeadHtml}
-      <p class="cloud-save-text">Logged in as <strong>${escapeHtml(username)}</strong>. Autosaves every few minutes while this tab is open, or save on demand.</p>
+      <p class="cloud-save-text">Logged in as <strong>${escapeHtml(username)}</strong>. Nothing syncs automatically — press Save whenever you want this browser's progress pushed to the cloud.</p>
       <button type="button" class="cloud-save-btn primary" id="cloudSaveNowBtn">Save progress now</button>
       <button type="button" class="cloud-save-btn" id="cloudLoadBtn">Load from cloud</button>
+      <p class="cloud-save-text" style="margin-top:8px; font-size:12px; color:var(--ink-faint);"><strong>Save</strong> replaces your cloud progress with this browser's — it doesn't merge. <strong>Load</strong> merges the cloud's progress into this browser instead. Switching devices? Load here first, before you Save, or you'll overwrite newer progress from the other device.</p>
       <div class="cloud-save-links">
         <button type="button" class="cloud-save-link" id="cloudLogoutBtn">Log out</button>
         <span></span>
@@ -5615,7 +5752,6 @@
 
     const logoutBtn = document.getElementById('cloudLogoutBtn');
     if (logoutBtn) logoutBtn.addEventListener('click', () => {
-      stopCloudAutosave();
       clearCloudCredentials();
       cloudLoadOffer = null;
       updateCloudSaveTriggerState();
@@ -5661,7 +5797,6 @@
   });
 
   updateCloudSaveTriggerState();
-  if (CLOUD_SAVE_URL && isCloudLoggedIn()) startCloudAutosave();
 
   // ---------- Propose a question ----------
   // Students submit through the same cloud-save account (for attribution and
@@ -9849,7 +9984,7 @@
     const username = getCloudUsername();
     const last = getCloudSaveLast();
     const statusText = loggedIn
-      ? `Connected as <strong>${escapeHtml(username)}</strong>.${last && last.at ? ` Last saved ${escapeHtml(new Date(last.at).toLocaleString())}.` : ''}`
+      ? `Connected as <strong>${escapeHtml(username)}</strong>.${last && last.at ? ` Last saved ${escapeHtml(new Date(last.at).toLocaleString())}.` : ''} Save overwrites the cloud with this device; Load merges the cloud into this device — Load first when switching devices.`
       : `Sync your progress across devices — sign up with just a username and password. Local progress keeps working either way.`;
     return `
       <div class="progress-summary">

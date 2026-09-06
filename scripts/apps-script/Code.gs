@@ -26,6 +26,12 @@
 //        GITHUB_BRANCH  e.g. "main" (optional, defaults to "main")
 //        GITHUB_DIR     e.g. "db/cloud_save" (optional, defaults to that —
 //                       holds users.json + progress/<username>.json)
+//        ADMIN_SECRET   optional, a password only you know — set this if you
+//                       want the ability to reset a user's forgotten
+//                       password yourself (see handleAdminResetPassword_
+//                       below). Passwords are one-way hashed, so this is a
+//                       reset, not a recovery — you can never see the
+//                       original password, yours or anyone else's.
 //   3. Deploy -> New deployment -> type "Web app".
 //        Execute as: Me
 //        Who has access: Anyone
@@ -47,6 +53,7 @@ function doPost(e) {
     else if (action === 'save') result = handleSave_(body);
     else if (action === 'load') result = handleLoad_(body);
     else if (action === 'propose_question') result = handlePropose_(body);
+    else if (action === 'admin_reset_password') result = handleAdminResetPassword_(body);
     else result = { ok: false, error: 'Unknown action: ' + action };
   } catch (err) {
     result = { ok: false, error: String((err && err.message) || err) };
@@ -227,6 +234,37 @@ function handleLoad_(body) {
   var file = githubGetFile_(cfg, progressPath_(cfg, check.username));
   if (!file.exists) return { ok: true, data: null };
   return { ok: true, data: JSON.parse(file.content) };
+}
+
+// Lets the site owner reset a user's password without knowing the old one
+// (passwords are stored as a one-way hash — see checkCredentials_ — so
+// there's no way to recover the original). Not exposed in any UI; call it
+// directly, e.g. from the Apps Script editor's "Run" or via curl, with an
+// ADMIN_SECRET set in Script Properties:
+//   curl -X POST '<exec url>' -H 'Content-Type: text/plain' -d \
+//     '{"action":"admin_reset_password","adminSecret":"...","username":"someone","newPassword":"..."}'
+function handleAdminResetPassword_(body) {
+  var props = PropertiesService.getScriptProperties();
+  var adminSecret = props.getProperty('ADMIN_SECRET');
+  if (!adminSecret) return { ok: false, error: 'ADMIN_SECRET is not set in Script Properties' };
+  if (!body || body.adminSecret !== adminSecret) return { ok: false, error: 'Not authorized' };
+
+  var username = body.username;
+  var newPassword = body.newPassword;
+  if (!isValidUsername_(username)) return { ok: false, error: 'Invalid username' };
+  if (!newPassword || String(newPassword).length < 4) {
+    return { ok: false, error: 'New password must be at least 4 characters' };
+  }
+
+  var cfg = config_();
+  var loaded = loadUsers_(cfg);
+  var key = username.toLowerCase();
+  var rec = loaded.users[key];
+  if (!rec) return { ok: false, error: 'No such user' };
+
+  rec.passwordHash = sha256Hex_(String(newPassword));
+  githubPutFile_(cfg, usersPath_(cfg), JSON.stringify(loaded.users, null, 2), loaded.sha, 'Admin reset password for ' + rec.username);
+  return { ok: true, username: rec.username };
 }
 
 // A student-submitted question (from the site's "Propose" tab). This only

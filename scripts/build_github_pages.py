@@ -19,9 +19,21 @@ IMAGES_SRC_DIR = os.path.join(ROOT, "images")
 OUT_DIR = os.path.join(ROOT, "site", "pages")
 
 
+def count_files(dir_path):
+    if not os.path.isdir(dir_path):
+        return 0
+    return sum(len(files) for _, _, files in os.walk(dir_path))
+
+
 def main():
     with open(ALL_JSON_PATH) as f:
         questions = json.load(f)
+    if not questions:
+        raise SystemExit(
+            f"Refusing to build: {ALL_JSON_PATH} has 0 questions. "
+            f"That looks like a corrupted/incomplete regeneration, not a real "
+            f"deploy — not touching {OUT_DIR} so it keeps whatever it had."
+        )
 
     with open(TEMPLATE_PATH) as f:
         template = f.read()
@@ -32,9 +44,12 @@ def main():
         '<script src="data.js"></script>\n<script id="questions-data" type="application/json">[]</script>',
     )
 
-    if os.path.exists(OUT_DIR):
-        shutil.rmtree(OUT_DIR)
-    os.makedirs(OUT_DIR)
+    # Overwrite index.html/data.js in place rather than rmtree-ing the whole
+    # OUT_DIR first — a blanket rmtree used to also wipe images/, and if
+    # IMAGES_SRC_DIR ever went missing (it isn't tracked in git, unlike
+    # OUT_DIR/images/ itself) there was nothing left to repopulate it with,
+    # permanently losing committed deploy images from the working tree.
+    os.makedirs(OUT_DIR, exist_ok=True)
 
     with open(os.path.join(OUT_DIR, "index.html"), "w") as f:
         f.write(html)
@@ -45,11 +60,24 @@ def main():
         json.dump(questions, f, ensure_ascii=False)
         f.write(";\n")
 
-    n_images = 0
-    if os.path.isdir(IMAGES_SRC_DIR):
-        images_out = os.path.join(OUT_DIR, "images")
+    # Never let this step shrink what's already deployed: a missing source
+    # dir (see git history for why this warning exists) or a partially
+    # regenerated one should both leave OUT_DIR/images/ alone rather than
+    # silently replacing a complete set with an incomplete one.
+    images_out = os.path.join(OUT_DIR, "images")
+    existing_count = count_files(images_out)
+    src_count = count_files(IMAGES_SRC_DIR)
+    if not os.path.isdir(IMAGES_SRC_DIR):
+        n_images = existing_count
+        print(f"WARNING: {IMAGES_SRC_DIR} not found — left existing {images_out} untouched ({n_images} file(s)), did NOT regenerate it")
+    elif src_count < existing_count:
+        n_images = existing_count
+        print(f"WARNING: {IMAGES_SRC_DIR} has fewer images ({src_count}) than {images_out} already has ({existing_count}) — left it untouched. Delete {images_out} yourself first if this shrink is intentional.")
+    else:
+        if os.path.exists(images_out):
+            shutil.rmtree(images_out)
         shutil.copytree(IMAGES_SRC_DIR, images_out)
-        n_images = sum(len(files) for _, _, files in os.walk(images_out))
+        n_images = count_files(images_out)
 
     html_size = os.path.getsize(os.path.join(OUT_DIR, "index.html"))
     data_size = os.path.getsize(os.path.join(OUT_DIR, "data.js"))

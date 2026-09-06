@@ -351,10 +351,9 @@ everywhere a question appears instead of the long College Board hash id
   progress tracker, not something holding anything sensitive), so use a
   password you're not reusing elsewhere. Logging in on a new browser offers
   to load your existing cloud progress in (merged with whatever's already
-  local); afterward it autosaves every few minutes while the tab is open
-  (skipping the commit if nothing changed), plus a manual **Save progress
-  now** / **Load from cloud** any time. Credentials are remembered in
-  `localStorage` across reloads until you hit **Log out**.
+  local). There's no autosave or periodic sync — **Save progress now** /
+  **Load from cloud** only ever run when you click them. Credentials are
+  remembered in `localStorage` across reloads until you hit **Log out**.
 - **Propose**: lets a student submit a new question straight from the site,
   no local setup required. Reuses the same account as cloud save — logging
   in there also unlocks this tab — and the form is the same fields as

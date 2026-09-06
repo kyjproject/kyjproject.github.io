@@ -15,6 +15,12 @@ OUT_PATH = os.path.join(ROOT, "site", "dist", "index.html")
 def main():
     with open(ALL_JSON_PATH) as f:
         questions = json.load(f)
+    if not questions:
+        raise SystemExit(
+            f"Refusing to build: {ALL_JSON_PATH} has 0 questions. "
+            f"That looks like a corrupted/incomplete regeneration, not a real "
+            f"deploy — not touching {OUT_PATH} so it keeps whatever it had."
+        )
 
     with open(TEMPLATE_PATH) as f:
         template = f.read()
