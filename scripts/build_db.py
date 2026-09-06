@@ -4,7 +4,7 @@ import os
 import sqlite3
 import glob
 
-ROOT = "/Users/kyj/Downloads/sat-database"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(ROOT, "db", "sat.db")
 SCHEMA_PATH = os.path.join(ROOT, "db", "schema.sql")
 CATEGORIES_DIR = os.path.join(ROOT, "db", "categories")
@@ -26,13 +26,14 @@ def main():
             conn.execute(
                 """INSERT INTO questions
                    (id, category, source_pdf, page, assessment, test, domain, domain_code,
-                    skill, skill_code, difficulty_label, difficulty, stem, prompt,
+                    skill, skill_code, difficulty_label, difficulty, tags, stem, prompt,
                     correct_answer, rationale_full, has_image)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (
                     r["id"], r["category"], r["source_pdf"], r["page"], r["assessment"],
                     r["test"], r["domain"], r.get("domain_code", ""), r["skill"],
                     r.get("skill_code", ""), r["difficulty_label"], r["difficulty"],
+                    ",".join(r.get("tags", [])),
                     r["stem"], r["prompt"], r["correct_answer"], r["rationale_full"],
                     1 if r.get("has_image") else 0,
                 ),

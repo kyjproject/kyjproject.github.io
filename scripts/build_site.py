@@ -6,7 +6,7 @@ opened directly from disk (file://) or published as a single-file artifact.
 import json
 import os
 
-ROOT = "/Users/kyj/Downloads/sat-database"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "site", "index.template.html")
 ALL_JSON_PATH = os.path.join(ROOT, "db", "all_questions.json")
 OUT_PATH = os.path.join(ROOT, "site", "dist", "index.html")

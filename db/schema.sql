@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS questions (
     skill_code        TEXT,                  -- e.g. "BOUND"
     difficulty_label  TEXT,                  -- Easy / Medium / Hard
     difficulty        INTEGER,               -- 1 / 2 / 3
+    tags              TEXT NOT NULL DEFAULT '', -- comma-separated freeform labels, e.g. "comma splice,tricky"
     stem              TEXT NOT NULL,
     prompt            TEXT NOT NULL,
     correct_answer    TEXT NOT NULL,         -- letter, e.g. "B"

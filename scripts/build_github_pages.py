@@ -12,7 +12,7 @@ import json
 import os
 import shutil
 
-ROOT = "/Users/kyj/Downloads/sat-database"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "site", "index.template.html")
 ALL_JSON_PATH = os.path.join(ROOT, "db", "all_questions.json")
 IMAGES_SRC_DIR = os.path.join(ROOT, "images")

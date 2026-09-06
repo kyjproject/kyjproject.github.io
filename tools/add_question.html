@@ -1,0 +1,626 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Add Question — Staging</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+    flex-wrap: wrap;
+  }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  .btn {
+    appearance: none;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--paper-raised);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  #folderStatus { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #folderStatus.ok { color: var(--done); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 0 0 12px;
+  }
+  label {
+    display: block;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 12px 0 4px;
+  }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], select, textarea {
+    width: 100%;
+    font: inherit;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; font-family: var(--sans); }
+  #stem { min-height: 140px; }
+  .rationaleBox { min-height: 60px; }
+  .subLabel { font-family: var(--mono); font-weight: 700; margin: 10px 0 4px; }
+  .subLabel:first-of-type { margin-top: 0; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .row4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 700px) { .row2, .row4 { grid-template-columns: 1fr; } }
+  .choiceRow { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+  .choiceRow .letter { width: 18px; font-weight: 700; font-family: var(--mono); }
+  .choiceRow input[type="radio"] { accent-color: var(--accent); }
+  .hint { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+  .readonly { color: var(--ink-faint); font-family: var(--mono); font-size: 12.5px; }
+
+  #idRow { display: flex; align-items: center; gap: 10px; }
+  #idValue { font-family: var(--mono); font-size: 14px; }
+
+  #imgWrap { margin-top: 10px; }
+  #pasteZone {
+    border: 2px dashed var(--rule);
+    border-radius: 8px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: text;
+    padding: 10px;
+  }
+  #pasteZone:focus { outline: none; border-color: var(--accent); }
+  #pasteZone.has-image { border-style: solid; }
+  #pastedImg { max-width: 100%; max-height: 220px; border-radius: 6px; background: #fff; }
+  .pasteHint { color: var(--ink-faint); font-size: 13px; text-align: center; }
+
+  #errBox {
+    background: var(--bad-bg);
+    border: 1px solid var(--bad);
+    color: var(--bad);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    display: none;
+    white-space: pre-line;
+  }
+  #errBox.show { display: block; }
+
+  .actions { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+  #saveStatus { font-size: 12.5px; color: var(--ink-faint); }
+  #saveStatus.ok { color: var(--done); }
+  #saveStatus.bad { color: var(--bad); }
+
+  .help {
+    margin-top: 20px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+  .help code { font-family: var(--mono); background: var(--rule-soft); padding: 1px 5px; border-radius: 4px; }
+</style>
+
+<header>
+  <h1>➕ Add Question (staging)</h1>
+  <button class="btn" id="pickFolderBtn">Select project root folder</button>
+  <span id="folderStatus">No folder selected — Save will download instead</span>
+</header>
+
+<main>
+  <div id="errBox"></div>
+
+  <div class="card">
+    <h3>Classification</h3>
+    <label for="category">Category</label>
+    <select id="category"></select>
+
+    <div class="row2">
+      <div>
+        <label for="skill">Skill</label>
+        <select id="skill"></select>
+      </div>
+      <div>
+        <label for="difficulty_label">Difficulty</label>
+        <select id="difficulty_label">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+    </div>
+    <div class="hint" id="domainHint"></div>
+
+    <label>Question ID</label>
+    <div id="idRow">
+      <span id="idValue" class="readonly"></span>
+      <button class="btn" id="regenIdBtn" type="button">Regenerate</button>
+    </div>
+
+    <label for="tags">Tags (optional, comma-separated — e.g. "comma splice, tricky, idiom")</label>
+    <input type="text" id="tags" />
+  </div>
+
+  <div class="card">
+    <h3>Question</h3>
+    <label for="stem">Stem (passage/text) — blank line between paragraphs, <code>&lt;u&gt;...&lt;/u&gt;</code> for underlined text</label>
+    <textarea id="stem"></textarea>
+
+    <label for="prompt">Prompt — must end in "?"</label>
+    <input type="text" id="prompt" />
+
+    <label>Choices — select the radio button next to the correct one</label>
+    <div id="choicesWrap">
+      <div class="choiceRow"><input type="radio" name="correct" value="A" /><span class="letter">A.</span><input type="text" id="choice_A" /></div>
+      <div class="choiceRow"><input type="radio" name="correct" value="B" /><span class="letter">B.</span><input type="text" id="choice_B" /></div>
+      <div class="choiceRow"><input type="radio" name="correct" value="C" /><span class="letter">C.</span><input type="text" id="choice_C" /></div>
+      <div class="choiceRow"><input type="radio" name="correct" value="D" /><span class="letter">D.</span><input type="text" id="choice_D" /></div>
+    </div>
+
+    <label>Rationale — explain each choice separately</label>
+    <div id="rationalesWrap">
+      <label for="rationale_A" class="subLabel">A</label>
+      <textarea id="rationale_A" class="rationaleBox"></textarea>
+      <label for="rationale_B" class="subLabel">B</label>
+      <textarea id="rationale_B" class="rationaleBox"></textarea>
+      <label for="rationale_C" class="subLabel">C</label>
+      <textarea id="rationale_C" class="rationaleBox"></textarea>
+      <label for="rationale_D" class="subLabel">D</label>
+      <textarea id="rationale_D" class="rationaleBox"></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Image (optional)</h3>
+    <label style="display:flex; align-items:center; gap:8px; margin:0;">
+      <input type="checkbox" id="has_image" style="width:auto;" /> This question has an image (chart/table)
+    </label>
+    <div id="imgWrap" style="display:none;">
+      <div id="pasteZone" tabindex="0">
+        <img id="pastedImg" style="display:none;" />
+        <div class="pasteHint" id="pasteHint">Copy an image (screenshot tool, Preview, etc.), click this box, then &#8984;V / Ctrl+V — or upload a file below.</div>
+      </div>
+      <label for="imgFileInput">Or upload a file (PNG or SVG)</label>
+      <input type="file" id="imgFileInput" accept=".png,.svg,image/png,image/svg+xml" />
+      <div class="hint" id="imgTarget"></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-accent" id="saveBtn">Add to staging</button>
+    <button class="btn" id="clearBtn">Clear form</button>
+    <span id="saveStatus"></span>
+  </div>
+
+  <div class="help">
+    <strong>Recommended (works in any browser, including Firefox/Safari):</strong> run
+    <code>python3 scripts/staging_server.py</code> and open the
+    <code>http://localhost:8765/tools/add_question.html</code> link it prints, instead of opening this file
+    directly. The page then saves through that local server — no special browser permissions needed.
+    <br /><br />
+    <strong>Chrome/Edge alternative:</strong> if you opened this file directly (<code>file://...</code>) in Chrome
+    or Edge, click "Select project root folder" once and pick the repo's top-level folder (the one containing
+    <code>db/</code> and <code>images/</code>) to grant direct write access instead.
+    <br /><br />
+    Either way: fill in the fields above, then click "Add to staging" — this appends the record to
+    <code>db/staging/proposed_questions.json</code> (and, if an image is attached, saves it under
+    <code>images/&lt;category file&gt;/&lt;id&gt;.png</code>). Nothing here touches the live database directly.
+    When you're ready, run <code>python3 scripts/review_staged_questions.py</code> to review each staged question
+    and approve/reject it into the real <code>db/categories/*.json</code> files, then rebuild
+    (<code>build_db.py</code>, <code>build_site_data.py</code>, <code>build_site.py</code>,
+    <code>build_github_pages.py</code>).
+    <br /><br />
+    If neither of the above is available, "Add to staging" instead downloads the full accumulated staging file for
+    this session — replace <code>db/staging/proposed_questions.json</code> with it yourself (an image, if any,
+    downloads separately — move it into <code>images/&lt;category file&gt;/</code>).
+  </div>
+</main>
+
+<script>
+(function () {
+  // category -> [target category-file, domain, domain_code, {skill: skill_code, ...}]
+  const CATEGORY_META = {
+    "Grammar": ["grammar.json", "Standard English Conventions", "SEC", { "Boundaries": "BOUND", "Form, Structure, and Sense": "FSS" }],
+    "Vocab": ["vocab.json", "Craft and Structure", "CAS", { "Words in Context": "WIC" }],
+    "Transitions": ["transitions.json", "Expression of Ideas", "EOI", { "Transitions": "TRANS" }],
+    "Notes": ["notes.json", "Expression of Ideas", "EOI", { "Rhetorical Synthesis": "RSYN" }],
+    "Functions": ["functions.json", "Craft and Structure", "CAS", { "Text Structure and Purpose": "TSP" }],
+    "Main Idea": ["main_idea.json", "Information and Ideas", "INI", { "Central Ideas and Details": "CID" }],
+    "Inferences": ["inferences.json", "Information and Ideas", "INI", { "Inferences": "INFER" }],
+    "Cross-Text": ["cross-text.json", "Craft and Structure", "CAS", { "Cross-Text Connections": "XTEXT" }],
+    "Textual Evidence": ["command_of_evidence.json", "Information and Ideas", "INI", { "Command of Evidence (Textual)": "COE" }],
+    "Quantitative Evidence": ["command_of_evidence.json", "Information and Ideas", "INI", { "Command of Evidence (Quantitative)": "COE" }],
+  };
+  const DIFF_MAP = { Easy: 1, Medium: 2, Hard: 3 };
+
+  // Served by scripts/staging_server.py (http://localhost:8765/...)? Then a
+  // plain fetch() POST works in any browser, including Firefox/Safari, which
+  // don't implement the File System Access API used by the Chrome/Edge path.
+  const SERVER_MODE = location.protocol === "http:" || location.protocol === "https:";
+
+  let rootHandle = null;
+  let knownIds = new Set();
+  let pastedBlob = null;
+  let pastedExt = "png"; // "png" (paste, or an uploaded .png) or "svg" (an uploaded .svg)
+  let sessionStaged = []; // fallback accumulator when neither server nor File System Access is available
+
+  const $ = (id) => document.getElementById(id);
+
+  function populateCategory() {
+    const sel = $("category");
+    sel.innerHTML = Object.keys(CATEGORY_META).map(c => `<option value="${c}">${c}</option>`).join("");
+    sel.addEventListener("change", populateSkill);
+    populateSkill();
+  }
+
+  function populateSkill() {
+    const cat = $("category").value;
+    const [, domain, domain_code, skills] = CATEGORY_META[cat];
+    const sel = $("skill");
+    sel.innerHTML = Object.keys(skills).map(s => `<option value="${s}">${s}</option>`).join("");
+    $("domainHint").textContent = `domain: ${domain} (${domain_code})`;
+  }
+
+  function randomId() {
+    const bytes = new Uint8Array(4);
+    crypto.getRandomValues(bytes);
+    return Array.from(bytes).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  function regenId() {
+    let id = randomId();
+    while (knownIds.has(id)) id = randomId();
+    $("idValue").textContent = id;
+  }
+
+  async function loadKnownIds() {
+    try {
+      const res = await fetch("../db/all_questions.json");
+      const all = await res.json();
+      all.forEach(q => knownIds.add(q.id));
+    } catch (e) {
+      // fine — worst case an id collision gets caught later by review_staged_questions.py
+    }
+  }
+
+  function buildRationaleFull(rationaleByChoice) {
+    // rationale_full is kept only as a concatenated blob for full-text search
+    // (see site's search index) — the site actually displays rationale_by_choice
+    // per choice, which is what you typed in directly.
+    return ["A", "B", "C", "D"].map(l => rationaleByChoice[l]).filter(Boolean).join(" ");
+  }
+
+  function showErrors(errors) {
+    const box = $("errBox");
+    if (!errors.length) {
+      box.className = "";
+      box.textContent = "";
+      return false;
+    }
+    box.className = "show";
+    box.textContent = errors.map(e => "• " + e).join("\n");
+    return true;
+  }
+
+  function collectAndValidate() {
+    const category = $("category").value;
+    const [file, domain, domain_code, skills] = CATEGORY_META[category];
+    const skill = $("skill").value;
+    const difficulty_label = $("difficulty_label").value;
+    const stem = $("stem").value.trim();
+    const prompt = $("prompt").value.trim();
+    const choices = { A: $("choice_A").value.trim(), B: $("choice_B").value.trim(), C: $("choice_C").value.trim(), D: $("choice_D").value.trim() };
+    const correctEl = document.querySelector('input[name="correct"]:checked');
+    const correct_answer = correctEl ? correctEl.value : null;
+    const rationale_by_choice = {
+      A: $("rationale_A").value.trim(),
+      B: $("rationale_B").value.trim(),
+      C: $("rationale_C").value.trim(),
+      D: $("rationale_D").value.trim(),
+    };
+    const hasImage = $("has_image").checked;
+    const tags = $("tags").value.split(",").map(t => t.trim()).filter(Boolean);
+
+    const errors = [];
+    if (!stem) errors.push("Stem is empty.");
+    if (!prompt) errors.push("Prompt is empty.");
+    else if (!prompt.endsWith("?")) errors.push('Prompt must end in "?".');
+    const texts = Object.values(choices);
+    if (texts.some(t => !t)) errors.push("All four choices must be filled in.");
+    else if (new Set(texts).size !== texts.length) errors.push("Two or more choices have identical text.");
+    if (!correct_answer) errors.push("Select which choice is correct.");
+    if (Object.values(rationale_by_choice).some(t => !t)) errors.push("Every choice needs its own rationale (A, B, C, D).");
+    if (hasImage && !pastedBlob) errors.push('"Has image" is checked but no image was pasted.');
+
+    if (showErrors(errors)) return null;
+
+    const id = $("idValue").textContent;
+    const record = {
+      id,
+      category,
+      source_pdf: "manual",
+      page: null,
+      assessment: "SAT",
+      test: "Reading and Writing",
+      domain,
+      domain_code,
+      skill,
+      skill_code: skills[skill],
+      difficulty_label,
+      difficulty: DIFF_MAP[difficulty_label],
+      stem,
+      prompt,
+      choices,
+      correct_answer,
+      rationale_full: buildRationaleFull(rationale_by_choice),
+      rationale_by_choice,
+      tags,
+      has_image: hasImage,
+      image_paths: hasImage ? [{ path: `images/${file.replace(/\.json$/, "")}/${id}.${pastedExt}`, position: "stem" }] : [],
+    };
+    return { record, file };
+  }
+
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function saveViaServer(record) {
+    const payload = { record };
+    if (record.has_image && pastedBlob) {
+      payload.image_base64 = await blobToBase64(pastedBlob);
+      payload.image_rel_path = record.image_paths[0].path;
+    }
+    const res = await fetch("/api/stage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "server error");
+    return data.count;
+  }
+
+  async function getStagingHandle() {
+    const dbHandle = await rootHandle.getDirectoryHandle("db");
+    const stagingHandle = await dbHandle.getDirectoryHandle("staging", { create: true });
+    return stagingHandle.getFileHandle("proposed_questions.json", { create: true });
+  }
+
+  async function saveViaFS(record, categoryFile) {
+    const fileHandle = await getStagingHandle();
+    const file = await fileHandle.getFile();
+    const text = await file.text();
+    let staged = [];
+    if (text.trim()) {
+      try { staged = JSON.parse(text); } catch (e) { staged = []; }
+    }
+    staged.push(record);
+    const writable = await fileHandle.createWritable();
+    await writable.write(JSON.stringify(staged, null, 2));
+    await writable.close();
+
+    if (record.has_image && pastedBlob) {
+      const slug = categoryFile.replace(/\.json$/, "");
+      const imagesHandle = await rootHandle.getDirectoryHandle("images", { create: true });
+      const slugHandle = await imagesHandle.getDirectoryHandle(slug, { create: true });
+      const imgHandle = await slugHandle.getFileHandle(`${record.id}.${pastedExt}`, { create: true });
+      const imgWritable = await imgHandle.createWritable();
+      await imgWritable.write(pastedBlob);
+      await imgWritable.close();
+    }
+    return staged.length;
+  }
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function saveViaDownload(record, categoryFile) {
+    sessionStaged.push(record);
+    downloadBlob(new Blob([JSON.stringify(sessionStaged, null, 2)], { type: "application/json" }),
+      "proposed_questions.json");
+    if (record.has_image && pastedBlob) {
+      downloadBlob(pastedBlob, `${record.id}.${pastedExt}`);
+    }
+    return sessionStaged.length;
+  }
+
+  function clearFormKeepingCategory() {
+    $("stem").value = "";
+    $("prompt").value = "";
+    ["A", "B", "C", "D"].forEach(l => $(`choice_${l}`).value = "");
+    const checked = document.querySelector('input[name="correct"]:checked');
+    if (checked) checked.checked = false;
+    ["A", "B", "C", "D"].forEach(l => $(`rationale_${l}`).value = "");
+    $("tags").value = "";
+    $("has_image").checked = false;
+    $("imgWrap").style.display = "none";
+    clearPaste();
+    regenId();
+    showErrors([]);
+  }
+
+  function clearPaste() {
+    pastedBlob = null;
+    pastedExt = "png";
+    const img = $("pastedImg");
+    img.style.display = "none";
+    img.src = "";
+    $("imgFileInput").value = "";
+    $("pasteHint").style.display = "block";
+    $("pasteZone").classList.remove("has-image");
+    updateImgTarget();
+  }
+
+  function updateImgTarget() {
+    const cat = $("category").value;
+    const file = CATEGORY_META[cat][0].replace(/\.json$/, "");
+    $("imgTarget").textContent = `Will save to images/${file}/<id>.${pastedExt}`;
+  }
+
+  function showImagePreview() {
+    const url = URL.createObjectURL(pastedBlob);
+    const img = $("pastedImg");
+    img.src = url;
+    img.style.display = "block";
+    $("pasteHint").style.display = "none";
+    $("pasteZone").classList.add("has-image");
+    updateImgTarget();
+  }
+
+  $("pickFolderBtn").addEventListener("click", async () => {
+    if (!window.showDirectoryPicker) {
+      alert("This browser doesn't support direct folder access (use Chrome or Edge). Add to staging will download files instead — merge them in yourself.");
+      return;
+    }
+    try {
+      rootHandle = await window.showDirectoryPicker();
+      const status = $("folderStatus");
+      status.textContent = `Folder selected: "${rootHandle.name}" — make sure that's the repo root`;
+      status.classList.add("ok");
+    } catch (e) {
+      // picker cancelled
+    }
+  });
+
+  $("has_image").addEventListener("change", (e) => {
+    $("imgWrap").style.display = e.target.checked ? "block" : "none";
+    updateImgTarget();
+  });
+  $("category").addEventListener("change", () => {
+    if ($("has_image").checked) updateImgTarget();
+  });
+
+  $("pasteZone").addEventListener("paste", (e) => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (const item of items) {
+      if (item.type.startsWith("image/")) {
+        pastedBlob = item.getAsFile();
+        pastedExt = item.type === "image/svg+xml" ? "svg" : "png";
+        showImagePreview();
+        e.preventDefault();
+        return;
+      }
+    }
+  });
+
+  $("imgFileInput").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const isSvg = file.type === "image/svg+xml" || /\.svg$/i.test(file.name);
+    const isPng = file.type === "image/png" || /\.png$/i.test(file.name);
+    if (!isSvg && !isPng) {
+      alert("Only PNG or SVG files are supported.");
+      e.target.value = "";
+      return;
+    }
+    pastedBlob = file;
+    pastedExt = isSvg ? "svg" : "png";
+    showImagePreview();
+  });
+
+  $("clearBtn").addEventListener("click", clearFormKeepingCategory);
+
+  $("regenIdBtn").addEventListener("click", regenId);
+
+  $("saveBtn").addEventListener("click", async () => {
+    const result = collectAndValidate();
+    if (!result) return;
+    const { record, file } = result;
+    const status = $("saveStatus");
+    try {
+      let count;
+      if (SERVER_MODE) count = await saveViaServer(record);
+      else if (rootHandle) count = await saveViaFS(record, file);
+      else count = saveViaDownload(record, file);
+      status.textContent = `Staged ${record.id} ✓ (${count} pending in db/staging/proposed_questions.json)`;
+      status.className = "ok";
+      knownIds.add(record.id);
+      clearFormKeepingCategory();
+    } catch (e) {
+      status.textContent = "Save failed: " + e.message;
+      status.className = "bad";
+    }
+  });
+
+  function initFolderUI() {
+    if (SERVER_MODE) {
+      $("pickFolderBtn").style.display = "none";
+      const status = $("folderStatus");
+      status.textContent = "Connected to local staging server ✓ — works in any browser";
+      status.classList.add("ok");
+    }
+  }
+
+  populateCategory();
+  initFolderUI();
+  loadKnownIds().then(regenId);
+  regenId();
+})();
+</script>

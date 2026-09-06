@@ -3,7 +3,7 @@ import json
 import glob
 import os
 
-ROOT = "/Users/kyj/Downloads/sat-database"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES_DIR = os.path.join(ROOT, "db", "categories")
 ALL_JSON_PATH = os.path.join(ROOT, "db", "all_questions.json")
 SITE_DATA_PATH = os.path.join(ROOT, "site", "data.js")

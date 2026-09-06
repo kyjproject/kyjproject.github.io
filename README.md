@@ -46,6 +46,7 @@ db/
   sat.db                       generated SQLite database
   categories/*.json            one file per category, parsed question records (source of truth)
   all_questions.json           all categories concatenated (generated)
+  staging/proposed_questions.json  manually-added questions awaiting review (see below), empty ([]) by default
 
 images/
   command_of_evidence/*.png    cropped chart/table images, one per question that has one
@@ -57,6 +58,12 @@ scripts/
   build_site_data.py           db/categories/*.json -> db/all_questions.json + site/data.js
   build_site.py                site/index.template.html + data -> site/dist/index.html (single-file, for Claude Artifacts)
   build_github_pages.py        site/index.template.html + data + images -> site/pages/ (multi-file, for GitHub Pages)
+  review_staged_questions.py   db/staging/proposed_questions.json -> db/categories/<category>.json, one-by-one approval
+  staging_server.py            local HTTP server so tools/add_question.html works in any browser (not just Chrome/Edge)
+  apps-script/Code.gs           Google Apps Script backend for kyj-cloud, the app's optional login/sync feature (deployed separately, not part of this build)
+
+tools/
+  add_question.html            local form for staging a new hand-written question into db/staging/proposed_questions.json
 
 site/
   index.template.html          the web app (single file, vanilla JS, no build tooling)
@@ -82,6 +89,7 @@ Each question in `db/categories/*.json` (and the `questions`/`choices` SQLite ta
   "skill_code": "BOUND",
   "difficulty_label": "Hard",       // Easy | Medium | Hard
   "difficulty": 3,                  // 1 / 2 / 3
+  "tags": [],                       // freeform labels, e.g. ["comma splice", "tricky"] — optional, [] if none
   "stem": "...",                    // "\n\n"-separated paragraphs; Cross-Text
                                      // questions have "Text 1" / "Text 2" as
                                      // their own paragraph before each passage
@@ -91,7 +99,7 @@ Each question in `db/categories/*.json` (and the `questions`/`choices` SQLite ta
   "rationale_full": "...",
   "rationale_by_choice": { "A": "...", "B": "...", "C": "...", "D": "..." },
   "has_image": false,
-  "image_paths": []                 // [{ "path": "images/command_of_evidence/<id>.png", "position": "stem" }] when has_image
+  "image_paths": []                 // [{ "path": "images/command_of_evidence/<id>.png", "position": "stem" }] when has_image — .svg also allowed for hand-added questions
 }
 ```
 
@@ -149,6 +157,51 @@ parsing (domain/skill/difficulty/choices/rationale are 100% regex-driven, not
 dependent on the image heuristic), so a bad crop is a cosmetic issue confined
 to one question's image, not a data-quality one.
 
+## Adding new questions by hand (staging + review)
+
+Every question so far came from parsing a College Board PDF, but the same
+record schema can hold a hand-written question too — e.g. one transcribed
+from a practice test that isn't in any of the source PDFs. Nothing you enter
+this way touches `db/categories/*.json` (the live database) directly; it
+always goes through a staging file first, so a bad entry can't reach the site
+without a deliberate approval step.
+
+1. Run `python3 scripts/staging_server.py` and open the
+   `http://localhost:8765/tools/add_question.html` link it prints — this
+   works in **any** browser, including Firefox/Safari, since the page just
+   does a plain `fetch()` POST to that local server, which does the actual
+   file write. (Chrome/Edge only, alternative: open `tools/add_question.html`
+   directly as a `file://` page and click **Select project root folder**
+   instead, which grants write access via the File System Access API — the
+   same pattern `tools/image_editor.html` uses for images. Firefox/Safari
+   don't implement that API at all, which is what the server sidesteps.)
+   Fill in the form (category auto-fills domain/skill/codes; the question ID
+   is generated for you, checked against every existing ID; tags are
+   optional freeform comma-separated labels) and click **Add to staging**.
+   This appends the record to `db/staging/proposed_questions.json` and, if
+   you attached an image — paste a screenshot, or upload a `.png`/`.svg`
+   file directly — saves it under `images/<category file>/<id>.png` (or
+   `.svg`). Keep entering questions — the form stays open and clears itself
+   after each save. (If your browser doesn't support folder access, it
+   downloads the accumulated staging file instead — merge it into
+   `db/staging/proposed_questions.json` yourself.)
+2. Run `python3 scripts/review_staged_questions.py`. It shows one staged
+   question at a time — full stem, choices, correct answer, rationale — and
+   validates it (required fields, exactly 4 distinct non-empty choices, a
+   real correct answer, a non-empty rationale for every choice A-D,
+   domain/skill/skill_code consistent with the chosen category, difficulty
+   label matching its numeric value, prompt ending in "?", no ID collision
+   with the live bank or elsewhere in staging, and that any referenced image
+   file actually exists). A question with validation
+   errors can only be rejected or skipped, never approved. For each clean
+   question you choose **Approve** (appends it to the right
+   `db/categories/<category>.json` and removes it from staging), **Reject**
+   (deletes it from staging permanently, optionally deleting its staged
+   image too), or **Skip** (leaves it in staging for next time).
+3. If anything was approved, rebuild like normal (see Regenerating below):
+   `build_db.py`, `build_site_data.py`, `build_site.py`,
+   `build_github_pages.py`.
+
 ## Regenerating
 
 ```bash
@@ -204,11 +257,15 @@ everywhere a question appears instead of the long College Board hash id
   independently reveals the correct choice and full per-choice rationale,
   whenever you want it. Browse's expanded card and the Progress/Review inline
   panels all share this same interactive detail.
-- **Test**: pick categories/skills/difficulty/question count and a status
-  scope (e.g. only "Incomplete", only "To review"), then take a no-feedback
-  quiz (chart/table images included where relevant) — choices are just marked
-  selected, nothing is graded until you submit the whole test — followed by a
-  scored results page with per-skill breakdown and full review.
+- **Test**: Mock Exam's distribution engine (editable per-section/per-skill
+  question counts, editable Easy/Medium/Hard mix, bias-toward-weak, status
+  scope) as one flat quiz of any length instead of two timed modules — set
+  any total question count and the per-skill blueprint scales to it. Built in
+  blueprint order, then shuffled, so the questions come in random order
+  rather than grouped by skill. No-feedback quiz (chart/table images included
+  where relevant) — choices are just marked selected, nothing is graded until
+  you submit the whole test — followed by a scored results page with
+  per-skill breakdown and full review.
 - **Mock Exam**: a fully configurable digital-SAT-style R&W mock, not just a
   fixed 54-question run. Pick a **mode** — adaptive full exam (Module 1 routes
   into a harder/easier Module 2 based on your Module 1 accuracy, with an
@@ -228,6 +285,26 @@ everywhere a question appears instead of the long College Board hash id
   per-module/per-skill breakdown instead (the composite curve is calibrated
   against the full 54-question exam). Past attempts are saved locally with
   their mode, reviewable read-only from the history list.
+- **Bluebook**: a single-module practice mode built to look and behave like
+  the actual College Board "Bluebook" testing app, not just another quiz
+  screen. Config (question scope, count, module timer) and the final score
+  screen stay in the site's normal theme; starting a module switches to a
+  full-screen kiosk view — no app topbar/tabs — with Bluebook's chrome: a
+  black-ruled header with the module timer (hideable) and a Directions
+  link/overlay, a two-pane layout (passage left, question + lettered choices
+  right) with a black question-number badge and a **Mark for Review** flag,
+  a toolbar with a **Highlights & Notes** pen (drag-select text in the
+  passage to highlight it, click a highlight to remove it — persisted per
+  question for the rest of the attempt), a **More** menu's **Answer
+  Eliminator** (adds a cross-out toggle to each choice that strikes it
+  through and blocks selecting it until undone), and an A−/A+ text-zoom
+  stepper. The bottom bar's **Question X of N** pill opens a question
+  navigator (grid of tiles showing answered/flagged/current at a glance,
+  jump to any question or straight to the review page); the last question's
+  **Next** also leads to the review page, which lists every question's
+  answered/flagged status before a confirm-and-submit. Skill stats from a
+  submitted module feed the same weak-skill tracking as Test/Practice/Mock
+  Exam.
 - **Progress**: mark any question "🚩 Mark for review", "✓ Mark complete", or
   "○ Mark incomplete" from its detail view (Browse, Practice, Test results, or
   the Progress/Review tiles). Marked questions get a colored card border
@@ -249,6 +326,48 @@ everywhere a question appears instead of the long College Board hash id
   Saved to the browser's `localStorage` automatically — since that isn't
   guaranteed to survive forever, use **Export progress (.json)** to back it up
   and **Import progress** to restore/transfer it.
+
+  There's also **kyj-cloud** — a cloud icon in the topbar (and a matching
+  card on the Profile tab, next to the name field) for an optional account
+  login that syncs the same backup payload to this repo instead of (or
+  alongside) downloading it. It's entirely opt-in: local `localStorage`
+  progress and Export/Import work exactly as before whether or not anyone
+  ever signs up.
+
+  Since a static site can't hold a GitHub token safely, the app POSTs to a
+  small Google Apps Script (`scripts/apps-script/Code.gs`, deployed
+  separately by whoever runs this site — see the comment at the top of that
+  file for setup) which does the actual GitHub commit server-side, using a
+  token that never reaches the browser. The Apps Script's own URL is baked
+  into the build via the `CLOUD_SAVE_URL` constant near the top of
+  `site/index.template.html` (empty by default, which hides the whole
+  feature — e.g. for the Claude Artifact build, which has nowhere to commit
+  to).
+
+  Accounts are just a username + password, self-service ("Sign up" right in
+  the popover) and checked by the script against a `users.json` file it
+  keeps in the repo (`db/cloud_save/`, alongside one progress file per user)
+  — there's no real security here by design (this is a personal/shared
+  progress tracker, not something holding anything sensitive), so use a
+  password you're not reusing elsewhere. Logging in on a new browser offers
+  to load your existing cloud progress in (merged with whatever's already
+  local); afterward it autosaves every few minutes while the tab is open
+  (skipping the commit if nothing changed), plus a manual **Save progress
+  now** / **Load from cloud** any time. Credentials are remembered in
+  `localStorage` across reloads until you hit **Log out**.
+- **Propose**: lets a student submit a new question straight from the site,
+  no local setup required. Reuses the same account as cloud save — logging
+  in there also unlocks this tab — and the form is the same fields as
+  `tools/add_question.html` (category/skill/difficulty auto-fill together,
+  a rationale box per choice, optional PNG/SVG image). Submitting posts
+  through the same Apps Script (`handlePropose_` in
+  `scripts/apps-script/Code.gs`), which appends the record straight to
+  `db/staging/proposed_questions.json` on GitHub — it never touches
+  `db/categories/*.json` directly. The site owner still has to pull the repo
+  and run `scripts/review_staged_questions.py` to actually approve or reject
+  each one, exactly like a question added locally; nothing a student submits
+  reaches the live bank without that step. Hidden when `CLOUD_SAVE_URL`
+  isn't set, same as cloud save.
 - **Review**: everything flagged 🚩 for review, scheduled with **spaced
   repetition** — a from-scratch implementation of FSRS-4.5 (the same memory
   model Anki's "FSRS" scheduler uses), so the queue resurfaces each question
