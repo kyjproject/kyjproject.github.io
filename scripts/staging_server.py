@@ -26,6 +26,7 @@ CONTENT_TYPES = {
     ".js": "application/javascript",
     ".json": "application/json",
     ".png": "image/png",
+    ".svg": "image/svg+xml",
     ".css": "text/css",
 }
 
@@ -62,17 +63,20 @@ class Handler(BaseHTTPRequestHandler):
             return
         length = int(self.headers.get("Content-Length", 0))
         body = json.loads(self.rfile.read(length))
-        record = body["record"]
 
-        staged = []
-        if os.path.exists(STAGING_PATH):
-            with open(STAGING_PATH) as f:
-                staged = json.load(f)
-        staged.append(record)
-        os.makedirs(os.path.dirname(STAGING_PATH), exist_ok=True)
-        with open(STAGING_PATH, "w") as f:
-            json.dump(staged, f, indent=2, ensure_ascii=False)
+        # `staged`: replace the whole staging array — covers add, edit, and
+        # delete alike, since tools/add_question.html always sends the full
+        # array it wants written (read-modify-write happens client-side).
+        count = None
+        if "staged" in body:
+            staged = body["staged"]
+            os.makedirs(os.path.dirname(STAGING_PATH), exist_ok=True)
+            with open(STAGING_PATH, "w") as f:
+                json.dump(staged, f, indent=2, ensure_ascii=False)
+            count = len(staged)
 
+        # `image_base64` + `image_rel_path`: write/overwrite one image file,
+        # independent of (and optionally alongside) a `staged` write above.
         image_b64 = body.get("image_base64")
         image_rel_path = body.get("image_rel_path")
         if image_b64 and image_rel_path:
@@ -84,7 +88,7 @@ class Handler(BaseHTTPRequestHandler):
             with open(full_img_path, "wb") as f:
                 f.write(base64.b64decode(image_b64))
 
-        self._send_json({"ok": True, "count": len(staged)})
+        self._send_json({"ok": True, "count": count})
 
     def log_message(self, format, *args):
         pass

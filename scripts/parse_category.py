@@ -79,13 +79,31 @@ def clean_paragraphs(s):
     for line in lines:
         if line.strip() == "":
             if current:
-                paragraphs.append(" ".join(current))
+                paragraphs.append(_join_paragraph_lines(current))
                 current = []
         else:
             current.append(line.strip())
     if current:
-        paragraphs.append(" ".join(current))
+        paragraphs.append(_join_paragraph_lines(current))
     return "\n\n".join(paragraphs)
+
+
+# A block's physical PDF lines normally wrap at the page's text width (~90+
+# chars in these PDFs — see the rationale/prose blocks) and should be
+# rejoined with spaces to undo that incidental wrap. Verse quoted directly in
+# a passage (poems) instead breaks every line *deliberately*, well short of
+# that width, and joining those with spaces destroys the poem's line/stanza
+# structure — the "weird stanza differentiation" a poem stem otherwise ends
+# up with. Heuristic: a block of 3+ lines that are all short is almost
+# certainly verse, not a wrapped sentence, so its line breaks are preserved
+# (site CSS renders them via white-space: pre-line) instead of collapsed.
+_VERSE_LINE_MAX = 70
+
+
+def _join_paragraph_lines(lines):
+    if len(lines) >= 3 and all(len(l) <= _VERSE_LINE_MAX for l in lines):
+        return "\n".join(lines)
+    return " ".join(lines)
 
 
 # Many literary-excerpt stems open with an italicized attribution sentence —
@@ -110,10 +128,21 @@ ABBREV_SKIP = {
 
 
 def separate_intro_attribution(stem):
-    if not INTRO_ATTRIBUTION_RE.match(stem) or "\n\n" in stem[:400]:
+    if not INTRO_ATTRIBUTION_RE.match(stem):
         return stem
-    for m in SENTENCE_BOUNDARY_RE.finditer(stem):
-        pre = stem[: m.start(1)]
+    # Only the *first* existing paragraph matters here: a poem's stanza
+    # breaks further down the stem also produce "\n\n", but those don't mean
+    # the citation itself is already split from what follows it — checking
+    # for "\n\n" anywhere in the first 400 chars (the old heuristic) bailed
+    # out on exactly that case, leaving the citation glued to the poem's
+    # first line. Only skip when the first paragraph is already short
+    # enough to plausibly be just the citation.
+    first_para_end = stem.find("\n\n")
+    first_para = stem if first_para_end == -1 else stem[:first_para_end]
+    if len(first_para) < 300:
+        return stem
+    for m in SENTENCE_BOUNDARY_RE.finditer(first_para):
+        pre = first_para[: m.start(1)]
         word_m = re.search(r"([A-Za-z]+)$", pre)
         if word_m and (len(word_m.group(1)) == 1 or word_m.group(1).lower() in ABBREV_SKIP):
             continue  # likely an initial/abbreviation, not a real sentence end
@@ -331,7 +360,18 @@ def fix_full_prompts(records, doc):
                 continue
             parts = [text]
             j = i - 1
-            while j >= 0 and block_texts[j] and not re.search(r"[.?!][”\"'’]?\s*$", block_texts[j]):
+            # A block ending in the fill-in-the-blank placeholder "______"
+            # (fill-in-the-blank passages, e.g. Command of Evidence/
+            # Inferences) is just as much a genuine stopping point as
+            # terminal punctuation — without this, the passage block right
+            # before the real prompt gets swallowed into `prompt` wholesale,
+            # since a bare "______" doesn't match the punctuation check.
+            while (
+                j >= 0
+                and block_texts[j]
+                and not re.search(r"[.?!][”\"'’]?\s*$", block_texts[j])
+                and not block_texts[j].endswith("______")
+            ):
                 parts.insert(0, block_texts[j])
                 j -= 1
             full_prompt = " ".join(parts)

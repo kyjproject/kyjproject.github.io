@@ -135,7 +135,8 @@ def validate(record, known_ids, staging_id_counts):
 
 def print_record(record, idx, total):
     print("\n" + "=" * 78)
-    print(f"[{idx}/{total}] id={record.get('id')}  category={record.get('category')}")
+    title = record.get("title") or "(untitled)"
+    print(f"[{idx}/{total}] \"{title}\"  id={record.get('id')}  category={record.get('category')}")
     print(f"domain={record.get('domain')} ({record.get('domain_code')})  "
           f"skill={record.get('skill')} ({record.get('skill_code')})  "
           f"difficulty={record.get('difficulty_label')} ({record.get('difficulty')})")

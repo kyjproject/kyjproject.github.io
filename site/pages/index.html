@@ -7,8 +7,13 @@
 <script>
   (function () {
     try {
-      var saved = localStorage.getItem('sat_qbank_theme_v1');
-      if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      var labTheme = localStorage.getItem('sat_qbank_lab_theme_v1');
+      if (labTheme && labTheme !== 'default') {
+        document.documentElement.dataset.theme = labTheme;
+      } else {
+        var saved = localStorage.getItem('sat_qbank_theme_v1');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      }
     } catch (e) { /* best-effort */ }
   })();
 </script>
@@ -136,6 +141,49 @@
     --cal-3: #3f7256;
     --cal-4: #6ec48b;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Lab-only alternate theme (see the Lab subtab under Profile) — selected
+     independently of the topbar's light/dark toggle, stored as an override
+     that takes precedence until "Default" is picked again in the Lab panel. */
+  :root[data-theme="sepia"] {
+    --paper: #f4ecd8;
+    --paper-raised: #fbf3e3;
+    --ink: #3b2f1c;
+    --ink-soft: #6b5a3e;
+    --ink-faint: #9c8b6a;
+    --rule: #ded0ab;
+    --rule-soft: #ece1c4;
+    --accent: #8a5a2b;
+    --accent-soft: #f0e2c4;
+    --accent-ink: #5c3a15;
+    --easy: #4f7a42;
+    --easy-bg: #e6ecd7;
+    --medium: #a06a1e;
+    --medium-bg: #f2e4c0;
+    --hard: #9c3b2c;
+    --hard-bg: #f2ded2;
+    --correct: #4f7a42;
+    --correct-bg: #e6ecd7;
+    --incorrect: #9c3b2c;
+    --incorrect-bg: #f2ded2;
+    --review: #8a6d1f;
+    --review-bg: #f2e8c8;
+    --done: #4f7a42;
+    --done-bg: #e6ecd7;
+    --tier-bronze: #a9713c;
+    --tier-bronze-bg: #ecdcc0;
+    --tier-silver: #8a7c63;
+    --tier-silver-bg: #e8ded0;
+    --tier-gold: #b8860b;
+    --tier-gold-bg: #f2e6bd;
+    --xp: #6b5a3e;
+    --xp-bg: #ece1c4;
+    --cal-1: #e3dcc0;
+    --cal-2: #cbb98a;
+    --cal-3: #a98f52;
+    --cal-4: #8a5a2b;
+    --shadow: 0 1px 2px rgba(60, 45, 20, 0.10), 0 4px 14px rgba(60, 45, 20, 0.08);
   }
 
   * { box-sizing: border-box; }
@@ -614,7 +662,7 @@
   .qdetail { border-top: 1px solid var(--rule); padding: 4px 20px 20px; }
   .qdetail.qdetail-bare { border-top: none; padding: 0; }
   .qdetail .stem { font-size: 15px; padding: 14px 0 16px; }
-  .stem p { margin: 0 0 12px; }
+  .stem p { margin: 0 0 12px; white-space: pre-line; }
   .stem p:last-child { margin-bottom: 0; }
   .prompt-line { font-size: 16px; color: var(--ink); font-weight: 500; margin: 4px 0 16px; }
   .text-label {
@@ -703,6 +751,35 @@
     .modal-card { width: 100%; max-height: 100vh; border-radius: 0; }
   }
   body.modal-open { overflow: hidden; }
+
+  /* Math (Beta) tab — reuses the existing --medium (amber) design tokens
+     rather than introducing new hardcoded colors, so it already tracks
+     light/dark theme correctly. */
+  .beta-badge {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--medium);
+    background: var(--medium-bg);
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-left: 5px;
+    vertical-align: 1px;
+  }
+  .beta-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--medium);
+    background: var(--medium-bg);
+    border: 1px solid var(--medium);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+  }
+  .beta-note { font-size: 12.5px; color: var(--ink-faint); font-style: italic; margin-top: 4px; }
 
   /* ---------- Interactive tour ---------- */
   .tour-overlay { position: fixed; inset: 0; z-index: 1200; background: transparent; }
@@ -1131,6 +1208,29 @@
     padding-top: 6px;
     border-top: 1px dashed var(--rule);
   }
+  /* Math questions: equations/graphs/tables cropped from the source PDF as
+     images (see scripts/parse_math_category.py), embedded inline in stem/
+     choice/rationale text. .math-inline sits at text height, mid-sentence;
+     .math-block is a whole stem paragraph or answer choice that's nothing
+     but one image (a graph, a table), sized larger and on its own line. */
+  .math-inline { height: 1.15em; vertical-align: -0.2em; margin: 0 1px; }
+  .math-block { display: block; max-width: 100%; max-height: 220px; margin: 6px 0; }
+  .qstem .math-inline, .stem-preview .math-inline { height: 1em; }
+  .gridin-row { margin-bottom: 14px; }
+  .gridin-input {
+    font: inherit;
+    font-size: 14px;
+    padding: 9px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper);
+    color: var(--ink);
+    width: 220px;
+    max-width: 100%;
+  }
+  .gridin-input:focus { outline: none; border-color: var(--accent); }
+  .gridin-input.chosen-correct { border-color: var(--correct); background: var(--correct-bg); }
+  .gridin-input.chosen-incorrect { border-color: var(--incorrect); background: var(--incorrect-bg); }
   .detail-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .btn {
     appearance: none;
@@ -1437,6 +1537,27 @@
   .goal-presets { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
   .goal-presets .chip-row { gap: 6px; }
   .goal-presets .chip { padding: 3px 9px; font-size: 12px; }
+
+  .lb-list { display: flex; flex-direction: column; border-top: 1px solid var(--rule-soft); }
+  .lb-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .lb-row.lb-me { background: var(--accent-soft); border-radius: 8px; padding-left: 10px; padding-right: 10px; margin: 0 -10px; border-bottom-color: transparent; }
+  .lb-name { flex: 1 1 auto; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lb-you { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-ink); background: var(--accent-soft); border-radius: 99px; padding: 2px 7px; margin-left: 6px; font-weight: 700; }
+  .lb-row.lb-me .lb-you { background: var(--paper-raised); }
+  .lb-stat { flex: none; width: 84px; text-align: right; }
+  .lb-n { display: block; font-family: var(--mono); font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .lb-l { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+  @media (max-width: 560px) {
+    .lb-row { flex-wrap: wrap; gap: 8px 14px; }
+    .lb-name { flex: 1 1 100%; }
+    .lb-stat { width: auto; text-align: left; }
+  }
 
   .ach-count { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--ink-faint); margin-left: 6px; }
   .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
@@ -2229,6 +2350,43 @@
 
     .bb-directions, .bb-review-page { padding: 24px 18px 40px; }
   }
+
+  /* ---------- Print/PDF export (Mock Exam, Test, Practice) ----------
+     #printSheet is built off-screen by exportPrintSheetAsPdf() (see the app
+     script) and only shown for the actual print pass, so the browser's
+     print dialog's "Save as PDF" produces just the exam sheet, not the
+     whole app chrome around it. */
+  #printSheet { display: none; }
+  body.printing-export > *:not(#printSheet) { visibility: hidden; }
+  body.printing-export #printSheet {
+    display: block; visibility: visible;
+    position: absolute; top: 0; left: 0; width: 100%;
+  }
+  @media print {
+    body.printing-export > *:not(#printSheet) { display: none; }
+  }
+  .print-sheet {
+    font-family: var(--serif); color: #000; background: #fff;
+    max-width: 800px; margin: 0 auto; padding: 24px;
+  }
+  .print-title { font-size: 22px; margin: 0 0 4px; }
+  .print-module-head { font-size: 16px; margin: 22px 0 12px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+  .print-question { margin: 0 0 22px; break-inside: avoid; page-break-inside: avoid; }
+  .print-q-num { font-weight: 700; margin-bottom: 4px; }
+  .print-q-meta { font-weight: 400; font-size: 11px; color: #555; margin-left: 8px; }
+  .print-stem p { margin: 0 0 6px; }
+  .print-prompt { font-weight: 600; margin: 6px 0; }
+  .print-choices { display: flex; flex-direction: column; gap: 6px; }
+  .print-choice { display: flex; align-items: flex-start; gap: 8px; }
+  .print-bubble {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border: 1px solid #000; border-radius: 50%;
+    font-size: 11px; flex-shrink: 0; margin-top: 1px;
+  }
+  .print-section { margin-top: 28px; break-before: page; page-break-before: always; }
+  .print-section h2 { font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+  .print-key-grid { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; }
+  .print-explanation { margin: 0 0 12px; font-size: 13px; }
 </style>
 
 <div class="app">
@@ -2272,6 +2430,7 @@
   <div class="tabs">
     <button class="tab active" data-view="home">Home</button>
     <button class="tab" data-view="browse">Browse</button>
+    <button class="tab" data-view="math">Math<span class="beta-badge">BETA</span></button>
     <button class="tab" data-view="practice">Practice</button>
     <button class="tab" data-view="test">Test</button>
     <button class="tab" data-view="mock">Mock Exam</button>
@@ -2283,6 +2442,8 @@
     <button class="tab subtab" data-view="analysis">Analysis</button>
     <button class="tab subtab" data-view="review">Review<span class="tab-badge" id="reviewDueBadge" style="display:none;"></span></button>
     <button class="tab subtab" data-view="notes">Notes</button>
+    <button class="tab subtab" data-view="leaderboard">Leaderboard</button>
+    <button class="tab subtab" data-view="lab">Lab</button>
   </div>
 
   <!-- Bluebook-style kiosk chrome — not a tab of its own. Test and Mock Exam
@@ -2338,6 +2499,45 @@
     </div>
   </div>
 
+  <div class="view" id="view-math">
+    <div class="beta-banner">
+      <span>🚧</span>
+      <span><strong>Math (Beta)</strong> — browse only for now. Nothing here is saved: no completion status, no notes, no stats, no Practice/Test/Mock Exam. Submit/Show answer work, but reset the moment you leave or reload.</span>
+    </div>
+    <div class="browse-layout">
+      <aside class="filters">
+        <div class="filter-group">
+          <h3>Category</h3>
+          <div id="categoryFiltersMath"></div>
+        </div>
+        <div class="filter-group">
+          <h3>Skill</h3>
+          <div id="skillFiltersMath"></div>
+        </div>
+        <div class="filter-group">
+          <h3>Difficulty</h3>
+          <div id="difficultyFiltersMath"></div>
+        </div>
+        <button class="clear-btn" id="clearFiltersMath">Clear filters</button>
+      </aside>
+      <div class="main">
+        <div class="toolbar">
+          <div class="search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchBoxMath" placeholder="Search text or paste an ID…" />
+          </div>
+          <select id="sortSelectMath">
+            <option value="default">Sort: Original order</option>
+            <option value="diff-asc">Sort: Easiest first</option>
+            <option value="diff-desc">Sort: Hardest first</option>
+          </select>
+        </div>
+        <div class="result-count" id="resultCountMath"></div>
+        <div class="qlist" id="qlistMath"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="view" id="view-practice">
     <div class="test-shell" id="practiceShell"></div>
   </div>
@@ -2361,6 +2561,14 @@
 
   <div class="view" id="view-review">
     <div class="test-shell" id="reviewShell"></div>
+  </div>
+
+  <div class="view" id="view-leaderboard">
+    <div class="test-shell" id="leaderboardShell"></div>
+  </div>
+
+  <div class="view" id="view-lab">
+    <div class="test-shell" id="labShell"></div>
   </div>
 
   <div class="view" id="view-notes">
@@ -2482,9 +2690,24 @@
           Everything the app can do, and when it showed up.
         </p>
         <div class="log-stats">
-          <div class="log-stat"><span class="n">1,686</span><span class="l">Questions</span></div>
-          <div class="log-stat"><span class="n">10</span><span class="l">Categories</span></div>
+          <div class="log-stat"><span class="n">2,980</span><span class="l">Questions</span></div>
+          <div class="log-stat"><span class="n">14</span><span class="l">Categories</span></div>
           <div class="log-stat"><span class="n">Jul 28</span><span class="l">First questions added</span></div>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <div class="log-entry-head"><span class="log-date">Sep 7</span><h2 style="margin:0;">Math added, as its own Beta tab</h2></div>
+        <p class="lede" style="margin-top:8px;">All four Math domains, 1,294 questions across Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry — completing the full digital SAT question bank. Kept separate from the main Reading &amp; Writing bank in its own <strong>Math (Beta)</strong> tab for now: browse only, nothing saved (no completion status, no notes, no stats) — try it, but don't count on your place in it surviving a reload.</p>
+        <div class="log-list">
+          <div class="log-item">
+            <div class="log-item-head"><span class="log-item-name">Equations, graphs, and tables render as cropped images inline in the question text</span></div>
+            <div class="log-item-desc">The source PDFs draw every number and expression as vector graphics, not text — each one is cropped into its own small image and spliced back into the sentence, table, or answer choice it belongs in.</div>
+          </div>
+          <div class="log-item">
+            <div class="log-item-head"><span class="log-item-name">Student-produced-response (grid-in) questions</span></div>
+            <div class="log-item-desc">A free-response answer box in place of the four choices, accepting equivalent decimal/fraction forms.</div>
+          </div>
         </div>
       </div>
 
@@ -2509,7 +2732,7 @@
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Math questions sourced</span></div>
-            <div class="log-item-desc">Algebra, Advanced Math, Problem Solving &amp; Data Analysis, and Geometry &amp; Trigonometry — on their way into the app (see What's next below).</div>
+            <div class="log-item-desc">Algebra, Advanced Math, Problem Solving &amp; Data Analysis, and Geometry &amp; Trigonometry — the source PDFs, parsed and added a few weeks later (see Sep 7 below).</div>
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Full Reading &amp; Writing bank completed</span></div>
@@ -2600,7 +2823,6 @@
             <li>Save, name, and share your own custom practice/test setups — plus community-made ones, Anki-style</li>
             <li>General bug fixing</li>
             <li>A simple way to see your own stats at a glance</li>
-            <li>Math questions added to the app</li>
           </ul>
         </div>
 
@@ -2623,6 +2845,7 @@
   </div>
 </div>
 
+<div id="printSheet" class="print-sheet"></div>
 <div id="questionModalRoot" class="modal-root" style="display:none;"></div>
 <div id="paletteRoot" class="modal-root palette-root" style="display:none;"></div>
 <div id="tourRoot" style="display:none;">
@@ -2637,9 +2860,16 @@
 (function () {
   // Loaded from an external data.js (GitHub Pages build) when present;
   // falls back to the inline JSON tag (self-contained single-file build).
-  const QUESTIONS = (typeof SAT_QUESTIONS !== 'undefined')
+  const ALL_QUESTIONS = (typeof SAT_QUESTIONS !== 'undefined')
     ? SAT_QUESTIONS
     : JSON.parse(document.getElementById('questions-data').textContent);
+
+  // Math lives in its own beta-only Browse tab (see the Math Beta section
+  // near the end of this script) — pulled out of the main QUESTIONS pool so
+  // Browse/Practice/Test/Mock Exam/Progress/stats/search all behave exactly
+  // as they did before Math existed, with zero further changes needed here.
+  const QUESTIONS = ALL_QUESTIONS.filter(q => q.test !== 'Math');
+  const MATH_QUESTIONS = ALL_QUESTIONS.filter(q => q.test === 'Math');
 
   // Short, human-friendly identifiers ("Transitions #23") assigned in source
   // order per category. The long College Board hash id (q.id) remains the
@@ -3663,6 +3893,7 @@
     browseSelection: new Set(), // qids checked in Browse for bulk actions; persists across search/filter/sort changes so a selection can be built up across several searches, cleared only via "Clear selection" or after a bulk action runs
     modalList: null, // ordered array of questions the modal is navigating (Browse's current filtered list)
     modalIndex: null, // index within modalList currently shown in the modal
+    modalNoProgress: false, // true when the modal was opened from the Math (Beta) tab — hides status/notes, skips skill-stats/recent-question tracking
     attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
     skillStats: loadSkillStats(), // skill -> { correct, total } — feeds weak-skill bias
@@ -3707,6 +3938,10 @@
     navOpen: false, // question navigator overlay visibility (regular chrome; the kiosk has its own separate one)
     useBluebook: false, // opt-in: run this attempt inside the full-screen Bluebook-style kiosk UI instead of the regular quiz layout
     bbTimerMinutes: 0, // whole-test countdown used only when useBluebook is on (0 = untimed) — replaces the per-question timer below, which has no slot in the kiosk chrome
+    printMode: false, // opt-in: instead of starting the test here, build the same question set into a downloadable PDF (see the shared print/PDF export pipeline near buildMockModule)
+    printIncludeAnswers: true,
+    printIncludeExplanations: false,
+    printIncludeMetadata: true,
   };
 
   const practiceState = {
@@ -3731,6 +3966,10 @@
     timeLeft: 0,
     timerId: null,
     expired: false,
+    printMode: false, // opt-in: instead of starting the session here, build the current set into a downloadable PDF
+    printIncludeAnswers: true,
+    printIncludeExplanations: false,
+    printIncludeMetadata: true,
   };
 
   // A "study due" session on the Review tab — a fixed snapshot of due-card ids
@@ -4133,7 +4372,7 @@
       if (/^Text \d+$/.test(p.trim())) {
         return `<div class="text-label">${escapeHtml(p.trim())}</div>`;
       }
-      return `<p>${restoreUnderline(escapeHtml(p))}</p>`;
+      return `<p>${restoreMathImages(restoreUnderline(escapeHtml(p)))}</p>`;
     }).join('');
   }
 
@@ -4177,6 +4416,33 @@
   // "Submit" grades that selection (chosen choice turns green/red). "Show
   // answer" independently reveals the correct choice + full per-choice
   // rationale, whether or not anything has been submitted yet.
+  // SAT student-produced-response (grid-in) questions accept several
+  // written forms of the same value (a decimal and an equivalent fraction,
+  // "$" or "%" stripped, etc.) — q.correct_answer stores them as the
+  // College Board PDF gave them, comma-separated (e.g. ".2857, 2/7"). Exact
+  // string match would wrongly reject "0.2857" or "2/7 "; this instead
+  // checks each accepted form both as text and as a parsed number/fraction.
+  function gridInAnswersMatch(user, correct) {
+    if (user == null || correct == null || String(user).trim() === '') return false;
+    const norm = s => String(s).trim();
+    const toNum = s => {
+      s = norm(s).replace(/^\$/, '').replace(/%$/, '');
+      const frac = s.match(/^-?\d+(\.\d+)?\/\d+(\.\d+)?$/);
+      if (frac) {
+        const [n, d] = s.split('/').map(Number);
+        return d ? n / d : NaN;
+      }
+      return parseFloat(s);
+    };
+    const u = norm(user);
+    const un = toNum(u);
+    return norm(correct).split(',').map(norm).filter(Boolean).some(acc => {
+      if (u === acc) return true;
+      const an = toNum(acc);
+      return !isNaN(un) && !isNaN(an) && Math.abs(un - an) < 1e-6;
+    });
+  }
+
   function qDetailHtml(q, opts) {
     opts = opts || {};
     // Only rendered when `opts.shortcuts` is set (the modal and the
@@ -4184,7 +4450,42 @@
     // below for what actually fires each key.
     const kbd = (label) => opts.shortcuts ? `<kbd class="kbd-hint">${label}</kbd>` : '';
     const att = getAttempt(q.id);
-    const choiceHtml = ['A', 'B', 'C', 'D'].map((letter, idx) => {
+    if (!q.is_mc) {
+      const isCorrect = gridInAnswersMatch(att.choice, q.correct_answer);
+      let inputCls = 'gridin-input';
+      if (att.submitted) inputCls += isCorrect ? ' chosen-correct' : ' chosen-incorrect';
+      const showAnswerLine = att.showAnswer
+        ? `<div class="rationale-line">Correct answer: ${mathHtml(String(q.correct_answer))}</div>` : '';
+      const showRationale = att.submitted || att.showAnswer;
+      const rationaleLine = showRationale
+        ? `<div class="rationale-line">${mathHtml(q.rationale_full || '')}</div>` : '';
+      const wrapClass = opts.bare ? 'qdetail qdetail-bare' : 'qdetail';
+      return `
+        <div class="${wrapClass}">
+          ${questionImageHtml(q)}
+          <div class="stem">${renderStemHtml(q.stem)}</div>
+          <div class="prompt-line">${escapeHtml(q.prompt)}</div>
+          <div class="gridin-row">
+            <input type="text" class="${inputCls}" data-gridin-qid="${q.id}" placeholder="Your answer" value="${escapeHtml(att.choice || '')}" ${att.submitted ? 'disabled' : ''} />
+          </div>
+          ${showAnswerLine}
+          ${rationaleLine}
+          <div class="detail-actions">
+            <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit${kbd(keyDisplayName(keybindings.submit))}</button>
+            <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd(keyDisplayName(keybindings.toggleAnswer))}</button>
+            <button class="btn" data-copy-question-qid="${q.id}" title="Copy question text">Copy question${kbd('C')}</button>
+          </div>
+          ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
+          ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
+        </div>`;
+    }
+    // choiceLettersFor applies the Lab "randomize order"/"thin choices"
+    // settings when enabled (off by default: plain ['A','B','C','D']) —
+    // still real answer letters, just possibly reordered/thinned, so the
+    // click handler's data-letter grading is unaffected either way.
+    const displayLetters = choiceLettersFor(q);
+    const choiceKbdKeys = ['choiceA', 'choiceB', 'choiceC', 'choiceD'].map(a => keyDisplayName(keybindings[a]));
+    const choiceHtml = displayLetters.map((letter, idx) => {
       const isCorrect = letter === q.correct_answer;
       const isChosen = att.choice === letter;
       let cls = 'choice';
@@ -4193,15 +4494,15 @@
       if (att.showAnswer && isCorrect && !(att.submitted && isChosen)) cls += ' reveal-correct';
       const showRationale = (att.submitted && isChosen) || att.showAnswer;
       const rationaleLine = showRationale
-        ? `<div class="rationale-line">${escapeHtml(q.rationale_by_choice[letter] || '')}</div>`
+        ? `<div class="rationale-line">${mathHtml(q.rationale_by_choice[letter] || '')}</div>`
         : '';
       return `<div class="${cls}" data-letter="${letter}" data-qid="${q.id}">
         <span class="letter">${letter}</span>
         <div style="flex:1;">
-          <div>${escapeHtml(q.choices[letter])}</div>
+          <div>${mathHtml(q.choices[letter])}</div>
           ${rationaleLine}
         </div>
-        ${kbd(['A', 'S', 'D', 'F'][idx])}
+        ${kbd(choiceKbdKeys[idx])}
       </div>`;
     }).join('');
 
@@ -4213,12 +4514,12 @@
         <div class="prompt-line">${escapeHtml(q.prompt)}</div>
         <div class="choices">${choiceHtml}</div>
         <div class="detail-actions">
-          <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit${kbd('Enter')}</button>
-          <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd('Space')}</button>
+          <button class="btn btn-accent" data-submit-qid="${q.id}" ${(!att.choice || att.submitted) ? 'disabled' : ''}>Submit${kbd(keyDisplayName(keybindings.submit))}</button>
+          <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd(keyDisplayName(keybindings.toggleAnswer))}</button>
           <button class="btn" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question${kbd('C')}</button>
         </div>
-        ${statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
-        ${notesSectionHtml(q, opts)}
+        ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
+        ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
       </div>`;
   }
 
@@ -4270,8 +4571,9 @@
   // submit, show/hide answer, status buttons). `root` scopes every query so
   // the same question open in two different tabs at once (e.g. expanded in
   // Browse while also open in a Progress tile panel) never cross-wires.
-  function wireDetail(q, onChange, root) {
+  function wireDetail(q, onChange, root, opts) {
     root = root || document;
+    opts = opts || {};
     root.querySelectorAll(`.choice[data-qid="${q.id}"]`).forEach(el => {
       el.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -4283,6 +4585,26 @@
         });
       });
     });
+    const gridinInput = root.querySelector(`.gridin-input[data-gridin-qid="${q.id}"]`);
+    if (gridinInput) {
+      gridinInput.addEventListener('click', (e) => e.stopPropagation());
+      gridinInput.addEventListener('input', () => {
+        const att = getAttempt(q.id);
+        state.attempt[q.id] = Object.assign({}, att, { choice: gridinInput.value, submitted: false });
+        // No onChange() here — a full re-render on every keystroke would
+        // steal focus/cursor position from the input. The Submit button's
+        // disabled state was set once at render time from the (then empty)
+        // attempt, though, so it needs its own direct DOM update or it
+        // stays stuck disabled even after typing a real answer.
+        const btn = root.querySelector(`[data-submit-qid="${q.id}"]`);
+        if (btn) btn.disabled = !gridinInput.value.trim();
+      });
+      gridinInput.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+        e.stopPropagation();
+        root.querySelector(`[data-submit-qid="${q.id}"]`)?.click();
+      });
+    }
     const submitBtn = root.querySelector(`[data-submit-qid="${q.id}"]`);
     if (submitBtn) submitBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -4290,7 +4612,8 @@
         const att = getAttempt(q.id);
         if (!att.choice) return;
         state.attempt[q.id] = Object.assign({}, att, { submitted: true });
-        recordSkillAttempt(q.skill, att.choice === q.correct_answer);
+        const correct = q.is_mc ? att.choice === q.correct_answer : gridInAnswersMatch(att.choice, q.correct_answer);
+        if (!opts.noProgress) recordSkillAttempt(q.skill, correct);
         onChange();
       });
     });
@@ -4353,7 +4676,31 @@
   }
 
   function escapeStemFlat(stem) {
-    return restoreUnderline(escapeHtml(stem.replace(/\n\n/g, ' ')));
+    return restoreMathImages(restoreUnderline(escapeHtml(stem.replace(/\n\n/g, ' '))));
+  }
+
+  // Math questions embed cropped-from-PDF equation/graph/table images inline
+  // in stem/choice/rationale text as "⟦IMG:relative/path.png⟧" tokens (see
+  // scripts/parse_math_category.py) — plain numbers and expressions can't be
+  // extracted as text at all from the source PDFs, only cropped as images.
+  // escapeHtml doesn't touch "⟦"/"⟧" (not HTML-special), so this can run
+  // after escaping, same as restoreUnderline. A string that (after trimming)
+  // is *only* one image token — a whole answer choice that's pure math, or a
+  // standalone stem paragraph holding a full graph/table — renders larger
+  // and on its own line; an image mixed into surrounding words renders at
+  // text height, inline.
+  function restoreMathImages(escaped) {
+    const sole = escaped.trim().match(/^⟦IMG:([^⟧]+)⟧$/);
+    if (sole) return `<img class="math-block" src="${sole[1]}" alt="math">`;
+    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="${path}" alt="math">`);
+  }
+
+  // Use in place of escapeHtml(...) for any field that can contain math
+  // image tokens (q.choices[letter], q.rationale_full, q.rationale_by_choice
+  // values) — everywhere except stem, which goes through renderStemHtml/
+  // escapeStemFlat instead since it also handles paragraph breaks.
+  function mathHtml(s) {
+    return restoreMathImages(escapeHtml(s));
   }
 
   // "Category#N" shorthand (e.g. "Evidence#1", "Grammar#42") jumps straight
@@ -4395,17 +4742,19 @@
   // `list` is the ordered set the modal navigates Prev/Next through — pass
   // whatever list the click came from (Browse's current filtered results),
   // so paging through the modal walks the same set the user was looking at.
-  function openQuestionModal(list, index) {
+  function openQuestionModal(list, index, opts) {
     state.modalList = list;
     state.modalIndex = index;
+    state.modalNoProgress = !!(opts && opts.noProgress);
     const q = list && list[index];
-    if (q) recordRecentQuestion(q.id);
+    if (q && !state.modalNoProgress) recordRecentQuestion(q.id);
     renderQuestionModal();
   }
 
   function closeQuestionModal() {
     state.modalList = null;
     state.modalIndex = null;
+    state.modalNoProgress = false;
     renderQuestionModal();
   }
 
@@ -4480,6 +4829,7 @@
     { id: 'nav-analysis', title: 'Go to Analysis', hint: 'Tab', keywords: 'analysis progress completion tile focus export import reset backup skill mastery weak spots heatmap trend missed', run: () => document.querySelector('.tab[data-view="analysis"]').click() },
     { id: 'nav-review', title: 'Go to Review', hint: 'Tab', keywords: 'review anki spaced repetition', run: () => document.querySelector('.tab[data-view="review"]').click() },
     { id: 'nav-notes', title: 'Go to Notes', hint: 'Tab', keywords: 'notes', run: () => document.querySelector('.tab[data-view="notes"]').click() },
+    { id: 'nav-leaderboard', title: 'Go to Leaderboard', hint: 'Tab', keywords: 'leaderboard streak friends kyj-cloud rank', run: () => document.querySelector('.tab[data-view="leaderboard"]').click() },
     { id: 'start-tour', title: 'Take the full tour', hint: 'Tour', keywords: 'tour tutorial walkthrough onboarding guide interactive main', run: () => startTour('main') },
     { id: 'shortcuts-tour', title: 'Keyboard shortcuts', hint: 'Tour', keywords: 'shortcuts keyboard keybindings hotkeys hot keys asdf tutorial reference cheat sheet', run: () => startTour('shortcuts') },
     { id: 'nav-propose', title: 'Go to Propose', hint: 'Tab', keywords: 'propose submit new question suggest write contribute', run: () => document.querySelector('.tab[data-view="propose"]').click() },
@@ -4749,7 +5099,7 @@
           </div>
           <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
         </div>
-        <div class="modal-body">${qDetailHtml(q, { bare: true, shortcuts: true })}</div>
+        <div class="modal-body">${qDetailHtml(q, { bare: true, shortcuts: true, noProgress: state.modalNoProgress })}</div>
         <div class="modal-nav">
           <button class="btn" id="modalPrevBtn" ${state.modalIndex === 0 ? 'disabled' : ''}>&larr; Previous</button>
           <span class="modal-position">${state.modalIndex + 1} of ${total}</span>
@@ -4762,7 +5112,7 @@
     if (prevBtn) prevBtn.addEventListener('click', () => { state.modalIndex--; renderQuestionModal(); });
     const nextBtn = document.getElementById('modalNextBtn');
     if (nextBtn) nextBtn.addEventListener('click', () => { state.modalIndex++; renderQuestionModal(); });
-    wireDetail(q, renderQuestionModal, root);
+    wireDetail(q, renderQuestionModal, root, { noProgress: state.modalNoProgress });
   }
 
   // Plain-text rendering of a question for pasting elsewhere (another chat,
@@ -4940,6 +5290,20 @@
   }
 
   document.addEventListener('keydown', (e) => {
+    // Lab's keybinding remapping: while a "Press a key to rebind" button is
+    // armed, steal the very next keypress instead of letting it fall
+    // through to whatever it would normally do — Escape cancels without
+    // changing anything.
+    if (rebindingAction) {
+      e.preventDefault();
+      if (e.key !== 'Escape') {
+        keybindings[rebindingAction] = normalizeKeyName(e.key);
+        saveKeybindings();
+      }
+      rebindingAction = null;
+      if (document.getElementById('labShell')) renderLab();
+      return;
+    }
     // Cmd/Ctrl+K opens the command palette from anywhere, including while
     // typing in another field (Browse's search box, a note, etc.) — this is
     // the one shortcut that intentionally runs before the "don't hijack
@@ -4990,12 +5354,14 @@
       const shell = document.getElementById(isMock ? 'mockShell' : 'testShell');
       const prevId = isMock ? 'mockPrevBtn' : 'prevBtn';
       const nextId = isMock ? 'mockNextBtn' : 'nextBtn';
-      const choiceIdx = ['a', 's', 'd', 'f'].indexOf(navKey);
-      if (e.key === 'ArrowRight' || e.key === 'Enter' || navKey === 'h') {
+      // Choice letters/next/prev honor the Lab remapping (see keybindings);
+      // Enter and the arrow keys stay fixed regardless, as a fallback.
+      const choiceIdx = ['choiceA', 'choiceB', 'choiceC', 'choiceD'].map(a => keybindings[a]).indexOf(navKey);
+      if (e.key === 'ArrowRight' || e.key === 'Enter' || navKey === keybindings.next) {
         const btn = document.getElementById(nextId);
         if (btn) btn.click();
         return;
-      } else if (e.key === 'ArrowLeft' || navKey === 'g') {
+      } else if (e.key === 'ArrowLeft' || navKey === keybindings.prev) {
         const btn = document.getElementById(prevId);
         if (btn) btn.click();
         return;
@@ -5037,19 +5403,24 @@
       }
     }
 
-    const choiceIdx = ['a', 's', 'd', 'f'].indexOf(e.key.toLowerCase());
+    // Choice/submit/toggle-answer keys honor the Lab remapping (see
+    // keybindings, defaults 'a'/'s'/'d'/'f'/'enter'/' ') — position-based
+    // choice selection, so it keeps working unchanged under Lab's
+    // randomize-order/thin-choices settings too.
+    const boundKey = normalizeKeyName(e.key);
+    const choiceIdx = ['choiceA', 'choiceB', 'choiceC', 'choiceD'].map(a => keybindings[a]).indexOf(boundKey);
     if (choiceIdx !== -1) {
       const choice = root.querySelectorAll('.choice')[choiceIdx];
       if (choice) runWithoutScrollJump(() => choice.click());
-    } else if (e.key === 'Enter') {
+    } else if (boundKey === keybindings.submit) {
       const btn = root.querySelector('[data-submit-qid]');
       if (btn) runWithoutScrollJump(() => btn.click());
-    } else if (e.key === ' ') {
+    } else if (boundKey === keybindings.toggleAnswer) {
       e.preventDefault();
       const btn = root.querySelector('[data-toggle-answer-qid]');
       if (btn) runWithoutScrollJump(() => btn.click());
-    } else if (/^[jkl]$/i.test(e.key)) {
-      const status = { j: 'review', k: 'done', l: 'incomplete' }[e.key.toLowerCase()];
+    } else if (/^[jklt]$/i.test(e.key)) {
+      const status = { j: 'review', k: 'done', l: 'incomplete', t: 'review' }[e.key.toLowerCase()];
       const btn = root.querySelector(`[data-set-status="${status}"]`);
       if (btn) runWithoutScrollJump(() => btn.click());
     } else if (e.key.toLowerCase() === 'e' || e.key.toLowerCase() === 'r') {
@@ -5102,11 +5473,11 @@
 
   // ---------- Tabs ----------
   const TAB_TITLES = {
-    home: 'Home', browse: 'Browse', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
-    profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes',
-    propose: 'Propose',
+    home: 'Home', browse: 'Browse', math: 'Math (Beta)', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
+    profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', leaderboard: 'Leaderboard',
+    propose: 'Propose', lab: 'Lab',
   };
-  const PROFILE_FAMILY = ['profile', 'analysis', 'review', 'notes'];
+  const PROFILE_FAMILY = ['profile', 'analysis', 'review', 'notes', 'leaderboard', 'lab'];
   function setTitleForView(view) {
     const label = TAB_TITLES[view];
     document.title = label ? label + ' · KYJ-SAT' : 'KYJ-SAT';
@@ -5131,7 +5502,9 @@
       if (view === 'analysis') { renderProgress(); renderAnalysis(); }
       if (view === 'review') renderReview();
       if (view === 'notes') renderNotesView();
+      if (view === 'leaderboard') renderLeaderboard();
       if (view === 'propose') renderPropose();
+      if (view === 'lab') renderLab();
     });
   });
 
@@ -5149,6 +5522,11 @@
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* best-effort */ }
+    // A Lab-selected alternate theme (e.g. Sepia) overrides light/dark until
+    // "Default" is picked again in the Lab panel — this button stays a
+    // simple binary toggle, so pressing it here also clears that override
+    // rather than fighting it silently.
+    if (typeof setLabTheme === 'function') setLabTheme('default');
   });
 
   // ---------- Command palette trigger ----------
@@ -5309,7 +5687,7 @@
         body: 'Home-row keys pick the four choices in order, left hand, no reaching for the mouse.',
       },
       { selector: '#questionModalRoot [data-submit-qid], #questionModalRoot [data-toggle-answer-qid]', title: 'Enter & Space', body: 'Enter submits your pick. Space toggles Show/Hide answer — works independently of Submit, any time.' },
-      { selector: '#questionModalRoot [data-set-status]', title: 'J / K / L — mark status', body: 'J flags 🚩 for review, K marks ✓ complete, L marks ○ incomplete — the same three actions as the status buttons, one key each.' },
+      { selector: '#questionModalRoot [data-set-status]', title: 'J / K / L — mark status', body: 'J or T flags 🚩 for review, K marks ✓ complete, L marks ○ incomplete — the same three actions as the status buttons, one key each.' },
       { selector: '#questionModalRoot .modal-nav, #questionModalRoot .modal-position', title: 'G / H (or ← / →) — prev/next', body: 'Move between questions in whatever list you opened this one from, without closing the detail view.' },
       { selector: '#questionModalRoot [data-copy-question-qid], #questionModalRoot .id-chip', title: 'C / I / U / N', body: 'C copies the full question text, I copies its College Board ID, U copies the short display id (e.g. "Evidence #1"), and N jumps your cursor straight into the note field. E/R scroll the passage up/down without leaving home row.' },
       { title: 'Quiz screens: opt-in shortcuts', body: 'Test and Mock Exam simulate a proctored exam, so A/S/D/F (choices) and Enter/→/H (next) + ←/G (previous) are off by default there — flip on "Enable keyboard shortcuts" in either one\'s setup screen to use them.' },
@@ -5667,6 +6045,8 @@
         try {
           await cloudSaveRequest(cloudSaveMode, { username, password });
           setCloudCredentials(username, password);
+          leaderboardEntries = null;
+          leaderboardError = null;
           let offer = null;
           try {
             const loadResult = await cloudSaveRequest('load', { username, password });
@@ -5755,6 +6135,8 @@
     if (logoutBtn) logoutBtn.addEventListener('click', () => {
       clearCloudCredentials();
       cloudLoadOffer = null;
+      leaderboardEntries = null;
+      leaderboardError = null;
       updateCloudSaveTriggerState();
       renderCloudSavePopover();
       renderProfile();
@@ -6396,6 +6778,166 @@
       </label>`;
   }
 
+  // ---------- Lab (Profile subtab) — experimental, opt-in customization ----------
+  // Every setting here defaults to off/unchanged behavior. See renderLab()
+  // near the other Profile-family render functions for the panel itself;
+  // the settings and their storage live up here, close to the systems
+  // (keyboard shortcuts, theme, choice rendering, module timers) they hook
+  // into, same as METADATA_HIDDEN_KEY/QUIZ_SHORTCUTS_KEY above.
+
+  // -- Custom keybinding remapping --
+  // Only the letter-key alternates get remapped (the answer choices, plus
+  // the G/H prev/next pair and the quiz-shortcuts next/prev pair) — Enter,
+  // Space, and the arrow keys stay as fixed physical fallbacks everywhere
+  // they're already used, so a broken remap can never strand someone with
+  // no way to advance.
+  const KEYBINDINGS_KEY = 'sat_qbank_keybindings_v1';
+  const DEFAULT_KEYBINDINGS = { choiceA: 'a', choiceB: 's', choiceC: 'd', choiceD: 'f', submit: 'enter', toggleAnswer: ' ', next: 'h', prev: 'g' };
+  const KEYBINDING_ACTIONS = [
+    { key: 'choiceA', label: 'Choice A' },
+    { key: 'choiceB', label: 'Choice B' },
+    { key: 'choiceC', label: 'Choice C' },
+    { key: 'choiceD', label: 'Choice D' },
+    { key: 'submit', label: 'Submit' },
+    { key: 'toggleAnswer', label: 'Toggle answer' },
+    { key: 'next', label: 'Next question' },
+    { key: 'prev', label: 'Previous question' },
+  ];
+  function loadKeybindings() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(KEYBINDINGS_KEY));
+      if (raw && typeof raw === 'object') return Object.assign({}, DEFAULT_KEYBINDINGS, raw);
+    } catch (e) { /* fall through to defaults */ }
+    return Object.assign({}, DEFAULT_KEYBINDINGS);
+  }
+  const keybindings = loadKeybindings();
+  function saveKeybindings() {
+    try { localStorage.setItem(KEYBINDINGS_KEY, JSON.stringify(keybindings)); } catch (e) { /* best-effort */ }
+  }
+  // Normalizes a captured KeyboardEvent.key the same way for storage and
+  // comparison — ' ' stays ' ', everything else lowercases (so 'Enter' and
+  // 'A' compare the same way the rest of the app already does via
+  // e.key.toLowerCase()).
+  function normalizeKeyName(rawKey) {
+    return rawKey === ' ' ? ' ' : rawKey.toLowerCase();
+  }
+  function keyDisplayName(k) {
+    if (k === ' ') return 'Space';
+    if (k === 'enter') return 'Enter';
+    if (k === 'arrowleft') return '←';
+    if (k === 'arrowright') return '→';
+    return k.length === 1 ? k.toUpperCase() : k;
+  }
+  // Set while a "Press a key to rebind" button is armed — the very first
+  // thing the global keydown listener checks, so it can steal the next
+  // keypress before any other shortcut sees it.
+  let rebindingAction = null;
+
+  // -- Lab theme override (Sepia, etc.) --
+  // Independent of THEME_KEY's light/dark toggle — this is an override that
+  // takes precedence over it until set back to 'default'. The early
+  // anti-flash <script> at the top of <head> reads this same key so there's
+  // no flash of the wrong theme on load.
+  const LAB_THEME_KEY = 'sat_qbank_lab_theme_v1';
+  const LAB_THEMES = [
+    { id: 'default', label: 'Default', swatch: null },
+    { id: 'sepia', label: 'Sepia', swatch: '#8a5a2b' },
+  ];
+  function getLabTheme() {
+    try {
+      const v = localStorage.getItem(LAB_THEME_KEY);
+      return v && LAB_THEMES.some(t => t.id === v) ? v : 'default';
+    } catch (e) { return 'default'; }
+  }
+  function setLabTheme(id) {
+    try { localStorage.setItem(LAB_THEME_KEY, id); } catch (e) { /* best-effort */ }
+    if (id === 'default') {
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
+      document.documentElement.dataset.theme = (saved === 'light' || saved === 'dark') ? saved : (systemDark ? 'dark' : 'light');
+    } else {
+      document.documentElement.dataset.theme = id;
+    }
+  }
+
+  // -- Randomize answer order / thin the distractor set --
+  // Every question in the bank has exactly four fixed choices (A-D, see
+  // db/schema.sql), so "custom answer-choice count" is implemented as
+  // thinning: show the correct choice plus a random subset of the wrong
+  // ones. Grading is unaffected either way — .choice elements are always
+  // keyed by their real letter (data-letter), never by display position, so
+  // reordering/thinning here never has to touch answer-checking logic.
+  const RANDOMIZE_ORDER_KEY = 'sat_qbank_randomize_order_v1';
+  const CHOICE_COUNT_KEY = 'sat_qbank_choice_count_v1';
+  let randomizeOrderEnabled = localStorage.getItem(RANDOMIZE_ORDER_KEY) === '1';
+  let choiceCount = (() => {
+    const n = parseInt(localStorage.getItem(CHOICE_COUNT_KEY), 10);
+    return [2, 3, 4].includes(n) ? n : 4;
+  })();
+  function setRandomizeOrderEnabled(v) {
+    randomizeOrderEnabled = v;
+    try { localStorage.setItem(RANDOMIZE_ORDER_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+    choiceDisplayCache = {};
+  }
+  function setChoiceCount(n) {
+    choiceCount = n;
+    try { localStorage.setItem(CHOICE_COUNT_KEY, String(n)); } catch (e) { /* best-effort */ }
+    choiceDisplayCache = {};
+  }
+  function shuffleArrayInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+  // qid -> displayed letter order, generated the first time each question
+  // is shown after randomize-order/thin-choices was last turned on or its
+  // settings changed (cleared by the setters above, and by resetLabSettings)
+  // — cached so picking an answer or any other re-render of the same
+  // question doesn't reshuffle out from under the click.
+  let choiceDisplayCache = {};
+  function choiceLettersFor(q) {
+    if (!randomizeOrderEnabled && choiceCount >= 4) return ['A', 'B', 'C', 'D'];
+    if (choiceDisplayCache[q.id]) return choiceDisplayCache[q.id];
+    let letters = ['A', 'B', 'C', 'D'];
+    if (choiceCount < 4) {
+      const wrong = shuffleArrayInPlace(letters.filter(l => l !== q.correct_answer));
+      letters = [q.correct_answer, ...wrong.slice(0, Math.max(1, choiceCount - 1))];
+    }
+    if (randomizeOrderEnabled) letters = shuffleArrayInPlace(letters.slice());
+    else letters.sort();
+    choiceDisplayCache[q.id] = letters;
+    return letters;
+  }
+
+  // -- Strict timing mode --
+  // Only the Bluebook-kiosk whole-test Test timer (launchTestBluebook's
+  // bbState.timerSeconds countdown) currently just parks on the review page
+  // at 0:00 without submitting — Mock Exam's module clock already
+  // auto-submits unconditionally (see submitMockModule1/2), and every
+  // per-question timer (Practice/Test/Mock) already has its own
+  // strict/flexible toggle right on the config screen. See bbStartTimer,
+  // which branches on this flag at expiry.
+  const STRICT_TIMING_KEY = 'sat_qbank_strict_timing_v1';
+  let strictTimingEnabled = localStorage.getItem(STRICT_TIMING_KEY) === '1';
+  function setStrictTimingEnabled(v) {
+    strictTimingEnabled = v;
+    try { localStorage.setItem(STRICT_TIMING_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+  }
+
+  // -- Reset all Lab settings back to defaults, live --
+  function resetLabSettings() {
+    Object.keys(keybindings).forEach(k => { keybindings[k] = DEFAULT_KEYBINDINGS[k]; });
+    saveKeybindings();
+    setLabTheme('default');
+    setRandomizeOrderEnabled(false);
+    setChoiceCount(4);
+    setStrictTimingEnabled(false);
+    rebindingAction = null;
+  }
+
   // Starts (or restarts) the per-question countdown on `sel`, ticking the
   // element with id `elId` each second. No-ops if timed mode is off. Calls
   // `onExpire` once when time runs out — strict/flexible branching happens
@@ -6559,6 +7101,12 @@
         </div>
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="testPrintToggle" ${testState.printMode ? 'checked' : ''} />
+            <span>🖨️ Print a paper copy instead (PDF)</span>
+          </label>
+        </div>
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="testAdvDistToggle" ${testState.advancedDistribution ? 'checked' : ''} />
             <span>📊 Custom question distribution</span>
           </label>
@@ -6571,6 +7119,7 @@
           </label>
         </div>
         ${testState.advancedDifficulty ? weightPickerHtml(testState.weightConfig, 'main', 'Difficulty mix') : ''}
+        ${testState.printMode ? '' : `
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="testUseBluebook" ${testState.useBluebook ? 'checked' : ''} />
@@ -6581,8 +7130,9 @@
         ${testState.useBluebook
           ? `<div class="config-row"><label>⏱️ Timer (minutes — 0 = untimed)</label><input type="number" class="num-input" id="testBbMinutes" min="0" max="180" value="${Math.round(testState.bbTimerMinutes)}" /></div>`
           : timedModeConfigHtml(testState, 'test')}
-        ${metadataConfigSectionHtml('test')}
-        <button class="btn btn-accent" id="startTestBtn" ${available ? '' : 'disabled'}>Start test</button>
+        ${metadataConfigSectionHtml('test')}`}
+        ${testState.printMode ? printOptionsFieldsHtml('test', testState) : ''}
+        <button class="btn btn-accent" id="startTestBtn" ${available ? '' : 'disabled'}>${testState.printMode ? '⬇️ Download PDF' : 'Start test'}</button>
       </div>
       ${testHistoryListHtml()}`;
   }
@@ -6633,7 +7183,7 @@
       if (answered === letter) cls += ' choice-selected';
       return `<div class="${cls}" data-letter="${letter}">
         <span class="letter">${letter}</span>
-        <div>${escapeHtml(q.choices[letter])}</div>
+        <div>${mathHtml(q.choices[letter])}</div>
       </div>`;
     }).join('');
 
@@ -6704,7 +7254,7 @@
           <div style="font-size:13px;">
             Your answer: <strong>${yours || '—'}</strong>${!isCorrect ? ` &nbsp;&middot;&nbsp; Correct: <strong>${q.correct_answer}</strong>` : ''}
           </div>
-          <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px;">${escapeHtml(q.rationale_by_choice[q.correct_answer] || '')}</div>
+          <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px;">${mathHtml(q.rationale_by_choice[q.correct_answer] || '')}</div>
           ${statusButtonsHtml(q)}
         </div>`;
     }).join('');
@@ -6768,6 +7318,9 @@
       });
       const shuffleBox = document.getElementById('testShuffleOrder');
       if (shuffleBox) shuffleBox.addEventListener('change', () => { testState.shuffleOrder = shuffleBox.checked; });
+      const printToggle = document.getElementById('testPrintToggle');
+      if (printToggle) printToggle.addEventListener('change', () => { testState.printMode = printToggle.checked; renderTest(); });
+      wirePrintOptionsFields('test', testState);
       const advDistToggle = document.getElementById('testAdvDistToggle');
       if (advDistToggle) advDistToggle.addEventListener('change', () => {
         testState.advancedDistribution = advDistToggle.checked;
@@ -6808,8 +7361,8 @@
       if (bbMinutesInput) bbMinutesInput.addEventListener('change', () => { testState.bbTimerMinutes = Math.max(0, parseInt(bbMinutesInput.value, 10) || 0); });
       const startBtn = document.getElementById('startTestBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
-        const built = buildMockModule(testState.blueprint, 'count', testResolveWeights(), [], testState.statuses);
-        if (testState.shuffleOrder) shuffleInPlace(built); // random order (default) instead of Mock's blueprint/skill-block order — opt out via the "Shuffle question order" checkbox
+        if (testState.printMode) { generateTestPrintout(); return; }
+        const built = buildTestQuestions();
         testState.questions = built;
         testState.index = 0;
         testState.answers = {};
@@ -6958,6 +7511,12 @@
         </div>`}
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="practicePrintToggle" ${practiceState.printMode ? 'checked' : ''} />
+            <span>🖨️ Print a paper copy instead (PDF)</span>
+          </label>
+        </div>
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practiceAdvDistToggle" ${practiceState.advancedDistribution ? 'checked' : ''} />
             <span>📊 Custom question distribution</span>
           </label>
@@ -6970,8 +7529,8 @@
           </label>
         </div>
         ${practiceState.advancedDifficulty ? weightPickerHtml(practiceState.weightConfig, 'main', 'Difficulty mix') : ''}
-        ${timedModeConfigHtml(practiceState, 'practice')}
-        <button class="btn btn-accent" id="startPracticeBtn" ${startCount ? '' : 'disabled'} style="margin-top:8px;">Start practice (${startCount})</button>
+        ${practiceState.printMode ? printOptionsFieldsHtml('practice', practiceState) : timedModeConfigHtml(practiceState, 'practice')}
+        <button class="btn btn-accent" id="startPracticeBtn" ${startCount ? '' : 'disabled'} style="margin-top:8px;">${practiceState.printMode ? '⬇️ Download PDF' : `Start practice (${startCount})`}</button>
       </div>`;
   }
 
@@ -7040,6 +7599,9 @@
       if (shuffleBox) shuffleBox.addEventListener('change', () => { practiceState.shuffle = shuffleBox.checked; });
       const biasBox = document.getElementById('practiceBiasWeak');
       if (biasBox) biasBox.addEventListener('change', () => { practiceState.biasWeak = biasBox.checked; });
+      const printToggle = document.getElementById('practicePrintToggle');
+      if (printToggle) printToggle.addEventListener('change', () => { practiceState.printMode = printToggle.checked; renderPractice(); });
+      wirePrintOptionsFields('practice', practiceState);
       const advDistToggle = document.getElementById('practiceAdvDistToggle');
       if (advDistToggle) advDistToggle.addEventListener('change', () => {
         practiceState.advancedDistribution = advDistToggle.checked;
@@ -7074,20 +7636,8 @@
       });
       const startBtn = document.getElementById('startPracticeBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
-        let questions;
-        if (practiceState.advancedDistribution) {
-          questions = buildMockModule(practiceState.blueprint, 'count', practiceResolveWeights(), [], practiceState.statuses);
-          if (practiceState.shuffle) shuffleInPlace(questions);
-        } else {
-          let pool = practicePool();
-          if (practiceState.biasWeak) pool = pickWeightedBySkill(pool, Math.min(practiceState.count, pool.length));
-          else {
-            if (practiceState.shuffle) pool = [...pool].sort(() => Math.random() - 0.5);
-            pool = pool.slice(0, practiceState.count);
-          }
-          questions = pool;
-        }
-        practiceState.questions = questions;
+        if (practiceState.printMode) { generatePracticePrintout(); return; }
+        practiceState.questions = buildPracticeQuestions();
         practiceState.index = 0;
         practiceState.phase = 'session';
         qtimerStart(practiceState, 'practiceTimer', practiceTimerExpire);
@@ -7332,7 +7882,7 @@
       return `
         <div class="bb-choice ${isSel ? 'selected' : ''} ${isCrossed ? 'crossed' : ''}" data-letter="${letter}">
           <span class="bb-choice-letter">${letter}</span>
-          <span class="bb-choice-text">${escapeHtml(q.choices[letter])}</span>
+          <span class="bb-choice-text">${mathHtml(q.choices[letter])}</span>
           ${bbState.eliminatorOn ? `<button type="button" class="bb-cross-btn ${isCrossed ? 'crossed' : ''}" data-cross="${letter}" title="${isCrossed ? 'Undo cross-out' : 'Cross out this choice'}">${isCrossed ? '&#8630;' : '&#215;'}</button>` : ''}
         </div>`;
     }).join('');
@@ -7427,7 +7977,20 @@
       if (bbState.timeLeft <= 0) {
         bbClearTimer();
         bbState.timeUp = true;
-        if (bbState.phase === 'quiz') { bbState.phase = 'review'; renderBluebook(); }
+        if (bbState.phase === 'quiz') {
+          // Lab's "Strict timing mode": auto-submit the instant time runs
+          // out instead of just parking on the review page — same teardown
+          // the review page's own Submit button uses (see wireBluebook),
+          // minus the confirm dialog since this isn't a user action.
+          if (strictTimingEnabled && bbState.onSubmit) {
+            const onSubmit = bbState.onSubmit;
+            bbDeactivate();
+            onSubmit();
+          } else {
+            bbState.phase = 'review';
+            renderBluebook();
+          }
+        }
       }
     }, 1000);
   }
@@ -8126,6 +8689,22 @@
     return WEIGHT_PRESETS[cfg.preset];
   }
 
+  // Shared by the real "Start test" and the print/PDF path — both need the
+  // exact same blueprint/weight/status-scoped pull, just diverging on what
+  // happens to the result afterward.
+  function buildTestQuestions() {
+    const built = buildMockModule(testState.blueprint, 'count', testResolveWeights(), [], testState.statuses);
+    if (testState.shuffleOrder) shuffleInPlace(built); // random order (default) instead of Mock's blueprint/skill-block order — opt out via the "Shuffle question order" checkbox
+    return built;
+  }
+
+  function generateTestPrintout() {
+    const questions = buildTestQuestions();
+    if (!questions.length) { alert('No questions match the current settings — widen the scope/status filter and try again.'); return; }
+    const sheetHtml = buildPrintSheetHtml('SAT Practice Test', [{ label: null, questions }], testState);
+    exportPrintSheetAsPdf(sheetHtml, document.getElementById('startTestBtn'));
+  }
+
   // ---------- Practice's own blueprint — same distribution engine as Test
   // (cloneTestBlueprint is already state-agnostic, just a total), mirrored
   // here rather than reused inline so Practice's rescale/bias/weight
@@ -8157,6 +8736,26 @@
     const cfg = practiceState.weightConfig.main;
     if (cfg.preset === 'custom') return normalizeWeights(cfg.custom);
     return WEIGHT_PRESETS[cfg.preset];
+  }
+
+  // Shared by the real "Start practice" and the print/PDF path.
+  function buildPracticeQuestions() {
+    if (practiceState.advancedDistribution) {
+      const questions = buildMockModule(practiceState.blueprint, 'count', practiceResolveWeights(), [], practiceState.statuses);
+      if (practiceState.shuffle) shuffleInPlace(questions);
+      return questions;
+    }
+    let pool = practicePool();
+    if (practiceState.biasWeak) return pickWeightedBySkill(pool, Math.min(practiceState.count, pool.length));
+    if (practiceState.shuffle) pool = [...pool].sort(() => Math.random() - 0.5);
+    return pool.slice(0, practiceState.count);
+  }
+
+  function generatePracticePrintout() {
+    const questions = buildPracticeQuestions();
+    if (!questions.length) { alert('No questions match the current settings — widen the filters and try again.'); return; }
+    const sheetHtml = buildPrintSheetHtml('SAT Practice Set', [{ label: null, questions }], practiceState);
+    exportPrintSheetAsPdf(sheetHtml, document.getElementById('startPracticeBtn'));
   }
 
   function practiceAvailableCount() {
@@ -8342,6 +8941,11 @@
     distributionView: 'slider', // 'slider' (default, draggable bar) | 'table' (slider+number-input rows, the older view)
     advancedDifficulty: false, // whether the folded difficulty-mix/adaptive-threshold section is expanded
     useBluebook: false, // opt-in: run this attempt inside the full-screen Bluebook-style kiosk UI instead of the regular quiz layout
+    printMode: false, // opt-in: instead of taking the exam here, build the same question set into a downloadable PDF (see the shared print/PDF export pipeline near buildMockModule)
+    printPool: 'harder', // adaptive mode only: which Module 2 pool to print, since real adaptive routing needs a scored Module 1 first and paper can't do that
+    printIncludeAnswers: true, // append an answer key page at the end
+    printIncludeExplanations: false, // append a full-rationale page per question after the answer key
+    printIncludeMetadata: true, // print question ID/skill/difficulty under each question number — independent of the on-screen metadataHidden prefs, which don't apply to a paper copy
 
     // ---- per-attempt (reset in startMockAttempt, not persisted to history) ----
     marked: new Set(), // "mark for review" flags (Bluebook-style) — shared across both modules like answers, distinct from the global 🚩 FSRS review flag
@@ -8412,6 +9016,138 @@
   function mockQuestionTimerExpire() {
     if (mockState.qtimer.timerStrict) mockQuestionAdvanceOrSubmit();
     else renderMock();
+  }
+
+  // ---------- Print / PDF export (shared by Mock Exam, Test, and Practice) ----------
+  // Each mode builds its own question set (Mock's two-module split, Test's
+  // flat blueprint pull, Practice's simple/advanced pool), then hands the
+  // result to this shared pipeline: render into the offscreen #printSheet
+  // element and hand off to the browser's own print dialog — "Save as PDF"
+  // there is the actual export, so nothing beyond plain HTML/CSS is needed
+  // and the app keeps working fully offline as one self-contained file.
+  // `printState` is whichever of mockState/testState/practiceState is
+  // printing; all three carry the same printIncludeAnswers/
+  // printIncludeExplanations/printIncludeMetadata flags.
+  function printQuestionHtml(q, num, printState) {
+    const metaParts = printState.printIncludeMetadata ? [q.shortId, q.skill, q.difficulty_label] : [];
+    const choiceHtml = ['A', 'B', 'C', 'D'].map(letter => `
+      <div class="print-choice"><span class="print-bubble">${letter}</span><div>${mathHtml(q.choices[letter])}</div></div>`).join('');
+    return `
+      <div class="print-question">
+        <div class="print-q-num">${num}.${metaParts.length ? `<span class="print-q-meta">${metaParts.map(escapeHtml).join(' &middot; ')}</span>` : ''}</div>
+        ${questionImageHtml(q)}
+        <div class="print-stem">${renderStemHtml(q.stem)}</div>
+        <div class="print-prompt">${escapeHtml(q.prompt)}</div>
+        <div class="print-choices">${choiceHtml}</div>
+      </div>`;
+  }
+
+  function printAnswerKeyHtml(all, printState) {
+    if (!printState.printIncludeAnswers) return '';
+    const items = all.map((q, i) => `<span class="print-key-item">${i + 1}. ${escapeHtml(q.correct_answer)}</span>`).join('');
+    return `<div class="print-section print-answer-key"><h2>Answer key</h2><div class="print-key-grid">${items}</div></div>`;
+  }
+
+  function printExplanationsHtml(all, printState) {
+    if (!printState.printIncludeExplanations) return '';
+    const items = all.map((q, i) => `<div class="print-explanation"><strong>${i + 1}.</strong> ${mathHtml(q.rationale_full || '')}</div>`).join('');
+    return `<div class="print-section print-explanations"><h2>Explanations</h2>${items}</div>`;
+  }
+
+  // `sections` is [{ label: string|null, questions: [...] }, ...] — Mock
+  // passes two (Module 1/Module 2, either possibly empty), Test/Practice
+  // pass one unlabeled section.
+  function buildPrintSheetHtml(title, sections, printState) {
+    let n = 1;
+    let html = `<h1 class="print-title">${escapeHtml(title)}</h1>`;
+    const all = [];
+    sections.forEach(sec => {
+      if (!sec.questions.length) return;
+      if (sec.label) html += `<h2 class="print-module-head">${escapeHtml(sec.label)}</h2>`;
+      sec.questions.forEach(q => { html += printQuestionHtml(q, n++, printState); all.push(q); });
+    });
+    html += printAnswerKeyHtml(all, printState);
+    html += printExplanationsHtml(all, printState);
+    return html;
+  }
+
+  window.addEventListener('afterprint', () => {
+    document.body.classList.remove('printing-export');
+  });
+
+  // Renders `sheetHtml` into #printSheet and hands off to the browser's own
+  // print dialog — "Save as PDF" there is the actual export. (An earlier
+  // version of this tried building a real PDF client-side via jsPDF +
+  // html2canvas and opening it in a new tab, but that broke in practice —
+  // popup blockers, and html2canvas choking on some of the print CSS — so
+  // this reverts to the simpler, more reliable print-dialog handoff.)
+  // `startBtn` is unused now but kept in the signature so call sites don't
+  // need to change if a real-PDF path comes back later.
+  function exportPrintSheetAsPdf(sheetHtml, startBtn) {
+    document.getElementById('printSheet').innerHTML = sheetHtml;
+    document.body.classList.add('printing-export');
+    window.print();
+  }
+
+  // Shared config-screen fields for the three "Include ___" print checkboxes
+  // — identical across Mock/Test/Practice, so both the markup and the wiring
+  // are written once and given the right `prefix`/state object per caller.
+  function printOptionsFieldsHtml(prefix, printState) {
+    return `
+      <div class="config-row" style="margin-bottom:6px;">
+        <label class="filter-opt" style="padding:0;">
+          <input type="checkbox" id="${prefix}PrintAnswers" ${printState.printIncludeAnswers ? 'checked' : ''} />
+          <span>✅ Include answer key</span>
+        </label>
+      </div>
+      <div class="config-row" style="margin-bottom:6px;">
+        <label class="filter-opt" style="padding:0;">
+          <input type="checkbox" id="${prefix}PrintExplanations" ${printState.printIncludeExplanations ? 'checked' : ''} />
+          <span>💡 Include full explanations</span>
+        </label>
+      </div>
+      <div class="config-row" style="margin-bottom:6px;">
+        <label class="filter-opt" style="padding:0;">
+          <input type="checkbox" id="${prefix}PrintMetadata" ${printState.printIncludeMetadata ? 'checked' : ''} />
+          <span>🏷️ Print question ID, skill, and difficulty under each question</span>
+        </label>
+      </div>`;
+  }
+  function wirePrintOptionsFields(prefix, printState) {
+    const a = document.getElementById(`${prefix}PrintAnswers`);
+    if (a) a.addEventListener('change', () => { printState.printIncludeAnswers = a.checked; });
+    const e = document.getElementById(`${prefix}PrintExplanations`);
+    if (e) e.addEventListener('change', () => { printState.printIncludeExplanations = e.checked; });
+    const m = document.getElementById(`${prefix}PrintMetadata`);
+    if (m) m.addEventListener('change', () => { printState.printIncludeMetadata = m.checked; });
+  }
+
+  // ---------- Mock Exam's own print wiring ----------
+  function buildPrintQuestionSets() {
+    if (mockState.mode === 'module2') {
+      const key = mockState.module2Pool === 'harder' ? 'm2harder' : 'm2easier';
+      return { module1: [], module2: buildMockModule(mockState.blueprint, 'm2', resolveWeightConfig(key), [], mockState.statuses) };
+    }
+    const module1 = buildMockModule(mockState.blueprint, 'm1', resolveWeightConfig('m1'), [], mockState.statuses);
+    if (mockState.mode === 'module1') return { module1, module2: [] };
+    // adaptive: real routing needs a scored Module 1, which paper can't do —
+    // printPool (set on the config screen) stands in for that decision.
+    const key = mockState.printPool === 'harder' ? 'm2harder' : 'm2easier';
+    const module2 = buildMockModule(mockState.blueprint, 'm2', resolveWeightConfig(key), module1.map(q => q.id), mockState.statuses);
+    return { module1, module2 };
+  }
+
+  function generateMockPrintout() {
+    const { module1, module2 } = buildPrintQuestionSets();
+    if (!module1.length && !module2.length) { alert('No questions match the current settings — widen the scope/status filter and try again.'); return; }
+    const title = mockState.mode === 'module2' ? 'SAT Mock Exam — Module 2'
+      : mockState.mode === 'module1' ? 'SAT Mock Exam — Module 1'
+      : 'SAT Mock Exam';
+    const sheetHtml = buildPrintSheetHtml(title, [
+      { label: 'Module 1', questions: module1 },
+      { label: 'Module 2', questions: module2 },
+    ], mockState);
+    exportPrintSheetAsPdf(sheetHtml, document.getElementById('startMockBtn'));
   }
 
   // Dispatches to the right first phase based on mockState.mode, using the
@@ -9186,12 +9922,39 @@
       </div>`;
   }
 
+  // Print/PDF pool picker — same two chips as mockModule2PoolChipsHtml
+  // (data-mock-pool), but a separate data attribute/state field since this
+  // one only applies when printing an *adaptive* attempt (module2Pool is
+  // already spoken for by the module2-only mode's own chip row).
+  function printPoolChipsHtml() {
+    return ['harder', 'easier'].map(p =>
+      `<button class="chip ${mockState.printPool === p ? 'on' : ''}" data-print-pool="${p}">${p === 'harder' ? 'Harder pool' : 'Easier pool'}</button>`
+    ).join('');
+  }
+
+  // Folded open under the print toggle — mirrors the on-screen "Show
+  // question metadata" idea (metadataConfigSectionHtml) but as its own
+  // independent set of flags, since a paper copy's answer key/explanations
+  // don't map onto anything the live quiz UI has a toggle for.
+  function printConfigSectionHtml() {
+    return `
+      ${printOptionsFieldsHtml('mock', mockState)}
+      ${mockState.mode === 'adaptive' ? `
+      <div class="config-row">
+        <label>🧭 Module 2 pool to print</label>
+        <div class="chip-row">${printPoolChipsHtml()}</div>
+        <p class="bp-hint">Real adaptive routing depends on your Module 1 score, which paper can't do — pick which pool's Module 2 to print instead.</p>
+      </div>` : ''}`;
+  }
+
   function mockConfigHtml() {
     const showM1 = mockState.mode !== 'module2';
     const showM2 = mockState.mode !== 'module1';
-    const startLabel = mockState.mode === 'module2'
-      ? `Start Module 2 (${MOCK_MODULE_SECONDS / 60}:00)`
-      : `Start Module 1 (${MOCK_MODULE_SECONDS / 60}:00)`;
+    const startLabel = mockState.printMode
+      ? '⬇️ Download PDF'
+      : (mockState.mode === 'module2'
+        ? `Start Module 2 (${MOCK_MODULE_SECONDS / 60}:00)`
+        : `Start Module 1 (${MOCK_MODULE_SECONDS / 60}:00)`);
 
     let weightSection = '';
     if (mockState.mode === 'adaptive') {
@@ -9260,11 +10023,18 @@
         </div>
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="mockPrintToggle" ${mockState.printMode ? 'checked' : ''} />
+            <span>🖨️ Print a paper copy instead (PDF)</span>
+          </label>
+        </div>
+        ${mockState.printMode ? '' : `
+        <div class="config-row" style="margin-bottom:6px;">
+          <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="mockUseBluebook" ${mockState.useBluebook ? 'checked' : ''} />
             <span>🖥️ Use Bluebook-style interface</span>
           </label>
         </div>
-        ${mockState.useBluebook ? '' : `<div class="config-row" style="margin-bottom:6px;">${quizShortcutsToggleHtml('mockShortcuts')}</div>`}
+        ${mockState.useBluebook ? '' : `<div class="config-row" style="margin-bottom:6px;">${quizShortcutsToggleHtml('mockShortcuts')}</div>`}`}
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="mockAdvDistToggle" ${mockState.advancedDistribution ? 'checked' : ''} />
@@ -9279,8 +10049,11 @@
           </label>
         </div>
         ${mockState.advancedDifficulty ? weightSection : ''}
-        ${mockState.useBluebook ? '<p class="mock-mode-desc">Per-question timer is unavailable with the Bluebook-style interface — only the 32-minute module clock applies.</p>' : timedModeConfigHtml(mockState.qtimer, 'mockQ')}
-        ${metadataConfigSectionHtml('mock')}
+        ${mockState.printMode
+          ? ''
+          : (mockState.useBluebook ? '<p class="mock-mode-desc">Per-question timer is unavailable with the Bluebook-style interface — only the 32-minute module clock applies.</p>' : timedModeConfigHtml(mockState.qtimer, 'mockQ'))}
+        ${mockState.printMode ? '' : metadataConfigSectionHtml('mock')}
+        ${mockState.printMode ? printConfigSectionHtml() : ''}
         <button class="btn btn-accent" id="startMockBtn">${startLabel}</button>
       </div>
       ${mockHistoryListHtml()}`;
@@ -9297,7 +10070,7 @@
       if (answered === letter) cls += ' choice-selected';
       return `<div class="${cls}" data-letter="${letter}">
         <span class="letter">${letter}</span>
-        <div>${escapeHtml(q.choices[letter])}</div>
+        <div>${mathHtml(q.choices[letter])}</div>
       </div>`;
     }).join('');
     const isLast = mockState.index === total - 1;
@@ -9432,7 +10205,7 @@
           <div style="font-size:13px;">
             Your answer: <strong>${yours || '—'}</strong>${!isCorrect ? ` &nbsp;&middot;&nbsp; Correct: <strong>${q.correct_answer}</strong>` : ''}
           </div>
-          <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px;">${escapeHtml(q.rationale_by_choice[q.correct_answer] || '')}</div>
+          <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px;">${mathHtml(q.rationale_by_choice[q.correct_answer] || '')}</div>
           ${statusButtonsHtml(q)}
         </div>`;
     }).join('');
@@ -9509,7 +10282,10 @@
     const shell = document.getElementById('mockShell');
     if (mockState.phase === 'intro') {
       const startBtn = document.getElementById('startMockBtn');
-      if (startBtn) startBtn.addEventListener('click', startMockAttempt);
+      if (startBtn) startBtn.addEventListener('click', () => {
+        if (mockState.printMode) generateMockPrintout();
+        else startMockAttempt();
+      });
 
       shell.querySelectorAll('[data-mock-mode]').forEach(el => {
         el.addEventListener('click', () => { mockState.mode = el.dataset.mockMode; renderMock(); });
@@ -9517,6 +10293,12 @@
       shell.querySelectorAll('[data-mock-pool]').forEach(el => {
         el.addEventListener('click', () => { mockState.module2Pool = el.dataset.mockPool; renderMock(); });
       });
+      shell.querySelectorAll('[data-print-pool]').forEach(el => {
+        el.addEventListener('click', () => { mockState.printPool = el.dataset.printPool; renderMock(); });
+      });
+      const printToggle = document.getElementById('mockPrintToggle');
+      if (printToggle) printToggle.addEventListener('change', () => { mockState.printMode = printToggle.checked; renderMock(); });
+      wirePrintOptionsFields('mock', mockState);
       wireScopeChips(shell, mockState, renderMock);
       wireTimedModeConfig(shell, mockState.qtimer, 'mockQ', renderMock);
       wireMetadataConfigSection(shell, 'mock', renderMock);
@@ -9754,10 +10536,12 @@
     return `${yy}-${mm}-${dd}`;
   }
 
-  // qid -> ISO timestamp, grouped into a local-date -> count map.
-  function dailyCompletionCounts() {
+  // qid -> ISO timestamp, grouped into a local-date -> count map. Defaults to
+  // the current user's own log; the leaderboard passes another user's log
+  // through the same function so streaks are computed identically for both.
+  function dailyCompletionCounts(log) {
     const counts = {};
-    Object.values(state.completionLog).forEach(ts => {
+    Object.values(log || state.completionLog).forEach(ts => {
       const d = new Date(ts);
       if (isNaN(d)) return;
       const key = dateKey(d);
@@ -9792,6 +10576,19 @@
       prev = key;
     });
     return { current, longest: Math.max(longest, current) };
+  }
+
+  // Questions completed in the trailing 7 days (today back 6). Used by the
+  // leaderboard alongside streak — a "this week" figure resets on its own,
+  // so it doesn't punish someone who's steady but started later than others.
+  function weeklyCompletionCount(counts) {
+    let total = 0;
+    const cursor = new Date();
+    for (let i = 0; i < 7; i++) {
+      total += counts[dateKey(cursor)] || 0;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return total;
   }
 
   function totalXp() {
@@ -10318,6 +11115,102 @@
   }
 
   // ---------- Profile tab ----------
+  // ---------- Lab (Profile subtab) ----------
+  // Experimental/customization controls, each backed by its own localStorage
+  // key (see the "Lab" section up near QUIZ_SHORTCUTS_KEY) and off/default
+  // by default. One card per feature, same progress-summary/log-item shell
+  // the Guide's Features list already uses, with a checkbox (or other
+  // control) in the head and a one-line description underneath.
+  function labCardHtml(title, bodyHtml) {
+    return `
+      <div class="progress-summary">
+        <h2>${escapeHtml(title)}</h2>
+        ${bodyHtml}
+      </div>`;
+  }
+  function labToggleRowHtml(id, label, desc, checked) {
+    return `
+      <div class="log-item">
+        <div class="log-item-head">
+          <label class="filter-opt" style="padding:0;">
+            <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} />
+            <span class="log-item-name">${escapeHtml(label)}</span>
+          </label>
+        </div>
+        <div class="log-item-desc">${desc}</div>
+      </div>`;
+  }
+  function labKeybindingsCardHtml() {
+    const rows = KEYBINDING_ACTIONS.map(a => `
+      <div class="log-item">
+        <div class="log-item-head">
+          <span class="log-item-name">${escapeHtml(a.label)}</span>
+          <button type="button" class="btn" style="padding:4px 10px; font-size:12px;" data-rebind-action="${a.key}">${rebindingAction === a.key ? 'Press a key…' : keyDisplayName(keybindings[a.key])}</button>
+        </div>
+        <div class="log-item-desc">${rebindingAction === a.key ? 'Press any key (Escape to cancel)…' : `Currently bound to <strong>${escapeHtml(keyDisplayName(keybindings[a.key]))}</strong>.`}</div>
+      </div>`).join('');
+    return labCardHtml('⌨️ Custom keybinding remapping', `
+      <div class="log-item-desc" style="margin-bottom:10px;">Rebind the letter-key shortcuts used to answer questions and move around during Practice/Test/Mock quiz screens — Enter/Space/arrow keys stay as physical fallbacks either way. Only takes effect where <strong>Enable keyboard shortcuts</strong> is already on.</div>
+      <div class="log-list">${rows}</div>`);
+  }
+  function labThemeCardHtml() {
+    const active = getLabTheme();
+    const swatches = LAB_THEMES.map(t => `
+      <button type="button" class="btn ${active === t.id ? 'btn-accent' : ''}" style="display:inline-flex; align-items:center; gap:6px;" data-lab-theme="${t.id}">
+        ${t.swatch ? `<span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:${t.swatch};"></span>` : ''}
+        ${escapeHtml(t.label)}
+      </button>`).join('');
+    return labCardHtml('🎨 Theme variants', `
+      <div class="log-item-desc" style="margin-bottom:10px;">An alternate theme beyond light/dark — e.g. <strong>Sepia</strong>, a warm paper look. Picking one here overrides the topbar's sun/moon toggle until you pick <strong>Default</strong> again; the topbar toggle itself always stays a plain light/dark switch.</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">${swatches}</div>`);
+  }
+  function labChoicesCardHtml() {
+    const countOptions = [2, 3, 4].map(n => `<option value="${n}" ${choiceCount === n ? 'selected' : ''}>${n}</option>`).join('');
+    return labCardHtml('🔀 Answer-choice drilling', `
+      ${labToggleRowHtml('labRandomizeOrder', 'Randomize answer order', "Shuffles the on-screen order of each question's choices (A/B/C/D still grade correctly) — useful for recall drilling instead of pattern-matching a position.", randomizeOrderEnabled)}
+      <div class="log-item">
+        <div class="log-item-head">
+          <span class="log-item-name">Choices shown</span>
+          <select id="labChoiceCount">${countOptions}</select>
+        </div>
+        <div class="log-item-desc">Every question in the bank has 4 fixed choices — this thins the distractor set down to the correct answer plus a random subset of the wrong ones, to make recall easier while drilling. 4 shows all of them (no thinning).</div>
+      </div>`);
+  }
+  function labStrictTimingCardHtml() {
+    return labCardHtml('⏱️ Strict timing mode', `
+      ${labToggleRowHtml('labStrictTiming', 'Auto-submit when time runs out', "Currently, the Bluebook-style Test's whole-test timer just parks you on the review page at 0:00 without submitting (Mock Exam's module clock and every per-question timer already auto-advance/submit on their own strict setting). Turn this on to auto-submit the Test the instant its timer hits zero, matching real proctored conditions.", strictTimingEnabled)}`);
+  }
+  function renderLab() {
+    const shell = document.getElementById('labShell');
+    if (!shell) return;
+    shell.innerHTML = `
+      <div class="progress-summary">
+        <h2>🧪 Lab</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior.</p>
+        <button type="button" class="btn" id="labResetBtn">Reset all Lab settings to defaults</button>
+      </div>
+      ${labKeybindingsCardHtml()}
+      ${labThemeCardHtml()}
+      ${labChoicesCardHtml()}
+      ${labStrictTimingCardHtml()}`;
+
+    const resetBtn = document.getElementById('labResetBtn');
+    if (resetBtn) resetBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); });
+
+    shell.querySelectorAll('[data-rebind-action]').forEach(btn => {
+      btn.addEventListener('click', () => { rebindingAction = btn.dataset.rebindAction; renderLab(); });
+    });
+    shell.querySelectorAll('[data-lab-theme]').forEach(btn => {
+      btn.addEventListener('click', () => { setLabTheme(btn.dataset.labTheme); renderLab(); });
+    });
+    const randomizeBox = document.getElementById('labRandomizeOrder');
+    if (randomizeBox) randomizeBox.addEventListener('change', () => { setRandomizeOrderEnabled(randomizeBox.checked); renderLab(); });
+    const choiceCountSel = document.getElementById('labChoiceCount');
+    if (choiceCountSel) choiceCountSel.addEventListener('change', () => { setChoiceCount(parseInt(choiceCountSel.value, 10)); renderLab(); });
+    const strictBox = document.getElementById('labStrictTiming');
+    if (strictBox) strictBox.addEventListener('change', () => { setStrictTimingEnabled(strictBox.checked); renderLab(); });
+  }
+
   function renderProfile() {
     const shell = document.getElementById('profileShell');
     const stats = computeGamificationStats();
@@ -10378,6 +11271,104 @@
         renderProfile();
       });
     });
+  }
+
+  // ---------- Leaderboard ----------
+  // Fetched fresh on every visit (small payload, few users) rather than
+  // cached across renders — kept only for the duration of the tab being
+  // open, in module scope so a re-render (e.g. after login) can reuse an
+  // in-flight/last fetch instead of racing another one.
+  let leaderboardEntries = null;
+  let leaderboardError = null;
+  let leaderboardLoading = false;
+
+  function leaderboardCardShellHtml(bodyHtml) {
+    return `
+      <div class="progress-summary">
+        <h2>Leaderboard</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">
+          Everyone signed up for kyj-cloud, ranked by streak and this week's activity — not lifetime total, so a slow week or a late start doesn't bury you. Streaks reset on their own; jump back in anytime.
+        </p>
+        ${bodyHtml}
+      </div>`;
+  }
+
+  function leaderboardRowHtml(row, isMe) {
+    return `
+      <div class="lb-row ${isMe ? 'lb-me' : ''}">
+        <div class="lb-name">${escapeHtml(row.name)}${isMe ? ' <span class="lb-you">you</span>' : ''}</div>
+        <div class="lb-stat"><span class="lb-n">${row.streak}</span><span class="lb-l">day streak</span></div>
+        <div class="lb-stat"><span class="lb-n">${row.week}</span><span class="lb-l">this week</span></div>
+        <div class="lb-stat"><span class="lb-n">${row.total}</span><span class="lb-l">total done</span></div>
+      </div>`;
+  }
+
+  async function renderLeaderboard() {
+    const shell = document.getElementById('leaderboardShell');
+    if (!shell) return;
+
+    if (!CLOUD_SAVE_URL) {
+      shell.innerHTML = leaderboardCardShellHtml(
+        `<p class="cloud-save-text" style="margin:0;">Cloud sync isn't set up on this deployment yet, so there's no shared group to rank against.</p>`
+      );
+      return;
+    }
+    if (!isCloudLoggedIn()) {
+      shell.innerHTML = leaderboardCardShellHtml(`
+        <p class="cloud-save-text" style="margin:0 0 10px;">Log in to kyj-cloud to see how your streak stacks up against everyone else syncing progress.</p>
+        <button type="button" class="btn" id="leaderboardLoginBtn">Log in to kyj-cloud</button>`);
+      const btn = document.getElementById('leaderboardLoginBtn');
+      if (btn) btn.addEventListener('click', (e) => { e.stopPropagation(); openCloudSavePopover(); });
+      return;
+    }
+
+    if (leaderboardLoading) return;
+    if (!leaderboardEntries && !leaderboardError) {
+      leaderboardLoading = true;
+      shell.innerHTML = leaderboardCardShellHtml(`<p class="cloud-save-text" style="margin:0;">Loading…</p>`);
+      try {
+        const result = await cloudSaveRequest('leaderboard', { username: getCloudUsername(), password: getCloudPassword() });
+        leaderboardEntries = result.entries || [];
+        leaderboardError = null;
+      } catch (err) {
+        leaderboardError = err.message || 'Failed to load';
+        leaderboardEntries = null;
+      }
+      leaderboardLoading = false;
+      renderLeaderboard();
+      return;
+    }
+
+    if (leaderboardError) {
+      shell.innerHTML = leaderboardCardShellHtml(`
+        <p class="cloud-save-text" style="margin:0 0 10px; color:var(--danger, #b3452c);">Couldn't load the leaderboard: ${escapeHtml(leaderboardError)}</p>
+        <button type="button" class="btn" id="leaderboardRetryBtn">Retry</button>`);
+      const retryBtn = document.getElementById('leaderboardRetryBtn');
+      if (retryBtn) retryBtn.addEventListener('click', () => { leaderboardError = null; renderLeaderboard(); });
+      return;
+    }
+
+    const me = getCloudUsername().toLowerCase();
+    const rows = leaderboardEntries.map(entry => {
+      const counts = dailyCompletionCounts(entry.completionLog);
+      const streaks = computeStreaks(counts);
+      return {
+        username: entry.username,
+        name: entry.name || entry.username,
+        streak: streaks.current,
+        week: weeklyCompletionCount(counts),
+        total: Object.keys(entry.completionLog || {}).length,
+      };
+    }).sort((a, b) => b.streak - a.streak || b.week - a.week || b.total - a.total);
+
+    if (!rows.length) {
+      shell.innerHTML = leaderboardCardShellHtml(`<p class="cloud-save-text" style="margin:0;">No one's synced progress yet — be the first.</p>`);
+      return;
+    }
+
+    shell.innerHTML = leaderboardCardShellHtml(
+      `<div class="lb-list">${rows.map(r => leaderboardRowHtml(r, r.username.toLowerCase() === me)).join('')}</div>`
+    );
   }
 
   // ---------- Progress tab ----------
@@ -10787,20 +11778,39 @@
 
     const resetBtn = document.getElementById('resetProgressBtn');
     if (resetBtn) resetBtn.addEventListener('click', () => {
-      if (!confirm('Clear all "complete" and "to review" marks, your review scheduling (Anki) data, plus your streak, XP, and achievement progress? This can\'t be undone unless you\'ve exported a backup.')) return;
+      if (!confirm('Clear ALL local data — question marks, review scheduling (Anki) data, streak/XP/achievements, tags, notes, mock and practice test history, and skill stats? This can\'t be undone unless you\'ve exported a backup.')) return;
       state.progress = {};
       state.completionLog = {};
       state.fsrsCards = {};
       state.skillStats = {};
+      state.tags = {};
+      state.notes = {};
+      mockState.history = [];
+      testState.history = [];
+      Object.keys(mathOverrides).forEach(k => delete mathOverrides[k]);
+      Object.keys(rwOverrides).forEach(k => delete rwOverrides[k]);
+      Object.keys(recentVisits).forEach(k => delete recentVisits[k]);
+      trendExcluded.clear();
+      state.progressFocus = new Set(PROGRESS_FOCUS_DIFFICULTIES);
       saveProgress();
       saveCompletionLog();
       saveFsrsCards();
       saveSkillStats();
+      saveTags();
+      saveNotes();
+      saveMockHistory();
+      saveTestHistory();
+      saveMathOverrides(mathOverrides);
+      saveRWOverrides(rwOverrides);
+      saveRecentVisits();
+      saveTrendExcluded(trendExcluded);
+      saveProgressFocus();
       renderFilters();
       renderBrowse();
       renderProgress();
       renderAnalysis();
       renderReview();
+      renderNotesView();
       renderStats();
       renderProfile();
     });
@@ -11492,5 +12502,156 @@
   // to "due" purely from time passing (midnight, or an interval elapsing)
   // while the tab is left open with nothing else triggering a re-render.
   setInterval(updateReviewBadge, 5 * 60 * 1000);
+
+  // ---------- Math (Beta): browse-only, nothing persisted ----------
+  // A separate, parallel set of Browse-like state/filters/list-rendering
+  // scoped to MATH_QUESTIONS — deliberately not reusing state/renderFacet/
+  // computeBrowseList/etc. (which are wired tightly to the main QUESTIONS
+  // pool and to persisted status/notes/skill-stats) so this tab can stay
+  // "browse only, nothing saved" without adding conditionals throughout
+  // that already-complex shared code. qDetailHtml/wireDetail are reused
+  // with {noProgress: true}, which hides the status/notes UI and skips the
+  // recordSkillAttempt call — Submit/Show answer still work in-session
+  // (via the same in-memory state.attempt everything else already uses,
+  // which was never persisted to begin with), they just don't count
+  // toward anything or survive a reload.
+  const mathState = { query: '', categories: new Set(), skills: new Set(), difficulties: new Set(), sort: 'default' };
+  const mathAllCategories = [...new Set(MATH_QUESTIONS.map(q => q.category))].sort();
+  const mathAllSkills = [...new Set(MATH_QUESTIONS.map(q => q.skill))].sort();
+  const MATH_PAGE_SIZE = 60;
+  let mathShown = MATH_PAGE_SIZE;
+  let mathRenderedList = [];
+
+  function mathMatchesQuery(q) {
+    if (!mathState.query) return true;
+    const needle = mathState.query.toLowerCase().trim();
+    if (q.id.toLowerCase() === needle) return true;
+    const hay = (q.id + ' ' + q.stem + ' ' + Object.values(q.choices || {}).join(' ') + ' ' + (q.rationale_full || '')).toLowerCase();
+    return hay.includes(needle);
+  }
+
+  function computeMathList() {
+    let list = MATH_QUESTIONS.filter(q => {
+      if (mathState.categories.size && !mathState.categories.has(q.category)) return false;
+      if (mathState.skills.size && !mathState.skills.has(q.skill)) return false;
+      if (mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      return mathMatchesQuery(q);
+    });
+    if (mathState.sort === 'diff-asc') list = [...list].sort((a, b) => a.difficulty - b.difficulty);
+    if (mathState.sort === 'diff-desc') list = [...list].sort((a, b) => b.difficulty - a.difficulty);
+    return list;
+  }
+
+  function renderMathFacet(containerId, options, selectedSet, facetKey, valueFn) {
+    const counts = options.map(opt => MATH_QUESTIONS.filter(q => {
+      if (facetKey !== 'categories' && mathState.categories.size && !mathState.categories.has(q.category)) return false;
+      if (facetKey !== 'skills' && mathState.skills.size && !mathState.skills.has(q.skill)) return false;
+      if (facetKey !== 'difficulties' && mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (!mathMatchesQuery(q)) return false;
+      return valueFn(q) === opt;
+    }).length);
+    const el = document.getElementById(containerId);
+    el.innerHTML = options.map((opt, i) => {
+      const checked = selectedSet.has(opt) ? 'checked' : '';
+      const cls = facetKey === 'difficulties' ? diffPillClass(opt) : '';
+      return `<label class="filter-opt">
+        <input type="checkbox" data-val="${escapeHtml(opt)}" ${checked} />
+        <span class="${cls}">${escapeHtml(opt)}</span>
+        <span class="count">${counts[i]}</span>
+      </label>`;
+    }).join('');
+    el.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const v = inp.dataset.val;
+        if (inp.checked) selectedSet.add(v); else selectedSet.delete(v);
+        renderMathFilters();
+        renderMathBrowse();
+      });
+    });
+  }
+
+  function renderMathFilters() {
+    renderMathFacet('categoryFiltersMath', mathAllCategories, mathState.categories, 'categories', q => q.category);
+    renderMathFacet('skillFiltersMath', mathAllSkills, mathState.skills, 'skills', q => q.skill);
+    renderMathFacet('difficultyFiltersMath', allDifficulties, mathState.difficulties, 'difficulties', q => q.difficulty_label);
+  }
+
+  // Deliberately not qCardHtml (which has a bulk-select checkbox and a
+  // status pill wired to persisted state.progress) — a plain preview card
+  // instead, since nothing about this tab tracks status.
+  function mathQCardHtml(q) {
+    return `
+      <div class="qcard">
+        <div class="qcard-head" data-id="${q.id}">
+          <div style="flex:1; min-width:0;">
+            <div class="qstem">${escapeStemFlat(q.stem)}</div>
+            <div class="qskill">${escapeHtml(q.skill)} &middot; ${escapeHtml(q.domain)}</div>
+          </div>
+          <div class="qmeta">
+            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            <span class="cat-tag">${escapeHtml(q.category)}</span>
+            <span class="qid" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ${escapeHtml(q.id)}">${escapeHtml(q.id)}</span>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderMathBrowse() {
+    mathShown = MATH_PAGE_SIZE; // any filter/search/sort change restarts pagination
+    renderMathList();
+  }
+
+  function renderMathList() {
+    const list = computeMathList();
+    mathRenderedList = list;
+    document.getElementById('resultCountMath').textContent = `${list.length} question${list.length === 1 ? '' : 's'}`;
+    const container = document.getElementById('qlistMath');
+    if (!list.length) {
+      container.innerHTML = `<div class="empty-state">No questions match these filters.</div>`;
+      return;
+    }
+    const shown = Math.min(mathShown, list.length);
+    const visible = list.slice(0, shown);
+    const remaining = list.length - shown;
+    container.innerHTML = visible.map(mathQCardHtml).join('')
+      + (remaining > 0 ? `<button class="btn" id="mathShowMoreBtn" style="margin-top:12px;">Show ${Math.min(remaining, MATH_PAGE_SIZE)} more (${remaining} left)</button>` : '');
+    const showMoreBtn = document.getElementById('mathShowMoreBtn');
+    if (showMoreBtn) showMoreBtn.addEventListener('click', () => { mathShown += MATH_PAGE_SIZE; renderMathList(); });
+  }
+
+  renderMathFilters();
+  renderMathBrowse();
+
+  document.getElementById('qlistMath').addEventListener('click', (e) => {
+    if (e.target.closest('[data-copy-id]')) return;
+    const head = e.target.closest('.qcard-head');
+    if (!head) return;
+    const idx = mathRenderedList.findIndex(q => q.id === head.dataset.id);
+    if (idx !== -1) openQuestionModal(mathRenderedList, idx, { noProgress: true });
+  });
+
+  let mathSearchDebounceTimer = null;
+  document.getElementById('searchBoxMath').addEventListener('input', (e) => {
+    const value = e.target.value;
+    clearTimeout(mathSearchDebounceTimer);
+    mathSearchDebounceTimer = setTimeout(() => {
+      mathState.query = value;
+      renderMathFilters();
+      renderMathBrowse();
+    }, 180);
+  });
+  document.getElementById('sortSelectMath').addEventListener('change', (e) => {
+    mathState.sort = e.target.value;
+    renderMathBrowse();
+  });
+  document.getElementById('clearFiltersMath').addEventListener('click', () => {
+    mathState.categories.clear();
+    mathState.skills.clear();
+    mathState.difficulties.clear();
+    mathState.query = '';
+    document.getElementById('searchBoxMath').value = '';
+    renderMathFilters();
+    renderMathBrowse();
+  });
 })();
 </script>

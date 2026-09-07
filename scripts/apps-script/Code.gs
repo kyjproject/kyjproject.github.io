@@ -53,6 +53,7 @@ function doPost(e) {
     else if (action === 'save') result = handleSave_(body);
     else if (action === 'load') result = handleLoad_(body);
     else if (action === 'propose_question') result = handlePropose_(body);
+    else if (action === 'leaderboard') result = handleLeaderboard_(body);
     else if (action === 'admin_reset_password') result = handleAdminResetPassword_(body);
     else result = { ok: false, error: 'Unknown action: ' + action };
   } catch (err) {
@@ -234,6 +235,36 @@ function handleLoad_(body) {
   var file = githubGetFile_(cfg, progressPath_(cfg, check.username));
   if (!file.exists) return { ok: true, data: null };
   return { ok: true, data: JSON.parse(file.content) };
+}
+
+// Any logged-in user can see everyone else's streak/activity — a small
+// "who's grinding" board for a group of friends, not a private stat. Only
+// the fields the leaderboard needs are returned (completionLog, dailyGoal,
+// display name, mock-exam count) — never passwordHash, and the client
+// derives streaks from completionLog itself (same computeStreaks() used for
+// the requester's own Profile tab) so the two never drift apart.
+function handleLeaderboard_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var users = loadUsers_(cfg).users;
+  var entries = [];
+  Object.keys(users).forEach(function (key) {
+    var rec = users[key];
+    var file = githubGetFile_(cfg, progressPath_(cfg, rec.username));
+    if (!file.exists) return;
+    var data;
+    try { data = JSON.parse(file.content); } catch (e) { return; }
+    entries.push({
+      username: rec.username,
+      name: (data.profile && data.profile.name) || rec.username,
+      completionLog: data.completionLog || {},
+      dailyGoal: data.dailyGoal || 10,
+      mockCount: (data.mockHistory || []).length,
+    });
+  });
+  return { ok: true, entries: entries };
 }
 
 // Lets the site owner reset a user's password without knowing the old one

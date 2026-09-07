@@ -1,9 +1,11 @@
 # SAT Question Bank
 
 Structured database + browser built from the College Board practice-question PDFs in
-this folder. **All 9 source PDFs are fully processed — 1,686 questions, zero parse
-failures, zero data-quality issues.** (10 browsing categories: Command of Evidence's
+this folder. **All 13 source PDFs are fully processed — 2,980 questions, zero parse
+failures, zero data-quality issues.** (14 browsing categories: Command of Evidence's
 single source PDF is split into two, see below.)
+
+## Reading and Writing (1,686 questions)
 
 | Category | Questions | Domain | Skill | Images |
 |---|---|---|---|---|
@@ -17,7 +19,47 @@ single source PDF is split into two, see below.)
 | Main Idea | 125 | Information and Ideas | Central Ideas and Details | — |
 | Inferences | 124 | Information and Ideas | Inferences | — |
 | Cross-Text | 56 | Craft and Structure | Cross-Text Connections | — |
-| **Total** | **1,686** | | | **127** |
+| **Subtotal** | **1,686** | | | **127** |
+
+## Math (1,294 questions)
+
+Every number, variable, and expression in the Math source PDFs is drawn as vector
+graphics, not extractable text or a raster image (`page.get_text()` returns a blank
+wherever a value belongs, `page.get_images()` finds nothing). `scripts/
+parse_math_category.py` crops each one — an inline variable, a whole answer choice
+that's pure math, a freestanding graph or table — into its own small PNG under
+`images/math/<category>/`, spliced back into the surrounding stem/choice/rationale
+text as a `⟦IMG:path⟧` token (see that script's module docstring for the extraction
+approach). The site resolves these tokens to `<img>` tags at render time.
+
+| Category | Questions | Domain | Skill | Images |
+|---|---|---|---|---|
+| Algebra | 449 | Algebra | 5 skills | 11,458 |
+| Advanced Math | 372 | Advanced Math | 3 skills | 10,759 |
+| Geometry and Trigonometry | 227 | Geometry and Trigonometry | 4 skills | 6,973 |
+| Problem-Solving and Data Analysis | 246 | Problem-Solving and Data Analysis | 7 skills | 4,681 |
+| **Subtotal** | **1,294** | | | **33,871** |
+
+Some Math questions are student-produced-response ("grid-in") — no answer choices, a
+typed numeric answer instead (`is_mc: false`, `correct_answer` holds the accepted
+form(s), comma-separated when more than one is valid, e.g. `".2857, 2/7"`).
+
+A few source-PDF quirks, kept rather than silently patched over:
+
+- **3 exact-duplicate questions** (same ID, same content, printed twice in the
+  source PDF — `b2d50dc7` in Algebra, `ddcbf768`/`6b969570` in Advanced Math): the
+  second occurrence is dropped rather than kept as a colliding primary key.
+- **1 question** (`ef160f02`, Algebra) has answer choices that are full labeled
+  graphs whose axis numbers happen to be real text rather than vector-drawn —
+  its choices render as a jumble of numbers and small images rather than one
+  clean graph crop each.
+- **2 questions** (`652b6d2b`, `73c68513`, both Problem-Solving and Data
+  Analysis) are short enough ("What is 40% of 25?") that their source page's
+  layout compresses past what the geometric pass can reliably parse — these
+  keep their plain-text (image-free, blanks where numbers belong) fields
+  instead of risking scrambled stem/choice/rationale content.
+
+| **Grand total** | **2,980** | | | **33,998** |
 
 (`Functions.pdf` is named for its content — "function of the underlined text" —
 not math; it's Reading & Writing like everything else here.)
@@ -39,7 +81,8 @@ practice/test bucket each, not just a filter.
 ## Layout
 
 ```
-Grammar.pdf, Vocab.pdf, ...    original source PDFs (untouched)
+RW/Grammar.pdf, RW/Vocab.pdf, ...   original R&W source PDFs (untouched)
+Math/Algebra.pdf, ...               original Math source PDFs (untouched)
 
 db/
   schema.sql                   SQLite schema (questions, choices, images, FTS5 search)
@@ -49,11 +92,14 @@ db/
   staging/proposed_questions.json  manually-added questions awaiting review (see below), empty ([]) by default
 
 images/
-  command_of_evidence/*.png    cropped chart/table images, one per question that has one
+  command_of_evidence/*.png    cropped chart/table images, one per R&W question that has one
+  math/<category>/*.png        cropped equation/graph/table images, referenced inline from
+                                stem/choice/rationale text via "⟦IMG:path⟧" tokens (see below)
 
 scripts/
-  parse_category.py            PDF -> db/categories/<category>.json (generic text parser, 8 of 9 categories)
+  parse_category.py            PDF -> db/categories/<category>.json (generic text parser, 8 of 9 R&W categories)
   parse_command_of_evidence.py PDF -> db/categories/command_of_evidence.json + images/ (text + chart/table crops)
+  parse_math_category.py       PDF -> db/categories/<category>.json + images/math/ (see Math section above)
   build_db.py                  db/categories/*.json -> db/sat.db
   build_site_data.py           db/categories/*.json -> db/all_questions.json + site/data.js
   build_site.py                site/index.template.html + data -> site/dist/index.html (single-file, for Claude Artifacts)
@@ -78,6 +124,7 @@ Each question in `db/categories/*.json` (and the `questions`/`choices` SQLite ta
 ```jsonc
 {
   "id": "accc2b85",                 // College Board question ID
+  "title": "",                      // short admin-facing label (tools/add_question.html only) — never shown to students, "" if unset
   "category": "Grammar",            // source bucket (matches the PDF filename)
   "source_pdf": "Grammar.pdf",
   "page": 1,                        // starting page in the source PDF
@@ -102,6 +149,19 @@ Each question in `db/categories/*.json` (and the `questions`/`choices` SQLite ta
   "image_paths": []                 // [{ "path": "images/command_of_evidence/<id>.png", "position": "stem" }] when has_image — .svg also allowed for hand-added questions
 }
 ```
+
+Math records follow the same shape with a few differences: `test` is `"Math"`,
+`domain` is one of the four Math domains (`domain_code` one of `ALG`/`ADVM`/`GEOT`/
+`PSDA`), `prompt` is always `""` (the question and its final "What is...?" sentence
+are one continuous `stem`, not split out), and there's an added `"is_mc": true`/
+`false` field. Free-response (grid-in) questions have `is_mc: false`, an empty
+`choices` object, and `correct_answer` as the accepted answer text — comma-separated
+when the source PDF lists more than one accepted form (e.g. `".2857, 2/7"`) — rather
+than a letter. `image_paths` is always `[]` for Math: images are embedded directly
+inline in `stem`/`choices`/`rationale_full` as `"⟦IMG:images/math/<category>/<id>_
+<n>.png⟧"` tokens instead, since one question can have dozens of separate crops
+(one per number/expression) at arbitrary positions in the text, not just one
+image at a single named position.
 
 ## The generic parser (`scripts/parse_category.py`)
 
@@ -175,18 +235,31 @@ without a deliberate approval step.
    instead, which grants write access via the File System Access API — the
    same pattern `tools/image_editor.html` uses for images. Firefox/Safari
    don't implement that API at all, which is what the server sidesteps.)
-   Fill in the form (category auto-fills domain/skill/codes; the question ID
-   is generated for you, checked against every existing ID; tags are
-   optional freeform comma-separated labels) and click **Add to staging**.
-   This appends the record to `db/staging/proposed_questions.json` and, if
-   you attached an image — paste a screenshot, or upload a `.png`/`.svg`
-   file directly — saves it under `images/<category file>/<id>.png` (or
-   `.svg`). Keep entering questions — the form stays open and clears itself
-   after each save. (If your browser doesn't support folder access, it
-   downloads the accumulated staging file instead — merge it into
-   `db/staging/proposed_questions.json` yourself.)
+   Fill in the form — a **Title** is required (a short label just for you to
+   recognize the question later; students never see it), category auto-fills
+   domain/skill/codes, the question ID is generated for you and checked
+   against every existing ID, and tags are optional freeform comma-separated
+   labels — then click **Add to staging**. This appends the record to
+   `db/staging/proposed_questions.json` and, if you attached an image — paste
+   a screenshot, or upload a `.png`/`.svg` file directly — saves it under
+   `images/<category file>/<id>.png` (or `.svg`). Keep entering questions —
+   the form stays open and clears itself after each save. (If your browser
+   doesn't support folder access, it downloads the accumulated staging file
+   instead — merge it into `db/staging/proposed_questions.json` yourself.)
+
+   Click **Staged questions** at the top any time to see everything
+   currently in `db/staging/proposed_questions.json` — title, category,
+   difficulty, and a stem preview per card. **Edit** loads that question
+   back into the form (the ID stays fixed; leave the image alone to keep the
+   existing one, or paste/upload a replacement) with **Save changes**
+   instead of **Add to staging**; **Delete** removes it from staging for
+   good, no review step needed for that. In the download-fallback mode
+   (no server, no folder access), use the file picker in that tab to load
+   the current `proposed_questions.json` in before editing — saving
+   re-downloads the updated file for you to put back.
 2. Run `python3 scripts/review_staged_questions.py`. It shows one staged
-   question at a time — full stem, choices, correct answer, rationale — and
+   question at a time — title, full stem, choices, correct answer, rationale
+   — and
    validates it (required fields, exactly 4 distinct non-empty choices, a
    real correct answer, a non-empty rationale for every choice A-D,
    domain/skill/skill_code consistent with the chosen category, difficulty

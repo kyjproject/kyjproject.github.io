@@ -25,12 +25,12 @@ def main():
         for r in records:
             conn.execute(
                 """INSERT INTO questions
-                   (id, category, source_pdf, page, assessment, test, domain, domain_code,
+                   (id, title, category, source_pdf, page, assessment, test, domain, domain_code,
                     skill, skill_code, difficulty_label, difficulty, tags, stem, prompt,
                     correct_answer, rationale_full, has_image)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (
-                    r["id"], r["category"], r["source_pdf"], r["page"], r["assessment"],
+                    r["id"], r.get("title", ""), r["category"], r["source_pdf"], r["page"], r["assessment"],
                     r["test"], r["domain"], r.get("domain_code", ""), r["skill"],
                     r.get("skill_code", ""), r["difficulty_label"], r["difficulty"],
                     ",".join(r.get("tags", [])),

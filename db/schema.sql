@@ -6,6 +6,7 @@
 
 CREATE TABLE IF NOT EXISTS questions (
     id                TEXT PRIMARY KEY,      -- College Board question ID (e.g. accc2b85)
+    title             TEXT NOT NULL DEFAULT '', -- short admin-facing label, e.g. "dangling modifier — factory example"
     category          TEXT NOT NULL,         -- source PDF / topic bucket, e.g. "Grammar"
     source_pdf        TEXT NOT NULL,
     page              INTEGER,
