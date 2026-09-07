@@ -1,13 +1,15 @@
 {
   "app": "sat-qbank-progress",
   "version": 8,
-  "exportedAt": "2026-09-07T10:18:47.210Z",
+  "exportedAt": "2026-09-07T12:44:38.589Z",
   "progress": {
+    "10691563": "review",
     "36783511": "done",
     "39430569": "done",
     "46604853": "done",
     "64506024": "done",
     "72301503": "done",
+    "83868036": "done",
     "84225518": "done",
     "90181343": "done",
     "a56a50e6": "done",
@@ -443,7 +445,32 @@
     "81c67064": "done",
     "c88233b4": "done",
     "d3888864": "review",
-    "b346d913": "done"
+    "b346d913": "done",
+    "96437b86": "done",
+    "4756ade0": "done",
+    "563db219": "done",
+    "28fae87d": "done",
+    "7d1c8a2b": "done",
+    "52e1ba18": "done",
+    "38a981d0": "review",
+    "6b646bda": "done",
+    "cda46057": "done",
+    "0ef1c197": "done",
+    "eda8735f": "done",
+    "9bebb5b4": "done",
+    "094e6e94": "done",
+    "741374a0": "done",
+    "21cdd49b": "review",
+    "5c37d685": "review",
+    "2ee45938": "review",
+    "da287262": "review",
+    "c4bc50cd": "done",
+    "39343ca0": "done",
+    "b3c62fd2": "done",
+    "57fb41c0": "review",
+    "5bac62e5": "done",
+    "aae79e3a": "done",
+    "c6ec16fb": "done"
   },
   "tags": {
     "51bd4147": [
@@ -559,6 +586,7 @@
   "completionLog": {
     "36783511": "2026-08-18T08:26:25.193Z",
     "46604853": "2026-08-20T15:39:23.164Z",
+    "83868036": "2026-09-07T12:43:03.571Z",
     "90181343": "2026-08-21T07:34:50.649Z",
     "d2b5e069": "2026-08-18T06:39:27.717Z",
     "92b43ac5": "2026-08-18T06:39:29.215Z",
@@ -728,7 +756,28 @@
     "a6b35cb9": "2026-09-07T09:16:21.923Z",
     "81c67064": "2026-09-07T09:16:23.138Z",
     "c88233b4": "2026-09-07T09:16:43.424Z",
-    "b346d913": "2026-09-07T09:16:46.056Z"
+    "b346d913": "2026-09-07T09:16:46.056Z",
+    "96437b86": "2026-09-07T12:42:37.508Z",
+    "4756ade0": "2026-09-07T12:42:38.663Z",
+    "563db219": "2026-09-07T12:42:39.724Z",
+    "28fae87d": "2026-09-07T12:42:41.088Z",
+    "7d1c8a2b": "2026-09-07T12:42:47.362Z",
+    "52e1ba18": "2026-09-07T12:42:49.990Z",
+    "6b646bda": "2026-09-07T12:42:53.957Z",
+    "cda46057": "2026-09-07T12:42:55.257Z",
+    "0ef1c197": "2026-09-07T12:42:56.240Z",
+    "eda8735f": "2026-09-07T12:42:57.491Z",
+    "9bebb5b4": "2026-09-07T12:42:58.656Z",
+    "094e6e94": "2026-09-07T12:43:00.490Z",
+    "741374a0": "2026-09-07T12:43:10.239Z",
+    "da287262": "2026-09-07T12:43:30.273Z",
+    "c4bc50cd": "2026-09-07T12:43:36.622Z",
+    "39343ca0": "2026-09-07T12:43:39.121Z",
+    "b3c62fd2": "2026-09-07T12:43:45.439Z",
+    "57fb41c0": "2026-09-07T12:43:51.506Z",
+    "5bac62e5": "2026-09-07T12:44:22.905Z",
+    "aae79e3a": "2026-09-07T12:44:28.105Z",
+    "c6ec16fb": "2026-09-07T12:44:29.773Z"
   },
   "dailyGoal": 10,
   "profile": {
@@ -1057,6 +1106,73 @@
     }
   },
   "mockHistory": [
+    {
+      "id": "1788784690334-0s2j1l",
+      "completedAt": "2026-09-07T12:38:10.334Z",
+      "mode": "module2",
+      "module1Ids": [],
+      "module2Ids": [
+        "96437b86",
+        "4756ade0",
+        "563db219",
+        "28fae87d",
+        "7d1c8a2b",
+        "c6ec16fb",
+        "aae79e3a",
+        "5bac62e5",
+        "10691563",
+        "57fb41c0",
+        "b3c62fd2",
+        "39343ca0",
+        "c4bc50cd",
+        "da287262",
+        "2ee45938",
+        "5c37d685",
+        "21cdd49b",
+        "741374a0",
+        "83868036",
+        "094e6e94",
+        "9bebb5b4",
+        "eda8735f",
+        "0ef1c197",
+        "cda46057",
+        "6b646bda",
+        "38a981d0",
+        "52e1ba18"
+      ],
+      "answers": {
+        "10691563": "D",
+        "83868036": "D",
+        "96437b86": "B",
+        "4756ade0": "C",
+        "563db219": "A",
+        "52e1ba18": "C",
+        "38a981d0": "A",
+        "6b646bda": "B",
+        "cda46057": "C",
+        "0ef1c197": "B",
+        "eda8735f": "B",
+        "9bebb5b4": "A",
+        "094e6e94": "C",
+        "741374a0": "B",
+        "5c37d685": "A",
+        "2ee45938": "C",
+        "da287262": "D",
+        "7d1c8a2b": "A",
+        "c6ec16fb": "B",
+        "aae79e3a": "A",
+        "57fb41c0": "D",
+        "b3c62fd2": "A",
+        "39343ca0": "C",
+        "c4bc50cd": "C",
+        "28fae87d": "C",
+        "5bac62e5": "A",
+        "21cdd49b": "C"
+      },
+      "module1Correct": null,
+      "module1Pct": null,
+      "routedHarder": true
+    },
     {
       "id": "1788772372772-x7mkl0",
       "completedAt": "2026-09-07T09:12:52.772Z",
@@ -1506,12 +1622,13 @@
   "testHistory": [],
   "rwOverrides": {
     "1787039900255-62g8qe": 26,
-    "1788772372772-x7mkl0": 26
+    "1788772372772-x7mkl0": 26,
+    "1788784690334-0s2j1l": 27
   },
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 17,
-      "total": 22,
+      "correct": 19,
+      "total": 24,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1550,15 +1667,19 @@
           "correct": true
         },
         {
-          "ts": 1788772372776,
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372776
+      "lastAttemptTs": 1788784690340
     },
     "Command of Evidence (Textual)": {
-      "correct": 21,
-      "total": 23,
+      "correct": 23,
+      "total": 25,
       "recent": [
         {
           "ts": 1787285305280,
@@ -1599,13 +1720,21 @@
         {
           "ts": 1788772372777,
           "correct": true
+        },
+        {
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     },
     "Words in Context": {
-      "correct": 20,
-      "total": 20,
+      "correct": 24,
+      "total": 24,
       "recent": [
         {
           "ts": 1787233756709,
@@ -1628,23 +1757,27 @@
           "correct": true
         },
         {
-          "ts": 1788772372775,
+          "ts": 1788784690338,
           "correct": true
         },
         {
-          "ts": 1788772372775,
+          "ts": 1788784690338,
           "correct": true
         },
         {
-          "ts": 1788772372775,
+          "ts": 1788784690339,
+          "correct": true
+        },
+        {
+          "ts": 1788784690339,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372775
+      "lastAttemptTs": 1788784690339
     },
     "Text Structure and Purpose": {
-      "correct": 11,
-      "total": 11,
+      "correct": 13,
+      "total": 13,
       "recent": [
         {
           "ts": 1787233756709,
@@ -1671,20 +1804,20 @@
           "correct": true
         },
         {
-          "ts": 1788772372776,
+          "ts": 1788784690339,
+          "correct": true
+        },
+        {
+          "ts": 1788784690339,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372776
+      "lastAttemptTs": 1788784690339
     },
     "Cross-Text Connections": {
-      "correct": 19,
-      "total": 28,
+      "correct": 20,
+      "total": 29,
       "recent": [
-        {
-          "ts": 1787321951936,
-          "correct": false
-        },
         {
           "ts": 1787321975031,
           "correct": false
@@ -1728,18 +1861,18 @@
         {
           "ts": 1788772372776,
           "correct": true
+        },
+        {
+          "ts": 1788784690339,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372776
+      "lastAttemptTs": 1788784690339
     },
     "Central Ideas and Details": {
-      "correct": 20,
-      "total": 22,
+      "correct": 23,
+      "total": 26,
       "recent": [
-        {
-          "ts": 1787244883838,
-          "correct": true
-        },
         {
           "ts": 1787245024395,
           "correct": true
@@ -1770,26 +1903,30 @@
         },
         {
           "ts": 1788772372776,
-          "correct": true
-        },
-        {
-          "ts": 1788772372776,
-          "correct": true
-        },
-        {
-          "ts": 1788772372776,
-          "correct": true
-        },
-        {
-          "ts": 1788772372776,
           "correct": false
+        },
+        {
+          "ts": 1788784690339,
+          "correct": true
+        },
+        {
+          "ts": 1788784690339,
+          "correct": false
+        },
+        {
+          "ts": 1788784690339,
+          "correct": true
+        },
+        {
+          "ts": 1788784690339,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372776
+      "lastAttemptTs": 1788784690340
     },
     "Inferences": {
-      "correct": 13,
-      "total": 13,
+      "correct": 15,
+      "total": 15,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1820,15 +1957,19 @@
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     },
     "Boundaries": {
-      "correct": 12,
-      "total": 12,
+      "correct": 14,
+      "total": 14,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1859,15 +2000,19 @@
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     },
     "Form, Structure, and Sense": {
-      "correct": 12,
-      "total": 12,
+      "correct": 14,
+      "total": 14,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1906,19 +2051,19 @@
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     },
     "Transitions": {
-      "correct": 20,
-      "total": 20,
+      "correct": 23,
+      "total": 23,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1945,15 +2090,23 @@
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     },
     "Rhetorical Synthesis": {
-      "correct": 13,
-      "total": 14,
+      "correct": 15,
+      "total": 17,
       "recent": [
         {
           "ts": 1787233756711,
@@ -1980,15 +2133,19 @@
           "correct": true
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
+          "correct": true
+        },
+        {
+          "ts": 1788784690340,
           "correct": false
         },
         {
-          "ts": 1788772372777,
+          "ts": 1788784690340,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1788772372777
+      "lastAttemptTs": 1788784690340
     }
   },
   "progressFocus": [
@@ -1998,6 +2155,10 @@
   ],
   "trendExcluded": [],
   "recentVisits": {
+    "10691563": {
+      "count": 1,
+      "lastTs": 1788784713484
+    },
     "64506024": {
       "count": 1,
       "lastTs": 1787240537464
@@ -2009,42 +2170,6 @@
     "a0120582": {
       "count": 5,
       "lastTs": 1788612898847
-    },
-    "d6623ffe": {
-      "count": 1,
-      "lastTs": 1787163089258
-    },
-    "d52ab835": {
-      "count": 1,
-      "lastTs": 1787240305196
-    },
-    "4bda3cab": {
-      "count": 1,
-      "lastTs": 1787240357539
-    },
-    "fc9fc0c1": {
-      "count": 1,
-      "lastTs": 1787240456447
-    },
-    "86cd2c78": {
-      "count": 1,
-      "lastTs": 1787240462047
-    },
-    "0b95e434": {
-      "count": 1,
-      "lastTs": 1787240467666
-    },
-    "925e4e31": {
-      "count": 1,
-      "lastTs": 1787240473874
-    },
-    "af117e6b": {
-      "count": 1,
-      "lastTs": 1787240481767
-    },
-    "865d6194": {
-      "count": 1,
-      "lastTs": 1787240484712
     },
     "778c959a": {
       "count": 1,
@@ -2237,6 +2362,38 @@
     "5219fa75": {
       "count": 1,
       "lastTs": 1788772574873
+    },
+    "38a981d0": {
+      "count": 1,
+      "lastTs": 1788784697950
+    },
+    "96437b86": {
+      "count": 1,
+      "lastTs": 1788784955658
+    },
+    "7d1c8a2b": {
+      "count": 1,
+      "lastTs": 1788784963941
+    },
+    "741374a0": {
+      "count": 1,
+      "lastTs": 1788784986639
+    },
+    "21cdd49b": {
+      "count": 1,
+      "lastTs": 1788784992244
+    },
+    "57fb41c0": {
+      "count": 2,
+      "lastTs": 1788785052110
+    },
+    "5bac62e5": {
+      "count": 1,
+      "lastTs": 1788785059039
+    },
+    "aae79e3a": {
+      "count": 1,
+      "lastTs": 1788785064938
     }
   }
 }
