@@ -106,10 +106,13 @@ scripts/
   build_github_pages.py        site/index.template.html + data + images -> site/pages/ (multi-file, for GitHub Pages)
   review_staged_questions.py   db/staging/proposed_questions.json -> db/categories/<category>.json, one-by-one approval
   staging_server.py            local HTTP server so tools/add_question.html works in any browser (not just Chrome/Edge)
+  manage_titles.py             CLI to add/remove leaderboard title badges in db/user_titles.json (list/set/remove/templates)
+  titles_server.py             local HTTP server so tools/manage_titles.html can edit db/user_titles.json from a form
   apps-script/Code.gs           Google Apps Script backend for kyj-cloud, the app's optional login/sync feature (deployed separately, not part of this build)
 
 tools/
   add_question.html            local form for staging a new hand-written question into db/staging/proposed_questions.json
+  manage_titles.html           local form for adding/removing leaderboard title badges (db/user_titles.json) — run via titles_server.py
 
 site/
   index.template.html          the web app (single file, vanilla JS, no build tooling)

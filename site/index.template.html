@@ -1610,7 +1610,14 @@
   .lb-you { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-ink); background: var(--accent-soft); border-radius: 99px; padding: 2px 7px; margin-left: 6px; font-weight: 700; }
   .lb-row.lb-me .lb-you { background: var(--paper-raised); }
   .lb-username { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--ink-faint); margin-left: 6px; }
-  .lb-title { display: block; font-style: italic; font-weight: 500; font-size: 11.5px; color: var(--ink-faint); white-space: normal; margin-top: 1px; }
+  .lb-badges { flex: none; display: flex; gap: 6px; flex-wrap: wrap; }
+  .lb-title-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: 99px; color: #fff;
+    font-size: 11.5px; font-weight: 700; white-space: nowrap; cursor: default;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .lb-title-badge:hover { filter: brightness(1.12); transform: translateY(-1px); }
   .lb-stat { flex: none; width: 84px; text-align: right; }
   .lb-n { display: block; font-family: var(--mono); font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .lb-l { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
@@ -7768,9 +7775,12 @@
     { id: 'official-crosstext-drill', name: 'Cross-Text Connections Drill', view: 'practice', official: true,
       desc: '8 cross-text connection questions.',
       count: 8, categories: ['Cross-Text'], skills: [], difficulties: [], statuses: [], shuffle: true },
+    // Test has no plain difficulty chips (see captureBlueprint's note) — its
+    // difficulty mix only comes from advancedDifficulty + weightConfig.
     { id: 'official-hard-mix-test', name: 'All-Hard Mixed Test', view: 'test', official: true,
       desc: 'A 20-question test pulling only Hard-difficulty questions across every section.',
-      count: 20, categories: [], skills: [], difficulties: ['Hard'], statuses: [], shuffle: true },
+      count: 20, categories: [], skills: [], difficulties: [], statuses: [], shuffle: true,
+      advancedDifficulty: true, weightConfig: { main: { preset: 'custom', custom: { Easy: 0, Medium: 0, Hard: 100 } } } },
   ];
 
   function loadBlueprints() {
@@ -7798,9 +7808,12 @@
       name, view,
       createdAt: new Date().toISOString(),
       count: st.count,
-      categories: [...st.categories],
-      skills: [...st.skills],
-      difficulties: [...st.difficulties],
+      // Test has no category/skill/difficulty chips of its own — that scope
+      // is expressed entirely through the blueprint distribution engine
+      // below — so only Practice's state actually has these Sets.
+      categories: st.categories ? [...st.categories] : [],
+      skills: st.skills ? [...st.skills] : [],
+      difficulties: st.difficulties ? [...st.difficulties] : [],
       statuses: [...st.statuses],
       advancedDistribution: st.advancedDistribution,
       showSkillMix: st.showSkillMix,
@@ -7820,9 +7833,10 @@
   function applyBlueprint(view, bp) {
     const st = view === 'test' ? testState : practiceState;
     st.count = bp.count || st.count;
-    st.categories = new Set(bp.categories || []);
-    st.skills = new Set(bp.skills || []);
-    st.difficulties = new Set(bp.difficulties || []);
+    // Only Practice has category/skill/difficulty chips — see captureBlueprint.
+    if (st.categories) st.categories = new Set(bp.categories || []);
+    if (st.skills) st.skills = new Set(bp.skills || []);
+    if (st.difficulties) st.difficulties = new Set(bp.difficulties || []);
     st.statuses = new Set(bp.statuses || []);
     st.advancedDistribution = !!bp.advancedDistribution;
     st.showSkillMix = !!bp.showSkillMix;
@@ -12310,19 +12324,31 @@
       </div>`;
   }
 
+  // Monkeytype-style badges: a solid-colored pill with an emoji, hovering
+  // shows why (the native title="" attribute — no tooltip library needed).
+  // Every badge comes from the server (Code.gs's handleLeaderboard_,
+  // reading db/user_titles.json) — hand-assigned, no computed condition.
+  // Mirrors Code.gs's LEADERBOARD_BADGES_ENABLED_ — flip both together.
+  const LB_BADGES_ENABLED = false;
+
+  function leaderboardBadgeHtml(badge) {
+    return `<span class="lb-title-badge" style="background:${escapeHtml(badge.color)};" title="${escapeHtml(badge.reason || '')}">${badge.emoji ? `<span aria-hidden="true">${badge.emoji}</span>` : ''}${escapeHtml(badge.text)}</span>`;
+  }
+
   function leaderboardRowHtml(row, isMe) {
     // Always show the @username alongside the display name — most profile
     // names default to "Student" and never get changed, so the name alone
-    // isn't enough to tell people apart. A title (db/user_titles.json, set
-    // by hand — purely cosmetic, not user-editable) shows underneath both
-    // when someone has one.
+    // isn't enough to tell people apart. Badges are a flex sibling of
+    // .lb-name rather than nested inside it, so a long name/username can
+    // still ellipsis without ever clipping a badge.
+    const badges = (row.badges || []).map(leaderboardBadgeHtml).join('');
     return `
       <div class="lb-row ${isMe ? 'lb-me' : ''}">
         <div class="lb-name">
           ${escapeHtml(row.name)}${isMe ? ' <span class="lb-you">you</span>' : ''}
           <span class="lb-username">@${escapeHtml(row.username)}</span>
-          ${row.title ? `<span class="lb-title">${escapeHtml(row.title)}</span>` : ''}
         </div>
+        ${badges ? `<div class="lb-badges">${badges}</div>` : ''}
         <div class="lb-stat"><span class="lb-n">${row.streak}</span><span class="lb-l">day streak</span></div>
         <div class="lb-stat"><span class="lb-n">${row.week}</span><span class="lb-l">this week</span></div>
         <div class="lb-stat"><span class="lb-n">${row.total}</span><span class="lb-l">total done</span></div>
@@ -12381,7 +12407,7 @@
       return {
         username: entry.username,
         name: entry.name || entry.username,
-        title: entry.title || null,
+        badges: LB_BADGES_ENABLED ? (entry.badges || []).slice() : [],
         streak: streaks.current,
         week: weeklyCompletionCount(counts),
         total: entry.totalDone || 0,

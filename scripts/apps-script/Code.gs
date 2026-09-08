@@ -274,10 +274,45 @@ function handleLoad_(body) {
 // completed *after* that log was introduced, so it undercounts anyone with
 // older progress; `progress` is the source of truth the app itself uses for
 // "questions done" (see computeGamificationStats's totalDone client-side).
+// db/user_titles.json is a registry of titles, not a per-user map — each
+// title is keyed by a slug id and lists every username it's assigned to,
+// so one title (e.g. "Grinder") can cover any number of people and
+// editing its emoji/color/reason once updates everyone who has it:
+//   { "grinder": { "text": "Grinder", "emoji": "🔥", "color": "#dc2626",
+//                  "reason": "...", "users": ["hamin", "kyjv9981"] } }
+// Managed via scripts/manage_titles.py or tools/manage_titles.html
+// (scripts/titles_server.py).
 function loadUserTitles_(cfg) {
   var file = githubGetFile_(cfg, userTitlesPath_());
   if (!file.exists) return {};
   try { return JSON.parse(file.content) || {}; } catch (e) { return {}; }
+}
+
+// A badge is {type, text, emoji, color, reason} — emoji + solid color pill,
+// reason shown on hover (see .lb-title-badge / leaderboardBadgeHtml_ client
+// side). Every badge right now comes from db/user_titles.json (type
+// 'custom') — hand-assigned, no computed condition.
+// Kill switch: badges are built but not shown yet — flip to true when
+// ready to launch them. entries still get a `badges: []` either way, so
+// nothing on the client needs to change when this flips.
+var LEADERBOARD_BADGES_ENABLED_ = false;
+
+function badgesForUser_(titles, username) {
+  var lower = username.toLowerCase();
+  var badges = [];
+  Object.keys(titles).forEach(function (id) {
+    var t = titles[id] || {};
+    var users = (t.users || []).map(function (u) { return String(u).toLowerCase(); });
+    if (users.indexOf(lower) === -1) return;
+    badges.push({
+      type: 'custom',
+      text: String(t.text || id),
+      emoji: t.emoji || '⭐',
+      color: t.color || '#1f5f56',
+      reason: t.reason || 'Custom title, set by the site owner',
+    });
+  });
+  return badges;
 }
 
 function handleLeaderboard_(body) {
@@ -287,6 +322,7 @@ function handleLeaderboard_(body) {
 
   var titles = loadUserTitles_(cfg);
   var users = loadUsers_(cfg).users;
+
   var entries = [];
   Object.keys(users).forEach(function (key) {
     var rec = users[key];
@@ -296,10 +332,11 @@ function handleLeaderboard_(body) {
     try { data = JSON.parse(file.content); } catch (e) { return; }
     var progress = data.progress || {};
     var totalDone = Object.keys(progress).filter(function (qid) { return progress[qid] === 'done'; }).length;
+
     entries.push({
       username: rec.username,
       name: (data.profile && data.profile.name) || rec.username,
-      title: titles[rec.username] || titles[rec.username.toLowerCase()] || null,
+      badges: LEADERBOARD_BADGES_ENABLED_ ? badgesForUser_(titles, rec.username) : [],
       completionLog: data.completionLog || {},
       dailyGoal: data.dailyGoal || 10,
       mockCount: (data.mockHistory || []).length,

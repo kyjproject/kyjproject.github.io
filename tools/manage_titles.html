@@ -1,0 +1,427 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Manage Titles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --warn: #dcab5c;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--rule); background: var(--paper-raised); flex-wrap: wrap; }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  #status { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #status.ok { color: var(--done); }
+  #status.err { color: var(--bad); }
+  main { max-width: 820px; margin: 0 auto; padding: 20px; }
+
+  .card { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+  .card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 12px; }
+  .card p.note { font-size: 12.5px; color: var(--ink-faint); margin: -6px 0 14px; }
+
+  label { display: block; font-size: 12.5px; color: var(--ink-soft); margin: 12px 0 4px; }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], textarea { width: 100%; font: inherit; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; }
+  input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; font-family: var(--sans); min-height: 52px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .row3 { grid-template-columns: 1fr; } }
+  .hint { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+  .colorRow { display: flex; align-items: center; gap: 8px; }
+  input[type="color"] { width: 40px; height: 34px; padding: 2px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; cursor: pointer; }
+  .colorRow input[type="text"] { font-family: var(--mono); }
+
+  .presetRow { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .preset { appearance: none; font: inherit; font-size: 12px; cursor: pointer; background: var(--paper); color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 99px; padding: 5px 11px; }
+  .preset:hover { border-color: var(--accent); color: var(--ink); }
+
+  .btn { appearance: none; font: inherit; font-weight: 600; font-size: 13px; background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  .btn-sm { padding: 5px 10px; font-size: 12px; }
+  .actions { display: flex; gap: 8px; margin-top: 16px; }
+
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 99px; color: #fff; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+  .previewRow { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+  .previewRow .label { font-size: 12px; color: var(--ink-faint); }
+
+  /* Chip-style user tag input, added to shared with an existing title */
+  .chipInput { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; background: var(--paper); }
+  .chipInput input { flex: 1 1 90px; min-width: 90px; border: none; background: none; color: var(--ink); font: inherit; padding: 3px; }
+  .chipInput input:focus { outline: none; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; background: var(--accent-soft); color: var(--accent-ink); border-radius: 99px; padding: 3px 6px 3px 10px; font-size: 12.5px; }
+  .chip button { appearance: none; border: none; background: none; color: var(--accent-ink); cursor: pointer; font-size: 13px; line-height: 1; padding: 2px; opacity: 0.75; }
+  .chip button:hover { opacity: 1; }
+
+  .titleCard { border: 1px solid var(--rule); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+  .titleCard:last-child { margin-bottom: 0; }
+  .titleCardHead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .titleId { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); }
+  .titleCardHead .spacer { flex: 1; }
+  .titleReason { font-size: 12px; color: var(--ink-faint); margin-top: 8px; }
+  .titleUsers { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .userChip { display: inline-flex; align-items: center; gap: 5px; background: var(--rule-soft); color: var(--ink-soft); border-radius: 99px; padding: 3px 6px 3px 10px; font-size: 12.5px; }
+  .userChip button { appearance: none; border: none; background: none; color: var(--bad); cursor: pointer; font-size: 13px; line-height: 1; padding: 2px; }
+  .addUserRow { display: flex; gap: 6px; margin-top: 10px; }
+  .addUserRow input { flex: 1; }
+  .empty { color: var(--ink-faint); font-size: 13px; padding: 4px 0; }
+</style>
+
+<header>
+  <h1>Manage Titles</h1>
+  <span id="status"></span>
+</header>
+
+<main>
+  <div class="card">
+    <h3>Titles</h3>
+    <p class="note">
+      Each title is its own badge — edit its emoji/color/reason once and it updates for every user assigned to
+      it. Assign the same title to as many users as you want, or none yet. Badges are currently
+      <strong>disabled</strong> on the live site (LEADERBOARD_BADGES_ENABLED_ / LB_BADGES_ENABLED are both off)
+      regardless of what's saved here.
+    </p>
+    <div id="titlesList"></div>
+    <div id="emptyMsg" class="empty" style="display:none;">No titles defined yet — create one below.</div>
+  </div>
+
+  <div class="card">
+    <h3 id="formHeading">New title</h3>
+    <label for="titleId">Title id (slug — lowercase letters/digits/-/_ only)</label>
+    <input type="text" id="titleId" placeholder="e.g. grinder" autocomplete="off" />
+
+    <label for="text">Badge text</label>
+    <input type="text" id="text" placeholder="e.g. Grinder" autocomplete="off" />
+
+    <label>Quick presets</label>
+    <div class="presetRow" id="presetRow"></div>
+
+    <div class="row3">
+      <div>
+        <label for="emoji">Emoji</label>
+        <input type="text" id="emoji" placeholder="⭐" maxlength="4" autocomplete="off" />
+      </div>
+      <div>
+        <label for="colorText">Color</label>
+        <div class="colorRow">
+          <input type="color" id="colorPicker" value="#1f5f56" />
+          <input type="text" id="colorText" value="#1f5f56" autocomplete="off" />
+        </div>
+      </div>
+      <div></div>
+    </div>
+
+    <label for="reason">Reason (shown on hover)</label>
+    <textarea id="reason" placeholder="Custom title, set by the site owner"></textarea>
+    <div class="hint">Leave blank to use the default reason text.</div>
+
+    <label>Users</label>
+    <div class="chipInput" id="userChipInput">
+      <input type="text" id="userInput" placeholder="type a username, press Enter" autocomplete="off" />
+    </div>
+    <div class="hint">Press Enter or comma after each username to add it as a chip. Can be empty for now.</div>
+
+    <div class="previewRow">
+      <span class="label">Preview:</span>
+      <span class="badge" id="previewBadge" style="background:#1f5f56;">⭐ Badge preview</span>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-accent" id="saveBtn">Save title</button>
+      <button type="button" class="btn" id="clearBtn">Clear form</button>
+    </div>
+  </div>
+</main>
+
+<script>
+const DEFAULT_EMOJI = '⭐';
+const DEFAULT_COLOR = '#1f5f56';
+const DEFAULT_REASON = 'Custom title, set by the site owner';
+const ID_RE = /^[a-z0-9_-]{1,40}$/;
+
+// Mirrors PRESETS in scripts/manage_titles.py — keep the two in sync.
+const PRESETS = {
+  sports:    { emoji: '🏀', color: '#16a34a' },
+  gamer:     { emoji: '🎮', color: '#7c3aed' },
+  grinder:   { emoji: '🔥', color: '#dc2626' },
+  night_owl: { emoji: '🦉', color: '#4338ca' },
+  wordsmith: { emoji: '📚', color: '#0f766e' },
+  math_wiz:  { emoji: '🧮', color: '#1d4ed8' },
+  chaotic:   { emoji: '🎲', color: '#db2777' },
+  goofy:     { emoji: '🤡', color: '#ea580c' },
+};
+
+let titles = {};       // { titleId: {text, emoji, color, reason, users: []} }
+let formUsers = [];    // chips currently in the add/edit form
+let editingId = null;  // titleId being edited, or null for "new title"
+
+const $ = id => document.getElementById(id);
+const statusEl = $('status');
+
+function setStatus(text, kind) {
+  statusEl.textContent = text;
+  statusEl.className = kind || '';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function normalize(t) {
+  return {
+    text: t.text || '',
+    emoji: t.emoji || DEFAULT_EMOJI,
+    color: t.color || DEFAULT_COLOR,
+    reason: t.reason || DEFAULT_REASON,
+    users: Array.isArray(t.users) ? t.users : [],
+  };
+}
+
+function renderPresets() {
+  const row = $('presetRow');
+  row.innerHTML = Object.entries(PRESETS).map(([name, p]) =>
+    `<button type="button" class="preset" data-preset="${name}">${p.emoji} ${name}</button>`
+  ).join('');
+  row.querySelectorAll('.preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = PRESETS[btn.dataset.preset];
+      $('emoji').value = p.emoji;
+      $('colorPicker').value = p.color;
+      $('colorText').value = p.color;
+      updatePreview();
+    });
+  });
+}
+
+// ---------- chip input (form) ----------
+function renderFormChips() {
+  const box = $('userChipInput');
+  const input = $('userInput');
+  box.querySelectorAll('.chip').forEach(el => el.remove());
+  formUsers.forEach((u, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.innerHTML = `${escapeHtml(u)} <button type="button" data-i="${i}">&times;</button>`;
+    chip.querySelector('button').addEventListener('click', () => {
+      formUsers.splice(i, 1);
+      renderFormChips();
+    });
+    box.insertBefore(chip, input);
+  });
+}
+
+function addFormUser(raw) {
+  const u = raw.trim();
+  if (!u || formUsers.includes(u)) return;
+  formUsers.push(u);
+  renderFormChips();
+}
+
+$('userInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    addFormUser($('userInput').value.replace(/,$/, ''));
+    $('userInput').value = '';
+  } else if (e.key === 'Backspace' && !$('userInput').value && formUsers.length) {
+    formUsers.pop();
+    renderFormChips();
+  }
+});
+$('userInput').addEventListener('blur', () => {
+  if ($('userInput').value.trim()) { addFormUser($('userInput').value); $('userInput').value = ''; }
+});
+
+// ---------- list of existing titles ----------
+function renderList() {
+  const list = $('titlesList');
+  const ids = Object.keys(titles).sort();
+  $('emptyMsg').style.display = ids.length ? 'none' : 'block';
+  list.innerHTML = ids.map(id => {
+    const t = normalize(titles[id]);
+    const usersHtml = t.users.length
+      ? t.users.map(u => `<span class="userChip">${escapeHtml(u)} <button type="button" data-remove-user="${escapeHtml(u)}" data-title="${escapeHtml(id)}">&times;</button></span>`).join('')
+      : `<span class="empty">no users assigned</span>`;
+    return `
+      <div class="titleCard" data-title-id="${escapeHtml(id)}">
+        <div class="titleCardHead">
+          <span class="badge" style="background:${escapeHtml(t.color)};">${t.emoji ? escapeHtml(t.emoji) + ' ' : ''}${escapeHtml(t.text)}</span>
+          <span class="titleId">${escapeHtml(id)}</span>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-sm" data-edit="${escapeHtml(id)}">Edit</button>
+          <button type="button" class="btn btn-sm" data-delete="${escapeHtml(id)}">Delete</button>
+        </div>
+        <div class="titleReason">${escapeHtml(t.reason)}</div>
+        <div class="titleUsers">${usersHtml}</div>
+        <div class="addUserRow">
+          <input type="text" placeholder="add a username…" data-add-user-for="${escapeHtml(id)}" autocomplete="off" />
+          <button type="button" class="btn btn-sm" data-add-user-btn="${escapeHtml(id)}">Add</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  list.querySelectorAll('[data-edit]').forEach(btn => btn.addEventListener('click', () => loadIntoForm(btn.dataset.edit)));
+  list.querySelectorAll('[data-delete]').forEach(btn => btn.addEventListener('click', () => deleteTitle(btn.dataset.delete)));
+  list.querySelectorAll('[data-remove-user]').forEach(btn => btn.addEventListener('click', () =>
+    removeUserFromTitle(btn.dataset.title, btn.dataset.removeUser)));
+  list.querySelectorAll('[data-add-user-btn]').forEach(btn => {
+    const id = btn.dataset.addUserBtn;
+    const input = list.querySelector(`[data-add-user-for="${CSS.escape(id)}"]`);
+    const submit = () => { if (input.value.trim()) { addUserToTitle(id, input.value.trim()); input.value = ''; } };
+    btn.addEventListener('click', submit);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+  });
+}
+
+// ---------- form ----------
+function loadIntoForm(id) {
+  const t = normalize(titles[id]);
+  editingId = id;
+  $('formHeading').textContent = `Edit "${id}"`;
+  $('titleId').value = id;
+  $('titleId').disabled = true;
+  $('text').value = t.text;
+  $('emoji').value = t.emoji;
+  $('colorPicker').value = t.color;
+  $('colorText').value = t.color;
+  $('reason').value = t.reason === DEFAULT_REASON ? '' : t.reason;
+  formUsers = t.users.slice();
+  renderFormChips();
+  updatePreview();
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+function updatePreview() {
+  const emoji = $('emoji').value.trim() || DEFAULT_EMOJI;
+  const color = $('colorText').value.trim() || DEFAULT_COLOR;
+  const text = $('text').value.trim() || 'Badge preview';
+  const preview = $('previewBadge');
+  preview.style.background = /^#[0-9a-fA-F]{6}$/.test(color) ? color : DEFAULT_COLOR;
+  preview.textContent = `${emoji} ${text}`;
+}
+
+function clearForm() {
+  editingId = null;
+  $('formHeading').textContent = 'New title';
+  $('titleId').value = '';
+  $('titleId').disabled = false;
+  $('text').value = '';
+  $('emoji').value = '';
+  $('colorPicker').value = DEFAULT_COLOR;
+  $('colorText').value = DEFAULT_COLOR;
+  $('reason').value = '';
+  formUsers = [];
+  renderFormChips();
+  updatePreview();
+}
+
+// ---------- server calls ----------
+async function refresh() {
+  setStatus('Loading…');
+  try {
+    const res = await fetch('/api/titles');
+    const json = await res.json();
+    if (!json.ok) throw new Error(json.error || 'Failed to load');
+    titles = json.titles || {};
+    renderList();
+    setStatus('Loaded', 'ok');
+  } catch (err) {
+    setStatus('Failed to load: ' + err.message, 'err');
+  }
+}
+
+async function saveAll(successMsg) {
+  setStatus('Saving…');
+  try {
+    const res = await fetch('/api/titles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ titles }),
+    });
+    const json = await res.json();
+    if (!json.ok) throw new Error(json.error || 'Save failed');
+    renderList();
+    setStatus(successMsg, 'ok');
+  } catch (err) {
+    setStatus('Save failed: ' + err.message, 'err');
+  }
+}
+
+function deleteTitle(id) {
+  if (!confirm(`Delete title "${id}"? This unassigns it from everyone who has it.`)) return;
+  delete titles[id];
+  saveAll(`Deleted "${id}"`);
+}
+
+function addUserToTitle(id, username) {
+  const t = titles[id];
+  t.users = t.users || [];
+  if (t.users.includes(username)) { setStatus(`${username} already has "${id}"`, 'err'); return; }
+  t.users.push(username);
+  saveAll(`Added ${username} to "${id}"`);
+}
+
+function removeUserFromTitle(id, username) {
+  const t = titles[id];
+  t.users = (t.users || []).filter(u => u !== username);
+  saveAll(`Removed ${username} from "${id}"`);
+}
+
+function saveForm() {
+  const id = $('titleId').value.trim();
+  const text = $('text').value.trim();
+  if (!editingId && !ID_RE.test(id)) {
+    setStatus('Title id must be lowercase letters/digits/-/_ only', 'err');
+    return;
+  }
+  if (!text) {
+    setStatus('Badge text is required', 'err');
+    return;
+  }
+  const color = $('colorText').value.trim() || DEFAULT_COLOR;
+  if (!/^#[0-9a-fA-F]{6}$/.test(color)) {
+    setStatus('Color must be a 6-digit hex, e.g. #16a34a', 'err');
+    return;
+  }
+  if ($('userInput').value.trim()) addFormUser($('userInput').value);
+
+  titles[id] = {
+    text,
+    emoji: $('emoji').value.trim() || DEFAULT_EMOJI,
+    color,
+    reason: $('reason').value.trim() || DEFAULT_REASON,
+    users: formUsers.slice(),
+  };
+  saveAll(`Saved "${id}"`);
+  clearForm();
+}
+
+$('colorPicker').addEventListener('input', () => { $('colorText').value = $('colorPicker').value; updatePreview(); });
+$('colorText').addEventListener('input', () => {
+  if (/^#[0-9a-fA-F]{6}$/.test($('colorText').value.trim())) $('colorPicker').value = $('colorText').value.trim();
+  updatePreview();
+});
+$('emoji').addEventListener('input', updatePreview);
+$('text').addEventListener('input', updatePreview);
+$('saveBtn').addEventListener('click', saveForm);
+$('clearBtn').addEventListener('click', clearForm);
+
+renderPresets();
+clearForm();
+refresh();
+</script>
