@@ -3663,10 +3663,36 @@
     Object.assign(synced, flushed);
     saveDifficultyVotesMap(RATED_DIFFICULTY_SYNCED_KEY, synced);
   }
+  // A vote you've cast but haven't yet flushed with "Save progress now" only
+  // exists in RATED_DIFFICULTY_VOTES_KEY — the server (and so
+  // ratedDifficultyCache, which is wholesale-replaced by every
+  // refreshRatedDifficultyCache() call) has never seen it. The "Rate it"
+  // toggle reads your vote straight from local storage so it always looks
+  // right, but the average badge and the Browse rated-difficulty filter both
+  // read only ratedDifficultyCache — so on reload, before the next manual
+  // save, they'd silently revert to server truth and the vote would look
+  // lost/unfiltered even though it's still saved locally. Re-merge pending
+  // (unsynced) votes back into the cache every time it's (re)populated, the
+  // same optimistic '__you__' placeholder castDifficultyVote already uses for
+  // the vote just cast in the current session.
+  function applyPendingDifficultyVotes() {
+    const pending = pendingDifficultyVotes();
+    Object.keys(pending).forEach(qid => {
+      const rating = pending[qid];
+      if (!rating) { // 0 = explicitly un-voted, not "never voted"
+        if (ratedDifficultyCache[qid] && ratedDifficultyCache[qid].votes) delete ratedDifficultyCache[qid].votes['__you__'];
+        return;
+      }
+      if (!ratedDifficultyCache[qid]) ratedDifficultyCache[qid] = { votes: {}, officialRating: null, status: 'unrated' };
+      if (!ratedDifficultyCache[qid].votes) ratedDifficultyCache[qid].votes = {};
+      ratedDifficultyCache[qid].votes['__you__'] = rating;
+    });
+  }
 
   // In-memory cache of db/ratings/aggregate.json, refreshed on load and after
   // every successful cloud save — { qid: { votes, officialRating, status } }.
   let ratedDifficultyCache = {};
+  applyPendingDifficultyVotes(); // seed with locally-unsynced votes before the first server fetch resolves
   async function refreshRatedDifficultyCache() {
     try {
       const json = await cloudSaveRequest('get_ratings', {});
@@ -3674,6 +3700,7 @@
     } catch (e) {
       // offline/unreachable — keep whatever was cached before
     }
+    applyPendingDifficultyVotes();
   }
   function ratedTierLabel(n) {
     return RATED_TIER_NAMES[Math.max(0, Math.min(10, Math.round(n)))] || 'Unrated';
@@ -3727,21 +3754,32 @@
       ${eyes}${mouth}
     </svg>`;
   }
-  const RATED_TIER_ICONS = [
-    ratedFaceSvg('#c7cbd1', '#8a8f98', { mouth: 'flat', eyeStyle: 'none' }),                                       // 0 Unrated
-    ratedFaceSvg('#86efac', '#16a34a', { mouth: 'grin' }),                                                        // 1 Easy
-    ratedFaceSvg('#7dd3fc', '#0284c7', { mouth: 'grin' }),                                                        // 2 Normal
-    ratedFaceSvg('#fcd34d', '#d97706', { mouth: 'flat' }),                                                        // 3 Hard
-    ratedFaceSvg('#fb923c', '#c2410c', { mouth: 'flat', eyeStyle: 'angry' }),                                     // 4 Harder
-    ratedFaceSvg('#f87171', '#7f1d1d', { mouth: 'frown', eyeStyle: 'angry' }),                                    // 5 Insane
-    ratedFaceSvg('#c084fc', '#7e22ce', { mouth: 'teeth', eyeStyle: 'demon', iris: '#38bdf8', horns: true }),      // 6 Easy Demon
-    ratedFaceSvg('#f472b6', '#be185d', { mouth: 'teeth', eyeStyle: 'demon', iris: '#4ade80', horns: true }),      // 7 Medium Demon
-    ratedFaceSvg('#a78bfa', '#5b21b6', { mouth: 'teeth', eyeStyle: 'demon', iris: '#2dd4bf', horns: true }),      // 8 Hard Demon
-    ratedFaceSvg('#ef4444', '#991b1b', { mouth: 'teeth', eyeStyle: 'demon', iris: '#facc15', horns: true }),      // 9 Insane Demon
-    ratedFaceSvg('#7f1d1d', '#1a0505', { mouth: 'teeth', eyeStyle: 'demon', iris: '#f97316', horns: true }),      // 10 Extreme Demon
+  // Config per tier (not pre-rendered SVG — see ratedTierIcon below for why).
+  const RATED_TIER_CONFIG = [
+    ['#c7cbd1', '#8a8f98', { mouth: 'flat', eyeStyle: 'none' }],                                       // 0 Unrated
+    ['#86efac', '#16a34a', { mouth: 'grin' }],                                                        // 1 Easy
+    ['#7dd3fc', '#0284c7', { mouth: 'grin' }],                                                        // 2 Normal
+    ['#fcd34d', '#d97706', { mouth: 'flat' }],                                                        // 3 Hard
+    ['#fb923c', '#c2410c', { mouth: 'flat', eyeStyle: 'angry' }],                                     // 4 Harder
+    ['#f87171', '#7f1d1d', { mouth: 'frown', eyeStyle: 'angry' }],                                    // 5 Insane
+    ['#c084fc', '#7e22ce', { mouth: 'teeth', eyeStyle: 'demon', iris: '#38bdf8', horns: true }],      // 6 Easy Demon
+    ['#f472b6', '#be185d', { mouth: 'teeth', eyeStyle: 'demon', iris: '#4ade80', horns: true }],      // 7 Medium Demon
+    ['#a78bfa', '#5b21b6', { mouth: 'teeth', eyeStyle: 'demon', iris: '#2dd4bf', horns: true }],      // 8 Hard Demon
+    ['#ef4444', '#991b1b', { mouth: 'teeth', eyeStyle: 'demon', iris: '#facc15', horns: true }],      // 9 Insane Demon
+    ['#7f1d1d', '#1a0505', { mouth: 'teeth', eyeStyle: 'demon', iris: '#f97316', horns: true }],      // 10 Extreme Demon
   ];
+  // Builds a fresh SVG (with a fresh gradient id, via ratedIconGradSeq) on
+  // every call instead of reusing one pre-rendered string — the same tier's
+  // icon can appear many times at once on screen (e.g. a whole page of
+  // "Not yet rated" cards), and a shared literal SVG string means every one
+  // of those copies carries the exact same <linearGradient id="...">. With
+  // duplicate ids in the DOM, an innerHTML-based re-render that removes one
+  // copy's <defs> can leave another copy's `fill="url(#id)"` pointing at
+  // nothing, which paints solid black instead of the intended gradient —
+  // the "barely visible" icons this was reported as.
   function ratedTierIcon(n) {
-    return RATED_TIER_ICONS[Math.max(0, Math.min(10, Math.round(n)))] || RATED_TIER_ICONS[0];
+    const tier = RATED_TIER_CONFIG[Math.max(0, Math.min(10, Math.round(n)))] || RATED_TIER_CONFIG[0];
+    return ratedFaceSvg(tier[0], tier[1], tier[2]);
   }
 
   // Which questions currently have their 1-10 picker open (in-memory —
@@ -4406,6 +4444,28 @@
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
     reports: loadReports(), // [{ qid, shortId, reason, note, at, synced }, ...] — flagged question issues, sent on next cloud save
   };
+
+  // Test's own per-attempt history — same best-effort localStorage pattern as
+  // Mock below, deliberately its own key: clearing Test history never touches
+  // state.progress (the per-question complete/review marks) or the skill-stat
+  // counters already banked by recordTestSkillStats when the attempt was submitted.
+  // Declared here (ahead of testState below) since testState.history calls
+  // loadTestHistory() at construction time — declaring it after testState would
+  // throw a temporal-dead-zone ReferenceError, silently swallowed by the
+  // try/catch below, leaving history stuck at [] on every reload.
+  const TEST_HISTORY_KEY = 'sat_qbank_test_history_v1';
+  const TEST_HISTORY_LIMIT = 50;
+
+  function loadTestHistory() {
+    try {
+      const raw = localStorage.getItem(TEST_HISTORY_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
+  }
 
   const testState = {
     phase: 'config', // config | quiz | results | historyResults
@@ -5345,6 +5405,12 @@
     state.modalIndex = null;
     state.modalNoProgress = false;
     renderQuestionModal();
+    // Status/rating/mark-for-review edits made inside the modal mutate shared
+    // state directly, not through whichever view opened it (Test/Mock
+    // results, Browse, Math Browse, a command-palette jump-to-question, ...)
+    // — without this, that view's already-rendered HTML stays stale behind
+    // the modal until something unrelated forces a re-render.
+    refreshAllQuestionCardViews();
   }
 
   // ---------- Recently/frequently visited questions ----------
@@ -6046,7 +6112,10 @@
       // Focusing this one directly (not via .click()) so preventScroll can
       // just be passed straight through — no need for the record/restore
       // dance above.
-      if (input) input.focus({ preventScroll: true });
+      if (input) {
+        e.preventDefault(); // otherwise the same keystroke that focuses the input also gets typed into it
+        input.focus({ preventScroll: true });
+      }
     }
   });
 
@@ -8236,7 +8305,7 @@
       const yours = data.answers[q.id];
       const isCorrect = yours === q.correct_answer;
       return `
-        <div class="review-item">
+        <div class="review-item clickable" id="test-review-${q.id}" data-id="${q.id}">
           <div class="row1">
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
             ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
@@ -8419,6 +8488,10 @@
       wireQNav(shell, testState, testState.questions, renderTest);
     } else {
       // results or historyResults — same wiring, just a different data source
+      const isHistory = testState.phase === 'historyResults';
+      const data = isHistory
+        ? resolveTestAttempt(testState.history.find(a => a.id === testState.viewingAttemptId) || { questionIds: [], answers: {} })
+        : testState;
       const retakeBtn = document.getElementById('retakeBtn');
       if (retakeBtn) retakeBtn.addEventListener('click', () => {
         qtimerClear(testState);
@@ -8427,6 +8500,16 @@
         renderTest();
       });
       wireStatusButtons(shell, renderTest);
+      // Click a Review card to open it in the same modal Browse/Mock use —
+      // Prev/Next pages through this test's questions in order.
+      const reviewModalList = data.questions;
+      shell.querySelectorAll('.review-item[data-id]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          if (e.target.closest('[data-status-qid]')) return; // let mark-complete/review/incomplete through untouched
+          const idx = reviewModalList.findIndex(q => q.id === el.dataset.id);
+          if (idx !== -1) openQuestionModal(reviewModalList, idx);
+        });
+      });
     }
   }
 
@@ -9796,24 +9879,8 @@
     }
   }
 
-  // Test's own per-attempt history — same best-effort localStorage pattern as
-  // Mock above, deliberately its own key: clearing Test history never touches
-  // state.progress (the per-question complete/review marks) or the skill-stat
-  // counters already banked by recordTestSkillStats when the attempt was submitted.
-  const TEST_HISTORY_KEY = 'sat_qbank_test_history_v1';
-  const TEST_HISTORY_LIMIT = 50;
-
-  function loadTestHistory() {
-    try {
-      const raw = localStorage.getItem(TEST_HISTORY_KEY);
-      if (!raw) return [];
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (e) {
-      return [];
-    }
-  }
-
+  // TEST_HISTORY_KEY/TEST_HISTORY_LIMIT/loadTestHistory now live above,
+  // near testState (which calls loadTestHistory() at construction time).
   function saveTestHistory() {
     try {
       localStorage.setItem(TEST_HISTORY_KEY, JSON.stringify(testState.history));

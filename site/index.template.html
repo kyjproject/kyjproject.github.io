@@ -3662,10 +3662,36 @@
     Object.assign(synced, flushed);
     saveDifficultyVotesMap(RATED_DIFFICULTY_SYNCED_KEY, synced);
   }
+  // A vote you've cast but haven't yet flushed with "Save progress now" only
+  // exists in RATED_DIFFICULTY_VOTES_KEY — the server (and so
+  // ratedDifficultyCache, which is wholesale-replaced by every
+  // refreshRatedDifficultyCache() call) has never seen it. The "Rate it"
+  // toggle reads your vote straight from local storage so it always looks
+  // right, but the average badge and the Browse rated-difficulty filter both
+  // read only ratedDifficultyCache — so on reload, before the next manual
+  // save, they'd silently revert to server truth and the vote would look
+  // lost/unfiltered even though it's still saved locally. Re-merge pending
+  // (unsynced) votes back into the cache every time it's (re)populated, the
+  // same optimistic '__you__' placeholder castDifficultyVote already uses for
+  // the vote just cast in the current session.
+  function applyPendingDifficultyVotes() {
+    const pending = pendingDifficultyVotes();
+    Object.keys(pending).forEach(qid => {
+      const rating = pending[qid];
+      if (!rating) { // 0 = explicitly un-voted, not "never voted"
+        if (ratedDifficultyCache[qid] && ratedDifficultyCache[qid].votes) delete ratedDifficultyCache[qid].votes['__you__'];
+        return;
+      }
+      if (!ratedDifficultyCache[qid]) ratedDifficultyCache[qid] = { votes: {}, officialRating: null, status: 'unrated' };
+      if (!ratedDifficultyCache[qid].votes) ratedDifficultyCache[qid].votes = {};
+      ratedDifficultyCache[qid].votes['__you__'] = rating;
+    });
+  }
 
   // In-memory cache of db/ratings/aggregate.json, refreshed on load and after
   // every successful cloud save — { qid: { votes, officialRating, status } }.
   let ratedDifficultyCache = {};
+  applyPendingDifficultyVotes(); // seed with locally-unsynced votes before the first server fetch resolves
   async function refreshRatedDifficultyCache() {
     try {
       const json = await cloudSaveRequest('get_ratings', {});
@@ -3673,6 +3699,7 @@
     } catch (e) {
       // offline/unreachable — keep whatever was cached before
     }
+    applyPendingDifficultyVotes();
   }
   function ratedTierLabel(n) {
     return RATED_TIER_NAMES[Math.max(0, Math.min(10, Math.round(n)))] || 'Unrated';
@@ -3726,21 +3753,32 @@
       ${eyes}${mouth}
     </svg>`;
   }
-  const RATED_TIER_ICONS = [
-    ratedFaceSvg('#c7cbd1', '#8a8f98', { mouth: 'flat', eyeStyle: 'none' }),                                       // 0 Unrated
-    ratedFaceSvg('#86efac', '#16a34a', { mouth: 'grin' }),                                                        // 1 Easy
-    ratedFaceSvg('#7dd3fc', '#0284c7', { mouth: 'grin' }),                                                        // 2 Normal
-    ratedFaceSvg('#fcd34d', '#d97706', { mouth: 'flat' }),                                                        // 3 Hard
-    ratedFaceSvg('#fb923c', '#c2410c', { mouth: 'flat', eyeStyle: 'angry' }),                                     // 4 Harder
-    ratedFaceSvg('#f87171', '#7f1d1d', { mouth: 'frown', eyeStyle: 'angry' }),                                    // 5 Insane
-    ratedFaceSvg('#c084fc', '#7e22ce', { mouth: 'teeth', eyeStyle: 'demon', iris: '#38bdf8', horns: true }),      // 6 Easy Demon
-    ratedFaceSvg('#f472b6', '#be185d', { mouth: 'teeth', eyeStyle: 'demon', iris: '#4ade80', horns: true }),      // 7 Medium Demon
-    ratedFaceSvg('#a78bfa', '#5b21b6', { mouth: 'teeth', eyeStyle: 'demon', iris: '#2dd4bf', horns: true }),      // 8 Hard Demon
-    ratedFaceSvg('#ef4444', '#991b1b', { mouth: 'teeth', eyeStyle: 'demon', iris: '#facc15', horns: true }),      // 9 Insane Demon
-    ratedFaceSvg('#7f1d1d', '#1a0505', { mouth: 'teeth', eyeStyle: 'demon', iris: '#f97316', horns: true }),      // 10 Extreme Demon
+  // Config per tier (not pre-rendered SVG — see ratedTierIcon below for why).
+  const RATED_TIER_CONFIG = [
+    ['#c7cbd1', '#8a8f98', { mouth: 'flat', eyeStyle: 'none' }],                                       // 0 Unrated
+    ['#86efac', '#16a34a', { mouth: 'grin' }],                                                        // 1 Easy
+    ['#7dd3fc', '#0284c7', { mouth: 'grin' }],                                                        // 2 Normal
+    ['#fcd34d', '#d97706', { mouth: 'flat' }],                                                        // 3 Hard
+    ['#fb923c', '#c2410c', { mouth: 'flat', eyeStyle: 'angry' }],                                     // 4 Harder
+    ['#f87171', '#7f1d1d', { mouth: 'frown', eyeStyle: 'angry' }],                                    // 5 Insane
+    ['#c084fc', '#7e22ce', { mouth: 'teeth', eyeStyle: 'demon', iris: '#38bdf8', horns: true }],      // 6 Easy Demon
+    ['#f472b6', '#be185d', { mouth: 'teeth', eyeStyle: 'demon', iris: '#4ade80', horns: true }],      // 7 Medium Demon
+    ['#a78bfa', '#5b21b6', { mouth: 'teeth', eyeStyle: 'demon', iris: '#2dd4bf', horns: true }],      // 8 Hard Demon
+    ['#ef4444', '#991b1b', { mouth: 'teeth', eyeStyle: 'demon', iris: '#facc15', horns: true }],      // 9 Insane Demon
+    ['#7f1d1d', '#1a0505', { mouth: 'teeth', eyeStyle: 'demon', iris: '#f97316', horns: true }],      // 10 Extreme Demon
   ];
+  // Builds a fresh SVG (with a fresh gradient id, via ratedIconGradSeq) on
+  // every call instead of reusing one pre-rendered string — the same tier's
+  // icon can appear many times at once on screen (e.g. a whole page of
+  // "Not yet rated" cards), and a shared literal SVG string means every one
+  // of those copies carries the exact same <linearGradient id="...">. With
+  // duplicate ids in the DOM, an innerHTML-based re-render that removes one
+  // copy's <defs> can leave another copy's `fill="url(#id)"` pointing at
+  // nothing, which paints solid black instead of the intended gradient —
+  // the "barely visible" icons this was reported as.
   function ratedTierIcon(n) {
-    return RATED_TIER_ICONS[Math.max(0, Math.min(10, Math.round(n)))] || RATED_TIER_ICONS[0];
+    const tier = RATED_TIER_CONFIG[Math.max(0, Math.min(10, Math.round(n)))] || RATED_TIER_CONFIG[0];
+    return ratedFaceSvg(tier[0], tier[1], tier[2]);
   }
 
   // Which questions currently have their 1-10 picker open (in-memory —
