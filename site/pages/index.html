@@ -2747,7 +2747,7 @@
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Export / Import / kyj-cloud</span></div>
-            <div class="log-item-desc">All progress lives in this browser's storage by default — use <strong>Export progress (.json)</strong> on your Profile tab to back it up and <strong>Import progress</strong> to restore or move it to another device. Optionally, sign up for <strong>kyj-cloud</strong> (the cloud icon in the topbar, or the card on your Profile tab) to sync the same progress across devices instead — a username + password, nothing syncs automatically, so press <strong>Save progress now</strong> whenever you want this device's progress pushed up.</div>
+            <div class="log-item-desc">All progress lives in this browser's storage by default — use <strong>Export progress (local backup)</strong> on your Profile tab to back it up and <strong>Import progress</strong> to restore or move it to another device. Optionally, sign up for <strong>kyj-cloud</strong> (the cloud icon in the topbar, or the card on your Profile tab) to sync the same progress across devices instead — a username + password, nothing syncs automatically, so press <strong>Save progress now</strong> whenever you want this device's progress pushed up.</div>
           </div>
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Dark theme</span></div>
@@ -5495,7 +5495,7 @@
     } },
     { id: 'open-cloud-save', title: 'kyj-cloud (sync progress)', hint: 'Cloud', keywords: 'cloud save sync github backup sign in login kyj-cloud', run: () => document.getElementById('cloudSaveTriggerBtn').click() },
     { id: 'open-feedback', title: 'Feature suggestions & feedback', hint: 'Feedback', keywords: 'feedback bug report suggest feature request contact email', run: () => document.getElementById('feedbackTriggerBtn').click() },
-    { id: 'export-progress', title: 'Export progress (.json)', hint: 'Profile', keywords: 'export backup download json progress', run: () => {
+    { id: 'export-progress', title: 'Export progress (local backup)', hint: 'Profile', keywords: 'export backup download json progress', run: () => {
       document.querySelector('.tab[data-view="profile"]').click();
       document.getElementById('exportProgressBtn').click();
     } },
@@ -11828,7 +11828,7 @@
       <div class="progress-summary">
         <h2>Local sync</h2>
         <div class="progress-actions">
-          <button class="btn" id="exportProgressBtn">Export progress (.json)</button>
+          <button class="btn" id="exportProgressBtn">Export progress (local backup)</button>
           <button class="btn" id="importProgressBtn">Import progress</button>
           <input type="file" id="importProgressFile" accept="application/json" style="display:none;" />
           <button class="btn" id="resetProgressBtn">Reset all progress</button>
@@ -12661,13 +12661,13 @@
   // full of exports stays easy to scan by who/when at a glance.
   function backupFilename() {
     const slug = (state.profile && state.profile.name && state.profile.name !== DEFAULT_PROFILE_NAME)
-      ? '-' + state.profile.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 24)
+      ? ` (${state.profile.name.trim().slice(0, 24)})`
       : '';
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');
     const date = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
     const time = `${pad(now.getHours())}${pad(now.getMinutes())}`;
-    return `sat-qbank-backup${slug}-${date}-${time}.json`;
+    return `KYJ-SAT DATA${slug} ${date} ${time}.json`;
   }
 
   async function downloadFile(filename, text) {
