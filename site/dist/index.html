@@ -3920,6 +3920,9 @@
     renderTest();
     renderMock();
     renderReview();
+    renderProgress();
+    renderAnalysis();
+    renderNotesView();
     renderQuestionModal();
   }
 
@@ -11583,9 +11586,10 @@
     return `
       <div class="inline-q-panel" id="${panelId}">
         <div class="inline-q-panel-head">
-          <div style="display:flex; align-items:center; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
             <span class="inline-q-panel-title" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
+            ${ratedDifficultyHtml(q)}
             ${reportTriggerHtml(q)}
           </div>
           <button class="icon-close-btn" id="${closeId}" title="Close" aria-label="Close">&#10005;</button>
