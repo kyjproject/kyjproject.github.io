@@ -354,6 +354,8 @@
     border-right: 1px solid var(--rule);
     position: sticky;
     top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 22px;
@@ -641,6 +643,54 @@
   }
   .note-input:focus { outline: none; border-color: var(--accent); border-style: solid; }
   .notes-empty-hint { font-size: 12px; color: var(--ink-faint); line-height: 1.4; margin-bottom: 6px; }
+  .report-section { margin-top: 10px; }
+  .report-flag-btn {
+    appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 2px 4px;
+    opacity: 0.55;
+    filter: grayscale(1);
+    border-radius: 6px;
+  }
+  .report-flag-btn:hover { opacity: 1; filter: grayscale(0); background: var(--accent-soft); }
+  .report-flag-btn.is-pending { opacity: 1; filter: grayscale(0); }
+  .report-reason-select, .report-note-input {
+    font: inherit;
+    font-size: 12.5px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background: transparent;
+    color: var(--ink);
+  }
+  .report-note-input { flex: 1; min-width: 140px; }
+  .report-reason-select:focus, .report-note-input:focus { outline: none; border-color: var(--accent); }
+  .report-pending {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 6px 10px;
+  }
+  .report-undo-btn {
+    appearance: none;
+    border: none;
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    padding: 0;
+  }
   .cat-tag {
     font-size: 10.5px;
     color: var(--ink-faint);
@@ -1032,6 +1082,15 @@
   .cloud-save-status.ok { color: var(--done); }
   .cloud-save-status.err { color: var(--incorrect); }
   .cloud-save-status a { color: inherit; }
+
+  .bp-picker { background: var(--paper); border: 1px solid var(--rule-soft); border-radius: 10px; padding: 10px; }
+  .bp-picker-list { max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+  .bp-picker-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px; border: 1px solid var(--rule-soft); border-radius: 8px; background: var(--paper-raised); }
+  .bp-picker-item-info { min-width: 0; }
+  .bp-picker-item-name { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--ink); }
+  .bp-picker-item-author { font-weight: 500; color: var(--ink-faint); }
+  .bp-picker-item-meta { font-family: var(--sans); font-size: 11px; color: var(--ink-soft); margin-top: 1px; }
+  .bp-picker-item-actions { display: flex; gap: 4px; flex-shrink: 0; }
 
   .propose-field { margin-bottom: 16px; }
   .propose-field label {
@@ -1550,6 +1609,8 @@
   .lb-name { flex: 1 1 auto; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .lb-you { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-ink); background: var(--accent-soft); border-radius: 99px; padding: 2px 7px; margin-left: 6px; font-weight: 700; }
   .lb-row.lb-me .lb-you { background: var(--paper-raised); }
+  .lb-username { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--ink-faint); margin-left: 6px; }
+  .lb-title { display: block; font-style: italic; font-weight: 500; font-size: 11.5px; color: var(--ink-faint); white-space: normal; margin-top: 1px; }
   .lb-stat { flex: none; width: 84px; text-align: right; }
   .lb-n { display: block; font-family: var(--mono); font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .lb-l { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
@@ -2286,7 +2347,7 @@
 
   @media (max-width: 760px) {
     .browse-layout { grid-template-columns: 1fr; }
-    .filters { position: static; border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; }
+    .filters { position: static; border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; max-height: none; overflow-y: visible; }
     /* qmeta (difficulty pill, category tag, "Evidence #N", id chip) is a
        fixed-width right-hand column on desktop. On mobile it's already
        effectively its own row below the title (qstem shrinks to 0 first) —
@@ -2472,6 +2533,14 @@
         <div class="filter-group">
           <h3>Status</h3>
           <div id="statusFilters"></div>
+        </div>
+        <!-- Rated Difficulty (Lab) filter — hidden by default; renderFilters
+             only fills/shows this when the Lab toggle is on (see
+             ratedDifficultyLabEnabled), same "hidden unless opted in"
+             treatment as the rest of that feature. -->
+        <div class="filter-group" id="ratedTierFilterGroup" hidden>
+          <h3>🎮 Rated Difficulty</h3>
+          <div id="ratedTierFilters"></div>
         </div>
         <!-- Tags filter facet intentionally not rendered here anymore — the
              Tags feature was superseded by Notes (see the Notes tab). The
@@ -2831,7 +2900,6 @@
           <ul>
             <li>Tagging questions yourself, so you can practice similar ones together</li>
             <li>Tag-based Mock Exam, Practice, and Test</li>
-            <li>A way to flag a question and report a problem with it</li>
             <li>More practice tests to pull from, closer to real official ones plus newer released material</li>
             <li>A testimonials page</li>
           </ul>
@@ -3392,6 +3460,424 @@
     return out.sort((a, b) => b.ts - a.ts);
   }
 
+  // ---------- Reported question issues ----------
+  // Flag a question ("weird formatting", wrong answer, typo, etc). Stored
+  // locally right away, same as tags/notes, but deliberately NOT part of
+  // buildBackupPayload/applyBackupPayload — reports aren't personal progress,
+  // they're a message to the site owner, so they go out over their own
+  // 'report_question' request instead of riding inside a user's progress
+  // file. They only leave the browser when the user presses "Save progress
+  // now" (see performCloudSave) — never immediately — so flagging a bunch of
+  // questions in one sitting costs one sync, not one per flag.
+  const REPORTS_KEY = 'sat_qbank_reports_v1';
+
+  function loadReports() {
+    try {
+      const raw = localStorage.getItem(REPORTS_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveReports() {
+    try {
+      localStorage.setItem(REPORTS_KEY, JSON.stringify(state.reports));
+    } catch (e) {
+      // storage unavailable/full — reports still live in memory for this session
+    }
+  }
+
+  function getReport(qid) {
+    return state.reports.find(r => r.qid === qid && !r.synced) || null;
+  }
+
+  function reportQuestion(qid, shortId, reason, note) {
+    state.reports = state.reports.filter(r => !(r.qid === qid && !r.synced));
+    state.reports.push({ qid, shortId, reason, note: (note || '').trim().slice(0, 500), at: new Date().toISOString(), synced: false });
+    saveReports();
+  }
+
+  function unreportQuestion(qid) {
+    state.reports = state.reports.filter(r => !(r.qid === qid && !r.synced));
+    saveReports();
+  }
+
+  function pendingReports() {
+    return state.reports.filter(r => !r.synced);
+  }
+
+  // The report form for whichever question's ⚠️ trigger was last clicked (at
+  // most one at a time) — rendered as a position:fixed popover appended
+  // straight to <body>, same pattern and same reasons as the Rated Difficulty
+  // picker below: a question's trigger button can sit far above where the
+  // form used to render inline (bottom of a long qdetail body), so docking
+  // it in a fixed, predictable spot under the topbar instead means the form
+  // is never scrolled out of view or clipped by an ancestor's overflow.
+  let reportPopoverQid = null;
+  function renderReportPopover() {
+    let el = document.getElementById('reportPopover');
+    if (el) el.remove();
+    const qid = reportPopoverQid;
+    if (!qid) return;
+    const anchor = [...document.querySelectorAll(`[data-report-toggle-qid="${CSS.escape(qid)}"]`)].find(b => b.offsetParent !== null);
+    if (!anchor) { reportPopoverQid = null; return; }
+    const topbar = document.querySelector('.topbar');
+    const top = (topbar ? topbar.getBoundingClientRect().bottom : 0) + 8;
+    el = document.createElement('div');
+    el.id = 'reportPopover';
+    el.className = 'report-popover';
+    el.style.cssText = `position:fixed; top:${Math.max(8, top)}px; left:50%; transform:translateX(-50%); z-index:1000; background:var(--paper-raised); border:1px solid var(--rule-soft); border-radius:10px; padding:12px; box-shadow:0 8px 24px rgba(0,0,0,.35); width:280px; display:flex; flex-direction:column; gap:8px;`;
+    el.innerHTML = `
+      <div style="font-family:var(--sans); font-size:13px; font-weight:700; color:var(--ink);">Report a problem</div>
+      <select class="report-reason-select" data-report-reason-qid="${qid}" style="width:100%;">
+        <option value="Weird formatting">Weird formatting</option>
+        <option value="Wrong answer or rationale">Wrong answer or rationale</option>
+        <option value="Typo">Typo</option>
+        <option value="Broken image or table">Broken image or table</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" class="report-note-input" data-report-note-qid="${qid}" placeholder="Details (optional)" maxlength="500" style="width:100%;" />
+      <button class="btn btn-accent" data-report-submit-qid="${qid}" style="align-self:flex-end;">Submit</button>`;
+    document.body.appendChild(el);
+    el.querySelector('.report-note-input')?.focus();
+  }
+  window.addEventListener('scroll', () => { if (reportPopoverQid) renderReportPopover(); }, true);
+  window.addEventListener('resize', () => { if (reportPopoverQid) renderReportPopover(); });
+
+  // Delegated so it works no matter which render*Html spliced reportTriggerHtml
+  // in — every one of them fully replaces its container's innerHTML each render.
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('[data-report-toggle-qid]');
+    if (toggleBtn) {
+      e.stopPropagation();
+      const qid = toggleBtn.dataset.reportToggleQid;
+      // Already reported (and not yet synced/undone) — the inline pending
+      // banner + Undo in the body is the way to change that, same as before
+      // this became a popover; the trigger itself stays a no-op.
+      if (getReport(qid)) return;
+      reportPopoverQid = reportPopoverQid === qid ? null : qid;
+      renderReportPopover();
+      return;
+    }
+    const submitBtn = e.target.closest('[data-report-submit-qid]');
+    if (submitBtn && submitBtn.closest('.report-popover')) {
+      e.stopPropagation();
+      const qid = submitBtn.dataset.reportSubmitQid;
+      const q = ALL_QUESTIONS.find(qq => qq.id === qid);
+      const reasonSelect = document.querySelector(`.report-popover .report-reason-select[data-report-reason-qid="${CSS.escape(qid)}"]`);
+      const noteInputEl = document.querySelector(`.report-popover .report-note-input[data-report-note-qid="${CSS.escape(qid)}"]`);
+      reportQuestion(qid, (q && q.shortId) || qid, reasonSelect ? reasonSelect.value : 'Other', noteInputEl ? noteInputEl.value : '');
+      reportPopoverQid = null;
+      renderReportPopover();
+      refreshAllQuestionCardViews();
+      return;
+    }
+    if (reportPopoverQid && !e.target.closest('.report-popover')) {
+      reportPopoverQid = null;
+      renderReportPopover();
+    }
+  });
+
+  // ---------- Rated Difficulty (Lab) ----------
+  // GD-style 1-10 community difficulty voting, additive to the existing
+  // static difficulty/difficulty_label pill. Same convention as Reported
+  // question issues above: queued locally right away, only leaves the
+  // browser bundled into the next "Save progress now" click (see
+  // performCloudSave) via its own 'submit_difficulty_votes' request — never
+  // per-vote, and deliberately not part of buildBackupPayload/applyBackupPayload
+  // since these are votes on shared questions, not personal progress.
+  const RATED_DIFFICULTY_LAB_KEY = 'sat_qbank_rated_difficulty_lab_v1';
+  const RATED_DIFFICULTY_VOTES_KEY = 'sat_qbank_difficulty_votes_v1'; // { qid: 1-10, ... }, unsynced-until-flushed
+  const RATED_DIFFICULTY_SYNCED_KEY = 'sat_qbank_difficulty_votes_synced_v1'; // { qid: 1-10, ... }, last successfully synced value
+  const RATED_TIER_NAMES = ['Auto', 'Easy', 'Normal', 'Hard', 'Harder', 'Insane', 'Easy Demon', 'Medium Demon', 'Hard Demon', 'Insane Demon', 'Extreme Demon'];
+
+  function ratedDifficultyLabEnabled() {
+    try { return localStorage.getItem(RATED_DIFFICULTY_LAB_KEY) === '1'; } catch (e) { return false; }
+  }
+  function setRatedDifficultyLabEnabled(v) {
+    try { localStorage.setItem(RATED_DIFFICULTY_LAB_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+  }
+  function loadDifficultyVotesMap(key) {
+    try {
+      const raw = localStorage.getItem(key);
+      const parsed = raw ? JSON.parse(raw) : null;
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch (e) { return {}; }
+  }
+  function saveDifficultyVotesMap(key, map) {
+    try { localStorage.setItem(key, JSON.stringify(map)); } catch (e) { /* storage unavailable/full */ }
+  }
+  // A stored 0 means "explicitly cleared" (distinct from never having voted
+  // at all) so an unvote can still be diffed against RATED_DIFFICULTY_SYNCED_KEY
+  // and sent out — real votes are always 1-10, so 0 can't collide with one.
+  function myDifficultyVote(qid) {
+    return loadDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY)[qid] || null;
+  }
+  function castDifficultyVote(qid, rating) {
+    const map = loadDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY);
+    map[qid] = rating;
+    saveDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY, map);
+    // Reflect the vote in the displayed average immediately, rather than
+    // waiting on the next cloud save + ratings refresh round-trip — this is
+    // why the badge used to feel slow to update. Keyed under a placeholder
+    // so it can't collide with a real username; the next successful
+    // refreshRatedDifficultyCache() (after a save) replaces this whole
+    // cache wholesale with the server's real per-user tally anyway.
+    if (!ratedDifficultyCache[qid]) ratedDifficultyCache[qid] = { votes: {}, officialRating: null, status: 'unrated' };
+    ratedDifficultyCache[qid].votes['__you__'] = rating;
+  }
+  // Clicking your already-selected rating again calls this instead of
+  // castDifficultyVote — un-votes back to "no rating from you", both in the
+  // optimistic local display and (via the 0 sentinel) on the next sync.
+  function clearDifficultyVote(qid) {
+    const map = loadDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY);
+    map[qid] = 0;
+    saveDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY, map);
+    if (ratedDifficultyCache[qid] && ratedDifficultyCache[qid].votes) {
+      delete ratedDifficultyCache[qid].votes['__you__'];
+    }
+    if (ratedDifficultyCache[qid].status === 'unrated') ratedDifficultyCache[qid].status = 'pending';
+  }
+  // Votes not yet confirmed synced (cast since the last successful flush, or
+  // changed since then) — what actually goes out on the next save.
+  function pendingDifficultyVotes() {
+    const votes = loadDifficultyVotesMap(RATED_DIFFICULTY_VOTES_KEY);
+    const synced = loadDifficultyVotesMap(RATED_DIFFICULTY_SYNCED_KEY);
+    const out = {};
+    Object.keys(votes).forEach(qid => { if (votes[qid] !== synced[qid]) out[qid] = votes[qid]; });
+    return out;
+  }
+  function markDifficultyVotesSynced(flushed) {
+    const synced = loadDifficultyVotesMap(RATED_DIFFICULTY_SYNCED_KEY);
+    Object.assign(synced, flushed);
+    saveDifficultyVotesMap(RATED_DIFFICULTY_SYNCED_KEY, synced);
+  }
+
+  // In-memory cache of db/ratings/aggregate.json, refreshed on load and after
+  // every successful cloud save — { qid: { votes, officialRating, status } }.
+  let ratedDifficultyCache = {};
+  async function refreshRatedDifficultyCache() {
+    try {
+      const json = await cloudSaveRequest('get_ratings', {});
+      ratedDifficultyCache = (json.ratings && typeof json.ratings === 'object') ? json.ratings : {};
+    } catch (e) {
+      // offline/unreachable — keep whatever was cached before
+    }
+  }
+  function ratedTierLabel(n) {
+    return RATED_TIER_NAMES[Math.max(0, Math.min(10, Math.round(n)))] || 'Unrated';
+  }
+  // A small round face icon per tier (0 = no votes yet through 10 = Extreme
+  // Demon) — an original, from-scratch design in the spirit of Geometry
+  // Dash's difficulty faces (glossy gradient sphere, bold outline, horns +
+  // glowing eyes for the Demon tiers), not a trace/copy of GD's actual
+  // copyrighted art. Built once at load as ready-to-inline SVG strings,
+  // keyed by RATED_TIER_NAMES' index.
+  let ratedIconGradSeq = 0;
+  function ratedFaceSvg(topColor, botColor, opts) {
+    opts = opts || {};
+    const gid = 'ratedFaceGrad' + (ratedIconGradSeq++);
+    const ink = opts.ink || '#181818';
+    const horns = opts.horns
+      ? `<path d="M2.2 4.8 C1.1 2.6 2.5 0.4 5 1 L5 5.8 Z" fill="#eceef1" stroke="#000" stroke-width="0.7" stroke-linejoin="round"/>
+         <path d="M17.8 4.8 C18.9 2.6 17.5 0.4 15 1 L15 5.8 Z" fill="#eceef1" stroke="#000" stroke-width="0.7" stroke-linejoin="round"/>`
+      : '';
+    let eyes;
+    if (opts.eyeStyle === 'none') {
+      eyes = '';
+    } else if (opts.eyeStyle === 'demon') {
+      const iris = opts.iris || '#facc15';
+      eyes = `
+        <path d="M4.6 8.8 Q7 6.4 9.4 8.4 L4.6 8.8 Z" fill="${iris}"/>
+        <path d="M15.4 8.8 Q13 6.4 10.6 8.4 L15.4 8.8 Z" fill="${iris}"/>
+        <path d="M4.4 9 Q7 6.1 9.6 8.5" stroke="#000" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+        <path d="M15.6 9 Q13 6.1 10.4 8.5" stroke="#000" stroke-width="0.8" fill="none" stroke-linecap="round"/>`;
+    } else if (opts.eyeStyle === 'angry') {
+      eyes = `
+        <circle cx="6.6" cy="8.7" r="1.3" fill="${ink}"/><circle cx="13.4" cy="8.7" r="1.3" fill="${ink}"/>
+        <path d="M5 7.2 L8.2 8.2" stroke="${ink}" stroke-width="0.9" stroke-linecap="round"/>
+        <path d="M15 7.2 L11.8 8.2" stroke="${ink}" stroke-width="0.9" stroke-linecap="round"/>`;
+    } else {
+      eyes = `
+        <circle cx="6.6" cy="8.5" r="1.45" fill="${ink}"/><circle cx="7.15" cy="8" r="0.5" fill="#fff"/>
+        <circle cx="13.4" cy="8.5" r="1.45" fill="${ink}"/><circle cx="13.95" cy="8" r="0.5" fill="#fff"/>`;
+    }
+    const mouth = ({
+      grin: `<path d="M5.2 11 Q10 14.8 14.8 11 Q10 13.1 5.2 11 Z" fill="#3a0d17"/><path d="M5.2 11 Q10 14.8 14.8 11" stroke="${ink}" stroke-width="0.8" fill="none" stroke-linecap="round"/>`,
+      flat: `<path d="M6.2 12 L13.8 12" stroke="${ink}" stroke-width="1" stroke-linecap="round"/>`,
+      frown: `<path d="M6.2 13.3 Q10 11.1 13.8 13.3" stroke="${ink}" stroke-width="1" fill="none" stroke-linecap="round"/>`,
+      teeth: `<path d="M5.4 11 L6.6 12.6 L7.8 11 L9 12.6 L10 11 L11.2 12.6 L12.4 11 L13.6 12.6 L14.6 11" stroke="${ink}" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    })[opts.mouth || 'grin'];
+    return `<svg width="18" height="18" viewBox="0 0 20 20" style="vertical-align:-4px; flex-shrink:0;" aria-hidden="true">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${topColor}"/><stop offset="1" stop-color="${botColor}"/></linearGradient></defs>
+      ${horns}
+      <circle cx="10" cy="10" r="9" fill="url(#${gid})" stroke="#000" stroke-width="1.1"/>
+      <path d="M4.2 4.8 Q10 1.4 15.8 4.8" stroke="rgba(255,255,255,.5)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      ${eyes}${mouth}
+    </svg>`;
+  }
+  const RATED_TIER_ICONS = [
+    ratedFaceSvg('#c7cbd1', '#8a8f98', { mouth: 'flat', eyeStyle: 'none' }),                                       // 0 Unrated
+    ratedFaceSvg('#86efac', '#16a34a', { mouth: 'grin' }),                                                        // 1 Easy
+    ratedFaceSvg('#7dd3fc', '#0284c7', { mouth: 'grin' }),                                                        // 2 Normal
+    ratedFaceSvg('#fcd34d', '#d97706', { mouth: 'flat' }),                                                        // 3 Hard
+    ratedFaceSvg('#fb923c', '#c2410c', { mouth: 'flat', eyeStyle: 'angry' }),                                     // 4 Harder
+    ratedFaceSvg('#f87171', '#7f1d1d', { mouth: 'frown', eyeStyle: 'angry' }),                                    // 5 Insane
+    ratedFaceSvg('#c084fc', '#7e22ce', { mouth: 'teeth', eyeStyle: 'demon', iris: '#38bdf8', horns: true }),      // 6 Easy Demon
+    ratedFaceSvg('#f472b6', '#be185d', { mouth: 'teeth', eyeStyle: 'demon', iris: '#4ade80', horns: true }),      // 7 Medium Demon
+    ratedFaceSvg('#a78bfa', '#5b21b6', { mouth: 'teeth', eyeStyle: 'demon', iris: '#2dd4bf', horns: true }),      // 8 Hard Demon
+    ratedFaceSvg('#ef4444', '#991b1b', { mouth: 'teeth', eyeStyle: 'demon', iris: '#facc15', horns: true }),      // 9 Insane Demon
+    ratedFaceSvg('#7f1d1d', '#1a0505', { mouth: 'teeth', eyeStyle: 'demon', iris: '#f97316', horns: true }),      // 10 Extreme Demon
+  ];
+  function ratedTierIcon(n) {
+    return RATED_TIER_ICONS[Math.max(0, Math.min(10, Math.round(n)))] || RATED_TIER_ICONS[0];
+  }
+
+  // Which questions currently have their 1-10 picker open (in-memory —
+  // resets on reload, same lifetime as e.g. rebindingAction). Toggled by the
+  // "Rate it" chip; picking a value closes it back automatically.
+  const ratedDifficultyExpanded = new Set();
+
+  // Renders the community/official rating badge for one question — just the
+  // average (or admin-approved) rating plus its tier face icon, and a "Rate
+  // it" chip. The 1-10 picker itself is NOT nested here (see
+  // renderRatedDifficultyPopover below): several of this widget's homes
+  // (question cards) are `overflow: hidden` for their own rounded-corner/
+  // image-clipping reasons, which would silently clip an absolutely
+  // positioned picker nested inside them. Returns '' unless the Lab toggle
+  // is on. Delegated click handling for [data-vote-qid]/[data-rate-toggle]
+  // is registered once, below.
+  // The single number a question "currently shows" — admin-approved rating
+  // if set, else the live community average, else null (no votes at all).
+  // Shared by the badge (ratedDifficultyHtml) and the Browse filter facet
+  // (ratedTierNameForQuestion) so they can never disagree about which tier a
+  // question falls under.
+  function ratedDifficultyValue(q) {
+    const entry = ratedDifficultyCache[q.id];
+    if (entry && entry.status === 'approved' && Number.isFinite(entry.officialRating)) return entry.officialRating;
+    const voteCount = entry && entry.votes ? Object.keys(entry.votes).length : 0;
+    if (!voteCount) return null;
+    return Object.values(entry.votes).reduce((a, b) => a + b, 0) / voteCount;
+  }
+  // The tier NAME a question currently falls under, for the Browse filter
+  // facet — 'Unrated' (tier 0) when there's no official rating or vote yet.
+  function ratedTierNameForQuestion(q) {
+    const v = ratedDifficultyValue(q);
+    return v === null ? RATED_TIER_NAMES[0] : ratedTierLabel(v);
+  }
+  function ratedDifficultyHtml(q) {
+    if (!ratedDifficultyLabEnabled()) return '';
+    const entry = ratedDifficultyCache[q.id];
+    const mine = myDifficultyVote(q.id);
+    const approved = entry && entry.status === 'approved' && Number.isFinite(entry.officialRating);
+    const voteCount = entry && entry.votes ? Object.keys(entry.votes).length : 0;
+    const value = ratedDifficultyValue(q);
+
+    let badge;
+    if (approved) {
+      badge = `<span class="chip on" title="Admin-approved rating">${ratedTierIcon(value)} ${value} · ${ratedTierLabel(value)}</span>`;
+    } else if (value !== null) {
+      badge = `<span class="chip" title="Community average from ${voteCount} vote${voteCount === 1 ? '' : 's'} — not yet admin-approved">${ratedTierIcon(value)} ~${value.toFixed(1)} · ${ratedTierLabel(value)}</span>`;
+    } else {
+      badge = `<span class="chip" title="No community votes yet">${ratedTierIcon(0)} Not yet rated</span>`;
+    }
+    const toggleLabel = mine ? `${ratedTierIcon(mine)} ${mine}` : 'Rate it';
+    return `<span class="rated-difficulty" style="display:inline-flex; align-items:center; gap:4px; flex-wrap:wrap; max-width:100%;">${badge}<button type="button" class="chip" data-rate-toggle="${q.id}">${toggleLabel}</button></span>`;
+  }
+
+  // The 1-10 picker for whichever question is currently expanded (at most
+  // one at a time), rendered straight onto <body> as position:fixed, docked
+  // just under the app's topbar and centered — a fixed, predictable spot
+  // near the top of the screen rather than tracking each card's own toggle
+  // button (which could be scrolled anywhere, forcing the picker to chase it
+  // and risking edge clipping). This is also what keeps it from being
+  // clipped by an ancestor card's `overflow: hidden`, and from ever
+  // reflowing/crowding the card's own tags row, since it shares no layout
+  // box with either. Call after any state change that might open/close it
+  // or change its content (the toggle/vote handlers below), and on resize
+  // while open since the topbar's own height can change at that breakpoint.
+  function renderRatedDifficultyPopover() {
+    let el = document.getElementById('ratedDifficultyPopover');
+    if (el) el.remove();
+    const qid = [...ratedDifficultyExpanded][0];
+    if (!qid) return;
+    const anchor = [...document.querySelectorAll(`[data-rate-toggle="${CSS.escape(qid)}"]`)].find(b => b.offsetParent !== null);
+    if (!anchor) { ratedDifficultyExpanded.clear(); return; }
+    const mine = myDifficultyVote(qid);
+    const topbar = document.querySelector('.topbar');
+    const top = (topbar ? topbar.getBoundingClientRect().bottom : 0) + 8;
+    const width = 220;
+    el = document.createElement('div');
+    el.id = 'ratedDifficultyPopover';
+    el.className = 'rated-difficulty-popover';
+    el.style.cssText = `position:fixed; top:${Math.max(8, top)}px; left:50%; transform:translateX(-50%); z-index:1000; background:var(--paper-raised); border:1px solid var(--rule-soft); border-radius:10px; padding:10px; box-shadow:0 8px 24px rgba(0,0,0,.35); display:grid; grid-template-columns:repeat(5, 1fr); gap:6px; width:${width}px;`;
+    el.innerHTML = Array.from({ length: 10 }, (_, i) => i + 1).map(n =>
+      `<button type="button" class="chip ${mine === n ? 'on' : ''}" data-vote-qid="${qid}" data-vote-value="${n}" title="${ratedTierLabel(n)}" style="display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 4px;">${ratedTierIcon(n)}<span style="font-size:10px;">${n}</span></button>`
+    ).join('');
+    document.body.appendChild(el);
+  }
+  window.addEventListener('scroll', () => { if (ratedDifficultyExpanded.size) renderRatedDifficultyPopover(); }, true);
+  window.addEventListener('resize', () => { if (ratedDifficultyExpanded.size) renderRatedDifficultyPopover(); });
+
+  // Delegated so it works no matter which render*Html spliced ratedDifficultyHtml
+  // in — every one of them fully replaces its container's innerHTML each render.
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('[data-rate-toggle]');
+    if (toggleBtn) {
+      // Cards this can appear on (Browse, Math) open their detail modal on
+      // any click inside the card head — stop it here so rating a question
+      // doesn't also pop the modal open underneath.
+      e.stopPropagation();
+      const qid = toggleBtn.dataset.rateToggle;
+      if (ratedDifficultyExpanded.has(qid)) ratedDifficultyExpanded.delete(qid);
+      else { ratedDifficultyExpanded.clear(); ratedDifficultyExpanded.add(qid); }
+      renderRatedDifficultyPopover();
+      return;
+    }
+    const voteBtn = e.target.closest('[data-vote-qid]');
+    if (voteBtn) {
+      e.stopPropagation();
+      const qid = voteBtn.dataset.voteQid;
+      const value = parseInt(voteBtn.dataset.voteValue, 10);
+      // Clicking your already-selected rating again un-votes it, rather than
+      // re-submitting the same value with no way to back out.
+      if (myDifficultyVote(qid) === value) clearDifficultyVote(qid);
+      else castDifficultyVote(qid, value);
+      ratedDifficultyExpanded.delete(qid);
+      refreshAllQuestionCardViews();
+      renderRatedDifficultyPopover();
+      return;
+    }
+    // Click anywhere else while the picker is open closes it, same as any
+    // other dropdown/popover in the app.
+    if (ratedDifficultyExpanded.size && !e.target.closest('.rated-difficulty-popover')) {
+      ratedDifficultyExpanded.clear();
+      renderRatedDifficultyPopover();
+    }
+  });
+  // Re-renders every place a question card (Rated Difficulty badge, report
+  // trigger/pending state, ...) can appear — not just whichever tab happens
+  // to be active. Switching tabs in this app doesn't re-render on its own
+  // (only the tabs that already have their own render-on-switch wiring do),
+  // so e.g. a vote cast while looking at Practice would otherwise sit stale
+  // in Browse/the detail modal until something else happened to force those
+  // to redraw. Math (Beta) doesn't carry either widget, so it's not in this
+  // list. Called after anything that changes what a card should show: casting
+  // or clearing a difficulty vote, a fresh ratings fetch, or submitting/
+  // undoing a report.
+  function refreshAllQuestionCardViews() {
+    renderFilters();
+    renderBrowse();
+    renderPractice();
+    renderTest();
+    renderMock();
+    renderReview();
+    renderQuestionModal();
+  }
+
   // ---------- FSRS spaced repetition (Review queue scheduling) ----------
   // A from-scratch implementation of FSRS-4.5 (github.com/open-spaced-repetition) —
   // the same memory model Anki's "FSRS" scheduler uses. Applies only to whatever's
@@ -3886,6 +4372,7 @@
     categories: new Set(),
     skills: new Set(),
     difficulties: new Set(),
+    ratedTiers: new Set(), // Rated Difficulty (Lab) tier names checked in Browse's filter sidebar
     statuses: new Set(), // 'review' | 'done' | 'incomplete'
     sort: 'default',
     expanded: null,
@@ -3909,6 +4396,7 @@
     dailyGoal: loadDailyGoal(), // questions/day target, drives the Progress tab goal ring
     profile: loadProfile(), // { name }
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
+    reports: loadReports(), // [{ qid, shortId, reason, note, at, synced }, ...] — flagged question issues, sent on next cloud save
   };
 
   const testState = {
@@ -4073,6 +4561,7 @@
       if (state.categories.size && !state.categories.has(q.category)) return false;
       if (state.skills.size && !state.skills.has(q.skill)) return false;
       if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
       if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
       if (state.tagsFilter.size) {
         const qTags = getTags(q.id);
@@ -4153,6 +4642,7 @@
       if (facetKey !== 'categories' && state.categories.size && !state.categories.has(q.category)) return false;
       if (facetKey !== 'skills' && state.skills.size && !state.skills.has(q.skill)) return false;
       if (facetKey !== 'difficulties' && state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (facetKey !== 'ratedTiers' && ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
       if (facetKey !== 'statuses' && state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
       if (!matchesQuery(q)) return false;
       return valueFn(q) === opt;
@@ -4184,7 +4674,47 @@
     renderFacet('skillFilters', allSkills, state.skills, 'skills', q => q.skill);
     renderFacet('difficultyFilters', allDifficulties, state.difficulties, 'difficulties', q => q.difficulty_label, diffPillClass);
     renderFacet('statusFilters', ALL_STATUSES, state.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
+    renderRatedTierFacet();
     renderTagFacet();
+  }
+
+  // Rated Difficulty (Lab) filter facet — not built on the shared renderFacet
+  // helper above because it needs to show each tier's face icon (unescaped
+  // SVG) next to its name, not just a plain colored pill. Hidden entirely
+  // (and its own selection ignored by currentFiltered/renderFacet) unless
+  // the Lab toggle is on, same as the rest of this feature.
+  function renderRatedTierFacet() {
+    const group = document.getElementById('ratedTierFilterGroup');
+    if (!group) return;
+    const enabled = ratedDifficultyLabEnabled();
+    group.hidden = !enabled;
+    if (!enabled) return;
+    const counts = RATED_TIER_NAMES.map(name => QUESTIONS.filter(q => {
+      if (state.categories.size && !state.categories.has(q.category)) return false;
+      if (state.skills.size && !state.skills.has(q.skill)) return false;
+      if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (!matchesQuery(q)) return false;
+      return ratedTierNameForQuestion(q) === name;
+    }).length);
+    const container = document.getElementById('ratedTierFilters');
+    container.innerHTML = RATED_TIER_NAMES.map((name, i) => {
+      const checked = state.ratedTiers.has(name) ? 'checked' : '';
+      return `<label class="filter-opt">
+        <input type="checkbox" data-val="${escapeHtml(name)}" ${checked} />
+        ${ratedTierIcon(i)}
+        <span>${escapeHtml(name === 'Auto' ? 'Unrated' : name)}</span>
+        <span class="count">${counts[i]}</span>
+      </label>`;
+    }).join('');
+    container.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const v = inp.dataset.val;
+        if (inp.checked) state.ratedTiers.add(v); else state.ratedTiers.delete(v);
+        renderFilters();
+        renderBrowse();
+      });
+    });
   }
 
   // Tags aren't a single-value-per-question facet like the others above (one
@@ -4393,6 +4923,7 @@
           </div>
           <div class="qmeta">
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${ratedDifficultyHtml(q)}
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
@@ -4476,6 +5007,7 @@
           </div>
           ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
           ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
+          ${opts.noProgress ? '' : reportSectionHtml(q)}
         </div>`;
     }
     // choiceLettersFor applies the Lab "randomize order"/"thin choices"
@@ -4519,6 +5051,7 @@
         </div>
         ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
         ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
+        ${opts.noProgress ? '' : reportSectionHtml(q)}
       </div>`;
   }
 
@@ -4563,6 +5096,41 @@
           ${notes.length ? '' : '<div class="notes-empty-hint">No notes yet — add one below.</div>'}
         </div>
         <input type="text" class="note-input" data-note-qid="${q.id}" placeholder="+ Add note, Enter to save" />
+      </div>`;
+  }
+
+  // A per-question "something's wrong with this" flag (weird formatting,
+  // wrong answer, typo, etc) — separate from the Notes above, which are the
+  // student's own commentary. See the "Reported question issues" storage
+  // section for why this never sends anything on its own: it just queues
+  // locally until the next "Save progress now".
+  //
+  // The small ⚠️ trigger (reportTriggerHtml) sits up top beside the question
+  // id chips; clicking it opens the actual reason/note form as a fixed-
+  // position popover (renderReportPopover, above) rather than inline in the
+  // detail body — a question's trigger can be far above where that body
+  // scrolls to, so an inline form risked opening off-screen with no visible
+  // effect. Once reported, reportSectionHtml still renders an inline pending
+  // banner + Undo right in the body, since that's useful ambient status, not
+  // something you need to act on immediately.
+  function reportTriggerHtml(q) {
+    const pending = getReport(q.id);
+    const cls = pending ? 'report-flag-btn is-pending' : 'report-flag-btn';
+    const title = pending
+      ? `Reported: ${pending.reason} — will send on your next save`
+      : 'Report a problem with this question';
+    return `<button class="${cls}" data-report-toggle-qid="${q.id}" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">⚠️</button>`;
+  }
+
+  function reportSectionHtml(q) {
+    const pending = getReport(q.id);
+    if (!pending) return '';
+    return `
+      <div class="report-section">
+        <div class="report-pending">
+          <span>⚠️ Reported: ${escapeHtml(pending.reason)} — will send on your next save</span>
+          <button class="report-undo-btn" data-unreport-qid="${q.id}">Undo</button>
+        </div>
       </div>`;
   }
 
@@ -4658,6 +5226,19 @@
         onChange();
       });
     });
+
+    // The ⚠️ trigger and its popover form (renderReportPopover, near the
+    // "Reported question issues" storage section) are wired by a single
+    // document-level delegated listener instead of here — the popover is
+    // appended straight to <body>, outside any root passed to wireDetail, so
+    // a root-scoped listener could never reach its submit button anyway.
+    root.querySelectorAll(`[data-unreport-qid="${q.id}"]`).forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        unreportQuestion(q.id);
+        onChange();
+      });
+    });
   }
 
   function escapeHtml(s) {
@@ -4723,6 +5304,7 @@
     state.categories.clear();
     state.skills.clear();
     state.difficulties.clear();
+    state.ratedTiers.clear();
     state.statuses.clear();
     state.query = '';
     document.getElementById('searchBox').value = '';
@@ -5091,10 +5673,12 @@
         <div class="modal-head">
           <div class="modal-head-info">
             <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${ratedDifficultyHtml(q)}
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
+            ${state.modalNoProgress ? '' : reportTriggerHtml(q)}
           </div>
           <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
         </div>
@@ -5205,6 +5789,7 @@
     state.categories.clear();
     state.skills.clear();
     state.difficulties.clear();
+    state.ratedTiers.clear();
     state.statuses.clear();
     state.tagsFilter.clear();
     state.query = '';
@@ -5221,6 +5806,7 @@
   document.getElementById('qlist').addEventListener('click', (e) => {
     if (e.target.closest('[data-copy-id]')) return; // let the copy-ID click through, don't also open the modal
     if (e.target.closest('.qcard-select')) return; // let the bulk-select checkbox toggle, don't also open the modal
+    if (e.target.closest('[data-rate-toggle], [data-vote-qid]')) return; // let Rated Difficulty voting through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const qid = head.dataset.id;
@@ -5338,9 +5924,9 @@
       // between questions — kept deliberately separate from grading below,
       // so marking a question never sweeps you on to the next one before
       // you're ready.
-      if ((e.key === 'ArrowRight' || navKey === 'h') && state.modalIndex < state.modalList.length - 1) {
+      if ((e.key === 'ArrowRight' || navKey === keybindings.next) && state.modalIndex < state.modalList.length - 1) {
         state.modalIndex++; renderQuestionModal(); return;
-      } else if ((e.key === 'ArrowLeft' || navKey === 'g') && state.modalIndex > 0) {
+      } else if ((e.key === 'ArrowLeft' || navKey === keybindings.prev) && state.modalIndex > 0) {
         state.modalIndex--; renderQuestionModal(); return;
       }
     } else if (quizShortcutsEnabled && (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2')) {
@@ -5394,7 +5980,8 @@
     const sessionQ = root.id === 'reviewSessionPanel' ? reviewSessionCurrentQuestion() : null;
     if (sessionQ) {
       const att = getAttempt(sessionQ.id);
-      const gradeIdx = ['1', '2', '3', '4'].indexOf(e.key);
+      const gradeKey = normalizeKeyName(e.key);
+      const gradeIdx = ['gradeAgain', 'gradeHard', 'gradeGood', 'gradeEasy'].map(a => keybindings[a]).indexOf(gradeKey);
       if (gradeIdx !== -1 && (att.submitted || att.showAnswer)) {
         const gradeBtn = root.querySelector(`[data-fsrs-grade="${gradeIdx + 1}"]`);
         if (gradeBtn) runWithoutScrollJump(() => gradeBtn.click());
@@ -5418,31 +6005,35 @@
       e.preventDefault();
       const btn = root.querySelector('[data-toggle-answer-qid]');
       if (btn) runWithoutScrollJump(() => btn.click());
-    } else if (/^[jklt]$/i.test(e.key)) {
-      const status = { j: 'review', k: 'done', l: 'incomplete', t: 'review' }[e.key.toLowerCase()];
+    } else if (boundKey === keybindings.statusReview || boundKey === keybindings.statusDone || boundKey === keybindings.statusIncomplete || e.key.toLowerCase() === 't') {
+      // T stays a fixed alias for "Review" regardless of remapping, as a
+      // physical fallback that always works.
+      const status = e.key.toLowerCase() === 't' ? 'review'
+        : boundKey === keybindings.statusReview ? 'review'
+        : boundKey === keybindings.statusDone ? 'done' : 'incomplete';
       const btn = root.querySelector(`[data-set-status="${status}"]`);
       if (btn) runWithoutScrollJump(() => btn.click());
-    } else if (e.key.toLowerCase() === 'e' || e.key.toLowerCase() === 'r') {
-      // E/R scroll the passage up/down without leaving home row — the modal
-      // scrolls its own .modal-body (that's the overflow container, not the
+    } else if (boundKey === keybindings.scrollUp || boundKey === keybindings.scrollDown) {
+      // Scroll passage up/down — the modal scrolls its own .modal-body
+      // (that's the overflow container, not the
       // window); inline panels have no scroll container of their own, so the
       // window scrolls instead.
-      const amount = 160 * (e.key.toLowerCase() === 'e' ? -1 : 1);
+      const amount = 160 * (boundKey === keybindings.scrollUp ? -1 : 1);
       const scroller = root.querySelector('.modal-body');
       if (scroller) scroller.scrollBy({ top: amount });
       else window.scrollBy({ top: amount });
-    } else if (e.key.toLowerCase() === 'c') {
+    } else if (boundKey === keybindings.copyQuestion) {
       const btn = root.querySelector('[data-copy-question-qid]');
       if (btn) runWithoutScrollJump(() => btn.click());
-    } else if (e.key.toLowerCase() === 'i') {
+    } else if (boundKey === keybindings.copyId) {
       const chip = root.querySelector('.id-chip[data-copy-id]');
       if (chip) runWithoutScrollJump(() => chip.click());
-    } else if (e.key.toLowerCase() === 'u') {
+    } else if (boundKey === keybindings.copyLabel) {
       // The short display label ("Evidence #1", etc.) — .qid in the modal
       // head, .inline-q-panel-title in the Progress/Review/Notes panels.
       const chip = root.querySelector('.qid[data-copy-id], .inline-q-panel-title[data-copy-id]');
       if (chip) runWithoutScrollJump(() => chip.click());
-    } else if (e.key.toLowerCase() === 'n') {
+    } else if (boundKey === keybindings.focusNote) {
       const input = root.querySelector('.note-input');
       // Focusing this one directly (not via .click()) so preventScroll can
       // just be passed straight through — no need for the record/restore
@@ -5912,6 +6503,24 @@
     return `Last saved ${when}${link}`;
   }
 
+  // Cheap non-cryptographic hash so we can tell "progress changed since the
+  // last kyj-cloud save" without storing a full second copy of the payload.
+  function hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (Math.imul(31, hash) + str.charCodeAt(i)) | 0;
+    }
+    return hash;
+  }
+  function hasUnsavedCloudProgress() {
+    if (!isCloudLoggedIn()) return false;
+    const last = getCloudSaveLast();
+    if (!last || !last.at) return true;
+    try {
+      return hashString(JSON.stringify(buildBackupPayload())) !== last.payloadHash;
+    } catch (e) { return false; }
+  }
+
   // One request shape for signup/login/save/load — the script dispatches on
   // `action`. text/plain avoids a CORS preflight (Apps Script web apps don't
   // answer OPTIONS); the script parses the body as JSON regardless.
@@ -5947,10 +6556,40 @@
         message: `Update ${username} progress — ${new Date().toLocaleString()}`,
         data: payload,
       });
-      setCloudSaveLast({ at: new Date().toISOString(), commitUrl: result.commitUrl || null });
+      setCloudSaveLast({ at: new Date().toISOString(), commitUrl: result.commitUrl || null, payloadHash: hashString(JSON.stringify(payload)) });
+      // Flag reports piggyback on this same manual save click — see the
+      // "Reported question issues" storage section above for why they're
+      // kept out of buildBackupPayload. A failure here doesn't fail the
+      // save itself (that already succeeded); the reports just stay queued
+      // and go out on the next save instead.
+      const toFlush = pendingReports();
+      if (toFlush.length) {
+        try {
+          await cloudSaveRequest('report_question', { username, password, reports: toFlush });
+          const flushedAt = new Set(toFlush.map(r => r.qid + '|' + r.at));
+          state.reports.forEach(r => { if (flushedAt.has(r.qid + '|' + r.at)) r.synced = true; });
+          state.reports = state.reports.filter(r => !r.synced);
+          saveReports();
+        } catch (e) {
+          // leave them queued for next time
+        }
+      }
+      // Same piggyback pattern as reports above: any Rated Difficulty (Lab)
+      // votes cast since the last successful sync go out now, in one batch.
+      const votesToFlush = pendingDifficultyVotes();
+      if (Object.keys(votesToFlush).length) {
+        try {
+          await cloudSaveRequest('submit_difficulty_votes', { username, password, votes: votesToFlush });
+          markDifficultyVotesSynced(votesToFlush);
+        } catch (e) {
+          // leave them queued for next time
+        }
+      }
+      await refreshRatedDifficultyCache();
       updateCloudSaveTriggerState();
       renderCloudSavePopover();
       renderProfile();
+      refreshAllQuestionCardViews();
       return true;
     } catch (err) {
       const freshStatus = document.getElementById('cloudSaveStatus');
@@ -5963,6 +6602,16 @@
       return false;
     }
   }
+
+  // Nudge on tab close/reload if signed into kyj-cloud with progress that
+  // hasn't been pushed up yet — saves are manual-only (see note above), so
+  // this is the one moment we remind people instead of letting it happen
+  // silently. Browsers show their own generic "leave site?" text, not ours.
+  window.addEventListener('beforeunload', (e) => {
+    if (!hasUnsavedCloudProgress()) return;
+    e.preventDefault();
+    e.returnValue = '';
+  });
 
   function renderCloudSavePopover() {
     if (!cloudSavePopover) return;
@@ -6240,6 +6889,7 @@
 
   function proposeClearForm() {
     const $$ = (id) => document.getElementById(id);
+    $$('proposeTitle').value = '';
     $$('proposeStem').value = '';
     $$('proposePrompt').value = '';
     ['A', 'B', 'C', 'D'].forEach(l => {
@@ -6264,6 +6914,7 @@
 
   async function submitProposal() {
     const $$ = (id) => document.getElementById(id);
+    const title = $$('proposeTitle').value.trim();
     const category = $$('proposeCategory').value;
     const [file, domain, domain_code, skills] = PROPOSE_CATEGORY_META[category];
     const skill = $$('proposeSkill').value;
@@ -6284,6 +6935,7 @@
     const tags = $$('proposeTags').value.split(',').map(t => t.trim()).filter(Boolean);
 
     const errors = [];
+    if (!title) errors.push('Title is empty.');
     if (!stem) errors.push('Stem is empty.');
     if (!prompt) errors.push('Prompt is empty.');
     else if (!prompt.endsWith('?')) errors.push('Prompt must end in "?".');
@@ -6299,7 +6951,7 @@
     const id = proposeRandomId();
     const slug = file.replace(/\.json$/, '');
     const record = {
-      id, category, source_pdf: 'manual', page: null, assessment: 'SAT', test: 'Reading and Writing',
+      id, title, category, source_pdf: 'manual', page: null, assessment: 'SAT', test: 'Reading and Writing',
       domain, domain_code, skill, skill_code: skills[skill], difficulty_label,
       difficulty: PROPOSE_DIFF_MAP[difficulty_label],
       stem, prompt, choices, correct_answer,
@@ -6379,6 +7031,10 @@
       </div>
       <div id="proposeErrBox"></div>
       <div class="config-card">
+        <div class="propose-field">
+          <label for="proposeTitle">Title — a short label to find this question later (not shown to other students)</label>
+          <input type="text" id="proposeTitle" placeholder="e.g. &quot;dangling modifier — factory example&quot;" />
+        </div>
         <div class="propose-row2">
           <div class="propose-field">
             <label for="proposeCategory">Category</label>
@@ -6785,13 +7441,21 @@
   // into, same as METADATA_HIDDEN_KEY/QUIZ_SHORTCUTS_KEY above.
 
   // -- Custom keybinding remapping --
-  // Only the letter-key alternates get remapped (the answer choices, plus
-  // the G/H prev/next pair and the quiz-shortcuts next/prev pair) — Enter,
-  // Space, and the arrow keys stay as fixed physical fallbacks everywhere
+  // Every letter-key alternate in the app is remappable here: answer
+  // choices, next/prev (quiz shortcuts and the question-modal G/H pair),
+  // review grading (1-4), status marks (J/K/L), passage scroll (E/R), and
+  // copy/note actions (C/I/U/N) — Enter, Space, arrow keys, and T (a fixed
+  // alias for "Mark Review") stay as fixed physical fallbacks everywhere
   // they're already used, so a broken remap can never strand someone with
   // no way to advance.
   const KEYBINDINGS_KEY = 'sat_qbank_keybindings_v1';
-  const DEFAULT_KEYBINDINGS = { choiceA: 'a', choiceB: 's', choiceC: 'd', choiceD: 'f', submit: 'enter', toggleAnswer: ' ', next: 'h', prev: 'g' };
+  const DEFAULT_KEYBINDINGS = {
+    choiceA: 'a', choiceB: 's', choiceC: 'd', choiceD: 'f', submit: 'enter', toggleAnswer: ' ', next: 'h', prev: 'g',
+    gradeAgain: '1', gradeHard: '2', gradeGood: '3', gradeEasy: '4',
+    statusReview: 'j', statusDone: 'k', statusIncomplete: 'l',
+    scrollUp: 'e', scrollDown: 'r',
+    copyQuestion: 'c', copyId: 'i', copyLabel: 'u', focusNote: 'n',
+  };
   const KEYBINDING_ACTIONS = [
     { key: 'choiceA', label: 'Choice A' },
     { key: 'choiceB', label: 'Choice B' },
@@ -6801,6 +7465,19 @@
     { key: 'toggleAnswer', label: 'Toggle answer' },
     { key: 'next', label: 'Next question' },
     { key: 'prev', label: 'Previous question' },
+    { key: 'gradeAgain', label: 'Review grade: Again' },
+    { key: 'gradeHard', label: 'Review grade: Hard' },
+    { key: 'gradeGood', label: 'Review grade: Good' },
+    { key: 'gradeEasy', label: 'Review grade: Easy' },
+    { key: 'statusReview', label: 'Mark status: Review' },
+    { key: 'statusDone', label: 'Mark status: Done' },
+    { key: 'statusIncomplete', label: 'Mark status: Incomplete' },
+    { key: 'scrollUp', label: 'Scroll passage up' },
+    { key: 'scrollDown', label: 'Scroll passage down' },
+    { key: 'copyQuestion', label: 'Copy question' },
+    { key: 'copyId', label: 'Copy ID' },
+    { key: 'copyLabel', label: 'Copy label' },
+    { key: 'focusNote', label: 'Focus note' },
   ];
   function loadKeybindings() {
     try {
@@ -6831,6 +7508,12 @@
   // thing the global keydown listener checks, so it can steal the next
   // keypress before any other shortcut sees it.
   let rebindingAction = null;
+  // Set while "Reset all Lab settings to defaults" is asking for a second
+  // click — swaps the button out for an inline confirm bar instead of a
+  // native confirm() dialog, since resetting Lab wipes several independent
+  // toggles (keybindings, theme override, choice drilling, strict timing,
+  // difficulty ratings) at once rather than one obviously-scoped thing.
+  let labResetConfirmPending = false;
 
   // -- Lab theme override (Sepia, etc.) --
   // Independent of THEME_KEY's light/dark toggle — this is an override that
@@ -6934,7 +7617,9 @@
     setRandomizeOrderEnabled(false);
     setChoiceCount(4);
     setStrictTimingEnabled(false);
+    setRatedDifficultyLabEnabled(false);
     rebindingAction = null;
+    labResetConfirmPending = false;
   }
 
   // Starts (or restarts) the per-question countdown on `sel`, ticking the
@@ -7056,6 +7741,294 @@
     wireTest();
   }
 
+  // ---------- Blueprints (save/name/share custom Test & Practice setups) ----------
+  // A "blueprint" is a snapshot of everything on a Test/Practice config
+  // screen — scope, count, distribution, difficulty mix, shuffle/timer — so
+  // it can be named, reapplied later, or shared with someone else via a
+  // short code (backed by handleSaveBlueprint_/handleLoadBlueprint_ in
+  // scripts/apps-script/Code.gs, same GitHub-relay pattern as kyj-cloud).
+  // Anki-style: a handful of official ones ship built in, anyone can save
+  // their own locally, and sharing one just needs a kyj-cloud login (to
+  // discourage spam) — loading/importing a code needs no login at all.
+  const BLUEPRINTS_KEY = 'sat_qbank_blueprints_v1';
+
+  const OFFICIAL_BLUEPRINTS = [
+    { id: 'official-hard-transitions', name: 'Hard Transitions Packet', view: 'practice', official: true,
+      desc: '10 random Hard-difficulty transitions questions.',
+      count: 10, categories: ['Transitions'], skills: [], difficulties: ['Hard'], statuses: [], shuffle: true },
+    { id: 'official-grammar-warmup', name: 'Quick Grammar Warm-up', view: 'practice', official: true,
+      desc: '10 Easy/Medium grammar questions to start a session loose.',
+      count: 10, categories: ['Grammar'], skills: [], difficulties: ['Easy', 'Medium'], statuses: [], shuffle: true },
+    { id: 'official-vocab-blitz', name: 'Vocab in Context Blitz', view: 'practice', official: true,
+      desc: 'A 15-question vocab-in-context speed round.',
+      count: 15, categories: ['Vocab'], skills: [], difficulties: [], statuses: [], shuffle: true },
+    { id: 'official-inference-dive', name: 'Inference Deep Dive', view: 'practice', official: true,
+      desc: '10 Hard-difficulty inference questions.',
+      count: 10, categories: ['Inferences'], skills: [], difficulties: ['Hard'], statuses: [], shuffle: true },
+    { id: 'official-crosstext-drill', name: 'Cross-Text Connections Drill', view: 'practice', official: true,
+      desc: '8 cross-text connection questions.',
+      count: 8, categories: ['Cross-Text'], skills: [], difficulties: [], statuses: [], shuffle: true },
+    { id: 'official-hard-mix-test', name: 'All-Hard Mixed Test', view: 'test', official: true,
+      desc: 'A 20-question test pulling only Hard-difficulty questions across every section.',
+      count: 20, categories: [], skills: [], difficulties: ['Hard'], statuses: [], shuffle: true },
+  ];
+
+  function loadBlueprints() {
+    try {
+      const raw = localStorage.getItem(BLUEPRINTS_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+  function saveBlueprintsList(list) {
+    try { localStorage.setItem(BLUEPRINTS_KEY, JSON.stringify(list)); } catch (e) { /* best-effort */ }
+  }
+  function deleteBlueprint(id) {
+    saveBlueprintsList(loadBlueprints().filter(b => b.id !== id));
+  }
+
+  // Snapshot the given config screen's current state into a plain, JSON-safe
+  // blueprint object (Sets -> arrays; the advanced blueprint/weight configs
+  // are only captured when their toggle is actually on, so applying one
+  // later still falls back to "official" distribution otherwise).
+  function captureBlueprint(view, name) {
+    const st = view === 'test' ? testState : practiceState;
+    return {
+      id: 'bp_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+      name, view,
+      createdAt: new Date().toISOString(),
+      count: st.count,
+      categories: [...st.categories],
+      skills: [...st.skills],
+      difficulties: [...st.difficulties],
+      statuses: [...st.statuses],
+      advancedDistribution: st.advancedDistribution,
+      showSkillMix: st.showSkillMix,
+      blueprint: st.advancedDistribution ? st.blueprint : null,
+      advancedDifficulty: st.advancedDifficulty,
+      weightConfig: st.advancedDifficulty ? st.weightConfig : null,
+      shuffle: view === 'test' ? st.shuffleOrder : st.shuffle,
+      biasWeak: view === 'practice' ? st.biasWeak : undefined,
+      timed: st.timed,
+      timerSeconds: st.timerSeconds,
+      timerStrict: st.timerStrict,
+    };
+  }
+
+  // Inverse of captureBlueprint — pushes a blueprint's fields onto the
+  // matching config state, then leaves rendering to the caller.
+  function applyBlueprint(view, bp) {
+    const st = view === 'test' ? testState : practiceState;
+    st.count = bp.count || st.count;
+    st.categories = new Set(bp.categories || []);
+    st.skills = new Set(bp.skills || []);
+    st.difficulties = new Set(bp.difficulties || []);
+    st.statuses = new Set(bp.statuses || []);
+    st.advancedDistribution = !!bp.advancedDistribution;
+    st.showSkillMix = !!bp.showSkillMix;
+    st.blueprint = (bp.advancedDistribution && bp.blueprint)
+      ? JSON.parse(JSON.stringify(bp.blueprint))
+      : cloneTestBlueprint(st.count);
+    st.advancedDifficulty = !!bp.advancedDifficulty;
+    st.weightConfig = (bp.advancedDifficulty && bp.weightConfig)
+      ? JSON.parse(JSON.stringify(bp.weightConfig))
+      : { main: { preset: 'balanced', custom: { Easy: 25, Medium: 50, Hard: 25 } } };
+    if (view === 'test') {
+      st.shuffleOrder = bp.shuffle !== false;
+    } else {
+      st.shuffle = !!bp.shuffle;
+      if (typeof bp.biasWeak === 'boolean') st.biasWeak = bp.biasWeak;
+    }
+    if (typeof bp.timed === 'boolean') st.timed = bp.timed;
+    if (bp.timerSeconds) st.timerSeconds = bp.timerSeconds;
+    if (typeof bp.timerStrict === 'boolean') st.timerStrict = bp.timerStrict;
+  }
+
+  function blueprintSummary(bp) {
+    const bits = [];
+    bits.push(`${bp.count} question${bp.count === 1 ? '' : 's'}`);
+    if (bp.categories && bp.categories.length) bits.push(bp.categories.join(', '));
+    if (bp.difficulties && bp.difficulties.length) bits.push(bp.difficulties.join('/'));
+    return bits.join(' · ');
+  }
+
+  // { open, tab: 'official'|'mine'|'community'|'import', community: null|Array, communityError, importCode, importError, shareBusyId, shareStatus }
+  const bpUiState = { test: { open: false, tab: 'official' }, practice: { open: false, tab: 'official' } };
+
+  function bpUiFor(view) { return bpUiState[view]; }
+
+  function bpPickerHtml(view) {
+    const ui = bpUiFor(view);
+    if (!ui.open) return '';
+    const mine = loadBlueprints().filter(b => b.view === view);
+    const official = OFFICIAL_BLUEPRINTS.filter(b => b.view === view);
+
+    function itemHtml(bp, opts) {
+      opts = opts || {};
+      const meta = opts.meta || bp.desc || blueprintSummary(bp);
+      return `
+        <div class="bp-picker-item">
+          <div class="bp-picker-item-info">
+            <div class="bp-picker-item-name">${escapeHtml(bp.name)}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}</div>
+            <div class="bp-picker-item-meta">${escapeHtml(meta)}</div>
+          </div>
+          <div class="bp-picker-item-actions">
+            <button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-apply="${escapeHtml(opts.applyId != null ? opts.applyId : bp.id)}" data-bp-source="${opts.source}">Use</button>
+            ${opts.source === 'mine' ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-share="${escapeHtml(bp.id)}" title="Get a code others can import">🔗 Share</button>` : ''}
+            ${opts.source === 'mine' ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-delete="${escapeHtml(bp.id)}">🗑️</button>` : ''}
+          </div>
+        </div>`;
+    }
+
+    let tabBodyHtml = '';
+    if (ui.tab === 'official') {
+      tabBodyHtml = official.length
+        ? official.map(bp => itemHtml(bp, { source: 'official' })).join('')
+        : `<p class="cloud-save-text">No official blueprints for this screen yet.</p>`;
+    } else if (ui.tab === 'mine') {
+      tabBodyHtml = mine.length
+        ? mine.map(bp => itemHtml(bp, { source: 'mine' })).join('')
+        : `<p class="cloud-save-text">You haven't saved any blueprints here yet — set up the scope/count/mix below the way you like, then use "💾 Save current setup".</p>`;
+      if (ui.shareStatus) tabBodyHtml += `<p class="cloud-save-status ${ui.shareStatus.ok ? 'ok' : 'err'}">${escapeHtml(ui.shareStatus.text)}</p>`;
+    } else if (ui.tab === 'community') {
+      if (ui.communityError) {
+        tabBodyHtml = `<p class="cloud-save-status err">${escapeHtml(ui.communityError)}</p>`;
+      } else if (!ui.community) {
+        tabBodyHtml = `<p class="cloud-save-text">Loading…</p>`;
+      } else {
+        const entries = ui.community.filter(b => b.view === view);
+        tabBodyHtml = entries.length
+          ? entries.map(bp => itemHtml(bp, { source: 'community', applyId: bp.code, meta: `Code ${bp.code} · ${new Date(bp.createdAt).toLocaleDateString()}` })).join('')
+          : `<p class="cloud-save-text">No one's shared a blueprint for this screen yet — be the first with "💾 Save current setup" → "🔗 Share".</p>`;
+      }
+    } else if (ui.tab === 'import') {
+      tabBodyHtml = `
+        <div class="cloud-save-field">
+          <label>Blueprint code</label>
+          <input type="text" id="bp-${view}-importCode" maxlength="6" style="text-transform:uppercase;" placeholder="e.g. K7QX2M" value="${escapeHtml(ui.importCode || '')}" />
+        </div>
+        <button type="button" class="cloud-save-btn primary" data-bp-import="${view}">Import</button>
+        ${ui.importError ? `<p class="cloud-save-status err">${escapeHtml(ui.importError)}</p>` : ''}`;
+    }
+
+    return `
+      <div class="config-row bp-picker" style="margin-bottom:6px;">
+        <div class="cloud-save-tabs">
+          <button type="button" class="cloud-save-tab ${ui.tab === 'official' ? 'active' : ''}" data-bp-tab="official" data-bp-view="${view}">⭐ Official</button>
+          <button type="button" class="cloud-save-tab ${ui.tab === 'mine' ? 'active' : ''}" data-bp-tab="mine" data-bp-view="${view}">💾 Mine</button>
+          <button type="button" class="cloud-save-tab ${ui.tab === 'community' ? 'active' : ''}" data-bp-tab="community" data-bp-view="${view}">🌐 Community</button>
+          <button type="button" class="cloud-save-tab ${ui.tab === 'import' ? 'active' : ''}" data-bp-tab="import" data-bp-view="${view}">#️⃣ Code</button>
+        </div>
+        <div class="bp-picker-list">${tabBodyHtml}</div>
+      </div>`;
+  }
+
+  function wireBlueprintPicker(shell, view, rerender) {
+    const ui = bpUiFor(view);
+    const toggleBtn = document.getElementById(view === 'test' ? 'testBlueprintsBtn' : 'practiceBlueprintsBtn');
+    if (toggleBtn) toggleBtn.addEventListener('click', () => { ui.open = !ui.open; rerender(); });
+    const saveBtn = document.getElementById(view === 'test' ? 'testSaveBlueprintBtn' : 'practiceSaveBlueprintBtn');
+    if (saveBtn) saveBtn.addEventListener('click', () => {
+      const name = (prompt('Name this blueprint:') || '').trim();
+      if (!name) return;
+      const list = loadBlueprints();
+      list.push(captureBlueprint(view, name));
+      saveBlueprintsList(list);
+      ui.open = true; ui.tab = 'mine';
+      rerender();
+    });
+    if (!ui.open) return;
+
+    shell.querySelectorAll('[data-bp-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        ui.tab = btn.dataset.bpTab;
+        if (ui.tab === 'community' && !ui.community && !ui.communityError) {
+          ui.community = null;
+          rerender();
+          cloudSaveRequest('list_blueprints', {})
+            .then(res => { ui.community = res.entries || []; rerender(); })
+            .catch(err => { ui.communityError = (err && err.message) || 'Failed to load community blueprints'; rerender(); });
+          return;
+        }
+        rerender();
+      });
+    });
+
+    shell.querySelectorAll('[data-bp-apply]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const source = btn.dataset.bpSource;
+        if (source === 'official') {
+          const bp = OFFICIAL_BLUEPRINTS.find(b => b.id === btn.dataset.bpApply);
+          if (bp) { applyBlueprint(view, bp); ui.open = false; rerender(); }
+        } else if (source === 'mine') {
+          const bp = loadBlueprints().find(b => b.id === btn.dataset.bpApply);
+          if (bp) { applyBlueprint(view, bp); ui.open = false; rerender(); }
+        } else if (source === 'community') {
+          // The Community list is kept light (no full `data`) — fetch the
+          // actual blueprint by code only once someone picks it.
+          const code = btn.dataset.bpApply;
+          const original = btn.textContent;
+          btn.disabled = true; btn.textContent = '…';
+          try {
+            const res = await cloudSaveRequest('load_blueprint', { code });
+            applyBlueprint(view, res.entry.data);
+            ui.open = false;
+            rerender();
+          } catch (err) {
+            btn.disabled = false; btn.textContent = original;
+            alert('Failed to load: ' + ((err && err.message) || err));
+          }
+        }
+      });
+    });
+
+    shell.querySelectorAll('[data-bp-delete]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!confirm('Delete this saved blueprint?')) return;
+        deleteBlueprint(btn.dataset.bpDelete);
+        rerender();
+      });
+    });
+
+    shell.querySelectorAll('[data-bp-share]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const bp = loadBlueprints().find(b => b.id === btn.dataset.bpShare);
+        if (!bp) return;
+        if (!CLOUD_SAVE_URL) { ui.shareStatus = { ok: false, text: 'kyj-cloud isn\'t set up on this deployment, so sharing needs a code server-side — see README.md.' }; rerender(); return; }
+        if (!isCloudLoggedIn()) { ui.shareStatus = { ok: false, text: 'Log into kyj-cloud first (top-right ☁️) — sharing needs an account so the code list can\'t be spammed.' }; rerender(); return; }
+        ui.shareStatus = { ok: true, text: 'Sharing…' }; rerender();
+        try {
+          const res = await cloudSaveRequest('save_blueprint', { username: getCloudUsername(), password: getCloudPassword(), blueprint: bp });
+          ui.shareStatus = { ok: true, text: `Shared! Code: ${res.code} — anyone can import it from the "#️⃣ Code" tab.` };
+          ui.community = null; // force a refresh next time Community is opened
+        } catch (err) {
+          ui.shareStatus = { ok: false, text: 'Share failed: ' + ((err && err.message) || err) };
+        }
+        rerender();
+      });
+    });
+
+    const importBtn = shell.querySelector(`[data-bp-import="${view}"]`);
+    if (importBtn) importBtn.addEventListener('click', async () => {
+      const input = document.getElementById(`bp-${view}-importCode`);
+      const code = (input && input.value || '').trim().toUpperCase();
+      ui.importCode = code;
+      if (!code) { ui.importError = 'Enter a code'; rerender(); return; }
+      if (!CLOUD_SAVE_URL) { ui.importError = 'kyj-cloud isn\'t set up on this deployment — see README.md.'; rerender(); return; }
+      ui.importError = null;
+      try {
+        const res = await cloudSaveRequest('load_blueprint', { code });
+        if (res.entry.view !== view) { ui.importError = `That code is a ${res.entry.view} blueprint — open the ${res.entry.view} tab to import it.`; rerender(); return; }
+        applyBlueprint(view, res.entry.data);
+        ui.open = false;
+        rerender();
+      } catch (err) {
+        ui.importError = (err && err.message) || 'Import failed';
+        rerender();
+      }
+    });
+  }
+
   function testConfigHtml() {
     if (!testState.blueprint) testState.blueprint = cloneTestBlueprint(testState.count);
     const available = testAvailableCount();
@@ -7082,7 +8055,14 @@
 
     return `
       <div class="config-card">
-        <h2>📝 Build a test</h2>
+        <div class="bp-table-head">
+          <h2 style="margin:0;">📝 Build a test</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="testSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="testBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
+        </div>
+        ${bpPickerHtml('test')}
         <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Like Mock Exam, you control the section/skill mix and difficulty mix — but as one flat, shuffled quiz of any length instead of two timed modules. Choices aren't graded until you submit the whole test.</p>
         <div class="config-row">
           <label>🎯 Scope — status (leave empty for all)</label>
@@ -7199,7 +8179,7 @@
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="quiz-card">
         <div class="quiz-tags">
-          ${difficultyPillHtml(q)}
+          ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
           ${typeTagHtml(q.category)}
           ${questionIdHtml(q)}
           ${copyQuestionBtnHtml(q)}
@@ -7244,7 +8224,7 @@
         <div class="review-item">
           <div class="row1">
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
-            ${difficultyPillHtml(q)}
+            ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
             ${typeTagHtml(q.category)}
             ${qMetaLineHtml(q) ? `<span class="qskill" style="margin:0;">${qMetaLineHtml(q)}</span>` : ''}
           </div>
@@ -7305,6 +8285,7 @@
   function wireTest() {
     const shell = document.getElementById('testShell');
     if (testState.phase === 'config') {
+      wireBlueprintPicker(shell, 'test', renderTest);
       wireScopeChips(shell, testState, renderTest);
       wireTimedModeConfig(shell, testState, 'test', renderTest);
       wireMetadataConfigSection(shell, 'test', renderTest);
@@ -7471,7 +8452,14 @@
 
     return `
       <div class="config-card">
-        <h2>🏋️ Build a practice set</h2>
+        <div class="bp-table-head">
+          <h2 style="margin:0;">🏋️ Build a practice set</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="practiceSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="practiceBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
+        </div>
+        ${bpPickerHtml('practice')}
         <p class="lede">${available} question${available === 1 ? '' : 's'} available with the ${practiceState.advancedDistribution ? 'status scope' : 'filters'} below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
         <div class="config-row">
           <label>🎯 Scope — status (leave empty for all)</label>
@@ -7547,10 +8535,12 @@
       <div class="quiz-card">
         <div class="quiz-tags">
           <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+          ${ratedDifficultyHtml(q)}
           <span class="cat-tag">${escapeHtml(q.category)}</span>
           <span class="qid" style="align-self:center;" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
           <span class="qskill" style="margin:0; align-self:center;">${escapeHtml(q.skill)}</span>
           <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
+          ${reportTriggerHtml(q)}
         </div>
         ${qDetailHtml(q, { bare: true })}
         <div class="quiz-nav">
@@ -7585,6 +8575,7 @@
   function wirePractice() {
     const shell = document.getElementById('practiceShell');
     if (practiceState.phase === 'config') {
+      wireBlueprintPicker(shell, 'practice', renderPractice);
       wireScopeChips(shell, practiceState, renderPractice);
       wireTimedModeConfig(shell, practiceState, 'practice', renderPractice);
       const countInput = document.getElementById('practiceCount');
@@ -10095,7 +11086,7 @@
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="quiz-card">
         <div class="quiz-tags">
-          ${difficultyPillHtml(q)}
+          ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
           ${typeTagHtml(q.skill)}
           ${questionIdHtml(q)}
           ${copyQuestionBtnHtml(q)}
@@ -10196,7 +11187,7 @@
           <div class="row1">
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
             <span class="mock-module-badge" style="font-size:10px;">Module ${module}</span>
-            ${difficultyPillHtml(q)}
+            ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
             ${qMetaLineHtml(q) ? `<span class="qskill" style="margin:0;">${qMetaLineHtml(q)}</span>` : ''}
           </div>
           <div class="stem">${i + 1}. ${escapeStemFlat(q.stem)}</div>
@@ -10514,6 +11505,7 @@
           <div style="display:flex; align-items:center; gap:8px;">
             <span class="inline-q-panel-title" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
+            ${reportTriggerHtml(q)}
           </div>
           <button class="icon-close-btn" id="${closeId}" title="Close" aria-label="Close">&#10005;</button>
         </div>
@@ -11149,7 +12141,7 @@
         <div class="log-item-desc">${rebindingAction === a.key ? 'Press any key (Escape to cancel)…' : `Currently bound to <strong>${escapeHtml(keyDisplayName(keybindings[a.key]))}</strong>.`}</div>
       </div>`).join('');
     return labCardHtml('⌨️ Custom keybinding remapping', `
-      <div class="log-item-desc" style="margin-bottom:10px;">Rebind the letter-key shortcuts used to answer questions and move around during Practice/Test/Mock quiz screens — Enter/Space/arrow keys stay as physical fallbacks either way. Only takes effect where <strong>Enable keyboard shortcuts</strong> is already on.</div>
+      <div class="log-item-desc" style="margin-bottom:10px;">Rebind every letter-key shortcut in the app — answering, navigating, review grading, status marks, passage scrolling, and copy/note actions — Enter/Space/arrow keys (and T as a fixed alias for "Mark Review") stay as physical fallbacks either way. The answer/navigation ones only take effect where <strong>Enable keyboard shortcuts</strong> is already on; the rest apply wherever their action is already available.</div>
       <div class="log-list">${rows}</div>`);
   }
   function labThemeCardHtml() {
@@ -11179,6 +12171,10 @@
     return labCardHtml('⏱️ Strict timing mode', `
       ${labToggleRowHtml('labStrictTiming', 'Auto-submit when time runs out', "Currently, the Bluebook-style Test's whole-test timer just parks you on the review page at 0:00 without submitting (Mock Exam's module clock and every per-question timer already auto-advance/submit on their own strict setting). Turn this on to auto-submit the Test the instant its timer hits zero, matching real proctored conditions.", strictTimingEnabled)}`);
   }
+  function labRatedDifficultyCardHtml() {
+    return labCardHtml('🎮 Rated Difficulty', `
+      ${labToggleRowHtml('labRatedDifficulty', 'Show community difficulty ratings', 'Adds a Geometry Dash-style 1-10 difficulty rating (Easy → Extreme Demon) next to the existing Easy/Medium/Hard pill, with a vote strip so you can rate a question yourself. Votes sync with your next "Save progress now" click, not immediately. Shown rating is the site owner’s admin-approved value once set, or the current community average marked "Not yet rated" until then.', ratedDifficultyLabEnabled())}`);
+  }
   function renderLab() {
     const shell = document.getElementById('labShell');
     if (!shell) return;
@@ -11186,15 +12182,37 @@
       <div class="progress-summary">
         <h2>🧪 Lab</h2>
         <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior.</p>
-        <button type="button" class="btn" id="labResetBtn">Reset all Lab settings to defaults</button>
+        ${labResetConfirmPending ? `
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--incorrect-bg); border:1px solid var(--incorrect); color:var(--incorrect); border-radius:8px; padding:10px 14px;">
+            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, strict timing, and difficulty ratings all go back to off/unchanged.</span>
+            <div style="display:flex; gap:8px; margin-left:auto;">
+              <button type="button" class="btn" id="labResetCancelBtn">Cancel</button>
+              <button type="button" class="btn btn-accent" id="labResetConfirmBtn">Yes, reset everything</button>
+            </div>
+          </div>` : `
+          <button type="button" class="btn" id="labResetBtn">Reset all Lab settings to defaults</button>`}
       </div>
-      ${labKeybindingsCardHtml()}
       ${labThemeCardHtml()}
       ${labChoicesCardHtml()}
-      ${labStrictTimingCardHtml()}`;
+      ${labStrictTimingCardHtml()}
+      ${labRatedDifficultyCardHtml()}
+      ${labKeybindingsCardHtml()}`;
 
     const resetBtn = document.getElementById('labResetBtn');
-    if (resetBtn) resetBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); });
+    if (resetBtn) resetBtn.addEventListener('click', () => { labResetConfirmPending = true; renderLab(); });
+    const resetCancelBtn = document.getElementById('labResetCancelBtn');
+    if (resetCancelBtn) resetCancelBtn.addEventListener('click', () => { labResetConfirmPending = false; renderLab(); });
+    const resetConfirmBtn = document.getElementById('labResetConfirmBtn');
+    if (resetConfirmBtn) resetConfirmBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); });
+    const ratedDifficultyBox = document.getElementById('labRatedDifficulty');
+    if (ratedDifficultyBox) ratedDifficultyBox.addEventListener('change', () => {
+      setRatedDifficultyLabEnabled(ratedDifficultyBox.checked);
+      if (ratedDifficultyBox.checked && !Object.keys(ratedDifficultyCache).length) {
+        refreshRatedDifficultyCache().then(refreshAllQuestionCardViews);
+      }
+      renderLab();
+      refreshAllQuestionCardViews();
+    });
 
     shell.querySelectorAll('[data-rebind-action]').forEach(btn => {
       btn.addEventListener('click', () => { rebindingAction = btn.dataset.rebindAction; renderLab(); });
@@ -11293,9 +12311,18 @@
   }
 
   function leaderboardRowHtml(row, isMe) {
+    // Always show the @username alongside the display name — most profile
+    // names default to "Student" and never get changed, so the name alone
+    // isn't enough to tell people apart. A title (db/user_titles.json, set
+    // by hand — purely cosmetic, not user-editable) shows underneath both
+    // when someone has one.
     return `
       <div class="lb-row ${isMe ? 'lb-me' : ''}">
-        <div class="lb-name">${escapeHtml(row.name)}${isMe ? ' <span class="lb-you">you</span>' : ''}</div>
+        <div class="lb-name">
+          ${escapeHtml(row.name)}${isMe ? ' <span class="lb-you">you</span>' : ''}
+          <span class="lb-username">@${escapeHtml(row.username)}</span>
+          ${row.title ? `<span class="lb-title">${escapeHtml(row.title)}</span>` : ''}
+        </div>
         <div class="lb-stat"><span class="lb-n">${row.streak}</span><span class="lb-l">day streak</span></div>
         <div class="lb-stat"><span class="lb-n">${row.week}</span><span class="lb-l">this week</span></div>
         <div class="lb-stat"><span class="lb-n">${row.total}</span><span class="lb-l">total done</span></div>
@@ -11354,9 +12381,10 @@
       return {
         username: entry.username,
         name: entry.name || entry.username,
+        title: entry.title || null,
         streak: streaks.current,
         week: weeklyCompletionCount(counts),
-        total: Object.keys(entry.completionLog || {}).length,
+        total: entry.totalDone || 0,
       };
     }).sort((a, b) => b.streak - a.streak || b.week - a.week || b.total - a.total);
 
@@ -11577,7 +12605,7 @@
   function buildBackupPayload() {
     return {
       app: 'sat-qbank-progress',
-      version: 8,
+      version: 9, // bumped for the new `blueprints` field
       exportedAt: new Date().toISOString(),
       progress: state.progress,
       tags: state.tags,
@@ -11594,6 +12622,7 @@
       progressFocus: [...state.progressFocus],
       trendExcluded: [...trendExcluded],
       recentVisits: recentVisits,
+      blueprints: loadBlueprints(),
     };
   }
 
@@ -11620,9 +12649,10 @@
     const incomingProgressFocus = parsed && typeof parsed === 'object' ? parsed.progressFocus : null;
     const incomingTrendExcluded = parsed && typeof parsed === 'object' ? parsed.trendExcluded : null;
     const incomingRecentVisits = parsed && typeof parsed === 'object' ? parsed.recentVisits : null;
+    const incomingBlueprints = parsed && typeof parsed === 'object' ? parsed.blueprints : null;
     const hasIncomingMathOverrides = incomingMathOverrides && typeof incomingMathOverrides === 'object' && !Array.isArray(incomingMathOverrides);
     const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits) {
+    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints) {
       return false;
     }
     if (incomingProgress && typeof incomingProgress === 'object') {
@@ -11734,6 +12764,13 @@
         }
       });
       saveRecentVisits();
+    }
+    if (Array.isArray(incomingBlueprints) && incomingBlueprints.length) {
+      // Same dedupe-by-id union as mockHistory/testHistory above — merging
+      // the same or an overlapping backup twice just leaves one copy.
+      const byId = new Map(loadBlueprints().map(b => [b.id, b]));
+      incomingBlueprints.forEach(b => { if (b && b.id) byId.set(b.id, b); });
+      saveBlueprintsList([...byId.values()]);
     }
     renderFilters();
     renderBrowse();
@@ -12497,6 +13534,12 @@
   renderReview();
   renderNotesView();
 
+  // Rated Difficulty (Lab) — only worth the request if the feature is
+  // actually turned on for this browser.
+  if (ratedDifficultyLabEnabled()) {
+    refreshRatedDifficultyCache().then(refreshAllQuestionCardViews);
+  }
+
   // Keeps the Review tab's due-count badge fresh against a card rolling over
   // to "due" purely from time passing (midnight, or an interval elapsing)
   // while the tab is left open with nothing else triggering a re-render.
@@ -12623,6 +13666,7 @@
 
   document.getElementById('qlistMath').addEventListener('click', (e) => {
     if (e.target.closest('[data-copy-id]')) return;
+    if (e.target.closest('[data-rate-toggle], [data-vote-qid]')) return; // let Rated Difficulty voting through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const idx = mathRenderedList.findIndex(q => q.id === head.dataset.id);

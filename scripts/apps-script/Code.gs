@@ -53,8 +53,15 @@ function doPost(e) {
     else if (action === 'save') result = handleSave_(body);
     else if (action === 'load') result = handleLoad_(body);
     else if (action === 'propose_question') result = handlePropose_(body);
+    else if (action === 'report_question') result = handleReportQuestion_(body);
     else if (action === 'leaderboard') result = handleLeaderboard_(body);
     else if (action === 'admin_reset_password') result = handleAdminResetPassword_(body);
+    else if (action === 'save_blueprint') result = handleSaveBlueprint_(body);
+    else if (action === 'load_blueprint') result = handleLoadBlueprint_(body);
+    else if (action === 'list_blueprints') result = handleListBlueprints_(body);
+    else if (action === 'get_ratings') result = handleGetRatings_(body);
+    else if (action === 'submit_difficulty_votes') result = handleSubmitDifficultyVotes_(body);
+    else if (action === 'admin_set_rating') result = handleAdminSetRating_(body);
     else result = { ok: false, error: 'Unknown action: ' + action };
   } catch (err) {
     result = { ok: false, error: String((err && err.message) || err) };
@@ -87,9 +94,26 @@ function config_() {
 
 function usersPath_(cfg) { return cfg.dir + '/users.json'; }
 function progressPath_(cfg, username) { return cfg.dir + '/progress/' + username.toLowerCase() + '.json'; }
+// Single small JSON array of every community-shared blueprint (Test/Practice
+// setup) — same one-file-holds-a-list shape as users.json, since this is a
+// personal/shared-with-friends tool and the list is expected to stay small.
+function blueprintsPath_(cfg) { return cfg.dir + '/blueprints.json'; }
 // Fixed repo location (not under cfg.dir, which is only the configurable
 // cloud-save directory) — matches scripts/review_staged_questions.py.
 function stagingPath_() { return 'db/staging/proposed_questions.json'; }
+// Fixed repo location, shared across all users (unlike progress files) —
+// one small JSON object of community difficulty votes + admin-approved
+// ratings, keyed by question id. See handleGetRatings_/mergeDifficultyVotes_.
+function ratingsPath_() { return 'db/ratings/aggregate.json'; }
+// Same idea as stagingPath_, but for "something's wrong with this question"
+// flags from the Report button — a fixed shared file, not a per-user one,
+// so the site owner can see every open report in one place.
+function reportsPath_() { return 'db/staging/reported_questions.json'; }
+// Fun, cosmetic-only titles shown on the leaderboard next to a username
+// (e.g. {"hamin": "Average Lebron Fan"}) — hand-edited in the repo, not
+// settable by users themselves. Fixed shared location, same idea as
+// ratingsPath_/reportsPath_.
+function userTitlesPath_() { return 'db/user_titles.json'; }
 
 // ---------- GitHub Contents API helpers ----------
 
@@ -240,14 +264,28 @@ function handleLoad_(body) {
 // Any logged-in user can see everyone else's streak/activity — a small
 // "who's grinding" board for a group of friends, not a private stat. Only
 // the fields the leaderboard needs are returned (completionLog, dailyGoal,
-// display name, mock-exam count) — never passwordHash, and the client
-// derives streaks from completionLog itself (same computeStreaks() used for
-// the requester's own Profile tab) so the two never drift apart.
+// display name, mock-exam count, total-done) — never passwordHash, and the
+// client derives streaks from completionLog itself (same computeStreaks()
+// used for the requester's own Profile tab) so the two never drift apart.
+//
+// totalDone is counted here from `progress` (status === 'done') rather than
+// sent as the raw progress map (which would mean shipping one entry per
+// question in the whole bank) — completionLog only covers questions
+// completed *after* that log was introduced, so it undercounts anyone with
+// older progress; `progress` is the source of truth the app itself uses for
+// "questions done" (see computeGamificationStats's totalDone client-side).
+function loadUserTitles_(cfg) {
+  var file = githubGetFile_(cfg, userTitlesPath_());
+  if (!file.exists) return {};
+  try { return JSON.parse(file.content) || {}; } catch (e) { return {}; }
+}
+
 function handleLeaderboard_(body) {
   var cfg = config_();
   var check = checkCredentials_(cfg, body && body.username, body && body.password);
   if (!check.ok) return check;
 
+  var titles = loadUserTitles_(cfg);
   var users = loadUsers_(cfg).users;
   var entries = [];
   Object.keys(users).forEach(function (key) {
@@ -256,12 +294,16 @@ function handleLeaderboard_(body) {
     if (!file.exists) return;
     var data;
     try { data = JSON.parse(file.content); } catch (e) { return; }
+    var progress = data.progress || {};
+    var totalDone = Object.keys(progress).filter(function (qid) { return progress[qid] === 'done'; }).length;
     entries.push({
       username: rec.username,
       name: (data.profile && data.profile.name) || rec.username,
+      title: titles[rec.username] || titles[rec.username.toLowerCase()] || null,
       completionLog: data.completionLog || {},
       dailyGoal: data.dailyGoal || 10,
       mockCount: (data.mockHistory || []).length,
+      totalDone: totalDone,
     });
   });
   return { ok: true, entries: entries };
@@ -349,4 +391,264 @@ function handlePropose_(body) {
   }
 
   return { ok: true, count: count, commitUrl: result.commit && result.commit.html_url };
+}
+
+// A batch of "report a problem with this question" flags from one client.
+// The client queues these locally (see reportQuestion() in
+// site/index.template.html) and only ever sends them along with the next
+// manual "Save progress now" click — never immediately — so this can arrive
+// with several reports built up in one call. Appends to the same shared
+// staging file every client writes to; nothing here reaches the live
+// question bank on its own, same guarantee as handlePropose_ below.
+function handleReportQuestion_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var reports = body && body.reports;
+  if (!Array.isArray(reports) || !reports.length) return { ok: false, error: 'Missing or empty reports' };
+  var records = [];
+  for (var i = 0; i < reports.length; i++) {
+    var r = reports[i];
+    if (!r || typeof r !== 'object' || !r.qid || !r.reason) continue;
+    records.push({
+      qid: String(r.qid),
+      shortId: r.shortId ? String(r.shortId) : String(r.qid),
+      reason: String(r.reason).slice(0, 100),
+      note: r.note ? String(r.note).slice(0, 500) : '',
+      reported_by: check.username,
+      reported_at: new Date().toISOString(),
+    });
+  }
+  if (!records.length) return { ok: false, error: 'No valid reports in batch' };
+
+  var path = reportsPath_();
+  var result, count, lastErr;
+  // Same GitHub-sha race as handlePropose_ (two people saving at once) —
+  // retry with a fresh GET/sha rather than surfacing that as a failure.
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var existing = githubGetFile_(cfg, path);
+      var staged = existing.exists ? JSON.parse(existing.content) : [];
+      staged = staged.concat(records);
+      count = staged.length;
+      result = githubPutFile_(
+        cfg, path, JSON.stringify(staged, null, 2), existing.sha,
+        'Report ' + records.length + ' question issue(s) (by ' + check.username + ')'
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+
+  return { ok: true, count: count, commitUrl: result.commit && result.commit.html_url };
+}
+
+// ---------- Blueprints (share custom Test/Practice setups via a short code) ----------
+// Same "public reads, credentialed writes" shape as propose_question — a
+// share code is just an index into db/cloud_save/blueprints.json, a single
+// JSON array. Anyone can list/load (it's meant to be discovered), but
+// publishing one requires a kyj-cloud login, same basic spam guard as
+// proposing a question.
+
+function randomCode_() {
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I — easier to read aloud/type
+  var out = '';
+  for (var i = 0; i < 6; i++) out += chars.charAt(Math.floor(Math.random() * chars.length));
+  return out;
+}
+
+function loadBlueprints_(cfg) {
+  var file = githubGetFile_(cfg, blueprintsPath_(cfg));
+  var list = [];
+  if (file.exists) {
+    try { list = JSON.parse(file.content); } catch (e) { list = []; }
+    if (!Array.isArray(list)) list = [];
+  }
+  return { sha: file.sha, list: list };
+}
+
+function handleSaveBlueprint_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var blueprint = body && body.blueprint;
+  if (!blueprint || typeof blueprint !== 'object' || !blueprint.name || !blueprint.view) {
+    return { ok: false, error: 'Missing or malformed blueprint' };
+  }
+
+  var result, code, lastErr;
+  // Same optimistic-concurrency retry pattern as handlePropose_ — two people
+  // sharing at once would otherwise race on blueprints.json's sha.
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var loaded = loadBlueprints_(cfg);
+      var existingCodes = {};
+      loaded.list.forEach(function (b) { existingCodes[b.code] = true; });
+      do { code = randomCode_(); } while (existingCodes[code]);
+
+      var entry = {
+        code: code,
+        name: String(blueprint.name).slice(0, 80),
+        view: blueprint.view,
+        author: check.username,
+        createdAt: new Date().toISOString(),
+        data: blueprint,
+      };
+      loaded.list.push(entry);
+      result = githubPutFile_(
+        cfg, blueprintsPath_(cfg), JSON.stringify(loaded.list, null, 2), loaded.sha,
+        'Share blueprint "' + entry.name + '" (' + code + ') by ' + check.username
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+  return { ok: true, code: code };
+}
+
+function handleLoadBlueprint_(body) {
+  var cfg = config_();
+  var code = body && String(body.code || '').trim().toUpperCase();
+  if (!code) return { ok: false, error: 'Missing code' };
+  var list = loadBlueprints_(cfg).list;
+  var entry = list.filter(function (b) { return b.code === code; })[0];
+  if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
+  return { ok: true, entry: entry };
+}
+
+// No login required — this is the "browse what others made" list, meant to
+// be public the same way the blueprints themselves are once shared.
+function handleListBlueprints_(body) {
+  var cfg = config_();
+  var list = loadBlueprints_(cfg).list;
+  // Newest first; the raw `data` blob isn't needed until something is
+  // actually picked, so keep the listing itself light.
+  var entries = list.map(function (b) {
+    return { code: b.code, name: b.name, view: b.view, author: b.author, createdAt: b.createdAt };
+  }).reverse();
+  return { ok: true, entries: entries };
+}
+
+// ---------- Rated Difficulty (Lab) ----------
+// A GD-style 1-10 community difficulty rating, additive to the existing
+// static difficulty/difficulty_label on each question. Same "queue locally,
+// flush only on manual save" convention as reportQuestion_/handleReportQuestion_
+// above — the client queues votes locally and sends them all in one
+// 'submit_difficulty_votes' call alongside the next "Save progress now"
+// click, never per-vote. Shape of db/ratings/aggregate.json:
+//   { "<questionId>": { votes: { "<username>": 7 }, officialRating: null|1-10, status: "unrated"|"pending"|"approved" } }
+
+function loadRatings_(cfg) {
+  var file = githubGetFile_(cfg, ratingsPath_());
+  var data = {};
+  if (file.exists) {
+    try { data = JSON.parse(file.content); } catch (e) { data = {}; }
+    if (!data || typeof data !== 'object') data = {};
+  }
+  return { sha: file.sha, data: data };
+}
+
+// Folds one user's votes ({questionId: 1-10, ...}) into the shared ratings
+// file. Keyed by username so re-voting/re-saving overwrites cleanly instead
+// of double-counting.
+function mergeDifficultyVotes_(cfg, username, votes) {
+  var lastErr;
+  for (var attempt = 0; attempt < 3; attempt++) {
+    try {
+      var loaded = loadRatings_(cfg);
+      var data = loaded.data;
+      Object.keys(votes).forEach(function (qid) {
+        var rating = Number(votes[qid]);
+        // 0 is the client's "I un-voted this" sentinel (see clearDifficultyVote
+        // in site/index.template.html) — remove any existing vote from this
+        // user rather than storing it. Anything else outside 1-10 is invalid,
+        // not a real vote either way.
+        if (rating === 0) {
+          if (data[qid] && data[qid].votes) delete data[qid].votes[username];
+          if (data[qid] && !Object.keys(data[qid].votes).length && data[qid].status === 'pending') {
+            data[qid].status = 'unrated';
+          }
+          return;
+        }
+        if (!(rating >= 1 && rating <= 10)) return;
+        if (!data[qid]) data[qid] = { votes: {}, officialRating: null, status: 'unrated' };
+        data[qid].votes[username] = rating;
+        if (data[qid].status === 'unrated') data[qid].status = 'pending';
+      });
+      githubPutFile_(
+        cfg, ratingsPath_(), JSON.stringify(data, null, 2), loaded.sha,
+        'Difficulty votes from ' + username
+      );
+      return;
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  throw lastErr;
+}
+
+// Public, no login required — the ratings file only ever holds question ids
+// and small numbers, same "safe to expose" reasoning as handleListBlueprints_.
+function handleGetRatings_(body) {
+  var cfg = config_();
+  return { ok: true, ratings: loadRatings_(cfg).data };
+}
+
+function handleSubmitDifficultyVotes_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var votes = body && body.votes;
+  if (!votes || typeof votes !== 'object' || Array.isArray(votes) || !Object.keys(votes).length) {
+    return { ok: false, error: 'Missing or empty votes' };
+  }
+  mergeDifficultyVotes_(cfg, check.username, votes);
+  return { ok: true, count: Object.keys(votes).length };
+}
+
+// Site-owner-only, same shared-secret pattern as handleAdminResetPassword_.
+// Not exposed in any UI; call it directly via curl:
+//   curl -X POST '<exec url>' -H 'Content-Type: text/plain' -d \
+//     '{"action":"admin_set_rating","adminSecret":"...","questionId":"2d1e5eff","officialRating":7}'
+function handleAdminSetRating_(body) {
+  var props = PropertiesService.getScriptProperties();
+  var adminSecret = props.getProperty('ADMIN_SECRET');
+  if (!adminSecret) return { ok: false, error: 'ADMIN_SECRET is not set in Script Properties' };
+  if (!body || body.adminSecret !== adminSecret) return { ok: false, error: 'Not authorized' };
+
+  var questionId = body.questionId;
+  var officialRating = Number(body.officialRating);
+  if (!questionId || typeof questionId !== 'string') return { ok: false, error: 'Missing questionId' };
+  if (!(officialRating >= 0 && officialRating <= 10)) {
+    return { ok: false, error: 'officialRating must be 0-10' };
+  }
+
+  var cfg = config_();
+  var lastErr;
+  for (var attempt = 0; attempt < 3; attempt++) {
+    try {
+      var loaded = loadRatings_(cfg);
+      var data = loaded.data;
+      if (!data[questionId]) data[questionId] = { votes: {}, officialRating: null, status: 'unrated' };
+      data[questionId].officialRating = officialRating;
+      data[questionId].status = 'approved';
+      githubPutFile_(
+        cfg, ratingsPath_(), JSON.stringify(data, null, 2), loaded.sha,
+        'Admin set official rating for ' + questionId + ' = ' + officialRating
+      );
+      return { ok: true, questionId: questionId, officialRating: officialRating };
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  throw lastErr;
 }
