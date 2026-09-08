@@ -71,5 +71,99 @@
       "timerSeconds": 100,
       "timerStrict": true
     }
+  },
+  {
+    "code": "UYFGWF",
+    "name": "Hard Reading Time Pressure Practice",
+    "view": "test",
+    "author": "kyjv9981",
+    "createdAt": "2026-09-08T08:58:17.413Z",
+    "data": {
+      "id": "bp_mtsfsxbmtlar6",
+      "name": "Hard Reading Time Pressure Practice",
+      "view": "test",
+      "createdAt": "2026-09-08T08:58:14.578Z",
+      "count": 10,
+      "categories": [],
+      "skills": [],
+      "difficulties": [],
+      "statuses": [
+        "incomplete"
+      ],
+      "advancedDistribution": true,
+      "showSkillMix": false,
+      "blueprint": [
+        {
+          "category": "Vocab",
+          "skill": "Words in Context",
+          "count": 0
+        },
+        {
+          "category": "Functions",
+          "skill": "Text Structure and Purpose",
+          "count": 2
+        },
+        {
+          "category": "Cross-Text",
+          "skill": "Cross-Text Connections",
+          "count": 1
+        },
+        {
+          "category": "Main Idea",
+          "skill": "Central Ideas and Details",
+          "count": 2
+        },
+        {
+          "category": "Quantitative Evidence",
+          "skill": "Command of Evidence (Quantitative)",
+          "count": 2
+        },
+        {
+          "category": "Textual Evidence",
+          "skill": "Command of Evidence (Textual)",
+          "count": 2
+        },
+        {
+          "category": "Inferences",
+          "skill": "Inferences",
+          "count": 1
+        },
+        {
+          "category": "Grammar",
+          "skill": "Boundaries",
+          "count": 0
+        },
+        {
+          "category": "Grammar",
+          "skill": "Form, Structure, and Sense",
+          "count": 0
+        },
+        {
+          "category": "Transitions",
+          "skill": "Transitions",
+          "count": 0
+        },
+        {
+          "category": "Notes",
+          "skill": "Rhetorical Synthesis",
+          "count": 0
+        }
+      ],
+      "advancedDifficulty": true,
+      "weightConfig": {
+        "main": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 0,
+            "Medium": 0,
+            "Hard": 100
+          }
+        }
+      },
+      "shuffle": true,
+      "timed": true,
+      "timerSeconds": 100,
+      "timerStrict": true
+    }
   }
 ]
