@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-08T07:52:57.019Z",
+  "exportedAt": "2026-09-08T10:33:00.842Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -470,7 +470,17 @@
     "57fb41c0": "review",
     "5bac62e5": "done",
     "aae79e3a": "done",
-    "c6ec16fb": "done"
+    "c6ec16fb": "done",
+    "ba29d116": "done",
+    "218b932d": "done",
+    "0eeef1e7": "done",
+    "271ef622": "review",
+    "bf1fe112": "done",
+    "f1be8b46": "done",
+    "fb9a720d": "done",
+    "d6623ffe": "done",
+    "be184fba": "done",
+    "5f5deac5": "done"
   },
   "tags": {
     "51bd4147": [
@@ -579,6 +589,24 @@
       {
         "text": "viewing as symbol was a very key idea here",
         "ts": 1787323765168
+      }
+    ],
+    "0eeef1e7": [
+      {
+        "text": "constitue means include/compose. don't get confused!",
+        "ts": 1788859623440
+      }
+    ],
+    "271ef622": [
+      {
+        "text": "pretty hard question.",
+        "ts": 1788859777373
+      }
+    ],
+    "5f5deac5": [
+      {
+        "text": "example of just understand properly and you'd get it right.",
+        "ts": 1788863159648
       }
     ]
   },
@@ -777,7 +805,17 @@
     "57fb41c0": "2026-09-07T12:43:51.506Z",
     "5bac62e5": "2026-09-07T12:44:22.905Z",
     "aae79e3a": "2026-09-07T12:44:28.105Z",
-    "c6ec16fb": "2026-09-07T12:44:29.773Z"
+    "c6ec16fb": "2026-09-07T12:44:29.773Z",
+    "ba29d116": "2026-09-08T09:20:19.976Z",
+    "218b932d": "2026-09-08T09:25:54.410Z",
+    "0eeef1e7": "2026-09-08T09:26:48.442Z",
+    "e3ef19f1": "2026-09-08T09:27:13.291Z",
+    "bf1fe112": "2026-09-08T09:57:27.741Z",
+    "f1be8b46": "2026-09-08T10:07:29.790Z",
+    "fb9a720d": "2026-09-08T10:10:45.347Z",
+    "d6623ffe": "2026-09-08T10:17:02.575Z",
+    "be184fba": "2026-09-08T10:19:33.475Z",
+    "5f5deac5": "2026-09-08T10:25:51.012Z"
   },
   "dailyGoal": 10,
   "profile": {
@@ -1619,7 +1657,36 @@
       "routedHarder": true
     }
   ],
-  "testHistory": [],
+  "testHistory": [
+    {
+      "id": "1788858928324-5lorh5",
+      "completedAt": "2026-09-08T09:15:28.324Z",
+      "questionIds": [
+        "ba29d116",
+        "218b932d",
+        "050d4a12",
+        "252b1ef7",
+        "a9a21790",
+        "4c16e3b0",
+        "9f901f94",
+        "0eeef1e7",
+        "e3ef19f1",
+        "271ef622"
+      ],
+      "answers": {
+        "ba29d116": "A",
+        "218b932d": "B",
+        "050d4a12": "D",
+        "252b1ef7": "D",
+        "a9a21790": "A",
+        "4c16e3b0": "D",
+        "9f901f94": "B",
+        "0eeef1e7": "C",
+        "e3ef19f1": "A",
+        "271ef622": "D"
+      }
+    }
+  ],
   "rwOverrides": {
     "1787039900255-62g8qe": 26,
     "1788772372772-x7mkl0": 26,
@@ -1627,33 +1694,9 @@
   },
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 19,
-      "total": 24,
+      "correct": 25,
+      "total": 31,
       "recent": [
-        {
-          "ts": 1787233756710,
-          "correct": true
-        },
-        {
-          "ts": 1787233756711,
-          "correct": true
-        },
-        {
-          "ts": 1787241362094,
-          "correct": true
-        },
-        {
-          "ts": 1787277772569,
-          "correct": true
-        },
-        {
-          "ts": 1787285305278,
-          "correct": false
-        },
-        {
-          "ts": 1787285305280,
-          "correct": false
-        },
         {
           "ts": 1787296857956,
           "correct": true
@@ -1673,26 +1716,42 @@
         {
           "ts": 1788784690340,
           "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": false
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
+        },
+        {
+          "ts": 1788862044216,
+          "correct": true
+        },
+        {
+          "ts": 1788862243214,
+          "correct": true
+        },
+        {
+          "ts": 1788862620243,
+          "correct": true
+        },
+        {
+          "ts": 1788862769910,
+          "correct": true
+        },
+        {
+          "ts": 1788863138811,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690340
+      "lastAttemptTs": 1788863138811
     },
     "Command of Evidence (Textual)": {
-      "correct": 23,
-      "total": 25,
+      "correct": 26,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1787285305280,
-          "correct": true
-        },
-        {
-          "ts": 1787296857956,
-          "correct": true
-        },
-        {
-          "ts": 1787323546191,
-          "correct": true
-        },
         {
           "ts": 1787323734800,
           "correct": true
@@ -1728,9 +1787,21 @@
         {
           "ts": 1788784690340,
           "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
+        },
+        {
+          "ts": 1788861403425,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690340
+      "lastAttemptTs": 1788861403425
     },
     "Words in Context": {
       "correct": 24,
@@ -1776,8 +1847,8 @@
       "lastAttemptTs": 1788784690339
     },
     "Text Structure and Purpose": {
-      "correct": 13,
-      "total": 13,
+      "correct": 15,
+      "total": 15,
       "recent": [
         {
           "ts": 1787233756709,
@@ -1810,18 +1881,22 @@
         {
           "ts": 1788784690339,
           "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690339
+      "lastAttemptTs": 1788858928324
     },
     "Cross-Text Connections": {
-      "correct": 20,
-      "total": 29,
+      "correct": 21,
+      "total": 30,
       "recent": [
-        {
-          "ts": 1787321975031,
-          "correct": false
-        },
         {
           "ts": 1787321976584,
           "correct": false
@@ -1865,22 +1940,18 @@
         {
           "ts": 1788784690339,
           "correct": true
+        },
+        {
+          "ts": 1788858928323,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690339
+      "lastAttemptTs": 1788858928323
     },
     "Central Ideas and Details": {
-      "correct": 23,
-      "total": 26,
+      "correct": 25,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1787245024395,
-          "correct": true
-        },
-        {
-          "ts": 1787279758575,
-          "correct": true
-        },
         {
           "ts": 1787279984126,
           "correct": false
@@ -1920,13 +1991,21 @@
         {
           "ts": 1788784690339,
           "correct": true
+        },
+        {
+          "ts": 1788858928323,
+          "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690340
+      "lastAttemptTs": 1788858928324
     },
     "Inferences": {
-      "correct": 15,
-      "total": 15,
+      "correct": 16,
+      "total": 16,
       "recent": [
         {
           "ts": 1787233756710,
@@ -1963,9 +2042,13 @@
         {
           "ts": 1788784690340,
           "correct": true
+        },
+        {
+          "ts": 1788858928324,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788784690340
+      "lastAttemptTs": 1788858928324
     },
     "Boundaries": {
       "correct": 14,
@@ -2168,32 +2251,8 @@
       "lastTs": 1787297697502
     },
     "a0120582": {
-      "count": 7,
-      "lastTs": 1788853969445
-    },
-    "778c959a": {
-      "count": 1,
-      "lastTs": 1787240489320
-    },
-    "82148e88": {
-      "count": 1,
-      "lastTs": 1787240503120
-    },
-    "90856dbc": {
-      "count": 1,
-      "lastTs": 1787240508761
-    },
-    "fe7af99a": {
-      "count": 1,
-      "lastTs": 1787240514655
-    },
-    "862673fa": {
-      "count": 1,
-      "lastTs": 1787240517805
-    },
-    "014ae202": {
-      "count": 1,
-      "lastTs": 1787240525973
+      "count": 11,
+      "lastTs": 1788861003543
     },
     "599c3dd8": {
       "count": 1,
@@ -2394,6 +2453,30 @@
     "aae79e3a": {
       "count": 1,
       "lastTs": 1788785064938
+    },
+    "ba29d116": {
+      "count": 1,
+      "lastTs": 1788859205676
+    },
+    "218b932d": {
+      "count": 1,
+      "lastTs": 1788859545854
+    },
+    "0eeef1e7": {
+      "count": 1,
+      "lastTs": 1788859605576
+    },
+    "271ef622": {
+      "count": 2,
+      "lastTs": 1788860827304
+    },
+    "6989e0f9": {
+      "count": 1,
+      "lastTs": 1788861012929
+    },
+    "bf1fe112": {
+      "count": 3,
+      "lastTs": 1788861471480
     }
   },
   "blueprints": [
@@ -2452,6 +2535,93 @@
       "weightConfig": null,
       "shuffle": true,
       "biasWeak": false,
+      "timed": true,
+      "timerSeconds": 100,
+      "timerStrict": true
+    },
+    {
+      "id": "bp_mtsfsxbmtlar6",
+      "name": "Hard Reading Time Pressure Practice",
+      "view": "test",
+      "createdAt": "2026-09-08T08:58:14.578Z",
+      "count": 10,
+      "categories": [],
+      "skills": [],
+      "difficulties": [],
+      "statuses": [
+        "incomplete"
+      ],
+      "advancedDistribution": true,
+      "showSkillMix": false,
+      "blueprint": [
+        {
+          "category": "Vocab",
+          "skill": "Words in Context",
+          "count": 0
+        },
+        {
+          "category": "Functions",
+          "skill": "Text Structure and Purpose",
+          "count": 2
+        },
+        {
+          "category": "Cross-Text",
+          "skill": "Cross-Text Connections",
+          "count": 1
+        },
+        {
+          "category": "Main Idea",
+          "skill": "Central Ideas and Details",
+          "count": 2
+        },
+        {
+          "category": "Quantitative Evidence",
+          "skill": "Command of Evidence (Quantitative)",
+          "count": 2
+        },
+        {
+          "category": "Textual Evidence",
+          "skill": "Command of Evidence (Textual)",
+          "count": 2
+        },
+        {
+          "category": "Inferences",
+          "skill": "Inferences",
+          "count": 1
+        },
+        {
+          "category": "Grammar",
+          "skill": "Boundaries",
+          "count": 0
+        },
+        {
+          "category": "Grammar",
+          "skill": "Form, Structure, and Sense",
+          "count": 0
+        },
+        {
+          "category": "Transitions",
+          "skill": "Transitions",
+          "count": 0
+        },
+        {
+          "category": "Notes",
+          "skill": "Rhetorical Synthesis",
+          "count": 0
+        }
+      ],
+      "advancedDifficulty": true,
+      "weightConfig": {
+        "main": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 0,
+            "Medium": 0,
+            "Hard": 100
+          }
+        }
+      },
+      "shuffle": true,
       "timed": true,
       "timerSeconds": 100,
       "timerStrict": true
