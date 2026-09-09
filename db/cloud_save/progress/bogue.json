@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-09T06:07:01.863Z",
+  "exportedAt": "2026-09-09T06:20:51.715Z",
   "progress": {
     "a8c35eaf": "done",
     "26ac2597": "done",
@@ -159,6 +159,51 @@
         }
       ],
       "lastAttemptTs": 1787231004065
+    },
+    "Words in Context": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1788934144947,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1788934144947
+    },
+    "Central Ideas and Details": {
+      "correct": 2,
+      "total": 4,
+      "recent": [
+        {
+          "ts": 1788934519852,
+          "correct": false
+        },
+        {
+          "ts": 1788934522560,
+          "correct": true
+        },
+        {
+          "ts": 1788934530287,
+          "correct": false
+        },
+        {
+          "ts": 1788934558932,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1788934558932
+    },
+    "Command of Evidence (Quantitative)": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1788934730056,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1788934730056
     }
   },
   "progressFocus": [
@@ -171,6 +216,18 @@
     "a0120582": {
       "count": 1,
       "lastTs": 1788784870717
+    },
+    "8b52201d": {
+      "count": 1,
+      "lastTs": 1788934079052
+    },
+    "271ef622": {
+      "count": 1,
+      "lastTs": 1788934247730
+    },
+    "f7347d3a": {
+      "count": 1,
+      "lastTs": 1788934587926
     }
   },
   "blueprints": []
