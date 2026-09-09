@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-09T07:20:17.896Z",
+  "exportedAt": "2026-09-09T14:29:21.906Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -567,7 +567,10 @@
     "65b4b39b": "done",
     "74bccb47": "done",
     "f0752b00": "done",
-    "08f4846e": "done"
+    "08f4846e": "done",
+    "1f851ceb": "done",
+    "7dfc7064": "done",
+    "9db9a861": "review"
   },
   "tags": {
     "51bd4147": [
@@ -991,7 +994,9 @@
     "65b4b39b": "2026-09-09T07:16:55.932Z",
     "74bccb47": "2026-09-09T07:17:02.282Z",
     "f0752b00": "2026-09-09T07:17:12.215Z",
-    "08f4846e": "2026-09-09T07:17:15.581Z"
+    "08f4846e": "2026-09-09T07:17:15.581Z",
+    "1f851ceb": "2026-09-09T14:10:02.520Z",
+    "7dfc7064": "2026-09-09T14:12:57.931Z"
   },
   "dailyGoal": 10,
   "profile": {
@@ -2017,14 +2022,6 @@
         },
         {
           "ts": 1788937060334,
-          "correct": false
-        },
-        {
-          "ts": 1788937060334,
-          "correct": true
-        },
-        {
-          "ts": 1788938161866,
           "correct": true
         },
         {
@@ -2170,10 +2167,6 @@
         },
         {
           "ts": 1788858928324,
-          "correct": true
-        },
-        {
-          "ts": 1788937060334,
           "correct": true
         },
         {
@@ -2356,25 +2349,9 @@
       "lastAttemptTs": 1788938161866
     },
     "Rhetorical Synthesis": {
-      "correct": 57,
-      "total": 60,
+      "correct": 60,
+      "total": 64,
       "recent": [
-        {
-          "ts": 1788870554821,
-          "correct": true
-        },
-        {
-          "ts": 1788870587369,
-          "correct": true
-        },
-        {
-          "ts": 1788870657596,
-          "correct": true
-        },
-        {
-          "ts": 1788870734104,
-          "correct": true
-        },
         {
           "ts": 1788870745895,
           "correct": true
@@ -2406,9 +2383,25 @@
         {
           "ts": 1788938161865,
           "correct": true
+        },
+        {
+          "ts": 1788963000398,
+          "correct": true
+        },
+        {
+          "ts": 1788963173814,
+          "correct": true
+        },
+        {
+          "ts": 1788963499237,
+          "correct": false
+        },
+        {
+          "ts": 1788963512415,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1788938161865
+      "lastAttemptTs": 1788963512415
     }
   },
   "progressFocus": [
