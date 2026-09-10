@@ -1,0 +1,623 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Reported Questions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+  header {
+    display: flex; align-items: center; gap: 10px; padding: 14px 20px;
+    border-bottom: 1px solid var(--rule); background: var(--paper-raised); flex-wrap: wrap;
+  }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  .btn {
+    appearance: none; font: inherit; font-weight: 600; font-size: 13px;
+    background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  .btn.active { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
+  .btn-danger { border-color: var(--bad); color: var(--bad); }
+  .btn-danger:hover { background: var(--bad-bg); }
+  .viewToggle { display: flex; gap: 6px; }
+  #connStatus { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #connStatus.ok { color: var(--done); }
+  #connStatus.bad { color: var(--bad); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  .card { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+  .card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 12px; }
+  label { display: block; font-size: 12.5px; color: var(--ink-soft); margin: 12px 0 4px; }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], select, textarea {
+    width: 100%; font: inherit; background: var(--paper); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px;
+  }
+  input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; font-family: var(--sans); white-space: pre-wrap; }
+  #edit_stem { min-height: 140px; }
+  .rationaleBox { min-height: 60px; }
+  .subLabel { font-family: var(--mono); font-weight: 700; margin: 10px 0 4px; }
+  .subLabel:first-of-type { margin-top: 0; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 700px) { .row2 { grid-template-columns: 1fr; } }
+  .choiceRow { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+  .choiceRow .letter { width: 18px; font-weight: 700; font-family: var(--mono); }
+  .choiceRow input[type="radio"] { accent-color: var(--accent); }
+  .hint { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+  #imgWrap { margin-top: 10px; }
+  #pasteZone {
+    border: 2px dashed var(--rule); border-radius: 8px; min-height: 90px;
+    display: flex; align-items: center; justify-content: center; cursor: text; padding: 10px;
+  }
+  #pasteZone:focus { outline: none; border-color: var(--accent); }
+  #pasteZone.has-image { border-style: solid; }
+  #pastedImg { max-width: 100%; max-height: 220px; border-radius: 6px; background: #fff; }
+  .pasteHint { color: var(--ink-faint); font-size: 13px; text-align: center; }
+
+  #errBox {
+    background: var(--bad-bg); border: 1px solid var(--bad); color: var(--bad);
+    border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px;
+    display: none; white-space: pre-line;
+  }
+  #errBox.show { display: block; }
+
+  .actions { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+  #saveStatus { font-size: 12.5px; color: var(--ink-faint); }
+  #saveStatus.ok { color: var(--done); }
+  #saveStatus.bad { color: var(--bad); }
+
+  .help { margin-top: 20px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.6; }
+  .help code { font-family: var(--mono); background: var(--rule-soft); padding: 1px 5px; border-radius: 4px; }
+
+  .toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .toolbar .hint { margin: 0; }
+
+  .reportCard { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .reportHead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .reportTitle { font-weight: 700; font-size: 14.5px; }
+  .pill { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2.5px 8px; border-radius: 99px; background: var(--rule-soft); color: var(--ink-soft); }
+  .pill.reason { background: var(--warn-bg); color: var(--warn); }
+  .reportId { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); margin-left: auto; }
+  .reportMeta { font-size: 12px; color: var(--ink-faint); margin-bottom: 10px; }
+  .reportNote { font-size: 13px; color: var(--ink-soft); background: var(--rule-soft); border-radius: 8px; padding: 8px 10px; margin-bottom: 10px; }
+  .qPreview { border: 1px solid var(--rule-soft); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; background: var(--paper); }
+  .qStem { white-space: pre-wrap; font-size: 13px; color: var(--ink); margin-bottom: 8px; }
+  .qPrompt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .qChoice { font-size: 12.5px; color: var(--ink-soft); margin: 2px 0; }
+  .qChoice.correct { color: var(--done); font-weight: 600; }
+  .qRationale { font-size: 12px; color: var(--ink-faint); margin: 2px 0 2px 16px; }
+  .qMissing { color: var(--bad); font-size: 13px; }
+  .reportActions { display: flex; gap: 8px; }
+  .reportActions .btn { padding: 5px 12px; font-size: 12.5px; }
+  .resolvedBadge { color: var(--done); font-size: 12px; }
+
+  #editSection { display: none; }
+  #editBanner {
+    background: var(--warn-bg); border: 1px solid var(--warn); color: var(--warn);
+    border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+</style>
+
+<header>
+  <h1>🚩 Reported Questions</h1>
+  <div class="viewToggle">
+    <button class="btn active" id="showActiveBtn" type="button">Active reports</button>
+    <button class="btn" id="showResolvedBtn" type="button">Resolved</button>
+  </div>
+  <span id="connStatus">Connecting…</span>
+</header>
+
+<main>
+  <div id="listSection">
+    <div class="toolbar">
+      <button class="btn" id="refreshBtn" type="button">Refresh</button>
+      <span class="hint" id="listStatus"></span>
+    </div>
+    <div id="listWrap"></div>
+  </div>
+
+  <div id="editSection">
+    <div id="errBox"></div>
+    <div id="editBanner">
+      <span id="editBannerText"></span>
+      <button class="btn" id="cancelEditBtn" type="button">Back to list</button>
+    </div>
+
+    <div class="card">
+      <h3>Classification</h3>
+      <div class="row2">
+        <div>
+          <label for="edit_category">Category</label>
+          <select id="edit_category"></select>
+        </div>
+        <div>
+          <label for="edit_skill">Skill</label>
+          <select id="edit_skill"></select>
+        </div>
+      </div>
+      <label for="edit_difficulty">Difficulty</label>
+      <select id="edit_difficulty">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+      <div class="hint" id="domainHint"></div>
+    </div>
+
+    <div class="card">
+      <h3>Question</h3>
+      <label for="edit_stem">Stem (passage/text) — blank line between paragraphs, <code>&lt;u&gt;...&lt;/u&gt;</code> for underlined text</label>
+      <textarea id="edit_stem"></textarea>
+
+      <label for="edit_prompt">Prompt — must end in "?"</label>
+      <input type="text" id="edit_prompt" />
+
+      <label>Choices — select the radio button next to the correct one</label>
+      <div id="choicesWrap">
+        <div class="choiceRow"><input type="radio" name="edit_correct" value="A" /><span class="letter">A.</span><input type="text" id="edit_choice_A" /></div>
+        <div class="choiceRow"><input type="radio" name="edit_correct" value="B" /><span class="letter">B.</span><input type="text" id="edit_choice_B" /></div>
+        <div class="choiceRow"><input type="radio" name="edit_correct" value="C" /><span class="letter">C.</span><input type="text" id="edit_choice_C" /></div>
+        <div class="choiceRow"><input type="radio" name="edit_correct" value="D" /><span class="letter">D.</span><input type="text" id="edit_choice_D" /></div>
+      </div>
+
+      <label>Rationale — explain each choice separately</label>
+      <div id="rationalesWrap">
+        <label for="edit_rationale_A" class="subLabel">A</label>
+        <textarea id="edit_rationale_A" class="rationaleBox"></textarea>
+        <label for="edit_rationale_B" class="subLabel">B</label>
+        <textarea id="edit_rationale_B" class="rationaleBox"></textarea>
+        <label for="edit_rationale_C" class="subLabel">C</label>
+        <textarea id="edit_rationale_C" class="rationaleBox"></textarea>
+        <label for="edit_rationale_D" class="subLabel">D</label>
+        <textarea id="edit_rationale_D" class="rationaleBox"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Image (optional)</h3>
+      <label style="display:flex; align-items:center; gap:8px; margin:0;">
+        <input type="checkbox" id="edit_has_image" style="width:auto;" /> This question has an image (chart/table)
+      </label>
+      <div id="imgWrap" style="display:none;">
+        <div id="pasteZone" tabindex="0">
+          <img id="pastedImg" style="display:none;" />
+          <div class="pasteHint" id="pasteHint">Copy an image, click this box, then &#8984;V / Ctrl+V — or upload a file below — to replace it.</div>
+        </div>
+        <label for="imgFileInput">Or upload a file (PNG or SVG)</label>
+        <input type="file" id="imgFileInput" accept=".png,.svg,image/png,image/svg+xml" />
+        <div class="hint" id="imgKeepHint">Leave this alone to keep the existing image, or paste/upload a replacement above.</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-accent" id="saveBtn">Save changes</button>
+      <span id="saveStatus"></span>
+    </div>
+  </div>
+
+  <div class="help">
+    Run <code>python3 scripts/reports_server.py</code> and open
+    <code>http://localhost:8766/tools/review_reports.html</code> (the link it prints) to use this page — it needs
+    the local server to read <code>db/staging/reported_questions.json</code> and edit
+    <code>db/categories/*.json</code> directly.
+    <br /><br />
+    Editing here changes the live question data immediately, but the pre-built site
+    (<code>db/all_questions.json</code>, <code>site/data.js</code>, <code>site/dist/index.html</code>) needs a
+    rebuild to pick it up:
+    <code>build_db.py</code> → <code>build_site_data.py</code> → <code>build_site.py</code> →
+    <code>build_github_pages.py</code>.
+    <br /><br />
+    "Mark resolved" removes the report from the active list (and logs it to
+    <code>db/staging/resolved_reports.json</code>) — use it once you've fixed the question, or decided the report
+    doesn't need a change.
+  </div>
+</main>
+
+<script>
+(function () {
+  const CATEGORY_META = {
+    "Grammar": ["grammar.json", "Standard English Conventions", "SEC", { "Boundaries": "BOUND", "Form, Structure, and Sense": "FSS" }],
+    "Vocab": ["vocab.json", "Craft and Structure", "CAS", { "Words in Context": "WIC" }],
+    "Transitions": ["transitions.json", "Expression of Ideas", "EOI", { "Transitions": "TRANS" }],
+    "Notes": ["notes.json", "Expression of Ideas", "EOI", { "Rhetorical Synthesis": "RSYN" }],
+    "Functions": ["functions.json", "Craft and Structure", "CAS", { "Text Structure and Purpose": "TSP" }],
+    "Main Idea": ["main_idea.json", "Information and Ideas", "INI", { "Central Ideas and Details": "CID" }],
+    "Inferences": ["inferences.json", "Information and Ideas", "INI", { "Inferences": "INFER" }],
+    "Cross-Text": ["cross-text.json", "Craft and Structure", "CAS", { "Cross-Text Connections": "XTEXT" }],
+    "Textual Evidence": ["command_of_evidence.json", "Information and Ideas", "INI", { "Command of Evidence (Textual)": "COE" }],
+    "Quantitative Evidence": ["command_of_evidence.json", "Information and Ideas", "INI", { "Command of Evidence (Quantitative)": "COE" }],
+  };
+  const DIFF_MAP = { Easy: 1, Medium: 2, Hard: 3 };
+
+  let activeReports = [];
+  let resolvedReports = [];
+  let view = "active"; // "active" | "resolved"
+  let editingReport = null; // the report row currently being edited
+  let editingRecord = null; // the full live question record being edited
+  let pastedBlob = null;
+  let pastedExt = "png";
+
+  const $ = (id) => document.getElementById(id);
+
+  function escapeHtml(s) {
+    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    try { return new Date(iso).toLocaleString(); } catch (e) { return iso; }
+  }
+
+  function populateCategorySelect() {
+    const sel = $("edit_category");
+    sel.innerHTML = Object.keys(CATEGORY_META).map(c => `<option value="${c}">${c}</option>`).join("");
+    sel.addEventListener("change", () => { populateSkillSelect(); });
+  }
+
+  function populateSkillSelect() {
+    const cat = $("edit_category").value;
+    const meta = CATEGORY_META[cat];
+    if (!meta) return;
+    const [, domain, domain_code, skills] = meta;
+    const sel = $("edit_skill");
+    sel.innerHTML = Object.keys(skills).map(s => `<option value="${s}">${s}</option>`).join("");
+    $("domainHint").textContent = `domain: ${domain} (${domain_code})`;
+  }
+
+  // ---------- Loading ----------
+
+  async function loadReports() {
+    $("listStatus").textContent = "Loading…";
+    try {
+      const res = await fetch("/api/reports");
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      activeReports = data.reports;
+      resolvedReports = data.resolved || [];
+      $("connStatus").textContent = "Connected to local reports server ✓";
+      $("connStatus").className = "ok";
+      renderList();
+    } catch (e) {
+      $("listStatus").textContent = "Couldn't load reports: " + e.message;
+      $("connStatus").textContent = "Not connected — run scripts/reports_server.py";
+      $("connStatus").className = "bad";
+    }
+  }
+
+  // ---------- List view ----------
+
+  function showListView() {
+    $("listSection").style.display = "block";
+    $("editSection").style.display = "none";
+    renderList();
+  }
+
+  function renderList() {
+    const rows = view === "active" ? activeReports : resolvedReports;
+    $("showActiveBtn").classList.toggle("active", view === "active");
+    $("showResolvedBtn").classList.toggle("active", view === "resolved");
+    $("listStatus").textContent = `${rows.length} ${view} report${rows.length === 1 ? "" : "s"}`;
+
+    const wrap = $("listWrap");
+    if (!rows.length) {
+      wrap.innerHTML = `<p class="hint">${view === "active" ? "No open reports — nice." : "Nothing resolved yet."}</p>`;
+      return;
+    }
+
+    wrap.innerHTML = rows.map((r, i) => {
+      const q = r.question;
+      const head = `
+        <div class="reportHead">
+          <span class="reportTitle">${escapeHtml(r.shortId || r.qid)}</span>
+          <span class="pill reason">${escapeHtml(r.reason || "")}</span>
+          ${q ? `<span class="pill">${escapeHtml(q.category || "")}</span>` : ""}
+          <span class="reportId">${escapeHtml(r.qid || "")}</span>
+        </div>`;
+      const meta = `<div class="reportMeta">Reported by <strong>${escapeHtml(r.reported_by || "?")}</strong> — ${escapeHtml(fmtDate(r.reported_at))}${r.resolved_at ? ` · resolved ${escapeHtml(fmtDate(r.resolved_at))}` : ""}</div>`;
+      const note = r.note ? `<div class="reportNote">${escapeHtml(r.note)}</div>` : "";
+      const preview = q ? renderQuestionPreview(q) : `<div class="qMissing">Question ${escapeHtml(r.qid)} not found in db/categories — it may have been deleted already.</div>`;
+      const actions = view === "active"
+        ? `<div class="reportActions">
+             ${q ? `<button class="btn" data-edit-idx="${i}" type="button">Edit question</button>` : ""}
+             <button class="btn btn-danger" data-resolve-idx="${i}" type="button">Mark resolved</button>
+           </div>`
+        : `<span class="resolvedBadge">✓ resolved</span>`;
+      return `<div class="reportCard">${head}${meta}${note}${preview}${actions}</div>`;
+    }).join("");
+
+    if (view === "active") {
+      wrap.querySelectorAll("[data-edit-idx]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const r = activeReports[parseInt(btn.dataset.editIdx, 10)];
+          if (r && r.question) startEdit(r);
+        });
+      });
+      wrap.querySelectorAll("[data-resolve-idx]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const r = activeReports[parseInt(btn.dataset.resolveIdx, 10)];
+          if (r) resolveReport(r);
+        });
+      });
+    }
+  }
+
+  function renderQuestionPreview(q) {
+    const choices = q.choices || {};
+    const rbc = q.rationale_by_choice || {};
+    const choiceLines = ["A", "B", "C", "D"].map(l => {
+      const isCorrect = q.correct_answer === l;
+      return `<div class="qChoice${isCorrect ? " correct" : ""}">${l}. ${escapeHtml(choices[l] || "")}${isCorrect ? " ✓" : ""}</div>
+              <div class="qRationale">${escapeHtml(rbc[l] || "")}</div>`;
+    }).join("");
+    const img = q.has_image && q.image_paths && q.image_paths.length
+      ? `<div class="hint">image: ${escapeHtml(q.image_paths.map(p => (p && p.path) || p).join(", "))}</div>`
+      : "";
+    return `<div class="qPreview">
+      <div class="qStem">${escapeHtml(q.stem || "")}</div>
+      <div class="qPrompt">${escapeHtml(q.prompt || "")}</div>
+      ${choiceLines}
+      ${img}
+    </div>`;
+  }
+
+  // ---------- Resolve ----------
+
+  async function resolveReport(report) {
+    if (!confirm(`Mark "${report.shortId || report.qid}" resolved? It'll move to the Resolved tab.`)) return;
+    try {
+      const res = await fetch("/api/resolve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ report, resolved_at: new Date().toISOString() }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      await loadReports();
+    } catch (e) {
+      $("listStatus").textContent = "Resolve failed: " + e.message;
+    }
+  }
+
+  // ---------- Edit view ----------
+
+  function clearPaste() {
+    pastedBlob = null;
+    pastedExt = "png";
+    const img = $("pastedImg");
+    img.style.display = "none";
+    img.src = "";
+    $("imgFileInput").value = "";
+    $("pasteHint").style.display = "block";
+    $("pasteZone").classList.remove("has-image");
+  }
+
+  function showImagePreview() {
+    const url = URL.createObjectURL(pastedBlob);
+    const img = $("pastedImg");
+    img.src = url;
+    img.style.display = "block";
+    $("pasteHint").style.display = "none";
+    $("pasteZone").classList.add("has-image");
+  }
+
+  function showErrors(errors) {
+    const box = $("errBox");
+    if (!errors.length) { box.className = ""; box.textContent = ""; return false; }
+    box.className = "show";
+    box.textContent = errors.map(e => "• " + e).join("\n");
+    return true;
+  }
+
+  function startEdit(report) {
+    editingReport = report;
+    editingRecord = report.question;
+    const q = editingRecord;
+
+    $("editBannerText").textContent = `Editing "${report.shortId || q.id}" (id ${q.id}) — reported for "${report.reason}"`;
+
+    populateCategorySelect();
+    $("edit_category").value = q.category;
+    populateSkillSelect();
+    $("edit_skill").value = q.skill;
+    $("edit_difficulty").value = q.difficulty_label;
+
+    $("edit_stem").value = q.stem || "";
+    $("edit_prompt").value = q.prompt || "";
+    ["A", "B", "C", "D"].forEach(l => {
+      $(`edit_choice_${l}`).value = (q.choices && q.choices[l]) || "";
+      $(`edit_rationale_${l}`).value = (q.rationale_by_choice && q.rationale_by_choice[l]) || "";
+    });
+    const radio = document.querySelector(`input[name="edit_correct"][value="${q.correct_answer}"]`);
+    if (radio) radio.checked = true;
+
+    clearPaste();
+    $("edit_has_image").checked = !!q.has_image;
+    $("imgWrap").style.display = q.has_image ? "block" : "none";
+    $("imgKeepHint").style.display = q.has_image ? "block" : "none";
+
+    showErrors([]);
+    $("saveStatus").textContent = "";
+    $("saveStatus").className = "";
+
+    $("listSection").style.display = "none";
+    $("editSection").style.display = "block";
+  }
+
+  function buildRationaleFull(rationaleByChoice) {
+    return ["A", "B", "C", "D"].map(l => rationaleByChoice[l]).filter(Boolean).join(" ");
+  }
+
+  function collectEdited() {
+    const category = $("edit_category").value;
+    const meta = CATEGORY_META[category];
+    const [file, domain, domain_code, skills] = meta;
+    const skill = $("edit_skill").value;
+    const difficulty_label = $("edit_difficulty").value;
+    const stem = $("edit_stem").value.trim();
+    const prompt = $("edit_prompt").value.trim();
+    const choices = { A: $("edit_choice_A").value.trim(), B: $("edit_choice_B").value.trim(), C: $("edit_choice_C").value.trim(), D: $("edit_choice_D").value.trim() };
+    const correctEl = document.querySelector('input[name="edit_correct"]:checked');
+    const correct_answer = correctEl ? correctEl.value : null;
+    const rationale_by_choice = {
+      A: $("edit_rationale_A").value.trim(),
+      B: $("edit_rationale_B").value.trim(),
+      C: $("edit_rationale_C").value.trim(),
+      D: $("edit_rationale_D").value.trim(),
+    };
+    const hasImage = $("edit_has_image").checked;
+
+    const keepingExistingImage = !!(hasImage && editingRecord.has_image && editingRecord.image_paths
+      && editingRecord.image_paths.length && !pastedBlob);
+
+    const errors = [];
+    if (!stem) errors.push("Stem is empty.");
+    if (!prompt) errors.push("Prompt is empty.");
+    else if (!prompt.endsWith("?")) errors.push('Prompt must end in "?".');
+    const texts = Object.values(choices);
+    if (texts.some(t => !t)) errors.push("All four choices must be filled in.");
+    else if (new Set(texts).size !== texts.length) errors.push("Two or more choices have identical text.");
+    if (!correct_answer) errors.push("Select which choice is correct.");
+    if (Object.values(rationale_by_choice).some(t => !t)) errors.push("Every choice needs its own rationale (A, B, C, D).");
+    if (hasImage && !pastedBlob && !keepingExistingImage) errors.push('"Has image" is checked but no image was pasted or uploaded, and there was no existing image to keep.');
+
+    if (showErrors(errors)) return null;
+
+    let image_paths = [];
+    if (hasImage) {
+      image_paths = keepingExistingImage
+        ? editingRecord.image_paths
+        : [{ path: `images/${file.replace(/\.json$/, "")}/${editingRecord.id}.${pastedExt}`, position: "stem" }];
+    }
+
+    const record = {
+      ...editingRecord,
+      category, domain, domain_code, skill, skill_code: skills[skill],
+      difficulty_label, difficulty: DIFF_MAP[difficulty_label],
+      stem, prompt, choices, correct_answer,
+      rationale_full: buildRationaleFull(rationale_by_choice),
+      rationale_by_choice,
+      has_image: hasImage,
+      image_paths,
+    };
+    return { record, needsImageWrite: hasImage && !!pastedBlob };
+  }
+
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function handleSave() {
+    const result = collectEdited();
+    if (!result) return;
+    const { record, needsImageWrite } = result;
+    const status = $("saveStatus");
+    const btn = $("saveBtn");
+    btn.disabled = true;
+    try {
+      const res = await fetch("/api/update_question", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ record }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+
+      if (needsImageWrite && pastedBlob) {
+        const image_base64 = await blobToBase64(pastedBlob);
+        const imgRes = await fetch("/api/write_image", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image_base64, image_rel_path: record.image_paths[0].path }),
+        });
+        const imgData = await imgRes.json();
+        if (!imgData.ok) throw new Error(imgData.error || "image save failed");
+      }
+
+      status.textContent = `Saved to ${data.path} ✓ — remember to rebuild the site.`;
+      status.className = "ok";
+      // update in-memory copy so re-opening the list shows the new content
+      const idx = activeReports.indexOf(editingReport);
+      if (idx !== -1) activeReports[idx] = { ...editingReport, question: record };
+    } catch (e) {
+      status.textContent = "Save failed: " + e.message;
+      status.className = "bad";
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  // ---------- Wiring ----------
+
+  $("showActiveBtn").addEventListener("click", () => { view = "active"; showListView(); });
+  $("showResolvedBtn").addEventListener("click", () => { view = "resolved"; showListView(); });
+  $("refreshBtn").addEventListener("click", loadReports);
+  $("cancelEditBtn").addEventListener("click", showListView);
+  $("saveBtn").addEventListener("click", handleSave);
+
+  $("edit_has_image").addEventListener("change", (e) => {
+    $("imgWrap").style.display = e.target.checked ? "block" : "none";
+  });
+
+  $("pasteZone").addEventListener("paste", (e) => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    for (const item of items) {
+      if (item.type.startsWith("image/")) {
+        pastedBlob = item.getAsFile();
+        pastedExt = item.type === "image/svg+xml" ? "svg" : "png";
+        showImagePreview();
+        e.preventDefault();
+        return;
+      }
+    }
+  });
+
+  $("imgFileInput").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const isSvg = file.type === "image/svg+xml" || /\.svg$/i.test(file.name);
+    const isPng = file.type === "image/png" || /\.png$/i.test(file.name);
+    if (!isSvg && !isPng) {
+      alert("Only PNG or SVG files are supported.");
+      e.target.value = "";
+      return;
+    }
+    pastedBlob = file;
+    pastedExt = isSvg ? "svg" : "png";
+    showImagePreview();
+  });
+
+  loadReports();
+})();
+</script>

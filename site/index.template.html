@@ -186,6 +186,95 @@
     --shadow: 0 1px 2px rgba(60, 45, 20, 0.10), 0 4px 14px rgba(60, 45, 20, 0.08);
   }
 
+  /* Lab-only alternate theme: swampy, clashing, Comic-Sans-on-purpose. See
+     the sepia comment above — same override mechanism, just uglier. */
+  :root[data-theme="goblin"] {
+    --serif: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    --sans: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    --paper: #2d3a1f;
+    --paper-raised: #3a4a28;
+    --ink: #d4f542;
+    --ink-soft: #9fc93a;
+    --ink-faint: #6b8a2e;
+    --rule: #5a7a2e;
+    --rule-soft: #4a6624;
+    --accent: #ff6b35;
+    --accent-soft: #4a3a1f;
+    --accent-ink: #ffb380;
+    --easy: #7fff00;
+    --easy-bg: #2a3a15;
+    --medium: #ffd23f;
+    --medium-bg: #3a3315;
+    --hard: #ff4365;
+    --hard-bg: #3a1520;
+    --correct: #7fff00;
+    --correct-bg: #2a3a15;
+    --incorrect: #ff4365;
+    --incorrect-bg: #3a1520;
+    --review: #ffd23f;
+    --review-bg: #3a3315;
+    --done: #7fff00;
+    --done-bg: #2a3a15;
+    --tier-bronze: #c9722f;
+    --tier-bronze-bg: #3a2a15;
+    --tier-silver: #b8c4a8;
+    --tier-silver-bg: #333d28;
+    --tier-gold: #ffd23f;
+    --tier-gold-bg: #3a3315;
+    --xp: #ff6b35;
+    --xp-bg: #3a2515;
+    --cal-1: #3a4a20;
+    --cal-2: #5a7a2e;
+    --cal-3: #8ab53e;
+    --cal-4: #d4f542;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(127, 255, 0, 0.2);
+  }
+
+  /* Lab-only alternate theme: green-phosphor CRT terminal, forced monospace
+     everywhere and a faint glow via --shadow. Same override mechanism as
+     sepia/goblin above. */
+  :root[data-theme="terminal"] {
+    --serif: var(--mono);
+    --sans: var(--mono);
+    --paper: #0a0e0a;
+    --paper-raised: #0f150f;
+    --ink: #33ff33;
+    --ink-soft: #22cc22;
+    --ink-faint: #1a8a1a;
+    --rule: #1a4d1a;
+    --rule-soft: #123512;
+    --accent: #33ff33;
+    --accent-soft: #0f2a0f;
+    --accent-ink: #66ff66;
+    --easy: #33ff33;
+    --easy-bg: #0f2a0f;
+    --medium: #ffff33;
+    --medium-bg: #2a2a0f;
+    --hard: #ff3333;
+    --hard-bg: #2a0f0f;
+    --correct: #33ff33;
+    --correct-bg: #0f2a0f;
+    --incorrect: #ff3333;
+    --incorrect-bg: #2a0f0f;
+    --review: #ffff33;
+    --review-bg: #2a2a0f;
+    --done: #33ff33;
+    --done-bg: #0f2a0f;
+    --tier-bronze: #cc9933;
+    --tier-bronze-bg: #2a2010;
+    --tier-silver: #99cc99;
+    --tier-silver-bg: #142a14;
+    --tier-gold: #ffff33;
+    --tier-gold-bg: #2a2a0f;
+    --xp: #33ffff;
+    --xp-bg: #0f2a2a;
+    --cal-1: #0f2a0f;
+    --cal-2: #1a4d1a;
+    --cal-3: #22cc22;
+    --cal-4: #33ff33;
+    --shadow: 0 0 8px rgba(51, 255, 51, 0.4), 0 0 24px rgba(51, 255, 51, 0.15);
+  }
+
   * { box-sizing: border-box; }
   html, body { height: 100%; }
   body {
@@ -328,6 +417,53 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.55; }
   }
+  /* Browse nav item: hovering (or tapping the caret, or keyboard-focusing
+     into it) reveals a small menu to pick English vs. Math instead of
+     Browse being its own separate top-level tab. */
+  .tab-group { position: relative; display: inline-block; }
+  .tab-caret {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--ink);
+    background: var(--rule-soft);
+    transform: translateY(-1px);
+  }
+  .tab-caret:hover { background: var(--accent-soft); color: var(--accent-ink); }
+  .tab-group.open .tab-caret,
+  .tab-group:hover .tab-caret { background: var(--accent-soft); color: var(--accent-ink); }
+  .tab-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    min-width: 150px;
+    padding: 5px;
+    margin-top: -1px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    z-index: 40;
+  }
+  .tab-group:hover .tab-dropdown,
+  .tab-group:focus-within .tab-dropdown,
+  .tab-group.open .tab-dropdown { display: flex; }
+  .tab-dropdown-item {
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border-bottom: none;
+  }
+  .tab-dropdown-item:hover { background: var(--rule-soft); }
+  .tab-dropdown-item.active { background: var(--accent-soft); }
   .subtabs {
     display: none;
     gap: 4px;
@@ -379,6 +515,11 @@
   }
   .filter-opt input { accent-color: var(--accent); width: 14px; height: 14px; }
   .filter-opt .count { margin-left: auto; color: var(--ink-faint); font-family: var(--mono); font-size: 11.5px; }
+  /* Tighter sub-toggle rows nested under a parent checkbox (e.g. the
+     metadata field breakdown under "Show question metadata") — same
+     control, just denser since there can be several in a row. */
+  .filter-opt--sub { padding: 2px 0; font-size: 12.5px; gap: 7px; }
+  .filter-opt--sub input { width: 12px; height: 12px; }
   .clear-btn {
     appearance: none;
     background: none;
@@ -2497,8 +2638,13 @@
 
   <div class="tabs">
     <button class="tab active" data-view="home">Home</button>
-    <button class="tab" data-view="browse">Browse</button>
-    <button class="tab" data-view="math">Math<span class="beta-badge">BETA</span></button>
+    <div class="tab-group" id="browseTabGroup">
+      <button class="tab" data-view="browse" id="browseNavTrigger" aria-haspopup="true" aria-expanded="false">Browse<span class="tab-caret" id="browseCaret">&#9662;</span></button>
+      <div class="tab-dropdown" role="menu">
+        <button class="tab tab-dropdown-item" data-view="browse" role="menuitem">English</button>
+        <button class="tab tab-dropdown-item" data-view="math" role="menuitem">Math<span class="beta-badge">BETA</span></button>
+      </div>
+    </div>
     <button class="tab" data-view="practice">Practice</button>
     <button class="tab" data-view="test">Test</button>
     <button class="tab" data-view="mock">Mock Exam</button>
@@ -2525,26 +2671,27 @@
   <div class="view active" id="view-browse">
     <div class="browse-layout">
       <aside class="filters">
-        <div class="filter-group">
+        <div class="filter-group" id="categoryFilterGroup">
           <h3>Category</h3>
           <div id="categoryFilters"></div>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="skillFilterGroup" hidden>
           <h3>Skill</h3>
           <div id="skillFilters"></div>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="difficultyFilterGroup">
           <h3>Difficulty</h3>
           <div id="difficultyFilters"></div>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="statusFilterGroup">
           <h3>Status</h3>
           <div id="statusFilters"></div>
         </div>
-        <!-- Rated Difficulty (Lab) filter — hidden by default; renderFilters
-             only fills/shows this when the Lab toggle is on (see
-             ratedDifficultyLabEnabled), same "hidden unless opted in"
-             treatment as the rest of that feature. -->
+        <!-- Rated Difficulty (Lab) filter — hidden in markup; renderFilters
+             only fills/shows this when both the Lab feature toggle
+             (ratedDifficultyLabEnabled, on by default) and the Browse
+             filters visibility toggle (browseFilterEnabled('communityRating'),
+             also on by default) are on. -->
         <div class="filter-group" id="ratedTierFilterGroup" hidden>
           <h3>🎮 Rated Difficulty</h3>
           <div id="ratedTierFilters"></div>
@@ -2600,7 +2747,7 @@
         <div class="toolbar">
           <div class="search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="searchBoxMath" placeholder="Search text or paste an ID…" />
+            <input type="text" id="searchBoxMath" placeholder="Search text, paste an ID, or type Algebra 1 — Enter to jump…" />
           </div>
           <select id="sortSelectMath">
             <option value="default">Sort: Original order</option>
@@ -2968,6 +3115,18 @@
     });
   })();
 
+  // Same scheme, separate counters, for the Math pool (see MATH_QUESTIONS
+  // below) so e.g. "Advanced Math #1..372" numbers independently of the
+  // Reading & Writing categories above.
+  (function assignMathShortIds() {
+    const counters = {};
+    MATH_QUESTIONS.forEach(q => {
+      const label = categoryLabel(q.category);
+      counters[label] = (counters[label] || 0) + 1;
+      q.shortId = `${label} #${counters[label]}`;
+    });
+  })();
+
   // Site-wide config: the deployed Google Apps Script URL backing the
   // "Save to GitHub" login/cloud-save feature (see scripts/apps-script/Code.gs
   // and README.md for what it is and how to deploy one). Leave empty to hide
@@ -3311,6 +3470,26 @@
     saveCompletionLog();
   }
 
+  // One-time backfill for questions marked 'done' before this completion-log
+  // system existed (it shipped after progress-tracking already had users with
+  // real history). Those completions were never logged, so they were missing
+  // from XP/achievements entirely even though "questions done" (which reads
+  // state.progress directly) already counted them. Backfilled entries get a
+  // fixed pre-launch date rather than "now" so they grant XP/achievement
+  // credit without also fabricating a completion this week — falsely
+  // inflating weekly count or streak the way a `new Date()` timestamp would.
+  const BACKFILL_COMPLETION_DATE = '2020-01-01T00:00:00.000Z';
+  function backfillMissingCompletionLog() {
+    let changed = false;
+    Object.keys(state.progress).forEach(qid => {
+      if (state.progress[qid] === 'done' && !state.completionLog[qid]) {
+        state.completionLog[qid] = BACKFILL_COMPLETION_DATE;
+        changed = true;
+      }
+    });
+    if (changed) saveCompletionLog();
+  }
+
   // ---------- Daily goal ----------
   // How many questions you're aiming to complete today — purely a personal
   // target used to drive the Progress tab's goal ring and goal-related
@@ -3601,8 +3780,15 @@
   const RATED_DIFFICULTY_SYNCED_KEY = 'sat_qbank_difficulty_votes_synced_v1'; // { qid: 1-10, ... }, last successfully synced value
   const RATED_TIER_NAMES = ['Auto', 'Easy', 'Normal', 'Hard', 'Harder', 'Insane', 'Easy Demon', 'Medium Demon', 'Hard Demon', 'Insane Demon', 'Extreme Demon'];
 
+  // Defaults to on (unlike every other Lab setting): community ratings have
+  // matured enough to be the expected experience, not an opt-in experiment.
+  // No stored preference yet means "on"; an explicit '0' from someone who
+  // turned it off still wins.
   function ratedDifficultyLabEnabled() {
-    try { return localStorage.getItem(RATED_DIFFICULTY_LAB_KEY) === '1'; } catch (e) { return false; }
+    try {
+      const v = localStorage.getItem(RATED_DIFFICULTY_LAB_KEY);
+      return v === null ? true : v === '1';
+    } catch (e) { return true; }
   }
   function setRatedDifficultyLabEnabled(v) {
     try { localStorage.setItem(RATED_DIFFICULTY_LAB_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
@@ -3823,11 +4009,11 @@
 
     let badge;
     if (approved) {
-      badge = `<span class="chip on" title="Admin-approved rating">${ratedTierIcon(value)} ${value} · ${ratedTierLabel(value)}</span>`;
+      badge = `<span class="chip on" data-rating-info="${q.id}">${ratedTierIcon(value)} ${value} · ${ratedTierLabel(value)}</span>`;
     } else if (value !== null) {
-      badge = `<span class="chip" title="Community average from ${voteCount} vote${voteCount === 1 ? '' : 's'} — not yet admin-approved">${ratedTierIcon(value)} ~${value.toFixed(1)} · ${ratedTierLabel(value)}</span>`;
+      badge = `<span class="chip" data-rating-info="${q.id}">${ratedTierIcon(value)} ~${value.toFixed(1)} · ${ratedTierLabel(value)}</span>`;
     } else {
-      badge = `<span class="chip" title="No community votes yet">${ratedTierIcon(0)} Not yet rated</span>`;
+      badge = `<span class="chip" data-rating-info="${q.id}">${ratedTierIcon(0)} Not yet rated</span>`;
     }
     const toggleLabel = mine ? `${ratedTierIcon(mine)} ${mine}` : 'Rate it';
     return `<span class="rated-difficulty" style="display:inline-flex; align-items:center; gap:4px; flex-wrap:wrap; max-width:100%;">${badge}<button type="button" class="chip" data-rate-toggle="${q.id}">${toggleLabel}</button></span>`;
@@ -3866,6 +4052,103 @@
   }
   window.addEventListener('scroll', () => { if (ratedDifficultyExpanded.size) renderRatedDifficultyPopover(); }, true);
   window.addEventListener('resize', () => { if (ratedDifficultyExpanded.size) renderRatedDifficultyPopover(); });
+
+  // Hover breakdown for the rating badge itself — who voted what, the live
+  // average, and whether it's an admin-approved ("official") rating or just
+  // the raw community average. Separate widget from the 1-10 picker above
+  // (that one opens on click to cast a vote; this one opens on hover to show
+  // who voted), so it gets its own tracker instead of reusing
+  // ratedDifficultyExpanded.
+  // Tracks the exact hovered DOM node, not just its qid — the same question
+  // can have more than one badge on screen at once (e.g. its Browse row
+  // sitting behind an open detail modal for that same question), and
+  // re-querying by qid alone would grab whichever copy happens to match
+  // first, popping the tooltip up next to the wrong one.
+  let ratingVotersHoverEl = null;
+  let ratingVotersHoverTimer = null;
+  function renderRatingVotersPopover() {
+    let el = document.getElementById('ratingVotersPopover');
+    if (el) el.remove();
+    const anchor = ratingVotersHoverEl;
+    if (!anchor || !document.body.contains(anchor) || anchor.offsetParent === null) { ratingVotersHoverEl = null; return; }
+    const qid = anchor.dataset.ratingInfo;
+    const entry = ratedDifficultyCache[qid];
+    const approved = entry && entry.status === 'approved' && Number.isFinite(entry.officialRating);
+    const votes = (entry && entry.votes) ? entry.votes : {};
+    const voterEntries = Object.keys(votes).filter(name => name !== '__you__').map(name => ({ name, rating: votes[name] }));
+    if (Number.isFinite(votes['__you__'])) voterEntries.push({ name: 'You', rating: votes['__you__'] });
+    voterEntries.sort((a, b) => b.rating - a.rating);
+    const value = ratedDifficultyValue({ id: qid });
+
+    const statusLine = approved
+      ? `<div style="font-weight:700; color:var(--accent-ink);">✓ Admin-approved rating</div>`
+      : `<div style="font-weight:700; color:var(--ink-soft);">Community average — not yet admin-approved</div>`;
+    const avgLine = value !== null
+      ? `<div style="margin:4px 0 6px; display:flex; align-items:center; gap:4px;">${ratedTierIcon(value)} ${approved ? value : '~' + value.toFixed(1)} · ${ratedTierLabel(value)} <span style="color:var(--ink-soft); font-weight:400;">(${voterEntries.length} vote${voterEntries.length === 1 ? '' : 's'})</span></div>`
+      : `<div style="margin:4px 0 6px; color:var(--ink-soft);">No votes yet</div>`;
+    const voterRows = voterEntries.map(v =>
+      `<div style="display:flex; justify-content:space-between; align-items:center; gap:12px; padding:2px 0;"><span>${escapeHtml(v.name)}</span><span style="display:inline-flex; align-items:center; gap:3px;">${ratedTierIcon(v.rating)} ${v.rating}</span></div>`
+    ).join('');
+
+    const rect = anchor.getBoundingClientRect();
+    const width = 220;
+    el = document.createElement('div');
+    el.id = 'ratingVotersPopover';
+    el.className = 'rating-voters-popover';
+    // Positioned relative to the badge, but flipped on each axis when the
+    // default side would run off the viewport — badges sit flush against
+    // the right edge in dense list rows (Browse), so left-aligning under
+    // them like a spacious single-question view would shove the popover
+    // off-screen or (once clamped) detach it visually from the badge it's
+    // for. Measure after an invisible append since we don't know the
+    // rendered height (voter count varies) until it's actually laid out.
+    el.style.cssText = `position:fixed; visibility:hidden; z-index:1000; background:var(--paper-raised); border:1px solid var(--rule-soft); border-radius:10px; padding:10px 12px; box-shadow:0 8px 24px rgba(0,0,0,.35); width:${width}px; font-size:12.5px; max-height:260px; overflow-y:auto;`;
+    el.innerHTML = statusLine + avgLine + (voterRows ? `<div style="border-top:1px solid var(--rule-soft); padding-top:6px;">${voterRows}</div>` : '');
+    document.body.appendChild(el);
+    const elHeight = el.getBoundingClientRect().height;
+    const fitsBelow = rect.bottom + 6 + elHeight <= window.innerHeight - 8;
+    const fitsRight = rect.left + width + 8 <= window.innerWidth;
+    const top = fitsBelow ? rect.bottom + 6 : Math.max(8, rect.top - 6 - elHeight);
+    const left = fitsRight ? rect.left : Math.max(8, rect.right - width);
+    el.style.top = `${top}px`;
+    el.style.left = `${left}px`;
+    el.style.visibility = 'visible';
+  }
+  // Delegated hover (mouseover/mouseout bubble, unlike mouseenter/mouseleave)
+  // so this works for badges rendered anywhere, same rationale as the click
+  // delegation above. A short close delay lets the pointer travel from the
+  // badge onto the popover itself (e.g. to scroll a long voter list) without
+  // it vanishing mid-move.
+  document.addEventListener('mouseover', (e) => {
+    const badge = e.target.closest('[data-rating-info]');
+    if (badge) {
+      if (ratingVotersHoverTimer) { clearTimeout(ratingVotersHoverTimer); ratingVotersHoverTimer = null; }
+      if (ratingVotersHoverEl !== badge) { ratingVotersHoverEl = badge; renderRatingVotersPopover(); }
+      return;
+    }
+    if (e.target.closest('#ratingVotersPopover')) {
+      if (ratingVotersHoverTimer) { clearTimeout(ratingVotersHoverTimer); ratingVotersHoverTimer = null; }
+      return;
+    }
+    if (ratingVotersHoverEl && !ratingVotersHoverTimer) {
+      ratingVotersHoverTimer = setTimeout(() => { ratingVotersHoverTimer = null; ratingVotersHoverEl = null; renderRatingVotersPopover(); }, 200);
+    }
+  });
+  window.addEventListener('scroll', () => { if (ratingVotersHoverEl) renderRatingVotersPopover(); }, true);
+  window.addEventListener('resize', () => { if (ratingVotersHoverEl) renderRatingVotersPopover(); });
+
+  // Any click elsewhere (e.g. opening a question's detail modal, which can
+  // land the modal's own copy of this same badge directly over the one the
+  // popover is currently anchored to) closes the voter-breakdown popover —
+  // it has nothing clickable inside it, so there's no case worth sparing.
+  // Needed because a click doesn't necessarily move the pointer, so the
+  // mouseout that would normally close it may never fire.
+  document.addEventListener('click', (e) => {
+    if (ratingVotersHoverEl && !e.target.closest('#ratingVotersPopover')) {
+      ratingVotersHoverEl = null;
+      renderRatingVotersPopover();
+    }
+  });
 
   // Delegated so it works no matter which render*Html spliced ratedDifficultyHtml
   // in — every one of them fully replaces its container's innerHTML each render.
@@ -4446,6 +4729,7 @@
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
     reports: loadReports(), // [{ qid, shortId, reason, note, at, synced }, ...] — flagged question issues, sent on next cloud save
   };
+  backfillMissingCompletionLog();
 
   // Test's own per-attempt history — same best-effort localStorage pattern as
   // Mock below, deliberately its own key: clearing Test history never touches
@@ -4478,9 +4762,9 @@
     statuses: new Set(),
     blueprint: null, // per-skill {category, skill, count}, lazily set to cloneTestBlueprint(count) on first config render — Mock Exam's distribution engine, sized to an arbitrary total instead of a fixed module
     weightConfig: { main: { preset: 'balanced', custom: { Easy: 25, Medium: 50, Hard: 25 } } }, // difficulty-mix preset/custom, single 'main' slot (Mock's is keyed by module/pool) — same shape as mockState.weightConfig so the two share resolvedDifficultyCounts/commitDifficultyPair/difficultyDistBarHtml/weightPickerHtml
-    advancedDistribution: false, // whether the folded per-section/skill count controls are expanded
+    advancedDistribution: true, // question distribution is always the main customization control (no plain category/skill chips for Test)
     showSkillMix: false, // nested under advancedDistribution: also expand per-skill mix within Reading & Grammar
-    advancedDifficulty: false, // whether the folded difficulty-mix section is expanded
+    advancedDifficulty: true, // difficulty distribution is always shown (no plain Difficulty chips for Test)
     shuffleOrder: true, // shuffle the built question order instead of Mock's blueprint/skill-block order — on by default, can be turned off for a section-by-section run
     questions: [],
     index: 0,
@@ -4512,9 +4796,9 @@
     count: 20, // cap on how many questions to pull into a session — only enforced when advancedDistribution is off too (see startPracticeBtn)
     blueprint: null, // per-skill {category, skill, count}, lazily set to cloneTestBlueprint(count) on first config render — same distribution engine as Test/Mock
     weightConfig: { main: { preset: 'balanced', custom: { Easy: 25, Medium: 50, Hard: 25 } } },
-    advancedDistribution: false, // whether the folded per-section/skill count controls are expanded — replaces the plain Category/Skill chips while on
+    advancedDistribution: true, // question distribution is always the main customization control — plain Category/Skill chips are gone; set to false only by internal jumps (e.g. "practice this skill") that need the plain category/skill/difficulty filter instead
     showSkillMix: false, // nested under advancedDistribution: also expand per-skill mix within Reading & Grammar
-    advancedDifficulty: false, // whether the folded difficulty-mix section is expanded — replaces the plain Difficulty chips while on
+    advancedDifficulty: true, // difficulty distribution is always the main customization control — plain Difficulty chips are gone
     questions: [],
     index: 0,
     timed: false,
@@ -4554,8 +4838,22 @@
   };
   let reviewCustomOpen = false;
 
-  const allCategories = [...new Set(QUESTIONS.map(q => q.category))].sort();
-  const allSkills = [...new Set(QUESTIONS.map(q => q.skill))].sort();
+  // Fixed display order (not alphabetical) mirroring the order questions are
+  // taught in — anything not listed here (shouldn't happen, but keeps this
+  // safe if a new category/skill shows up) sorts after, alphabetically.
+  const CATEGORY_ORDER = ['Vocab', 'Main Idea', 'Functions', 'Cross-Text', 'Textual Evidence', 'Quantitative Evidence', 'Inferences', 'Transitions', 'Grammar', 'Notes'];
+  const SKILL_ORDER = ['Words in Context', 'Central Ideas and Details', 'Text Structure and Purpose', 'Cross-Text Connections', 'Command of Evidence (Textual)', 'Command of Evidence (Quantitative)', 'Inferences', 'Transitions', 'Boundaries', 'Form, Structure, and Sense', 'Rhetorical Synthesis'];
+  function sortByFixedOrder(values, order) {
+    return values.slice().sort((a, b) => {
+      const ia = order.indexOf(a), ib = order.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
+  }
+  const allCategories = sortByFixedOrder([...new Set(QUESTIONS.map(q => q.category))], CATEGORY_ORDER);
+  const allSkills = sortByFixedOrder([...new Set(QUESTIONS.map(q => q.skill))], SKILL_ORDER);
   const allDifficulties = ['Easy', 'Medium', 'Hard'];
 
   // skill -> { category, domain } — the first question found with that skill
@@ -4628,11 +4926,11 @@
 
   function currentFiltered(base) {
     return base.filter(q => {
-      if (state.categories.size && !state.categories.has(q.category)) return false;
-      if (state.skills.size && !state.skills.has(q.skill)) return false;
-      if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
-      if (ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
-      if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (browseFilterEnabled('category') && state.categories.size && !state.categories.has(q.category)) return false;
+      if (browseFilterEnabled('skill') && state.skills.size && !state.skills.has(q.skill)) return false;
+      if (browseFilterEnabled('difficulty') && state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (browseFilterEnabled('communityRating') && ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
+      if (browseFilterEnabled('status') && state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
       if (state.tagsFilter.size) {
         const qTags = getTags(q.id);
         if (!qTags.some(t => state.tagsFilter.has(t))) return false;
@@ -4709,11 +5007,11 @@
   // checking a box never makes its neighbors read "0".
   function renderFacet(containerId, options, selectedSet, facetKey, valueFn, pillClassFn, labelFn) {
     const counts = options.map(opt => QUESTIONS.filter(q => {
-      if (facetKey !== 'categories' && state.categories.size && !state.categories.has(q.category)) return false;
-      if (facetKey !== 'skills' && state.skills.size && !state.skills.has(q.skill)) return false;
-      if (facetKey !== 'difficulties' && state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
-      if (facetKey !== 'ratedTiers' && ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
-      if (facetKey !== 'statuses' && state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (facetKey !== 'categories' && browseFilterEnabled('category') && state.categories.size && !state.categories.has(q.category)) return false;
+      if (facetKey !== 'skills' && browseFilterEnabled('skill') && state.skills.size && !state.skills.has(q.skill)) return false;
+      if (facetKey !== 'difficulties' && browseFilterEnabled('difficulty') && state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (facetKey !== 'ratedTiers' && browseFilterEnabled('communityRating') && ratedDifficultyLabEnabled() && state.ratedTiers.size && !state.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
+      if (facetKey !== 'statuses' && browseFilterEnabled('status') && state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
       if (!matchesQuery(q)) return false;
       return valueFn(q) === opt;
     }).length);
@@ -4739,11 +5037,31 @@
     });
   }
 
+  // Clears the active selection of any Browse facet that's currently turned
+  // off in Lab settings, so a hidden filter never keeps silently narrowing
+  // the list. Called whenever a facet is turned off, and once at startup in
+  // case a previous session left a selection in what's now a hidden facet.
+  function clearDisabledBrowseFacets() {
+    if (!browseFilterEnabled('category')) state.categories.clear();
+    if (!browseFilterEnabled('skill')) state.skills.clear();
+    if (!browseFilterEnabled('difficulty')) state.difficulties.clear();
+    if (!browseFilterEnabled('status')) state.statuses.clear();
+    if (!browseFilterEnabled('communityRating')) state.ratedTiers.clear();
+  }
+
   function renderFilters() {
-    renderFacet('categoryFilters', allCategories, state.categories, 'categories', q => q.category);
-    renderFacet('skillFilters', allSkills, state.skills, 'skills', q => q.skill);
-    renderFacet('difficultyFilters', allDifficulties, state.difficulties, 'difficulties', q => q.difficulty_label, diffPillClass);
-    renderFacet('statusFilters', ALL_STATUSES, state.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
+    const categoryGroup = document.getElementById('categoryFilterGroup');
+    const skillGroup = document.getElementById('skillFilterGroup');
+    const difficultyGroup = document.getElementById('difficultyFilterGroup');
+    const statusGroup = document.getElementById('statusFilterGroup');
+    if (categoryGroup) categoryGroup.hidden = !browseFilterEnabled('category');
+    if (skillGroup) skillGroup.hidden = !browseFilterEnabled('skill');
+    if (difficultyGroup) difficultyGroup.hidden = !browseFilterEnabled('difficulty');
+    if (statusGroup) statusGroup.hidden = !browseFilterEnabled('status');
+    if (browseFilterEnabled('category')) renderFacet('categoryFilters', allCategories, state.categories, 'categories', q => q.category);
+    if (browseFilterEnabled('skill')) renderFacet('skillFilters', allSkills, state.skills, 'skills', q => q.skill);
+    if (browseFilterEnabled('difficulty')) renderFacet('difficultyFilters', allDifficulties, state.difficulties, 'difficulties', q => q.difficulty_label, diffPillClass);
+    if (browseFilterEnabled('status')) renderFacet('statusFilters', ALL_STATUSES, state.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
     renderRatedTierFacet();
     renderTagFacet();
   }
@@ -4752,18 +5070,19 @@
   // helper above because it needs to show each tier's face icon (unescaped
   // SVG) next to its name, not just a plain colored pill. Hidden entirely
   // (and its own selection ignored by currentFiltered/renderFacet) unless
-  // the Lab toggle is on, same as the rest of this feature.
+  // both the Lab feature toggle and the Browse filters visibility toggle
+  // are on.
   function renderRatedTierFacet() {
     const group = document.getElementById('ratedTierFilterGroup');
     if (!group) return;
-    const enabled = ratedDifficultyLabEnabled();
+    const enabled = ratedDifficultyLabEnabled() && browseFilterEnabled('communityRating');
     group.hidden = !enabled;
     if (!enabled) return;
     const counts = RATED_TIER_NAMES.map(name => QUESTIONS.filter(q => {
-      if (state.categories.size && !state.categories.has(q.category)) return false;
-      if (state.skills.size && !state.skills.has(q.skill)) return false;
-      if (state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
-      if (state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
+      if (browseFilterEnabled('category') && state.categories.size && !state.categories.has(q.category)) return false;
+      if (browseFilterEnabled('skill') && state.skills.size && !state.skills.has(q.skill)) return false;
+      if (browseFilterEnabled('difficulty') && state.difficulties.size && !state.difficulties.has(q.difficulty_label)) return false;
+      if (browseFilterEnabled('status') && state.statuses.size && !state.statuses.has(questionStatus(q))) return false;
       if (!matchesQuery(q)) return false;
       return ratedTierNameForQuestion(q) === name;
     }).length);
@@ -4992,7 +5311,7 @@
             <div class="qskill">${escapeHtml(q.skill)} &middot; ${escapeHtml(q.domain)}</div>
           </div>
           <div class="qmeta">
-            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${cbDifficultyPillHtml(q)}
             ${ratedDifficultyHtml(q)}
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
@@ -5353,21 +5672,26 @@
     return restoreMathImages(escapeHtml(s));
   }
 
-  // "Category#N" shorthand (e.g. "Evidence#1", "Grammar#42") jumps straight
-  // to that question's card, expanded and scrolled into view. Matches on a
-  // prefix of either the short display label ("Evidence") or the full
-  // category name ("Command of Evidence"), case-insensitively.
-  function findByShortIdQuery(query) {
-    const m = query.trim().match(/^([A-Za-z][A-Za-z\- ]*?)\s*#\s*(\d+)$/);
+  // "Category#N" shorthand (e.g. "Evidence#1", "Evidence 1", "Evidence1")
+  // jumps straight to that question's card, expanded and scrolled into
+  // view. Matches on a prefix of either the short display label
+  // ("Evidence") or the full category name ("Command of Evidence"),
+  // case-insensitively — the separator between name and number can be "#",
+  // a space, or nothing at all.
+  function parseShortIdQuery(query, pool) {
+    const m = query.trim().match(/^([A-Za-z][A-Za-z\- ]*?)\s*#?\s*(\d+)$/);
     if (!m) return null;
     const catQuery = m[1].trim().toLowerCase();
     const num = parseInt(m[2], 10);
-    return QUESTIONS.find(q => {
+    return pool.find(q => {
       const label = categoryLabel(q.category).toLowerCase();
       const full = q.category.toLowerCase();
       const shortNum = parseInt(q.shortId.split('#')[1], 10);
       return shortNum === num && (label.startsWith(catQuery) || full.startsWith(catQuery));
     }) || null;
+  }
+  function findByShortIdQuery(query) {
+    return parseShortIdQuery(query, QUESTIONS);
   }
 
   function jumpToQuestion(qid) {
@@ -5477,7 +5801,8 @@
   const paletteState = { open: false, query: '', activeIndex: 0 };
 
   const PALETTE_COMMANDS = [
-    { id: 'nav-browse', title: 'Go to Browse', hint: 'Tab', keywords: 'browse questions', run: () => document.querySelector('.tab[data-view="browse"]').click() },
+    { id: 'nav-browse', title: 'Go to Browse: English', hint: 'Tab', keywords: 'browse questions reading writing', run: () => document.querySelector('.tab[data-view="browse"]').click() },
+    { id: 'nav-math', title: 'Go to Browse: Math', hint: 'Tab', keywords: 'browse questions math beta', run: () => document.querySelector('.tab[data-view="math"]').click() },
     { id: 'nav-practice', title: 'Go to Practice', hint: 'Tab', keywords: 'practice', run: () => document.querySelector('.tab[data-view="practice"]').click() },
     { id: 'nav-test', title: 'Go to Test', hint: 'Tab', keywords: 'test quiz', run: () => document.querySelector('.tab[data-view="test"]').click() },
     { id: 'nav-mock', title: 'Go to Mock Exam', hint: 'Tab', keywords: 'mock exam', run: () => document.querySelector('.tab[data-view="mock"]').click() },
@@ -5515,27 +5840,15 @@
     } },
   ];
 
-  // Same idea as `findByShortIdQuery`'s "Category#N" shorthand, but more
-  // forgiving about the separator — the palette is a fast-typing surface,
-  // so "evidence 30", "evidence#30", and "evidence30" should all land on
-  // the same question instead of only the exact "#" form.
-  function paletteParseShorthand(query) {
-    const m = query.trim().match(/^([A-Za-z][A-Za-z\- ]*?)\s*#?\s*(\d+)$/);
-    if (!m) return null;
-    const catQuery = m[1].trim().toLowerCase();
-    const num = parseInt(m[2], 10);
-    return QUESTIONS.find(q => {
-      const label = categoryLabel(q.category).toLowerCase();
-      const full = q.category.toLowerCase();
-      const shortNum = parseInt(q.shortId.split('#')[1], 10);
-      return shortNum === num && (label.startsWith(catQuery) || full.startsWith(catQuery));
-    }) || null;
-  }
-
+  // Palette searches both R&W and Math questions — "evidence 30",
+  // "evidence#30", and "evidence30" (and their Math equivalents, e.g.
+  // "algebra 5") should all land on the same question instead of only the
+  // exact "#" form. Shares its parsing with findByShortIdQuery/
+  // jumpToQuestionMath's Enter-to-jump, just over the combined pool.
   function paletteQuestionMatches(needle) {
-    const byId = QUESTIONS.find(q => q.id.toLowerCase() === needle);
+    const byId = ALL_QUESTIONS.find(q => q.id.toLowerCase() === needle);
     if (byId) return [byId];
-    const byShort = paletteParseShorthand(needle);
+    const byShort = parseShortIdQuery(needle, ALL_QUESTIONS);
     if (byShort) return [byShort];
     // Otherwise, every space-separated word in the query has to appear
     // somewhere in the question (in any order) — "tomato herbivory" or
@@ -5543,7 +5856,7 @@
     // exact phrase.
     const words = needle.split(/\s+/).filter(Boolean);
     const results = [];
-    for (const q of QUESTIONS) {
+    for (const q of ALL_QUESTIONS) {
       const hay = (q.shortId + ' ' + q.id + ' ' + q.category + ' ' + q.skill + ' ' + q.difficulty_label + ' ' + q.stem).toLowerCase();
       if (words.every(w => hay.includes(w))) {
         results.push(q);
@@ -5606,8 +5919,13 @@
   function paletteRunItem(item) {
     if (!item) return;
     closePalette();
-    if (item.type === 'command') item.data.run();
-    else jumpToQuestion(item.data.id);
+    if (item.type === 'command') { item.data.run(); return; }
+    if (item.data.test === 'Math') {
+      document.querySelector('.tab[data-view="math"]').click();
+      jumpToQuestionMath(item.data.id);
+    } else {
+      jumpToQuestion(item.data.id);
+    }
   }
 
   function renderPalette() {
@@ -5748,7 +6066,7 @@
       <div class="modal-card">
         <div class="modal-head">
           <div class="modal-head-info">
-            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${cbDifficultyPillHtml(q)}
             ${ratedDifficultyHtml(q)}
             ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
@@ -5835,6 +6153,18 @@
     }, 180);
   });
   document.getElementById('searchBox').addEventListener('keydown', (e) => {
+    // Escape clears the search instead of leaving you stranded on "0
+    // questions" — e.g. typing "Algebra 1" (a jump shorthand meant for
+    // Enter, not a literal text match) matches nothing as a substring
+    // search, so Escape is the way back to seeing everything again.
+    if (e.key === 'Escape') {
+      clearTimeout(searchDebounceTimer);
+      e.target.value = '';
+      state.query = '';
+      renderFilters();
+      renderBrowse();
+      return;
+    }
     if (e.key !== 'Enter') return;
     const value = e.target.value.trim();
     // Paste/type a raw College Board ID (e.g. from the copy-ID chip) and hit
@@ -5912,6 +6242,10 @@
   // .active too, not just that the panel element exists).
   function activeDetailRoot() {
     if (state.modalList) return document.getElementById('questionModalRoot');
+    if (practiceState.phase === 'session') {
+      const view = document.getElementById('view-practice');
+      if (view && view.classList.contains('active')) return document.getElementById('practiceShell');
+    }
     const panels = [
       { viewId: 'view-review', rootId: 'reviewPanel' },
       { viewId: 'view-review', rootId: 'reviewSessionPanel' },
@@ -6005,20 +6339,25 @@
       } else if ((e.key === 'ArrowLeft' || navKey === keybindings.prev) && state.modalIndex > 0) {
         state.modalIndex--; renderQuestionModal(); return;
       }
-    } else if (quizShortcutsEnabled && (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2')) {
-      // Opt-in (see the "Enable keyboard shortcuts" checkbox on the Test/Mock
-      // config screen) — mirrors the Previous/Next/answer-choice buttons on
-      // screen. Enter and Right/H deliberately only ever click the Next
-      // button, never Submit (there's no id for it on the last question), so
-      // a stray press can't accidentally end the test/module.
+    } else if (quizShortcutsEnabled && (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2' || practiceState.phase === 'session')) {
+      // Opt-in (see the "Enable keyboard shortcuts" checkbox on the
+      // Test/Mock/Practice config screen) — mirrors the Previous/Next/
+      // answer-choice buttons on screen. In Test/Mock, Enter and Right/H
+      // deliberately only ever click the Next button, never Submit (there's
+      // no id for it on the last question, and no submit step to begin
+      // with), so a stray press can't accidentally end the test/module. In
+      // Practice there IS a Submit step (see the "below" handler further
+      // down, which Enter still reaches here), so only Right/H advance —
+      // Enter falls through to Submit instead of skipping it.
       const isMock = mockState.phase === 'module1' || mockState.phase === 'module2';
-      const shell = document.getElementById(isMock ? 'mockShell' : 'testShell');
-      const prevId = isMock ? 'mockPrevBtn' : 'prevBtn';
-      const nextId = isMock ? 'mockNextBtn' : 'nextBtn';
+      const isPractice = practiceState.phase === 'session';
+      const shell = document.getElementById(isMock ? 'mockShell' : isPractice ? 'practiceShell' : 'testShell');
+      const prevId = isMock ? 'mockPrevBtn' : isPractice ? 'practicePrevBtn' : 'prevBtn';
+      const nextId = isMock ? 'mockNextBtn' : isPractice ? 'practiceNextBtn' : 'nextBtn';
       // Choice letters/next/prev honor the Lab remapping (see keybindings);
       // Enter and the arrow keys stay fixed regardless, as a fallback.
       const choiceIdx = ['choiceA', 'choiceB', 'choiceC', 'choiceD'].map(a => keybindings[a]).indexOf(navKey);
-      if (e.key === 'ArrowRight' || e.key === 'Enter' || navKey === keybindings.next) {
+      if (e.key === 'ArrowRight' || navKey === keybindings.next || (!isPractice && e.key === 'Enter')) {
         const btn = document.getElementById(nextId);
         if (btn) btn.click();
         return;
@@ -6147,6 +6486,7 @@
     propose: 'Propose', lab: 'Lab',
   };
   const PROFILE_FAMILY = ['profile', 'analysis', 'review', 'notes', 'leaderboard', 'lab'];
+  const BROWSE_FAMILY = ['browse', 'math'];
   function setTitleForView(view) {
     const label = TAB_TITLES[view];
     document.title = label ? label + ' · KYJ-SAT' : 'KYJ-SAT';
@@ -6160,6 +6500,10 @@
       if (PROFILE_FAMILY.includes(view)) {
         document.querySelector('.tabs > .tab[data-view="profile"]')?.classList.add('active');
       }
+      if (BROWSE_FAMILY.includes(view)) {
+        document.getElementById('browseNavTrigger')?.classList.add('active');
+      }
+      document.getElementById('browseTabGroup')?.classList.remove('open');
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById('view-' + view).classList.add('active');
       document.getElementById('profileSubtabs').classList.toggle('visible', PROFILE_FAMILY.includes(view));
@@ -6176,6 +6520,21 @@
       if (view === 'lab') renderLab();
     });
   });
+
+  // Browse nav item's dropdown (English/Math) opens on hover for mouse
+  // users (pure CSS, see .tab-group:hover), and on tap of the little caret
+  // for touch/keyboard users, since :hover never fires on touch.
+  const browseCaret = document.getElementById('browseCaret');
+  const browseTabGroup = document.getElementById('browseTabGroup');
+  if (browseCaret && browseTabGroup) {
+    browseCaret.addEventListener('click', (e) => {
+      e.stopPropagation(); // don't also trigger the trigger button's own click-to-navigate
+      browseTabGroup.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#browseTabGroup')) browseTabGroup.classList.remove('open');
+    });
+  }
 
   const brandLogoBtn = document.getElementById('brandLogoBtn');
   if (brandLogoBtn) brandLogoBtn.addEventListener('click', () => {
@@ -6275,18 +6634,17 @@
     ],
 
     practice: [
-      { view: 'practice', selector: '.chip-row', title: 'Scope', body: 'Narrow the pool by status, category, skill, and difficulty — leave any group empty to include everything there. Nothing here is graded until you hit Submit on a question.' },
-      { view: 'practice', selector: '#practiceCount, label:has(#practiceShuffle)', title: 'How many, in what order', body: 'Set a question count and optionally shuffle it — the count updates live as you narrow (or widen) the scope above.' },
-      { view: 'practice', selector: 'label:has(#practiceBiasWeak), #practiceBiasWeakBtn', title: 'Customization: weak-skill bias', body: 'Turn this on and question selection leans toward whichever skills you\'re actually missing — combining recent accuracy, how long a skill has sat untouched, and skills you\'ve been quietly avoiding.' },
-      { view: 'practice', selector: 'label:has(#practiceAdvDistToggle), label:has(#practiceAdvDiffToggle)', title: 'Customization: distribution & difficulty', body: 'Custom question distribution swaps the category/skill chips for an editable per-skill count table (drag a slider or type a number, rescale the total in one click). Custom difficulty replaces the Easy/Medium/Hard filter with your own weighted mix.' },
+      { view: 'practice', selector: '.chip-row', title: 'Scope', body: 'Narrow the pool by status — leave it empty to include everything. Nothing here is graded until you hit Submit on a question.' },
+      { view: 'practice', selector: 'label:has(#practiceShowSkillMixToggle), #practiceBiasWeakBtn', title: 'Question distribution', body: 'An editable per-skill count table drives the mix — drag a slider or type a number, rescale the whole thing in one click, or bias it toward whichever skills you\'re actually missing.' },
+      { view: 'practice', selector: 'label:has(#practiceShuffle)', title: 'Difficulty distribution & count', body: 'Weight Easy/Medium/Hard however you like, then set how many questions total — the count updates live as you adjust the mix above.' },
       { view: 'practice', selector: '#startPracticeBtn', title: 'Start practice', body: 'Once a question\'s up: A/S/D/F picks a choice, Enter submits, Space toggles the answer — see the full keyboard reference (⌨️ button in the sidebar, or search "shortcuts" in ⌘K) for everything else.' },
       TOUR_REMINDER_STEP,
     ],
 
     test: [
       { view: 'test', selector: '.chip-row', title: 'Scope by status', body: 'Same distribution engine as Mock Exam, run as one flat quiz instead of two timed modules — scope by status here (leave empty for the whole bank).' },
-      { view: 'test', selector: '#testCount, label:has(#testShuffleOrder)', title: 'Count & order', body: 'Pick any total question count and optionally shuffle it.' },
-      { view: 'test', selector: 'label:has(#testAdvDistToggle), label:has(#testAdvDiffToggle)', title: 'Customization: distribution & difficulty', body: 'Custom question distribution opens an editable per-skill count table (rescale the whole thing to a new total in one click). Custom difficulty swaps in your own Easy/Medium/Hard weighting instead of a straight filter.' },
+      { view: 'test', selector: 'label:has(#testShowSkillMixToggle), #testBiasWeakBtn', title: 'Question distribution', body: 'An editable per-skill count table drives the mix — drag a slider or type a number, rescale the whole thing to a new total in one click.' },
+      { view: 'test', selector: '#testCount, label:has(#testShuffleOrder)', title: 'Difficulty distribution, count & order', body: 'Weight Easy/Medium/Hard however you like, pick any total question count, and optionally shuffle the order.' },
       { view: 'test', selector: 'label:has(#testUseBluebook), label:has(#testShortcuts)', title: 'Bluebook mode & shortcuts', body: 'Use Bluebook-style interface runs this attempt full-screen, built to look like the real digital SAT app. Enable keyboard shortcuts opts into A/S/D/F for choices and Enter/→/← to navigate — off by default since Test simulates a proctored exam.' },
       { view: 'test', selector: 'label:has(#testTimed), label:has(#testMetadataToggle)', title: 'Timer & metadata', body: 'Timed mode adds a per-question countdown. Show question metadata reveals each question\'s category/skill/difficulty on screen — leave it off to practice blind, closer to the real thing.' },
       { view: 'test', selector: '#startTestBtn', title: 'Start test', body: "Choices are just marked selected as you go — nothing is graded until you submit the whole test, then you get a scored results page with a per-skill breakdown. Mark for review and a question navigator are both available mid-test too." },
@@ -6372,7 +6730,7 @@
   function currentPageTourKey() {
     const activeSubtab = document.querySelector('.subtab.active');
     if (activeSubtab && TOURS[activeSubtab.dataset.view]) return activeSubtab.dataset.view;
-    const activeTab = document.querySelector('.tabs > .tab.active');
+    const activeTab = document.querySelector('.tabs .tab.active');
     const view = activeTab ? activeTab.dataset.view : 'home';
     return TOURS[view] ? view : 'home';
   }
@@ -6772,6 +7130,10 @@
         try {
           await cloudSaveRequest(cloudSaveMode, { username, password });
           setCloudCredentials(username, password);
+          if (cloudSaveMode === 'signup' && (!state.profile.name || state.profile.name === DEFAULT_PROFILE_NAME)) {
+            state.profile = { name: username.slice(0, 24) };
+            saveProfile();
+          }
           leaderboardEntries = null;
           leaderboardError = null;
           let offer = null;
@@ -7373,18 +7735,20 @@
     return `<button type="button" class="btn timer-hide-toggle" data-toggle-timer-hidden title="${timerDisplayHidden ? 'Show the countdown' : 'Hide the countdown — it keeps running underneath'}">${timerDisplayHidden ? 'Show timer' : 'Hide timer'}</button>`;
   }
 
-  // ---------- Question-metadata hide toggle (Test/Mock only) ----------
-  // Same idea as the timer toggle above: purely cosmetic, so a test/mock
-  // attempt (and its results) can be taken without difficulty/type/ID
-  // nudging how you approach a question. Browse/Practice always show it —
-  // those are for studying, not simulating the real thing. One master
-  // on/off plus a small customize panel for hiding just some of it — e.g.
-  // hide the difficulty label but keep the copy-question button.
+  // ---------- Question-metadata hide toggle (Test/Mock/Practice) ----------
+  // Same idea as the timer toggle above: purely cosmetic, so an attempt
+  // (and its results) can be taken without difficulty/type/ID/rating
+  // nudging how you approach a question. Browse and the shared question
+  // modal/inline panel always show it — those are for studying, not
+  // simulating an attempt. One master on/off plus a small customize panel
+  // for hiding just some of it — e.g. hide the difficulty label but keep
+  // the copy-question button.
   const METADATA_FIELDS = [
-    { key: 'difficulty', label: 'Show difficulty label' },
-    { key: 'type', label: 'Show question type (category/skill)' },
-    { key: 'id', label: 'Show question ID' },
-    { key: 'copyBtn', label: 'Show copy-question button' },
+    { key: 'difficulty', emoji: '🎯', label: 'Show difficulty label' },
+    { key: 'communityRating', emoji: '⭐', label: 'Show community-rated difficulty' },
+    { key: 'type', emoji: '📁', label: 'Show question type (category/skill)' },
+    { key: 'id', emoji: '#️⃣', label: 'Show question ID' },
+    { key: 'copyBtn', emoji: '📋', label: 'Show copy-question button' },
   ];
   const METADATA_HIDDEN_KEY = 'sat_qbank_metadata_hidden_v1';
   // Old single-field key, kept around only to seed the new object the first
@@ -7407,6 +7771,7 @@
     const legacy = localStorage.getItem(LEGACY_DIFFICULTY_HIDDEN_KEY);
     return {
       difficulty: legacy !== null ? legacy === '1' : true,
+      communityRating: true,
       type: true,
       id: true,
       copyBtn: true,
@@ -7428,8 +7793,18 @@
     saveMetadataHidden();
   }
   function difficultyPillHtml(q) {
-    if (metadataHidden.difficulty) return '';
+    if (metadataHidden.difficulty || hideCbDifficultyLabEnabled()) return '';
     return `<span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>`;
+  }
+  // Gates the community-rated-difficulty badge (ratedDifficultyHtml) behind
+  // its own metadata field — separate from the official `difficulty` label
+  // above since the two can be toggled independently. Only used at the
+  // Test/Mock/Practice quiz+results call sites; Browse and the shared
+  // question modal/inline panel always show it (same exemption as the rest
+  // of METADATA_FIELDS — those are for studying, not simulating an attempt).
+  function communityRatingHtml(q) {
+    if (metadataHidden.communityRating) return '';
+    return ratedDifficultyHtml(q);
   }
   // The "type" tag: Test's quiz-tags row uses the broad category, Mock's
   // uses the finer-grained skill — each call site passes whichever label it
@@ -7457,17 +7832,17 @@
   }
   function metadataFieldCheckboxesHtml() {
     return METADATA_FIELDS.map(f => `
-        <label class="filter-opt">
+        <label class="filter-opt filter-opt--sub">
           <input type="checkbox" data-metadata-field="${f.key}" ${metadataHidden[f.key] ? '' : 'checked'} />
-          <span>${f.label}</span>
+          <span>${f.emoji} ${f.label}</span>
         </label>`).join('');
   }
-  // Config-screen-only: settable before Test/Mock starts, mirroring the
-  // "Custom difficulty" fold pattern already used for the other config
-  // toggles. There is deliberately no way to change this once a Test/Mock
-  // attempt is underway — the quiz card and its results screen don't render
-  // any control for it, only this config screen does. `prefix` keeps
-  // element ids unique between the Test and Mock config screens.
+  // Config-screen-only: settable before Test/Mock/Practice starts, mirroring
+  // the "Custom difficulty" fold pattern already used for the other config
+  // toggles. There is deliberately no way to change this once an attempt is
+  // underway — the quiz card and its results screen don't render any control
+  // for it, only this config screen does. `prefix` keeps element ids unique
+  // between the Test/Mock/Practice config screens.
   //
   // One checkbox does double duty: off (the default — nothing shows) and
   // on reveals the per-field breakdown so specific ones can be switched
@@ -7483,7 +7858,7 @@
           <span>🏷️ Show question metadata</span>
         </label>
       </div>
-      ${anyShown ? `<div class="config-row">${metadataFieldCheckboxesHtml()}</div>` : ''}`;
+      ${anyShown ? `<div class="idist-nested" style="margin-top:8px;"><div class="config-row" style="margin-bottom:0;">${metadataFieldCheckboxesHtml()}</div></div>` : ''}`;
   }
   function wireMetadataConfigSection(root, prefix, onChange) {
     const toggle = document.getElementById(`${prefix}MetadataToggle`);
@@ -7603,6 +7978,8 @@
   const LAB_THEMES = [
     { id: 'default', label: 'Default', swatch: null },
     { id: 'sepia', label: 'Sepia', swatch: '#8a5a2b' },
+    { id: 'goblin', label: 'Goblin Mode', swatch: '#7fff00' },
+    { id: 'terminal', label: 'Terminal', swatch: '#33ff33' },
   ];
   function getLabTheme() {
     try {
@@ -7688,6 +8065,66 @@
     try { localStorage.setItem(STRICT_TIMING_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
   }
 
+  // -- Hide College Board difficulty rating --
+  // The static Easy/Medium/Hard pill (q.difficulty_label) is normally shown
+  // everywhere — Browse, the question modal/inline panel, Math cards — even
+  // where the per-attempt "Show difficulty label" metadata toggle
+  // (METADATA_HIDDEN_KEY, gated to Test/Mock/Practice quiz+results only)
+  // already hides it. This is the always-on-everywhere counterpart: one Lab
+  // toggle that hides the College Board pill globally, same convention as
+  // ratedDifficultyLabEnabled above but inverted (off = shown, matching every
+  // other Lab default of "off/unchanged").
+  const HIDE_CB_DIFFICULTY_LAB_KEY = 'sat_qbank_hide_cb_difficulty_lab_v1';
+  function hideCbDifficultyLabEnabled() {
+    try { return localStorage.getItem(HIDE_CB_DIFFICULTY_LAB_KEY) === '1'; } catch (e) { return false; }
+  }
+  function setHideCbDifficultyLabEnabled(v) {
+    try { localStorage.setItem(HIDE_CB_DIFFICULTY_LAB_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+  }
+  // -- Browse filter facets (Lab) --
+  // Which of the five Browse sidebar facets are shown at all. Defaults match
+  // what most people actually use day to day (Category/Difficulty/Status/
+  // Community rating); Skill stays off by default since Category already
+  // narrows things down and the two overlap a lot. Turning a facet off also
+  // clears any active selection in it, so a hidden filter can't keep
+  // silently narrowing the list.
+  const BROWSE_FILTERS_KEY = 'sat_qbank_browse_filters_v1';
+  const DEFAULT_BROWSE_FILTERS = { category: true, skill: false, difficulty: true, status: true, communityRating: true };
+  function loadBrowseFilters() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(BROWSE_FILTERS_KEY));
+      if (raw && typeof raw === 'object') return Object.assign({}, DEFAULT_BROWSE_FILTERS, raw);
+    } catch (e) { /* fall through to defaults */ }
+    return Object.assign({}, DEFAULT_BROWSE_FILTERS);
+  }
+  const browseFilters = loadBrowseFilters();
+  function saveBrowseFilters() {
+    try { localStorage.setItem(BROWSE_FILTERS_KEY, JSON.stringify(browseFilters)); } catch (e) { /* best-effort */ }
+  }
+  function browseFilterEnabled(key) {
+    return !!browseFilters[key];
+  }
+  function setBrowseFilterEnabled(key, v) {
+    browseFilters[key] = !!v;
+    saveBrowseFilters();
+  }
+  const BROWSE_FILTER_OPTIONS = [
+    { key: 'category', label: 'Category' },
+    { key: 'skill', label: 'Skill' },
+    { key: 'difficulty', label: 'Difficulty' },
+    { key: 'status', label: 'Status' },
+    { key: 'communityRating', label: 'Community rating' },
+  ];
+
+  // Single call site for the CB difficulty pill everywhere it's unconditionally
+  // shown (Browse card, question modal, inline panel, Math card) — mirrors
+  // difficultyPillHtml below but for contexts that don't go through
+  // METADATA_HIDDEN_KEY at all.
+  function cbDifficultyPillHtml(q) {
+    if (hideCbDifficultyLabEnabled()) return '';
+    return `<span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>`;
+  }
+
   // -- Reset all Lab settings back to defaults, live --
   function resetLabSettings() {
     Object.keys(keybindings).forEach(k => { keybindings[k] = DEFAULT_KEYBINDINGS[k]; });
@@ -7696,7 +8133,10 @@
     setRandomizeOrderEnabled(false);
     setChoiceCount(4);
     setStrictTimingEnabled(false);
-    setRatedDifficultyLabEnabled(false);
+    setRatedDifficultyLabEnabled(true);
+    setHideCbDifficultyLabEnabled(false);
+    BROWSE_FILTER_OPTIONS.forEach(opt => setBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
+    if (typeof clearDisabledBrowseFacets === 'function') clearDisabledBrowseFacets();
     rebindingAction = null;
     labResetConfirmPending = false;
   }
@@ -7820,10 +8260,10 @@
     wireTest();
   }
 
-  // ---------- Blueprints (save/name/share custom Test & Practice setups) ----------
-  // A "blueprint" is a snapshot of everything on a Test/Practice config
-  // screen — scope, count, distribution, difficulty mix, shuffle/timer — so
-  // it can be named, reapplied later, or shared with someone else via a
+  // ---------- Blueprints (save/name/share custom Test/Practice/Mock setups) ----------
+  // A "blueprint" is a snapshot of everything on a Test/Practice/Mock config
+  // screen — scope, count/mode, distribution, difficulty mix, shuffle/timer —
+  // so it can be named, reapplied later, or shared with someone else via a
   // short code (backed by handleSaveBlueprint_/handleLoadBlueprint_ in
   // scripts/apps-script/Code.gs, same GitHub-relay pattern as kyj-cloud).
   // Anki-style: a handful of official ones ship built in, anyone can save
@@ -7869,31 +8309,57 @@
     saveBlueprintsList(loadBlueprints().filter(b => b.id !== id));
   }
 
+  // Converts an old-style plain category/skill filter (from before Practice/
+  // Test always showed the distribution engine) into a blueprint — every
+  // MOCK_BLUEPRINT row matching the filter gets a proportional share of
+  // `total`, everything else zero. Empty filters mean "everything", same as
+  // the old chips did. Falls back to the official spread if the filter
+  // matches nothing (e.g. a stale category/skill name from an old save).
+  function categoryBlueprint(categories, skills, total) {
+    const hasSkills = skills && skills.length;
+    const hasCategories = categories && categories.length;
+    const rows = MOCK_BLUEPRINT.filter(r => hasSkills ? skills.includes(r.skill) : hasCategories ? categories.includes(r.category) : true);
+    if (!rows.length) return cloneTestBlueprint(total);
+    const weights = rows.map(r => r.m1 + r.m2);
+    const counts = distributeToTarget(weights, total);
+    const byKey = {};
+    rows.forEach((r, i) => { byKey[r.category + '|' + r.skill] = counts[i]; });
+    return MOCK_BLUEPRINT.map(r => ({ category: r.category, skill: r.skill, count: byKey[r.category + '|' + r.skill] || 0 }));
+  }
+
+  // Converts an old-style plain difficulty filter (e.g. ['Hard']) into a
+  // weightConfig custom mix — the listed difficulties split the 100% evenly,
+  // everything else gets 0%. An empty filter means "no preference", same as
+  // the old chips did, so it resolves to the default balanced mix.
+  function weightConfigForDifficulties(difficulties) {
+    if (!difficulties || !difficulties.length) {
+      return { main: { preset: 'balanced', custom: { Easy: 25, Medium: 50, Hard: 25 } } };
+    }
+    const order = ['Easy', 'Medium', 'Hard'];
+    const weights = order.map(d => difficulties.includes(d) ? 1 : 0);
+    const counts = distributeToTarget(weights, 100);
+    return { main: { preset: 'custom', custom: { Easy: counts[0], Medium: counts[1], Hard: counts[2] } } };
+  }
+
   // Snapshot the given config screen's current state into a plain, JSON-safe
-  // blueprint object (Sets -> arrays; the advanced blueprint/weight configs
-  // are only captured when their toggle is actually on, so applying one
-  // later still falls back to "official" distribution otherwise).
+  // blueprint object (Sets -> arrays). Practice/Test always run in the
+  // distribution/weight-mix "advanced" mode now, so their blueprint/
+  // weightConfig are always meaningful and always captured.
   function captureBlueprint(view, name) {
+    if (view === 'mock') return captureMockBlueprint(name);
     const st = view === 'test' ? testState : practiceState;
     return {
       id: 'bp_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
       name, view,
       createdAt: new Date().toISOString(),
       count: st.count,
-      // Test has no category/skill/difficulty chips of its own — that scope
-      // is expressed entirely through the blueprint distribution engine
-      // below — so only Practice's state actually has these Sets.
-      categories: st.categories ? [...st.categories] : [],
-      skills: st.skills ? [...st.skills] : [],
-      difficulties: st.difficulties ? [...st.difficulties] : [],
       statuses: [...st.statuses],
-      advancedDistribution: st.advancedDistribution,
+      advancedDistribution: true,
       showSkillMix: st.showSkillMix,
-      blueprint: st.advancedDistribution ? st.blueprint : null,
-      advancedDifficulty: st.advancedDifficulty,
-      weightConfig: st.advancedDifficulty ? st.weightConfig : null,
+      blueprint: JSON.parse(JSON.stringify(st.blueprint)),
+      advancedDifficulty: true,
+      weightConfig: JSON.parse(JSON.stringify(st.weightConfig)),
       shuffle: view === 'test' ? st.shuffleOrder : st.shuffle,
-      biasWeak: view === 'practice' ? st.biasWeak : undefined,
       timed: st.timed,
       timerSeconds: st.timerSeconds,
       timerStrict: st.timerStrict,
@@ -7901,24 +8367,32 @@
   }
 
   // Inverse of captureBlueprint — pushes a blueprint's fields onto the
-  // matching config state, then leaves rendering to the caller.
+  // matching config state, then leaves rendering to the caller. Handles both
+  // the current distribution-blueprint shape and the retired plain
+  // category/skill/difficulty-filter shape (old local saves, old official
+  // presets, old shared community blueprints) by converting the latter into
+  // an equivalent blueprint/weightConfig on the fly — so every blueprint
+  // ever saved still works, and still shows accurately in the (now always
+  // visible) distribution UI once applied.
   function applyBlueprint(view, bp) {
+    if (view === 'mock') { applyMockBlueprint(bp); return; }
     const st = view === 'test' ? testState : practiceState;
     st.count = bp.count || st.count;
-    // Only Practice has category/skill/difficulty chips — see captureBlueprint.
-    if (st.categories) st.categories = new Set(bp.categories || []);
-    if (st.skills) st.skills = new Set(bp.skills || []);
-    if (st.difficulties) st.difficulties = new Set(bp.difficulties || []);
+    // Category/skill/difficulty chips are retired — any leftover filter
+    // state (e.g. from the "practice this skill" jump) no longer applies.
+    if (st.categories) st.categories = new Set();
+    if (st.skills) st.skills = new Set();
+    if (st.difficulties) st.difficulties = new Set();
     st.statuses = new Set(bp.statuses || []);
-    st.advancedDistribution = !!bp.advancedDistribution;
+    st.advancedDistribution = true;
     st.showSkillMix = !!bp.showSkillMix;
     st.blueprint = (bp.advancedDistribution && bp.blueprint)
       ? JSON.parse(JSON.stringify(bp.blueprint))
-      : cloneTestBlueprint(st.count);
-    st.advancedDifficulty = !!bp.advancedDifficulty;
+      : categoryBlueprint(bp.categories || [], bp.skills || [], st.count);
+    st.advancedDifficulty = true;
     st.weightConfig = (bp.advancedDifficulty && bp.weightConfig)
       ? JSON.parse(JSON.stringify(bp.weightConfig))
-      : { main: { preset: 'balanced', custom: { Easy: 25, Medium: 50, Hard: 25 } } };
+      : weightConfigForDifficulties(bp.difficulties || []);
     if (view === 'test') {
       st.shuffleOrder = bp.shuffle !== false;
     } else {
@@ -7930,7 +8404,48 @@
     if (typeof bp.timerStrict === 'boolean') st.timerStrict = bp.timerStrict;
   }
 
+  // Mock Exam's own capture/apply — kept separate from the Test/Practice pair
+  // above since its state shape is different in every dimension: a blueprint
+  // keyed by m1/m2 instead of a single count, a weightConfig with three slots
+  // (m1/m2harder/m2easier) instead of one, a mode (adaptive/module1/module2)
+  // instead of a flat question count, and its own per-question timer object
+  // (qtimer) instead of flat timed/timerSeconds/timerStrict fields.
+  function captureMockBlueprint(name) {
+    return {
+      id: 'bp_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+      name, view: 'mock',
+      createdAt: new Date().toISOString(),
+      mode: mockState.mode,
+      module2Pool: mockState.module2Pool,
+      passThreshold: mockState.passThreshold,
+      statuses: [...mockState.statuses],
+      blueprint: JSON.parse(JSON.stringify(mockState.blueprint)),
+      weightConfig: JSON.parse(JSON.stringify(mockState.weightConfig)),
+      showSkillMix: mockState.showSkillMix,
+      useBluebook: mockState.useBluebook,
+      qtimer: { timed: mockState.qtimer.timed, timerSeconds: mockState.qtimer.timerSeconds, timerStrict: mockState.qtimer.timerStrict },
+    };
+  }
+
+  function applyMockBlueprint(bp) {
+    mockState.mode = bp.mode || mockState.mode;
+    mockState.module2Pool = bp.module2Pool || mockState.module2Pool;
+    if (typeof bp.passThreshold === 'number') mockState.passThreshold = bp.passThreshold;
+    mockState.statuses = new Set(bp.statuses || []);
+    mockState.blueprint = bp.blueprint ? JSON.parse(JSON.stringify(bp.blueprint)) : cloneDefaultBlueprint();
+    mockState.weightConfig = bp.weightConfig ? JSON.parse(JSON.stringify(bp.weightConfig)) : defaultWeightConfig();
+    // Force both folds open, same reasoning as Practice/Test always showing
+    // theirs — otherwise applying a custom blueprint would silently hide the
+    // very customization it just loaded.
+    mockState.advancedDistribution = true;
+    mockState.advancedDifficulty = true;
+    mockState.showSkillMix = !!bp.showSkillMix;
+    if (typeof bp.useBluebook === 'boolean') mockState.useBluebook = bp.useBluebook;
+    if (bp.qtimer) mockState.qtimer = { ...mockState.qtimer, ...bp.qtimer };
+  }
+
   function blueprintSummary(bp) {
+    if (bp.view === 'mock') return MOCK_MODE_LABELS[bp.mode] || 'Mock Exam';
     const bits = [];
     bits.push(`${bp.count} question${bp.count === 1 ? '' : 's'}`);
     if (bp.categories && bp.categories.length) bits.push(bp.categories.join(', '));
@@ -7939,7 +8454,7 @@
   }
 
   // { open, tab: 'official'|'mine'|'community'|'import', community: null|Array, communityError, importCode, importError, shareBusyId, shareStatus }
-  const bpUiState = { test: { open: false, tab: 'official' }, practice: { open: false, tab: 'official' } };
+  const bpUiState = { test: { open: false, tab: 'official' }, practice: { open: false, tab: 'official' }, mock: { open: false, tab: 'official' } };
 
   function bpUiFor(view) { return bpUiState[view]; }
 
@@ -7952,15 +8467,24 @@
     function itemHtml(bp, opts) {
       opts = opts || {};
       const meta = opts.meta || bp.desc || blueprintSummary(bp);
+      // "Mine" shows Unshare once we know this local save has a live code
+      // (set right after a successful Share). "Community" shows it whenever
+      // the entry's author matches whoever's logged in right now — covers
+      // sharing from a different browser/device where the local copy never
+      // learned its own code.
+      const canUnshareMine = opts.source === 'mine' && bp.code;
+      const canUnshareCommunity = opts.source === 'community' && isCloudLoggedIn() && bp.author && bp.author.toLowerCase() === (getCloudUsername() || '').toLowerCase();
+      const unshareCode = canUnshareMine ? bp.code : (canUnshareCommunity ? bp.code : null);
       return `
         <div class="bp-picker-item">
           <div class="bp-picker-item-info">
-            <div class="bp-picker-item-name">${escapeHtml(bp.name)}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}</div>
+            <div class="bp-picker-item-name">${escapeHtml(bp.name)}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}${bp.code && opts.source === 'mine' ? ` <span class="bp-picker-item-author">· shared as ${escapeHtml(bp.code)}</span>` : ''}</div>
             <div class="bp-picker-item-meta">${escapeHtml(meta)}</div>
           </div>
           <div class="bp-picker-item-actions">
             <button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-apply="${escapeHtml(opts.applyId != null ? opts.applyId : bp.id)}" data-bp-source="${opts.source}">Use</button>
-            ${opts.source === 'mine' ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-share="${escapeHtml(bp.id)}" title="Get a code others can import">🔗 Share</button>` : ''}
+            ${opts.source === 'mine' && !bp.code ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-share="${escapeHtml(bp.id)}" title="Get a code others can import">🔗 Share</button>` : ''}
+            ${unshareCode ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-unshare="${escapeHtml(unshareCode)}" data-bp-unshare-local="${escapeHtml(opts.source === 'mine' ? bp.id : '')}" title="Retract this — the code stops working for everyone">🚫 Unshare</button>` : ''}
             ${opts.source === 'mine' ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-delete="${escapeHtml(bp.id)}">🗑️</button>` : ''}
           </div>
         </div>`;
@@ -8011,9 +8535,9 @@
 
   function wireBlueprintPicker(shell, view, rerender) {
     const ui = bpUiFor(view);
-    const toggleBtn = document.getElementById(view === 'test' ? 'testBlueprintsBtn' : 'practiceBlueprintsBtn');
+    const toggleBtn = document.getElementById(`${view}BlueprintsBtn`);
     if (toggleBtn) toggleBtn.addEventListener('click', () => { ui.open = !ui.open; rerender(); });
-    const saveBtn = document.getElementById(view === 'test' ? 'testSaveBlueprintBtn' : 'practiceSaveBlueprintBtn');
+    const saveBtn = document.getElementById(`${view}SaveBlueprintBtn`);
     if (saveBtn) saveBtn.addEventListener('click', () => {
       const name = (prompt('Name this blueprint:') || '').trim();
       if (!name) return;
@@ -8085,12 +8609,43 @@
         ui.shareStatus = { ok: true, text: 'Sharing…' }; rerender();
         try {
           const res = await cloudSaveRequest('save_blueprint', { username: getCloudUsername(), password: getCloudPassword(), blueprint: bp });
+          // Remember the code on the local copy too, so this same "mine"
+          // entry can show "shared as <code>" and offer Unshare later,
+          // instead of only Community (or nothing, on another device).
+          const list = loadBlueprints();
+          const mineEntry = list.find(b => b.id === bp.id);
+          if (mineEntry) { mineEntry.code = res.code; saveBlueprintsList(list); }
           ui.shareStatus = { ok: true, text: `Shared! Code: ${res.code} — anyone can import it from the "#️⃣ Code" tab.` };
           ui.community = null; // force a refresh next time Community is opened
         } catch (err) {
           ui.shareStatus = { ok: false, text: 'Share failed: ' + ((err && err.message) || err) };
         }
         rerender();
+      });
+    });
+
+    shell.querySelectorAll('[data-bp-unshare]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const code = btn.dataset.bpUnshare;
+        if (!confirm(`Retract blueprint ${code}? The code will stop working for anyone who hasn't already imported it.`)) return;
+        if (!isCloudLoggedIn()) { ui.shareStatus = { ok: false, text: 'Log into kyj-cloud first (top-right ☁️) — unsharing needs the account that shared it.' }; rerender(); return; }
+        const original = btn.textContent;
+        btn.disabled = true; btn.textContent = '…';
+        try {
+          await cloudSaveRequest('delete_blueprint', { username: getCloudUsername(), password: getCloudPassword(), code });
+          const localId = btn.dataset.bpUnshareLocal;
+          if (localId) {
+            const list = loadBlueprints();
+            const mineEntry = list.find(b => b.id === localId);
+            if (mineEntry) { delete mineEntry.code; saveBlueprintsList(list); }
+          }
+          ui.community = null; // force a refresh next time Community is opened
+          ui.shareStatus = { ok: true, text: `Unshared — ${code} no longer works.` };
+          rerender();
+        } catch (err) {
+          btn.disabled = false; btn.textContent = original;
+          alert('Failed to unshare: ' + ((err && err.message) || err));
+        }
       });
     });
 
@@ -8154,6 +8709,8 @@
           <label>🎯 Scope — status (leave empty for all)</label>
           <div class="chip-row">${statusChipsHtml(testState)}</div>
         </div>
+        ${distributionSection}
+        ${weightPickerHtml(testState.weightConfig, 'main', 'Difficulty distribution')}
         <div class="config-row">
           <label>🔢 Number of questions</label>
           <input type="number" class="num-input" id="testCount" min="1" max="${Math.max(available, 1)}" value="${testState.count}" />
@@ -8170,20 +8727,6 @@
             <span>🖨️ Print a paper copy instead (PDF)</span>
           </label>
         </div>
-        <div class="config-row" style="margin-bottom:6px;">
-          <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="testAdvDistToggle" ${testState.advancedDistribution ? 'checked' : ''} />
-            <span>📊 Custom question distribution</span>
-          </label>
-        </div>
-        ${testState.advancedDistribution ? distributionSection : ''}
-        <div class="config-row" style="margin-bottom:6px;">
-          <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="testAdvDiffToggle" ${testState.advancedDifficulty ? 'checked' : ''} />
-            <span>🎚️ Custom difficulty</span>
-          </label>
-        </div>
-        ${testState.advancedDifficulty ? weightPickerHtml(testState.weightConfig, 'main', 'Difficulty mix') : ''}
         ${testState.printMode ? '' : `
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
@@ -8265,11 +8808,12 @@
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="quiz-card">
         <div class="quiz-tags">
-          ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
+          ${difficultyPillHtml(q)}${communityRatingHtml(q)}
           ${typeTagHtml(q.category)}
           ${questionIdHtml(q)}
           ${copyQuestionBtnHtml(q)}
           <button type="button" class="chip mark-review-btn ${marked ? 'on' : ''}" data-mark-toggle>${marked ? '🚩 Marked for review' : '⚑ Mark for review'}</button>
+          ${reportTriggerHtml(q)}
         </div>
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
@@ -8310,7 +8854,7 @@
         <div class="review-item clickable" id="test-review-${q.id}" data-id="${q.id}">
           <div class="row1">
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
-            ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
+            ${difficultyPillHtml(q)}${communityRatingHtml(q)}
             ${typeTagHtml(q.category)}
             ${qMetaLineHtml(q) ? `<span class="qskill" style="margin:0;">${qMetaLineHtml(q)}</span>` : ''}
           </div>
@@ -8387,22 +8931,8 @@
       const printToggle = document.getElementById('testPrintToggle');
       if (printToggle) printToggle.addEventListener('change', () => { testState.printMode = printToggle.checked; renderTest(); });
       wirePrintOptionsFields('test', testState);
-      const advDistToggle = document.getElementById('testAdvDistToggle');
-      if (advDistToggle) advDistToggle.addEventListener('change', () => {
-        testState.advancedDistribution = advDistToggle.checked;
-        // Unchecking means "go back to official" — same reasoning as Mock's
-        // equivalent toggle (see mockAdvDistToggle): otherwise a hand-edit
-        // stays silently baked in even though the UI that showed it is gone.
-        if (!advDistToggle.checked) {
-          testState.blueprint = cloneTestBlueprint(testState.count);
-          testState.showSkillMix = false;
-        }
-        renderTest();
-      });
       const showSkillMixToggle = document.getElementById('testShowSkillMixToggle');
       if (showSkillMixToggle) showSkillMixToggle.addEventListener('change', () => { testState.showSkillMix = showSkillMixToggle.checked; renderTest(); });
-      const advDiffToggle = document.getElementById('testAdvDiffToggle');
-      if (advDiffToggle) advDiffToggle.addEventListener('change', () => { testState.advancedDifficulty = advDiffToggle.checked; renderTest(); });
       wireDistBars(shell); // drag-to-split bars for section/skill mix and difficulty mix — same component Mock Exam uses (see wireDistBars, keyed off shell.id)
       const biasBpBtn = document.getElementById('testBiasWeakBtn');
       if (biasBpBtn) biasBpBtn.addEventListener('click', () => {
@@ -8560,25 +9090,13 @@
           </div>
         </div>
         ${bpPickerHtml('practice')}
-        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the ${practiceState.advancedDistribution ? 'status scope' : 'filters'} below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
         <div class="config-row">
           <label>🎯 Scope — status (leave empty for all)</label>
           <div class="chip-row">${statusChipsHtml(practiceState)}</div>
         </div>
-        ${practiceState.advancedDistribution ? '' : `
-        <div class="config-row">
-          <label>📁 Category (leave empty for all)</label>
-          <div class="chip-row">${categoryChipsHtml(practiceState)}</div>
-        </div>
-        <div class="config-row">
-          <label>🛠️ Skill (leave empty for all)</label>
-          <div class="chip-row">${skillChipsHtml(practiceState)}</div>
-        </div>`}
-        ${practiceState.advancedDifficulty ? '' : `
-        <div class="config-row">
-          <label>🎚️ Difficulty (leave empty for all)</label>
-          <div class="chip-row">${difficultyChipsHtml(practiceState)}</div>
-        </div>`}
+        ${distributionSection}
+        ${weightPickerHtml(practiceState.weightConfig, 'main', 'Difficulty distribution')}
         <div class="config-row">
           <label>🔢 Number of questions</label>
           <input type="number" class="num-input" id="practiceCount" min="1" max="${Math.max(available, 1)}" value="${practiceState.count}" />
@@ -8589,34 +9107,15 @@
             <span>🔀 Shuffle order</span>
           </label>
         </div>
-        ${practiceState.advancedDistribution ? '' : `
-        <div class="config-row" style="margin-bottom:6px;">
-          <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="practiceBiasWeak" ${practiceState.biasWeak ? 'checked' : ''} />
-            <span>🧠 Bias toward weak</span>
-          </label>
-        </div>`}
+        ${practiceState.printMode ? '' : `<div class="config-row" style="margin-bottom:6px;">${quizShortcutsToggleHtml('practiceShortcuts')}</div>`}
         <div class="config-row" style="margin-bottom:6px;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practicePrintToggle" ${practiceState.printMode ? 'checked' : ''} />
             <span>🖨️ Print a paper copy instead (PDF)</span>
           </label>
         </div>
-        <div class="config-row" style="margin-bottom:6px;">
-          <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="practiceAdvDistToggle" ${practiceState.advancedDistribution ? 'checked' : ''} />
-            <span>📊 Custom question distribution</span>
-          </label>
-        </div>
-        ${practiceState.advancedDistribution ? distributionSection : ''}
-        <div class="config-row" style="margin-bottom:6px;">
-          <label class="filter-opt" style="padding:0;">
-            <input type="checkbox" id="practiceAdvDiffToggle" ${practiceState.advancedDifficulty ? 'checked' : ''} />
-            <span>🎚️ Custom difficulty</span>
-          </label>
-        </div>
-        ${practiceState.advancedDifficulty ? weightPickerHtml(practiceState.weightConfig, 'main', 'Difficulty mix') : ''}
         ${practiceState.printMode ? printOptionsFieldsHtml('practice', practiceState) : timedModeConfigHtml(practiceState, 'practice')}
+        ${practiceState.printMode ? '' : metadataConfigSectionHtml('practice')}
         <button class="btn btn-accent" id="startPracticeBtn" ${startCount ? '' : 'disabled'} style="margin-top:8px;">${practiceState.printMode ? '⬇️ Download PDF' : `Start practice (${startCount})`}</button>
       </div>`;
   }
@@ -8634,15 +9133,14 @@
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="quiz-card">
         <div class="quiz-tags">
-          <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
-          ${ratedDifficultyHtml(q)}
-          <span class="cat-tag">${escapeHtml(q.category)}</span>
-          <span class="qid" style="align-self:center;" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
-          <span class="qskill" style="margin:0; align-self:center;">${escapeHtml(q.skill)}</span>
-          <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
+          ${difficultyPillHtml(q)}${communityRatingHtml(q)}
+          ${typeTagHtml(q.category)}
+          ${metadataHidden.type ? '' : `<span class="qskill" style="margin:0; align-self:center;">${escapeHtml(q.skill)}</span>`}
+          ${questionIdHtml(q)}
+          ${copyQuestionBtnHtml(q)}
           ${reportTriggerHtml(q)}
         </div>
-        ${qDetailHtml(q, { bare: true })}
+        ${qDetailHtml(q, { bare: true, shortcuts: true })}
         <div class="quiz-nav">
           <button class="btn" id="practicePrevBtn" ${practiceState.index === 0 ? 'disabled' : ''}>Previous</button>
           ${practiceState.index === total - 1
@@ -8678,6 +9176,7 @@
       wireBlueprintPicker(shell, 'practice', renderPractice);
       wireScopeChips(shell, practiceState, renderPractice);
       wireTimedModeConfig(shell, practiceState, 'practice', renderPractice);
+      wireMetadataConfigSection(shell, 'practice', renderPractice);
       const countInput = document.getElementById('practiceCount');
       if (countInput) countInput.addEventListener('change', () => {
         const n = Math.max(1, parseInt(countInput.value, 10) || 1);
@@ -8687,27 +9186,13 @@
       });
       const shuffleBox = document.getElementById('practiceShuffle');
       if (shuffleBox) shuffleBox.addEventListener('change', () => { practiceState.shuffle = shuffleBox.checked; });
-      const biasBox = document.getElementById('practiceBiasWeak');
-      if (biasBox) biasBox.addEventListener('change', () => { practiceState.biasWeak = biasBox.checked; });
       const printToggle = document.getElementById('practicePrintToggle');
       if (printToggle) printToggle.addEventListener('change', () => { practiceState.printMode = printToggle.checked; renderPractice(); });
+      const shortcutsBox = document.getElementById('practiceShortcuts');
+      if (shortcutsBox) shortcutsBox.addEventListener('change', () => setQuizShortcutsEnabled(shortcutsBox.checked));
       wirePrintOptionsFields('practice', practiceState);
-      const advDistToggle = document.getElementById('practiceAdvDistToggle');
-      if (advDistToggle) advDistToggle.addEventListener('change', () => {
-        practiceState.advancedDistribution = advDistToggle.checked;
-        // Unchecking means "go back to official" — same reasoning as Test's
-        // equivalent toggle: otherwise a hand-edit stays silently baked in
-        // even though the UI that showed it is gone.
-        if (!advDistToggle.checked) {
-          practiceState.blueprint = cloneTestBlueprint(practiceState.count);
-          practiceState.showSkillMix = false;
-        }
-        renderPractice();
-      });
       const showSkillMixToggle = document.getElementById('practiceShowSkillMixToggle');
       if (showSkillMixToggle) showSkillMixToggle.addEventListener('change', () => { practiceState.showSkillMix = showSkillMixToggle.checked; renderPractice(); });
-      const advDiffToggle = document.getElementById('practiceAdvDiffToggle');
-      if (advDiffToggle) advDiffToggle.addEventListener('change', () => { practiceState.advancedDifficulty = advDiffToggle.checked; renderPractice(); });
       wireDistBars(shell); // drag-to-split bars for section/skill mix and difficulty mix — same component Test/Mock use (see wireDistBars, keyed off shell.id)
       const biasBpBtn = document.getElementById('practiceBiasWeakBtn');
       if (biasBpBtn) biasBpBtn.addEventListener('click', () => {
@@ -8988,6 +9473,7 @@
             <div class="bb-qhead">
               <span class="bb-qnum">${bbState.index + 1}</span>
               <button type="button" class="bb-flag-btn ${flagged ? 'on' : ''}" id="bbFlagBtn">${flagged ? '🚩' : '⚑'} ${flagged ? 'Marked for Review' : 'Mark for Review'}</button>
+              ${reportTriggerHtml(q)}
             </div>
             <div class="bb-prompt">${escapeHtml(q.prompt)}</div>
             <div class="bb-choices">${choiceHtml}</div>
@@ -9803,6 +10289,14 @@
     const weights = practiceState.blueprint.map(r => r.count);
     const counts = distributeToTarget(weights, newTotal);
     practiceState.blueprint.forEach((r, i) => { r.count = counts[i]; });
+  }
+
+  // A blueprint pinned entirely to one skill (every other row zeroed out) —
+  // lets the "Practice this skill" jump from Analysis (see wireAnalysis)
+  // land in the same always-on distribution UI as everything else, instead
+  // of a separate non-advanced/chip-filtered mode.
+  function singleSkillBlueprint(skill, total) {
+    return MOCK_BLUEPRINT.map(r => ({ category: r.category, skill: r.skill, count: r.skill === skill ? total : 0 }));
   }
 
   function practiceBiasBlueprintTowardWeakSkills() {
@@ -10713,12 +11207,10 @@
   // component as Level 1/2, just with Easy/Medium/Hard as its three segments
   // instead of sections or skills, and a fixed 100-unit total (a percentage
   // split) instead of a question count.
-  const DIFFICULTY_EMOJI = { Easy: '🟢', Medium: '🟡', Hard: '🔴' };
-
   function difficultyDistBarHtml(weightConfig, key) {
     const counts = resolvedDifficultyCounts(weightConfig, key);
     const segments = DIFFICULTY_ORDER.map((d, i) => ({
-      key: d, label: d, shortLabel: `${DIFFICULTY_EMOJI[d]} ${d}`, color: DIFFICULTY_COLORS[d], count: counts[i],
+      key: d, label: d, shortLabel: d, color: DIFFICULTY_COLORS[d], count: counts[i],
     }));
     return interactiveDistBarHtml(`difficulty-${key}`, key, segments, 100);
   }
@@ -10992,7 +11484,7 @@
       <div class="config-row">
         <label>🎚️ ${label}</label>
         <div class="chip-row">${chips}</div>
-        <div class="idist-block" style="margin:22px 0 6px;">${difficultyDistBarHtml(weightConfig, key)}</div>
+        <div class="idist-block" style="margin:28px 0 6px;">${difficultyDistBarHtml(weightConfig, key)}</div>
       </div>`;
   }
 
@@ -11043,6 +11535,7 @@
           </div>
         </div>
         ${weightPickerHtml(mockState.weightConfig, 'm2harder', 'Module 2 — harder-pool mix')}
+        <div style="height:8px;"></div>
         ${weightPickerHtml(mockState.weightConfig, 'm2easier', 'Module 2 — easier-pool mix')}`;
     } else if (mockState.mode === 'module1') {
       weightSection = weightPickerHtml(mockState.weightConfig, 'm1', 'Module 1 difficulty mix');
@@ -11085,7 +11578,14 @@
 
     return `
       <div class="config-card">
-        <h2>📋 Mock Exam</h2>
+        <div class="bp-table-head">
+          <h2 style="margin:0;">📋 Mock Exam</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="mockSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="mockBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
+        </div>
+        ${bpPickerHtml('mock')}
         <p class="lede">${mockModuleDescHtml()}</p>
         <div class="config-row">
           <label>🎛️ Mode</label>
@@ -11170,11 +11670,12 @@
       <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
       <div class="quiz-card">
         <div class="quiz-tags">
-          ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
+          ${difficultyPillHtml(q)}${communityRatingHtml(q)}
           ${typeTagHtml(q.skill)}
           ${questionIdHtml(q)}
           ${copyQuestionBtnHtml(q)}
           <button type="button" class="chip mark-review-btn ${marked ? 'on' : ''}" data-mark-toggle>${marked ? '🚩 Marked for review' : '⚑ Mark for review'}</button>
+          ${reportTriggerHtml(q)}
         </div>
         ${questionImageHtml(q)}
         <div class="stem">${renderStemHtml(q.stem)}</div>
@@ -11271,7 +11772,7 @@
           <div class="row1">
             <span class="pill ${isCorrect ? 'pill-easy' : 'pill-hard'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>
             <span class="mock-module-badge" style="font-size:10px;">Module ${module}</span>
-            ${difficultyPillHtml(q)}${ratedDifficultyHtml(q)}
+            ${difficultyPillHtml(q)}${communityRatingHtml(q)}
             ${qMetaLineHtml(q) ? `<span class="qskill" style="margin:0;">${qMetaLineHtml(q)}</span>` : ''}
           </div>
           <div class="stem">${i + 1}. ${escapeStemFlat(q.stem)}</div>
@@ -11355,6 +11856,7 @@
   function wireMock() {
     const shell = document.getElementById('mockShell');
     if (mockState.phase === 'intro') {
+      wireBlueprintPicker(shell, 'mock', renderMock);
       const startBtn = document.getElementById('startMockBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
         if (mockState.printMode) generateMockPrintout();
@@ -11583,13 +12085,20 @@
 
   // ---------- Shared inline question panel (Progress + Review tile clicks) ----------
   function inlineQuestionPanelHtml(q, panelId, closeId) {
+    const status = questionStatus(q);
+    const statusBadge = status !== 'incomplete'
+      ? `<span class="${statusPillClass(status)}">${STATUS_LABELS[status]}</span>`
+      : '';
     return `
       <div class="inline-q-panel" id="${panelId}">
         <div class="inline-q-panel-head">
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            ${cbDifficultyPillHtml(q)}
+            ${ratedDifficultyHtml(q)}
+            ${statusBadge}
+            <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="inline-q-panel-title" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
-            ${ratedDifficultyHtml(q)}
             ${reportTriggerHtml(q)}
           </div>
           <button class="icon-close-btn" id="${closeId}" title="Close" aria-label="Close">&#10005;</button>
@@ -11839,6 +12348,10 @@
         <div class="progress-note">
           Saved automatically in this browser. That storage isn't guaranteed to survive forever (clearing browser data, a different device, or a fresh copy of this page will lose it) — export a backup periodically and import it to restore or move your progress.
         </div>
+        <div class="progress-note" style="margin-top:6px;">
+          <a href="#" id="resetBackupsLink" style="color:inherit;">Recovering from a reset? Check for local backups &rarr;</a>
+        </div>
+        <div id="resetBackupsPanel" style="display:none; margin-top:6px;"></div>
       </div>`;
   }
 
@@ -12258,7 +12771,21 @@
   }
   function labRatedDifficultyCardHtml() {
     return labCardHtml('🎮 Rated Difficulty', `
-      ${labToggleRowHtml('labRatedDifficulty', 'Show community difficulty ratings', 'Adds a Geometry Dash-style 1-10 difficulty rating (Easy → Extreme Demon) next to the existing Easy/Medium/Hard pill, with a vote strip so you can rate a question yourself. Votes sync with your next "Save progress now" click, not immediately. Shown rating is the site owner’s admin-approved value once set, or the current community average marked "Not yet rated" until then.', ratedDifficultyLabEnabled())}`);
+      ${labToggleRowHtml('labRatedDifficulty', 'Show community difficulty ratings', 'Adds a Geometry Dash-style 1-10 difficulty rating (Easy → Extreme Demon) next to the existing Easy/Medium/Hard pill, with a vote strip so you can rate a question yourself. Votes sync with your next "Save progress now" click, not immediately. Shown rating is the site owner’s admin-approved value once set, or the current community average marked "Not yet rated" until then. On by default now — turn it off here if you\'d rather not see it.', ratedDifficultyLabEnabled())}`);
+  }
+  function labCbDifficultyCardHtml() {
+    return labCardHtml('🏷️ College Board difficulty rating', `
+      ${labToggleRowHtml('labHideCbDifficulty', 'Hide the official Easy/Medium/Hard pill', "Hides College Board's own difficulty label everywhere it's normally always shown — Browse cards, the question modal, and inline Progress/Review panels — not just the per-attempt Test/Mock/Practice toggle, which only affects the quiz screen itself.", hideCbDifficultyLabEnabled())}`);
+  }
+  function labBrowseFiltersCardHtml() {
+    const rows = BROWSE_FILTER_OPTIONS.map(opt => `
+      <label class="filter-opt" style="padding:4px 0;">
+        <input type="checkbox" data-browse-filter-key="${opt.key}" ${browseFilterEnabled(opt.key) ? 'checked' : ''} />
+        <span>${escapeHtml(opt.label)}</span>
+      </label>`).join('');
+    return labCardHtml('🔍 Browse filters', `
+      <div class="log-item-desc" style="margin-bottom:10px;">Pick which filter facets show up in the Browse sidebar. Category, Difficulty, Status, and Community rating are shown by default; Skill is hidden by default since it overlaps a lot with Category. Turning one off also clears any active selection in it.</div>
+      <div style="display:flex; flex-direction:column; gap:2px;">${rows}</div>`);
   }
   function renderLab() {
     const shell = document.getElementById('labShell');
@@ -12266,10 +12793,10 @@
     shell.innerHTML = `
       <div class="progress-summary">
         <h2>🧪 Lab</h2>
-        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior.</p>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior, except Rated Difficulty (on by default — opt out below).</p>
         ${labResetConfirmPending ? `
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--incorrect-bg); border:1px solid var(--incorrect); color:var(--incorrect); border-radius:8px; padding:10px 14px;">
-            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, strict timing, and difficulty ratings all go back to off/unchanged.</span>
+            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, and strict timing go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters go back to Category/Difficulty/Status/Community rating shown, Skill hidden.</span>
             <div style="display:flex; gap:8px; margin-left:auto;">
               <button type="button" class="btn" id="labResetCancelBtn">Cancel</button>
               <button type="button" class="btn btn-accent" id="labResetConfirmBtn">Yes, reset everything</button>
@@ -12281,6 +12808,8 @@
       ${labChoicesCardHtml()}
       ${labStrictTimingCardHtml()}
       ${labRatedDifficultyCardHtml()}
+      ${labCbDifficultyCardHtml()}
+      ${labBrowseFiltersCardHtml()}
       ${labKeybindingsCardHtml()}`;
 
     const resetBtn = document.getElementById('labResetBtn');
@@ -12288,7 +12817,7 @@
     const resetCancelBtn = document.getElementById('labResetCancelBtn');
     if (resetCancelBtn) resetCancelBtn.addEventListener('click', () => { labResetConfirmPending = false; renderLab(); });
     const resetConfirmBtn = document.getElementById('labResetConfirmBtn');
-    if (resetConfirmBtn) resetConfirmBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); });
+    if (resetConfirmBtn) resetConfirmBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); refreshAllQuestionCardViews(); });
     const ratedDifficultyBox = document.getElementById('labRatedDifficulty');
     if (ratedDifficultyBox) ratedDifficultyBox.addEventListener('change', () => {
       setRatedDifficultyLabEnabled(ratedDifficultyBox.checked);
@@ -12297,6 +12826,20 @@
       }
       renderLab();
       refreshAllQuestionCardViews();
+    });
+    const hideCbDifficultyBox = document.getElementById('labHideCbDifficulty');
+    if (hideCbDifficultyBox) hideCbDifficultyBox.addEventListener('change', () => {
+      setHideCbDifficultyLabEnabled(hideCbDifficultyBox.checked);
+      renderLab();
+      refreshAllQuestionCardViews();
+    });
+    shell.querySelectorAll('[data-browse-filter-key]').forEach(box => {
+      box.addEventListener('change', () => {
+        const key = box.dataset.browseFilterKey;
+        setBrowseFilterEnabled(key, box.checked);
+        if (!box.checked) clearDisabledBrowseFacets();
+        refreshAllQuestionCardViews();
+      });
     });
 
     shell.querySelectorAll('[data-rebind-action]').forEach(btn => {
@@ -12551,6 +13094,10 @@
       </div>`;
   }
 
+  // Tracks which open question's panel we've already auto-scrolled to, so
+  // renderProgress() (called again on every interaction inside that panel)
+  // only scrolls once per question, not on every click.
+  let progressPanelScrolledFor = null;
   function renderProgress() {
     const shell = document.getElementById('progressShell');
     const focusQuestions = QUESTIONS.filter(q => state.progressFocus.has(q.difficulty_label));
@@ -12654,7 +13201,17 @@
       const closeBtn = document.getElementById('progressPanelClose');
       if (closeBtn) closeBtn.addEventListener('click', () => { state.progressOpenQuestion = null; renderProgress(); });
       wireDetail(openQ, renderProgress, panel);
-      requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      // Only auto-scroll the first time a given question opens — every
+      // subsequent renderProgress() call is triggered by interacting with
+      // that same open question (picking a choice, submitting, marking
+      // status), and re-scrolling on each of those made every click feel
+      // like it was fighting you instead of just updating in place.
+      if (progressPanelScrolledFor !== openQ.id) {
+        progressPanelScrolledFor = openQ.id;
+        requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      }
+    } else {
+      progressPanelScrolledFor = null;
     }
   }
 
@@ -12788,6 +13345,12 @@
     if (incomingProfile && typeof incomingProfile === 'object' && typeof incomingProfile.name === 'string' && incomingProfile.name.trim()) {
       state.profile = { name: incomingProfile.name.trim().slice(0, 24) };
       saveProfile();
+    } else if (!state.profile.name || state.profile.name === DEFAULT_PROFILE_NAME) {
+      const fallbackUsername = getCloudUsername();
+      if (fallbackUsername) {
+        state.profile = { name: fallbackUsername.slice(0, 24) };
+        saveProfile();
+      }
     }
     if (incomingFsrsCards && typeof incomingFsrsCards === 'object') {
       state.fsrsCards = Object.assign({}, state.fsrsCards, incomingFsrsCards);
@@ -12869,6 +13432,7 @@
       incomingBlueprints.forEach(b => { if (b && b.id) byId.set(b.id, b); });
       saveBlueprintsList([...byId.values()]);
     }
+    backfillMissingCompletionLog();
     renderFilters();
     renderBrowse();
     renderProgress();
@@ -12880,10 +13444,94 @@
     return true;
   }
 
+  // ---------- Reset safety net ----------
+  // "Reset all progress" looks and feels total (localStorage.clear(), then a
+  // reload) but a full snapshot of everything else in localStorage is stashed
+  // here first, under its own key, so a misclick isn't actually unrecoverable.
+  // Not surfaced next to the reset button itself — kept a level down (the
+  // quiet "Recovering from a reset?" link) so the button still reads as final,
+  // and only the newest RESET_BACKUP_MAX snapshots are kept, oldest dropped
+  // silently, so this can't grow into an unbounded second copy of everything.
+  const RESET_BACKUP_KEY = 'sat_qbank_reset_backups_v1';
+  const RESET_BACKUP_MAX = 5;
+
+  function loadResetBackups() {
+    try {
+      const raw = localStorage.getItem(RESET_BACKUP_KEY);
+      const parsed = raw ? JSON.parse(raw) : null;
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+  function saveResetBackups(list) {
+    try { localStorage.setItem(RESET_BACKUP_KEY, JSON.stringify(list)); } catch (e) { /* best-effort */ }
+  }
+  function snapshotLocalStorage() {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key === RESET_BACKUP_KEY) continue;
+      data[key] = localStorage.getItem(key);
+    }
+    return data;
+  }
+  // Snapshots right before a reset, trims to RESET_BACKUP_MAX, and returns
+  // the updated list — caller is responsible for writing it back *after*
+  // clearing storage, since clear() would otherwise take the list with it.
+  function stashResetBackup() {
+    const backups = loadResetBackups();
+    backups.unshift({ ts: Date.now(), data: snapshotLocalStorage() });
+    while (backups.length > RESET_BACKUP_MAX) backups.pop();
+    return backups;
+  }
+  function restoreResetBackup(ts) {
+    const backups = loadResetBackups();
+    const entry = backups.find(b => b.ts === ts);
+    if (!entry) return false;
+    try {
+      localStorage.clear();
+      Object.keys(entry.data).forEach(k => localStorage.setItem(k, entry.data[k]));
+      saveResetBackups(backups);
+    } catch (e) { return false; }
+    return true;
+  }
+  function renderResetBackupsPanel() {
+    const panel = document.getElementById('resetBackupsPanel');
+    if (!panel) return;
+    const backups = loadResetBackups();
+    if (!backups.length) {
+      panel.innerHTML = '<div class="progress-note">No local backups found on this device.</div>';
+      return;
+    }
+    panel.innerHTML = `
+      <div class="progress-note">Snapshots taken automatically right before each reset, kept on this device only (newest ${RESET_BACKUP_MAX} at a time):</div>
+      <div class="progress-actions" style="flex-direction:column; align-items:flex-start; gap:6px; margin-top:6px;">
+        ${backups.map(b => `
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span>${escapeHtml(new Date(b.ts).toLocaleString())} (${relativeDays(b.ts)})</span>
+            <button class="btn" data-restore-backup="${b.ts}">Restore this</button>
+          </div>`).join('')}
+      </div>`;
+    panel.querySelectorAll('[data-restore-backup]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ts = Number(btn.getAttribute('data-restore-backup'));
+        if (!confirm('Restore local data to this snapshot? Whatever is currently in local storage will be replaced with it.')) return;
+        if (restoreResetBackup(ts)) {
+          location.reload();
+        } else {
+          alert('Could not restore that backup.');
+        }
+      });
+    });
+  }
+
   function wireProgress() {
     const exportBtn = document.getElementById('exportProgressBtn');
     if (exportBtn) exportBtn.addEventListener('click', () => {
       downloadFile(backupFilename(), JSON.stringify(buildBackupPayload(), null, 2));
+      // Also stash a local snapshot, same as right before a reset — so a
+      // manual "Export" click is a recovery point even if the downloaded
+      // file is later lost, without waiting for an actual reset to happen.
+      saveResetBackups(stashResetBackup());
     });
 
     const importBtn = document.getElementById('importProgressBtn');
@@ -12911,42 +13559,23 @@
 
     const resetBtn = document.getElementById('resetProgressBtn');
     if (resetBtn) resetBtn.addEventListener('click', () => {
-      if (!confirm('Clear ALL local data — question marks, review scheduling (Anki) data, streak/XP/achievements, tags, notes, mock and practice test history, and skill stats? This can\'t be undone unless you\'ve exported a backup.')) return;
-      state.progress = {};
-      state.completionLog = {};
-      state.fsrsCards = {};
-      state.skillStats = {};
-      state.tags = {};
-      state.notes = {};
-      mockState.history = [];
-      testState.history = [];
-      Object.keys(mathOverrides).forEach(k => delete mathOverrides[k]);
-      Object.keys(rwOverrides).forEach(k => delete rwOverrides[k]);
-      Object.keys(recentVisits).forEach(k => delete recentVisits[k]);
-      trendExcluded.clear();
-      state.progressFocus = new Set(PROGRESS_FOCUS_DIFFICULTIES);
-      saveProgress();
-      saveCompletionLog();
-      saveFsrsCards();
-      saveSkillStats();
-      saveTags();
-      saveNotes();
-      saveMockHistory();
-      saveTestHistory();
-      saveMathOverrides(mathOverrides);
-      saveRWOverrides(rwOverrides);
-      saveRecentVisits();
-      saveTrendExcluded(trendExcluded);
-      saveProgressFocus();
-      renderFilters();
-      renderBrowse();
-      renderProgress();
-      renderAnalysis();
-      renderReview();
-      renderNotesView();
-      renderStats();
-      renderProfile();
+      if (!confirm('Clear absolutely everything this site has stored in this browser — question marks, review scheduling (Anki) data, streak/XP/achievements, tags, notes, mock and practice test history, skill stats, difficulty ratings/votes, reported issues, cloud login, and every setting/preference? This can\'t be undone unless you\'ve exported a backup.')) return;
+      const backups = stashResetBackup();
+      try { localStorage.clear(); } catch (e) { /* best-effort */ }
+      saveResetBackups(backups);
+      location.reload();
     });
+
+    const backupsLink = document.getElementById('resetBackupsLink');
+    const backupsPanel = document.getElementById('resetBackupsPanel');
+    if (backupsLink && backupsPanel) {
+      backupsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const open = backupsPanel.style.display !== 'none';
+        backupsPanel.style.display = open ? 'none' : 'block';
+        if (!open) renderResetBackupsPanel();
+      });
+    }
   }
 
   // ---------- Analysis tab ----------
@@ -13230,10 +13859,10 @@
     shell.querySelectorAll('[data-practice-skill]').forEach(el => {
       el.addEventListener('click', () => {
         practiceState.phase = 'config';
-        practiceState.categories = new Set();
-        practiceState.skills = new Set([el.dataset.practiceSkill]);
-        practiceState.difficulties = new Set();
         practiceState.statuses = new Set();
+        practiceState.advancedDistribution = true;
+        practiceState.blueprint = singleSkillBlueprint(el.dataset.practiceSkill, practiceState.count);
+        practiceState.showSkillMix = true;
         document.querySelector('.tab[data-view="practice"]').click();
       });
     });
@@ -13441,6 +14070,7 @@
     if (endBtn) endBtn.addEventListener('click', endReviewSession);
   }
 
+  let reviewPanelScrolledFor = null;
   function renderReview() {
     if (reviewSession.phase !== 'idle') { wireReviewSession(); return; }
 
@@ -13514,7 +14144,14 @@
       const closeBtn = document.getElementById('reviewPanelClose');
       if (closeBtn) closeBtn.addEventListener('click', () => { state.reviewOpenQuestion = null; renderReview(); });
       wireDetail(openQ, renderReview, panel);
-      requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      // Only auto-scroll the first time this question opens — see the same
+      // guard on renderProgress() above for why.
+      if (reviewPanelScrolledFor !== openQ.id) {
+        reviewPanelScrolledFor = openQ.id;
+        requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      }
+    } else {
+      reviewPanelScrolledFor = null;
     }
 
     const studyBtn = document.getElementById('reviewStudyBtn');
@@ -13557,6 +14194,7 @@
   // your notes" surface. Search box + list live as static DOM in the HTML
   // template (only #notesPanelContainer and #notesList get re-rendered) so
   // typing in the search box never loses focus, same pattern as Browse.
+  let notesPanelScrolledFor = null;
   function renderNotesView() {
     const listEl = document.getElementById('notesList');
     const panelEl = document.getElementById('notesPanelContainer');
@@ -13615,10 +14253,18 @@
       const closeBtn = document.getElementById('notesPanelClose');
       if (closeBtn) closeBtn.addEventListener('click', () => { state.notesOpenQuestion = null; renderNotesView(); });
       wireDetail(openQ, renderNotesView, panel);
-      requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      // Only auto-scroll the first time this question opens — see the same
+      // guard on renderProgress() above for why.
+      if (notesPanelScrolledFor !== openQ.id) {
+        notesPanelScrolledFor = openQ.id;
+        requestAnimationFrame(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      }
+    } else {
+      notesPanelScrolledFor = null;
     }
   }
 
+  clearDisabledBrowseFacets();
   renderStats();
   renderFilters();
   renderBrowse();
@@ -13727,9 +14373,10 @@
             <div class="qskill">${escapeHtml(q.skill)} &middot; ${escapeHtml(q.domain)}</div>
           </div>
           <div class="qmeta">
-            <span class="${diffPillClass(q.difficulty_label)}">${q.difficulty_label}</span>
+            ${cbDifficultyPillHtml(q)}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
-            <span class="qid" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ${escapeHtml(q.id)}">${escapeHtml(q.id)}</span>
+            <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
+            <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
           </div>
         </div>
       </div>`;
@@ -13770,6 +14417,26 @@
     if (idx !== -1) openQuestionModal(mathRenderedList, idx, { noProgress: true });
   });
 
+  // Same "paste an ID" / "Category#N" (or "Category N" / "CategoryN") jump
+  // as the English Browse search box (see findByShortIdQuery/jumpToQuestion),
+  // scoped to the Math pool instead.
+  function jumpToQuestionMath(qid) {
+    mathState.categories.clear();
+    mathState.skills.clear();
+    mathState.difficulties.clear();
+    mathState.query = '';
+    document.getElementById('searchBoxMath').value = '';
+    renderMathFilters();
+    renderMathBrowse();
+    const idx = mathRenderedList.findIndex(q => q.id === qid);
+    if (idx !== -1) {
+      openQuestionModal(mathRenderedList, idx, { noProgress: true });
+    } else {
+      const q = MATH_QUESTIONS.find(x => x.id === qid);
+      if (q) openQuestionModal([q], 0, { noProgress: true });
+    }
+  }
+
   let mathSearchDebounceTimer = null;
   document.getElementById('searchBoxMath').addEventListener('input', (e) => {
     const value = e.target.value;
@@ -13779,6 +14446,27 @@
       renderMathFilters();
       renderMathBrowse();
     }, 180);
+  });
+  document.getElementById('searchBoxMath').addEventListener('keydown', (e) => {
+    // See the same Escape handling on the English searchBox above — clears
+    // back to showing everything instead of leaving "0 questions" up when
+    // a jump shorthand like "Algebra 1" was typed but Enter wasn't pressed.
+    if (e.key === 'Escape') {
+      clearTimeout(mathSearchDebounceTimer);
+      e.target.value = '';
+      mathState.query = '';
+      renderMathFilters();
+      renderMathBrowse();
+      return;
+    }
+    if (e.key !== 'Enter') return;
+    const value = e.target.value.trim();
+    const byId = MATH_QUESTIONS.find(q => q.id.toLowerCase() === value.toLowerCase());
+    const match = byId || parseShortIdQuery(value, MATH_QUESTIONS);
+    if (match) {
+      e.preventDefault();
+      jumpToQuestionMath(match.id);
+    }
   });
   document.getElementById('sortSelectMath').addEventListener('change', (e) => {
     mathState.sort = e.target.value;

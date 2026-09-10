@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# CLI for kyj-sat repo chores. Usage: kyj-sat <command>
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+cmd="${1:-}"
+
+case "$cmd" in
+  rebuild)
+    # Rebuilds everything downstream of db/categories/*.json after editing
+    # questions (review dashboard, review_staged_questions.py, or by hand):
+    # the SQLite db, the aggregated JSON/site data, and both site builds.
+    python3 scripts/build_db.py
+    python3 scripts/build_site_data.py
+    python3 scripts/build_site.py
+    python3 scripts/build_github_pages.py
+    echo "Rebuild complete."
+    ;;
+  *)
+    echo "Usage: kyj-sat <command>" >&2
+    echo "Commands:" >&2
+    echo "  rebuild   run build_db.py -> build_site_data.py -> build_site.py -> build_github_pages.py" >&2
+    exit 1
+    ;;
+esac

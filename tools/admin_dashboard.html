@@ -1,0 +1,434 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --paper-raised-2: #212836;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --warn: #dcab5c;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--rule); background: var(--paper-raised); flex-wrap: wrap; position: sticky; top: 0; z-index: 5; }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  h1 .sub { color: var(--ink-faint); font-weight: 400; font-size: 12.5px; margin-left: 8px; }
+  #status { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #status.ok { color: var(--done); }
+  #status.err { color: var(--bad); }
+  main { max-width: 1180px; margin: 0 auto; padding: 20px; }
+
+  .btn { appearance: none; font: inherit; font-weight: 600; font-size: 13px; background: var(--paper-raised-2); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 13px; cursor: pointer; }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn-sm { padding: 4px 9px; font-size: 12px; }
+
+  .card { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+  .card h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 12px; }
+  .card h3 { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-faint); margin: 18px 0 8px; }
+  .card h3:first-child { margin-top: 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule-soft); white-space: nowrap; }
+  th { color: var(--ink-faint); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; user-select: none; }
+  th:hover { color: var(--ink); }
+  th.sorted { color: var(--accent-ink); }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: var(--paper-raised-2); }
+  tbody tr.active { background: var(--accent-soft); }
+  td.num, th.num { text-align: right; }
+  .name-cell { font-weight: 600; }
+  .muted { color: var(--ink-faint); }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 700; background: var(--paper-raised-2); color: var(--ink-soft); }
+  .pill.stale { color: var(--warn); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+  .stat { background: var(--paper-raised-2); border: 1px solid var(--rule-soft); border-radius: 8px; padding: 10px 12px; }
+  .stat .n { font-size: 20px; font-weight: 700; display: block; }
+  .stat .l { font-size: 11px; color: var(--ink-faint); }
+
+  .bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12.5px; }
+  .bar-label { width: 190px; flex: none; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar-track { flex: 1; height: 8px; border-radius: 99px; background: var(--paper-raised-2); overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--accent); border-radius: 99px; }
+  .bar-fill.weak { background: var(--bad); }
+  .bar-frac { width: 62px; flex: none; text-align: right; color: var(--ink-faint); font-family: var(--mono); font-size: 11.5px; }
+
+  .heatmap { display: flex; gap: 3px; overflow-x: auto; padding-bottom: 4px; }
+  .heatmap .week { display: flex; flex-direction: column; gap: 3px; }
+  .heatmap .day { width: 11px; height: 11px; border-radius: 2px; background: var(--paper-raised-2); }
+  .heatmap .day[data-lvl="1"] { background: #1c3d33; }
+  .heatmap .day[data-lvl="2"] { background: #2d6b52; }
+  .heatmap .day[data-lvl="3"] { background: #3f9a6e; }
+  .heatmap .day[data-lvl="4"] { background: var(--accent); }
+
+  .mock-list { display: flex; flex-direction: column; gap: 6px; }
+  .mock-row { display: flex; align-items: center; gap: 10px; font-size: 12.5px; background: var(--paper-raised-2); border-radius: 8px; padding: 7px 10px; }
+  .mock-row .score { font-family: var(--mono); font-weight: 700; font-size: 14px; width: 46px; }
+  .mock-row .meta { color: var(--ink-faint); flex: 1; }
+  .mock-row .date { color: var(--ink-faint); font-family: var(--mono); font-size: 11.5px; }
+
+  .notes-list { display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto; }
+  .note-item { font-size: 12.5px; background: var(--paper-raised-2); border-radius: 8px; padding: 8px 10px; }
+  .note-item .qid { font-family: var(--mono); color: var(--ink-faint); font-size: 11px; }
+
+  #detail { display: none; }
+  #detail.show { display: block; }
+  .detail-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .detail-header .who { font-size: 18px; font-weight: 700; }
+  .detail-header .uid { color: var(--ink-faint); font-family: var(--mono); font-size: 12px; }
+  .two-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; }
+  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+  .empty { color: var(--ink-faint); font-size: 12.5px; padding: 8px 0; }
+</style>
+
+<header>
+  <h1>Admin Dashboard<span class="sub">local &amp; read-only — every user's raw progress</span></h1>
+  <button class="btn" id="refreshBtn">Refresh</button>
+  <span id="status">Loading&hellip;</span>
+</header>
+
+<main>
+  <div class="card">
+    <h2>All users</h2>
+    <table id="overviewTable">
+      <thead>
+        <tr>
+          <th data-key="name">Name</th>
+          <th data-key="username">Username</th>
+          <th class="num" data-key="totalDone">Done</th>
+          <th class="num" data-key="pctDone">% bank</th>
+          <th class="num" data-key="currentStreak">Streak</th>
+          <th class="num" data-key="longestStreak">Best streak</th>
+          <th class="num" data-key="level">Level</th>
+          <th class="num" data-key="xp">XP</th>
+          <th class="num" data-key="bestRW">Best RW</th>
+          <th class="num" data-key="mockCount">Mocks</th>
+          <th class="num" data-key="flagged">Flagged</th>
+          <th data-key="lastActive">Last active</th>
+        </tr>
+      </thead>
+      <tbody id="overviewBody"></tbody>
+    </table>
+  </div>
+
+  <div id="detail"></div>
+</main>
+
+<script>
+const API = { users: '/api/users', progress: u => '/api/progress/' + encodeURIComponent(u), questions: '/api/questions' };
+
+// ---- ported from site/index.template.html (same formulas the live site
+// uses for XP/level/streaks/mock scoring) so numbers here match the site ----
+const QUESTION_XP = { Easy: 10, Medium: 15, Hard: 25 };
+const MOCK_EXAM_XP = 50;
+const RW_CURVE_HARDER = [[0, 200], [10, 320], [20, 430], [27, 490], [35, 570], [40, 630], [45, 690], [49, 740], [52, 780], [54, 800]];
+const RW_CURVE_EASIER = [[0, 200], [10, 290], [20, 380], [27, 440], [35, 510], [40, 560], [45, 600], [49, 630], [54, 650]];
+const LEVEL_TITLES = [[1, 'Newcomer'], [3, 'Apprentice'], [6, 'Scholar'], [10, 'Strategist'], [15, 'Sharpshooter'], [20, 'Virtuoso'], [30, 'Master'], [40, 'Grandmaster']];
+
+function interpCurve(curve, raw) {
+  if (raw <= curve[0][0]) return curve[0][1];
+  if (raw >= curve[curve.length - 1][0]) return curve[curve.length - 1][1];
+  for (let i = 0; i < curve.length - 1; i++) {
+    const [x0, y0] = curve[i], [x1, y1] = curve[i + 1];
+    if (raw >= x0 && raw <= x1) { const t = (raw - x0) / (x1 - x0); return Math.round((y0 + t * (y1 - y0)) / 10) * 10; }
+  }
+  return curve[curve.length - 1][1];
+}
+const estimateRWScore = (raw, harder) => interpCurve(harder ? RW_CURVE_HARDER : RW_CURVE_EASIER, raw);
+
+function dateKey(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function dailyCompletionCounts(log) {
+  const counts = {};
+  Object.values(log || {}).forEach(ts => { const d = new Date(ts); if (isNaN(d)) return; const k = dateKey(d); counts[k] = (counts[k] || 0) + 1; });
+  return counts;
+}
+function computeStreaks(counts) {
+  const has = k => !!counts[k];
+  const cursor = new Date();
+  if (!has(dateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+  let current = 0;
+  while (has(dateKey(cursor))) { current++; cursor.setDate(cursor.getDate() - 1); }
+  const days = Object.keys(counts).sort();
+  let longest = 0, run = 0, prev = null;
+  days.forEach(key => {
+    run = prev && Math.round((new Date(key) - new Date(prev)) / 86400000) === 1 ? run + 1 : 1;
+    longest = Math.max(longest, run);
+    prev = key;
+  });
+  return { current, longest: Math.max(longest, current) };
+}
+function levelFromXp(xp) {
+  let level = 1, remaining = xp, need = 100;
+  while (remaining >= need) { remaining -= need; level++; need = Math.round(need * 1.25); }
+  let title = LEVEL_TITLES[0][1];
+  LEVEL_TITLES.forEach(([min, t]) => { if (level >= min) title = t; });
+  return { level, title };
+}
+function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function timeAgo(iso) {
+  if (!iso) return 'never';
+  const ms = Date.now() - new Date(iso).getTime();
+  if (isNaN(ms)) return 'never';
+  const days = Math.floor(ms / 86400000);
+  if (days <= 0) return 'today';
+  if (days === 1) return '1 day ago';
+  if (days < 30) return days + ' days ago';
+  const months = Math.floor(days / 30);
+  return months + (months === 1 ? ' month ago' : ' months ago');
+}
+
+let QUESTIONS = [];
+let QMAP = new Map();
+let USERS = []; // [{username, raw, stats}]
+let sortKey = 'totalDone', sortDir = -1;
+let activeUsername = null;
+
+async function loadAll() {
+  const statusEl = document.getElementById('status');
+  statusEl.className = ''; statusEl.textContent = 'Loading…';
+  try {
+    const [qRes, uRes] = await Promise.all([fetch(API.questions).then(r => r.json()), fetch(API.users).then(r => r.json())]);
+    QUESTIONS = qRes.questions || [];
+    QMAP = new Map(QUESTIONS.map(q => [q.id, q]));
+    const usernames = uRes.users || [];
+    const progResults = await Promise.all(usernames.map(u => fetch(API.progress(u)).then(r => r.json())));
+    USERS = usernames.map((username, i) => {
+      const raw = progResults[i].ok ? progResults[i].data : {};
+      return { username, raw, stats: computeStats(username, raw) };
+    });
+    statusEl.className = 'ok';
+    statusEl.textContent = `${USERS.length} user${USERS.length === 1 ? '' : 's'} · ${QUESTIONS.length} questions in bank`;
+    renderOverview();
+    if (activeUsername) renderDetail(activeUsername);
+  } catch (e) {
+    statusEl.className = 'err';
+    statusEl.textContent = 'Failed to load — is admin_dashboard_server.py running? (' + e.message + ')';
+  }
+}
+
+function computeAttemptScore(attempt) {
+  const m1Ids = attempt.module1Ids || [], m2Ids = attempt.module2Ids || [];
+  const answers = attempt.answers || {};
+  const correctOf = ids => ids.reduce((n, id) => { const q = QMAP.get(id); return n + (q && answers[id] === q.correct_answer ? 1 : 0); }, 0);
+  const m1Len = m1Ids.length, m2Len = m2Ids.length;
+  if (m1Len && m2Len) {
+    const m1c = Number.isFinite(attempt.module1Correct) ? attempt.module1Correct : correctOf(m1Ids);
+    const m2c = correctOf(m2Ids);
+    return { kind: 'full', score: estimateRWScore(m1c + m2c, !!attempt.routedHarder), m1c, m2c };
+  }
+  if (m1Len) { const m1c = Number.isFinite(attempt.module1Correct) ? attempt.module1Correct : correctOf(m1Ids); return { kind: 'module1', raw: m1c, of: m1Len }; }
+  if (m2Len) { const m2c = correctOf(m2Ids); return { kind: 'module2', raw: m2c, of: m2Len }; }
+  return { kind: 'empty' };
+}
+
+function computeStats(username, raw) {
+  const progress = raw.progress || {};
+  const totalDone = Object.values(progress).filter(s => s === 'done').length;
+  const flagged = Object.values(progress).filter(s => s === 'review').length;
+  const totalQuestions = QUESTIONS.length || 1;
+
+  const completionLog = raw.completionLog || {};
+  const counts = dailyCompletionCounts(completionLog);
+  const streaks = computeStreaks(counts);
+
+  let xp = 0;
+  Object.keys(completionLog).forEach(qid => { const q = QMAP.get(qid); if (q) xp += QUESTION_XP[q.difficulty_label] || 10; });
+  const mockHistory = raw.mockHistory || [];
+  xp += mockHistory.length * MOCK_EXAM_XP;
+  const lvl = levelFromXp(xp);
+
+  // Category breakdown: done vs total per category, across the whole bank.
+  const catTotals = new Map(), catDone = new Map();
+  QUESTIONS.forEach(q => { catTotals.set(q.category, (catTotals.get(q.category) || 0) + 1); });
+  Object.entries(progress).forEach(([qid, status]) => {
+    if (status !== 'done') return;
+    const q = QMAP.get(qid);
+    if (q) catDone.set(q.category, (catDone.get(q.category) || 0) + 1);
+  });
+  const categories = [...catTotals.keys()].sort().map(cat => ({ cat, done: catDone.get(cat) || 0, total: catTotals.get(cat) }));
+
+  // Weakest skills: skillStats with >=5 attempts, sorted by accuracy asc.
+  const skillStats = raw.skillStats || {};
+  const weakest = Object.entries(skillStats)
+    .map(([skill, s]) => ({ skill, correct: s.correct || 0, total: s.total || 0, acc: s.total ? (s.correct || 0) / s.total : 0 }))
+    .filter(s => s.total >= 5)
+    .sort((a, b) => a.acc - b.acc)
+    .slice(0, 5);
+
+  const scoredMocks = mockHistory.map(a => ({ ...a, result: computeAttemptScore(a) }));
+  const fullScores = scoredMocks.filter(a => a.result.kind === 'full').map(a => a.result.score);
+  const bestRW = fullScores.length ? Math.max(...fullScores) : null;
+  const latestRW = fullScores.length ? fullScores[0] : null; // history is newest-first, matches site convention
+
+  const notes = raw.notes || {};
+  const noteCount = Object.values(notes).reduce((n, arr) => n + (Array.isArray(arr) ? arr.length : 0), 0);
+  const tagCount = Object.keys(raw.tags || {}).length;
+
+  const lastActiveTimes = [
+    ...Object.values(completionLog),
+    ...mockHistory.map(m => m.completedAt),
+    ...(raw.testHistory || []).map(t => t.completedAt),
+  ].map(t => new Date(t).getTime()).filter(n => !isNaN(n));
+  const lastActive = lastActiveTimes.length ? new Date(Math.max(...lastActiveTimes)).toISOString() : null;
+
+  return {
+    name: (raw.profile && raw.profile.name) || username,
+    totalDone, pctDone: totalDone / totalQuestions, flagged,
+    currentStreak: streaks.current, longestStreak: streaks.longest,
+    level: lvl.level, levelTitle: lvl.title, xp,
+    categories, weakest, scoredMocks, mockCount: mockHistory.length, bestRW, latestRW,
+    noteCount, tagCount, notes, counts, dailyGoal: raw.dailyGoal || null,
+    lastActive,
+  };
+}
+
+function renderOverview() {
+  const rows = USERS.map(u => ({ username: u.username, ...u.stats }));
+  rows.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (av == null) av = -Infinity; if (bv == null) bv = -Infinity;
+    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+    return sortDir * (av - bv);
+  });
+  document.querySelectorAll('#overviewTable th').forEach(th => th.classList.toggle('sorted', th.dataset.key === sortKey));
+  document.getElementById('overviewBody').innerHTML = rows.map(r => {
+    const staleClass = (!r.lastActive || (Date.now() - new Date(r.lastActive).getTime()) > 14 * 86400000) ? ' stale' : '';
+    return `
+    <tr data-username="${escapeHtml(r.username)}" class="${r.username === activeUsername ? 'active' : ''}">
+      <td class="name-cell">${escapeHtml(r.name)}</td>
+      <td class="muted">${escapeHtml(r.username)}</td>
+      <td class="num">${r.totalDone}</td>
+      <td class="num">${Math.round(r.pctDone * 100)}%</td>
+      <td class="num">${r.currentStreak}</td>
+      <td class="num">${r.longestStreak}</td>
+      <td class="num">${r.level}</td>
+      <td class="num">${r.xp}</td>
+      <td class="num">${r.bestRW ?? '—'}</td>
+      <td class="num">${r.mockCount}</td>
+      <td class="num">${r.flagged}</td>
+      <td><span class="pill${staleClass}">${timeAgo(r.lastActive)}</span></td>
+    </tr>`;
+  }).join('') || `<tr><td colspan="12" class="empty">No users found in db/cloud_save/progress.</td></tr>`;
+  document.querySelectorAll('#overviewBody tr[data-username]').forEach(tr => {
+    tr.addEventListener('click', () => { activeUsername = tr.dataset.username; renderOverview(); renderDetail(activeUsername); });
+  });
+}
+
+function heatmapHtml(counts) {
+  const weeks = 20, today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const start = new Date(today);
+  start.setDate(start.getDate() - (weeks * 7 - 1) - today.getDay());
+  let html = '';
+  for (let w = 0; w < weeks; w++) {
+    html += '<div class="week">';
+    for (let d = 0; d < 7; d++) {
+      const day = new Date(start);
+      day.setDate(day.getDate() + w * 7 + d);
+      const c = counts[dateKey(day)] || 0;
+      const lvl = c === 0 ? 0 : c < 3 ? 1 : c < 6 ? 2 : c < 12 ? 3 : 4;
+      html += `<div class="day" data-lvl="${lvl}" title="${dateKey(day)}: ${c}"></div>`;
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+function mockRowHtml(a) {
+  const date = a.completedAt ? new Date(a.completedAt).toLocaleDateString() : '—';
+  if (a.result.kind === 'full') {
+    return `<div class="mock-row"><div class="score">${a.result.score}</div><div class="meta">Full adaptive · M1 ${a.result.m1c}/27, M2 ${a.result.m2c}/27 · routed ${a.routedHarder ? 'harder' : 'easier'}</div><div class="date">${date}</div></div>`;
+  }
+  if (a.result.kind === 'module1' || a.result.kind === 'module2') {
+    const label = a.result.kind === 'module1' ? 'Module 1 only' : 'Module 2 only';
+    return `<div class="mock-row"><div class="score">${a.result.raw}/${a.result.of}</div><div class="meta">${label}</div><div class="date">${date}</div></div>`;
+  }
+  return `<div class="mock-row"><div class="meta">Empty attempt</div><div class="date">${date}</div></div>`;
+}
+
+function renderDetail(username) {
+  const u = USERS.find(x => x.username === username);
+  const el = document.getElementById('detail');
+  if (!u) { el.classList.remove('show'); return; }
+  const s = u.stats;
+
+  const catHtml = s.categories.map(c => {
+    const pct = c.total ? Math.round((c.done / c.total) * 100) : 0;
+    return `<div class="bar-row"><div class="bar-label">${escapeHtml(c.cat)}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-frac">${c.done}/${c.total}</div></div>`;
+  }).join('') || '<div class="empty">No category data.</div>';
+
+  const weakHtml = s.weakest.map(w => {
+    const pct = Math.round(w.acc * 100);
+    return `<div class="bar-row"><div class="bar-label">${escapeHtml(w.skill)}</div><div class="bar-track"><div class="bar-fill weak" style="width:${pct}%"></div></div><div class="bar-frac">${w.correct}/${w.total}</div></div>`;
+  }).join('') || '<div class="empty">Not enough attempts per skill yet (need 5+).</div>';
+
+  const mocksHtml = s.scoredMocks.length
+    ? `<div class="mock-list">${s.scoredMocks.map(mockRowHtml).join('')}</div>`
+    : '<div class="empty">No mock exams taken yet.</div>';
+
+  const notesEntries = Object.entries(u.raw.notes || {}).flatMap(([qid, arr]) => (arr || []).map(n => ({ qid, ...n })))
+    .sort((a, b) => (b.ts || 0) - (a.ts || 0)).slice(0, 8);
+  const notesHtml = notesEntries.length
+    ? `<div class="notes-list">${notesEntries.map(n => `<div class="note-item"><div class="qid">${escapeHtml(n.qid)}</div>${escapeHtml(n.text)}</div>`).join('')}</div>`
+    : '<div class="empty">No notes yet.</div>';
+
+  el.innerHTML = `
+    <div class="card">
+      <div class="detail-header"><span class="who">${escapeHtml(s.name)}</span><span class="uid">@${escapeHtml(username)}</span></div>
+      <div class="stat-grid" style="margin-top:10px;">
+        <div class="stat"><span class="n">${s.totalDone}</span><span class="l">Questions done</span></div>
+        <div class="stat"><span class="n">${Math.round(s.pctDone * 100)}%</span><span class="l">Of bank</span></div>
+        <div class="stat"><span class="n">${s.currentStreak} / ${s.longestStreak}</span><span class="l">Streak (current / best)</span></div>
+        <div class="stat"><span class="n">${s.level}</span><span class="l">Level · ${escapeHtml(s.levelTitle)}</span></div>
+        <div class="stat"><span class="n">${s.xp}</span><span class="l">Total XP</span></div>
+        <div class="stat"><span class="n">${s.bestRW ?? '—'}</span><span class="l">Best R&amp;W score</span></div>
+        <div class="stat"><span class="n">${s.mockCount}</span><span class="l">Mock attempts</span></div>
+        <div class="stat"><span class="n">${s.flagged}</span><span class="l">Flagged for review</span></div>
+        <div class="stat"><span class="n">${s.noteCount}</span><span class="l">Notes written</span></div>
+        <div class="stat"><span class="n">${s.tagCount}</span><span class="l">Questions tagged</span></div>
+      </div>
+      <h3>Activity (last 20 weeks)</h3>
+      <div class="heatmap">${heatmapHtml(s.counts)}</div>
+      <div class="two-col" style="margin-top:6px;">
+        <div>
+          <h3>Category coverage</h3>
+          ${catHtml}
+        </div>
+        <div>
+          <h3>Weakest skills (5+ attempts)</h3>
+          ${weakHtml}
+          <h3>Mock exam history</h3>
+          ${mocksHtml}
+        </div>
+      </div>
+      <h3>Recent notes</h3>
+      ${notesHtml}
+    </div>`;
+  el.classList.add('show');
+}
+
+document.getElementById('refreshBtn').addEventListener('click', loadAll);
+document.querySelectorAll('#overviewTable th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; }
+    renderOverview();
+  });
+});
+
+loadAll();
+</script>

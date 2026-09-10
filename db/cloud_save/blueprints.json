@@ -21,11 +21,76 @@
       "statuses": [
         "incomplete"
       ],
-      "advancedDistribution": false,
+      "advancedDistribution": true,
       "showSkillMix": false,
-      "blueprint": null,
-      "advancedDifficulty": false,
-      "weightConfig": null,
+      "blueprint": [
+        {
+          "category": "Vocab",
+          "skill": "Words in Context",
+          "count": 54
+        },
+        {
+          "category": "Functions",
+          "skill": "Text Structure and Purpose",
+          "count": 0
+        },
+        {
+          "category": "Cross-Text",
+          "skill": "Cross-Text Connections",
+          "count": 0
+        },
+        {
+          "category": "Main Idea",
+          "skill": "Central Ideas and Details",
+          "count": 0
+        },
+        {
+          "category": "Quantitative Evidence",
+          "skill": "Command of Evidence (Quantitative)",
+          "count": 0
+        },
+        {
+          "category": "Textual Evidence",
+          "skill": "Command of Evidence (Textual)",
+          "count": 0
+        },
+        {
+          "category": "Inferences",
+          "skill": "Inferences",
+          "count": 0
+        },
+        {
+          "category": "Grammar",
+          "skill": "Boundaries",
+          "count": 0
+        },
+        {
+          "category": "Grammar",
+          "skill": "Form, Structure, and Sense",
+          "count": 0
+        },
+        {
+          "category": "Transitions",
+          "skill": "Transitions",
+          "count": 0
+        },
+        {
+          "category": "Notes",
+          "skill": "Rhetorical Synthesis",
+          "count": 0
+        }
+      ],
+      "advancedDifficulty": true,
+      "weightConfig": {
+        "main": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 0,
+            "Medium": 0,
+            "Hard": 100
+          }
+        }
+      },
       "shuffle": true,
       "biasWeak": false,
       "timed": false,
@@ -60,11 +125,76 @@
       "statuses": [
         "incomplete"
       ],
-      "advancedDistribution": false,
+      "advancedDistribution": true,
       "showSkillMix": false,
-      "blueprint": null,
-      "advancedDifficulty": false,
-      "weightConfig": null,
+      "blueprint": [
+        {
+          "category": "Vocab",
+          "skill": "Words in Context",
+          "count": 0
+        },
+        {
+          "category": "Functions",
+          "skill": "Text Structure and Purpose",
+          "count": 2
+        },
+        {
+          "category": "Cross-Text",
+          "skill": "Cross-Text Connections",
+          "count": 1
+        },
+        {
+          "category": "Main Idea",
+          "skill": "Central Ideas and Details",
+          "count": 2
+        },
+        {
+          "category": "Quantitative Evidence",
+          "skill": "Command of Evidence (Quantitative)",
+          "count": 2
+        },
+        {
+          "category": "Textual Evidence",
+          "skill": "Command of Evidence (Textual)",
+          "count": 2
+        },
+        {
+          "category": "Inferences",
+          "skill": "Inferences",
+          "count": 1
+        },
+        {
+          "category": "Grammar",
+          "skill": "Boundaries",
+          "count": 0
+        },
+        {
+          "category": "Grammar",
+          "skill": "Form, Structure, and Sense",
+          "count": 0
+        },
+        {
+          "category": "Transitions",
+          "skill": "Transitions",
+          "count": 0
+        },
+        {
+          "category": "Notes",
+          "skill": "Rhetorical Synthesis",
+          "count": 0
+        }
+      ],
+      "advancedDifficulty": true,
+      "weightConfig": {
+        "main": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 0,
+            "Medium": 0,
+            "Hard": 100
+          }
+        }
+      },
       "shuffle": true,
       "biasWeak": false,
       "timed": true,

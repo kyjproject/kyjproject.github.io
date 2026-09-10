@@ -59,6 +59,7 @@ function doPost(e) {
     else if (action === 'save_blueprint') result = handleSaveBlueprint_(body);
     else if (action === 'load_blueprint') result = handleLoadBlueprint_(body);
     else if (action === 'list_blueprints') result = handleListBlueprints_(body);
+    else if (action === 'delete_blueprint') result = handleDeleteBlueprint_(body);
     else if (action === 'get_ratings') result = handleGetRatings_(body);
     else if (action === 'submit_difficulty_votes') result = handleSubmitDifficultyVotes_(body);
     else if (action === 'admin_set_rating') result = handleAdminSetRating_(body);
@@ -557,6 +558,44 @@ function handleLoadBlueprint_(body) {
   var entry = list.filter(function (b) { return b.code === code; })[0];
   if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
   return { ok: true, entry: entry };
+}
+
+// Retract a previously-shared blueprint. Only the original sharer can do
+// this (author must match the logged-in username) — same credential check
+// as saving, just gated on ownership afterward. Once removed, the code stops
+// resolving for anyone (handleLoadBlueprint_ returns "not found"), same as
+// if it had never been shared.
+function handleDeleteBlueprint_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var code = body && String(body.code || '').trim().toUpperCase();
+  if (!code) return { ok: false, error: 'Missing code' };
+
+  var result, lastErr, removed = false;
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var loaded = loadBlueprints_(cfg);
+      var entry = loaded.list.filter(function (b) { return b.code === code; })[0];
+      if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
+      if (String(entry.author).toLowerCase() !== String(check.username).toLowerCase()) {
+        return { ok: false, error: 'Only ' + entry.author + ' can unshare this blueprint' };
+      }
+      var next = loaded.list.filter(function (b) { return b.code !== code; });
+      removed = true;
+      result = githubPutFile_(
+        cfg, blueprintsPath_(cfg), JSON.stringify(next, null, 2), loaded.sha,
+        'Unshare blueprint "' + entry.name + '" (' + code + ') by ' + check.username
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result && removed) throw lastErr;
+  if (!result) return { ok: false, error: 'No blueprint found for code ' + code };
+  return { ok: true };
 }
 
 // No login required — this is the "browse what others made" list, meant to

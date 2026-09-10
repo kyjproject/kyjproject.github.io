@@ -1,0 +1,566 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Question Review Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+  header {
+    display: flex; align-items: center; gap: 10px; padding: 14px 20px;
+    border-bottom: 1px solid var(--rule); background: var(--paper-raised); flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 5;
+  }
+  h1 { font-size: 16px; margin: 0 12px 0 0; white-space: nowrap; }
+  a.navlink { color: var(--ink-faint); font-size: 12.5px; text-decoration: none; border: 1px solid var(--rule); border-radius: 8px; padding: 7px 12px; }
+  a.navlink:hover { border-color: var(--ink-faint); color: var(--ink); }
+  .btn {
+    appearance: none; font: inherit; font-weight: 600; font-size: 13px;
+    background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  .btn-danger { border-color: var(--bad); color: var(--bad); }
+  .btn-danger:hover { background: var(--bad-bg); }
+  .btn-warn { border-color: var(--warn); color: var(--warn); }
+  .btn-warn:hover { background: var(--warn-bg); }
+  .btn-sm { padding: 5px 11px; font-size: 12.5px; }
+  #searchInput {
+    font: inherit; background: var(--paper); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 8px 12px; min-width: 220px;
+  }
+  #searchInput:focus { outline: none; border-color: var(--accent); }
+  #connStatus { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; white-space: nowrap; }
+  #connStatus.ok { color: var(--done); }
+  #connStatus.bad { color: var(--bad); }
+
+  main { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+  .summaryBar { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 18px; padding: 0 2px; }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat .n { font-family: var(--mono); font-size: 19px; font-weight: 700; }
+  .stat .l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .stat.approved .n { color: var(--done); }
+  .stat.problem .n { color: var(--bad); }
+  .stat.editing .n { color: var(--warn); }
+  .stat.reported .n { color: var(--warn); }
+
+  .cat-card { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 18px; margin-bottom: 8px; }
+  .cat-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; cursor: pointer; }
+  .cat-row .name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+  .cat-row .frac { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+  .chevron { display: inline-block; color: var(--ink-faint); transition: transform 0.15s ease; font-size: 10px; }
+  .chevron.open { transform: rotate(90deg); }
+  .cat-detail { border-top: 1px solid var(--rule); margin-top: 10px; padding-top: 10px; }
+  .diff-subhead { display: flex; justify-content: space-between; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin: 12px 0 6px; }
+  .diff-subhead:first-child { margin-top: 0; }
+  .qtile-grid { display: flex; flex-wrap: wrap; gap: 4px; }
+  .qtile {
+    width: 15px; height: 15px; border-radius: 3px; border: 1.5px solid var(--rule);
+    background: var(--paper); cursor: pointer; padding: 0; flex-shrink: 0; position: relative;
+  }
+  .qtile:hover { border-color: var(--ink-faint); transform: scale(1.25); }
+  .qtile.status-approved { background: var(--done); border-color: var(--done); }
+  .qtile.status-problem { background: var(--bad); border-color: var(--bad); }
+  .qtile.status-editing { background: var(--warn); border-color: var(--warn); }
+  .qtile.is-open { box-shadow: 0 0 0 2px var(--accent); }
+  .qtile.is-reported::after {
+    content: ""; position: absolute; top: -3px; right: -3px; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--warn); border: 1px solid var(--paper-raised);
+  }
+
+  .searchResults .reportCard { margin-bottom: 10px; }
+
+  .qPanel {
+    background: var(--paper); border: 1px solid var(--accent); border-radius: 10px;
+    padding: 14px 16px; margin-top: 12px;
+  }
+  .qPanelHead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .qPanelTitle { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent-ink); }
+  .qPanelClose { background: none; border: none; color: var(--ink-faint); font-size: 16px; cursor: pointer; padding: 0 4px; }
+  .qPanelClose:hover { color: var(--ink); }
+  .pill { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2.5px 8px; border-radius: 99px; background: var(--rule-soft); color: var(--ink-soft); }
+  .pill.reported { background: var(--warn-bg); color: var(--warn); }
+  .pill.approved { background: var(--done-bg); color: var(--done); }
+  .pill.problem { background: var(--bad-bg); color: var(--bad); }
+  .pill.editing { background: var(--warn-bg); color: var(--warn); }
+  .qStem { white-space: pre-wrap; font-size: 13px; color: var(--ink); margin-bottom: 8px; }
+  .qPrompt { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .qChoice { font-size: 12.5px; color: var(--ink-soft); margin: 2px 0; }
+  .qChoice.correct { color: var(--done); font-weight: 600; }
+  .qRationale { font-size: 12px; color: var(--ink-faint); margin: 2px 0 2px 16px; }
+  .inline-token-img { max-width: 100%; max-height: 90px; vertical-align: middle; background: #fff; border-radius: 3px; margin: 2px 1px; }
+  .qNote { font-size: 12.5px; color: var(--ink-soft); background: var(--rule-soft); border-radius: 8px; padding: 7px 10px; margin: 8px 0; }
+
+  .qActions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+  .editForm { margin-top: 14px; border-top: 1px solid var(--rule-soft); padding-top: 12px; }
+  .editForm label { display: block; font-size: 12px; color: var(--ink-soft); margin: 10px 0 4px; }
+  .editForm label:first-of-type { margin-top: 0; }
+  .editForm input[type="text"], .editForm select, .editForm textarea {
+    width: 100%; font: inherit; background: var(--paper-raised); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 8px; padding: 7px 10px;
+  }
+  .editForm textarea { min-height: 70px; resize: vertical; font-family: var(--sans); white-space: pre-wrap; }
+  .editForm textarea.stemBox { min-height: 120px; }
+  .choiceRow { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+  .choiceRow .letter { width: 16px; font-weight: 700; font-family: var(--mono); font-size: 12.5px; }
+  .choiceRow input[type="radio"] { accent-color: var(--accent); }
+  .subLabel { font-family: var(--mono); font-weight: 700; font-size: 12px; margin: 8px 0 3px; }
+  .subLabel:first-of-type { margin-top: 0; }
+  #errBox {
+    background: var(--bad-bg); border: 1px solid var(--bad); color: var(--bad);
+    border-radius: 8px; padding: 8px 12px; margin-top: 10px; font-size: 12.5px;
+    display: none; white-space: pre-line;
+  }
+  #errBox.show { display: block; }
+  .saveStatus { font-size: 12px; color: var(--ink-faint); margin-left: 6px; }
+  .saveStatus.ok { color: var(--done); }
+  .saveStatus.bad { color: var(--bad); }
+
+  .hint { font-size: 12.5px; color: var(--ink-faint); }
+  .help { margin-top: 20px; font-size: 12.5px; color: var(--ink-faint); line-height: 1.6; }
+  .help code { font-family: var(--mono); background: var(--rule-soft); padding: 1px 5px; border-radius: 4px; }
+</style>
+
+<header>
+  <h1>🔎 Question Review Dashboard</h1>
+  <a class="navlink" href="/tools/review_reports.html">Student reports →</a>
+  <input type="text" id="searchInput" placeholder="Search by id or text…" />
+  <span id="connStatus">Connecting…</span>
+</header>
+
+<main>
+  <div class="summaryBar" id="summaryBar"></div>
+  <div id="content"></div>
+
+  <div class="help">
+    Run <code>python3 scripts/reports_server.py</code> and open
+    <code>http://localhost:8766/</code> (the link it prints) to use this page.
+    Click any tile to open a question, then <strong>Approve</strong> (green), <strong>Flag problem</strong> (red), or
+    <strong>Edit</strong> it — editing marks it yellow while the form is open, then green once you save. A small
+    dot on a tile means a student reported that question (see <a class="navlink" style="padding:1px 6px;" href="/tools/review_reports.html">Student reports</a>).
+    <br /><br />
+    Edits write straight to <code>db/categories/*.json</code>. The pre-built site still needs a rebuild to pick
+    changes up: <code>build_db.py</code> → <code>build_site_data.py</code> → <code>build_site.py</code> →
+    <code>build_github_pages.py</code>. Review status lives in <code>db/staging/review_status.json</code> — it's
+    local bookkeeping, not part of the live site.
+  </div>
+</main>
+
+<script>
+(function () {
+  const CATEGORY_ORDER = [
+    "Grammar", "Vocab", "Transitions", "Notes", "Functions", "Main Idea", "Inferences", "Cross-Text",
+    "Textual Evidence", "Quantitative Evidence",
+    "Algebra", "Advanced Math", "Problem-Solving and Data Analysis", "Geometry and Trigonometry",
+  ];
+  const DIFF_ORDER = ["Easy", "Medium", "Hard"];
+  const DIFF_MAP = { Easy: 1, Medium: 2, Hard: 3 };
+
+  let allQuestions = [];
+  let byId = new Map();
+  let reviewStatus = {}; // qid -> {status, note, updated_at}
+  let reportedQids = new Set();
+
+  const state = {
+    openCat: null,       // expanded category name, or null
+    openQid: null,        // question currently shown in a panel
+    editingQid: null,     // question whose edit form is open
+    search: "",
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  function escapeHtml(s) {
+    return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  function renderTokens(text) {
+    // ⟦IMG:path⟧ tokens (mostly in math questions) become inline images so a
+    // reviewer can actually see the rendered question, not a wall of tokens.
+    const escaped = escapeHtml(text);
+    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) =>
+      `<img class="inline-token-img" src="/${path}" alt="" />`);
+  }
+
+  function statusOf(qid) {
+    return (reviewStatus[qid] && reviewStatus[qid].status) || null;
+  }
+
+  // ---------- Loading ----------
+
+  async function loadAll() {
+    try {
+      const res = await fetch("/api/questions");
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      allQuestions = data.questions;
+      byId = new Map(allQuestions.map(q => [q.id, q]));
+      reviewStatus = data.review_status || {};
+      reportedQids = new Set(data.reported_qids || []);
+      $("connStatus").textContent = `Connected ✓ — ${allQuestions.length} questions`;
+      $("connStatus").className = "ok";
+      render();
+    } catch (e) {
+      $("connStatus").textContent = "Not connected — run scripts/reports_server.py";
+      $("connStatus").className = "bad";
+    }
+  }
+
+  // ---------- Summary ----------
+
+  function computeCounts(list) {
+    let approved = 0, problem = 0, editing = 0;
+    list.forEach(q => {
+      const s = statusOf(q.id);
+      if (s === "approved") approved++;
+      else if (s === "problem") problem++;
+      else if (s === "editing") editing++;
+    });
+    return { approved, problem, editing, unreviewed: list.length - approved - problem - editing, total: list.length };
+  }
+
+  function renderSummary() {
+    const c = computeCounts(allQuestions);
+    $("summaryBar").innerHTML = `
+      <div class="stat approved"><span class="n">${c.approved}</span><span class="l">Approved</span></div>
+      <div class="stat problem"><span class="n">${c.problem}</span><span class="l">Problem</span></div>
+      <div class="stat editing"><span class="n">${c.editing}</span><span class="l">Editing</span></div>
+      <div class="stat"><span class="n">${c.unreviewed}</span><span class="l">Unreviewed</span></div>
+      <div class="stat reported"><span class="n">${reportedQids.size}</span><span class="l">Reported</span></div>
+      <div class="stat"><span class="n">${c.total}</span><span class="l">Total</span></div>
+    `;
+  }
+
+  // ---------- Rendering ----------
+
+  function render() {
+    renderSummary();
+    const wrap = $("content");
+    if (state.search.trim()) {
+      wrap.innerHTML = renderSearchResults(state.search.trim().toLowerCase());
+    } else {
+      wrap.innerHTML = CATEGORY_ORDER.map(renderCategoryCard).join("");
+    }
+    wireContent();
+  }
+
+  function renderSearchResults(term) {
+    const matches = allQuestions.filter(q =>
+      (q.id || "").toLowerCase().includes(term) ||
+      (q.stem || "").toLowerCase().includes(term) ||
+      (q.prompt || "").toLowerCase().includes(term)
+    ).slice(0, 80);
+    if (!matches.length) return `<p class="hint">No matches for "${escapeHtml(term)}".</p>`;
+    return `<p class="hint" style="margin-bottom:10px;">${matches.length} match${matches.length === 1 ? "" : "es"} (showing up to 80)</p>` +
+      matches.map(q => {
+        const isOpen = state.openQid === q.id;
+        return `<div class="cat-card">
+          <div class="cat-row" data-toggle-qid="${q.id}">
+            <span class="name">${escapeHtml(q.category)} <span class="pill">${escapeHtml(q.difficulty_label || "")}</span></span>
+            <span class="frac">${escapeHtml(q.id)}</span>
+          </div>
+          ${isOpen ? renderPanel(q) : `<div class="hint" style="margin-top:6px;">${escapeHtml((q.stem || q.prompt || "").slice(0, 140))}…</div>`}
+        </div>`;
+      }).join("");
+  }
+
+  function renderCategoryCard(cat) {
+    const list = allQuestions.filter(q => q.category === cat);
+    if (!list.length) return "";
+    const counts = computeCounts(list);
+    const isOpen = state.openCat === cat;
+    const byDiff = {};
+    DIFF_ORDER.forEach(d => byDiff[d] = list.filter(q => q.difficulty_label === d));
+
+    const detail = isOpen ? `<div class="cat-detail">${DIFF_ORDER.map(d => {
+      const qs = byDiff[d];
+      if (!qs.length) return "";
+      const tiles = qs.map(q => {
+        const s = statusOf(q.id);
+        const classes = ["qtile"];
+        if (s) classes.push("status-" + s);
+        if (reportedQids.has(q.id)) classes.push("is-reported");
+        if (state.openQid === q.id) classes.push("is-open");
+        return `<button class="${classes.join(" ")}" data-open-qid="${q.id}" title="${escapeHtml(q.id)}${s ? " — " + s : ""}"></button>`;
+      }).join("");
+      return `<div class="diff-subhead"><span>${d}</span><span>${qs.length}</span></div><div class="qtile-grid">${tiles}</div>`;
+    }).join("")}
+    ${state.openQid && byId.get(state.openQid) && byId.get(state.openQid).category === cat ? renderPanel(byId.get(state.openQid)) : ""}
+    </div>` : "";
+
+    return `<div class="cat-card">
+      <div class="cat-row" data-toggle-cat="${escapeHtml(cat)}">
+        <span class="name"><span class="chevron${isOpen ? " open" : ""}">▶</span> ${escapeHtml(cat)}</span>
+        <span class="frac">${counts.approved + counts.problem}/${counts.total} reviewed</span>
+      </div>
+      ${detail}
+    </div>`;
+  }
+
+  function renderPanel(q) {
+    const s = statusOf(q.id);
+    const note = (reviewStatus[q.id] && reviewStatus[q.id].note) || "";
+    const isEditing = state.editingQid === q.id;
+    return `<div class="qPanel" data-panel-qid="${q.id}">
+      <div class="qPanelHead">
+        <span class="qPanelTitle">${escapeHtml(q.id)}</span>
+        <span class="pill">${escapeHtml(q.skill || "")}</span>
+        <span class="pill">${escapeHtml(q.difficulty_label || "")}</span>
+        ${reportedQids.has(q.id) ? `<span class="pill reported">reported</span>` : ""}
+        ${s ? `<span class="pill ${s}">${s}</span>` : ""}
+        <button class="qPanelClose" data-close-panel type="button">✕</button>
+      </div>
+      ${note ? `<div class="qNote">${escapeHtml(note)}</div>` : ""}
+      ${isEditing ? renderEditForm(q) : renderReadOnly(q)}
+    </div>`;
+  }
+
+  function renderReadOnly(q) {
+    const choices = q.choices || {};
+    const hasChoices = Object.keys(choices).length > 0;
+    const rbc = q.rationale_by_choice || {};
+    const body = hasChoices
+      ? ["A", "B", "C", "D"].map(l => {
+          if (!(l in choices)) return "";
+          const isCorrect = q.correct_answer === l;
+          return `<div class="qChoice${isCorrect ? " correct" : ""}">${l}. ${renderTokens(choices[l] || "")}${isCorrect ? " ✓" : ""}</div>
+                  ${rbc[l] ? `<div class="qRationale">${renderTokens(rbc[l])}</div>` : ""}`;
+        }).join("")
+      : `<div class="qChoice correct">Answer: ${renderTokens(q.correct_answer || "")} ✓</div>
+         <div class="qRationale">${renderTokens(q.rationale_full || "")}</div>`;
+    return `
+      <div class="qStem">${renderTokens(q.stem || "")}</div>
+      ${q.prompt ? `<div class="qPrompt">${renderTokens(q.prompt)}</div>` : ""}
+      ${body}
+      <div class="qActions">
+        <button class="btn btn-sm btn-accent" data-approve-qid="${q.id}" type="button">✓ Approve</button>
+        <button class="btn btn-sm btn-danger" data-problem-qid="${q.id}" type="button">✕ Flag problem</button>
+        <button class="btn btn-sm btn-warn" data-edit-qid="${q.id}" type="button">✎ Edit</button>
+      </div>
+    `;
+  }
+
+  function renderEditForm(q) {
+    const choices = q.choices || {};
+    const hasChoices = Object.keys(choices).length > 0;
+    const rbc = q.rationale_by_choice || {};
+    const mcFields = hasChoices ? `
+      <label>Choices — select the radio button next to the correct one</label>
+      ${["A", "B", "C", "D"].filter(l => l in choices).map(l => `
+        <div class="choiceRow">
+          <input type="radio" name="correct_${q.id}" value="${l}" ${q.correct_answer === l ? "checked" : ""} />
+          <span class="letter">${l}.</span>
+          <input type="text" class="ef-choice" data-letter="${l}" value="${escapeHtml(choices[l] || "")}" />
+        </div>`).join("")}
+      <label>Rationale — one per choice</label>
+      ${["A", "B", "C", "D"].filter(l => l in choices).map(l => `
+        <div class="subLabel">${l}</div>
+        <textarea class="ef-rationale" data-letter="${l}">${escapeHtml(rbc[l] || "")}</textarea>`).join("")}
+    ` : `
+      <label>Answer</label>
+      <input type="text" id="ef_answer_${q.id}" class="ef-answer" value="${escapeHtml(q.correct_answer || "")}" />
+      <label>Rationale</label>
+      <textarea id="ef_rationale_full_${q.id}" class="ef-rationale-full">${escapeHtml(q.rationale_full || "")}</textarea>
+    `;
+    return `
+      <div class="editForm" data-edit-form="${q.id}">
+        <label>Stem</label>
+        <textarea class="ef-stem stemBox">${escapeHtml(q.stem || "")}</textarea>
+        <label>Prompt</label>
+        <textarea class="ef-prompt">${escapeHtml(q.prompt || "")}</textarea>
+        ${mcFields}
+        <div id="errBox_${q.id}" class="errBoxSlot"></div>
+        <div class="qActions">
+          <button class="btn btn-sm btn-accent" data-save-qid="${q.id}" type="button">Save &amp; approve</button>
+          <button class="btn btn-sm" data-cancel-edit-qid="${q.id}" type="button">Cancel</button>
+          <span class="saveStatus" id="saveStatus_${q.id}"></span>
+        </div>
+      </div>
+    `;
+  }
+
+  // ---------- Wiring ----------
+
+  function wireContent() {
+    document.querySelectorAll("[data-toggle-cat]").forEach(el => {
+      el.addEventListener("click", () => {
+        const cat = el.dataset.toggleCat;
+        state.openCat = state.openCat === cat ? null : cat;
+        render();
+      });
+    });
+    document.querySelectorAll("[data-toggle-qid]").forEach(el => {
+      el.addEventListener("click", () => {
+        const qid = el.dataset.toggleQid;
+        state.openQid = state.openQid === qid ? null : qid;
+        state.editingQid = null;
+        render();
+      });
+    });
+    document.querySelectorAll("[data-open-qid]").forEach(el => {
+      el.addEventListener("click", () => {
+        const qid = el.dataset.openQid;
+        state.openQid = state.openQid === qid ? null : qid;
+        state.editingQid = null;
+        render();
+      });
+    });
+    document.querySelectorAll("[data-close-panel]").forEach(el => {
+      el.addEventListener("click", () => {
+        state.openQid = null;
+        state.editingQid = null;
+        render();
+      });
+    });
+    document.querySelectorAll("[data-approve-qid]").forEach(el => {
+      el.addEventListener("click", () => setStatus(el.dataset.approveQid, "approved"));
+    });
+    document.querySelectorAll("[data-problem-qid]").forEach(el => {
+      el.addEventListener("click", () => {
+        const note = prompt("Optional note on what's wrong (shown on the tile later):", "") || "";
+        setStatus(el.dataset.problemQid, "problem", note);
+      });
+    });
+    document.querySelectorAll("[data-edit-qid]").forEach(el => {
+      el.addEventListener("click", async () => {
+        const qid = el.dataset.editQid;
+        state.editingQid = qid;
+        await setStatus(qid, "editing", "", { skipRender: true });
+        render();
+      });
+    });
+    document.querySelectorAll("[data-cancel-edit-qid]").forEach(el => {
+      el.addEventListener("click", () => {
+        state.editingQid = null;
+        render();
+      });
+    });
+    document.querySelectorAll("[data-save-qid]").forEach(el => {
+      el.addEventListener("click", () => handleSave(el.dataset.saveQid));
+    });
+  }
+
+  async function setStatus(qid, status, note, opts) {
+    const updated_at = new Date().toISOString();
+    try {
+      const res = await fetch("/api/set_status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ qid, status, note: note || "", updated_at }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      // Only reflect the change locally once the server has confirmed it's
+      // actually on disk — an optimistic update here would let a failed
+      // save look identical to a successful one.
+      reviewStatus[qid] = { status, note: note || "", updated_at };
+    } catch (e) {
+      alert(`Couldn't save that status change (${status} for ${qid}): ${e.message}\n\nThe tile has NOT been updated — try again.`);
+    }
+    if (!opts || !opts.skipRender) render();
+  }
+
+  function showFormErrors(qid, errors) {
+    const box = document.getElementById(`errBox_${qid}`);
+    if (!box) return errors.length > 0;
+    if (!errors.length) { box.innerHTML = ""; return false; }
+    box.innerHTML = `<div id="errBox" class="show">${errors.map(e => "• " + escapeHtml(e)).join("<br/>")}</div>`;
+    return true;
+  }
+
+  function buildRationaleFull(rationaleByChoice) {
+    return ["A", "B", "C", "D"].map(l => rationaleByChoice[l]).filter(Boolean).join(" ");
+  }
+
+  async function handleSave(qid) {
+    const q = byId.get(qid);
+    const form = document.querySelector(`[data-edit-form="${qid}"]`);
+    if (!q || !form) return;
+
+    const stem = form.querySelector(".ef-stem").value.trim();
+    const prompt = form.querySelector(".ef-prompt").value.trim();
+    const errors = [];
+    if (!stem) errors.push("Stem is empty.");
+
+    const hasChoices = Object.keys(q.choices || {}).length > 0;
+    let record = { ...q, stem, prompt };
+
+    if (hasChoices) {
+      const choices = { ...q.choices };
+      const rationale_by_choice = { ...q.rationale_by_choice };
+      form.querySelectorAll(".ef-choice").forEach(inp => { choices[inp.dataset.letter] = inp.value.trim(); });
+      form.querySelectorAll(".ef-rationale").forEach(ta => { rationale_by_choice[ta.dataset.letter] = ta.value.trim(); });
+      const correctEl = form.querySelector(`input[name="correct_${qid}"]:checked`);
+      const correct_answer = correctEl ? correctEl.value : q.correct_answer;
+      const texts = Object.values(choices);
+      if (texts.some(t => !t)) errors.push("All choices must be filled in.");
+      if (Object.values(rationale_by_choice).some(t => !t)) errors.push("Every choice needs a rationale.");
+      record = { ...record, choices, correct_answer, rationale_by_choice, rationale_full: buildRationaleFull(rationale_by_choice) };
+    } else {
+      const answerEl = form.querySelector(".ef-answer");
+      const rationaleEl = form.querySelector(".ef-rationale-full");
+      record = { ...record, correct_answer: answerEl.value.trim(), rationale_full: rationaleEl.value.trim() };
+    }
+
+    if (showFormErrors(qid, errors)) return;
+
+    const status = document.getElementById(`saveStatus_${qid}`);
+    status.textContent = "Saving…";
+    status.className = "saveStatus";
+    try {
+      const res = await fetch("/api/update_question", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ record, status: "approved", updated_at: new Date().toISOString() }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      byId.set(qid, record);
+      const idx = allQuestions.findIndex(x => x.id === qid);
+      if (idx !== -1) allQuestions[idx] = record;
+      reviewStatus[qid] = { status: "approved", note: "", updated_at: new Date().toISOString() };
+      state.editingQid = null;
+      render();
+    } catch (e) {
+      status.textContent = "Save failed: " + e.message;
+      status.className = "saveStatus bad";
+    }
+  }
+
+  let searchDebounce = null;
+  $("searchInput").addEventListener("input", (e) => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+      state.search = e.target.value;
+      state.openQid = null;
+      state.editingQid = null;
+      render();
+    }, 150);
+  });
+
+  loadAll();
+})();
+</script>
