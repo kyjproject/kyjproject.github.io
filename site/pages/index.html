@@ -11,8 +11,32 @@
       if (labTheme && labTheme !== 'default') {
         document.documentElement.dataset.theme = labTheme;
       } else {
-        var saved = localStorage.getItem('sat_qbank_theme_v1');
-        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+        // Seasonal themes (Halloween, Christmas, ...) auto-pin as the
+        // default during their date window, same as the main script's
+        // SEASONAL_THEME_WINDOWS — duplicated here (small, static) so this
+        // anti-flash script can resolve the theme before anything else
+        // loads. Keep the two window lists in sync.
+        var seasonal = null;
+        var now = new Date();
+        var m = now.getMonth() + 1, d = now.getDate();
+        var windows = [
+          { id: 'halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
+          { id: 'christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 }
+        ];
+        for (var i = 0; i < windows.length; i++) {
+          var w = windows[i];
+          if (m === w.startMonth && d >= w.startDay && d <= w.endDay) { seasonal = w; break; }
+        }
+        if (seasonal) {
+          var dismissed = localStorage.getItem('sat_qbank_seasonal_dismissed_v1');
+          if (dismissed === seasonal.id + ':' + now.getFullYear()) seasonal = null;
+        }
+        if (seasonal) {
+          document.documentElement.dataset.theme = seasonal.id;
+        } else {
+          var saved = localStorage.getItem('sat_qbank_theme_v1');
+          if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+        }
       }
     } catch (e) { /* best-effort */ }
   })();
@@ -275,6 +299,91 @@
     --shadow: 0 0 8px rgba(51, 255, 51, 0.4), 0 0 24px rgba(51, 255, 51, 0.15);
   }
 
+  /* Seasonal theme, auto-pinned as the default during its date window (see
+     activeSeasonalTheme/SEASONAL_THEME_WINDOWS in the main script) and also
+     selectable any time from the Lab. Same override mechanism as the
+     Lab-only themes above. */
+  :root[data-theme="halloween"] {
+    --paper: #1b1225;
+    --paper-raised: #251933;
+    --ink: #ffb347;
+    --ink-soft: #d9a0e6;
+    --ink-faint: #8a6a9c;
+    --rule: #4a2e5c;
+    --rule-soft: #3a2449;
+    --accent: #ff6f1f;
+    --accent-soft: #3a2449;
+    --accent-ink: #ffd199;
+    --easy: #7ed957;
+    --easy-bg: #1f3318;
+    --medium: #ffb347;
+    --medium-bg: #3a2a12;
+    --hard: #ff4d4d;
+    --hard-bg: #3a1414;
+    --correct: #7ed957;
+    --correct-bg: #1f3318;
+    --incorrect: #ff4d4d;
+    --incorrect-bg: #3a1414;
+    --review: #ffb347;
+    --review-bg: #3a2a12;
+    --done: #7ed957;
+    --done-bg: #1f3318;
+    --tier-bronze: #c97b3f;
+    --tier-bronze-bg: #3a2414;
+    --tier-silver: #b3a0c2;
+    --tier-silver-bg: #2e2338;
+    --tier-gold: #ffcc33;
+    --tier-gold-bg: #3a3014;
+    --xp: #d9a0e6;
+    --xp-bg: #2e1f3a;
+    --cal-1: #2e1f3a;
+    --cal-2: #4a2e5c;
+    --cal-3: #8a4fa0;
+    --cal-4: #ff6f1f;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(255, 111, 31, 0.15);
+  }
+
+  /* Seasonal theme, same auto-pin mechanism as Halloween above. */
+  :root[data-theme="christmas"] {
+    --paper: #fbfbf9;
+    --paper-raised: #ffffff;
+    --ink: #1e3a2b;
+    --ink-soft: #3f5c4a;
+    --ink-faint: #7c9284;
+    --rule: #cfe0d3;
+    --rule-soft: #e3efe6;
+    --accent: #b2273a;
+    --accent-soft: #f6dde1;
+    --accent-ink: #7a1424;
+    --easy: #2f7d46;
+    --easy-bg: #dff0e3;
+    --medium: #b8860b;
+    --medium-bg: #f5ecc8;
+    --hard: #b2273a;
+    --hard-bg: #f6dde1;
+    --correct: #2f7d46;
+    --correct-bg: #dff0e3;
+    --incorrect: #b2273a;
+    --incorrect-bg: #f6dde1;
+    --review: #b8860b;
+    --review-bg: #f5ecc8;
+    --done: #2f7d46;
+    --done-bg: #dff0e3;
+    --tier-bronze: #a9713c;
+    --tier-bronze-bg: #ecdcc0;
+    --tier-silver: #8a97a0;
+    --tier-silver-bg: #e6ebee;
+    --tier-gold: #c9a227;
+    --tier-gold-bg: #f5ecc8;
+    --xp: #b2273a;
+    --xp-bg: #f6dde1;
+    --cal-1: #dff0e3;
+    --cal-2: #a9d4b3;
+    --cal-3: #4f9e63;
+    --cal-4: #1e3a2b;
+    --shadow: 0 1px 2px rgba(30, 58, 43, 0.10), 0 4px 14px rgba(178, 39, 58, 0.10);
+  }
+
   * { box-sizing: border-box; }
   html, body { height: 100%; }
   body {
@@ -532,6 +641,24 @@
     cursor: pointer;
   }
   .clear-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+  .filter-hint {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    margin-top: -2px;
+  }
+  .link-btn {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--accent);
+    font: inherit;
+    font-size: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .link-btn:hover { color: var(--ink); }
 
   .main {
     padding: 22px 28px 60px;
@@ -942,35 +1069,6 @@
     .modal-card { width: 100%; max-height: 100vh; border-radius: 0; }
   }
   body.modal-open { overflow: hidden; }
-
-  /* Math (Beta) tab — reuses the existing --medium (amber) design tokens
-     rather than introducing new hardcoded colors, so it already tracks
-     light/dark theme correctly. */
-  .beta-badge {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--medium);
-    background: var(--medium-bg);
-    border-radius: 4px;
-    padding: 1px 5px;
-    margin-left: 5px;
-    vertical-align: 1px;
-  }
-  .beta-banner {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--medium);
-    background: var(--medium-bg);
-    border: 1px solid var(--medium);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 16px;
-  }
-  .beta-note { font-size: 12.5px; color: var(--ink-faint); font-style: italic; margin-top: 4px; }
 
   /* ---------- Interactive tour ---------- */
   .tour-overlay { position: fixed; inset: 0; z-index: 1200; background: transparent; }
@@ -1905,6 +2003,15 @@
   .progress-focus-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
   .progress-focus-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-faint); font-weight: 600; }
   .progress-focus-hint { font-size: 11px; color: var(--ink-faint); flex-basis: 100%; }
+  .cat-subject-header {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    margin: 18px 0 8px;
+  }
+  .cat-subject-header:first-child { margin-top: 0; }
   .cat-progress-card {
     background: var(--paper-raised);
     border: 1px solid var(--rule);
@@ -2642,7 +2749,7 @@
       <button class="tab" data-view="browse" id="browseNavTrigger" aria-haspopup="true" aria-expanded="false">Browse<span class="tab-caret" id="browseCaret">&#9662;</span></button>
       <div class="tab-dropdown" role="menu">
         <button class="tab tab-dropdown-item" data-view="browse" role="menuitem">English</button>
-        <button class="tab tab-dropdown-item" data-view="math" role="menuitem">Math<span class="beta-badge">BETA</span></button>
+        <button class="tab tab-dropdown-item" data-view="math" role="menuitem">Math</button>
       </div>
     </div>
     <button class="tab" data-view="practice">Practice</button>
@@ -2700,6 +2807,9 @@
              Tags feature was superseded by Notes (see the Notes tab). The
              underlying tag storage/matching code is still in the JS below,
              just no longer wired to any visible control. -->
+        <!-- "Want Skill too? Turn it on in Lab" — filled/shown by
+             renderBrowseFilterHint whenever any facet above is hidden. -->
+        <div class="filter-hint" id="browseFilterHint" hidden></div>
         <button class="clear-btn" id="clearFilters">Clear filters</button>
         <button class="clear-btn" id="shortcutsTourBtn" type="button" style="margin-top:8px;">&#8963;&#65039; Keyboard shortcuts</button>
       </aside>
@@ -2723,24 +2833,36 @@
   </div>
 
   <div class="view" id="view-math">
-    <div class="beta-banner">
-      <span>🚧</span>
-      <span><strong>Math (Beta)</strong> — browse only for now. Nothing here is saved: no completion status, no notes, no stats, no Practice/Test/Mock Exam. Submit/Show answer work, but reset the moment you leave or reload.</span>
-    </div>
     <div class="browse-layout">
       <aside class="filters">
-        <div class="filter-group">
+        <div class="filter-group" id="categoryFilterGroupMath">
           <h3>Category</h3>
           <div id="categoryFiltersMath"></div>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="skillFilterGroupMath" hidden>
           <h3>Skill</h3>
           <div id="skillFiltersMath"></div>
         </div>
-        <div class="filter-group">
+        <div class="filter-group" id="difficultyFilterGroupMath">
           <h3>Difficulty</h3>
           <div id="difficultyFiltersMath"></div>
         </div>
+        <div class="filter-group" id="statusFilterGroupMath">
+          <h3>Status</h3>
+          <div id="statusFiltersMath"></div>
+        </div>
+        <!-- Community rating (Math) — hidden in markup; renderMathFilters
+             only fills/shows this when both the Lab feature toggle
+             (ratedDifficultyLabEnabled, on by default) and the Math Browse
+             filters visibility toggle (mathBrowseFilterEnabled('communityRating'),
+             also on by default) are on. -->
+        <div class="filter-group" id="ratedTierFilterGroupMath" hidden>
+          <h3>🎮 Rated Difficulty</h3>
+          <div id="ratedTierFiltersMath"></div>
+        </div>
+        <!-- "Want Skill too? Turn it on in Lab" — filled/shown by
+             renderMathSkillHintHtml whenever any facet above is hidden. -->
+        <div class="filter-hint" id="mathFilterHint" hidden></div>
         <button class="clear-btn" id="clearFiltersMath">Clear filters</button>
       </aside>
       <div class="main">
@@ -2756,6 +2878,7 @@
           </select>
         </div>
         <div class="result-count" id="resultCountMath"></div>
+        <div class="bulk-bar" id="bulkBarMath"></div>
         <div class="qlist" id="qlistMath"></div>
       </div>
     </div>
@@ -2920,8 +3043,13 @@
       </div>
 
       <div class="config-card">
-        <div class="log-entry-head"><span class="log-date">Sep 7</span><h2 style="margin:0;">Math added, as its own Beta tab</h2></div>
-        <p class="lede" style="margin-top:8px;">All four Math domains, 1,294 questions across Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry — completing the full digital SAT question bank. Kept separate from the main Reading &amp; Writing bank in its own <strong>Math (Beta)</strong> tab for now: browse only, nothing saved (no completion status, no notes, no stats) — try it, but don't count on your place in it surviving a reload.</p>
+        <div class="log-entry-head"><span class="log-date">Sep 11</span><h2 style="margin:0;">Math graduates from Beta</h2></div>
+        <p class="lede" style="margin-top:8px;">Notes, reporting a question issue, skill-mastery/accuracy stats, the spaced-repetition Review queue, bulk select, and Export/Import backup now all work the same way for Math as they do for Reading &amp; Writing — everything's saved, keyed the same way. The one thing still missing is Practice/Test/Mock Exam (and the print-a-worksheet feature tied to those) — Math stays browse-only for now.</p>
+      </div>
+
+      <div class="config-card">
+        <div class="log-entry-head"><span class="log-date">Sep 7</span><h2 style="margin:0;">Math added, as its own tab</h2></div>
+        <p class="lede" style="margin-top:8px;">All four Math domains, 1,294 questions across Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry — completing the full digital SAT question bank. Kept separate from the main Reading &amp; Writing bank in its own <strong>Math</strong> tab.</p>
         <div class="log-list">
           <div class="log-item">
             <div class="log-item-head"><span class="log-item-name">Equations, graphs, and tables render as cropped images inline in the question text</span></div>
@@ -3086,10 +3214,13 @@
     ? SAT_QUESTIONS
     : JSON.parse(document.getElementById('questions-data').textContent);
 
-  // Math lives in its own beta-only Browse tab (see the Math Beta section
-  // near the end of this script) — pulled out of the main QUESTIONS pool so
-  // Browse/Practice/Test/Mock Exam/Progress/stats/search all behave exactly
-  // as they did before Math existed, with zero further changes needed here.
+  // Math lives in its own Browse tab (see the Math section near the end of
+  // this script), still separate from the main QUESTIONS pool since
+  // Practice/Test/Mock Exam remain R&W-only — those (and the config screens
+  // that build their pools) keep using QUESTIONS untouched. Status, notes,
+  // reporting, skill stats, the Review queue, and Progress/Analysis are all
+  // shared across both pools now via ALL_QUESTIONS — see analysisCategories/
+  // analysisSkills below.
   const QUESTIONS = ALL_QUESTIONS.filter(q => q.test !== 'Math');
   const MATH_QUESTIONS = ALL_QUESTIONS.filter(q => q.test === 'Math');
 
@@ -3343,9 +3474,14 @@
   // Skills with enough attempts to trust, sorted worst-accuracy-first.
   // Reports recent-window accuracy where available (matching
   // skillAccuracyWeight) so the hint agrees with what's actually driving
-  // selection, falling back to all-time for older saved data.
+  // selection, falling back to all-time for older saved data. Scoped to
+  // allSkills (R&W) only — this feeds the Practice/Test/Mock bias hint, and
+  // those modes can never actually pull a Math skill, so surfacing one here
+  // would advertise a bias effect that can't happen.
   function weakSkills() {
-    return Object.entries(state.skillStats)
+    return allSkills
+      .filter(skill => state.skillStats[skill])
+      .map(skill => [skill, state.skillStats[skill]])
       .map(([skill, s]) => {
         const recentAcc = skillRecentAccuracy(skill);
         const accuracy = recentAcc != null ? recentAcc : (s.total ? s.correct / s.total : null);
@@ -3489,6 +3625,157 @@
       }
     });
     if (changed) saveCompletionLog();
+  }
+
+  // ---------- Time tracking (study-time analytics) ----------
+  // Tracks wall-clock time spent in the app, per local calendar day (dateKey,
+  // defined below but hoisted), split by which top-level tab was active and —
+  // for the actively-working tabs (Practice/Test/Mock/Bluebook) — which
+  // category the current question belongs to. Answers "what is my study time
+  // actually made of" alongside the existing "how many questions did I do"
+  // (completionLog). Counts only while the tab is visible, focused, and
+  // there's been recent input, so leaving the app open unattended doesn't
+  // inflate the numbers — same best-effort localStorage pattern as everything
+  // else here (progress still lives in memory for the session if storage is
+  // unavailable/full).
+  const TIME_STATS_KEY = 'sat_qbank_time_stats_v1';
+  const TIME_TICK_MS = 5000; // how often the tracker samples elapsed time
+  const TIME_IDLE_MS = 90000; // no mouse/keyboard/touch input for this long -> pause counting until activity resumes
+  const TIME_STATS_DAY_LIMIT = 400; // ~13 months of daily entries kept before pruning the oldest
+
+  function loadTimeStats() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(TIME_STATS_KEY));
+      return (raw && typeof raw === 'object' && !Array.isArray(raw)) ? raw : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveTimeStats() {
+    try {
+      localStorage.setItem(TIME_STATS_KEY, JSON.stringify(state.timeStats));
+    } catch (e) {
+      // storage unavailable/full — stats still live in memory for this session
+    }
+  }
+
+  // Drops the oldest days once past TIME_STATS_DAY_LIMIT so this doesn't grow
+  // forever on a long-lived browser profile.
+  function pruneTimeStats() {
+    const days = Object.keys(state.timeStats).sort();
+    if (days.length <= TIME_STATS_DAY_LIMIT) return;
+    days.slice(0, days.length - TIME_STATS_DAY_LIMIT).forEach(d => delete state.timeStats[d]);
+  }
+
+  // Which tab is on screen right now, and — best-effort, for the tabs where
+  // "the current question" is well-defined — which category it belongs to.
+  // Falls back to no category rather than throwing if a state shape doesn't
+  // match what's expected (e.g. mid-transition between phases).
+  function currentTimeAttribution() {
+    // Deliberately reads the unique `.view.active` content pane (id
+    // "view-<name>") rather than `.tab.active` — Math's tab button lives
+    // inside the Browse dropdown, so switching to it leaves *both*
+    // browseNavTrigger (data-view="browse") and the Math item (data-view=
+    // "math") with the "active" class, and .tab.active would grab whichever
+    // comes first in the DOM (browseNavTrigger) — silently miscounting every
+    // minute on the Math tab as "browse" instead.
+    const activeView = document.querySelector('.view.active');
+    const view = (activeView && activeView.id.replace(/^view-/, '')) || 'other';
+    let category = null;
+    try {
+      if (bbState.active) {
+        category = (bbState.questions[bbState.index] || {}).category || null;
+      } else if (view === 'practice' && practiceState.phase === 'session') {
+        category = (practiceState.questions[practiceState.index] || {}).category || null;
+      } else if (view === 'test' && testState.phase === 'quiz') {
+        category = (testState.questions[testState.index] || {}).category || null;
+      } else if (view === 'mock' && (mockState.phase === 'module1' || mockState.phase === 'module2')) {
+        const pool = mockState.phase === 'module1' ? mockState.module1Questions : mockState.module2Questions;
+        category = (pool[mockState.index] || {}).category || null;
+      }
+    } catch (e) {
+      category = null; // best-effort — a mismatched shape just means no category this tick, not a crash
+    }
+    return { view, category };
+  }
+
+  let lastActivityTs = Date.now();
+  ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'].forEach(evt => {
+    document.addEventListener(evt, () => { lastActivityTs = Date.now(); }, { passive: true });
+  });
+
+  // Reset on every visibility flip (not just on tick) so a background tab's
+  // throttled/paused timer doesn't retroactively count the hidden stretch —
+  // or the idle stretch right before it — once the tab comes back to front.
+  let timeTrackerLastTick = Date.now();
+  document.addEventListener('visibilitychange', () => { timeTrackerLastTick = Date.now(); });
+
+  function timeTrackerTick() {
+    const now = Date.now();
+    const elapsed = now - timeTrackerLastTick;
+    timeTrackerLastTick = now;
+    if (document.hidden || !document.hasFocus() || (now - lastActivityTs) > TIME_IDLE_MS) return;
+    const clamped = Math.min(elapsed, TIME_TICK_MS * 3); // guard a suspended-tab clock jump from counting as active time
+    const { view, category } = currentTimeAttribution();
+    const key = dateKey(new Date());
+    const day = state.timeStats[key] || (state.timeStats[key] = { totalMs: 0, viewMs: {}, categoryMs: {} });
+    day.totalMs += clamped;
+    day.viewMs[view] = (day.viewMs[view] || 0) + clamped;
+    if (category) day.categoryMs[category] = (day.categoryMs[category] || 0) + clamped;
+    pruneTimeStats();
+    saveTimeStats();
+  }
+  setInterval(timeTrackerTick, TIME_TICK_MS);
+  window.addEventListener('pagehide', saveTimeStats);
+
+  // ---------- Time-to-answer per question ----------
+  // How long a question stays open (first shown -> Submit) — a per-question
+  // signal that the plain correct/incorrect record can't give: a question
+  // gotten right after 90s of deliberation is a different result than one
+  // gotten right in 5s. Scoped to the shared interactive detail view
+  // (wireDetail below) — Browse's expanded card, Practice, and the inline
+  // panels on Progress/Review — since that's the one place a discrete
+  // "Submit" grades a single question; Test/Mock/Bluebook only grade at
+  // full-attempt submit, so "time to answer" isn't a single well-defined
+  // moment there.
+  //
+  // questionShownAt is in-memory only (not persisted) — it's just "when did
+  // the pending, ungraded attempt currently on screen start", reset on
+  // Submit and on redoing an already-graded question (picking a new choice
+  // or editing a grid-in answer after submitted was true).
+  const ANSWER_TIME_KEY = 'sat_qbank_answer_time_v1';
+  const ANSWER_TIME_WINDOW = 5; // most recent timings kept per question
+
+  function loadAnswerTimeLog() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(ANSWER_TIME_KEY));
+      return (raw && typeof raw === 'object' && !Array.isArray(raw)) ? raw : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveAnswerTimeLog() {
+    try {
+      localStorage.setItem(ANSWER_TIME_KEY, JSON.stringify(state.answerTimeLog));
+    } catch (e) {
+      // storage unavailable/full — log still lives in memory for this session
+    }
+  }
+
+  const questionShownAt = {}; // qid -> ms timestamp of the current pending attempt's start, in-memory only
+
+  function noteQuestionShown(qid) {
+    if (!questionShownAt[qid]) questionShownAt[qid] = Date.now();
+  }
+
+  function recordAnswerTime(qid, ms) {
+    if (!Number.isFinite(ms) || ms < 0) return;
+    const arr = state.answerTimeLog[qid] || (state.answerTimeLog[qid] = []);
+    arr.push({ ts: Date.now(), ms });
+    if (arr.length > ANSWER_TIME_WINDOW) arr.splice(0, arr.length - ANSWER_TIME_WINDOW);
+    saveAnswerTimeLog();
   }
 
   // ---------- Daily goal ----------
@@ -4189,14 +4476,13 @@
   });
   // Re-renders every place a question card (Rated Difficulty badge, report
   // trigger/pending state, ...) can appear — not just whichever tab happens
-  // to be active. Switching tabs in this app doesn't re-render on its own
-  // (only the tabs that already have their own render-on-switch wiring do),
-  // so e.g. a vote cast while looking at Practice would otherwise sit stale
-  // in Browse/the detail modal until something else happened to force those
-  // to redraw. Math (Beta) doesn't carry either widget, so it's not in this
-  // list. Called after anything that changes what a card should show: casting
-  // or clearing a difficulty vote, a fresh ratings fetch, or submitting/
-  // undoing a report.
+  // to be active, Math Browse included. Switching tabs in this app doesn't
+  // re-render on its own (only the tabs that already have their own
+  // render-on-switch wiring do), so e.g. a vote cast while looking at
+  // Practice would otherwise sit stale in Browse/the detail modal until
+  // something else happened to force those to redraw. Called after anything
+  // that changes what a card should show: casting or clearing a difficulty
+  // vote, a fresh ratings fetch, or submitting/undoing a report.
   function refreshAllQuestionCardViews() {
     renderFilters();
     renderBrowse();
@@ -4208,6 +4494,8 @@
     renderAnalysis();
     renderNotesView();
     renderQuestionModal();
+    renderMathFilters();
+    renderMathBrowse();
   }
 
   // ---------- FSRS spaced repetition (Review queue scheduling) ----------
@@ -4346,7 +4634,10 @@
   }
 
   function fsrsFlaggedQuestions() {
-    return QUESTIONS.filter(q => questionStatus(q) === 'review');
+    // ALL_QUESTIONS (not QUESTIONS) — a Math question flagged for review in
+    // Math Browse gets the same FSRS scheduling and shows up in the same
+    // due queue as R&W.
+    return ALL_QUESTIONS.filter(q => questionStatus(q) === 'review');
   }
 
   // Pairs each question with its FSRS card, most-overdue (or never-studied)
@@ -4711,7 +5002,6 @@
     browseSelection: new Set(), // qids checked in Browse for bulk actions; persists across search/filter/sort changes so a selection can be built up across several searches, cleared only via "Clear selection" or after a bulk action runs
     modalList: null, // ordered array of questions the modal is navigating (Browse's current filtered list)
     modalIndex: null, // index within modalList currently shown in the modal
-    modalNoProgress: false, // true when the modal was opened from the Math (Beta) tab — hides status/notes, skips skill-stats/recent-question tracking
     attempt: {}, // questionId -> { choice, submitted, showAnswer }
     progress: loadProgress(), // questionId -> 'review' | 'done'
     skillStats: loadSkillStats(), // skill -> { correct, total } — feeds weak-skill bias
@@ -4729,6 +5019,8 @@
     profile: loadProfile(), // { name }
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
     reports: loadReports(), // [{ qid, shortId, reason, note, at, synced }, ...] — flagged question issues, sent on next cloud save
+    timeStats: loadTimeStats(), // local date -> { totalMs, viewMs: {view: ms}, categoryMs: {category: ms} } — see "Time tracking" above
+    answerTimeLog: loadAnswerTimeLog(), // questionId -> [{ ts, ms }, ...] most-recent-first-shown-to-submit timings, capped at ANSWER_TIME_WINDOW — see "Time-to-answer per question" above
   };
   backfillMissingCompletionLog();
 
@@ -4856,13 +5148,43 @@
   const allCategories = sortByFixedOrder([...new Set(QUESTIONS.map(q => q.category))], CATEGORY_ORDER);
   const allSkills = sortByFixedOrder([...new Set(QUESTIONS.map(q => q.skill))], SKILL_ORDER);
   const allDifficulties = ['Easy', 'Medium', 'Hard'];
+  // Math's own category/skill lists — kept separate from allCategories/
+  // allSkills above (which stay R&W-only, since those feed Practice/Test
+  // config and the Review "Custom" scope chips, neither of which Math can
+  // run in) but declared here, early, rather than down in the Math section
+  // below, so Analysis-tab code (also defined before the Math section) can
+  // safely reference them without a temporal-dead-zone crash on load.
+  const mathAllCategories = [...new Set(MATH_QUESTIONS.map(q => q.category))].sort();
+  const mathAllSkills = [...new Set(MATH_QUESTIONS.map(q => q.skill))].sort();
 
   // skill -> { category, domain } — the first question found with that skill
   // stands in for all of them (category/domain don't vary within a skill).
   // Used by the Analysis tab to label skillStats entries, which are keyed by
-  // skill alone.
+  // skill alone. Includes Math's skills too, since Analysis now covers both.
   const SKILL_META = new Map();
   QUESTIONS.forEach(q => { if (!SKILL_META.has(q.skill)) SKILL_META.set(q.skill, { category: q.category, domain: q.domain }); });
+  MATH_QUESTIONS.forEach(q => { if (!SKILL_META.has(q.skill)) SKILL_META.set(q.skill, { category: q.category, domain: q.domain }); });
+
+  // Combined R&W + Math lists for Analysis/Progress/Review display only —
+  // NOT used by Practice/Test config or the Review "Custom" scope chips
+  // (categoryChipsHtml/skillChipsHtml), which intentionally stay R&W-only.
+  const analysisCategories = [...allCategories, ...mathAllCategories];
+  const analysisSkills = [...allSkills, ...mathAllSkills];
+
+  // Renders a list of { cat, ... } entries (already in analysisCategories
+  // order, so R&W first) as two labeled groups instead of one flat list —
+  // a small "Reading & Writing" / "Math" subject header before each half,
+  // only shown when that half actually has any entries to show. Shared by
+  // the Progress tab's category tiles and the Review tab's flagged-by-
+  // category breakdown.
+  function categoryEntriesBySubjectHtml(byCategory, rowFn) {
+    const rw = byCategory.filter(c => !mathAllCategories.includes(c.cat));
+    const math = byCategory.filter(c => mathAllCategories.includes(c.cat));
+    let html = '';
+    if (rw.length) html += `<div class="cat-subject-header">Reading &amp; Writing</div>` + rw.map(rowFn).join('');
+    if (math.length) html += `<div class="cat-subject-header">Math</div>` + math.map(rowFn).join('');
+    return html;
+  }
 
   // ---------- Stats ----------
   // Personalized progress snapshot rather than fixed catalog metadata — updates
@@ -4981,7 +5303,11 @@
 
   function applyStatusClick(qid, next) {
     setStatus(qid, next === 'incomplete' ? null : next);
-    renderFilters();
+    // Math questions get their own facet counts/hidden-group state — refresh
+    // whichever sidebar actually owns this question.
+    const q = ALL_QUESTIONS.find(x => x.id === qid);
+    if (q && q.test === 'Math') { if (typeof renderMathFilters === 'function') renderMathFilters(); }
+    else renderFilters();
   }
 
   // Wires every [data-status-qid] button inside `container` via a single
@@ -5065,6 +5391,27 @@
     if (browseFilterEnabled('status')) renderFacet('statusFilters', ALL_STATUSES, state.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
     renderRatedTierFacet();
     renderTagFacet();
+    renderBrowseFilterHint();
+  }
+
+  // Jumps straight to the Lab tab (Profile family) — shared by both the
+  // English and Math "turn it on in Lab" hints below.
+  function goToLabSettings() {
+    document.querySelector('.tab[data-view="lab"]')?.click();
+  }
+
+  // "Want Skill/Status/Community rating too? Turn them on in Lab" hint,
+  // shown whenever any Browse facet is currently hidden — jumps straight to
+  // the Lab tab instead of leaving people to go hunting for the setting.
+  // Mirrors renderMathSkillHintHtml for the Math sidebar.
+  function renderBrowseFilterHint() {
+    const hintEl = document.getElementById('browseFilterHint');
+    if (!hintEl) return;
+    const hidden = BROWSE_FILTER_OPTIONS.filter(opt => !browseFilterEnabled(opt.key));
+    if (!hidden.length) { hintEl.hidden = true; return; }
+    hintEl.hidden = false;
+    hintEl.innerHTML = `Want ${hidden.map(o => escapeHtml(o.label)).join(', ')} too? <button type="button" class="link-btn" id="browseFilterHintLink">Turn it on in Lab</button>`;
+    document.getElementById('browseFilterHintLink')?.addEventListener('click', goToLabSettings);
   }
 
   // Rated Difficulty (Lab) filter facet — not built on the shared renderFacet
@@ -5395,9 +5742,9 @@
             <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd(keyDisplayName(keybindings.toggleAnswer))}</button>
             <button class="btn" data-copy-question-qid="${q.id}" title="Copy question text">Copy question${kbd('C')}</button>
           </div>
-          ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
-          ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
-          ${opts.noProgress ? '' : reportSectionHtml(q)}
+          ${statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
+          ${notesSectionHtml(q, opts)}
+          ${reportSectionHtml(q)}
         </div>`;
     }
     // choiceLettersFor applies the Lab "randomize order"/"thin choices"
@@ -5439,9 +5786,9 @@
           <button class="btn" data-toggle-answer-qid="${q.id}">${att.showAnswer ? 'Hide answer' : 'Show answer'}${kbd(keyDisplayName(keybindings.toggleAnswer))}</button>
           <button class="btn" data-copy-question-qid="${q.id}" title="${q.has_image ? 'Copies question text only — chart/table image not included' : 'Copy question text'}">Copy question${kbd('C')}</button>
         </div>
-        ${opts.noProgress ? '<div class="beta-note">Math (Beta) &mdash; not saved</div>' : statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
-        ${opts.noProgress ? '' : notesSectionHtml(q, opts)}
-        ${opts.noProgress ? '' : reportSectionHtml(q)}
+        ${statusButtonsHtml(q, { shortcuts: opts.shortcuts })}
+        ${notesSectionHtml(q, opts)}
+        ${reportSectionHtml(q)}
       </div>`;
   }
 
@@ -5531,12 +5878,17 @@
   function wireDetail(q, onChange, root, opts) {
     root = root || document;
     opts = opts || {};
+    // Time-to-answer and skill-mastery/Analysis recording both happen
+    // regardless of opts.noProgress — Math questions feed the same
+    // state.skillStats/timeStats as R&W now, keyed generically by skill/qid.
+    if (!getAttempt(q.id).submitted) noteQuestionShown(q.id);
     root.querySelectorAll(`.choice[data-qid="${q.id}"]`).forEach(el => {
       el.addEventListener('click', (e) => {
         e.stopPropagation();
         runWithoutScrollJump(() => {
           const letter = el.dataset.letter;
           const att = getAttempt(q.id);
+          if (att.submitted) questionShownAt[q.id] = Date.now(); // redoing a graded question — time the new attempt separately
           state.attempt[q.id] = Object.assign({}, att, { choice: letter, submitted: false });
           onChange();
         });
@@ -5547,6 +5899,7 @@
       gridinInput.addEventListener('click', (e) => e.stopPropagation());
       gridinInput.addEventListener('input', () => {
         const att = getAttempt(q.id);
+        if (att.submitted) questionShownAt[q.id] = Date.now(); // same redo case, grid-in side
         state.attempt[q.id] = Object.assign({}, att, { choice: gridinInput.value, submitted: false });
         // No onChange() here — a full re-render on every keystroke would
         // steal focus/cursor position from the input. The Submit button's
@@ -5570,7 +5923,12 @@
         if (!att.choice) return;
         state.attempt[q.id] = Object.assign({}, att, { submitted: true });
         const correct = q.is_mc ? att.choice === q.correct_answer : gridInAnswersMatch(att.choice, q.correct_answer);
-        if (!opts.noProgress) recordSkillAttempt(q.skill, correct);
+        recordSkillAttempt(q.skill, correct);
+        const shownAt = questionShownAt[q.id];
+        if (shownAt) {
+          recordAnswerTime(q.id, Date.now() - shownAt);
+          delete questionShownAt[q.id];
+        }
         onChange();
       });
     });
@@ -5718,19 +6076,17 @@
   // `list` is the ordered set the modal navigates Prev/Next through — pass
   // whatever list the click came from (Browse's current filtered results),
   // so paging through the modal walks the same set the user was looking at.
-  function openQuestionModal(list, index, opts) {
+  function openQuestionModal(list, index) {
     state.modalList = list;
     state.modalIndex = index;
-    state.modalNoProgress = !!(opts && opts.noProgress);
     const q = list && list[index];
-    if (q && !state.modalNoProgress) recordRecentQuestion(q.id);
+    if (q) recordRecentQuestion(q.id);
     renderQuestionModal();
   }
 
   function closeQuestionModal() {
     state.modalList = null;
     state.modalIndex = null;
-    state.modalNoProgress = false;
     renderQuestionModal();
     // Status/rating/mark-for-review edits made inside the modal mutate shared
     // state directly, not through whichever view opened it (Test/Mock
@@ -5785,7 +6141,7 @@
     });
     const out = [];
     for (const id of ids) {
-      const q = QUESTIONS.find(qq => qq.id === id);
+      const q = ALL_QUESTIONS.find(qq => qq.id === id);
       if (q) out.push(q);
       if (out.length >= limit) break;
     }
@@ -5802,8 +6158,8 @@
   const paletteState = { open: false, query: '', activeIndex: 0 };
 
   const PALETTE_COMMANDS = [
-    { id: 'nav-browse', title: 'Go to Browse: English', hint: 'Tab', keywords: 'browse questions reading writing', run: () => document.querySelector('.tab[data-view="browse"]').click() },
-    { id: 'nav-math', title: 'Go to Browse: Math', hint: 'Tab', keywords: 'browse questions math beta', run: () => document.querySelector('.tab[data-view="math"]').click() },
+    { id: 'nav-browse', title: 'Go to Browse: English', hint: 'Tab', keywords: 'browse questions reading writing', run: () => document.querySelector(".tab-dropdown-item[data-view=\"browse\"]").click() },
+    { id: 'nav-math', title: 'Go to Browse: Math', hint: 'Tab', keywords: 'browse questions math', run: () => document.querySelector('.tab[data-view="math"]').click() },
     { id: 'nav-practice', title: 'Go to Practice', hint: 'Tab', keywords: 'practice', run: () => document.querySelector('.tab[data-view="practice"]').click() },
     { id: 'nav-test', title: 'Go to Test', hint: 'Tab', keywords: 'test quiz', run: () => document.querySelector('.tab[data-view="test"]').click() },
     { id: 'nav-mock', title: 'Go to Mock Exam', hint: 'Tab', keywords: 'mock exam', run: () => document.querySelector('.tab[data-view="mock"]').click() },
@@ -5813,13 +6169,18 @@
     { id: 'nav-review', title: 'Go to Review', hint: 'Tab', keywords: 'review anki spaced repetition', run: () => document.querySelector('.tab[data-view="review"]').click() },
     { id: 'nav-notes', title: 'Go to Notes', hint: 'Tab', keywords: 'notes', run: () => document.querySelector('.tab[data-view="notes"]').click() },
     { id: 'nav-leaderboard', title: 'Go to Leaderboard', hint: 'Tab', keywords: 'leaderboard streak friends kyj-cloud rank', run: () => document.querySelector('.tab[data-view="leaderboard"]').click() },
+    { id: 'nav-lab', title: 'Go to Lab', hint: 'Tab', keywords: 'lab experimental settings toggle features randomize timing rated difficulty browse filters keybindings theme', run: () => document.querySelector('.tab[data-view="lab"]').click() },
     { id: 'start-tour', title: 'Take the full tour', hint: 'Tour', keywords: 'tour tutorial walkthrough onboarding guide interactive main', run: () => startTour('main') },
     { id: 'shortcuts-tour', title: 'Keyboard shortcuts', hint: 'Tour', keywords: 'shortcuts keyboard keybindings hotkeys hot keys asdf tutorial reference cheat sheet', run: () => startTour('shortcuts') },
     { id: 'nav-propose', title: 'Go to Propose', hint: 'Tab', keywords: 'propose submit new question suggest write contribute', run: () => document.querySelector('.tab[data-view="propose"]').click() },
     { id: 'toggle-theme', title: 'Toggle dark / light mode', hint: 'Theme', keywords: 'dark light theme mode', run: () => document.getElementById('themeToggleBtn').click() },
-    { id: 'clear-filters', title: 'Clear all Browse filters', hint: 'Browse', keywords: 'clear filters reset search', run: () => {
-      document.querySelector('.tab[data-view="browse"]').click();
+    { id: 'clear-filters', title: 'Clear all Browse filters (English)', hint: 'Browse', keywords: 'clear filters reset search english', run: () => {
+      document.querySelector(".tab-dropdown-item[data-view=\"browse\"]").click();
       document.getElementById('clearFilters').click();
+    } },
+    { id: 'clear-filters-math', title: 'Clear all Browse filters (Math)', hint: 'Browse', keywords: 'clear filters reset search math', run: () => {
+      document.querySelector('.tab[data-view="math"]').click();
+      document.getElementById('clearFiltersMath').click();
     } },
     { id: 'open-cloud-save', title: 'kyj-cloud (sync progress)', hint: 'Cloud', keywords: 'cloud save sync github backup sign in login kyj-cloud', run: () => document.getElementById('cloudSaveTriggerBtn').click() },
     { id: 'open-feedback', title: 'Feature suggestions & feedback', hint: 'Feedback', keywords: 'feedback bug report suggest feature request contact email', run: () => document.getElementById('feedbackTriggerBtn').click() },
@@ -5875,12 +6236,84 @@
     return { id: 'help-page', title: `Help me use — ${PAGE_TOUR_LABELS[key] || 'this page'}`, hint: 'Help', keywords: 'help tutorial guide tour page this ?', run: () => startTour(key) };
   }
 
+  // Re-renders the Lab panel in place if it's the currently mounted subtab
+  // (labShell is a persistent container — see the tab-switch handler around
+  // line 6375 — so this is a no-op rather than an error when Lab isn't the
+  // active view).
+  function refreshLabViewIfOpen() {
+    if (document.getElementById('labShell')) renderLab();
+  }
+
+  // On/off Lab feature toggles, exposed as palette commands so they're
+  // flippable without a trip to the Lab tab first — computed fresh on every
+  // open/keystroke (like contextualHelpCommand above) since the title
+  // reflects current on/off state.
+  function labToggleCommands() {
+    const cmds = [
+      { id: 'toggle-lab-randomize-order', title: `${randomizeOrderEnabled ? 'Disable' : 'Enable'} randomize answer order`, hint: 'Lab', keywords: 'lab randomize shuffle answer choice order toggle', run: () => {
+        setRandomizeOrderEnabled(!randomizeOrderEnabled);
+        refreshAllQuestionCardViews();
+        refreshLabViewIfOpen();
+      } },
+      { id: 'toggle-lab-strict-timing', title: `${strictTimingEnabled ? 'Disable' : 'Enable'} strict timing (auto-submit Test)`, hint: 'Lab', keywords: 'lab strict timing auto submit test toggle', run: () => {
+        setStrictTimingEnabled(!strictTimingEnabled);
+        refreshLabViewIfOpen();
+      } },
+      { id: 'toggle-lab-rated-difficulty', title: `${ratedDifficultyLabEnabled() ? 'Hide' : 'Show'} community difficulty ratings`, hint: 'Lab', keywords: 'lab rated difficulty community rating geometry dash toggle', run: () => {
+        const next = !ratedDifficultyLabEnabled();
+        setRatedDifficultyLabEnabled(next);
+        if (next && !Object.keys(ratedDifficultyCache).length) refreshRatedDifficultyCache().then(refreshAllQuestionCardViews);
+        refreshAllQuestionCardViews();
+        refreshLabViewIfOpen();
+      } },
+      { id: 'toggle-lab-cb-difficulty', title: `${hideCbDifficultyLabEnabled() ? 'Show' : 'Hide'} College Board difficulty pill`, hint: 'Lab', keywords: 'lab college board difficulty pill easy medium hard toggle', run: () => {
+        setHideCbDifficultyLabEnabled(!hideCbDifficultyLabEnabled());
+        refreshAllQuestionCardViews();
+        refreshLabViewIfOpen();
+      } },
+    ];
+    BROWSE_FILTER_OPTIONS.forEach(opt => {
+      cmds.push({ id: `toggle-browse-filter-${opt.key}`, title: `${browseFilterEnabled(opt.key) ? 'Hide' : 'Show'} ${opt.label} filter (Browse: English)`, hint: 'Lab', keywords: `lab browse filter english reading writing ${opt.label.toLowerCase()} toggle`, run: () => {
+        const next = !browseFilterEnabled(opt.key);
+        setBrowseFilterEnabled(opt.key, next);
+        if (!next) clearDisabledBrowseFacets();
+        renderFilters();
+        renderBrowse();
+        refreshLabViewIfOpen();
+      } });
+      cmds.push({ id: `toggle-math-browse-filter-${opt.key}`, title: `${mathBrowseFilterEnabled(opt.key) ? 'Hide' : 'Show'} ${opt.label} filter (Browse: Math)`, hint: 'Lab', keywords: `lab browse filter math ${opt.label.toLowerCase()} toggle`, run: () => {
+        const next = !mathBrowseFilterEnabled(opt.key);
+        setMathBrowseFilterEnabled(opt.key, next);
+        if (!next) clearDisabledMathBrowseFacets();
+        renderMathFilters();
+        renderMathBrowse();
+        refreshLabViewIfOpen();
+      } });
+    });
+    return cmds;
+  }
+
+  // One command per Lab theme variant (Default/Sepia/Goblin Mode/Terminal)
+  // — flags whichever is currently active rather than listing it as a
+  // no-op "switch to itself" action.
+  function labThemeCommands() {
+    const active = getLabTheme();
+    return LAB_THEMES.map(t => ({
+      id: `theme-${t.id}`,
+      title: t.id === active ? `Theme: ${t.label} (current)` : `Switch theme: ${t.label}`,
+      hint: 'Lab',
+      keywords: `lab theme variant appearance color ${t.label.toLowerCase()}`,
+      run: () => { setLabTheme(t.id); refreshLabViewIfOpen(); },
+    }));
+  }
+
   function paletteResults() {
     const needle = paletteState.query.trim().toLowerCase();
+    const allCommands = [contextualHelpCommand(), ...PALETTE_COMMANDS, ...labToggleCommands(), ...labThemeCommands()];
     if (!needle) {
-      return { commands: [contextualHelpCommand(), ...PALETTE_COMMANDS].slice(0, 6), questions: recentQuestions(6), questionsLabel: 'Recent' };
+      return { commands: allCommands.slice(0, 6), questions: recentQuestions(6), questionsLabel: 'Recent' };
     }
-    const commands = [contextualHelpCommand(), ...PALETTE_COMMANDS].filter(c => (c.title + ' ' + c.keywords).toLowerCase().includes(needle));
+    const commands = allCommands.filter(c => (c.title + ' ' + c.keywords).toLowerCase().includes(needle));
     const questions = paletteQuestionMatches(needle);
     return { commands, questions, questionsLabel: 'Questions' };
   }
@@ -5981,7 +6414,7 @@
         </div>
         <div class="palette-list" id="paletteList">${groupsHtml}</div>
         <div class="palette-foot">
-          <span>&#8593;&#8595; navigate</span>
+          <span>&#8593;&#8595; / ${escapeHtml(keyDisplayName(keybindings.palettePrev))}&#183;${escapeHtml(keyDisplayName(keybindings.paletteNext))} navigate</span>
           <span>&#8629; select</span>
           <span>&#8984;1-9 jump</span>
           <span>esc close</span>
@@ -5989,13 +6422,28 @@
       </div>`;
     root.style.display = 'flex';
 
+    // renderPalette() rebuilds #paletteInput's whole subtree on every call,
+    // which drops focus to <body> — without refocusing right after, the
+    // very next keypress (arrow or otherwise) lands nowhere and silently
+    // does nothing, which is exactly the "up/down stops working after one
+    // press" bug. Every handler below that re-renders while staying open
+    // must go through this instead of calling renderPalette() directly.
+    function renderPaletteKeepFocus() {
+      renderPalette();
+      const el = document.getElementById('paletteInput');
+      if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+      // Keeps the active row on screen as arrow/G-H navigation moves past
+      // the edge of the visible list — 'nearest' is a no-op when it's
+      // already in view, so this doesn't fight normal scrolling/typing.
+      const activeEl = document.querySelector('.palette-item.active');
+      if (activeEl) activeEl.scrollIntoView({ block: 'nearest' });
+    }
+
     const input = document.getElementById('paletteInput');
     input.addEventListener('input', (e) => {
       paletteState.query = e.target.value;
       paletteState.activeIndex = 0;
-      renderPalette();
-      const el = document.getElementById('paletteInput');
-      if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+      renderPaletteKeepFocus();
     });
     input.addEventListener('keydown', (e) => {
       const currentItems = paletteFlatItems();
@@ -6007,14 +6455,18 @@
         paletteRunItem(currentItems[parseInt(e.key, 10) - 1]);
         return;
       }
-      if (e.key === 'ArrowDown') {
+      // Two ways to move the selection: the arrow keys (fixed), or the
+      // Lab-rebindable paletteNext/palettePrev combo (Ctrl+N/Ctrl+P by
+      // default — see the Custom keybinding remapping card) — a modifier
+      // combo so it doesn't collide with typing a search query.
+      if (e.key === 'ArrowDown' || matchesKeyCombo(e, keybindings.paletteNext)) {
         e.preventDefault();
         paletteState.activeIndex = Math.min(currentItems.length - 1, paletteState.activeIndex + 1);
-        renderPalette();
-      } else if (e.key === 'ArrowUp') {
+        renderPaletteKeepFocus();
+      } else if (e.key === 'ArrowUp' || matchesKeyCombo(e, keybindings.palettePrev)) {
         e.preventDefault();
         paletteState.activeIndex = Math.max(0, paletteState.activeIndex - 1);
-        renderPalette();
+        renderPaletteKeepFocus();
       } else if (e.key === 'Enter') {
         e.preventDefault();
         paletteRunItem(currentItems[paletteState.activeIndex]);
@@ -6073,11 +6525,11 @@
             <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)} (U)">${escapeHtml(q.shortId)}<kbd class="kbd-hint">U</kbd></span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID (I)">${escapeHtml(q.id)}<kbd class="kbd-hint">I</kbd></button>
-            ${state.modalNoProgress ? '' : reportTriggerHtml(q)}
+            ${reportTriggerHtml(q)}
           </div>
           <button class="modal-close" data-close-modal aria-label="Close">&times;</button>
         </div>
-        <div class="modal-body">${qDetailHtml(q, { bare: true, shortcuts: true, noProgress: state.modalNoProgress })}</div>
+        <div class="modal-body">${qDetailHtml(q, { bare: true, shortcuts: true })}</div>
         <div class="modal-nav">
           <button class="btn" id="modalPrevBtn" ${state.modalIndex === 0 ? 'disabled' : ''}>&larr; Previous</button>
           <span class="modal-position">${state.modalIndex + 1} of ${total}</span>
@@ -6090,7 +6542,7 @@
     if (prevBtn) prevBtn.addEventListener('click', () => { state.modalIndex--; renderQuestionModal(); });
     const nextBtn = document.getElementById('modalNextBtn');
     if (nextBtn) nextBtn.addEventListener('click', () => { state.modalIndex++; renderQuestionModal(); });
-    wireDetail(q, renderQuestionModal, root, { noProgress: state.modalNoProgress });
+    wireDetail(q, renderQuestionModal, root);
   }
 
   // Plain-text rendering of a question for pasting elsewhere (another chat,
@@ -6177,6 +6629,19 @@
       e.preventDefault();
       jumpToQuestion(match.id);
     }
+  });
+  // Same self-healing as the Escape handler above, but for clicking/tabbing
+  // away instead of pressing a key — leaving a jump shorthand like
+  // "Algebra 1" sitting there with 0 matches (never having pressed Enter to
+  // actually jump) shouldn't require noticing and manually clearing it.
+  document.getElementById('searchBox').addEventListener('blur', () => {
+    clearTimeout(searchDebounceTimer);
+    const box = document.getElementById('searchBox');
+    if (!box.value.trim()) return;
+    state.query = box.value; // finalize whatever the pending debounce would have set
+    if (!currentFiltered(QUESTIONS).length) { box.value = ''; state.query = ''; }
+    renderFilters();
+    renderBrowse();
   });
   let notesSearchDebounceTimer = null;
   const notesSearchBox = document.getElementById('notesSearchBox');
@@ -6293,7 +6758,7 @@
     if (rebindingAction) {
       e.preventDefault();
       if (e.key !== 'Escape') {
-        keybindings[rebindingAction] = normalizeKeyName(e.key);
+        keybindings[rebindingAction] = captureKeybindingValue(rebindingAction, e);
         saveKeybindings();
       }
       rebindingAction = null;
@@ -6370,6 +6835,49 @@
         const choice = shell.querySelectorAll('.choice[data-letter]')[choiceIdx];
         if (choice) choice.click();
         return;
+      }
+    }
+
+    // Test/Mock's own lightweight "mark for review" flag (data-mark-toggle)
+    // and Bluebook's #bbFlagBtn — both distinct per-attempt flags, separate
+    // from the qbank data-set-status system activeDetailRoot() drives below
+    // — plus their report triggers. testShell/mockShell/#bluebookShell
+    // aren't in activeDetailRoot()'s list (bluebookShell is a whole separate
+    // DOM root, rendered outside testShell/mockShell whenever the kiosk is
+    // on), so none of this would otherwise be reachable from the keyboard
+    // during a Test or Mock Exam. Deliberately NOT gated behind
+    // quizShortcutsEnabled above — same "always on" tier as status marks/
+    // report/scroll/copy further down; only answer-choice/next/prev are
+    // opt-in there.
+    if (!state.modalList) {
+      const tmKey = normalizeKeyName(e.key);
+      const isMarkForReviewKey = tmKey === keybindings.statusReview || e.key.toLowerCase() === 't';
+      if (bbState.active && bbState.phase === 'quiz') {
+        if (isMarkForReviewKey) {
+          const btn = document.getElementById('bbFlagBtn');
+          if (btn) runWithoutScrollJump(() => btn.click());
+          return;
+        } else if (tmKey === keybindings.report) {
+          const btn = document.querySelector('#bluebookShell [data-report-toggle-qid]');
+          if (btn) runWithoutScrollJump(() => btn.click());
+          return;
+        }
+      } else if (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2') {
+        const isMock = mockState.phase === 'module1' || mockState.phase === 'module2';
+        const shellTM = document.getElementById(isMock ? 'mockShell' : 'testShell');
+        if (shellTM && isMarkForReviewKey) {
+          const btn = shellTM.querySelector('[data-mark-toggle]');
+          if (btn) runWithoutScrollJump(() => btn.click());
+          return;
+        } else if (shellTM && tmKey === keybindings.rateDifficulty) {
+          const btn = shellTM.querySelector('[data-rate-toggle]');
+          if (btn) runWithoutScrollJump(() => btn.click());
+          return;
+        } else if (shellTM && tmKey === keybindings.report) {
+          const btn = shellTM.querySelector('[data-report-toggle-qid]');
+          if (btn) runWithoutScrollJump(() => btn.click());
+          return;
+        }
       }
     }
 
@@ -6458,6 +6966,17 @@
         e.preventDefault(); // otherwise the same keystroke that focuses the input also gets typed into it
         input.focus({ preventScroll: true });
       }
+    } else if (boundKey === keybindings.rateDifficulty) {
+      // Opens the 1-10 rated-difficulty picker, same as clicking the badge —
+      // the popover itself still requires a mouse/click on a specific
+      // number, this just saves reaching for one to open it.
+      const btn = root.querySelector('[data-rate-toggle]');
+      if (btn) runWithoutScrollJump(() => btn.click());
+    } else if (boundKey === keybindings.report) {
+      // Opens the "Report a problem" popover; a no-op if this question
+      // already has a pending report, same as clicking the trigger does.
+      const btn = root.querySelector('[data-report-toggle-qid]');
+      if (btn) runWithoutScrollJump(() => btn.click());
     }
   });
 
@@ -6476,13 +6995,17 @@
     const btn = e.target.closest('[data-copy-question-qid]');
     if (!btn) return;
     e.stopPropagation();
-    const q = QUESTIONS.find(qq => qq.id === btn.dataset.copyQuestionQid);
+    // ALL_QUESTIONS, not QUESTIONS (R&W-only, see :3214) — this one
+    // delegated handler is the only wiring for every "Copy question" button
+    // in the app, English and Math alike (copyQuestionBtnHtml is shared),
+    // so a QUESTIONS-only lookup silently no-ops for every Math question.
+    const q = ALL_QUESTIONS.find(qq => qq.id === btn.dataset.copyQuestionQid);
     if (q) copyToClipboard(questionCopyText(q), btn);
   });
 
   // ---------- Tabs ----------
   const TAB_TITLES = {
-    home: 'Home', browse: 'Browse', math: 'Math (Beta)', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
+    home: 'Home', browse: 'Browse', math: 'Math', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
     profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', leaderboard: 'Leaderboard',
     propose: 'Propose', lab: 'Lab',
   };
@@ -6494,7 +7017,20 @@
   }
   setTitleForView(document.querySelector('.tab.active')?.dataset.view || 'browse');
   document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (e) => {
+      // Browse's top-level trigger opens its English/Math dropdown instead
+      // of navigating straight to English. Hover already reveals the
+      // dropdown for mouse users, but touch has no hover, so tapping
+      // "Browse" needs to open it the same way tapping the little caret
+      // does — English/Math themselves stay one tap away either way.
+      if (tab.id === 'browseNavTrigger') {
+        e.stopPropagation();
+        const group = document.getElementById('browseTabGroup');
+        const opening = !group.classList.contains('open');
+        group.classList.toggle('open', opening);
+        tab.setAttribute('aria-expanded', String(opening));
+        return;
+      }
       const view = tab.dataset.view;
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.tab[data-view="' + view + '"]').forEach(t => t.classList.add('active'));
@@ -6505,6 +7041,12 @@
         document.getElementById('browseNavTrigger')?.classList.add('active');
       }
       document.getElementById('browseTabGroup')?.classList.remove('open');
+      document.getElementById('browseNavTrigger')?.setAttribute('aria-expanded', 'false');
+      // Selecting English/Math leaves that dropdown item focused, and
+      // `.tab-group:focus-within .tab-dropdown` (the desktop hover-adjacent
+      // rule) would otherwise keep the menu visibly open despite the
+      // 'open' class above being removed.
+      tab.blur();
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById('view-' + view).classList.add('active');
       document.getElementById('profileSubtabs').classList.toggle('visible', PROFILE_FAMILY.includes(view));
@@ -6530,16 +7072,21 @@
   if (browseCaret && browseTabGroup) {
     browseCaret.addEventListener('click', (e) => {
       e.stopPropagation(); // don't also trigger the trigger button's own click-to-navigate
-      browseTabGroup.classList.toggle('open');
+      const opening = !browseTabGroup.classList.contains('open');
+      browseTabGroup.classList.toggle('open', opening);
+      document.getElementById('browseNavTrigger')?.setAttribute('aria-expanded', String(opening));
     });
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('#browseTabGroup')) browseTabGroup.classList.remove('open');
+      if (!e.target.closest('#browseTabGroup')) {
+        browseTabGroup.classList.remove('open');
+        document.getElementById('browseNavTrigger')?.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
   const brandLogoBtn = document.getElementById('brandLogoBtn');
   if (brandLogoBtn) brandLogoBtn.addEventListener('click', () => {
-    document.querySelector('.tab[data-view="browse"]').click();
+    document.querySelector(".tab-dropdown-item[data-view=\"browse\"]").click();
   });
 
   // ---------- Theme toggle ----------
@@ -6548,6 +7095,14 @@
   if (themeToggleBtn) themeToggleBtn.addEventListener('click', () => {
     const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const current = document.documentElement.dataset.theme || (systemDark ? 'dark' : 'light');
+    // If a seasonal theme (Halloween, Christmas, ...) is currently pinned as
+    // the default, an explicit toggle click means "opt out of it for this
+    // year's window" — otherwise setLabTheme('default') below would just
+    // re-apply it and the toggle would appear to do nothing.
+    const seasonal = typeof activeSeasonalTheme === 'function' ? activeSeasonalTheme() : null;
+    if (seasonal && current === seasonal.id && typeof dismissSeasonalTheme === 'function') {
+      dismissSeasonalTheme(seasonal);
+    }
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* best-effort */ }
@@ -7910,6 +8465,8 @@
     statusReview: 'j', statusDone: 'k', statusIncomplete: 'l',
     scrollUp: 'e', scrollDown: 'r',
     copyQuestion: 'c', copyId: 'i', copyLabel: 'u', focusNote: 'n',
+    rateDifficulty: 'v', report: 'p',
+    paletteNext: 'ctrl+n', palettePrev: 'ctrl+p',
   };
   const KEYBINDING_ACTIONS = [
     { key: 'choiceA', label: 'Choice A' },
@@ -7933,6 +8490,10 @@
     { key: 'copyId', label: 'Copy ID' },
     { key: 'copyLabel', label: 'Copy label' },
     { key: 'focusNote', label: 'Focus note' },
+    { key: 'rateDifficulty', label: 'Rate difficulty (community rating)' },
+    { key: 'report', label: 'Report a problem' },
+    { key: 'paletteNext', label: 'Command palette: next item (2nd way, besides ↓)' },
+    { key: 'palettePrev', label: 'Command palette: previous item (2nd way, besides ↑)' },
   ];
   function loadKeybindings() {
     try {
@@ -7953,11 +8514,34 @@
     return rawKey === ' ' ? ' ' : rawKey.toLowerCase();
   }
   function keyDisplayName(k) {
+    if (typeof k === 'string' && k.startsWith('ctrl+')) return 'Ctrl+' + keyDisplayName(k.slice(5));
     if (k === ' ') return 'Space';
     if (k === 'enter') return 'Enter';
     if (k === 'arrowleft') return '←';
     if (k === 'arrowright') return '→';
     return k.length === 1 ? k.toUpperCase() : k;
+  }
+  // paletteNext/palettePrev are the one pair of rebindable actions that need
+  // a modifier — they fire while focus is in the palette's search box, where
+  // a bare letter would just get typed instead of moving the selection — so
+  // they're captured/stored as "ctrl+<key>" rather than the plain single-key
+  // strings every other action uses.
+  const MODIFIER_AWARE_KEYBINDINGS = new Set(['paletteNext', 'palettePrev']);
+  function captureKeybindingValue(action, e) {
+    if (MODIFIER_AWARE_KEYBINDINGS.has(action)) {
+      return `${(e.ctrlKey || e.metaKey) ? 'ctrl+' : ''}${normalizeKeyName(e.key)}`;
+    }
+    return normalizeKeyName(e.key);
+  }
+  // Matches a captured KeyboardEvent against a "ctrl+<key>" (or plain
+  // "<key>") binding — used for paletteNext/palettePrev, which are the only
+  // bindings that can carry the ctrl+ prefix captureKeybindingValue writes.
+  function matchesKeyCombo(e, combo) {
+    if (!combo) return false;
+    const wantsCtrl = combo.startsWith('ctrl+');
+    const key = wantsCtrl ? combo.slice(5) : combo;
+    const hasCtrl = e.ctrlKey || e.metaKey;
+    return wantsCtrl === hasCtrl && e.key.toLowerCase() === key;
   }
   // Set while a "Press a key to rebind" button is armed — the very first
   // thing the global keydown listener checks, so it can steal the next
@@ -7981,6 +8565,8 @@
     { id: 'sepia', label: 'Sepia', swatch: '#8a5a2b' },
     { id: 'goblin', label: 'Goblin Mode', swatch: '#7fff00' },
     { id: 'terminal', label: 'Terminal', swatch: '#33ff33' },
+    { id: 'halloween', label: 'Halloween', swatch: '#ff6f1f' },
+    { id: 'christmas', label: 'Christmas', swatch: '#b2273a' },
   ];
   function getLabTheme() {
     try {
@@ -7988,9 +8574,48 @@
       return v && LAB_THEMES.some(t => t.id === v) ? v : 'default';
     } catch (e) { return 'default'; }
   }
+
+  // -- Seasonal themes (Halloween, Christmas, ...) --
+  // These are ordinary Lab themes (see LAB_THEMES above) that additionally
+  // auto-pin as the resolved "Default" during their date window, the same
+  // way the default theme already resolves to system light/dark — pinned,
+  // but not sticky: an explicit topbar toggle click opts out for the rest
+  // of that year's window (see themeToggleBtn below), and picking "Default"
+  // again from the Lab opts back in. The anti-flash <script> at the top of
+  // <head> duplicates this window list so it can resolve the theme before
+  // this script loads — keep both in sync.
+  const SEASONAL_THEME_WINDOWS = [
+    { id: 'halloween', label: 'Halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
+    { id: 'christmas', label: 'Christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 },
+  ];
+  const SEASONAL_DISMISS_KEY = 'sat_qbank_seasonal_dismissed_v1';
+  function activeSeasonalTheme(date) {
+    date = date || new Date();
+    const m = date.getMonth() + 1, d = date.getDate();
+    return SEASONAL_THEME_WINDOWS.find(w => m === w.startMonth && d >= w.startDay && d <= w.endDay) || null;
+  }
+  function isSeasonalDismissed(window, date) {
+    date = date || new Date();
+    try {
+      return localStorage.getItem(SEASONAL_DISMISS_KEY) === window.id + ':' + date.getFullYear();
+    } catch (e) { return false; }
+  }
+  function dismissSeasonalTheme(window, date) {
+    date = date || new Date();
+    try { localStorage.setItem(SEASONAL_DISMISS_KEY, window.id + ':' + date.getFullYear()); } catch (e) { /* best-effort */ }
+  }
+  function clearSeasonalDismissal() {
+    try { localStorage.removeItem(SEASONAL_DISMISS_KEY); } catch (e) { /* best-effort */ }
+  }
+
   function setLabTheme(id) {
     try { localStorage.setItem(LAB_THEME_KEY, id); } catch (e) { /* best-effort */ }
     if (id === 'default') {
+      const seasonal = activeSeasonalTheme();
+      if (seasonal && !isSeasonalDismissed(seasonal)) {
+        document.documentElement.dataset.theme = seasonal.id;
+        return;
+      }
       const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       let saved = null;
       try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
@@ -8083,32 +8708,13 @@
     try { localStorage.setItem(HIDE_CB_DIFFICULTY_LAB_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
   }
   // -- Browse filter facets (Lab) --
-  // Which of the five Browse sidebar facets are shown at all. Defaults match
+  // Which of the five Browse sidebar facets are shown at all — one
+  // independent set for the R&W Browse tab, one for Math. Defaults match
   // what most people actually use day to day (Category/Difficulty/Status/
   // Community rating); Skill stays off by default since Category already
   // narrows things down and the two overlap a lot. Turning a facet off also
   // clears any active selection in it, so a hidden filter can't keep
   // silently narrowing the list.
-  const BROWSE_FILTERS_KEY = 'sat_qbank_browse_filters_v1';
-  const DEFAULT_BROWSE_FILTERS = { category: true, skill: false, difficulty: true, status: true, communityRating: true };
-  function loadBrowseFilters() {
-    try {
-      const raw = JSON.parse(localStorage.getItem(BROWSE_FILTERS_KEY));
-      if (raw && typeof raw === 'object') return Object.assign({}, DEFAULT_BROWSE_FILTERS, raw);
-    } catch (e) { /* fall through to defaults */ }
-    return Object.assign({}, DEFAULT_BROWSE_FILTERS);
-  }
-  const browseFilters = loadBrowseFilters();
-  function saveBrowseFilters() {
-    try { localStorage.setItem(BROWSE_FILTERS_KEY, JSON.stringify(browseFilters)); } catch (e) { /* best-effort */ }
-  }
-  function browseFilterEnabled(key) {
-    return !!browseFilters[key];
-  }
-  function setBrowseFilterEnabled(key, v) {
-    browseFilters[key] = !!v;
-    saveBrowseFilters();
-  }
   const BROWSE_FILTER_OPTIONS = [
     { key: 'category', label: 'Category' },
     { key: 'skill', label: 'Skill' },
@@ -8116,6 +8722,32 @@
     { key: 'status', label: 'Status' },
     { key: 'communityRating', label: 'Community rating' },
   ];
+  const DEFAULT_BROWSE_FILTERS = { category: true, skill: false, difficulty: true, status: true, communityRating: true };
+  // Shared factory for the two independent stores (called once each, below)
+  // rather than duplicating load/save/get/set for English and Math.
+  function makeBrowseFilterStore(storageKey) {
+    function load() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(storageKey));
+        if (raw && typeof raw === 'object') return Object.assign({}, DEFAULT_BROWSE_FILTERS, raw);
+      } catch (e) { /* fall through to defaults */ }
+      return Object.assign({}, DEFAULT_BROWSE_FILTERS);
+    }
+    const values = load();
+    function save() {
+      try { localStorage.setItem(storageKey, JSON.stringify(values)); } catch (e) { /* best-effort */ }
+    }
+    return {
+      enabled: (key) => !!values[key],
+      set: (key, v) => { values[key] = !!v; save(); },
+    };
+  }
+  const browseFilterStore = makeBrowseFilterStore('sat_qbank_browse_filters_v1');
+  const mathBrowseFilterStore = makeBrowseFilterStore('sat_qbank_browse_filters_math_v1');
+  function browseFilterEnabled(key) { return browseFilterStore.enabled(key); }
+  function setBrowseFilterEnabled(key, v) { browseFilterStore.set(key, v); }
+  function mathBrowseFilterEnabled(key) { return mathBrowseFilterStore.enabled(key); }
+  function setMathBrowseFilterEnabled(key, v) { mathBrowseFilterStore.set(key, v); }
 
   // Single call site for the CB difficulty pill everywhere it's unconditionally
   // shown (Browse card, question modal, inline panel, Math card) — mirrors
@@ -8130,6 +8762,7 @@
   function resetLabSettings() {
     Object.keys(keybindings).forEach(k => { keybindings[k] = DEFAULT_KEYBINDINGS[k]; });
     saveKeybindings();
+    clearSeasonalDismissal();
     setLabTheme('default');
     setRandomizeOrderEnabled(false);
     setChoiceCount(4);
@@ -8137,7 +8770,9 @@
     setRatedDifficultyLabEnabled(true);
     setHideCbDifficultyLabEnabled(false);
     BROWSE_FILTER_OPTIONS.forEach(opt => setBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
+    BROWSE_FILTER_OPTIONS.forEach(opt => setMathBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
     if (typeof clearDisabledBrowseFacets === 'function') clearDisabledBrowseFacets();
+    if (typeof clearDisabledMathBrowseFacets === 'function') clearDisabledMathBrowseFacets();
     rebindingAction = null;
     labResetConfirmPending = false;
   }
@@ -12180,7 +12815,11 @@
   function totalXp() {
     let xp = 0;
     Object.keys(state.completionLog).forEach(qid => {
-      const q = QUESTIONS.find(x => x.id === qid);
+      // ALL_QUESTIONS, not QUESTIONS (which is R&W-only, see :3214) — a
+      // completed Math question is just as much in completionLog as an R&W
+      // one, and used to silently earn 0 XP here since the QUESTIONS.find
+      // lookup always missed it.
+      const q = ALL_QUESTIONS.find(x => x.id === qid);
       if (q) xp += QUESTION_XP[q.difficulty_label] || 10;
     });
     return xp + mockState.history.length * MOCK_EXAM_XP;
@@ -12267,11 +12906,18 @@
     const streaks = computeStreaks(counts);
     const totalDone = Object.values(state.progress).filter(s => s === 'done').length;
     const totalReview = Object.values(state.progress).filter(s => s === 'review').length;
-    const hardDone = QUESTIONS.filter(q => q.difficulty_label === 'Hard' && questionStatus(q) === 'done').length;
+    // ALL_QUESTIONS (R&W + Math), not QUESTIONS (R&W-only, see :3214) —
+    // totalDone above already counts Math completions (state.progress is
+    // subject-agnostic), so hardDone/totalQuestions/the category loop below
+    // need to as well, or Hard-difficulty Math completions never count
+    // toward "Hard Mode", totalDone can exceed totalQuestions and break the
+    // Completionist/Halfway-There progress bars, and Math categories can
+    // never be "mastered" for Category Master.
+    const hardDone = ALL_QUESTIONS.filter(q => q.difficulty_label === 'Hard' && questionStatus(q) === 'done').length;
 
     let bestRatio = -1, bestCategoryDone = 0, bestCategoryTotal = 1;
-    allCategories.forEach(cat => {
-      const qs = QUESTIONS.filter(q => q.category === cat);
+    [...allCategories, ...mathAllCategories].forEach(cat => {
+      const qs = ALL_QUESTIONS.filter(q => q.category === cat);
       if (!qs.length) return;
       const d = qs.filter(q => questionStatus(q) === 'done').length;
       const ratio = d / qs.length;
@@ -12284,7 +12930,7 @@
     const lvl = levelFromXp(xp);
 
     return {
-      totalDone, totalReview, totalQuestions: QUESTIONS.length, hardDone,
+      totalDone, totalReview, totalQuestions: ALL_QUESTIONS.length, hardDone,
       bestCategoryDone, bestCategoryTotal,
       currentStreak: streaks.current, longestStreak: streaks.longest,
       todayCount: counts[dateKey(new Date())] || 0, goal, goalDaysHit,
@@ -12472,6 +13118,64 @@
       </div>`;
   }
 
+  // ---------- Study time (Profile tab) ----------
+  // Reads state.timeStats (populated continuously by timeTrackerTick above) —
+  // today/last-7-days/all-time totals, plus a breakdown of the last 7 days by
+  // tab so "what is my time actually made of" has an answer alongside the
+  // completion-count-based stats everywhere else on this tab.
+  const STUDY_TIME_TREND_DAYS = 7;
+
+  function formatStudyMs(ms) {
+    const mins = Math.round(ms / 60000);
+    if (mins < 1) return '<1m';
+    const h = Math.floor(mins / 60), m = mins % 60;
+    return h ? `${h}h ${m}m` : `${m}m`;
+  }
+
+  function studyTimeCardHtml() {
+    const today = new Date();
+    const todayMs = (state.timeStats[dateKey(today)] || {}).totalMs || 0;
+
+    let weekMs = 0;
+    const viewTotals = {};
+    for (let i = 0; i < STUDY_TIME_TREND_DAYS; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const day = state.timeStats[dateKey(d)];
+      if (!day) continue;
+      weekMs += day.totalMs || 0;
+      Object.entries(day.viewMs || {}).forEach(([v, ms]) => { viewTotals[v] = (viewTotals[v] || 0) + ms; });
+    }
+
+    let allTimeMs = 0;
+    Object.values(state.timeStats).forEach(day => { allTimeMs += day.totalMs || 0; });
+
+    const topViews = Object.entries(viewTotals).sort((a, b) => b[1] - a[1]).slice(0, 6);
+    const maxViewMs = topViews.length ? topViews[0][1] : 0;
+    const rows = topViews.length ? topViews.map(([view, ms]) => `
+      <div style="margin-bottom:8px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <span>${escapeHtml(TAB_TITLES[view] || view)}</span>
+          <span style="color:var(--ink-faint);">${formatStudyMs(ms)}</span>
+        </div>
+        <div style="height:6px; border-radius:3px; background:var(--rule-soft); overflow:hidden;">
+          <div style="height:100%; width:${maxViewMs ? Math.round((ms / maxViewMs) * 100) : 0}%; background:var(--accent);"></div>
+        </div>
+      </div>`).join('') : `<p style="color:var(--ink-faint); font-size:13px; margin:0;">Nothing tracked yet — time is logged as you use the app (a background/idle tab doesn't count).</p>`;
+
+    return `
+      <div class="progress-summary">
+        <h2>⏱️ Study time</h2>
+        <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:14px;">
+          <div><div style="font-size:20px; font-weight:700;">${formatStudyMs(todayMs)}</div><div style="color:var(--ink-faint); font-size:12px;">Today</div></div>
+          <div><div style="font-size:20px; font-weight:700;">${formatStudyMs(weekMs)}</div><div style="color:var(--ink-faint); font-size:12px;">Last ${STUDY_TIME_TREND_DAYS} days</div></div>
+          <div><div style="font-size:20px; font-weight:700;">${formatStudyMs(allTimeMs)}</div><div style="color:var(--ink-faint); font-size:12px;">All time</div></div>
+        </div>
+        <div style="color:var(--ink-faint); font-size:12px; margin-bottom:8px;">Where the last ${STUDY_TIME_TREND_DAYS} days went</div>
+        ${rows}
+      </div>`;
+  }
+
   // ---------- Score trend (Profile tab) ----------
   // R&W is per-attempt (mockState.history), via effectiveRWScore — your
   // assumed-module override if set, else computeAttemptRW's default mirrored
@@ -12635,8 +13339,8 @@
   // among attempted ones (a direct signal of struggle); falls back to the
   // least-covered category once nothing's been flagged yet.
   function computeWeakSpot() {
-    const byCategory = allCategories.map(cat => {
-      const qs = QUESTIONS.filter(q => q.category === cat);
+    const byCategory = analysisCategories.map(cat => {
+      const qs = ALL_QUESTIONS.filter(q => q.category === cat);
       const done = qs.filter(q => questionStatus(q) === 'done').length;
       const review = qs.filter(q => questionStatus(q) === 'review').length;
       const attempted = done + review;
@@ -12740,18 +13444,20 @@
         <div class="log-item-desc">${rebindingAction === a.key ? 'Press any key (Escape to cancel)…' : `Currently bound to <strong>${escapeHtml(keyDisplayName(keybindings[a.key]))}</strong>.`}</div>
       </div>`).join('');
     return labCardHtml('⌨️ Custom keybinding remapping', `
-      <div class="log-item-desc" style="margin-bottom:10px;">Rebind every letter-key shortcut in the app — answering, navigating, review grading, status marks, passage scrolling, and copy/note actions — Enter/Space/arrow keys (and T as a fixed alias for "Mark Review") stay as physical fallbacks either way. The answer/navigation ones only take effect where <strong>Enable keyboard shortcuts</strong> is already on; the rest apply wherever their action is already available.</div>
+      <div class="log-item-desc" style="margin-bottom:10px;">Rebind every letter-key shortcut in the app — answering, navigating, review grading, status marks, passage scrolling, copy/note actions, and the command palette's up/down navigation — Enter/Space/arrow keys (and T as a fixed alias for "Mark Review") stay as physical fallbacks either way. The answer/navigation ones only take effect where <strong>Enable keyboard shortcuts</strong> is already on; the rest apply wherever their action is already available. The two command-palette entries need a modifier (Ctrl by default) since they fire while typing in its search box — pressing a bare letter there just types it instead.</div>
       <div class="log-list">${rows}</div>`);
   }
   function labThemeCardHtml() {
     const active = getLabTheme();
+    const seasonal = activeSeasonalTheme();
+    const seasonalPinned = seasonal && active === 'default' && !isSeasonalDismissed(seasonal);
     const swatches = LAB_THEMES.map(t => `
-      <button type="button" class="btn ${active === t.id ? 'btn-accent' : ''}" style="display:inline-flex; align-items:center; gap:6px;" data-lab-theme="${t.id}">
+      <button type="button" class="btn ${active === t.id || (seasonalPinned && t.id === seasonal.id) ? 'btn-accent' : ''}" style="display:inline-flex; align-items:center; gap:6px;" data-lab-theme="${t.id}">
         ${t.swatch ? `<span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:${t.swatch};"></span>` : ''}
-        ${escapeHtml(t.label)}
+        ${escapeHtml(t.label)}${t.id === 'halloween' ? ' 🎃' : t.id === 'christmas' ? ' 🎄' : ''}
       </button>`).join('');
     return labCardHtml('🎨 Theme variants', `
-      <div class="log-item-desc" style="margin-bottom:10px;">An alternate theme beyond light/dark — e.g. <strong>Sepia</strong>, a warm paper look. Picking one here overrides the topbar's sun/moon toggle until you pick <strong>Default</strong> again; the topbar toggle itself always stays a plain light/dark switch.</div>
+      <div class="log-item-desc" style="margin-bottom:10px;">An alternate theme beyond light/dark — e.g. <strong>Sepia</strong>, a warm paper look. Picking one here overrides the topbar's sun/moon toggle until you pick <strong>Default</strong> again; the topbar toggle itself always stays a plain light/dark switch. ${seasonal ? `<strong>${escapeHtml(seasonal.label)}</strong> is in season and ${seasonalPinned ? 'is currently pinned as Default' : 'is available below even though you opted out of the auto-pin'} — toggle the topbar sun/moon to opt back out, or pick <strong>Default</strong> here to opt back in.` : ''}</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">${swatches}</div>`);
   }
   function labChoicesCardHtml() {
@@ -12778,14 +13484,14 @@
     return labCardHtml('🏷️ College Board difficulty rating', `
       ${labToggleRowHtml('labHideCbDifficulty', 'Hide the official Easy/Medium/Hard pill', "Hides College Board's own difficulty label everywhere it's normally always shown — Browse cards, the question modal, and inline Progress/Review panels — not just the per-attempt Test/Mock/Practice toggle, which only affects the quiz screen itself.", hideCbDifficultyLabEnabled())}`);
   }
-  function labBrowseFiltersCardHtml() {
+  function labBrowseFiltersCardHtml(title, dataAttr, enabledFn, contextNote) {
     const rows = BROWSE_FILTER_OPTIONS.map(opt => `
       <label class="filter-opt" style="padding:4px 0;">
-        <input type="checkbox" data-browse-filter-key="${opt.key}" ${browseFilterEnabled(opt.key) ? 'checked' : ''} />
+        <input type="checkbox" ${dataAttr}="${opt.key}" ${enabledFn(opt.key) ? 'checked' : ''} />
         <span>${escapeHtml(opt.label)}</span>
       </label>`).join('');
-    return labCardHtml('🔍 Browse filters', `
-      <div class="log-item-desc" style="margin-bottom:10px;">Pick which filter facets show up in the Browse sidebar. Category, Difficulty, Status, and Community rating are shown by default; Skill is hidden by default since it overlaps a lot with Category. Turning one off also clears any active selection in it.</div>
+    return labCardHtml(title, `
+      <div class="log-item-desc" style="margin-bottom:10px;">Pick which filter facets show up in the ${contextNote} sidebar. Category, Difficulty, Status, and Community rating are shown by default; Skill is hidden by default since it overlaps a lot with Category. Turning one off also clears any active selection in it.</div>
       <div style="display:flex; flex-direction:column; gap:2px;">${rows}</div>`);
   }
   function renderLab() {
@@ -12797,7 +13503,7 @@
         <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior, except Rated Difficulty (on by default — opt out below).</p>
         ${labResetConfirmPending ? `
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--incorrect-bg); border:1px solid var(--incorrect); color:var(--incorrect); border-radius:8px; padding:10px 14px;">
-            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, and strict timing go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters go back to Category/Difficulty/Status/Community rating shown, Skill hidden.</span>
+            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, and strict timing go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters (both English and Math) go back to Category/Difficulty/Status/Community rating shown, Skill hidden.</span>
             <div style="display:flex; gap:8px; margin-left:auto;">
               <button type="button" class="btn" id="labResetCancelBtn">Cancel</button>
               <button type="button" class="btn btn-accent" id="labResetConfirmBtn">Yes, reset everything</button>
@@ -12810,7 +13516,8 @@
       ${labStrictTimingCardHtml()}
       ${labRatedDifficultyCardHtml()}
       ${labCbDifficultyCardHtml()}
-      ${labBrowseFiltersCardHtml()}
+      ${labBrowseFiltersCardHtml('🔍 Browse filters — English', 'data-browse-filter-key', browseFilterEnabled, 'R&W Browse')}
+      ${labBrowseFiltersCardHtml('🔍 Browse filters — Math', 'data-browse-filter-math-key', mathBrowseFilterEnabled, 'Math')}
       ${labKeybindingsCardHtml()}`;
 
     const resetBtn = document.getElementById('labResetBtn');
@@ -12842,12 +13549,28 @@
         refreshAllQuestionCardViews();
       });
     });
+    shell.querySelectorAll('[data-browse-filter-math-key]').forEach(box => {
+      box.addEventListener('change', () => {
+        const key = box.dataset.browseFilterMathKey;
+        setMathBrowseFilterEnabled(key, box.checked);
+        if (!box.checked) clearDisabledMathBrowseFacets();
+        renderMathFilters();
+        renderMathBrowse();
+      });
+    });
 
     shell.querySelectorAll('[data-rebind-action]').forEach(btn => {
       btn.addEventListener('click', () => { rebindingAction = btn.dataset.rebindAction; renderLab(); });
     });
     shell.querySelectorAll('[data-lab-theme]').forEach(btn => {
-      btn.addEventListener('click', () => { setLabTheme(btn.dataset.labTheme); renderLab(); });
+      btn.addEventListener('click', () => {
+        // Explicitly picking "Default" is an opt back in to the seasonal
+        // auto-pin (e.g. after opting out via the topbar toggle), not just
+        // a no-op — clear any standing dismissal first.
+        if (btn.dataset.labTheme === 'default') clearSeasonalDismissal();
+        setLabTheme(btn.dataset.labTheme);
+        renderLab();
+      });
     });
     const randomizeBox = document.getElementById('labRandomizeOrder');
     if (randomizeBox) randomizeBox.addEventListener('change', () => { setRandomizeOrderEnabled(randomizeBox.checked); renderLab(); });
@@ -12944,7 +13667,7 @@
   // Every badge comes from the server (Code.gs's handleLeaderboard_,
   // reading db/user_titles.json) — hand-assigned, no computed condition.
   // Mirrors Code.gs's LEADERBOARD_BADGES_ENABLED_ — flip both together.
-  const LB_BADGES_ENABLED = false;
+  const LB_BADGES_ENABLED = true;
 
   function leaderboardBadgeHtml(badge) {
     return `<span class="lb-title-badge" style="background:${escapeHtml(badge.color)};" title="${escapeHtml(badge.reason || '')}">${badge.emoji ? `<span aria-hidden="true">${badge.emoji}</span>` : ''}${escapeHtml(badge.text)}</span>`;
@@ -13101,7 +13824,7 @@
   let progressPanelScrolledFor = null;
   function renderProgress() {
     const shell = document.getElementById('progressShell');
-    const focusQuestions = QUESTIONS.filter(q => state.progressFocus.has(q.difficulty_label));
+    const focusQuestions = ALL_QUESTIONS.filter(q => state.progressFocus.has(q.difficulty_label));
     const total = focusQuestions.length;
     let done = 0, review = 0;
     focusQuestions.forEach(q => {
@@ -13112,14 +13835,14 @@
     const incomplete = total - done - review;
     const pct = n => total ? Math.round((n / total) * 100) : 0;
 
-    const byCategory = allCategories.map(cat => {
+    const byCategory = analysisCategories.map(cat => {
       const qs = focusQuestions.filter(q => q.category === cat);
       const d = qs.filter(q => questionStatus(q) === 'done').length;
       const r = qs.filter(q => questionStatus(q) === 'review').length;
       return { cat, qs, total: qs.length, done: d, review: r };
     });
 
-    const catRows = byCategory.map(c => {
+    const catRows = categoryEntriesBySubjectHtml(byCategory, c => {
       const isOpen = state.progressExpandedCategory === c.cat;
       return `
       <div class="cat-progress-card">
@@ -13133,11 +13856,11 @@
         </div>
         ${isOpen ? `<div class="cat-detail">${c.qs.length ? diffBreakdownHtml(c.qs) : '<div class="review-queue-empty">No questions at this difficulty in this category.</div>'}</div>` : ''}
       </div>`;
-    }).join('');
+    });
 
     let openQ = null;
     if (state.progressOpenQuestion) {
-      openQ = QUESTIONS.find(x => x.id === state.progressOpenQuestion) || null;
+      openQ = ALL_QUESTIONS.find(x => x.id === state.progressOpenQuestion) || null;
       if (!openQ) state.progressOpenQuestion = null;
     }
 
@@ -13278,6 +14001,8 @@
       trendExcluded: [...trendExcluded],
       recentVisits: recentVisits,
       blueprints: loadBlueprints(),
+      timeStats: state.timeStats,
+      answerTimeLog: state.answerTimeLog,
     };
   }
 
@@ -13305,9 +14030,11 @@
     const incomingTrendExcluded = parsed && typeof parsed === 'object' ? parsed.trendExcluded : null;
     const incomingRecentVisits = parsed && typeof parsed === 'object' ? parsed.recentVisits : null;
     const incomingBlueprints = parsed && typeof parsed === 'object' ? parsed.blueprints : null;
+    const incomingTimeStats = parsed && typeof parsed === 'object' ? parsed.timeStats : null;
+    const incomingAnswerTimeLog = parsed && typeof parsed === 'object' ? parsed.answerTimeLog : null;
     const hasIncomingMathOverrides = incomingMathOverrides && typeof incomingMathOverrides === 'object' && !Array.isArray(incomingMathOverrides);
     const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints) {
+    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints && !incomingTimeStats && !incomingAnswerTimeLog) {
       return false;
     }
     if (incomingProgress && typeof incomingProgress === 'object') {
@@ -13432,6 +14159,44 @@
       const byId = new Map(loadBlueprints().map(b => [b.id, b]));
       incomingBlueprints.forEach(b => { if (b && b.id) byId.set(b.id, b); });
       saveBlueprintsList([...byId.values()]);
+    }
+    if (incomingTimeStats && typeof incomingTimeStats === 'object' && !Array.isArray(incomingTimeStats)) {
+      // Max-merge per day/view/category, same idempotent convention as
+      // skillStats/recentVisits above — re-importing the same or an
+      // overlapping backup is a no-op instead of double-counting time spent
+      // on the device the backup came from in the first place.
+      Object.entries(incomingTimeStats).forEach(([day, incomingDay]) => {
+        if (!incomingDay || typeof incomingDay !== 'object') return;
+        const existing = state.timeStats[day] || { totalMs: 0, viewMs: {}, categoryMs: {} };
+        const mergedViewMs = Object.assign({}, existing.viewMs);
+        Object.entries(incomingDay.viewMs || {}).forEach(([v, ms]) => {
+          mergedViewMs[v] = Math.max(mergedViewMs[v] || 0, Number.isFinite(ms) ? ms : 0);
+        });
+        const mergedCategoryMs = Object.assign({}, existing.categoryMs);
+        Object.entries(incomingDay.categoryMs || {}).forEach(([c, ms]) => {
+          mergedCategoryMs[c] = Math.max(mergedCategoryMs[c] || 0, Number.isFinite(ms) ? ms : 0);
+        });
+        state.timeStats[day] = {
+          totalMs: Math.max(existing.totalMs || 0, Number.isFinite(incomingDay.totalMs) ? incomingDay.totalMs : 0),
+          viewMs: mergedViewMs,
+          categoryMs: mergedCategoryMs,
+        };
+      });
+      pruneTimeStats();
+      saveTimeStats();
+    }
+    if (incomingAnswerTimeLog && typeof incomingAnswerTimeLog === 'object' && !Array.isArray(incomingAnswerTimeLog)) {
+      // Dedupe-by-ts union per question, same as skillStats.recent above —
+      // re-importing the same or an overlapping backup just leaves one copy
+      // of each timing instead of doubling it up.
+      Object.entries(incomingAnswerTimeLog).forEach(([qid, incomingTimings]) => {
+        if (!Array.isArray(incomingTimings)) return;
+        const byTs = new Map();
+        [...(Array.isArray(state.answerTimeLog[qid]) ? state.answerTimeLog[qid] : []), ...incomingTimings]
+          .forEach(t => { if (t && Number.isFinite(t.ts) && Number.isFinite(t.ms)) byTs.set(t.ts, t); });
+        state.answerTimeLog[qid] = [...byTs.values()].sort((a, b) => a.ts - b.ts).slice(-ANSWER_TIME_WINDOW);
+      });
+      saveAnswerTimeLog();
     }
     backfillMissingCompletionLog();
     renderFilters();
@@ -13620,7 +14385,7 @@
   // preferred, falling back to all-time) so this table agrees with whatever
   // "bias toward weak skills" is actually doing.
   function skillMasteryRows() {
-    return allSkills.map(skill => {
+    return analysisSkills.map(skill => {
       const s = state.skillStats[skill];
       const meta = SKILL_META.get(skill) || {};
       if (!s || !s.total) return { skill, meta, attempted: false };
@@ -13643,9 +14408,13 @@
     const attempted = rows.filter(r => r.attempted);
     const untouched = rows.filter(r => !r.attempted);
 
+    // Practice can't run Math skills (Practice/Test/Mock are R&W-only) — skip
+    // the button there rather than link to what would render as an empty
+    // (silently-broken-looking) Practice session.
     const bodyRows = attempted.map(r => {
       const pct = Math.round(r.accuracy * 100);
       const cls = heatClass(pct);
+      const isMathSkill = !allSkills.includes(r.skill);
       const trendHtml = !r.trend || r.trend.dir === 'flat'
         ? `<span class="an-trend-flat">steady</span>`
         : r.trend.dir === 'up'
@@ -13659,7 +14428,7 @@
           <td class="bp-total">${r.total}</td>
           <td>${trendHtml}</td>
           <td class="an-faint">${relativeDays(r.lastAttemptTs)}</td>
-          <td><button class="btn an-small-btn" data-practice-skill="${escapeHtml(r.skill)}">Practice</button></td>
+          <td>${isMathSkill ? '' : `<button class="btn an-small-btn" data-practice-skill="${escapeHtml(r.skill)}">Practice</button>`}</td>
         </tr>`;
     }).join('');
 
@@ -13670,7 +14439,7 @@
     return `
       <div class="progress-summary">
         <h2>Skill mastery</h2>
-        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Accuracy per skill across everything you've answered — Browse, Practice, Test, and Mock Exam alike. Sorted weakest first; the same signal behind "bias toward weak skills."</p>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Accuracy per skill across everything you've answered — Browse (R&amp;W and Math), Practice, Test, and Mock Exam alike. Sorted weakest first; the same signal behind "bias toward weak skills."</p>
         ${attempted.length ? `
         <div class="an-table-scroll">
           <table class="mock-blueprint-table">
@@ -13896,7 +14665,7 @@
   // repetition" section above for the algorithm itself.
   function reviewSessionCurrentQuestion() {
     if (reviewSession.phase !== 'active') return null;
-    return QUESTIONS.find(q => q.id === reviewSession.queue[reviewSession.pos]) || null;
+    return ALL_QUESTIONS.find(q => q.id === reviewSession.queue[reviewSession.pos]) || null;
   }
 
   function startReviewSession() {
@@ -14082,14 +14851,19 @@
     const scheduledEntries = flaggedWithCards.filter(x => !isFsrsDue(x.card, now));
     const newCount = flaggedWithCards.filter(x => x.card.state !== 'review').length;
     const sessionSize = Math.min(dueEntries.length, FSRS_SESSION_CAP);
+    // Practice is R&W-only (filterPool/practicePool always filter over
+    // QUESTIONS) — the "Practice all flagged" button's count/enabled state
+    // has to match that, or it'd promise a session bigger than what Practice
+    // can actually build once Math questions can be flagged too.
+    const flaggedWithCardsRW = flaggedWithCards.filter(x => x.q.test !== 'Math');
 
-    const byCategory = allCategories
+    const byCategory = analysisCategories
       .map(cat => ({ cat, entries: flaggedWithCards.filter(x => x.q.category === cat) }))
       .filter(c => c.entries.length);
 
     let openQ = null;
     if (state.reviewOpenQuestion) {
-      openQ = QUESTIONS.find(x => x.id === state.reviewOpenQuestion) || null;
+      openQ = ALL_QUESTIONS.find(x => x.id === state.reviewOpenQuestion) || null;
       if (!openQ) state.reviewOpenQuestion = null;
     }
 
@@ -14120,7 +14894,7 @@
         </div>
         <div class="progress-actions">
           <button class="btn btn-accent" id="reviewStudyBtn" ${sessionSize ? '' : 'disabled'}>Study due (${sessionSize}${dueEntries.length > sessionSize ? ` of ${dueEntries.length}` : ''})</button>
-          <button class="btn" id="reviewPracticeBtn" ${flaggedWithCards.length ? '' : 'disabled'}>Practice all flagged (${flaggedWithCards.length})</button>
+          <button class="btn" id="reviewPracticeBtn" ${flaggedWithCardsRW.length ? '' : 'disabled'} title="${flaggedWithCards.length > flaggedWithCardsRW.length ? 'Practice is R&W-only — flagged Math questions aren\'t included' : ''}">Practice all flagged (${flaggedWithCardsRW.length})</button>
         </div>
         ${dueEntries.length > FSRS_SESSION_CAP ? `<p class="progress-note">${dueEntries.length - FSRS_SESSION_CAP} more due beyond this session's cap — grade this batch and start another to work through the rest.</p>` : ''}
       </div>
@@ -14207,12 +14981,12 @@
 
     let openQ = null;
     if (state.notesOpenQuestion) {
-      openQ = QUESTIONS.find(x => x.id === state.notesOpenQuestion) || null;
+      openQ = ALL_QUESTIONS.find(x => x.id === state.notesOpenQuestion) || null;
       if (!openQ) state.notesOpenQuestion = null;
     }
 
     const itemsHtml = entries.map(n => {
-      const q = QUESTIONS.find(x => x.id === n.qid);
+      const q = ALL_QUESTIONS.find(x => x.id === n.qid);
       if (!q) return '';
       return `
         <div class="review-item clickable" data-open-note-qid="${q.id}">
@@ -14289,21 +15063,21 @@
   // while the tab is left open with nothing else triggering a re-render.
   setInterval(updateReviewBadge, 5 * 60 * 1000);
 
-  // ---------- Math (Beta): browse-only, nothing persisted ----------
+  // ---------- Math: browse-only (no Practice/Test/Mock Exam) ----------
   // A separate, parallel set of Browse-like state/filters/list-rendering
   // scoped to MATH_QUESTIONS — deliberately not reusing state/renderFacet/
-  // computeBrowseList/etc. (which are wired tightly to the main QUESTIONS
-  // pool and to persisted status/notes/skill-stats) so this tab can stay
-  // "browse only, nothing saved" without adding conditionals throughout
-  // that already-complex shared code. qDetailHtml/wireDetail are reused
-  // with {noProgress: true}, which hides the status/notes UI and skips the
-  // recordSkillAttempt call — Submit/Show answer still work in-session
-  // (via the same in-memory state.attempt everything else already uses,
-  // which was never persisted to begin with), they just don't count
-  // toward anything or survive a reload.
-  const mathState = { query: '', categories: new Set(), skills: new Set(), difficulties: new Set(), sort: 'default' };
-  const mathAllCategories = [...new Set(MATH_QUESTIONS.map(q => q.category))].sort();
-  const mathAllSkills = [...new Set(MATH_QUESTIONS.map(q => q.skill))].sort();
+  // computeBrowseList/etc. (which back Practice/Test/Mock too, and Math has
+  // none of those) so this tab can pick and choose what it shares without
+  // adding conditionals throughout that already-complex code. Status,
+  // community rating, notes, reporting, skill-mastery/Analysis stats, the
+  // spaced-repetition Review queue, and bulk actions are all fully shared
+  // with the English side now — everything is keyed generically off q.id/
+  // skill in state.progress/state.notes/state.skillStats/ratedDifficultyCache,
+  // so it Just Works here too. qDetailHtml/wireDetail are reused as-is (no
+  // Math-specific flag left) — the only things still missing are
+  // Practice/Test/Mock Exam themselves and the print-a-worksheet feature,
+  // both of which are keyed to those modes.
+  const mathState = { query: '', categories: new Set(), skills: new Set(), difficulties: new Set(), statuses: new Set(), ratedTiers: new Set(), sort: 'default', browseSelection: new Set() };
   const MATH_PAGE_SIZE = 60;
   let mathShown = MATH_PAGE_SIZE;
   let mathRenderedList = [];
@@ -14316,11 +15090,24 @@
     return hay.includes(needle);
   }
 
+  // Clears the active selection of any Math Browse facet currently turned
+  // off in Lab settings — same convention as clearDisabledBrowseFacets for
+  // the English side.
+  function clearDisabledMathBrowseFacets() {
+    if (!mathBrowseFilterEnabled('category')) mathState.categories.clear();
+    if (!mathBrowseFilterEnabled('skill')) mathState.skills.clear();
+    if (!mathBrowseFilterEnabled('difficulty')) mathState.difficulties.clear();
+    if (!mathBrowseFilterEnabled('status')) mathState.statuses.clear();
+    if (!mathBrowseFilterEnabled('communityRating')) mathState.ratedTiers.clear();
+  }
+
   function computeMathList() {
     let list = MATH_QUESTIONS.filter(q => {
-      if (mathState.categories.size && !mathState.categories.has(q.category)) return false;
-      if (mathState.skills.size && !mathState.skills.has(q.skill)) return false;
-      if (mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (mathBrowseFilterEnabled('category') && mathState.categories.size && !mathState.categories.has(q.category)) return false;
+      if (mathBrowseFilterEnabled('skill') && mathState.skills.size && !mathState.skills.has(q.skill)) return false;
+      if (mathBrowseFilterEnabled('difficulty') && mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (mathBrowseFilterEnabled('status') && mathState.statuses.size && !mathState.statuses.has(questionStatus(q))) return false;
+      if (mathBrowseFilterEnabled('communityRating') && ratedDifficultyLabEnabled() && mathState.ratedTiers.size && !mathState.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
       return mathMatchesQuery(q);
     });
     if (mathState.sort === 'diff-asc') list = [...list].sort((a, b) => a.difficulty - b.difficulty);
@@ -14328,21 +15115,24 @@
     return list;
   }
 
-  function renderMathFacet(containerId, options, selectedSet, facetKey, valueFn) {
+  function renderMathFacet(containerId, options, selectedSet, facetKey, valueFn, pillClassFn, labelFn) {
     const counts = options.map(opt => MATH_QUESTIONS.filter(q => {
-      if (facetKey !== 'categories' && mathState.categories.size && !mathState.categories.has(q.category)) return false;
-      if (facetKey !== 'skills' && mathState.skills.size && !mathState.skills.has(q.skill)) return false;
-      if (facetKey !== 'difficulties' && mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (facetKey !== 'categories' && mathBrowseFilterEnabled('category') && mathState.categories.size && !mathState.categories.has(q.category)) return false;
+      if (facetKey !== 'skills' && mathBrowseFilterEnabled('skill') && mathState.skills.size && !mathState.skills.has(q.skill)) return false;
+      if (facetKey !== 'difficulties' && mathBrowseFilterEnabled('difficulty') && mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (facetKey !== 'statuses' && mathBrowseFilterEnabled('status') && mathState.statuses.size && !mathState.statuses.has(questionStatus(q))) return false;
+      if (facetKey !== 'ratedTiers' && mathBrowseFilterEnabled('communityRating') && ratedDifficultyLabEnabled() && mathState.ratedTiers.size && !mathState.ratedTiers.has(ratedTierNameForQuestion(q))) return false;
       if (!mathMatchesQuery(q)) return false;
       return valueFn(q) === opt;
     }).length);
     const el = document.getElementById(containerId);
     el.innerHTML = options.map((opt, i) => {
       const checked = selectedSet.has(opt) ? 'checked' : '';
-      const cls = facetKey === 'difficulties' ? diffPillClass(opt) : '';
+      const cls = pillClassFn ? pillClassFn(opt) : (facetKey === 'difficulties' ? diffPillClass(opt) : '');
+      const label = escapeHtml(labelFn ? labelFn(opt) : opt);
       return `<label class="filter-opt">
         <input type="checkbox" data-val="${escapeHtml(opt)}" ${checked} />
-        <span class="${cls}">${escapeHtml(opt)}</span>
+        <span class="${cls}">${label}</span>
         <span class="count">${counts[i]}</span>
       </label>`;
     }).join('');
@@ -14356,31 +15146,155 @@
     });
   }
 
-  function renderMathFilters() {
-    renderMathFacet('categoryFiltersMath', mathAllCategories, mathState.categories, 'categories', q => q.category);
-    renderMathFacet('skillFiltersMath', mathAllSkills, mathState.skills, 'skills', q => q.skill);
-    renderMathFacet('difficultyFiltersMath', allDifficulties, mathState.difficulties, 'difficulties', q => q.difficulty_label);
+  // Community rating (Math) facet — mirrors renderRatedTierFacet, scoped to
+  // MATH_QUESTIONS/mathState instead of QUESTIONS/state.
+  function renderMathRatedTierFacet() {
+    const group = document.getElementById('ratedTierFilterGroupMath');
+    if (!group) return;
+    const enabled = ratedDifficultyLabEnabled() && mathBrowseFilterEnabled('communityRating');
+    group.hidden = !enabled;
+    if (!enabled) return;
+    const counts = RATED_TIER_NAMES.map(name => MATH_QUESTIONS.filter(q => {
+      if (mathBrowseFilterEnabled('category') && mathState.categories.size && !mathState.categories.has(q.category)) return false;
+      if (mathBrowseFilterEnabled('skill') && mathState.skills.size && !mathState.skills.has(q.skill)) return false;
+      if (mathBrowseFilterEnabled('difficulty') && mathState.difficulties.size && !mathState.difficulties.has(q.difficulty_label)) return false;
+      if (mathBrowseFilterEnabled('status') && mathState.statuses.size && !mathState.statuses.has(questionStatus(q))) return false;
+      if (!mathMatchesQuery(q)) return false;
+      return ratedTierNameForQuestion(q) === name;
+    }).length);
+    const container = document.getElementById('ratedTierFiltersMath');
+    container.innerHTML = RATED_TIER_NAMES.map((name, i) => {
+      const checked = mathState.ratedTiers.has(name) ? 'checked' : '';
+      return `<label class="filter-opt">
+        <input type="checkbox" data-val="${escapeHtml(name)}" ${checked} />
+        ${ratedTierIcon(i)}
+        <span>${escapeHtml(name === 'Auto' ? 'Unrated' : name)}</span>
+        <span class="count">${counts[i]}</span>
+      </label>`;
+    }).join('');
+    container.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const v = inp.dataset.val;
+        if (inp.checked) mathState.ratedTiers.add(v); else mathState.ratedTiers.delete(v);
+        renderMathFilters();
+        renderMathBrowse();
+      });
+    });
   }
 
-  // Deliberately not qCardHtml (which has a bulk-select checkbox and a
-  // status pill wired to persisted state.progress) — a plain preview card
-  // instead, since nothing about this tab tracks status.
+  function renderMathFilters() {
+    const categoryGroup = document.getElementById('categoryFilterGroupMath');
+    const skillGroup = document.getElementById('skillFilterGroupMath');
+    const difficultyGroup = document.getElementById('difficultyFilterGroupMath');
+    const statusGroup = document.getElementById('statusFilterGroupMath');
+    if (categoryGroup) categoryGroup.hidden = !mathBrowseFilterEnabled('category');
+    if (skillGroup) skillGroup.hidden = !mathBrowseFilterEnabled('skill');
+    if (difficultyGroup) difficultyGroup.hidden = !mathBrowseFilterEnabled('difficulty');
+    if (statusGroup) statusGroup.hidden = !mathBrowseFilterEnabled('status');
+    if (mathBrowseFilterEnabled('category')) renderMathFacet('categoryFiltersMath', mathAllCategories, mathState.categories, 'categories', q => q.category);
+    if (mathBrowseFilterEnabled('skill')) renderMathFacet('skillFiltersMath', mathAllSkills, mathState.skills, 'skills', q => q.skill);
+    if (mathBrowseFilterEnabled('difficulty')) renderMathFacet('difficultyFiltersMath', allDifficulties, mathState.difficulties, 'difficulties', q => q.difficulty_label, diffPillClass);
+    if (mathBrowseFilterEnabled('status')) renderMathFacet('statusFiltersMath', ALL_STATUSES, mathState.statuses, 'statuses', questionStatus, statusPillClass, s => STATUS_LABELS[s]);
+    renderMathRatedTierFacet();
+    renderMathSkillHintHtml();
+  }
+
+  // "Want Skill/Status/Community rating too? Turn them on in Lab" hint,
+  // shown in place of whichever facets are currently hidden — jumps
+  // straight to the Lab tab instead of leaving people to go hunting for the
+  // setting themselves. Mirrors renderSkillHintHtml (English) below.
+  function renderMathSkillHintHtml() {
+    const hintEl = document.getElementById('mathFilterHint');
+    if (!hintEl) return;
+    const hidden = BROWSE_FILTER_OPTIONS.filter(opt => !mathBrowseFilterEnabled(opt.key));
+    if (!hidden.length) { hintEl.hidden = true; return; }
+    hintEl.hidden = false;
+    hintEl.innerHTML = `Want ${hidden.map(o => escapeHtml(o.label)).join(', ')} too? <button type="button" class="link-btn" id="mathFilterHintLink">Turn it on in Lab</button>`;
+    document.getElementById('mathFilterHintLink')?.addEventListener('click', goToLabSettings);
+  }
+
+  // Mirrors qCardHtml (English) — bulk-select checkbox, status badge, and
+  // community rating chip, all keyed generically off q.id/state.progress/
+  // ratedDifficultyCache, so they share storage with the English side.
   function mathQCardHtml(q) {
+    const status = questionStatus(q);
+    const statusBadge = status !== 'incomplete'
+      ? `<span class="${statusPillClass(status)}">${STATUS_LABELS[status]}</span>`
+      : '';
+    const checked = mathState.browseSelection.has(q.id) ? 'checked' : '';
     return `
-      <div class="qcard">
+      <div class="qcard ${status !== 'incomplete' ? 'status-' + status : ''}">
         <div class="qcard-head" data-id="${q.id}">
+          <label class="qcard-select" title="Select for bulk actions">
+            <input type="checkbox" data-select-id="${q.id}" ${checked} />
+          </label>
           <div style="flex:1; min-width:0;">
             <div class="qstem">${escapeStemFlat(q.stem)}</div>
             <div class="qskill">${escapeHtml(q.skill)} &middot; ${escapeHtml(q.domain)}</div>
           </div>
           <div class="qmeta">
             ${cbDifficultyPillHtml(q)}
+            ${ratedDifficultyHtml(q)}
+            ${statusBadge}
             <span class="cat-tag">${escapeHtml(q.category)}</span>
             <span class="qid" data-copy-id="${escapeHtml(q.shortId)}" title="Click to copy ${escapeHtml(q.shortId)}">${escapeHtml(q.shortId)}</span>
             <button class="id-chip" data-copy-id="${escapeHtml(q.id)}" title="Click to copy ID">${escapeHtml(q.id)}</button>
           </div>
         </div>
       </div>`;
+  }
+
+  // Bulk-action bar for Math Browse — mirrors renderBulkBar (English),
+  // scoped to mathState.browseSelection/bulkBarMath, but reuses the same
+  // bulkSetStatus (already generic over any qid).
+  function renderBulkBarMath(list) {
+    const bar = document.getElementById('bulkBarMath');
+    if (!bar) return;
+    const total = mathState.browseSelection.size;
+    if (!list.length && !total) { bar.style.display = 'none'; bar.innerHTML = ''; return; }
+
+    const inView = list.filter(q => mathState.browseSelection.has(q.id)).length;
+    const allInViewSelected = list.length > 0 && inView === list.length;
+    const countLabel = total
+      ? (total === inView ? `${total} selected` : `${total} selected (${inView} in current view)`)
+      : `Select all ${list.length}`;
+
+    bar.style.display = 'flex';
+    bar.innerHTML = `
+      <label class="select-all-opt">
+        <input type="checkbox" id="selectAllBoxMath" ${allInViewSelected ? 'checked' : ''} ${list.length ? '' : 'disabled'} />
+        <span>${countLabel}</span>
+      </label>
+      ${total ? `
+        <div class="bulk-actions">
+          <button class="status-btn" data-bulk-status-math="done">✓ Mark complete</button>
+          <button class="status-btn" data-bulk-status-math="review">🚩 Mark for review</button>
+          <button class="status-btn" data-bulk-status-math="incomplete">○ Mark incomplete</button>
+          <button class="clear-btn" id="bulkClearBtnMath">Clear selection</button>
+        </div>
+      ` : ''}
+    `;
+
+    const selectAllBox = document.getElementById('selectAllBoxMath');
+    if (selectAllBox) selectAllBox.addEventListener('change', (e) => {
+      if (e.target.checked) list.forEach(q => mathState.browseSelection.add(q.id));
+      else list.forEach(q => mathState.browseSelection.delete(q.id));
+      renderBulkBarMath(mathRenderedList);
+    });
+    bar.querySelectorAll('[data-bulk-status-math]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.bulkStatusMath;
+        bulkSetStatus([...mathState.browseSelection], next === 'incomplete' ? null : next);
+        mathState.browseSelection.clear();
+        renderMathFilters();
+        renderMathList();
+      });
+    });
+    const clearBtn = document.getElementById('bulkClearBtnMath');
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+      mathState.browseSelection.clear();
+      renderBulkBarMath(mathRenderedList);
+    });
   }
 
   function renderMathBrowse() {
@@ -14392,6 +15306,7 @@
     const list = computeMathList();
     mathRenderedList = list;
     document.getElementById('resultCountMath').textContent = `${list.length} question${list.length === 1 ? '' : 's'}`;
+    renderBulkBarMath(list);
     const container = document.getElementById('qlistMath');
     if (!list.length) {
       container.innerHTML = `<div class="empty-state">No questions match these filters.</div>`;
@@ -14406,16 +15321,29 @@
     if (showMoreBtn) showMoreBtn.addEventListener('click', () => { mathShown += MATH_PAGE_SIZE; renderMathList(); });
   }
 
+  clearDisabledMathBrowseFacets();
   renderMathFilters();
   renderMathBrowse();
 
   document.getElementById('qlistMath').addEventListener('click', (e) => {
     if (e.target.closest('[data-copy-id]')) return;
+    if (e.target.closest('.qcard-select')) return; // let the bulk-select checkbox toggle, don't also open the modal
     if (e.target.closest('[data-rate-toggle], [data-vote-qid]')) return; // let Rated Difficulty voting through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const idx = mathRenderedList.findIndex(q => q.id === head.dataset.id);
-    if (idx !== -1) openQuestionModal(mathRenderedList, idx, { noProgress: true });
+    if (idx !== -1) openQuestionModal(mathRenderedList, idx);
+  });
+
+  // Bulk-select checkboxes toggle on 'change' — see the same split on the
+  // English qlist listener above for why.
+  document.getElementById('qlistMath').addEventListener('change', (e) => {
+    const box = e.target.closest('[data-select-id]');
+    if (!box) return;
+    const qid = box.dataset.selectId;
+    if (box.checked) mathState.browseSelection.add(qid);
+    else mathState.browseSelection.delete(qid);
+    renderBulkBarMath(mathRenderedList);
   });
 
   // Same "paste an ID" / "Category#N" (or "Category N" / "CategoryN") jump
@@ -14431,10 +15359,10 @@
     renderMathBrowse();
     const idx = mathRenderedList.findIndex(q => q.id === qid);
     if (idx !== -1) {
-      openQuestionModal(mathRenderedList, idx, { noProgress: true });
+      openQuestionModal(mathRenderedList, idx);
     } else {
       const q = MATH_QUESTIONS.find(x => x.id === qid);
-      if (q) openQuestionModal([q], 0, { noProgress: true });
+      if (q) openQuestionModal([q], 0);
     }
   }
 
@@ -14469,6 +15397,15 @@
       jumpToQuestionMath(match.id);
     }
   });
+  document.getElementById('searchBoxMath').addEventListener('blur', () => {
+    clearTimeout(mathSearchDebounceTimer);
+    const box = document.getElementById('searchBoxMath');
+    if (!box.value.trim()) return;
+    mathState.query = box.value;
+    if (!computeMathList().length) { box.value = ''; mathState.query = ''; }
+    renderMathFilters();
+    renderMathBrowse();
+  });
   document.getElementById('sortSelectMath').addEventListener('change', (e) => {
     mathState.sort = e.target.value;
     renderMathBrowse();
@@ -14477,6 +15414,8 @@
     mathState.categories.clear();
     mathState.skills.clear();
     mathState.difficulties.clear();
+    mathState.statuses.clear();
+    mathState.ratedTiers.clear();
     mathState.query = '';
     document.getElementById('searchBoxMath').value = '';
     renderMathFilters();

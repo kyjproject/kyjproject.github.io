@@ -296,7 +296,7 @@ function loadUserTitles_(cfg) {
 // Kill switch: badges are built but not shown yet — flip to true when
 // ready to launch them. entries still get a `badges: []` either way, so
 // nothing on the client needs to change when this flips.
-var LEADERBOARD_BADGES_ENABLED_ = false;
+var LEADERBOARD_BADGES_ENABLED_ = true;
 
 function badgesForUser_(titles, username) {
   var lower = username.toLowerCase();
