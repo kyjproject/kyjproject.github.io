@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-11T02:00:13.344Z",
+  "exportedAt": "2026-09-12T07:25:31.695Z",
   "progress": {
     "25384355": "done",
     "56845779": "done",
@@ -299,12 +299,56 @@
     "63c0f101": "done",
     "0e826457": "done",
     "6b646bda": "done",
-    "0a7fe3ce": "done"
+    "0a7fe3ce": "done",
+    "fda65f0a": "done",
+    "8e316e56": "done",
+    "2891bf1b": "review",
+    "3d7ee626": "done",
+    "c7e43751": "done",
+    "27f23e11": "done",
+    "004680af": "done"
   },
   "tags": {},
-  "notes": {},
+  "notes": {
+    "fda65f0a": [
+      {
+        "text": "be careful with such generalizations",
+        "ts": 1789196948353
+      }
+    ],
+    "004680af": [
+      {
+        "text": "things to note when beginning a narrative:",
+        "ts": 1789197670590
+      },
+      {
+        "text": "Must explain what you're writing the narrative on",
+        "ts": 1789197692693
+      },
+      {
+        "text": "must mention who is the person behind it",
+        "ts": 1789197708762
+      },
+      {
+        "text": "must \"introduce\" with things such as time, and genre",
+        "ts": 1789197728755
+      },
+      {
+        "text": "since narrative is a story, when beginning it, it must not jump",
+        "ts": 1789197757833
+      },
+      {
+        "text": "so it is unlikely that it would introduce it's success",
+        "ts": 1789197808944
+      }
+    ]
+  },
   "mathOverrides": {
     "1787306089891-7kx492": {
+      "m1": 22,
+      "m2": 22
+    },
+    "1789044867764-qr3n8y": {
       "m1": 22,
       "m2": 22
     }
@@ -606,7 +650,13 @@
     "6b646bda": "2026-09-09T12:06:55.345Z",
     "c32f7659": "2026-09-09T12:07:51.544Z",
     "0a7fe3ce": "2026-09-10T01:32:47.969Z",
-    "2891bf1b": "2026-09-10T12:59:46.478Z"
+    "2891bf1b": "2026-09-10T12:59:46.478Z",
+    "fda65f0a": "2026-09-12T07:09:22.320Z",
+    "8e316e56": "2026-09-12T07:10:57.784Z",
+    "3d7ee626": "2026-09-12T07:15:08.425Z",
+    "c7e43751": "2026-09-12T07:17:34.468Z",
+    "27f23e11": "2026-09-12T07:19:54.552Z",
+    "004680af": "2026-09-12T07:23:32.480Z"
   },
   "dailyGoal": 10,
   "profile": {
@@ -1293,13 +1343,9 @@
       "lastAttemptTs": 1789044867817
     },
     "Central Ideas and Details": {
-      "correct": 29,
-      "total": 34,
+      "correct": 30,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1788786636387,
-          "correct": false
-        },
         {
           "ts": 1788962426253,
           "correct": true
@@ -1343,9 +1389,13 @@
         {
           "ts": 1789044867817,
           "correct": false
+        },
+        {
+          "ts": 1789197393925,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789044867817
+      "lastAttemptTs": 1789197393925
     },
     "Command of Evidence (Quantitative)": {
       "correct": 17,
@@ -1458,13 +1508,9 @@
       "lastAttemptTs": 1789044867819
     },
     "Inferences": {
-      "correct": 19,
-      "total": 25,
+      "correct": 20,
+      "total": 26,
       "recent": [
-        {
-          "ts": 1788766108782,
-          "correct": true
-        },
         {
           "ts": 1788786636381,
           "correct": true
@@ -1508,9 +1554,13 @@
         {
           "ts": 1789044867820,
           "correct": false
+        },
+        {
+          "ts": 1789197592476,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789044867820
+      "lastAttemptTs": 1789197592476
     },
     "Boundaries": {
       "correct": 18,
@@ -1945,41 +1995,51 @@
       "lastTs": 1788962494692
     },
     "fda65f0a": {
-      "count": 6,
-      "lastTs": 1789045232586
+      "count": 10,
+      "lastTs": 1789196951056
     },
     "f3a51fa6": {
       "count": 1,
       "lastTs": 1789044880174
     },
     "8e316e56": {
-      "count": 2,
-      "lastTs": 1789045239522
+      "count": 4,
+      "lastTs": 1789196965440
     },
     "004680af": {
-      "count": 1,
-      "lastTs": 1789044979481
+      "count": 5,
+      "lastTs": 1789197602350
     },
     "27f23e11": {
-      "count": 2,
-      "lastTs": 1789044996684
+      "count": 4,
+      "lastTs": 1789197459600
     },
     "c7e43751": {
-      "count": 3,
-      "lastTs": 1789045094480
+      "count": 6,
+      "lastTs": 1789197398613
     },
     "3d7ee626": {
-      "count": 3,
-      "lastTs": 1789045258041
+      "count": 6,
+      "lastTs": 1789197078964
     },
     "2891bf1b": {
-      "count": 2,
-      "lastTs": 1789045225908
+      "count": 4,
+      "lastTs": 1789197063909
     },
     "d539eaf3": {
       "count": 1,
       "lastTs": 1789045209050
     }
   },
-  "blueprints": []
+  "blueprints": [],
+  "timeStats": {
+    "2026-09-12": {
+      "totalMs": 20000,
+      "viewMs": {
+        "leaderboard": 20000
+      },
+      "categoryMs": {}
+    }
+  },
+  "answerTimeLog": {}
 }
