@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-11T18:30:26.244Z",
+  "exportedAt": "2026-09-12T13:14:19.588Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -3097,15 +3097,15 @@
   ],
   "timeStats": {
     "2026-09-11": {
-      "totalMs": 834033,
+      "totalMs": 776208,
       "viewMs": {
-        "leaderboard": 399572,
+        "leaderboard": 403815,
         "test": 25017,
-        "mock": 140855,
+        "mock": 112940,
         "practice": 21695,
-        "analysis": 62722,
+        "analysis": 34191,
         "notes": 16685,
-        "profile": 38166,
+        "profile": 32544,
         "propose": 5636,
         "browse": 33796,
         "math": 15042,
@@ -3115,21 +3115,14 @@
       "categoryMs": {}
     },
     "2026-09-12": {
-      "totalMs": 596457,
+      "totalMs": 80298,
       "viewMs": {
-        "leaderboard": 37486,
-        "notes": 5006,
-        "home": 12813,
-        "math": 355407,
-        "browse": 59899,
-        "practice": 10010,
-        "mock": 10007,
-        "propose": 10011,
-        "profile": 45043,
-        "analysis": 35764,
-        "lab": 5004,
-        "review": 5004,
-        "test": 5003
+        "mock": 30025,
+        "test": 20013,
+        "practice": 15158,
+        "home": 5103,
+        "profile": 4998,
+        "math": 5001
       },
       "categoryMs": {}
     }
