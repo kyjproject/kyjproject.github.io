@@ -28,7 +28,7 @@ STAGING_PATH = os.path.join(ROOT, "db", "staging", "proposed_questions.json")
 CATEGORIES_DIR = os.path.join(ROOT, "db", "categories")
 
 # category -> (target file, expected domain, domain_code, expected skill, skill_code)
-CATEGORY_META = {
+RW_CATEGORY_META = {
     "Grammar": ("grammar.json", "Standard English Conventions", "SEC", {
         "Boundaries": "BOUND",
         "Form, Structure, and Sense": "FSS",
@@ -45,6 +45,43 @@ CATEGORY_META = {
     "Quantitative Evidence": ("command_of_evidence.json", "Information and Ideas", "INI",
                               {"Command of Evidence (Quantitative)": "COE"}),
 }
+# Math's own category table, same shape as RW_CATEGORY_META — domain here is
+# just the category name itself (unlike R&W, where domain groups several
+# categories together). Matches db/categories/{algebra,advanced_math,
+# geometry_and_trigonometry,problem_solving_and_data_analysis}.json and the
+# taxonomy the site's own Propose tab uses (PROPOSE_MATH_CATEGORY_META in
+# site/index.template.html) — keep the two in sync if either changes.
+MATH_CATEGORY_META = {
+    "Algebra": ("algebra.json", "Algebra", "ALG", {
+        "Linear equations in one variable": "LEQ1",
+        "Linear equations in two variables": "LEQ2",
+        "Linear functions": "LFUNC",
+        "Systems of two linear equations in two variables": "SYS2",
+        "Linear inequalities in one or two variables": "LINEQ",
+    }),
+    "Advanced Math": ("advanced_math.json", "Advanced Math", "ADVM", {
+        "Equivalent expressions": "EQUIV",
+        "Nonlinear equations in one variable and systems of equations in two variables": "NLEQ",
+        "Nonlinear functions": "NLFUNC",
+    }),
+    "Problem-Solving and Data Analysis": ("problem_solving_and_data_analysis.json",
+                                          "Problem-Solving and Data Analysis", "PSDA", {
+        "Ratios, rates, proportional relationships, and units": "RATES",
+        "Percentages": "PCT",
+        "One-variable data: Distributions and measures of center and spread": "ONEVAR",
+        "Two-variable data: Models and scatterplots": "TWOVAR",
+        "Probability and conditional probability": "PROB",
+        "Inference from sample statistics and margin of error": "INFERSTAT",
+        "Evaluating statistical claims: Observational studies and experiments": "STATCLAIM",
+    }),
+    "Geometry and Trigonometry": ("geometry_and_trigonometry.json", "Geometry and Trigonometry", "GEOT", {
+        "Area and volume": "AREAVOL",
+        "Lines, angles, and triangles": "LAT",
+        "Right triangles and trigonometry": "RTRIG",
+        "Circles": "CIRC",
+    }),
+}
+CATEGORY_META = {**RW_CATEGORY_META, **MATH_CATEGORY_META}
 
 DIFF_MAP = {"Easy": 1, "Medium": 2, "Hard": 3}
 REQUIRED_STR_FIELDS = ["id", "category", "stem", "prompt", "correct_answer", "rationale_full",
@@ -75,6 +112,8 @@ def validate(record, known_ids, staging_id_counts):
             errors.append(f"missing/empty required field: {field}")
 
     category = record.get("category")
+    is_math_category = category in MATH_CATEGORY_META
+    expected_test = "Math" if is_math_category else "Reading and Writing"
     if category not in CATEGORY_META:
         errors.append(f"unknown category: {category!r} (must be one of {sorted(CATEGORY_META)})")
     else:
@@ -83,6 +122,8 @@ def validate(record, known_ids, staging_id_counts):
             errors.append(f"domain {record.get('domain')!r} doesn't match expected {domain!r} for category {category!r}")
         if record.get("domain_code") != domain_code:
             errors.append(f"domain_code {record.get('domain_code')!r} doesn't match expected {domain_code!r}")
+        if record.get("test") != expected_test:
+            errors.append(f"test {record.get('test')!r} doesn't match expected {expected_test!r} for category {category!r}")
         skill = record.get("skill")
         if skill not in skills:
             errors.append(f"skill {skill!r} isn't valid for category {category!r} (expected one of {sorted(skills)})")
@@ -95,24 +136,39 @@ def validate(record, known_ids, staging_id_counts):
     elif record.get("difficulty") != DIFF_MAP[diff_label]:
         errors.append(f"difficulty {record.get('difficulty')!r} doesn't match difficulty_label {diff_label!r} (expected {DIFF_MAP[diff_label]})")
 
+    # Only Math questions can be student-produced response (free entry, no
+    # A-D choices) — R&W is always multiple-choice. A record with no explicit
+    # is_mc is treated as MC, matching every existing R&W record (which all
+    # carry is_mc: true already) and refusing to silently treat an
+    # old-shaped/malformed Math record as free-response by omission.
+    is_mc = record.get("is_mc", True)
+    if not is_math_category and not is_mc:
+        errors.append("is_mc is false, but only Math questions can be student-produced response")
+
     choices = record.get("choices") or {}
-    if set(choices.keys()) != {"A", "B", "C", "D"}:
-        errors.append(f"choices must have exactly keys A-D, got {sorted(choices.keys())}")
+    if is_mc:
+        if set(choices.keys()) != {"A", "B", "C", "D"}:
+            errors.append(f"choices must have exactly keys A-D, got {sorted(choices.keys())}")
+        else:
+            texts = [v.strip() for v in choices.values()]
+            if any(not t for t in texts):
+                errors.append("a choice is empty")
+            if len(set(texts)) != len(texts):
+                errors.append("two or more choices have identical text")
+
+        correct = record.get("correct_answer")
+        if correct not in {"A", "B", "C", "D"}:
+            errors.append(f"correct_answer must be A-D, got {correct!r}")
+
+        rbc = record.get("rationale_by_choice") or {}
+        for letter in "ABCD":
+            if not str(rbc.get(letter, "")).strip():
+                errors.append(f"rationale_by_choice is missing/empty for choice {letter}")
     else:
-        texts = [v.strip() for v in choices.values()]
-        if any(not t for t in texts):
-            errors.append("a choice is empty")
-        if len(set(texts)) != len(texts):
-            errors.append("two or more choices have identical text")
-
-    correct = record.get("correct_answer")
-    if correct not in {"A", "B", "C", "D"}:
-        errors.append(f"correct_answer must be A-D, got {correct!r}")
-
-    rbc = record.get("rationale_by_choice") or {}
-    for letter in "ABCD":
-        if not str(rbc.get(letter, "")).strip():
-            errors.append(f"rationale_by_choice is missing/empty for choice {letter}")
+        if choices:
+            errors.append(f"student-produced response question has non-empty choices: {sorted(choices.keys())}")
+        if not str(record.get("correct_answer", "")).strip():
+            errors.append("correct_answer is missing/empty")
 
     if not record.get("prompt", "").strip().endswith("?"):
         errors.append("prompt doesn't end in '?'")
@@ -149,12 +205,16 @@ def print_record(record, idx, total):
     correct = record.get("correct_answer")
     rationale_by_choice = record.get("rationale_by_choice") or {}
     print()
-    for letter in "ABCD":
-        mark = " <-- correct" if letter == correct else ""
-        print(f"  {letter}. {choices.get(letter, '')}{mark}")
-        rationale = rationale_by_choice.get(letter, "")
-        if rationale:
-            print(f"      {rationale}")
+    if record.get("is_mc", True):
+        for letter in "ABCD":
+            mark = " <-- correct" if letter == correct else ""
+            print(f"  {letter}. {choices.get(letter, '')}{mark}")
+            rationale = rationale_by_choice.get(letter, "")
+            if rationale:
+                print(f"      {rationale}")
+    else:
+        print(f"  CORRECT ANSWER: {correct}")
+        print(f"\nRATIONALE:\n{record.get('rationale_full', '')}")
     if record.get("has_image"):
         print("\nIMAGE(S): " + ", ".join(
             (img.get("path") if isinstance(img, dict) else img) for img in record.get("image_paths", [])

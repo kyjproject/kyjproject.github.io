@@ -14,6 +14,7 @@ import shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "site", "index.template.html")
+SW_SRC_PATH = os.path.join(ROOT, "site", "sw.js")
 ALL_JSON_PATH = os.path.join(ROOT, "db", "all_questions.json")
 IMAGES_SRC_DIR = os.path.join(ROOT, "images")
 OUT_DIR = os.path.join(ROOT, "site", "pages")
@@ -59,6 +60,13 @@ def main():
         f.write("const SAT_QUESTIONS = ")
         json.dump(questions, f, ensure_ascii=False)
         f.write(";\n")
+
+    # The offline-mode service worker (site/sw.js -> site/pages/sw.js) — must
+    # be served from the site root (not a subdirectory) for its default
+    # scope to cover the whole app; registerOfflineServiceWorker() in
+    # index.template.html registers it as 'sw.js', relative to this same
+    # directory.
+    shutil.copyfile(SW_SRC_PATH, os.path.join(OUT_DIR, "sw.js"))
 
     # Never let this step shrink what's already deployed: a missing source
     # dir (see git history for why this warning exists) or a partially
