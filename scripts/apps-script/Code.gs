@@ -60,6 +60,7 @@ function doPost(e) {
     else if (action === 'load_blueprint') result = handleLoadBlueprint_(body);
     else if (action === 'list_blueprints') result = handleListBlueprints_(body);
     else if (action === 'delete_blueprint') result = handleDeleteBlueprint_(body);
+    else if (action === 'like_blueprint') result = handleLikeBlueprint_(body);
     else if (action === 'get_ratings') result = handleGetRatings_(body);
     else if (action === 'submit_difficulty_votes') result = handleSubmitDifficultyVotes_(body);
     else if (action === 'admin_set_rating') result = handleAdminSetRating_(body);
@@ -535,6 +536,8 @@ function handleSaveBlueprint_(body) {
         author: check.username,
         createdAt: new Date().toISOString(),
         data: blueprint,
+        likes: 0,
+        views: 0,
       };
       loaded.list.push(entry);
       result = githubPutFile_(
@@ -550,14 +553,61 @@ function handleSaveBlueprint_(body) {
   return { ok: true, code: code };
 }
 
+// Bumps the view counter as a side effect of resolving a code — turns this
+// from a pure read into a read-modify-write, so it needs the same retry
+// pattern as the other blueprint handlers below.
 function handleLoadBlueprint_(body) {
   var cfg = config_();
   var code = body && String(body.code || '').trim().toUpperCase();
   if (!code) return { ok: false, error: 'Missing code' };
-  var list = loadBlueprints_(cfg).list;
-  var entry = list.filter(function (b) { return b.code === code; })[0];
-  if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
-  return { ok: true, entry: entry };
+  var result, lastErr, entrySnapshot;
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var loaded = loadBlueprints_(cfg);
+      var entry = loaded.list.filter(function (b) { return b.code === code; })[0];
+      if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
+      entry.views = (entry.views || 0) + 1;
+      entrySnapshot = entry;
+      result = githubPutFile_(
+        cfg, blueprintsPath_(cfg), JSON.stringify(loaded.list, null, 2), loaded.sha,
+        'View blueprint "' + entry.name + '" (' + code + ')'
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+  return { ok: true, entry: entrySnapshot };
+}
+
+// Anyone can like (no login required, same tolerance as list/load) — a
+// client-side localStorage guard on the liked code prevents casual repeat-
+// clicking, not a real per-account abuse control. Same retry pattern as the
+// other blueprint handlers.
+function handleLikeBlueprint_(body) {
+  var cfg = config_();
+  var code = body && String(body.code || '').trim().toUpperCase();
+  if (!code) return { ok: false, error: 'Missing code' };
+  var result, lastErr, newLikes;
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var loaded = loadBlueprints_(cfg);
+      var entry = loaded.list.filter(function (b) { return b.code === code; })[0];
+      if (!entry) return { ok: false, error: 'No blueprint found for code ' + code };
+      entry.likes = (entry.likes || 0) + 1;
+      newLikes = entry.likes;
+      result = githubPutFile_(
+        cfg, blueprintsPath_(cfg), JSON.stringify(loaded.list, null, 2), loaded.sha,
+        'Like blueprint "' + entry.name + '" (' + code + ')'
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+  return { ok: true, likes: newLikes };
 }
 
 // Retract a previously-shared blueprint. Only the original sharer can do
@@ -606,7 +656,7 @@ function handleListBlueprints_(body) {
   // Newest first; the raw `data` blob isn't needed until something is
   // actually picked, so keep the listing itself light.
   var entries = list.map(function (b) {
-    return { code: b.code, name: b.name, view: b.view, author: b.author, createdAt: b.createdAt };
+    return { code: b.code, name: b.name, view: b.view, author: b.author, createdAt: b.createdAt, likes: b.likes || 0, views: b.views || 0 };
   }).reverse();
   return { ok: true, entries: entries };
 }

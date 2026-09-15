@@ -1513,6 +1513,9 @@
   .bp-picker-item-author { font-weight: 500; color: var(--ink-faint); }
   .bp-picker-item-meta { font-family: var(--sans); font-size: 11px; color: var(--ink-soft); margin-top: 1px; }
   .bp-picker-item-actions { display: flex; gap: 4px; flex-shrink: 0; }
+  .bp-picker-item-badge { font-family: var(--sans); font-size: 10.5px; font-weight: 600; color: var(--ink-soft); background: var(--paper); border: 1px solid var(--rule-soft); border-radius: 999px; padding: 1px 7px; margin-left: 4px; white-space: nowrap; }
+  .shortfall-row { font-family: var(--sans); font-size: 12px; color: var(--ink); padding: 2px 0; }
+  .shortfall-section:not(:first-child) { margin-top: 4px; }
 
   .propose-field { margin-bottom: 16px; }
   .propose-field label {
@@ -3019,6 +3022,7 @@
       <div class="tab-dropdown" role="menu">
         <button class="tab tab-dropdown-item" data-view="browse" role="menuitem">English</button>
         <button class="tab tab-dropdown-item" data-view="math" role="menuitem">Math</button>
+        <button class="tab tab-dropdown-item" data-view="blueprints" role="menuitem">Blueprints</button>
       </div>
     </div>
     <button class="tab" data-view="practice">Practice</button>
@@ -3049,6 +3053,7 @@
     <div class="mobile-nav-group-label">Browse</div>
     <button class="tab mobile-nav-item" data-view="browse" role="menuitem">English</button>
     <button class="tab mobile-nav-item" data-view="math" role="menuitem">Math</button>
+    <button class="tab mobile-nav-item" data-view="blueprints" role="menuitem">Blueprints</button>
     <div class="mobile-nav-group-label">Practice</div>
     <button class="tab mobile-nav-item" data-view="practice" role="menuitem">Practice</button>
     <button class="tab mobile-nav-item" data-view="test" role="menuitem">Test</button>
@@ -3179,6 +3184,10 @@
         <div class="qlist" id="qlistMath"></div>
       </div>
     </div>
+  </div>
+
+  <div class="view" id="view-blueprints">
+    <div class="test-shell" id="blueprintsShell"></div>
   </div>
 
   <div class="view" id="view-practice">
@@ -7351,12 +7360,12 @@
 
   // ---------- Tabs ----------
   const TAB_TITLES = {
-    home: 'Home', browse: 'Browse', math: 'Math', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
+    home: 'Home', browse: 'Browse', math: 'Math', blueprints: 'Blueprints', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
     profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', leaderboard: 'Leaderboard',
     propose: 'Propose', lab: 'Lab',
   };
   const PROFILE_FAMILY = ['profile', 'analysis', 'review', 'notes', 'leaderboard', 'lab'];
-  const BROWSE_FAMILY = ['browse', 'math'];
+  const BROWSE_FAMILY = ['browse', 'math', 'blueprints'];
   const LAST_VIEW_KEY = 'kyjSatLastView';
   function setTitleForView(view) {
     const label = TAB_TITLES[view];
@@ -7384,6 +7393,7 @@
     document.getElementById('profileSubtabs').classList.toggle('visible', PROFILE_FAMILY.includes(view));
     setTitleForView(view);
     try { localStorage.setItem(LAST_VIEW_KEY, view); } catch (e) {}
+    if (view === 'blueprints') renderBlueprintsBrowser();
     if (view === 'practice') renderPractice();
     if (view === 'test') renderTest();
     if (view === 'mock') renderMock();
@@ -7621,6 +7631,14 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.4', date: 'Sep 15', title: 'Clearer builder titles, live shortfall warnings, and a better blueprint system', lede: 'Test, Practice, and Mock Exam got a pass on clarity and trust: cleaner titles and wording throughout, a prominent live warning the moment your current settings can\'t be filled (down to the exact skill and difficulty, and what quietly backfills it), and a blueprint system that now works the same way — likes, a Recommended badge, search, and a dedicated Browse Blueprints page — across every builder and both subjects.', items: [
+      { name: 'Builder titles cleaned up', desc: '"Build a test" and "Build a practice set" are now "Build a Test" and "Build a Practice Set" everywhere, including on the Math tab — no more "— Math" suffix tacked onto the title.' },
+      { name: 'Live, difficulty-aware shortfall warnings', desc: 'Test, Practice, and Mock Exam now show a prominent banner the instant your status scope, blueprint, and difficulty mix together can\'t fill a skill — e.g. asking for 20 Hard Vocab questions when every Hard Vocab question is already marked complete. Click "Show details" for an exact breakdown by subject → section → skill → difficulty, including which other difficulties will quietly backfill the gap. The "questions available" count itself now turns red the moment this happens, instead of only a small icon.' },
+      { name: 'Status Scope, Question Distribution, Customize Skill Mix', desc: 'Renamed for clarity: "Scope — status" → "Status Scope (Leave Empty for All)", "Question mix by section/category" → "Question Distribution", and "Also customize skill mix within Reading & Grammar" → "Customize Skill Mix Within Categories" (dropped the "Level 2" jargon from the label).' },
+      { name: 'Blueprints: likes, Recommended, search, and a Browse page', desc: 'Community blueprints now show ❤️ likes and 👁️ views, with an automatic ⭐ Recommended badge once a blueprint is well-liked, plus a name/author search box. A new Blueprints page (Browse → Blueprints) lists every official and community blueprint across Test, Practice, and Mock Exam in one place, filterable by builder and sortable by likes/views/newest.' },
+      { name: 'Mock Exam gets a blueprint picker', desc: 'Mock Exam can now save and load setups the same way Test and Practice always could — including which modules were selected, a bug in the old code that silently dropped that on save.' },
+      { name: 'Blueprints now cover Math too', desc: 'Saving a setup on the Math tab (Test, Practice, or Mock) now saves that Math blueprint and skill-mix alongside the Reading & Writing one, so one saved blueprint round-trips whichever subject it was made in — no more Math-only exception.' },
+    ] },
     { version: 'v2.3', date: 'Sep 15', title: 'A real mobile menu, bigger seasonal themes, and new achievements', lede: 'The topbar tabs now open into a proper slide-in menu on phones instead of a horizontally-scrolling strip. Halloween and Christmas got more color and a bit of falling-emoji flair, joined by a new Valentine’s Day theme — and 7 new achievements to chase.', items: [
       { name: 'Mobile nav menu', desc: 'Below 760px, tapping the new hamburger button in the topbar opens a right-side slide-in panel listing every tab, replacing the old horizontally-scrolling tab strip that gave no hint more tabs existed off-screen.' },
       { name: 'Seasonal themes: more color, falling emoji', desc: 'Halloween and Christmas got richer, more varied palettes, and a new Valentine’s Day theme (auto-pins Feb 7–14) joins them — all three now drift falling snow/bats/hearts across the screen while active, picked automatically or from Lab → Theme.' },
@@ -7815,7 +7833,7 @@
     ],
 
     practice: [
-      { view: 'practice', selector: '.chip-row', title: 'Scope', body: 'Narrow the pool by status — leave it empty to include everything. Nothing here is graded until you hit Submit on a question.' },
+      { view: 'practice', selector: '.chip-row', title: 'Status scope', body: 'Narrow the pool by status — leave it empty to include everything. Nothing here is graded until you hit Submit on a question.' },
       { view: 'practice', selector: 'label:has(#practiceShowSkillMixToggle), #practiceBiasWeakBtn', title: 'Question distribution', body: 'An editable per-skill count table drives the mix — drag a slider or type a number, rescale the whole thing in one click, or bias it toward whichever skills you\'re actually missing.' },
       { view: 'practice', selector: 'label:has(#practiceShuffle)', title: 'Difficulty distribution & count', body: 'Weight Easy/Medium/Hard however you like, then set how many questions total — the count updates live as you adjust the mix above.' },
       { view: 'practice', selector: '#startPracticeBtn', title: 'Start practice', body: 'Once a question\'s up: A/S/D/F picks a choice, Enter submits, Space toggles the answer — see the full keyboard reference (⌨️ button in the sidebar, or search "shortcuts" in ⌘K) for everything else.' },
@@ -7823,7 +7841,7 @@
     ],
 
     test: [
-      { view: 'test', selector: '.chip-row', title: 'Scope by status', body: 'Same distribution engine as Mock Exam, run as one flat quiz instead of two timed modules — scope by status here (leave empty for the whole bank).' },
+      { view: 'test', selector: '.chip-row', title: 'Status scope', body: 'Same distribution engine as Mock Exam, run as one flat quiz instead of two timed modules — set the status scope here (leave empty for the whole bank).' },
       { view: 'test', selector: 'label:has(#testShowSkillMixToggle), #testBiasWeakBtn', title: 'Question distribution', body: 'An editable per-skill count table drives the mix — drag a slider or type a number, rescale the whole thing to a new total in one click.' },
       { view: 'test', selector: '#testCount, label:has(#testShuffleOrder)', title: 'Difficulty distribution, count & order', body: 'Weight Easy/Medium/Hard however you like, pick any total question count, and optionally shuffle the order.' },
       { view: 'test', selector: 'label:has(#testUseBluebook), label:has(#testShortcuts)', title: 'Bluebook mode & shortcuts', body: 'Use Bluebook-style interface runs this attempt full-screen, built to look like the real digital SAT app. Enable keyboard shortcuts opts into A/S/D/F for choices and Enter/→/← to navigate — off by default since Test simulates a proctored exam.' },
@@ -7834,7 +7852,7 @@
 
     mock: [
       { view: 'mock', selector: '[data-mock-custom-module]', title: 'Modules', body: 'Pick any combination of English and Math Module 1/2 — they run back-to-back in that order. Pairing a subject\'s Module 1 and 2 together enables real adaptive routing between them; a lone Module 2 just draws from a harder/easier pool you choose.' },
-      { view: 'mock', selector: '.chip-row', title: 'Scope by status', body: 'Scope the question pool by status — e.g. only "Incomplete" — with a per-skill fallback to the full bank if a skill runs thin.' },
+      { view: 'mock', selector: '.chip-row', title: 'Status scope', body: 'Scope the question pool by status — e.g. only "Incomplete" — with a per-skill fallback to the full bank if a skill runs thin.' },
       { view: 'mock', selector: 'label:has(#mockUseBluebook), label:has(#mockShortcuts)', title: 'Bluebook mode & shortcuts', body: 'Use Bluebook-style interface runs the exam full-screen, built to look and behave like the real College Board testing app. Enable keyboard shortcuts opts into A/S/D/F + Enter/→/← for the regular (non-Bluebook) layout.' },
       { view: 'mock', selector: '[data-mock-dist-mode], [data-mock-diff-mode]', title: 'Customization: distribution & difficulty', body: 'Bias Toward Weak leans the question mix toward whatever you\'re weakest on; Custom makes every skill\'s per-module count and difficulty mix directly editable, per subject.' },
       { view: 'mock', selector: 'label:has(#mockQTimed), label:has(#mockMetadataToggle)', title: 'Timer & metadata', body: 'An opt-in per-question timer layers on top of the real 32-minute module clock either way. Show question metadata reveals category/skill/difficulty on screen if you want it.' },
@@ -9875,11 +9893,17 @@
       id: 'bp_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
       name, view,
       createdAt: new Date().toISOString(),
+      subject: st.subject, // 'rw' | 'math' — which subject was active when saved; applyBlueprint restores it so the right blueprint (below) actually applies
       count: st.count,
       statuses: [...st.statuses],
       advancedDistribution: true,
       showSkillMix: st.showSkillMix,
       blueprint: JSON.parse(JSON.stringify(st.blueprint)),
+      // Math's own blueprint/skill-mix, captured alongside R&W's regardless
+      // of which subject is active — same reasoning as Mock's blueprint/
+      // mathBlueprint pair, so one saved setup always round-trips both.
+      mathShowSkillMix: st.mathShowSkillMix,
+      mathBlueprint: st.mathBlueprint ? JSON.parse(JSON.stringify(st.mathBlueprint)) : null,
       advancedDifficulty: true,
       weightConfig: JSON.parse(JSON.stringify(st.weightConfig)),
       shuffle: view === 'test' ? st.shuffleOrder : st.shuffle,
@@ -9907,11 +9931,17 @@
     if (st.skills) st.skills = new Set();
     if (st.difficulties) st.difficulties = new Set();
     st.statuses = new Set(bp.statuses || []);
+    st.subject = bp.subject === 'math' ? 'math' : 'rw';
     st.advancedDistribution = true;
     st.showSkillMix = !!bp.showSkillMix;
     st.blueprint = (bp.advancedDistribution && bp.blueprint)
       ? JSON.parse(JSON.stringify(bp.blueprint))
       : categoryBlueprint(bp.categories || [], bp.skills || [], st.count);
+    // Older saves (pre-Math-support) never recorded mathBlueprint — leave it
+    // null so the Math config screen lazily builds a fresh official one on
+    // first render, same as a brand-new session.
+    st.mathShowSkillMix = !!bp.mathShowSkillMix;
+    st.mathBlueprint = bp.mathBlueprint ? JSON.parse(JSON.stringify(bp.mathBlueprint)) : null;
     st.advancedDifficulty = true;
     st.weightConfig = (bp.advancedDifficulty && bp.weightConfig)
       ? JSON.parse(JSON.stringify(bp.weightConfig))
@@ -9930,54 +9960,93 @@
   // Mock Exam's own capture/apply — kept separate from the Test/Practice pair
   // above since its state shape is different in every dimension: a blueprint
   // keyed by m1/m2 instead of a single count, a weightConfig with three slots
-  // (m1/m2harder/m2easier) instead of one, a mode (adaptive/module1/module2)
-  // instead of a flat question count, and its own per-question timer object
-  // (qtimer) instead of flat timed/timerSeconds/timerStrict fields.
+  // (m1/m2harder/m2easier) per subject instead of one, a customModules set
+  // (which of the four modules are even in play) instead of a flat question
+  // count, and its own per-question timer object (qtimer) instead of flat
+  // timed/timerSeconds/timerStrict fields. Captures both subjects' blueprints
+  // (English `blueprint` and Math `mathBlueprint`) unconditionally — which
+  // modules customModules selects at apply time decides which one actually
+  // matters, so there's no separate Math-only save path to maintain.
   function captureMockBlueprint(name) {
     return {
       id: 'bp_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
       name, view: 'mock',
       createdAt: new Date().toISOString(),
-      mode: mockState.mode,
+      customModules: [...mockState.customModules],
       module2Pool: mockState.module2Pool,
+      module2PoolMath: mockState.module2PoolMath,
       passThreshold: mockState.passThreshold,
       statuses: [...mockState.statuses],
       blueprint: JSON.parse(JSON.stringify(mockState.blueprint)),
+      mathBlueprint: JSON.parse(JSON.stringify(mockState.mathBlueprint)),
       weightConfig: JSON.parse(JSON.stringify(mockState.weightConfig)),
       showSkillMix: mockState.showSkillMix,
+      showSkillMixMath: mockState.showSkillMixMath,
       useBluebook: mockState.useBluebook,
       qtimer: { timed: mockState.qtimer.timed, timerSeconds: mockState.qtimer.timerSeconds, timerStrict: mockState.qtimer.timerStrict },
     };
   }
 
   function applyMockBlueprint(bp) {
-    mockState.mode = bp.mode || mockState.mode;
+    // Older saves (from before Mock had a picker) never recorded
+    // customModules — fall back to whichever modules the loaded blueprint
+    // rows actually have counts for, so an old save still lands somewhere
+    // sensible instead of clearing the module picker to nothing.
+    if (bp.customModules && bp.customModules.length) {
+      mockState.customModules = new Set(bp.customModules);
+    } else if (!mockState.customModules.size) {
+      mockState.customModules = new Set(['rwM1', 'rwM2']);
+    }
     mockState.module2Pool = bp.module2Pool || mockState.module2Pool;
+    mockState.module2PoolMath = bp.module2PoolMath || mockState.module2PoolMath;
     if (typeof bp.passThreshold === 'number') mockState.passThreshold = bp.passThreshold;
     mockState.statuses = new Set(bp.statuses || []);
     mockState.blueprint = bp.blueprint ? JSON.parse(JSON.stringify(bp.blueprint)) : cloneDefaultBlueprint();
+    mockState.mathBlueprint = bp.mathBlueprint ? JSON.parse(JSON.stringify(bp.mathBlueprint)) : MATH_MOCK_BLUEPRINT.map(r => ({ ...r }));
     mockState.weightConfig = bp.weightConfig ? JSON.parse(JSON.stringify(bp.weightConfig)) : defaultWeightConfig();
-    // Force both folds open, same reasoning as Practice/Test always showing
-    // theirs — otherwise applying a custom blueprint would silently hide the
-    // very customization it just loaded.
-    mockState.advancedDistribution = true;
-    mockState.advancedDifficulty = true;
+    // Force the custom sliders open, same reasoning as Practice/Test always
+    // showing theirs — otherwise applying a custom blueprint would silently
+    // hide the very customization it just loaded.
+    mockState.distributionMode = 'custom';
+    mockState.difficultyMode = 'custom';
     mockState.showSkillMix = !!bp.showSkillMix;
+    mockState.showSkillMixMath = !!bp.showSkillMixMath;
     if (typeof bp.useBluebook === 'boolean') mockState.useBluebook = bp.useBluebook;
     if (bp.qtimer) mockState.qtimer = { ...mockState.qtimer, ...bp.qtimer };
   }
 
   function blueprintSummary(bp) {
-    if (bp.view === 'mock') return MOCK_MODE_LABELS[bp.mode] || 'Mock Exam';
+    if (bp.view === 'mock') {
+      const keys = bp.customModules || [];
+      if (!keys.length) return 'Mock Exam';
+      return keys.map(k => (MOCK_CUSTOM_MODULE_OPTIONS.find(o => o.key === k) || {}).label || k).join(', ');
+    }
     const bits = [];
     bits.push(`${bp.count} question${bp.count === 1 ? '' : 's'}`);
+    bits.push(bp.subject === 'math' ? 'Math' : 'Reading & Writing');
     if (bp.categories && bp.categories.length) bits.push(bp.categories.join(', '));
     if (bp.difficulties && bp.difficulties.length) bits.push(bp.difficulties.join('/'));
     return bits.join(' · ');
   }
 
-  // { open, tab: 'official'|'mine'|'community'|'import', community: null|Array, communityError, importCode, importError, shareBusyId, shareStatus }
-  const bpUiState = { test: { open: false, tab: 'official' }, practice: { open: false, tab: 'official' }, mock: { open: false, tab: 'official' } };
+  // { open, tab: 'official'|'mine'|'community'|'import', community: null|Array, communityError, communitySearch, importCode, importError, shareBusyId, shareStatus }
+  const bpUiState = { test: { open: false, tab: 'official', communitySearch: '' }, practice: { open: false, tab: 'official', communitySearch: '' }, mock: { open: false, tab: 'official', communitySearch: '' } };
+
+  // A blueprint counts as "Recommended" once it clears a likes floor, per a
+  // simple automatic rule (no manual curation) — top of any likes-sorted
+  // list naturally reads as recommended, this just makes it explicit.
+  const BP_RECOMMENDED_LIKES = 5;
+  function isRecommendedBlueprint(bp) { return (bp.likes || 0) >= BP_RECOMMENDED_LIKES; }
+
+  const LIKED_BLUEPRINTS_KEY = 'sat_qbank_liked_blueprints_v1';
+  function loadLikedBlueprintCodes() {
+    try { return new Set(JSON.parse(localStorage.getItem(LIKED_BLUEPRINTS_KEY) || '[]')); } catch (e) { return new Set(); }
+  }
+  function markBlueprintLiked(code) {
+    const set = loadLikedBlueprintCodes();
+    set.add(code);
+    try { localStorage.setItem(LIKED_BLUEPRINTS_KEY, JSON.stringify([...set])); } catch (e) { /* best-effort */ }
+  }
 
   function bpUiFor(view) { return bpUiState[view]; }
 
@@ -9998,14 +10067,20 @@
       const canUnshareMine = opts.source === 'mine' && bp.code;
       const canUnshareCommunity = opts.source === 'community' && isCloudLoggedIn() && bp.author && bp.author.toLowerCase() === (getCloudUsername() || '').toLowerCase();
       const unshareCode = canUnshareMine ? bp.code : (canUnshareCommunity ? bp.code : null);
+      const isCommunity = opts.source === 'community';
+      const alreadyLiked = isCommunity && loadLikedBlueprintCodes().has(bp.code);
+      const badges = isCommunity
+        ? `${isRecommendedBlueprint(bp) ? ` <span class="bp-picker-item-badge" title="Automatically flagged once it clears ${BP_RECOMMENDED_LIKES} likes">⭐ Recommended</span>` : ''} <span class="bp-picker-item-badge" title="Likes">❤️ ${bp.likes || 0}</span> <span class="bp-picker-item-badge" title="Times loaded">👁️ ${bp.views || 0}</span>`
+        : '';
       return `
         <div class="bp-picker-item">
           <div class="bp-picker-item-info">
-            <div class="bp-picker-item-name">${escapeHtml(bp.name)}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}${bp.code && opts.source === 'mine' ? ` <span class="bp-picker-item-author">· shared as ${escapeHtml(bp.code)}</span>` : ''}</div>
+            <div class="bp-picker-item-name">${escapeHtml(bp.name)}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}${bp.code && opts.source === 'mine' ? ` <span class="bp-picker-item-author">· shared as ${escapeHtml(bp.code)}</span>` : ''}${badges}</div>
             <div class="bp-picker-item-meta">${escapeHtml(meta)}</div>
           </div>
           <div class="bp-picker-item-actions">
             <button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-apply="${escapeHtml(opts.applyId != null ? opts.applyId : bp.id)}" data-bp-source="${opts.source}">Use</button>
+            ${isCommunity ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-like="${escapeHtml(bp.code)}" ${alreadyLiked ? 'disabled' : ''} title="${alreadyLiked ? 'Already liked' : 'Like this blueprint'}">${alreadyLiked ? '❤️ Liked' : '🤍 Like'}</button>` : ''}
             ${opts.source === 'mine' && !bp.code ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-share="${escapeHtml(bp.id)}" title="Get a code others can import">🔗 Share</button>` : ''}
             ${unshareCode ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-unshare="${escapeHtml(unshareCode)}" data-bp-unshare-local="${escapeHtml(opts.source === 'mine' ? bp.id : '')}" title="Retract this — the code stops working for everyone">🚫 Unshare</button>` : ''}
             ${opts.source === 'mine' ? `<button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-delete="${escapeHtml(bp.id)}">🗑️</button>` : ''}
@@ -10029,10 +10104,16 @@
       } else if (!ui.community) {
         tabBodyHtml = `<p class="cloud-save-text">Loading…</p>`;
       } else {
-        const entries = ui.community.filter(b => b.view === view);
-        tabBodyHtml = entries.length
+        const q = (ui.communitySearch || '').trim().toLowerCase();
+        const entries = ui.community
+          .filter(b => b.view === view)
+          .filter(b => !q || b.name.toLowerCase().includes(q) || (b.author || '').toLowerCase().includes(q))
+          .slice()
+          .sort((a, b) => (b.likes || 0) - (a.likes || 0));
+        const searchBox = `<div class="cloud-save-field" style="margin-bottom:8px;"><input type="text" data-bp-community-search="${view}" placeholder="Search by name or author…" value="${escapeHtml(ui.communitySearch || '')}" /></div>`;
+        tabBodyHtml = searchBox + (entries.length
           ? entries.map(bp => itemHtml(bp, { source: 'community', applyId: bp.code, meta: `Code ${bp.code} · ${new Date(bp.createdAt).toLocaleDateString()}` })).join('')
-          : `<p class="cloud-save-text">No one's shared a blueprint for this screen yet — be the first with "💾 Save current setup" → "🔗 Share".</p>`;
+          : `<p class="cloud-save-text">${q ? 'No blueprints match that search.' : 'No one\'s shared a blueprint for this screen yet — be the first with "💾 Save current setup" → "🔗 Share".'}</p>`);
       }
     } else if (ui.tab === 'import') {
       tabBodyHtml = `
@@ -10115,6 +10196,28 @@
       });
     });
 
+    shell.querySelectorAll('[data-bp-community-search]').forEach(input => {
+      input.addEventListener('input', () => { ui.communitySearch = input.value; rerender(); });
+    });
+
+    shell.querySelectorAll('[data-bp-like]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const code = btn.dataset.bpLike;
+        if (loadLikedBlueprintCodes().has(code)) return;
+        btn.disabled = true;
+        try {
+          const res = await cloudSaveRequest('like_blueprint', { code });
+          markBlueprintLiked(code);
+          const entry = ui.community && ui.community.find(b => b.code === code);
+          if (entry) entry.likes = res.likes;
+          rerender();
+        } catch (err) {
+          btn.disabled = false;
+          alert('Failed to like: ' + ((err && err.message) || err));
+        }
+      });
+    });
+
     shell.querySelectorAll('[data-bp-delete]').forEach(btn => {
       btn.addEventListener('click', () => {
         if (!confirm('Delete this saved blueprint?')) return;
@@ -10193,6 +10296,128 @@
     });
   }
 
+  // ---------- Browse Blueprints (standalone page listing every saved-to-
+  // cloud blueprint across Test/Practice/Mock in one place, with search,
+  // a view filter, and likes/recommended sorting) ----------
+  const BP_VIEW_LABELS = { test: '📝 Test', practice: '🏋️ Practice', mock: '📋 Mock Exam' };
+  const blueprintsBrowserState = { loading: false, error: null, entries: null, search: '', viewFilter: 'all', sort: 'likes' };
+
+  function loadAllBlueprintsBrowser() {
+    blueprintsBrowserState.loading = true;
+    blueprintsBrowserState.error = null;
+    renderBlueprintsBrowser();
+    cloudSaveRequest('list_blueprints', {})
+      .then(res => {
+        blueprintsBrowserState.entries = res.entries || [];
+        blueprintsBrowserState.loading = false;
+        renderBlueprintsBrowser();
+      })
+      .catch(err => {
+        blueprintsBrowserState.loading = false;
+        blueprintsBrowserState.error = (err && err.message) || 'Failed to load blueprints';
+        renderBlueprintsBrowser();
+      });
+  }
+
+  function blueprintsBrowserItemHtml(bp) {
+    const isOfficial = bp.source === 'official';
+    const meta = isOfficial ? (bp.desc || blueprintSummary(bp)) : `Code ${bp.code} · ${new Date(bp.createdAt).toLocaleDateString()}`;
+    const badges = isOfficial
+      ? `<span class="bp-picker-item-badge">⭐ Official</span>`
+      : `${isRecommendedBlueprint(bp) ? `<span class="bp-picker-item-badge" title="Automatically flagged once it clears ${BP_RECOMMENDED_LIKES} likes">⭐ Recommended</span>` : ''} <span class="bp-picker-item-badge" title="Likes">❤️ ${bp.likes || 0}</span> <span class="bp-picker-item-badge" title="Times loaded">👁️ ${bp.views || 0}</span>`;
+    return `
+      <div class="bp-picker-item">
+        <div class="bp-picker-item-info">
+          <div class="bp-picker-item-name">${escapeHtml(bp.name)} <span class="bp-picker-item-badge">${BP_VIEW_LABELS[bp.view] || bp.view}</span> ${badges}${bp.author ? ` <span class="bp-picker-item-author">by ${escapeHtml(bp.author)}</span>` : ''}</div>
+          <div class="bp-picker-item-meta">${escapeHtml(meta)}</div>
+        </div>
+        <div class="bp-picker-item-actions">
+          <button type="button" class="btn" style="font-size:11px; padding:4px 9px;" data-bp-browser-open="${bp.view}">Open ${BP_VIEW_LABELS[bp.view] || bp.view} to use it</button>
+        </div>
+      </div>`;
+  }
+
+  function blueprintsBrowserHtml() {
+    const st = blueprintsBrowserState;
+    let body;
+    if (st.error) {
+      body = `<p class="cloud-save-status err">${escapeHtml(st.error)}</p>`;
+    } else if (st.loading || !st.entries) {
+      body = `<p class="cloud-save-text">Loading…</p>`;
+    } else {
+      const q = st.search.trim().toLowerCase();
+      const all = [...OFFICIAL_BLUEPRINTS.map(bp => ({ ...bp, source: 'official' })), ...st.entries.map(bp => ({ ...bp, source: 'community' }))];
+      let entries = all
+        .filter(bp => st.viewFilter === 'all' || bp.view === st.viewFilter)
+        .filter(bp => !q || bp.name.toLowerCase().includes(q) || (bp.author || '').toLowerCase().includes(q));
+      entries = entries.slice().sort((a, b) => {
+        if (a.source === 'official' && b.source !== 'official') return -1;
+        if (b.source === 'official' && a.source !== 'official') return 1;
+        if (st.sort === 'views') return (b.views || 0) - (a.views || 0);
+        if (st.sort === 'new') return new Date(b.createdAt) - new Date(a.createdAt);
+        return (b.likes || 0) - (a.likes || 0);
+      });
+      body = entries.length
+        ? `<div class="bp-picker-list" style="max-height:none;">${entries.map(blueprintsBrowserItemHtml).join('')}</div>`
+        : `<p class="cloud-save-text">No blueprints match those filters.</p>`;
+    }
+    return `
+      <div class="config-card">
+        <div class="bp-table-head"><h2 style="margin:0;">📋 Browse Blueprints</h2></div>
+        <p class="lede">Every official preset plus every community-shared blueprint, across Test, Practice, and Mock Exam — search, filter, and sort by what's popular. Open the matching builder to actually apply one.</p>
+        <div class="config-row">
+          <label>🔎 Search</label>
+          <input type="text" id="bpBrowserSearch" placeholder="Search by name or author…" value="${escapeHtml(st.search)}" />
+        </div>
+        <div class="config-row">
+          <label>🗂️ Show</label>
+          <div class="chip-row">
+            <button type="button" class="chip ${st.viewFilter === 'all' ? 'on' : ''}" data-bp-browser-filter="all">All</button>
+            <button type="button" class="chip ${st.viewFilter === 'test' ? 'on' : ''}" data-bp-browser-filter="test">📝 Test</button>
+            <button type="button" class="chip ${st.viewFilter === 'practice' ? 'on' : ''}" data-bp-browser-filter="practice">🏋️ Practice</button>
+            <button type="button" class="chip ${st.viewFilter === 'mock' ? 'on' : ''}" data-bp-browser-filter="mock">📋 Mock Exam</button>
+          </div>
+        </div>
+        <div class="config-row">
+          <label>↕️ Sort by</label>
+          <div class="chip-row">
+            <button type="button" class="chip ${st.sort === 'likes' ? 'on' : ''}" data-bp-browser-sort="likes">❤️ Most liked</button>
+            <button type="button" class="chip ${st.sort === 'views' ? 'on' : ''}" data-bp-browser-sort="views">👁️ Most viewed</button>
+            <button type="button" class="chip ${st.sort === 'new' ? 'on' : ''}" data-bp-browser-sort="new">🆕 Newest</button>
+          </div>
+        </div>
+        ${body}
+      </div>`;
+  }
+
+  function renderBlueprintsBrowser() {
+    const shell = document.getElementById('blueprintsShell');
+    if (!shell) return;
+    shell.innerHTML = blueprintsBrowserHtml();
+    if (blueprintsBrowserState.entries === null && !blueprintsBrowserState.loading && !blueprintsBrowserState.error) {
+      loadAllBlueprintsBrowser();
+      return;
+    }
+    const searchInput = document.getElementById('bpBrowserSearch');
+    if (searchInput) searchInput.addEventListener('input', () => { blueprintsBrowserState.search = searchInput.value; renderBlueprintsBrowser(); });
+    shell.querySelectorAll('[data-bp-browser-filter]').forEach(btn => {
+      btn.addEventListener('click', () => { blueprintsBrowserState.viewFilter = btn.dataset.bpBrowserFilter; renderBlueprintsBrowser(); });
+    });
+    shell.querySelectorAll('[data-bp-browser-sort]').forEach(btn => {
+      btn.addEventListener('click', () => { blueprintsBrowserState.sort = btn.dataset.bpBrowserSort; renderBlueprintsBrowser(); });
+    });
+    shell.querySelectorAll('[data-bp-browser-open]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.bpBrowserOpen;
+        const ui = bpUiFor(view);
+        ui.open = true;
+        ui.tab = 'community';
+        ui.community = blueprintsBrowserState.entries; // already fetched here, skip a redundant round trip
+        document.querySelector(`.tab[data-view="${view}"]`)?.click();
+      });
+    });
+  }
+
   // Subject tabs — shared by Test's R&W and Math config screens.
   function testSubjectTabsHtml() {
     return `
@@ -10230,10 +10455,11 @@
   function testConfigMathHtml() {
     if (!testState.mathBlueprint) testState.mathBlueprint = cloneMathBlueprint(testState.count);
     const available = MATH_QUESTIONS.filter(q => q.is_mc && (!testState.statuses.size || testState.statuses.has(questionStatus(q)))).length;
+    const shortfalls = computeShortfalls(testState.mathBlueprint, 'count', resolveSlotWeights(testState.weightConfig, 'mathMain'), testState.statuses, MATH_QUESTIONS.filter(q => q.is_mc));
     const distributionSection = `
         <div class="config-row">
           <div class="bp-table-head">
-            <label>📊 Question mix by category</label>
+            <label>📊 Question Distribution</label>
             <div class="bp-actions">
               <button type="button" class="btn" id="testBiasWeakMathBtn" style="font-size:11px; padding:4px 9px;" title="Bias every category/skill's count toward whichever you're weakest, least-practiced, or most overdue on">🧠 Bias toward weak</button>
               <button type="button" class="btn" id="testResetMathBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix back to its default">↩️ Reset to official</button>
@@ -10244,19 +10470,25 @@
         <div class="config-row" style="margin:12px 0 0;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="testShowSkillMixMathToggle" ${testState.mathShowSkillMix ? 'checked' : ''} />
-            <span>🧩 Also customize skill mix within each category</span>
+            <span>🧩 Customize Skill Mix Within Categories</span>
           </label>
         </div>
         ${testState.mathShowSkillMix ? `<div class="idist-nested"><div class="config-row"><div class="idist-block">${testMathLevel2SliderHtml()}</div></div></div>` : ''}`;
     return `
       <div class="config-card">
         <div class="bp-table-head">
-          <h2 style="margin:0;">📝 Build a test — Math</h2>
+          <h2 style="margin:0;">📝 Build a Test</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="testSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="testBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
         </div>
         ${testSubjectTabsHtml()}
-        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Like Reading &amp; Writing, you control the category/skill mix and difficulty mix — as one flat, shuffled quiz of any length. Choices aren't graded until you submit the whole test. Multiple-choice only for now.</p>
+        ${bpPickerHtml('test')}
+        <p class="lede">${availableCountLabelHtml(available, shortfalls.length)} question${available === 1 ? '' : 's'} available with the status scope below. Like Reading &amp; Writing, you control the category/skill mix and difficulty mix — as one flat, shuffled quiz of any length. Choices aren't graded until you submit the whole test. Multiple-choice only for now.</p>
+        ${shortfallWarningHtml(shortfalls, 'testMath', 'Math')}
         <div class="config-row">
-          <label>🎯 Scope — status (leave empty for all)</label>
+          <label>🎯 Status Scope (Leave Empty for All)</label>
           <div class="chip-row">${statusChipsHtml(testState)}</div>
         </div>
         ${distributionSection}
@@ -10291,11 +10523,12 @@
     if (testState.subject === 'math') return testConfigMathHtml();
     if (!testState.blueprint) testState.blueprint = cloneTestBlueprint(testState.count);
     const available = testAvailableCount();
+    const shortfalls = computeShortfalls(testState.blueprint, 'count', testResolveWeights(), testState.statuses, undefined);
 
     const distributionSection = `
         <div class="config-row">
           <div class="bp-table-head">
-            <label>📊 Question mix by section</label>
+            <label>📊 Question Distribution</label>
             <div class="bp-actions">
               <button type="button" class="btn" id="testBiasWeakBtn" style="font-size:11px; padding:4px 9px;" title="Bias every section/skill's count toward whichever you're weakest, least-practiced, or most overdue on">🧠 Bias toward weak</button>
               <button type="button" class="btn" id="testResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix back to its default">↩️ Reset to official</button>
@@ -10307,7 +10540,7 @@
         <div class="config-row" style="margin:12px 0 0;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="testShowSkillMixToggle" ${testState.showSkillMix ? 'checked' : ''} />
-            <span>🧩 Also customize skill mix within Reading &amp; Grammar</span>
+            <span>🧩 Customize Skill Mix Within Categories</span>
           </label>
         </div>
         ${testState.showSkillMix ? `<div class="idist-nested"><div class="config-row">${testLevel2SliderHtml()}</div></div>` : ''}`;
@@ -10315,7 +10548,7 @@
     return `
       <div class="config-card">
         <div class="bp-table-head">
-          <h2 style="margin:0;">📝 Build a test</h2>
+          <h2 style="margin:0;">📝 Build a Test</h2>
           <div class="bp-actions">
             <button type="button" class="btn" id="testSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
             <button type="button" class="btn" id="testBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
@@ -10323,9 +10556,10 @@
         </div>
         ${testSubjectTabsHtml()}
         ${bpPickerHtml('test')}
-        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Like Mock Exam, you control the section/skill mix and difficulty mix — but as one flat, shuffled quiz of any length instead of two timed modules. Choices aren't graded until you submit the whole test.</p>
+        <p class="lede">${availableCountLabelHtml(available, shortfalls.length)} question${available === 1 ? '' : 's'} available with the status scope below. Like Mock Exam, you control the section/skill mix and difficulty mix — but as one flat, shuffled quiz of any length instead of two timed modules. Choices aren't graded until you submit the whole test.</p>
+        ${shortfallWarningHtml(shortfalls, 'test', 'Reading & Writing')}
         <div class="config-row">
-          <label>🎯 Scope — status (leave empty for all)</label>
+          <label>🎯 Status Scope (Leave Empty for All)</label>
           <div class="chip-row">${statusChipsHtml(testState)}</div>
         </div>
         ${distributionSection}
@@ -10536,6 +10770,7 @@
     const shell = document.getElementById('testShell');
     if (testState.phase === 'config') {
       wireBlueprintPicker(shell, 'test', renderTest);
+      wireShortfallToggle(shell, renderTest);
       wireScopeChips(shell, testState, renderTest);
       wireTimedModeConfig(shell, testState, 'test', renderTest);
       wireMetadataConfigSection(shell, 'test', renderTest);
@@ -10726,10 +10961,11 @@
     if (!practiceState.mathBlueprint) practiceState.mathBlueprint = cloneMathBlueprint(practiceState.count);
     const available = MATH_QUESTIONS.filter(q => q.is_mc && (!practiceState.statuses.size || practiceState.statuses.has(questionStatus(q)))).length;
     const startCount = Math.min(practiceState.count, available);
+    const shortfalls = computeShortfalls(practiceState.mathBlueprint, 'count', resolveSlotWeights(practiceState.weightConfig, 'mathMain'), practiceState.statuses, MATH_QUESTIONS.filter(q => q.is_mc));
     const distributionSection = `
         <div class="config-row">
           <div class="bp-table-head">
-            <label>📊 Question mix by category</label>
+            <label>📊 Question Distribution</label>
             <div class="bp-actions">
               <button type="button" class="btn" id="practiceBiasWeakMathBtn" style="font-size:11px; padding:4px 9px;" title="Bias every category/skill's count toward whichever you're weakest, least-practiced, or most overdue on">🧠 Bias toward weak</button>
               <button type="button" class="btn" id="practiceResetMathBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix back to its default">↩️ Reset to official</button>
@@ -10740,19 +10976,25 @@
         <div class="config-row" style="margin:12px 0 0;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practiceShowSkillMixMathToggle" ${practiceState.mathShowSkillMix ? 'checked' : ''} />
-            <span>🧩 Also customize skill mix within each category</span>
+            <span>🧩 Customize Skill Mix Within Categories</span>
           </label>
         </div>
         ${practiceState.mathShowSkillMix ? `<div class="idist-nested"><div class="config-row"><div class="idist-block">${practiceMathLevel2SliderHtml()}</div></div></div>` : ''}`;
     return `
       <div class="config-card">
         <div class="bp-table-head">
-          <h2 style="margin:0;">🏋️ Build a practice set — Math</h2>
+          <h2 style="margin:0;">🏋️ Build a Practice Set</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="practiceSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="practiceBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
         </div>
         ${practiceSubjectTabsHtml()}
-        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Like Reading &amp; Writing, you control the category/skill mix and difficulty mix. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        ${bpPickerHtml('practice')}
+        <p class="lede">${availableCountLabelHtml(available, shortfalls.length)} question${available === 1 ? '' : 's'} available with the status scope below. Like Reading &amp; Writing, you control the category/skill mix and difficulty mix. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        ${shortfallWarningHtml(shortfalls, 'practiceMath', 'Math')}
         <div class="config-row">
-          <label>🎯 Scope — status (leave empty for all)</label>
+          <label>🎯 Status Scope (Leave Empty for All)</label>
           <div class="chip-row">${statusChipsHtml(practiceState)}</div>
         </div>
         ${distributionSection}
@@ -10786,11 +11028,12 @@
     const pool = practicePool();
     const available = practiceState.advancedDistribution ? practiceAvailableCount() : pool.length;
     const startCount = Math.min(practiceState.count, available);
+    const shortfalls = computeShortfalls(practiceState.blueprint, 'count', practiceResolveWeights(), practiceState.statuses, undefined);
 
     const distributionSection = `
         <div class="config-row">
           <div class="bp-table-head">
-            <label>📊 Question mix by section</label>
+            <label>📊 Question Distribution</label>
             <div class="bp-actions">
               <button type="button" class="btn" id="practiceBiasWeakBtn" style="font-size:11px; padding:4px 9px;" title="Bias every section/skill's count toward whichever you're weakest, least-practiced, or most overdue on">🧠 Bias toward weak</button>
               <button type="button" class="btn" id="practiceResetBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Also resets the difficulty mix back to its default">↩️ Reset to official</button>
@@ -10802,7 +11045,7 @@
         <div class="config-row" style="margin:12px 0 0;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="practiceShowSkillMixToggle" ${practiceState.showSkillMix ? 'checked' : ''} />
-            <span>🧩 Also customize skill mix within Reading &amp; Grammar</span>
+            <span>🧩 Customize Skill Mix Within Categories</span>
           </label>
         </div>
         ${practiceState.showSkillMix ? `<div class="idist-nested"><div class="config-row">${practiceLevel2SliderHtml()}</div></div>` : ''}`;
@@ -10810,7 +11053,7 @@
     return `
       <div class="config-card">
         <div class="bp-table-head">
-          <h2 style="margin:0;">🏋️ Build a practice set</h2>
+          <h2 style="margin:0;">🏋️ Build a Practice Set</h2>
           <div class="bp-actions">
             <button type="button" class="btn" id="practiceSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
             <button type="button" class="btn" id="practiceBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
@@ -10818,9 +11061,10 @@
         </div>
         ${practiceSubjectTabsHtml()}
         ${bpPickerHtml('practice')}
-        <p class="lede">${available} question${available === 1 ? '' : 's'} available with the status scope below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        <p class="lede">${availableCountLabelHtml(available, shortfalls.length)} question${available === 1 ? '' : 's'} available with the status scope below. Work through them one at a time — pick a choice, submit to check it, or reveal the answer whenever you want.</p>
+        ${shortfallWarningHtml(shortfalls, 'practice', 'Reading & Writing')}
         <div class="config-row">
-          <label>🎯 Scope — status (leave empty for all)</label>
+          <label>🎯 Status Scope (Leave Empty for All)</label>
           <div class="chip-row">${statusChipsHtml(practiceState)}</div>
         </div>
         ${distributionSection}
@@ -10903,6 +11147,7 @@
     const shell = document.getElementById('practiceShell');
     if (practiceState.phase === 'config') {
       wireBlueprintPicker(shell, 'practice', renderPractice);
+      wireShortfallToggle(shell, renderPractice);
       wireScopeChips(shell, practiceState, renderPractice);
       wireTimedModeConfig(shell, practiceState, 'practice', renderPractice);
       wireMetadataConfigSection(shell, 'practice', renderPractice);
@@ -12139,6 +12384,122 @@
   function shortfallNoticeHtml(note) {
     if (!note) return '';
     return `<div class="pill pill-review" style="display:block; width:100%; box-sizing:border-box; margin:8px 0; padding:8px 12px; font-size:12.5px; line-height:1.4;">⚠️ ${escapeHtml(note)}</div>`;
+  }
+
+  // Makes the "N questions available" count itself hard to miss — bold and
+  // sized up always, and colored as a warning the moment any skill/
+  // difficulty combo can't hit its target, so the number changes color the
+  // instant a slider tips into shortfall territory instead of only the
+  // separate banner below it saying so.
+  function availableCountLabelHtml(available, hasShortfall) {
+    return `<strong style="font-size:15px; color:${hasShortfall ? 'var(--danger, #b3452c)' : 'inherit'};">${available}</strong>`;
+  }
+
+  // Read-only, difficulty-aware pool check. Deliberately mirrors
+  // pickWeighted's own per-difficulty-bucket target math (see its comment
+  // above) rather than calling it, since pickWeighted only reports "picked
+  // fewer than n" — it doesn't say WHICH difficulty bucket ran out even
+  // though it quietly backfills that bucket from the others. That backfill
+  // is invisible today: e.g. asking for 20 all-Hard Vocab when every Hard
+  // Vocab question is already marked complete still "succeeds" (pickWeighted
+  // fills the 20 from Medium/Easy leftovers), so the old skill-total-only
+  // shortfall check never fired. This reports one entry per (skill,
+  // difficulty) bucket that can't hit its own target, plus which sibling
+  // difficulties in that same skill have slack to draw from — so the config
+  // screen can say "you asked for 20 Hard Vocab, only 3 are left; the rest
+  // will be filled with Medium/Easy Vocab instead" before Start is pressed.
+  function computeShortfalls(blueprint, countField, weights, statuses, sourcePool) {
+    const fromPool = sourcePool || QUESTIONS;
+    const normWeights = normalizeWeights(weights);
+    const order = ['Easy', 'Medium', 'Hard'];
+    const shortfalls = [];
+    blueprint.forEach(row => {
+      const n = row[countField];
+      if (!n) return;
+      const base = fromPool.filter(q => q.category === row.category && q.skill === row.skill);
+      const pool = (statuses && statuses.size) ? base.filter(q => statuses.has(questionStatus(q))) : base;
+      const buckets = { Easy: 0, Medium: 0, Hard: 0 };
+      pool.forEach(q => { buckets[q.difficulty_label]++; });
+      const targets = {};
+      let remaining = n;
+      order.forEach((d, i) => {
+        const t = (i === order.length - 1) ? remaining : Math.min(remaining, Math.round(n * normWeights[d]));
+        targets[d] = Math.max(0, t);
+        remaining -= targets[d];
+      });
+      const slackOf = d => Math.max(0, buckets[d] - targets[d]);
+      order.forEach(d => {
+        if (targets[d] > 0 && buckets[d] < targets[d]) {
+          shortfalls.push({
+            category: row.category, skill: row.skill, difficulty: d,
+            requested: targets[d], available: buckets[d],
+            backfillFrom: order.filter(o => o !== d && slackOf(o) > 0),
+          });
+        }
+      });
+    });
+    return shortfalls;
+  }
+
+  // Groups a computeShortfalls list by section (SKILL_BUCKET) for the
+  // click-through warning detail — "which category/skill/difficulty exactly
+  // is short, by how much, and what quietly fills the gap" instead of just a
+  // total count.
+  function shortfallDetailHtml(shortfalls, subjectLabel) {
+    if (!shortfalls || !shortfalls.length) return '';
+    const grouped = {};
+    shortfalls.forEach(r => {
+      const subject = r.subject || subjectLabel || '';
+      const section = SKILL_BUCKET[r.skill] || r.category;
+      const key = subject + '|' + section;
+      (grouped[key] = grouped[key] || { subject, section, items: [] }).items.push(r);
+    });
+    const rows = Object.values(grouped).map(g => {
+      const items = g.items.map(r => {
+        const fillText = r.backfillFrom.length
+          ? `will be filled with ${r.backfillFrom.join('/')}-difficulty ${escapeHtml(r.skill)} questions instead`
+          : `no matching ${escapeHtml(r.skill)} questions left at any difficulty — the session will come up short here`;
+        return `<div class="shortfall-row"><strong>${escapeHtml(r.difficulty)} ${escapeHtml(r.skill)}</strong> — requested ${r.requested}, only ${r.available} in bank; ${fillText}</div>`;
+      }).join('');
+      const heading = g.subject ? `${g.subject} → ${g.section}` : g.section;
+      return `<div class="shortfall-section"><p class="bp-hint" style="margin:8px 0 2px; font-weight:600; color:var(--ink-soft);">${escapeHtml(heading)}</p>${items}</div>`;
+    }).join('');
+    return `<div class="shortfall-detail" style="margin-top:8px;">${rows}<p class="bp-hint" style="margin-top:6px;">Backfilling keeps your requested count but shifts the difficulty mix — narrow the status scope less, lower that skill's count, or ease the difficulty weighting to avoid it.</p></div>`;
+  }
+
+  // A full-width warning banner (reusing the same pill-review styling as
+  // shortfallNoticeHtml, so it reads as prominently as the post-build notice
+  // does) plus its collapsible detail panel — shared by every builder's
+  // config screen so the "not enough questions" warning is impossible to
+  // miss instead of a small inline afterthought. `uiKey` indexes
+  // shortfallUiState so each builder/subject toggles independently;
+  // `subjectLabel` (e.g. "Math") is shown in the detail's grouping headers
+  // since some builders (Mock) mix both subjects' shortfalls in one call.
+  function shortfallWarningHtml(shortfalls, uiKey, subjectLabel) {
+    if (!shortfalls || !shortfalls.length) return '';
+    const open = !!shortfallUiState[uiKey];
+    const skillCount = new Set(shortfalls.map(r => r.category + '|' + r.skill)).size;
+    const banner = `
+      <div class="pill pill-review shortfall-banner" style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; width:100%; box-sizing:border-box; margin:8px 0; padding:8px 12px; font-size:12.5px; line-height:1.4;">
+        <span>⚠️ Not enough matching questions for ${skillCount} skill${skillCount === 1 ? '' : 's'} at this difficulty mix.</span>
+        <button type="button" class="btn" data-shortfall-toggle="${uiKey}" style="font-size:11px; padding:2px 8px; flex-shrink:0;">${open ? 'Hide details' : 'Show details'}</button>
+      </div>`;
+    const detail = open ? shortfallDetailHtml(shortfalls, subjectLabel) : '';
+    return banner + detail;
+  }
+
+  // UI-state for the shortfall-warning detail panels (parallel to bpUiState)
+  // — one open/closed flag per builder/subject, since Test/Practice/Mock ×
+  // R&W/Math each render their own independent warning button.
+  const shortfallUiState = { test: false, testMath: false, practice: false, practiceMath: false, mock: false };
+  function wireShortfallToggle(shell, rerender) {
+    shell.querySelectorAll('[data-shortfall-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-shortfall-toggle');
+        shortfallUiState[key] = !shortfallUiState[key];
+        rerender();
+      });
+    });
   }
 
   // Builds one Mock module's question set for whichever subject mockState is
@@ -13664,7 +14025,7 @@
         <div class="config-row" style="margin:12px 0 0;">
           <label class="filter-opt" style="padding:0;">
             <input type="checkbox" id="mockShowSkillMixToggle" ${mockState.showSkillMix ? 'checked' : ''} />
-            <span>🧩 Also customize skill mix within Reading &amp; Grammar (Level 2)</span>
+            <span>🧩 Customize Skill Mix Within Categories</span>
           </label>
         </div>
         ${mockState.showSkillMix ? `<div class="idist-nested"><div class="config-row">${mockLevel2SliderHtml(showM1, showM2)}</div></div>` : ''}`;
@@ -13685,7 +14046,7 @@
       <div class="config-row" style="margin:12px 0 0;">
         <label class="filter-opt" style="padding:0;">
           <input type="checkbox" id="mockShowSkillMixToggleMath" ${mockState.showSkillMixMath ? 'checked' : ''} />
-          <span>🧩 Also customize skill mix within each category (Level 2)</span>
+          <span>🧩 Customize Skill Mix Within Categories</span>
         </label>
       </div>
       ${mockState.showSkillMixMath ? `<div class="idist-nested"><div class="config-row"><div class="idist-block">${categoryBlocks}</div></div></div>` : ''}`;
@@ -13741,6 +14102,35 @@
     return html;
   }
 
+  // Live shortfall check for one Mock subject's currently-selected modules —
+  // mirrors exactly which buildMockModule calls Start will actually make
+  // (see mockDifficultySectionForSubject for the same m1/m2-pool selection
+  // logic), tagging each entry with a subject label so mixed English+Math
+  // selections can be shown together in one grouped detail view.
+  function computeMockShortfallsForSubject(subject) {
+    const isMath = subject === 'math';
+    const bp = isMath ? mockState.mathBlueprint : mockState.blueprint;
+    if (!bp) return [];
+    const pool = isMath ? MATH_QUESTIONS.filter(q => q.is_mc) : undefined;
+    const m1Field = isMath ? 'mathM1' : 'rwM1';
+    const m2Field = isMath ? 'mathM2' : 'rwM2';
+    const m1Key = isMath ? 'mathM1' : 'm1';
+    const hardKey = isMath ? 'mathM2harder' : 'm2harder';
+    const easyKey = isMath ? 'mathM2easier' : 'm2easier';
+    const subjectLabel = isMath ? 'Math' : 'Reading & Writing';
+    const shortfalls = [];
+    if (mockState.customModules.has(m1Field)) {
+      shortfalls.push(...computeShortfalls(bp, 'm1', resolveSlotWeights(mockState.weightConfig, m1Key), mockState.statuses, pool));
+    }
+    if (mockState.customModules.has(m2Field)) {
+      const poolField = isMath ? 'module2PoolMath' : 'module2Pool';
+      const m2Key = mockState[poolField] === 'harder' ? hardKey : easyKey;
+      shortfalls.push(...computeShortfalls(bp, 'm2', resolveSlotWeights(mockState.weightConfig, m2Key), mockState.statuses, pool));
+    }
+    shortfalls.forEach(r => { r.subject = subjectLabel; });
+    return shortfalls;
+  }
+
   function mockConfigHtml() {
     const subjects = mockSelectedSubjects();
     if (subjects.length && !subjects.includes(mockState.configTab)) mockState.configTab = subjects[0];
@@ -13761,23 +14151,30 @@
       ${mockDifficultySectionForSubject(activeSubject)}` : '';
 
     const startLabel = mockState.printMode ? '⬇️ Download PDF' : `Start${selectedCount ? ` (${selectedCount} module${selectedCount === 1 ? '' : 's'})` : ''}`;
+    const mockShortfalls = subjects.flatMap(computeMockShortfallsForSubject);
 
     return `
       <div class="config-card">
         <div class="bp-table-head">
           <h2 style="margin:0;">📋 Mock Exam</h2>
+          <div class="bp-actions">
+            <button type="button" class="btn" id="mockSaveBlueprintBtn" style="font-size:11px; padding:4px 9px;" title="Save this whole setup as a named blueprint">💾 Save current setup</button>
+            <button type="button" class="btn" id="mockBlueprintsBtn" style="font-size:11px; padding:4px 9px;" title="Browse official, saved, and community blueprints">📋 Blueprints</button>
+          </div>
         </div>
+        ${bpPickerHtml('mock')}
+        ${shortfallWarningHtml(mockShortfalls, 'mock')}
         <div class="config-row">
           <label>🧩 Modules</label>
           <div class="chip-row">${moduleChips}</div>
         </div>
         <div class="config-row">
-          <label>🎯 Scope — status (leave empty for all)</label>
+          <label>🎯 Status Scope (Leave Empty for All)</label>
           <div class="chip-row">${statusChipsHtml(mockState)}</div>
         </div>
         <div class="config-row">
           <div class="bp-table-head">
-            <label>📊 Question distribution</label>
+            <label>📊 Question Distribution</label>
           </div>
           <div class="chip-row">
             <button type="button" class="chip ${mockState.distributionMode === 'official' ? 'on' : ''}" data-mock-dist-mode="official">⚖️ Official</button>
@@ -14339,6 +14736,8 @@
   function wireMock() {
     const shell = document.getElementById('mockShell');
     if (mockState.phase === 'intro') {
+      wireBlueprintPicker(shell, 'mock', renderMock);
+      wireShortfallToggle(shell, renderMock);
       const startBtn = document.getElementById('startMockBtn');
       if (startBtn) startBtn.addEventListener('click', () => {
         if (mockState.printMode) generateMockPrintout();
