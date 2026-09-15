@@ -21,7 +21,8 @@
         var m = now.getMonth() + 1, d = now.getDate();
         var windows = [
           { id: 'halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
-          { id: 'christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 }
+          { id: 'christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 },
+          { id: 'valentines', startMonth: 2, startDay: 7, endMonth: 2, endDay: 14 }
         ];
         for (var i = 0; i < windows.length; i++) {
           var w = windows[i];
@@ -346,11 +347,11 @@
   /* Seasonal theme, same auto-pin mechanism as Halloween above. */
   :root[data-theme="christmas"] {
     --paper: #fbfbf9;
-    --paper-raised: #ffffff;
+    --paper-raised: #f4faf5;
     --ink: #1e3a2b;
     --ink-soft: #3f5c4a;
     --ink-faint: #7c9284;
-    --rule: #cfe0d3;
+    --rule: #bfe0c9;
     --rule-soft: #e3efe6;
     --accent: #b2273a;
     --accent-soft: #f6dde1;
@@ -382,6 +383,71 @@
     --cal-3: #4f9e63;
     --cal-4: #1e3a2b;
     --shadow: 0 1px 2px rgba(30, 58, 43, 0.10), 0 4px 14px rgba(178, 39, 58, 0.10);
+  }
+
+  /* Seasonal theme, same auto-pin mechanism as Halloween/Christmas above. */
+  :root[data-theme="valentines"] {
+    --paper: #fff5f7;
+    --paper-raised: #ffffff;
+    --ink: #5c1f34;
+    --ink-soft: #8a4360;
+    --ink-faint: #b98098;
+    --rule: #f3cddb;
+    --rule-soft: #fbe6ec;
+    --accent: #e0356b;
+    --accent-soft: #fcdbe6;
+    --accent-ink: #9c1c48;
+    --easy: #4fae7a;
+    --easy-bg: #e2f5ea;
+    --medium: #d69e2e;
+    --medium-bg: #fbeece;
+    --hard: #e0356b;
+    --hard-bg: #fcdbe6;
+    --correct: #4fae7a;
+    --correct-bg: #e2f5ea;
+    --incorrect: #e0356b;
+    --incorrect-bg: #fcdbe6;
+    --review: #d69e2e;
+    --review-bg: #fbeece;
+    --done: #4fae7a;
+    --done-bg: #e2f5ea;
+    --tier-bronze: #c17a4a;
+    --tier-bronze-bg: #f6e2d3;
+    --tier-silver: #b98098;
+    --tier-silver-bg: #fbe6ec;
+    --tier-gold: #d69e2e;
+    --tier-gold-bg: #fbeece;
+    --xp: #e0356b;
+    --xp-bg: #fcdbe6;
+    --cal-1: #fcdbe6;
+    --cal-2: #f6a6c0;
+    --cal-3: #e0356b;
+    --cal-4: #9c1c48;
+    --shadow: 0 1px 2px rgba(156, 28, 72, 0.10), 0 4px 14px rgba(224, 53, 107, 0.14);
+  }
+
+  /* Seasonal decorations (falling snow/bats/hearts) — see renderSeasonalDecor()
+     in the main script, which builds/tears down .seasonal-decor whenever
+     data-theme changes. Purely cosmetic: fixed, unclickable, and skipped
+     under prefers-reduced-motion. */
+  .seasonal-decor { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 3; }
+  .seasonal-decor-item {
+    position: absolute;
+    top: -8%;
+    line-height: 1;
+    animation: seasonal-fall linear infinite, seasonal-sway ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes seasonal-fall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+  }
+  @keyframes seasonal-sway {
+    from { margin-left: calc(var(--sd-drift, 20px) * -1); }
+    to { margin-left: var(--sd-drift, 20px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seasonal-decor { display: none; }
   }
 
   * { box-sizing: border-box; }
@@ -591,6 +657,13 @@
   }
   .subtabs.visible { display: flex; }
   .subtab { font-size: 12.5px; padding: 8px 12px 7px; }
+
+  /* Mobile nav (hamburger + slide-in panel) — hidden entirely above the
+     760px breakpoint, where the desktop .tabs row is used instead. See the
+     matching @media (max-width: 760px) block below for the visible state. */
+  .mobile-menu-btn { display: none; }
+  .mobile-nav-overlay { display: none; }
+  .mobile-nav-panel { display: none; }
 
   .view { flex: 1; display: none; }
   .view.active { display: block; }
@@ -1444,6 +1517,7 @@
   .propose-rationale-label:first-of-type { margin-top: 0; }
   .propose-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 640px) { .propose-row2 { grid-template-columns: 1fr; } }
+  .propose-toggle-row { display: flex; gap: 8px; flex-wrap: wrap; }
   #proposePasteZone {
     border: 2px dashed var(--rule);
     border-radius: 8px;
@@ -2278,7 +2352,7 @@
   .bb-body { flex: 1 1 auto; overflow: hidden; display: flex; min-height: 0; }
   .bb-pane { flex: 1 1 50%; overflow-y: auto; padding: 28px 34px; }
   .bb-pane-left { border-right: 1px solid #d5d5d5; font-family: Georgia, "Times New Roman", serif; font-size: 16px; line-height: 1.65; }
-  .bb-pane-left p { margin: 0 0 14px; }
+  .bb-pane-left p { margin: 0 0 14px; white-space: pre-line; }
   .bb-pane-left .qimage-wrap { border-color: #d5d5d5; }
   .bb-pane-right { font-family: Arial, Helvetica, sans-serif; }
   .bb-qhead { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
@@ -2702,25 +2776,83 @@
     .stat .n { font-size: 15px; }
     .stat .l { font-size: 9px; }
 
-    .tabs {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 16px;
-      scrollbar-width: none;
-    }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab { padding: 11px 10px 9px; white-space: nowrap; flex-shrink: 0; }
+    /* Below 760px, the desktop .tabs/.subtabs strip (too many tabs to fit,
+       and a horizontal-scroll row has no visible cue that more tabs sit
+       off-screen) is replaced entirely by the hamburger + slide-in panel
+       defined below — see #mobileMenuBtn/#mobileNavPanel in the HTML. */
+    .tabs, .subtabs.visible { display: none; }
 
-    .subtabs.visible {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 6px 16px 0;
-      scrollbar-width: none;
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-left: auto;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--rule-soft);
+      color: var(--ink);
+      cursor: pointer;
+      flex-shrink: 0;
     }
-    .subtabs::-webkit-scrollbar { display: none; }
-    .subtab { padding: 8px 10px 7px; white-space: nowrap; flex-shrink: 0; }
+    .mobile-menu-btn svg { width: 20px; height: 20px; }
+    .mobile-menu-btn[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+
+    .mobile-nav-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 45;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .mobile-nav-panel {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(78vw, 300px);
+      background: var(--paper-raised);
+      border-left: 1px solid var(--rule);
+      z-index: 46;
+      padding: 18px 10px;
+      gap: 2px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(100%);
+      transition: transform 0.22s ease;
+      box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+    }
+    .mobile-nav-panel.open { transform: translateX(0); pointer-events: auto; }
+
+    .mobile-nav-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border-bottom: none;
+      font-size: 15px;
+    }
+    .mobile-nav-item.active { background: var(--accent-soft); color: var(--accent-ink); }
+    .mobile-nav-item:active { background: var(--rule-soft); }
+    .mobile-nav-group-label {
+      padding: 14px 14px 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+    }
+    .mobile-nav-group-label:first-child { padding-top: 4px; }
 
     /* Bluebook / mock-exam question view: stack the passage and question
        panes instead of squeezing two 50%-width columns onto a phone screen. */
@@ -2846,6 +2978,9 @@
         </div>
       </div>
     </div>
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNavPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+    </button>
   </div>
 
   <div class="tabs">
@@ -2870,6 +3005,34 @@
     <button class="tab subtab" data-view="notes">Notes</button>
     <button class="tab subtab" data-view="leaderboard">Leaderboard</button>
     <button class="tab subtab" data-view="lab">Lab</button>
+  </div>
+
+  <!-- Mobile-only nav: a right-side slide-in panel opened by #mobileMenuBtn,
+       replacing the horizontal-scroll .tabs/.subtabs strip below the 760px
+       breakpoint (see CSS) since a scrolling row of 7+ tabs has no visible
+       affordance that more tabs exist off-screen. Items reuse class="tab"
+       so they're picked up by the same querySelectorAll('.tab') click-wiring
+       and active-state logic as the desktop tabs (see activateView) —
+       duplicate data-view buttons are already handled there. -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-panel" id="mobileNavPanel" role="menu" aria-label="Navigation">
+    <button class="tab mobile-nav-item" data-view="home" role="menuitem">Home</button>
+    <div class="mobile-nav-group-label">Browse</div>
+    <button class="tab mobile-nav-item" data-view="browse" role="menuitem">English</button>
+    <button class="tab mobile-nav-item" data-view="math" role="menuitem">Math</button>
+    <div class="mobile-nav-group-label">Practice</div>
+    <button class="tab mobile-nav-item" data-view="practice" role="menuitem">Practice</button>
+    <button class="tab mobile-nav-item" data-view="test" role="menuitem">Test</button>
+    <button class="tab mobile-nav-item" data-view="mock" role="menuitem">Mock Exam</button>
+    <div class="mobile-nav-group-label">Profile</div>
+    <button class="tab mobile-nav-item" data-view="profile" role="menuitem">Profile</button>
+    <button class="tab mobile-nav-item" data-view="analysis" role="menuitem">Analysis</button>
+    <button class="tab mobile-nav-item" data-view="review" role="menuitem">Review</button>
+    <button class="tab mobile-nav-item" data-view="notes" role="menuitem">Notes</button>
+    <button class="tab mobile-nav-item" data-view="leaderboard" role="menuitem">Leaderboard</button>
+    <button class="tab mobile-nav-item" data-view="lab" role="menuitem">Lab</button>
+    <div class="mobile-nav-group-label">More</div>
+    <button class="tab mobile-nav-item" data-view="propose" role="menuitem">Propose</button>
   </div>
 
   <!-- Bluebook-style kiosk chrome — not a tab of its own. Test and Mock Exam
@@ -3314,7 +3477,7 @@
   // Running correct/total tally per skill, fed by every graded attempt
   // across Browse/Practice/Progress/Review (the shared submit button in
   // wireDetail), Test (saveTestAttempt, called once per submitted
-  // test), and Mock exams (saveMockAttempt). Used to bias question
+  // test), and Mock exams (saveCustomMockAttempt). Used to bias question
   // selection toward skills you're actually missing, rather than a flat
   // random draw across the whole bank.
   const SKILL_STATS_KEY = 'sat_qbank_skill_stats_v1';
@@ -3574,6 +3737,27 @@
   // or achievement progress that completing it once already banked.
   const COMPLETION_LOG_KEY = 'sat_qbank_completion_log_v1';
 
+  // One-off/manual XP grants (e.g. a reward for a contribution) that aren't
+  // earned through QUESTION_XP/MOCK_EXAM_XP — added on top of totalXp() below.
+  const BONUS_XP_KEY = 'sat_qbank_bonus_xp_v1';
+
+  function loadBonusXp() {
+    try {
+      const raw = parseInt(localStorage.getItem(BONUS_XP_KEY), 10);
+      return Number.isFinite(raw) && raw > 0 ? raw : 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function saveBonusXp() {
+    try {
+      localStorage.setItem(BONUS_XP_KEY, String(state.bonusXp));
+    } catch (e) {
+      // storage unavailable/full — bonus XP still lives in memory for this session
+    }
+  }
+
   function loadCompletionLog() {
     try {
       const raw = JSON.parse(localStorage.getItem(COMPLETION_LOG_KEY));
@@ -3683,9 +3867,8 @@
         category = (practiceState.questions[practiceState.index] || {}).category || null;
       } else if (view === 'test' && testState.phase === 'quiz') {
         category = (testState.questions[testState.index] || {}).category || null;
-      } else if (view === 'mock' && (mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem')) {
-        const pool = mockState.phase === 'module2' ? mockState.module2Questions : mockState.module1Questions;
-        category = (pool[mockState.index] || {}).category || null;
+      } else if (view === 'mock' && mockState.phase === 'customItem') {
+        category = (mockState.module1Questions[mockState.index] || {}).category || null;
       }
     } catch (e) {
       category = null; // best-effort — a mismatched shape just means no category this tick, not a crash
@@ -4418,13 +4601,26 @@
   window.addEventListener('scroll', () => { if (ratingVotersHoverEl) renderRatingVotersPopover(); }, true);
   window.addEventListener('resize', () => { if (ratingVotersHoverEl) renderRatingVotersPopover(); });
 
-  // Any click elsewhere (e.g. opening a question's detail modal, which can
-  // land the modal's own copy of this same badge directly over the one the
+  // A tap on the badge itself opens the same voter-breakdown popover hover
+  // shows on desktop — touch has no hover, so without this the community
+  // rating breakdown was unreachable on mobile. Always opens (rather than
+  // toggling closed on a second tap) because touch browsers commonly fire a
+  // synthetic mouseover right before the click on first tap; toggling would
+  // let that mouseover open it and this handler immediately close it again.
+  // Any other click (e.g. opening a question's detail modal, which can land
+  // the modal's own copy of this same badge directly over the one the
   // popover is currently anchored to) closes the voter-breakdown popover —
   // it has nothing clickable inside it, so there's no case worth sparing.
   // Needed because a click doesn't necessarily move the pointer, so the
   // mouseout that would normally close it may never fire.
   document.addEventListener('click', (e) => {
+    const badge = e.target.closest('[data-rating-info]');
+    if (badge) {
+      if (ratingVotersHoverTimer) { clearTimeout(ratingVotersHoverTimer); ratingVotersHoverTimer = null; }
+      ratingVotersHoverEl = badge;
+      renderRatingVotersPopover();
+      return;
+    }
     if (ratingVotersHoverEl && !e.target.closest('#ratingVotersPopover')) {
       ratingVotersHoverEl = null;
       renderRatingVotersPopover();
@@ -5086,6 +5282,7 @@
     reviewOpenQuestion: null, // qid opened inline on the Review tab (via a tile click)
     progressFocus: loadProgressFocus(), // Set of difficulty labels counted toward Progress tab stats
     completionLog: loadCompletionLog(), // questionId -> ISO timestamp of first completion
+    bonusXp: loadBonusXp(), // manual XP grants on top of question/mock XP, see BONUS_XP_KEY
     dailyGoal: loadDailyGoal(), // questions/day target, drives the Progress tab goal ring
     profile: loadProfile(), // { name }
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
@@ -5284,7 +5481,7 @@
 
   // ---------- Stats ----------
   // Personalized progress snapshot rather than fixed catalog metadata — updates
-  // live as you mark questions and take mock exams (see setStatus/saveMockAttempt).
+  // live as you mark questions and take mock exams (see setStatus/saveCustomMockAttempt).
   function bestMockRWScore() {
     if (!mockState.history.length) return null;
     // Custom-composition attempts don't have the module1Ids/module2Ids shape
@@ -6778,7 +6975,7 @@
   document.getElementById('qlist').addEventListener('click', (e) => {
     if (e.target.closest('[data-copy-id]')) return; // let the copy-ID click through, don't also open the modal
     if (e.target.closest('.qcard-select')) return; // let the bulk-select checkbox toggle, don't also open the modal
-    if (e.target.closest('[data-rate-toggle], [data-vote-qid]')) return; // let Rated Difficulty voting through, don't also open the modal
+    if (e.target.closest('[data-rate-toggle], [data-vote-qid], [data-rating-info]')) return; // let Rated Difficulty voting/rating-tap through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const qid = head.dataset.id;
@@ -6906,7 +7103,7 @@
       } else if ((e.key === 'ArrowLeft' || navKey === keybindings.prev) && state.modalIndex > 0) {
         state.modalIndex--; renderQuestionModal(); return;
       }
-    } else if (quizShortcutsEnabled && (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem' || practiceState.phase === 'session')) {
+    } else if (quizShortcutsEnabled && (testState.phase === 'quiz' || mockState.phase === 'customItem' || practiceState.phase === 'session')) {
       // Opt-in (see the "Enable keyboard shortcuts" checkbox on the
       // Test/Mock/Practice config screen) — mirrors the Previous/Next/
       // answer-choice buttons on screen. In Test/Mock, Enter and Right/H
@@ -6916,7 +7113,7 @@
       // Practice there IS a Submit step (see the "below" handler further
       // down, which Enter still reaches here), so only Right/H advance —
       // Enter falls through to Submit instead of skipping it.
-      const isMock = mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem';
+      const isMock = mockState.phase === 'customItem';
       const isPractice = practiceState.phase === 'session';
       const shell = document.getElementById(isMock ? 'mockShell' : isPractice ? 'practiceShell' : 'testShell');
       const prevId = isMock ? 'mockPrevBtn' : isPractice ? 'practicePrevBtn' : 'prevBtn';
@@ -6963,8 +7160,8 @@
           if (btn) runWithoutScrollJump(() => btn.click());
           return;
         }
-      } else if (testState.phase === 'quiz' || mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem') {
-        const isMock = mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem';
+      } else if (testState.phase === 'quiz' || mockState.phase === 'customItem') {
+        const isMock = mockState.phase === 'customItem';
         const shellTM = document.getElementById(isMock ? 'mockShell' : 'testShell');
         if (shellTM && isMarkForReviewKey) {
           const btn = shellTM.querySelector('[data-mark-toggle]');
@@ -7188,6 +7385,37 @@
       activateView(tab.dataset.view, tab);
     });
   });
+
+  // ---------- Mobile nav (hamburger + slide-in panel) ----------
+  // Replaces .tabs/.subtabs below the 760px breakpoint (see CSS) — its
+  // items are plain .mobile-nav-item.tab buttons, already wired by the
+  // querySelectorAll('.tab') loop above, so this only needs to open/close
+  // the panel itself and close it after a nav item is actually used.
+  (function () {
+    const btn = document.getElementById('mobileMenuBtn');
+    const panel = document.getElementById('mobileNavPanel');
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (!btn || !panel || !overlay) return;
+    function closeMobileMenu() {
+      panel.classList.remove('open');
+      overlay.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    function openMobileMenu() {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    btn.addEventListener('click', () => {
+      if (panel.classList.contains('open')) closeMobileMenu(); else openMobileMenu();
+    });
+    overlay.addEventListener('click', closeMobileMenu);
+    panel.querySelectorAll('.mobile-nav-item').forEach(item => item.addEventListener('click', closeMobileMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+  })();
+
   // Restore whichever tab was open last time, so a reload/restart lands
   // back where you were instead of always resetting to Home. Deferred to a
   // macrotask (setTimeout 0) rather than run inline here: activateView on a
@@ -7258,6 +7486,55 @@
     document.querySelector(".tab-dropdown-item[data-view=\"browse\"]").click();
   });
 
+  // -- Seasonal decorations (falling snow/bats/hearts) --
+  // Purely cosmetic emoji layer for the Halloween/Christmas/Valentine's
+  // themes (see LAB_THEMES/SEASONAL_THEME_WINDOWS below). Driven by a
+  // MutationObserver on documentElement's data-theme attribute rather than
+  // called from every place that can change it (Lab picker, topbar toggle,
+  // the anti-flash <script> on load, seasonal auto-pin) — one listener
+  // covers all of them and can't drift out of sync with a new one later.
+  const SEASONAL_DECOR = {
+    halloween: ['🦇', '🎃', '👻', '🕸️'],
+    christmas: ['❄️', '❄️', '✨'],
+    valentines: ['💕', '💖', '🌹', '💗'],
+  };
+  let seasonalDecorLayer = null;
+  function renderSeasonalDecor() {
+    const theme = document.documentElement.dataset.theme;
+    const emoji = SEASONAL_DECOR[theme];
+    if (!emoji) {
+      if (seasonalDecorLayer) { seasonalDecorLayer.remove(); seasonalDecorLayer = null; }
+      return;
+    }
+    if (seasonalDecorLayer && seasonalDecorLayer.dataset.decorTheme === theme) return;
+    if (seasonalDecorLayer) seasonalDecorLayer.remove();
+    const layer = document.createElement('div');
+    layer.className = 'seasonal-decor';
+    layer.dataset.decorTheme = theme;
+    layer.setAttribute('aria-hidden', 'true');
+    const count = 20;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.className = 'seasonal-decor-item';
+      span.textContent = emoji[i % emoji.length];
+      const fallSec = (9 + Math.random() * 10).toFixed(1);
+      const swaySec = (3 + Math.random() * 2.5).toFixed(1);
+      span.style.left = (Math.random() * 100).toFixed(1) + 'vw';
+      span.style.fontSize = (13 + Math.random() * 15).toFixed(0) + 'px';
+      span.style.opacity = (0.35 + Math.random() * 0.35).toFixed(2);
+      span.style.animationDuration = fallSec + 's, ' + swaySec + 's';
+      span.style.animationDelay = (-Math.random() * 20).toFixed(1) + 's, ' + (-Math.random() * swaySec).toFixed(1) + 's';
+      span.style.setProperty('--sd-drift', (14 + Math.random() * 24).toFixed(0) + 'px');
+      layer.appendChild(span);
+    }
+    document.body.appendChild(layer);
+    seasonalDecorLayer = layer;
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(renderSeasonalDecor).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+  renderSeasonalDecor();
+
   // ---------- Theme toggle ----------
   const THEME_KEY = 'sat_qbank_theme_v1';
   const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -7315,6 +7592,19 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.3', date: 'Sep 15', title: 'A real mobile menu, bigger seasonal themes, and new achievements', lede: 'The topbar tabs now open into a proper slide-in menu on phones instead of a horizontally-scrolling strip. Halloween and Christmas got more color and a bit of falling-emoji flair, joined by a new Valentine’s Day theme — and 7 new achievements to chase.', items: [
+      { name: 'Mobile nav menu', desc: 'Below 760px, tapping the new hamburger button in the topbar opens a right-side slide-in panel listing every tab, replacing the old horizontally-scrolling tab strip that gave no hint more tabs existed off-screen.' },
+      { name: 'Seasonal themes: more color, falling emoji', desc: 'Halloween and Christmas got richer, more varied palettes, and a new Valentine’s Day theme (auto-pins Feb 7–14) joins them — all three now drift falling snow/bats/hearts across the screen while active, picked automatically or from Lab → Theme.' },
+      { name: '7 new achievements', desc: 'Three-Quarters There, Category Sweep, Iron Will (60-day streak), Weekly Warrior, XP Hoarder, Virtuoso (level 20), and Exam Veteran (15 mock exams).' },
+    ] },
+    { version: 'v2.2', date: 'Sep 14', title: 'Propose Math, offline mode, and a round of fixes', lede: 'Propose now supports Math questions alongside Reading &amp; Writing, synced with a new command-line script for the same review queue. Offline mode is a new opt-in Lab feature — download every question image once and the app keeps working with no connection. Plus a handful of fixes: the community rating popup now opens with a single tap on mobile, Notes-category (bulleted) questions render correctly in Bluebook mode, and Mock Exam no longer repeats a question across a subject’s two modules.', items: [
+      { name: 'Propose: Math questions', desc: 'A Test toggle (English/Math) on the Propose tab switches to Math’s own category and skill list, with a multiple-choice vs. student-produced response switch. A new scripts/propose_math_question.py stages Math questions from the command line into the exact same review queue, so both paths land in one place.' },
+      { name: 'Offline mode (Lab)', desc: 'Turn on the new Offline mode toggle in Lab to register a service worker, then use “Download for offline” to cache every question image (~34,000 files) — the app and its images keep working with no connection.' },
+      { name: 'Tutorial refresh', desc: 'The interactive tour and every page’s contextual help (⌘K → “help”) now cover Leaderboard, Lab, and Math Browse, and the Browse step properly calls out the English/Math dropdown with its own highlight instead of blending it into the sidebar step.' },
+      { name: 'Fix: community rating popup on mobile', desc: 'Tapping a question’s community rating badge now opens the voter breakdown directly — it used to only open on hover, which touch screens can’t trigger.' },
+      { name: 'Fix: Notes questions in Bluebook mode', desc: 'Notes-category questions (a bulleted list of facts in the stem) were rendering as one run-on line inside the Bluebook-style Test/Mock Exam view.' },
+      { name: 'Fix: Mock Exam question repeats', desc: 'A subject’s Module 2 could occasionally reuse a question already asked in that same subject’s Module 1 — now excluded properly.' },
+    ] },
     { version: 'v2.1', date: 'Sep 11', title: 'Math graduates from Beta', lede: 'Notes, reporting a question issue, skill-mastery/accuracy stats, the spaced-repetition Review queue, bulk select, and Export/Import backup now all work the same way for Math as they do for Reading &amp; Writing — everything’s saved, keyed the same way. The one thing still missing is Practice/Test/Mock Exam (and the print-a-worksheet feature tied to those) — Math stays browse-only for now.' },
     { version: 'v2.0', date: 'Sep 7', title: 'Math added, as its own tab', lede: 'All four Math domains, 1,294 questions across Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry — completing the full digital SAT question bank. Kept separate from the main Reading &amp; Writing bank in its own <strong>Math</strong> tab.', items: [
       { name: 'Equations, graphs, and tables render as cropped images inline in the question text', desc: 'The source PDFs draw every number and expression as vector graphics, not text — each one is cropped into its own small image and spliced back into the sentence, table, or answer choice it belongs in.' },
@@ -7459,26 +7749,39 @@
       { title: 'Welcome to KYJ-SAT', body: "A ~2 minute tour of every tab, plus the handful of buttons worth knowing about. Tip: once you're done, press ⌘K / Ctrl+K and search \"help\" any time for a deeper, focused tour of whatever page you're on." },
       { view: 'browse', selector: '#statRow', title: 'Your stats, always visible', body: 'Completed, To review, and Best score sit in the topbar on every tab, so you never lose track of where you stand.' },
       { view: 'browse', selector: '#searchBox', title: 'Full-text search', body: "Search across question stems, choices, and rationale — or paste a question ID, or type a display ID like \"Evidence #1\" to jump straight to it." },
+      { view: 'browse', selector: '#browseTabGroup', title: 'Browse: English & Math', body: 'Browse splits into two separate banks. Hover the "Browse" button (or tap it, or tap this little arrow) to open a menu and pick English or Math — each has its own filters and categories.' },
       { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, and status from the sidebar. Click any question in the list to expand its full interactive detail, choices and rationale included.' },
       { view: 'practice', selector: '.tab[data-view="practice"]', title: 'Practice', body: 'Pick a scope — category, skill, or difficulty, optionally shuffled — and work through it one question at a time. Picking a choice only selects it; hit Submit to grade it, or Show answer any time.' },
-      { view: 'test', selector: '.tab[data-view="test"]', title: 'Test', body: "Mock Exam's distribution engine — editable section/skill counts and difficulty mix, any total question count — as one flat, shuffled quiz. Nothing is graded until you submit the whole thing, then a scored results page with a per-skill breakdown." },
-      { view: 'mock', selector: '.tab[data-view="mock"]', title: 'Mock Exam', body: 'A fully configurable digital-SAT-style Reading & Writing mock: an adaptive full exam, or either module standalone, with editable per-skill counts and an estimated composite score out of 1600.' },
-      { view: 'profile', selector: '.tab[data-view="profile"]', title: 'Profile', body: "XP, levels, streaks, a daily goal, achievements, and kyj-cloud (sync progress across devices) — plus Analysis, Review, and Notes, tucked under three subtabs right here." },
+      { view: 'test', selector: '.tab[data-view="test"]', title: 'Test', body: "Mock Exam's distribution engine — editable section/skill counts and difficulty mix, any total question count — as one flat, shuffled quiz, for either English or Math. Nothing is graded until you submit the whole thing, then a scored results page with a per-skill breakdown." },
+      { view: 'mock', selector: '.tab[data-view="mock"]', title: 'Mock Exam', body: 'A fully configurable digital-SAT-style mock: pick any combination of English and Math modules, back to back, with real adaptive routing when you pair a subject\'s Module 1 and 2 — editable per-skill counts and an estimated composite score out of 1600.' },
+      { view: 'profile', selector: '.tab[data-view="profile"]', title: 'Profile', body: "XP, levels, streaks, a daily goal, achievements, and kyj-cloud (sync progress across devices) — plus Analysis, Review, Notes, Leaderboard, and Lab, tucked under subtabs right here." },
       { view: 'analysis', selector: '.subtab[data-view="analysis"]', title: 'Analysis', body: 'Completion tracking (an overall bar, a per-category tile grid, a Focus selector by difficulty) plus performance breakdowns: skill mastery, a trend signal, and a missed-question digest pulled from your mock-exam history.' },
       { view: 'review', selector: '.subtab[data-view="review"]', title: 'Review — spaced repetition', body: "Everything flagged for review gets scheduled by a real FSRS engine, the same memory model Anki's scheduler uses. Study due only ever shows what's actually due, however big the backlog gets." },
       { view: 'notes', selector: '.subtab[data-view="notes"]', title: 'Notes', body: 'Every note and tag you add to a question, anywhere in the bank, compiled here into one searchable list.' },
-      { view: 'propose', selector: '.tab[data-view="propose"]', title: 'Propose', body: "Log in (same account as kyj-cloud) and write a new question right in the app — it's queued for the site owner to review, never added to the live bank automatically." },
+      { view: 'leaderboard', selector: '.subtab[data-view="leaderboard"]', title: 'Leaderboard', body: 'See how your streak stacks up against everyone else syncing progress through kyj-cloud — log in from the cloud icon in the topbar to show up on it.' },
+      { view: 'lab', selector: '.subtab[data-view="lab"]', title: 'Lab', body: "Experimental, opt-in settings: community difficulty ratings (rate any question 1-10 and see everyone else's average), theme, custom keybindings, choice-count drilling, strict timing, and which Browse filters show up. Everything here defaults to off/unchanged except community ratings." },
+      { view: 'propose', selector: '.tab[data-view="propose"]', title: 'Propose', body: "Log in (same account as kyj-cloud) and write a new English or Math question right in the app — it's queued for the site owner to review, never added to the live bank automatically." },
       { selector: '#themeToggleBtn, #paletteTriggerBtn, #cloudSaveWrap, .feedback-wrap', title: 'Topbar tools', body: 'Dark mode, the ⌘K / Ctrl+K command palette, kyj-cloud, and one-click feedback — all live here, on every tab.' },
       { view: 'home', selector: '.tab[data-view="home"]', title: 'Home', body: "Come back here any time for a getting-started refresher, or to see everything the app can do and when it showed up." },
       { title: "One thing to remember", body: "Press ⌘K / Ctrl+K anywhere — search \"help\" for a focused tour of whatever page you're on, or \"shortcuts\" for the full keyboard reference. Then pick a tab and get going — Browse is a good place to start cold, or jump straight into Practice.", finish: true },
     ],
 
     browse: [
+      { view: 'browse', selector: '#browseTabGroup', title: 'English & Math', body: 'Browse is split into two separate banks — hover (or tap) the little arrow next to "Browse" any time to switch to Math (this tour covers English; Math\'s is the same idea with its own filters and categories — search "help" again once you\'re there for its version).' },
       { view: 'browse', selector: '#searchBox', title: 'Search & jump', body: 'Full-text search across stems, choices, and rationale. Paste a College Board question ID, or type a short id like "Evidence #1", and press Enter to jump straight to it.' },
-      { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, and status — pick from any of the four sidebar groups, they all narrow the list together.' },
+      { view: 'browse', selector: '#categoryFilters', title: 'Filter the bank', body: 'Filter by category, skill, difficulty, status, and (if the Lab toggle is on) community-rated difficulty — pick from any sidebar group, they all narrow the list together.' },
       { view: 'browse', selector: '#sortSelect', title: 'Sort', body: 'Reorder by difficulty (easiest or hardest first), or back to original source order — independent of whatever filters are active.' },
       { view: 'browse', selector: 'label:has(#selectAllBox)', title: 'Bulk actions', body: 'Tick a batch of questions (or "Select all" for everything currently filtered), then mark them all complete, for review, or incomplete in one go — a bulk action bar appears the moment anything\'s selected.' },
       { view: 'browse', selector: '.qcard', title: 'Expand a question', body: 'Click any card to open its full interactive detail: every choice, the full rationale plus a rationale per choice, tags, notes, and the chart/table image if it has one.' },
+      TOUR_REMINDER_STEP,
+    ],
+
+    math: [
+      { view: 'math', selector: '#browseTabGroup', title: 'Math Browse', body: 'The Math bank, mirroring English Browse — hover (or tap) the arrow next to "Browse" to switch back to English any time.' },
+      { view: 'math', selector: '#searchBoxMath', title: 'Search & jump', body: 'Full-text search across Math stems and choices. Paste a College Board question ID, or type a short id like "Algebra #12", and press Enter to jump straight to it.' },
+      { view: 'math', selector: '#categoryFiltersMath', title: 'Filter the bank', body: 'Filter by category (Algebra, Advanced Math, Problem-Solving and Data Analysis, Geometry and Trigonometry), skill, difficulty, status, and community rating — same idea as English Browse.' },
+      { view: 'math', selector: '#sortSelectMath', title: 'Sort', body: 'Reorder by difficulty (easiest or hardest first), or back to original source order.' },
+      { view: 'math', selector: '.qcard', title: 'Expand a question', body: 'Click any card for the full interactive detail — the four choices (or, for student-produced response questions, the correct answer directly), full rationale, notes, and any diagram/graph image.' },
       TOUR_REMINDER_STEP,
     ],
 
@@ -7542,10 +7845,25 @@
       TOUR_REMINDER_STEP,
     ],
 
+    leaderboard: [
+      { view: 'leaderboard', selector: '.subtab[data-view="leaderboard"]', title: 'Leaderboard', body: 'Ranks everyone syncing progress through the same kyj-cloud account system by current streak — log in from the cloud icon in the topbar (top-right) to show up on it yourself.' },
+      { view: 'leaderboard', selector: '#leaderboardShell', title: 'Where the ranking comes from', body: "Same streak counter as your own Profile page — study on consecutive days and it climbs for everyone to see, no separate leaderboard-specific action needed." },
+      TOUR_REMINDER_STEP,
+    ],
+
+    lab: [
+      { view: 'lab', selector: '.subtab[data-view="lab"]', title: 'Lab — experimental settings', body: "Opt-in customization that isn't core to the app. Everything defaults to off/unchanged, except community difficulty ratings (on by default). \"Reset all Lab settings to defaults\" at the top undoes everything here in one click." },
+      { view: 'lab', selector: '#labRatedDifficulty', title: 'Community difficulty ratings', body: 'Rate any question 1-10 from its detail view, and see everyone else\'s average (and an admin-approved rating, once the site owner sets one) — shown as a badge next to the official Easy/Medium/Hard pill. Tap the badge on mobile, or hover it on desktop, to see who voted what.' },
+      { view: 'lab', selector: '#labHideCbDifficulty', title: 'Hide the official difficulty pill', body: "Turn off the College Board Easy/Medium/Hard label if you'd rather judge a question cold, or lean entirely on the community rating instead." },
+      { view: 'lab', selector: '[data-browse-filter-key], [data-browse-filter-math-key]', title: 'Browse filters', body: 'Choose which filter facets show up in the Browse sidebar — separately for English and Math — if the full set feels like clutter.' },
+      { view: 'lab', selector: '[data-rebind-action]', title: 'Custom keybindings', body: 'Rebind any keyboard shortcut in the app to whatever keys you prefer.' },
+      TOUR_REMINDER_STEP,
+    ],
+
     propose: [
-      { view: 'propose', selector: '#proposeLoginBtn, #proposeSubmitBtn', title: 'Propose a question', body: 'Log in with the same account as kyj-cloud (sign up there first if you don\'t have one) to write a new question right in the app: category, skill, difficulty, tags, the passage/stem, a prompt, four choices with the correct one marked, and a rationale for each choice.' },
-      { view: 'propose', selector: 'label:has(#proposeHasImage), #proposePasteZone', title: 'Charts & tables', body: 'If the question needs a chart or table, check "has an image" and either paste one (copy an image, click the box, ⌘V/Ctrl+V) or upload a PNG/SVG file.' },
-      { view: 'propose', selector: '#proposeSubmitBtn', title: 'Review queue', body: 'Submitting never adds anything to the live bank automatically — it queues up for the site owner to approve or reject first.' },
+      { view: 'propose', selector: '#proposeTestRw, #proposeTestMath', title: 'Propose a question', body: 'Log in with the same account as kyj-cloud (sign up there first if you don\'t have one) to write a new question right in the app — pick English or Math up top, since each has its own category/skill list and Math also lets you mark a question as student-produced response instead of multiple choice.' },
+      { view: 'propose', selector: 'label:has(#proposeHasImage), #proposePasteZone', title: 'Charts, diagrams & equations', body: 'If the question needs a chart, table, or an equation/diagram too complex to type, check "has an image" and either paste one (copy an image, click the box, ⌘V/Ctrl+V) or upload a PNG/SVG file.' },
+      { view: 'propose', selector: '#proposeSubmitBtn', title: 'Review queue', body: 'Submitting never adds anything to the live bank automatically — it queues up for the site owner to approve or reject first, the exact same queue a question proposed from the command line lands in too.' },
       TOUR_REMINDER_STEP,
     ],
 
@@ -7575,10 +7893,17 @@
   // Which page the palette's contextual "Help" command should open — reads
   // the actual active tab/subtab rather than tracking it separately, so it
   // can never drift out of sync with what's on screen.
-  const PAGE_TOUR_LABELS = { home: 'Home', browse: 'Browse', practice: 'Practice', test: 'Test', mock: 'Mock Exam', profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', propose: 'Propose' };
+  const PAGE_TOUR_LABELS = { home: 'Home', browse: 'Browse (English)', math: 'Browse (Math)', practice: 'Practice', test: 'Test', mock: 'Mock Exam', profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', leaderboard: 'Leaderboard', lab: 'Lab', propose: 'Propose' };
   function currentPageTourKey() {
     const activeSubtab = document.querySelector('.subtab.active');
     if (activeSubtab && TOURS[activeSubtab.dataset.view]) return activeSubtab.dataset.view;
+    // Checked before the generic .tabs .tab.active lookup below: on Math,
+    // both browseNavTrigger ("Browse", data-view="browse") and the Math
+    // dropdown item pick up .active (see BROWSE_FAMILY), and
+    // browseNavTrigger sits first in the DOM — a plain .tabs .tab.active
+    // query would always resolve to English even while on Math.
+    const activeDropdownItem = document.querySelector('.tab-dropdown-item.active');
+    if (activeDropdownItem && TOURS[activeDropdownItem.dataset.view]) return activeDropdownItem.dataset.view;
     const activeTab = document.querySelector('.tabs .tab.active');
     const view = activeTab ? activeTab.dataset.view : 'home';
     return TOURS[view] ? view : 'home';
@@ -7684,7 +8009,13 @@
     tourStepIndex = i;
     const step = currentTourSteps[tourStepIndex];
     if (step.view) {
-      const tabBtn = document.querySelector('.tab[data-view="' + step.view + '"]');
+      // For 'browse'/'math', prefer the dropdown item over the "Browse" nav
+      // trigger itself — both share data-view="browse"/"math", and
+      // querySelector would otherwise land on browseNavTrigger first, whose
+      // click handler only opens the English/Math dropdown instead of
+      // actually navigating (see the click listener installed below).
+      const tabBtn = document.querySelector('.tab-dropdown-item[data-view="' + step.view + '"]')
+        || document.querySelector('.tab[data-view="' + step.view + '"]');
       if (tabBtn && !tabBtn.classList.contains('active')) tabBtn.click();
     }
     // A step can run arbitrary setup before it's measured/shown — e.g. the
@@ -8129,7 +8460,7 @@
   // human approval step — the site owner still has to pull the repo and run
   // scripts/review_staged_questions.py to actually approve/reject each one,
   // same as a question added locally.
-  const PROPOSE_CATEGORY_META = {
+  const PROPOSE_RW_CATEGORY_META = {
     'Grammar': ['grammar.json', 'Standard English Conventions', 'SEC', { 'Boundaries': 'BOUND', 'Form, Structure, and Sense': 'FSS' }],
     'Vocab': ['vocab.json', 'Craft and Structure', 'CAS', { 'Words in Context': 'WIC' }],
     'Transitions': ['transitions.json', 'Expression of Ideas', 'EOI', { 'Transitions': 'TRANS' }],
@@ -8141,9 +8472,48 @@
     'Textual Evidence': ['command_of_evidence.json', 'Information and Ideas', 'INI', { 'Command of Evidence (Textual)': 'COE' }],
     'Quantitative Evidence': ['command_of_evidence.json', 'Information and Ideas', 'INI', { 'Command of Evidence (Quantitative)': 'COE' }],
   };
+  // Math's own category table, same [file, domain, domain_code, skills] shape
+  // as PROPOSE_RW_CATEGORY_META — kept separate (not merged in) since the
+  // Propose tab's Test toggle swaps between these two wholesale, and Math
+  // questions carry a different `test` value and a one-level-deeper image
+  // directory (see proposeImageDir). Domain here is just the category name
+  // itself, unlike R&W where domain groups several categories together —
+  // matches db/categories/{algebra,advanced_math,geometry_and_trigonometry,
+  // problem_solving_and_data_analysis}.json.
+  const PROPOSE_MATH_CATEGORY_META = {
+    'Algebra': ['algebra.json', 'Algebra', 'ALG', {
+      'Linear equations in one variable': 'LEQ1',
+      'Linear equations in two variables': 'LEQ2',
+      'Linear functions': 'LFUNC',
+      'Systems of two linear equations in two variables': 'SYS2',
+      'Linear inequalities in one or two variables': 'LINEQ',
+    }],
+    'Advanced Math': ['advanced_math.json', 'Advanced Math', 'ADVM', {
+      'Equivalent expressions': 'EQUIV',
+      'Nonlinear equations in one variable and systems of equations in two variables': 'NLEQ',
+      'Nonlinear functions': 'NLFUNC',
+    }],
+    'Problem-Solving and Data Analysis': ['problem_solving_and_data_analysis.json', 'Problem-Solving and Data Analysis', 'PSDA', {
+      'Ratios, rates, proportional relationships, and units': 'RATES',
+      'Percentages': 'PCT',
+      'One-variable data: Distributions and measures of center and spread': 'ONEVAR',
+      'Two-variable data: Models and scatterplots': 'TWOVAR',
+      'Probability and conditional probability': 'PROB',
+      'Inference from sample statistics and margin of error': 'INFERSTAT',
+      'Evaluating statistical claims: Observational studies and experiments': 'STATCLAIM',
+    }],
+    'Geometry and Trigonometry': ['geometry_and_trigonometry.json', 'Geometry and Trigonometry', 'GEOT', {
+      'Area and volume': 'AREAVOL',
+      'Lines, angles, and triangles': 'LAT',
+      'Right triangles and trigonometry': 'RTRIG',
+      'Circles': 'CIRC',
+    }],
+  };
   const PROPOSE_DIFF_MAP = { Easy: 1, Medium: 2, Hard: 3 };
   let proposePastedBlob = null;
   let proposePastedExt = 'png';
+  let proposeTest = 'rw'; // 'rw' | 'math' — which Test the Propose form is currently authoring for
+  let proposeIsMC = true; // Math only: multiple-choice vs student-produced (free) response; R&W is always MC
 
   function proposeRandomId() {
     const bytes = new Uint8Array(4);
@@ -8151,8 +8521,19 @@
     do {
       crypto.getRandomValues(bytes);
       id = Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
-    } while (QUESTIONS.some(q => q.id === id));
+    } while (ALL_QUESTIONS.some(q => q.id === id)); // ALL_QUESTIONS, not QUESTIONS — the latter excludes Math and would let a proposed Math id collide with a real one
     return id;
+  }
+
+  function proposeCategoryMeta() {
+    return proposeTest === 'math' ? PROPOSE_MATH_CATEGORY_META : PROPOSE_RW_CATEGORY_META;
+  }
+  // Where a proposed question's single optional image gets committed. Mirrors
+  // db/categories/<slug>.json's own images/<slug>/ convention for R&W, but
+  // Math's real images live one directory deeper, under images/math/<slug>/
+  // (see images/math/algebra, images/math/advanced_math, ... on disk).
+  function proposeImageDir(slug) {
+    return proposeTest === 'math' ? `math/${slug}` : slug;
   }
 
   function proposeBlobToBase64(blob) {
@@ -8165,7 +8546,7 @@
   }
 
   function proposeSkillOptionsHtml(category) {
-    const skills = PROPOSE_CATEGORY_META[category][3];
+    const skills = proposeCategoryMeta()[category][3];
     return Object.keys(skills).map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
   }
 
@@ -8188,6 +8569,8 @@
     });
     const checked = document.querySelector('input[name="proposeCorrect"]:checked');
     if (checked) checked.checked = false;
+    if ($$('proposeFreeAnswer')) $$('proposeFreeAnswer').value = '';
+    if ($$('proposeFreeRationale')) $$('proposeFreeRationale').value = '';
     $$('proposeTags').value = '';
     $$('proposeHasImage').checked = false;
     $$('proposeImgWrap').style.display = 'none';
@@ -8204,23 +8587,15 @@
 
   async function submitProposal() {
     const $$ = (id) => document.getElementById(id);
+    const isMath = proposeTest === 'math';
+    const isFreeResponse = isMath && !proposeIsMC;
     const title = $$('proposeTitle').value.trim();
     const category = $$('proposeCategory').value;
-    const [file, domain, domain_code, skills] = PROPOSE_CATEGORY_META[category];
+    const [file, domain, domain_code, skills] = proposeCategoryMeta()[category];
     const skill = $$('proposeSkill').value;
     const difficulty_label = $$('proposeDifficulty').value;
     const stem = $$('proposeStem').value.trim();
     const prompt = $$('proposePrompt').value.trim();
-    const choices = {
-      A: $$('proposeChoiceA').value.trim(), B: $$('proposeChoiceB').value.trim(),
-      C: $$('proposeChoiceC').value.trim(), D: $$('proposeChoiceD').value.trim(),
-    };
-    const correctEl = document.querySelector('input[name="proposeCorrect"]:checked');
-    const correct_answer = correctEl ? correctEl.value : null;
-    const rationale_by_choice = {
-      A: $$('proposeRationaleA').value.trim(), B: $$('proposeRationaleB').value.trim(),
-      C: $$('proposeRationaleC').value.trim(), D: $$('proposeRationaleD').value.trim(),
-    };
     const hasImage = $$('proposeHasImage').checked;
     const tags = $$('proposeTags').value.split(',').map(t => t.trim()).filter(Boolean);
 
@@ -8229,26 +8604,50 @@
     if (!stem) errors.push('Stem is empty.');
     if (!prompt) errors.push('Prompt is empty.');
     else if (!prompt.endsWith('?')) errors.push('Prompt must end in "?".');
-    const texts = Object.values(choices);
-    if (texts.some(t => !t)) errors.push('All four choices must be filled in.');
-    else if (new Set(texts).size !== texts.length) errors.push('Two or more choices have identical text.');
-    if (!correct_answer) errors.push('Select which choice is correct.');
-    if (Object.values(rationale_by_choice).some(t => !t)) errors.push('Every choice needs its own rationale (A, B, C, D).');
     if (hasImage && !proposePastedBlob) errors.push('"Has image" is checked but no image was attached.');
+
+    let choices, correct_answer, rationale_by_choice, rationale_full;
+    if (isFreeResponse) {
+      choices = {};
+      correct_answer = $$('proposeFreeAnswer').value.trim();
+      rationale_by_choice = {};
+      rationale_full = $$('proposeFreeRationale').value.trim();
+      if (!correct_answer) errors.push('Correct answer is empty.');
+      if (!rationale_full) errors.push('Rationale is empty.');
+    } else {
+      choices = {
+        A: $$('proposeChoiceA').value.trim(), B: $$('proposeChoiceB').value.trim(),
+        C: $$('proposeChoiceC').value.trim(), D: $$('proposeChoiceD').value.trim(),
+      };
+      const correctEl = document.querySelector('input[name="proposeCorrect"]:checked');
+      correct_answer = correctEl ? correctEl.value : null;
+      rationale_by_choice = {
+        A: $$('proposeRationaleA').value.trim(), B: $$('proposeRationaleB').value.trim(),
+        C: $$('proposeRationaleC').value.trim(), D: $$('proposeRationaleD').value.trim(),
+      };
+      const texts = Object.values(choices);
+      if (texts.some(t => !t)) errors.push('All four choices must be filled in.');
+      else if (new Set(texts).size !== texts.length) errors.push('Two or more choices have identical text.');
+      if (!correct_answer) errors.push('Select which choice is correct.');
+      if (Object.values(rationale_by_choice).some(t => !t)) errors.push('Every choice needs its own rationale (A, B, C, D).');
+      rationale_full = ['A', 'B', 'C', 'D'].map(l => rationale_by_choice[l]).join(' ');
+    }
     proposeShowErrors(errors);
     if (errors.length) return;
 
     const id = proposeRandomId();
     const slug = file.replace(/\.json$/, '');
+    const imageDir = proposeImageDir(slug);
     const record = {
-      id, title, category, source_pdf: 'manual', page: null, assessment: 'SAT', test: 'Reading and Writing',
+      id, title, category, source_pdf: 'manual', page: null, assessment: 'SAT',
+      test: isMath ? 'Math' : 'Reading and Writing',
       domain, domain_code, skill, skill_code: skills[skill], difficulty_label,
       difficulty: PROPOSE_DIFF_MAP[difficulty_label],
       stem, prompt, choices, correct_answer,
-      rationale_full: ['A', 'B', 'C', 'D'].map(l => rationale_by_choice[l]).join(' '),
-      rationale_by_choice, tags, has_image: hasImage,
-      image_paths: hasImage ? [{ path: `images/${slug}/${id}.${proposePastedExt}`, position: 'stem' }] : [],
+      rationale_full, rationale_by_choice, tags, has_image: hasImage,
+      image_paths: hasImage ? [{ path: `images/${imageDir}/${id}.${proposePastedExt}`, position: 'stem' }] : [],
     };
+    if (isMath) record.is_mc = !isFreeResponse;
 
     const btn = $$('proposeSubmitBtn');
     const status = $$('proposeStatus');
@@ -8309,7 +8708,9 @@
 
     proposePastedBlob = null;
     proposePastedExt = 'png';
-    const categories = Object.keys(PROPOSE_CATEGORY_META);
+    proposeTest = 'rw';
+    proposeIsMC = true;
+    const categories = Object.keys(proposeCategoryMeta());
 
     shell.innerHTML = `
       <div class="progress-summary">
@@ -8321,6 +8722,20 @@
       </div>
       <div id="proposeErrBox"></div>
       <div class="config-card">
+        <div class="propose-field">
+          <label>Test</label>
+          <div class="propose-toggle-row">
+            <button type="button" class="chip on" id="proposeTestRw" data-propose-test="rw">Reading &amp; Writing</button>
+            <button type="button" class="chip" id="proposeTestMath" data-propose-test="math">Math</button>
+          </div>
+        </div>
+        <div class="propose-field" id="proposeMcToggleField" hidden>
+          <label>Question type</label>
+          <div class="propose-toggle-row">
+            <button type="button" class="chip on" id="proposeMcOn" data-propose-mc="1">Multiple choice</button>
+            <button type="button" class="chip" id="proposeMcOff" data-propose-mc="0">Student-produced response (free entry)</button>
+          </div>
+        </div>
         <div class="propose-field">
           <label for="proposeTitle">Title — a short label to find this question later (not shown to other students)</label>
           <input type="text" id="proposeTitle" placeholder="e.g. &quot;dangling modifier — factory example&quot;" />
@@ -8351,7 +8766,7 @@
         </div>
 
         <div class="propose-field">
-          <label for="proposeStem">Stem (passage/text) — blank line between paragraphs, &lt;u&gt;...&lt;/u&gt; for underlined text</label>
+          <label for="proposeStem" id="proposeStemLabel">Stem (passage/text) — blank line between paragraphs, &lt;u&gt;...&lt;/u&gt; for underlined text</label>
           <textarea id="proposeStem" style="min-height:140px;"></textarea>
         </div>
         <div class="propose-field">
@@ -8359,7 +8774,7 @@
           <input type="text" id="proposePrompt" />
         </div>
 
-        <div class="propose-field">
+        <div class="propose-field" id="proposeChoicesBlock">
           <label>Choices — select the radio button next to the correct one</label>
           ${['A', 'B', 'C', 'D'].map(l => `
             <div class="propose-choice-row">
@@ -8369,16 +8784,25 @@
             </div>`).join('')}
         </div>
 
-        <div class="propose-field">
+        <div class="propose-field" id="proposeRationaleBlock">
           <label>Rationale — explain each choice separately</label>
           ${['A', 'B', 'C', 'D'].map(l => `
             <div class="propose-rationale-label">${l}</div>
             <textarea id="proposeRationale${l}"></textarea>`).join('')}
         </div>
 
+        <div class="propose-field" id="proposeFreeAnswerBlock" hidden>
+          <label for="proposeFreeAnswer">Correct answer(s) — comma-separated if more than one accepted form (e.g. "17.5, 35/2")</label>
+          <input type="text" id="proposeFreeAnswer" />
+        </div>
+        <div class="propose-field" id="proposeFreeRationaleBlock" hidden>
+          <label for="proposeFreeRationale">Rationale</label>
+          <textarea id="proposeFreeRationale"></textarea>
+        </div>
+
         <div class="propose-field">
           <label style="display:flex; align-items:center; gap:8px; text-transform:none; letter-spacing:normal; font-weight:600; color:var(--ink);">
-            <input type="checkbox" id="proposeHasImage" style="width:auto;" /> This question has an image (chart/table)
+            <input type="checkbox" id="proposeHasImage" style="width:auto;" /> This question has an image (chart/table/diagram/equation)
           </label>
           <div id="proposeImgWrap" style="display:none; margin-top:10px;">
             <div id="proposePasteZone" tabindex="0">
@@ -8395,6 +8819,36 @@
       </div>`;
 
     const $$ = (id) => document.getElementById(id);
+
+    // Test toggle (R&W / Math) — swaps the category/skill list wholesale and
+    // shows the MC/free-response toggle (R&W questions are always MC, so
+    // that toggle is Math-only). Deliberately mutates the DOM in place
+    // rather than calling renderPropose() again, so switching tests doesn't
+    // wipe whatever the student already typed into title/stem/prompt/tags.
+    function updateProposeTestUI() {
+      $$('proposeTestRw').classList.toggle('on', proposeTest === 'rw');
+      $$('proposeTestMath').classList.toggle('on', proposeTest === 'math');
+      $$('proposeMcToggleField').hidden = proposeTest !== 'math';
+      const cats = Object.keys(proposeCategoryMeta());
+      $$('proposeCategory').innerHTML = cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+      $$('proposeSkill').innerHTML = proposeSkillOptionsHtml(cats[0]);
+      $$('proposeStemLabel').textContent = proposeTest === 'math'
+        ? 'Stem (word problem text) — for equations/diagrams too complex to type, describe them briefly and attach an image below'
+        : 'Stem (passage/text) — blank line between paragraphs, <u>...</u> for underlined text';
+    }
+    function updateProposeMcUI() {
+      const free = proposeTest === 'math' && !proposeIsMC;
+      $$('proposeMcOn').classList.toggle('on', !free);
+      $$('proposeMcOff').classList.toggle('on', free);
+      $$('proposeChoicesBlock').hidden = free;
+      $$('proposeRationaleBlock').hidden = free;
+      $$('proposeFreeAnswerBlock').hidden = !free;
+      $$('proposeFreeRationaleBlock').hidden = !free;
+    }
+    $$('proposeTestRw').addEventListener('click', () => { proposeTest = 'rw'; proposeIsMC = true; updateProposeTestUI(); updateProposeMcUI(); });
+    $$('proposeTestMath').addEventListener('click', () => { proposeTest = 'math'; updateProposeTestUI(); updateProposeMcUI(); });
+    $$('proposeMcOn').addEventListener('click', () => { proposeIsMC = true; updateProposeMcUI(); });
+    $$('proposeMcOff').addEventListener('click', () => { proposeIsMC = false; updateProposeMcUI(); });
 
     $$('proposeCategory').addEventListener('change', () => {
       $$('proposeSkill').innerHTML = proposeSkillOptionsHtml($$('proposeCategory').value);
@@ -8860,6 +9314,7 @@
     { id: 'terminal', label: 'Terminal', swatch: '#33ff33' },
     { id: 'halloween', label: 'Halloween', swatch: '#ff6f1f' },
     { id: 'christmas', label: 'Christmas', swatch: '#b2273a' },
+    { id: 'valentines', label: "Valentine's", swatch: '#e0356b' },
   ];
   function getLabTheme() {
     try {
@@ -8880,6 +9335,7 @@
   const SEASONAL_THEME_WINDOWS = [
     { id: 'halloween', label: 'Halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
     { id: 'christmas', label: 'Christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 },
+    { id: 'valentines', label: "Valentine's", startMonth: 2, startDay: 7, endMonth: 2, endDay: 14 },
   ];
   const SEASONAL_DISMISS_KEY = 'sat_qbank_seasonal_dismissed_v1';
   function activeSeasonalTheme(date) {
@@ -8973,7 +9429,7 @@
   // Only the Bluebook-kiosk whole-test Test timer (launchTestBluebook's
   // bbState.timerSeconds countdown) currently just parks on the review page
   // at 0:00 without submitting — Mock Exam's module clock already
-  // auto-submits unconditionally (see submitMockModule1/2), and every
+  // auto-submits unconditionally (see submitCurrentQueueItem), and every
   // per-question timer (Practice/Test/Mock) already has its own
   // strict/flexible toggle right on the config screen. See bbStartTimer,
   // which branches on this flag at expiry.
@@ -8982,6 +9438,114 @@
   function setStrictTimingEnabled(v) {
     strictTimingEnabled = v;
     try { localStorage.setItem(STRICT_TIMING_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+  }
+
+  // -- Offline mode (Lab) --
+  // Two separate opt-ins, deliberately: flipping the toggle on only
+  // registers a service worker (near-zero cost) so this page + data.js can
+  // be served from cache once visited while online — actually downloading
+  // the ~34,000 question images (a couple hundred MB) only happens when
+  // "Download for offline" is clicked, and again whenever clicked later to
+  // refresh (unchanged images are skipped via cache.match, so a repeat run
+  // is cheap). sw.js does the actual cache-first/network-first serving;
+  // this only drives the one-time bulk download and its progress UI.
+  const OFFLINE_MODE_KEY = 'sat_qbank_offline_mode_v1';
+  const OFFLINE_LAST_DOWNLOAD_KEY = 'sat_qbank_offline_last_download_v1';
+  const OFFLINE_CACHED_COUNT_KEY = 'sat_qbank_offline_cached_count_v1';
+  const OFFLINE_IMAGE_CACHE = 'kyj-sat-images-v1'; // must match sw.js's IMAGE_CACHE
+  let offlineModeEnabled = localStorage.getItem(OFFLINE_MODE_KEY) === '1';
+  let offlineDownload = { running: false, done: 0, total: 0, failed: 0 };
+  function registerOfflineServiceWorker() {
+    if (!('serviceWorker' in navigator)) return Promise.resolve(null);
+    return navigator.serviceWorker.register('sw.js').catch(() => null);
+  }
+  function setOfflineModeEnabled(v) {
+    offlineModeEnabled = v;
+    try { localStorage.setItem(OFFLINE_MODE_KEY, v ? '1' : '0'); } catch (e) { /* best-effort */ }
+    if (v) registerOfflineServiceWorker();
+  }
+  if (offlineModeEnabled) registerOfflineServiceWorker();
+
+  // Every image path referenced anywhere in the bank — both the R&W
+  // chart/table convention (q.image_paths) and Math's inline
+  // ⟦IMG:path⟧ tokens (stem, choices, rationale_full, rationale_by_choice;
+  // see restoreMathImages) — deduplicated, so downloading for offline
+  // covers everything a question could possibly render.
+  function collectAllImagePaths() {
+    const paths = new Set();
+    const imgRe = /⟦IMG:([^⟧]+)⟧/g;
+    const scan = (s) => {
+      if (!s) return;
+      imgRe.lastIndex = 0;
+      let m;
+      while ((m = imgRe.exec(s))) paths.add(m[1]);
+    };
+    ALL_QUESTIONS.forEach(q => {
+      scan(q.stem);
+      if (q.choices) Object.values(q.choices).forEach(scan);
+      scan(q.rationale_full);
+      if (q.rationale_by_choice) Object.values(q.rationale_by_choice).forEach(scan);
+      (q.image_paths || []).forEach(p => paths.add(typeof p === 'string' ? p : p.path));
+    });
+    return Array.from(paths);
+  }
+
+  // Cache.keys() throws ("Operation too large") once the image cache holds
+  // this many entries (~34k) in at least some browsers, so the cached count
+  // shown in the Lab card is tracked locally instead of ever listing the
+  // whole cache — updated after every download/clear, not queried live.
+  function offlineCachedCountDisplay() {
+    try {
+      const raw = localStorage.getItem(OFFLINE_CACHED_COUNT_KEY);
+      return raw ? parseInt(raw, 10) : 0;
+    } catch (e) { return 0; }
+  }
+
+  // Bulk-downloads every image into the Cache Storage image cache with a
+  // small worker pool (fetching 34k files one at a time would take forever;
+  // all at once could choke the browser/network) — calling onProgress after
+  // every completion would thrash the DOM at that volume, so it's throttled
+  // to roughly every 25 files plus the final one.
+  async function startOfflineDownload(onProgress) {
+    if (offlineDownload.running || !('caches' in window)) return;
+    const paths = collectAllImagePaths();
+    offlineDownload = { running: true, done: 0, total: paths.length, failed: 0 };
+    onProgress();
+    const cache = await caches.open(OFFLINE_IMAGE_CACHE);
+    const CONCURRENCY = 8;
+    let idx = 0;
+    async function worker() {
+      while (idx < paths.length) {
+        const path = paths[idx++];
+        try {
+          const existing = await cache.match(path);
+          if (!existing) {
+            const res = await fetch(path, { cache: 'no-store' });
+            if (res.ok) await cache.put(path, res);
+            else offlineDownload.failed++;
+          }
+        } catch (e) {
+          offlineDownload.failed++;
+        }
+        offlineDownload.done++;
+        if (offlineDownload.done % 25 === 0 || offlineDownload.done === offlineDownload.total) onProgress();
+      }
+    }
+    await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+    offlineDownload.running = false;
+    try {
+      localStorage.setItem(OFFLINE_LAST_DOWNLOAD_KEY, String(Date.now()));
+      localStorage.setItem(OFFLINE_CACHED_COUNT_KEY, String(offlineDownload.done - offlineDownload.failed));
+    } catch (e) { /* best-effort */ }
+    onProgress();
+  }
+
+  async function clearOfflineCache() {
+    if ('caches' in window) { try { await caches.delete(OFFLINE_IMAGE_CACHE); } catch (e) { /* best-effort */ } }
+    try {
+      localStorage.removeItem(OFFLINE_LAST_DOWNLOAD_KEY);
+      localStorage.removeItem(OFFLINE_CACHED_COUNT_KEY);
+    } catch (e) { /* best-effort */ }
   }
 
   // -- Hide College Board difficulty rating --
@@ -9062,6 +9626,7 @@
     setStrictTimingEnabled(false);
     setRatedDifficultyLabEnabled(true);
     setHideCbDifficultyLabEnabled(false);
+    setOfflineModeEnabled(false); // leaves any already-downloaded offline image cache alone — use "Clear offline image cache" for that
     BROWSE_FILTER_OPTIONS.forEach(opt => setBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
     BROWSE_FILTER_OPTIONS.forEach(opt => setMathBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
     if (typeof clearDisabledBrowseFacets === 'function') clearDisabledBrowseFacets();
@@ -10083,7 +10648,7 @@
       const reviewModalList = data.questions;
       shell.querySelectorAll('.review-item[data-id]').forEach(el => {
         el.addEventListener('click', (e) => {
-          if (e.target.closest('[data-status-qid]')) return; // let mark-complete/review/incomplete through untouched
+          if (e.target.closest('[data-status-qid], [data-rating-info]')) return; // let mark-complete/review/incomplete and rating-tap through untouched
           const idx = reviewModalList.findIndex(q => q.id === el.dataset.id);
           if (idx !== -1) openQuestionModal(reviewModalList, idx);
         });
@@ -10390,7 +10955,7 @@
   // ---------- Bluebook-style kiosk (visual replica of the College Board
   // digital SAT testing app — "Bluebook"). Not a mode of its own: Test and
   // Mock Exam launch into this (see bbLaunch/launchTestBluebook/
-  // bbLaunchForMockModule) when their "Use Bluebook-style interface"
+  // bbLaunchForQueueItem) when their "Use Bluebook-style interface"
   // checkbox is on, full-screen, mimicking Bluebook's actual chrome
   // (header, timer, Directions link, highlighter, answer eliminator, zoom,
   // question navigator, review page) instead of the site's normal theme.
@@ -10422,15 +10987,16 @@
     submitLabel: 'Submit Module',
     submitMessage: "Submit? You won't be able to change your answers after this.",
     exitMessage: "Exit? Your progress will be lost.",
-    onExit: null, // () => void — called after confirming and tearing down the kiosk chrome. Abandons the attempt (unlike submit, exit never resumes in the regular layout) — see launchTestBluebook/bbLaunchForMockModule.
+    onExit: null, // () => void — called after confirming and tearing down the kiosk chrome. Abandons the attempt (unlike submit, exit never resumes in the regular layout) — see launchTestBluebook/bbLaunchForQueueItem.
     onSubmit: null, // () => void — called after the kiosk chrome is torn down, from the review page's Submit
+    onBegin: null, // () => void — called when "Begin module" is clicked, right after bbStartTimer. Lets a hostTimer launcher (Mock) start its own module/question clocks only once directions are dismissed, instead of burning module time silently while they are still on screen — see bbLaunchForQueueItem.
     shortfallNote: null, // mirrors the launching mode's shortfallNote (see describeBuildShortfall) — shown once, on the Directions screen, since the kiosk skips the regular quiz screen entirely
   };
 
   // Deactivates the kiosk and clears its chrome — the shared teardown used
   // by exit, submit, and the auto-submit-at-timer-expiry path (which
   // bypasses the review page's Submit button entirely, see
-  // submitMockModule1/2).
+  // submitCurrentQueueItem).
   function bbDeactivate() {
     bbClearTimer();
     bbState.active = false;
@@ -10438,7 +11004,7 @@
   }
 
   // Populates bbState from a launching mode (Test or Mock — see
-  // launchTestBluebook/bbLaunchForMockModule) and shows the kiosk,
+  // launchTestBluebook/bbLaunchForQueueItem) and shows the kiosk,
   // starting at the Directions screen. `answers`/`marked` are shared
   // references into the launching mode's own state, so every pick made in
   // the kiosk is already that mode's data — no copy-back on exit/submit.
@@ -10463,15 +11029,18 @@
     bbState.exitMessage = opts.exitMessage || "Exit? Your progress will be lost.";
     bbState.onExit = opts.onExit;
     bbState.onSubmit = opts.onSubmit;
+    bbState.onBegin = opts.onBegin || null;
     bbState.shortfallNote = opts.shortfallNote || null;
     bbState.active = true;
     bbState.phase = 'directions';
     renderBluebook();
     // Doesn't start the countdown here — matches the original standalone
     // Bluebook tab, where time only starts running once "Begin module" is
-    // clicked (see wireBluebook's directions-phase handler). Mock's own
-    // module clock (hostTimer) is unaffected either way: startMockAttempt/
-    // startMockModule2 already started it before this function was called.
+    // clicked (see wireBluebook's directions-phase handler). A hostTimer
+    // launcher (Mock) doesn't start its own clock until then either — see
+    // onBegin above and startCurrentQueueItem, which defers mockStartTimer/
+    // qtimerStart to that same click so module time isn't silently burned
+    // while directions are still on screen.
   }
 
   // Test's own launch: an independent, optional whole-test countdown
@@ -10500,41 +11069,8 @@
     });
   }
 
-  // Mock's launch, per module: reuses Mock's own 32-minute module clock
-  // (mockStartTimer, already ticking by the time this is called — see
-  // startMockAttempt/startMockModule2) instead of starting a second timer,
-  // so hostTimer is true and hostTimeLeft just reads mockState.timeLeft.
-  // Submitting or timing out routes back through submitMockModule1/2
-  // exactly as the regular quiz layout does — see those functions'
-  // `if (bbState.active) bbDeactivate();` guard for the auto-submit path.
-  function bbLaunchForMockModule(moduleNum) {
-    const questions = moduleNum === 1 ? mockState.module1Questions : mockState.module2Questions;
-    const label = mockState.mode === 'adaptive'
-      ? `Mock Exam &middot; Module ${moduleNum} of 2`
-      : `Mock Exam &middot; Module ${moduleNum} (${mockState.mode === 'module1' ? 'Module 1 only' : 'Module 2 only'})`; // no trailing question count here — bbHeaderHtml appends it separately
-    bbLaunch({
-      questions,
-      answers: mockState.answers,
-      marked: mockState.marked,
-      shortfallNote: mockState.shortfallNote,
-      hostTimer: true,
-      hostTimeLeft: () => mockState.timeLeft,
-      moduleLabel: label,
-      submitLabel: `Submit Module ${moduleNum}`,
-      submitMessage: "Submit this module? You won't be able to change your answers after this.",
-      exitMessage: "Exit this mock exam? Your progress will be lost.",
-      // Abandons the whole attempt (back to the mock exam intro/setup
-      // screen), same as exitMockExam below — exiting the kiosk mid-module
-      // is a real exit, not a way to keep going in the regular layout.
-      onExit: () => { mockClearTimer(); qtimerClear(mockState.qtimer); mockState.phase = 'intro'; renderMock(); },
-      onSubmit: () => { if (moduleNum === 1) submitMockModule1(); else submitMockModule2(); },
-    });
-  }
-
   // Bluebook launch for the unified Modules-picker engine's current queue
-  // item — separate from bbLaunchForMockModule above (which the retired
-  // single-subject start/submit functions still use internally) since the
-  // new engine always keeps "whichever module is in progress" in
+  // item — the new engine always keeps "whichever module is in progress" in
   // mockState.module1Questions regardless of its real module number.
   function bbLaunchForQueueItem() {
     const item = mockState.queue[mockState.queuePos];
@@ -10552,6 +11088,7 @@
       exitMessage: "Exit this mock exam? Your progress will be lost.",
       onExit: () => { mockClearTimer(); qtimerClear(mockState.qtimer); mockState.phase = 'intro'; renderMock(); },
       onSubmit: () => submitCurrentQueueItem(),
+      onBegin: () => { mockStartTimer(submitCurrentQueueItem); qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire); },
     });
   }
 
@@ -10913,6 +11450,7 @@
         bbState.phase = 'quiz';
         renderBluebook();
         bbStartTimer();
+        if (bbState.onBegin) bbState.onBegin();
       });
       wireBbCommonHeader();
     } else if (bbState.phase === 'quiz') {
@@ -11873,7 +12411,7 @@
     routedHarder: null,
     history: loadMockHistory(), // past completed exams, most recent first
     viewingAttemptId: null, // history record id being viewed read-only (phase 'historyResults')
-    lastAttemptId: null, // id of the attempt just saved by saveMockAttempt, for the live (non-history) results screen
+    lastAttemptId: null, // id of the attempt just saved by saveCustomMockAttempt, for the live (non-history) results screen
 
     // ---- config (set on the 'intro' screen, read when Start is clicked) ----
     // The Modules picker (customModules) is the single entry point now —
@@ -11943,7 +12481,7 @@
       }
       // Also pokes the kiosk header's timer (bbTimerDisplay) when the
       // Bluebook-style UI is showing this module — same underlying
-      // countdown, bbLaunchForMockModule just points the kiosk at it
+      // countdown, bbLaunchForQueueItem just points the kiosk at it
       // instead of starting a second, separate clock (see hostTimer).
       const bbEl = document.getElementById('bbTimerDisplay');
       if (bbEl) bbEl.textContent = formatTimerDisplay(mockState.timeLeft);
@@ -11967,17 +12505,13 @@
   // runs alongside the module-level 32-minute clock (mockStartTimer above),
   // not instead of it.
   function mockQuestionAdvanceOrSubmit() {
-    const questions = mockState.phase === 'module2' ? mockState.module2Questions : mockState.module1Questions;
+    const questions = mockState.module1Questions;
     if (mockState.index < questions.length - 1) {
       mockState.index++;
       qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire);
       renderMock();
-    } else if (mockState.phase === 'module1') {
-      submitMockModule1();
-    } else if (mockState.phase === 'customItem') {
-      submitCurrentQueueItem();
     } else {
-      submitMockModule2();
+      submitCurrentQueueItem();
     }
   }
 
@@ -12163,43 +12697,6 @@
     exportPrintSheetAsPdf(sheetHtml, document.getElementById('startMockBtn'));
   }
 
-  // Dispatches to the right first phase based on mockState.mode, using the
-  // config set on the 'intro' screen (blueprint counts, weight mix, status
-  // scope, pass threshold, per-question timer).
-  function startMockAttempt() {
-    mockClearTimer();
-    qtimerClear(mockState.qtimer);
-    mockState.index = 0;
-    mockState.answers = {};
-    mockState.module1Questions = [];
-    mockState.module2Questions = [];
-    mockState.module1Correct = null;
-    mockState.module1Pct = null;
-    mockState.routedHarder = null;
-    mockState.timeLeft = mockState.subject === 'math' ? MATH_MOCK_MODULE_SECONDS : MOCK_MODULE_SECONDS;
-    mockState.marked = new Set();
-
-    const shortfalls = [];
-    if (mockState.mode === 'module2') {
-      const key = mockState.module2Pool === 'harder' ? 'm2harder' : 'm2easier';
-      mockState.module2Questions = buildMockModuleForSubject('m2', key, [], shortfalls);
-      mockState.routedHarder = mockState.module2Pool === 'harder';
-      mockState.phase = 'module2';
-      mockState.shortfallNote = describeBuildShortfall(shortfalls, mockState.statuses);
-      renderMock();
-      mockStartTimer(submitMockModule2);
-      if (mockState.useBluebook) bbLaunchForMockModule(2);
-    } else {
-      mockState.module1Questions = buildMockModuleForSubject('m1', 'm1', [], shortfalls);
-      mockState.phase = 'module1';
-      mockState.shortfallNote = describeBuildShortfall(shortfalls, mockState.statuses);
-      renderMock();
-      mockStartTimer(submitMockModule1);
-      if (mockState.useBluebook) bbLaunchForMockModule(1);
-    }
-    qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire);
-  }
-
   // ---------- Custom composition run ----------
   // Reuses mockState.module1Questions as a single scratch slot for
   // "whichever queue item is currently in progress" — mockQuizHtml only
@@ -12244,14 +12741,28 @@
       slot = pool === 'harder' ? 'm2harder' : 'm2easier';
       mockState.routedHarderForSubject[item.subject] = pool === 'harder';
     }
+    // A paired M2 draws from the same subject's pool its M1 just did —
+    // exclude M1's questions so the same question can't show up in both
+    // modules of one test. M1's result is already in queueResults (pushed by
+    // submitCurrentQueueItem before queuePos advanced here) and, per the
+    // fixed queue order above, it's always the entry immediately before this
+    // one.
+    const excludeIds = isPairedM2 ? mockState.queueResults[mockState.queueResults.length - 1].ids : [];
     mockState.index = 0;
-    mockState.module1Questions = buildQueueItemQuestions(item, slot);
+    mockState.module1Questions = buildQueueItemQuestions(item, slot, excludeIds);
     mockState.timeLeft = item.subject === 'math' ? MATH_MOCK_MODULE_SECONDS : MOCK_MODULE_SECONDS;
     mockState.phase = 'customItem';
     renderMock();
-    mockStartTimer(submitCurrentQueueItem);
-    qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire);
-    if (mockState.useBluebook) bbLaunchForQueueItem();
+    // Bluebook's directions screen holds off starting the module/question
+    // clocks until "Begin module" is clicked (see bbLaunchForQueueItem's
+    // onBegin) — otherwise module time would burn silently while it's still
+    // on screen, since the kiosk header hides the timer during directions.
+    if (mockState.useBluebook) {
+      bbLaunchForQueueItem();
+    } else {
+      mockStartTimer(submitCurrentQueueItem);
+      qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire);
+    }
   }
   function submitCurrentQueueItem() {
     mockClearTimer();
@@ -12274,80 +12785,6 @@
       saveCustomMockAttempt();
       renderMock();
     }
-  }
-
-  function submitMockModule1() {
-    mockClearTimer();
-    qtimerClear(mockState.qtimer);
-    if (bbState.active) bbDeactivate();
-    const score = mockScoreModule(mockState.module1Questions);
-    mockState.module1Correct = score.correct;
-    mockState.module1Pct = score.pct;
-    if (mockState.mode === 'module1') {
-      mockState.phase = 'results';
-      saveMockAttempt();
-    } else {
-      mockState.routedHarder = score.pct >= mockState.passThreshold;
-      mockState.phase = 'break';
-    }
-    renderMock();
-  }
-
-  function startMockModule2() {
-    const usedIds = mockState.module1Questions.map(q => q.id);
-    const key = mockState.routedHarder ? 'm2harder' : 'm2easier';
-    const shortfalls = [];
-    mockState.module2Questions = buildMockModuleForSubject('m2', key, usedIds, shortfalls);
-    mockState.shortfallNote = describeBuildShortfall(shortfalls, mockState.statuses);
-    mockState.index = 0;
-    mockState.timeLeft = mockState.subject === 'math' ? MATH_MOCK_MODULE_SECONDS : MOCK_MODULE_SECONDS;
-    mockState.phase = 'module2';
-    renderMock();
-    mockStartTimer(submitMockModule2);
-    qtimerStart(mockState.qtimer, 'mockQTimer', mockQuestionTimerExpire);
-    if (mockState.useBluebook) bbLaunchForMockModule(2);
-  }
-
-  function submitMockModule2() {
-    mockClearTimer();
-    qtimerClear(mockState.qtimer);
-    if (bbState.active) bbDeactivate();
-    mockState.phase = 'results';
-    saveMockAttempt();
-    renderMock();
-  }
-
-  function saveMockAttempt() {
-    const attempt = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      completedAt: new Date().toISOString(),
-      mode: mockState.mode,
-      subject: mockState.subject === 'math' ? 'math' : 'rw',
-      module1Ids: mockState.module1Questions.map(q => q.id),
-      module2Ids: mockState.module2Questions.map(q => q.id),
-      answers: { ...mockState.answers },
-      module1Correct: mockState.module1Correct,
-      module1Pct: mockState.module1Pct,
-      routedHarder: mockState.routedHarder,
-    };
-    mockState.history = [attempt, ...mockState.history].slice(0, MOCK_HISTORY_LIMIT);
-    mockState.lastAttemptId = attempt.id;
-    saveMockHistory();
-    [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
-      const q = ALL_QUESTIONS.find(x => x.id === id);
-      const yours = attempt.answers[id];
-      if (q && yours) recordSkillAttempt(q.skill, yours === q.correct_answer);
-    });
-    if (attempt.subject === 'math') {
-      // Reuse the existing Math self-report storage (mathOverrides/
-      // setMathModule) for a real delivered attempt too — only the module(s)
-      // actually taken get overwritten with the real count; an untaken
-      // module keeps whatever self-report default/guess was already there,
-      // same convention rwOverrides uses for a single-module R&W attempt.
-      if (attempt.module1Ids.length) setMathModule(attempt.id, 'm1', mockState.module1Correct);
-      if (attempt.module2Ids.length) setMathModule(attempt.id, 'm2', mockScoreModule(mockState.module2Questions, attempt.answers).correct);
-    }
-    renderStats();
   }
 
   function viewMockAttempt(id) {
@@ -12483,18 +12920,6 @@
     module1: '1️⃣ Module 1 only',
     module2: '2️⃣ Module 2 only',
   };
-
-  function mockModeChipsHtml() {
-    return Object.entries(MOCK_MODE_LABELS).map(([m, label]) =>
-      `<button class="chip ${mockState.mode === m ? 'on' : ''}" data-mock-mode="${m}">${label}</button>`
-    ).join('');
-  }
-
-  function mockModuleDescHtml() {
-    if (mockState.mode === 'module1') return `Module 1 only — ${MOCK_MODULE_SECONDS / 60} minutes, no Module 2, no adaptive routing. Good for a quick difficulty-balanced check-in.`;
-    if (mockState.mode === 'module2') return `Module 2 only — skips Module 1 and its routing; you pick the pool directly below (this is also how to drill the hard pool on demand).`;
-    return `Module 1 routes into Module 2 based on your Module 1 accuracy — a stronger pool if you scored well, a gentler one if you didn't — approximating (not replicating) the real digital SAT's multistage-adaptive design.`;
-  }
 
   function mockModule2PoolChipsHtml() {
     return `
@@ -13503,8 +13928,7 @@
       });
     });
     // Write the real per-module correct count into each subject's own
-    // per-attempt storage (mathOverrides / rwModuleOverrides) — same trick
-    // saveMockAttempt uses for a single-subject Math attempt, generalized to
+    // per-attempt storage (mathOverrides / rwModuleOverrides), generalized to
     // both subjects here since either can now have 0, 1, or 2 real modules
     // in a Custom run. A module NOT in `sections` keeps whatever
     // assumed/self-reported default or prior edit was already there.
@@ -13861,9 +14285,7 @@
   function renderMock() {
     const shell = document.getElementById('mockShell');
     if (mockState.phase === 'intro') shell.innerHTML = mockConfigHtml();
-    else if (mockState.phase === 'module1') shell.innerHTML = mockQuizHtml(mockState.module1Questions, 1);
     else if (mockState.phase === 'break') shell.innerHTML = mockBreakHtml();
-    else if (mockState.phase === 'module2') shell.innerHTML = mockQuizHtml(mockState.module2Questions, 2);
     else if (mockState.phase === 'customItem') {
       const item = mockState.queue[mockState.queuePos];
       const label = `${MOCK_CUSTOM_MODULE_LABELS[item.subject]} Module ${item.module}`;
@@ -13998,8 +14420,8 @@
         renderMock();
         renderStats();
       });
-    } else if (mockState.phase === 'module1' || mockState.phase === 'module2' || mockState.phase === 'customItem') {
-      const questions = mockState.phase === 'module2' ? mockState.module2Questions : mockState.module1Questions;
+    } else if (mockState.phase === 'customItem') {
+      const questions = mockState.module1Questions;
       const q = questions[mockState.index];
       shell.querySelectorAll('.choice[data-letter]').forEach(el => {
         el.addEventListener('click', () => {
@@ -14014,9 +14436,7 @@
       const submitBtn = document.getElementById('mockSubmitBtn');
       if (submitBtn) submitBtn.addEventListener('click', () => {
         qtimerClear(mockState.qtimer);
-        if (mockState.phase === 'module1') submitMockModule1();
-        else if (mockState.phase === 'customItem') submitCurrentQueueItem();
-        else submitMockModule2();
+        submitCurrentQueueItem();
       });
       const exitBtn = document.getElementById('mockExitBtn');
       if (exitBtn) exitBtn.addEventListener('click', exitMockExam);
@@ -14071,7 +14491,7 @@
       const reviewModalList = isCustom ? data.sections.flatMap(s => s.questions) : [...data.module1Questions, ...data.module2Questions];
       shell.querySelectorAll('.review-item[data-id]').forEach(el => {
         el.addEventListener('click', (e) => {
-          if (e.target.closest('[data-status-qid]')) return; // let mark-complete/review/incomplete through untouched
+          if (e.target.closest('[data-status-qid], [data-rating-info]')) return; // let mark-complete/review/incomplete and rating-tap through untouched
           const idx = reviewModalList.findIndex(q => q.id === el.dataset.id);
           if (idx !== -1) openQuestionModal(reviewModalList, idx);
         });
@@ -14182,7 +14602,7 @@
       const q = ALL_QUESTIONS.find(x => x.id === qid);
       if (q) xp += QUESTION_XP[q.difficulty_label] || 10;
     });
-    return xp + mockState.history.length * MOCK_EXAM_XP;
+    return xp + mockState.history.length * MOCK_EXAM_XP + state.bonusXp;
   }
 
   const LEVEL_TITLES = [
@@ -14259,6 +14679,20 @@
       progress: s => [s.bestRWScore ? Math.min(s.bestRWScore, 650) : 0, 650] },
     { id: 'clean-slate', icon: 'check', tier: 'bronze', title: 'Clean Slate', desc: "Clear your review queue to zero once you've flagged some.",
       progress: s => [s.totalDone > 0 && s.totalReview === 0 ? 1 : 0, 1] },
+    { id: 'three-quarters', icon: 'check', tier: 'gold', title: 'Three-Quarters There', desc: 'Complete 75% of the question bank.',
+      progress: s => [Math.min(s.totalDone, Math.ceil(s.totalQuestions * 0.75)), Math.max(1, Math.ceil(s.totalQuestions * 0.75))] },
+    { id: 'category-sweep', icon: 'grid', tier: 'gold', title: 'Category Sweep', desc: 'Fully complete 3 different categories.',
+      progress: s => [Math.min(s.categoriesFullyDone, 3), 3] },
+    { id: 'iron-will', icon: 'flame', tier: 'gold', title: 'Iron Will', desc: 'Reach a 60-day streak.',
+      progress: s => [Math.min(s.longestStreak, 60), 60] },
+    { id: 'weekly-warrior', icon: 'target', tier: 'silver', title: 'Weekly Warrior', desc: 'Complete 50 questions in a single week.',
+      progress: s => [Math.min(s.weeklyCount, 50), 50] },
+    { id: 'xp-hoarder', icon: 'star', tier: 'silver', title: 'XP Hoarder', desc: 'Earn 2,500 total XP.',
+      progress: s => [Math.min(s.xp, 2500), 2500] },
+    { id: 'level-20', icon: 'star', tier: 'gold', title: 'Virtuoso', desc: 'Reach level 20.',
+      progress: s => [Math.min(s.level, 20), 20] },
+    { id: 'exam-veteran', icon: 'document', tier: 'gold', title: 'Exam Veteran', desc: 'Complete 15 mock exams.',
+      progress: s => [Math.min(s.mockCount, 15), 15] },
   ];
 
   function computeGamificationStats() {
@@ -14275,13 +14709,14 @@
     // never be "mastered" for Category Master.
     const hardDone = ALL_QUESTIONS.filter(q => q.difficulty_label === 'Hard' && questionStatus(q) === 'done').length;
 
-    let bestRatio = -1, bestCategoryDone = 0, bestCategoryTotal = 1;
+    let bestRatio = -1, bestCategoryDone = 0, bestCategoryTotal = 1, categoriesFullyDone = 0;
     [...allCategories, ...mathAllCategories].forEach(cat => {
       const qs = ALL_QUESTIONS.filter(q => q.category === cat);
       if (!qs.length) return;
       const d = qs.filter(q => questionStatus(q) === 'done').length;
       const ratio = d / qs.length;
       if (ratio > bestRatio) { bestRatio = ratio; bestCategoryDone = d; bestCategoryTotal = qs.length; }
+      if (ratio >= 1) categoriesFullyDone++;
     });
 
     const goal = state.dailyGoal;
@@ -14291,9 +14726,10 @@
 
     return {
       totalDone, totalReview, totalQuestions: ALL_QUESTIONS.length, hardDone,
-      bestCategoryDone, bestCategoryTotal,
+      bestCategoryDone, bestCategoryTotal, categoriesFullyDone,
       currentStreak: streaks.current, longestStreak: streaks.longest,
       todayCount: counts[dateKey(new Date())] || 0, goal, goalDaysHit,
+      weeklyCount: weeklyCompletionCount(counts),
       mockCount: mockState.history.length, bestRWScore: bestMockRWScore(),
       xp, level: lvl.level, xpIntoLevel: lvl.xpIntoLevel, xpForNextLevel: lvl.xpForNextLevel, levelTitle: lvl.title,
     };
@@ -14817,7 +15253,7 @@
     const swatches = LAB_THEMES.map(t => `
       <button type="button" class="btn ${active === t.id || (seasonalPinned && t.id === seasonal.id) ? 'btn-accent' : ''}" style="display:inline-flex; align-items:center; gap:6px;" data-lab-theme="${t.id}">
         ${t.swatch ? `<span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:${t.swatch};"></span>` : ''}
-        ${escapeHtml(t.label)}${t.id === 'halloween' ? ' 🎃' : t.id === 'christmas' ? ' 🎄' : ''}
+        ${escapeHtml(t.label)}${t.id === 'halloween' ? ' 🎃' : t.id === 'christmas' ? ' 🎄' : t.id === 'valentines' ? ' 💝' : ''}
       </button>`).join('');
     return labCardHtml('🎨 Theme variants', `
       <div class="log-item-desc" style="margin-bottom:10px;">An alternate theme beyond light/dark — e.g. <strong>Sepia</strong>, a warm paper look. Picking one here overrides the topbar's sun/moon toggle until you pick <strong>Default</strong> again; the topbar toggle itself always stays a plain light/dark switch. ${seasonal ? `<strong>${escapeHtml(seasonal.label)}</strong> is in season and ${seasonalPinned ? 'is currently pinned as Default' : 'is available below even though you opted out of the auto-pin'} — toggle the topbar sun/moon to opt back out, or pick <strong>Default</strong> here to opt back in.` : ''}</div>
@@ -14847,6 +15283,46 @@
     return labCardHtml('🏷️ College Board difficulty rating', `
       ${labToggleRowHtml('labHideCbDifficulty', 'Hide the official Easy/Medium/Hard pill', "Hides College Board's own difficulty label everywhere it's normally always shown — Browse cards, the question modal, and inline Progress/Review panels — not just the per-attempt Test/Mock/Practice toggle, which only affects the quiz screen itself.", hideCbDifficultyLabEnabled())}`);
   }
+  function labOfflineCardHtml() {
+    if (!('serviceWorker' in navigator) || !('caches' in window)) {
+      return labCardHtml('📴 Offline mode', `<div class="log-item-desc">Not supported in this browser.</div>`);
+    }
+    let lastDownloadText = 'never';
+    try {
+      const raw = localStorage.getItem(OFFLINE_LAST_DOWNLOAD_KEY);
+      if (raw) lastDownloadText = new Date(parseInt(raw, 10)).toLocaleString();
+    } catch (e) { /* best-effort */ }
+    return labCardHtml('📴 Offline mode', `
+      ${labToggleRowHtml('labOfflineMode', 'Enable offline mode', 'Registers a service worker so the app itself (this page and the question data) can load with no connection once you\'ve visited it at least once online. On its own this downloads nothing extra — turn it on, then use "Download for offline" below to also cache every question image, otherwise images just fail to load while offline.', offlineModeEnabled)}
+      <div class="log-item" id="offlineImagesRow" ${offlineModeEnabled ? '' : 'style="opacity:0.5; pointer-events:none;"'}>
+        <div class="log-item-head">
+          <span class="log-item-name">Question images</span>
+          <span id="offlineCachedCount" style="font-size:12px; color:var(--ink-faint);">${offlineCachedCountDisplay()} cached</span>
+        </div>
+        <div class="log-item-desc" id="offlineStatusText">Last downloaded: ${escapeHtml(lastDownloadText)}. About 34,000 files, ~200 MB total — safe to run again any time, already-cached ones are skipped.</div>
+        <div class="bar" style="margin:8px 0;"><div class="bar-fill" id="offlineProgressBarFill" style="width:0%;"></div></div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-accent" id="offlineDownloadBtn">Download for offline</button>
+          <button type="button" class="btn" id="offlineClearBtn">Clear offline image cache</button>
+        </div>
+      </div>`);
+  }
+  function offlineProgressUpdate() {
+    const total = offlineDownload.total;
+    const pct = total ? Math.round((offlineDownload.done / total) * 100) : 0;
+    const fill = document.getElementById('offlineProgressBarFill');
+    if (fill) fill.style.width = pct + '%';
+    const status = document.getElementById('offlineStatusText');
+    if (status) {
+      status.textContent = offlineDownload.running
+        ? `Downloading… ${offlineDownload.done}/${offlineDownload.total}${offlineDownload.failed ? ` (${offlineDownload.failed} failed)` : ''}`
+        : `Done — ${offlineDownload.done}/${offlineDownload.total} checked, ${offlineDownload.done - offlineDownload.failed} cached${offlineDownload.failed ? `, ${offlineDownload.failed} failed` : ''}.`;
+    }
+    if (!offlineDownload.running) {
+      const countEl = document.getElementById('offlineCachedCount');
+      if (countEl) countEl.textContent = `${offlineCachedCountDisplay()} cached`;
+    }
+  }
   function labBrowseFiltersCardHtml(title, dataAttr, enabledFn, contextNote) {
     const rows = BROWSE_FILTER_OPTIONS.map(opt => `
       <label class="filter-opt" style="padding:4px 0;">
@@ -14866,7 +15342,7 @@
         <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior, except Rated Difficulty (on by default — opt out below).</p>
         ${labResetConfirmPending ? `
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--incorrect-bg); border:1px solid var(--incorrect); color:var(--incorrect); border-radius:8px; padding:10px 14px;">
-            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, and strict timing go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters (both English and Math) go back to Category/Difficulty/Status/Community rating shown, Skill hidden.</span>
+            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, strict timing, and offline mode go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters (both English and Math) go back to Category/Difficulty/Status/Community rating shown, Skill hidden. Any already-downloaded offline images are left alone — clear those separately if you want them gone too.</span>
             <div style="display:flex; gap:8px; margin-left:auto;">
               <button type="button" class="btn" id="labResetCancelBtn">Cancel</button>
               <button type="button" class="btn btn-accent" id="labResetConfirmBtn">Yes, reset everything</button>
@@ -14881,6 +15357,7 @@
       ${labCbDifficultyCardHtml()}
       ${labBrowseFiltersCardHtml('🔍 Browse filters — English', 'data-browse-filter-key', browseFilterEnabled, 'R&W Browse')}
       ${labBrowseFiltersCardHtml('🔍 Browse filters — Math', 'data-browse-filter-math-key', mathBrowseFilterEnabled, 'Math')}
+      ${labOfflineCardHtml()}
       ${labKeybindingsCardHtml()}`;
 
     const resetBtn = document.getElementById('labResetBtn');
@@ -14922,6 +15399,27 @@
       });
     });
 
+    const offlineModeBox = document.getElementById('labOfflineMode');
+    if (offlineModeBox) offlineModeBox.addEventListener('change', () => {
+      setOfflineModeEnabled(offlineModeBox.checked);
+      renderLab();
+    });
+    const offlineDownloadBtn = document.getElementById('offlineDownloadBtn');
+    if (offlineDownloadBtn) offlineDownloadBtn.addEventListener('click', async () => {
+      offlineDownloadBtn.disabled = true;
+      const clearBtn = document.getElementById('offlineClearBtn');
+      if (clearBtn) clearBtn.disabled = true;
+      await startOfflineDownload(offlineProgressUpdate);
+      offlineDownloadBtn.disabled = false;
+      if (clearBtn) clearBtn.disabled = false;
+    });
+    const offlineClearBtn = document.getElementById('offlineClearBtn');
+    if (offlineClearBtn) offlineClearBtn.addEventListener('click', async () => {
+      if (!confirm('Clear every offline-cached image? Browsing will need a connection again until you re-download.')) return;
+      await clearOfflineCache();
+      offlineDownload = { running: false, done: 0, total: 0, failed: 0 };
+      renderLab();
+    });
     shell.querySelectorAll('[data-rebind-action]').forEach(btn => {
       btn.addEventListener('click', () => { rebindingAction = btn.dataset.rebindAction; renderLab(); });
     });
@@ -15372,6 +15870,7 @@
       notes: state.notes,
       mathOverrides: mathOverrides,
       completionLog: state.completionLog,
+      bonusXp: state.bonusXp,
       dailyGoal: state.dailyGoal,
       profile: state.profile,
       fsrsCards: state.fsrsCards,
@@ -15401,6 +15900,7 @@
     const incomingMathOverrides = parsed && typeof parsed === 'object' ? parsed.mathOverrides : null;
     const incomingMathModules = parsed && typeof parsed === 'object' ? parsed.mathModules : null; // legacy (v1) flat export, pre-per-attempt
     const incomingCompletionLog = parsed && typeof parsed === 'object' ? parsed.completionLog : null;
+    const incomingBonusXp = parsed && typeof parsed === 'object' ? parsed.bonusXp : null;
     const incomingDailyGoal = parsed && typeof parsed === 'object' ? parsed.dailyGoal : null;
     const incomingProfile = parsed && typeof parsed === 'object' ? parsed.profile : null;
     const incomingFsrsCards = parsed && typeof parsed === 'object' ? parsed.fsrsCards : null;
@@ -15416,7 +15916,7 @@
     const incomingAnswerTimeLog = parsed && typeof parsed === 'object' ? parsed.answerTimeLog : null;
     const hasIncomingMathOverrides = incomingMathOverrides && typeof incomingMathOverrides === 'object' && !Array.isArray(incomingMathOverrides);
     const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints && !incomingTimeStats && !incomingAnswerTimeLog) {
+    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingBonusXp && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints && !incomingTimeStats && !incomingAnswerTimeLog) {
       return false;
     }
     if (incomingProgress && typeof incomingProgress === 'object') {
@@ -15447,6 +15947,10 @@
     if (incomingCompletionLog && typeof incomingCompletionLog === 'object') {
       state.completionLog = Object.assign({}, state.completionLog, incomingCompletionLog);
       saveCompletionLog();
+    }
+    if (Number.isFinite(incomingBonusXp) && incomingBonusXp > state.bonusXp) {
+      state.bonusXp = incomingBonusXp;
+      saveBonusXp();
     }
     if (Number.isFinite(incomingDailyGoal) && incomingDailyGoal > 0) {
       state.dailyGoal = incomingDailyGoal;
@@ -16710,7 +17214,7 @@
   document.getElementById('qlistMath').addEventListener('click', (e) => {
     if (e.target.closest('[data-copy-id]')) return;
     if (e.target.closest('.qcard-select')) return; // let the bulk-select checkbox toggle, don't also open the modal
-    if (e.target.closest('[data-rate-toggle], [data-vote-qid]')) return; // let Rated Difficulty voting through, don't also open the modal
+    if (e.target.closest('[data-rate-toggle], [data-vote-qid], [data-rating-info]')) return; // let Rated Difficulty voting/rating-tap through, don't also open the modal
     const head = e.target.closest('.qcard-head');
     if (!head) return;
     const idx = mathRenderedList.findIndex(q => q.id === head.dataset.id);

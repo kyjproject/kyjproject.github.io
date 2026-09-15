@@ -21,7 +21,8 @@
         var m = now.getMonth() + 1, d = now.getDate();
         var windows = [
           { id: 'halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
-          { id: 'christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 }
+          { id: 'christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 },
+          { id: 'valentines', startMonth: 2, startDay: 7, endMonth: 2, endDay: 14 }
         ];
         for (var i = 0; i < windows.length; i++) {
           var w = windows[i];
@@ -346,11 +347,11 @@
   /* Seasonal theme, same auto-pin mechanism as Halloween above. */
   :root[data-theme="christmas"] {
     --paper: #fbfbf9;
-    --paper-raised: #ffffff;
+    --paper-raised: #f4faf5;
     --ink: #1e3a2b;
     --ink-soft: #3f5c4a;
     --ink-faint: #7c9284;
-    --rule: #cfe0d3;
+    --rule: #bfe0c9;
     --rule-soft: #e3efe6;
     --accent: #b2273a;
     --accent-soft: #f6dde1;
@@ -382,6 +383,71 @@
     --cal-3: #4f9e63;
     --cal-4: #1e3a2b;
     --shadow: 0 1px 2px rgba(30, 58, 43, 0.10), 0 4px 14px rgba(178, 39, 58, 0.10);
+  }
+
+  /* Seasonal theme, same auto-pin mechanism as Halloween/Christmas above. */
+  :root[data-theme="valentines"] {
+    --paper: #fff5f7;
+    --paper-raised: #ffffff;
+    --ink: #5c1f34;
+    --ink-soft: #8a4360;
+    --ink-faint: #b98098;
+    --rule: #f3cddb;
+    --rule-soft: #fbe6ec;
+    --accent: #e0356b;
+    --accent-soft: #fcdbe6;
+    --accent-ink: #9c1c48;
+    --easy: #4fae7a;
+    --easy-bg: #e2f5ea;
+    --medium: #d69e2e;
+    --medium-bg: #fbeece;
+    --hard: #e0356b;
+    --hard-bg: #fcdbe6;
+    --correct: #4fae7a;
+    --correct-bg: #e2f5ea;
+    --incorrect: #e0356b;
+    --incorrect-bg: #fcdbe6;
+    --review: #d69e2e;
+    --review-bg: #fbeece;
+    --done: #4fae7a;
+    --done-bg: #e2f5ea;
+    --tier-bronze: #c17a4a;
+    --tier-bronze-bg: #f6e2d3;
+    --tier-silver: #b98098;
+    --tier-silver-bg: #fbe6ec;
+    --tier-gold: #d69e2e;
+    --tier-gold-bg: #fbeece;
+    --xp: #e0356b;
+    --xp-bg: #fcdbe6;
+    --cal-1: #fcdbe6;
+    --cal-2: #f6a6c0;
+    --cal-3: #e0356b;
+    --cal-4: #9c1c48;
+    --shadow: 0 1px 2px rgba(156, 28, 72, 0.10), 0 4px 14px rgba(224, 53, 107, 0.14);
+  }
+
+  /* Seasonal decorations (falling snow/bats/hearts) — see renderSeasonalDecor()
+     in the main script, which builds/tears down .seasonal-decor whenever
+     data-theme changes. Purely cosmetic: fixed, unclickable, and skipped
+     under prefers-reduced-motion. */
+  .seasonal-decor { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 3; }
+  .seasonal-decor-item {
+    position: absolute;
+    top: -8%;
+    line-height: 1;
+    animation: seasonal-fall linear infinite, seasonal-sway ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes seasonal-fall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+  }
+  @keyframes seasonal-sway {
+    from { margin-left: calc(var(--sd-drift, 20px) * -1); }
+    to { margin-left: var(--sd-drift, 20px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seasonal-decor { display: none; }
   }
 
   * { box-sizing: border-box; }
@@ -591,6 +657,13 @@
   }
   .subtabs.visible { display: flex; }
   .subtab { font-size: 12.5px; padding: 8px 12px 7px; }
+
+  /* Mobile nav (hamburger + slide-in panel) — hidden entirely above the
+     760px breakpoint, where the desktop .tabs row is used instead. See the
+     matching @media (max-width: 760px) block below for the visible state. */
+  .mobile-menu-btn { display: none; }
+  .mobile-nav-overlay { display: none; }
+  .mobile-nav-panel { display: none; }
 
   .view { flex: 1; display: none; }
   .view.active { display: block; }
@@ -2703,25 +2776,83 @@
     .stat .n { font-size: 15px; }
     .stat .l { font-size: 9px; }
 
-    .tabs {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 16px;
-      scrollbar-width: none;
-    }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab { padding: 11px 10px 9px; white-space: nowrap; flex-shrink: 0; }
+    /* Below 760px, the desktop .tabs/.subtabs strip (too many tabs to fit,
+       and a horizontal-scroll row has no visible cue that more tabs sit
+       off-screen) is replaced entirely by the hamburger + slide-in panel
+       defined below — see #mobileMenuBtn/#mobileNavPanel in the HTML. */
+    .tabs, .subtabs.visible { display: none; }
 
-    .subtabs.visible {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 6px 16px 0;
-      scrollbar-width: none;
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-left: auto;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--rule-soft);
+      color: var(--ink);
+      cursor: pointer;
+      flex-shrink: 0;
     }
-    .subtabs::-webkit-scrollbar { display: none; }
-    .subtab { padding: 8px 10px 7px; white-space: nowrap; flex-shrink: 0; }
+    .mobile-menu-btn svg { width: 20px; height: 20px; }
+    .mobile-menu-btn[aria-expanded="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+
+    .mobile-nav-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 45;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .mobile-nav-panel {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(78vw, 300px);
+      background: var(--paper-raised);
+      border-left: 1px solid var(--rule);
+      z-index: 46;
+      padding: 18px 10px;
+      gap: 2px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(100%);
+      transition: transform 0.22s ease;
+      box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+    }
+    .mobile-nav-panel.open { transform: translateX(0); pointer-events: auto; }
+
+    .mobile-nav-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border-bottom: none;
+      font-size: 15px;
+    }
+    .mobile-nav-item.active { background: var(--accent-soft); color: var(--accent-ink); }
+    .mobile-nav-item:active { background: var(--rule-soft); }
+    .mobile-nav-group-label {
+      padding: 14px 14px 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+    }
+    .mobile-nav-group-label:first-child { padding-top: 4px; }
 
     /* Bluebook / mock-exam question view: stack the passage and question
        panes instead of squeezing two 50%-width columns onto a phone screen. */
@@ -2847,6 +2978,9 @@
         </div>
       </div>
     </div>
+    <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNavPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+    </button>
   </div>
 
   <div class="tabs">
@@ -2871,6 +3005,34 @@
     <button class="tab subtab" data-view="notes">Notes</button>
     <button class="tab subtab" data-view="leaderboard">Leaderboard</button>
     <button class="tab subtab" data-view="lab">Lab</button>
+  </div>
+
+  <!-- Mobile-only nav: a right-side slide-in panel opened by #mobileMenuBtn,
+       replacing the horizontal-scroll .tabs/.subtabs strip below the 760px
+       breakpoint (see CSS) since a scrolling row of 7+ tabs has no visible
+       affordance that more tabs exist off-screen. Items reuse class="tab"
+       so they're picked up by the same querySelectorAll('.tab') click-wiring
+       and active-state logic as the desktop tabs (see activateView) —
+       duplicate data-view buttons are already handled there. -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-panel" id="mobileNavPanel" role="menu" aria-label="Navigation">
+    <button class="tab mobile-nav-item" data-view="home" role="menuitem">Home</button>
+    <div class="mobile-nav-group-label">Browse</div>
+    <button class="tab mobile-nav-item" data-view="browse" role="menuitem">English</button>
+    <button class="tab mobile-nav-item" data-view="math" role="menuitem">Math</button>
+    <div class="mobile-nav-group-label">Practice</div>
+    <button class="tab mobile-nav-item" data-view="practice" role="menuitem">Practice</button>
+    <button class="tab mobile-nav-item" data-view="test" role="menuitem">Test</button>
+    <button class="tab mobile-nav-item" data-view="mock" role="menuitem">Mock Exam</button>
+    <div class="mobile-nav-group-label">Profile</div>
+    <button class="tab mobile-nav-item" data-view="profile" role="menuitem">Profile</button>
+    <button class="tab mobile-nav-item" data-view="analysis" role="menuitem">Analysis</button>
+    <button class="tab mobile-nav-item" data-view="review" role="menuitem">Review</button>
+    <button class="tab mobile-nav-item" data-view="notes" role="menuitem">Notes</button>
+    <button class="tab mobile-nav-item" data-view="leaderboard" role="menuitem">Leaderboard</button>
+    <button class="tab mobile-nav-item" data-view="lab" role="menuitem">Lab</button>
+    <div class="mobile-nav-group-label">More</div>
+    <button class="tab mobile-nav-item" data-view="propose" role="menuitem">Propose</button>
   </div>
 
   <!-- Bluebook-style kiosk chrome — not a tab of its own. Test and Mock Exam
@@ -3575,6 +3737,27 @@
   // question back to review/incomplete shouldn't un-earn the XP, streak day,
   // or achievement progress that completing it once already banked.
   const COMPLETION_LOG_KEY = 'sat_qbank_completion_log_v1';
+
+  // One-off/manual XP grants (e.g. a reward for a contribution) that aren't
+  // earned through QUESTION_XP/MOCK_EXAM_XP — added on top of totalXp() below.
+  const BONUS_XP_KEY = 'sat_qbank_bonus_xp_v1';
+
+  function loadBonusXp() {
+    try {
+      const raw = parseInt(localStorage.getItem(BONUS_XP_KEY), 10);
+      return Number.isFinite(raw) && raw > 0 ? raw : 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function saveBonusXp() {
+    try {
+      localStorage.setItem(BONUS_XP_KEY, String(state.bonusXp));
+    } catch (e) {
+      // storage unavailable/full — bonus XP still lives in memory for this session
+    }
+  }
 
   function loadCompletionLog() {
     try {
@@ -5100,6 +5283,7 @@
     reviewOpenQuestion: null, // qid opened inline on the Review tab (via a tile click)
     progressFocus: loadProgressFocus(), // Set of difficulty labels counted toward Progress tab stats
     completionLog: loadCompletionLog(), // questionId -> ISO timestamp of first completion
+    bonusXp: loadBonusXp(), // manual XP grants on top of question/mock XP, see BONUS_XP_KEY
     dailyGoal: loadDailyGoal(), // questions/day target, drives the Progress tab goal ring
     profile: loadProfile(), // { name }
     fsrsCards: loadFsrsCards(), // questionId -> FSRS card ({ state, stability, difficulty, due, last_review, reps, lapses })
@@ -7202,6 +7386,37 @@
       activateView(tab.dataset.view, tab);
     });
   });
+
+  // ---------- Mobile nav (hamburger + slide-in panel) ----------
+  // Replaces .tabs/.subtabs below the 760px breakpoint (see CSS) — its
+  // items are plain .mobile-nav-item.tab buttons, already wired by the
+  // querySelectorAll('.tab') loop above, so this only needs to open/close
+  // the panel itself and close it after a nav item is actually used.
+  (function () {
+    const btn = document.getElementById('mobileMenuBtn');
+    const panel = document.getElementById('mobileNavPanel');
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (!btn || !panel || !overlay) return;
+    function closeMobileMenu() {
+      panel.classList.remove('open');
+      overlay.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    function openMobileMenu() {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    btn.addEventListener('click', () => {
+      if (panel.classList.contains('open')) closeMobileMenu(); else openMobileMenu();
+    });
+    overlay.addEventListener('click', closeMobileMenu);
+    panel.querySelectorAll('.mobile-nav-item').forEach(item => item.addEventListener('click', closeMobileMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+  })();
+
   // Restore whichever tab was open last time, so a reload/restart lands
   // back where you were instead of always resetting to Home. Deferred to a
   // macrotask (setTimeout 0) rather than run inline here: activateView on a
@@ -7272,6 +7487,55 @@
     document.querySelector(".tab-dropdown-item[data-view=\"browse\"]").click();
   });
 
+  // -- Seasonal decorations (falling snow/bats/hearts) --
+  // Purely cosmetic emoji layer for the Halloween/Christmas/Valentine's
+  // themes (see LAB_THEMES/SEASONAL_THEME_WINDOWS below). Driven by a
+  // MutationObserver on documentElement's data-theme attribute rather than
+  // called from every place that can change it (Lab picker, topbar toggle,
+  // the anti-flash <script> on load, seasonal auto-pin) — one listener
+  // covers all of them and can't drift out of sync with a new one later.
+  const SEASONAL_DECOR = {
+    halloween: ['🦇', '🎃', '👻', '🕸️'],
+    christmas: ['❄️', '❄️', '✨'],
+    valentines: ['💕', '💖', '🌹', '💗'],
+  };
+  let seasonalDecorLayer = null;
+  function renderSeasonalDecor() {
+    const theme = document.documentElement.dataset.theme;
+    const emoji = SEASONAL_DECOR[theme];
+    if (!emoji) {
+      if (seasonalDecorLayer) { seasonalDecorLayer.remove(); seasonalDecorLayer = null; }
+      return;
+    }
+    if (seasonalDecorLayer && seasonalDecorLayer.dataset.decorTheme === theme) return;
+    if (seasonalDecorLayer) seasonalDecorLayer.remove();
+    const layer = document.createElement('div');
+    layer.className = 'seasonal-decor';
+    layer.dataset.decorTheme = theme;
+    layer.setAttribute('aria-hidden', 'true');
+    const count = 20;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.className = 'seasonal-decor-item';
+      span.textContent = emoji[i % emoji.length];
+      const fallSec = (9 + Math.random() * 10).toFixed(1);
+      const swaySec = (3 + Math.random() * 2.5).toFixed(1);
+      span.style.left = (Math.random() * 100).toFixed(1) + 'vw';
+      span.style.fontSize = (13 + Math.random() * 15).toFixed(0) + 'px';
+      span.style.opacity = (0.35 + Math.random() * 0.35).toFixed(2);
+      span.style.animationDuration = fallSec + 's, ' + swaySec + 's';
+      span.style.animationDelay = (-Math.random() * 20).toFixed(1) + 's, ' + (-Math.random() * swaySec).toFixed(1) + 's';
+      span.style.setProperty('--sd-drift', (14 + Math.random() * 24).toFixed(0) + 'px');
+      layer.appendChild(span);
+    }
+    document.body.appendChild(layer);
+    seasonalDecorLayer = layer;
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(renderSeasonalDecor).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+  renderSeasonalDecor();
+
   // ---------- Theme toggle ----------
   const THEME_KEY = 'sat_qbank_theme_v1';
   const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -7329,6 +7593,11 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.3', date: 'Sep 15', title: 'A real mobile menu, bigger seasonal themes, and new achievements', lede: 'The topbar tabs now open into a proper slide-in menu on phones instead of a horizontally-scrolling strip. Halloween and Christmas got more color and a bit of falling-emoji flair, joined by a new Valentine’s Day theme — and 7 new achievements to chase.', items: [
+      { name: 'Mobile nav menu', desc: 'Below 760px, tapping the new hamburger button in the topbar opens a right-side slide-in panel listing every tab, replacing the old horizontally-scrolling tab strip that gave no hint more tabs existed off-screen.' },
+      { name: 'Seasonal themes: more color, falling emoji', desc: 'Halloween and Christmas got richer, more varied palettes, and a new Valentine’s Day theme (auto-pins Feb 7–14) joins them — all three now drift falling snow/bats/hearts across the screen while active, picked automatically or from Lab → Theme.' },
+      { name: '7 new achievements', desc: 'Three-Quarters There, Category Sweep, Iron Will (60-day streak), Weekly Warrior, XP Hoarder, Virtuoso (level 20), and Exam Veteran (15 mock exams).' },
+    ] },
     { version: 'v2.2', date: 'Sep 14', title: 'Propose Math, offline mode, and a round of fixes', lede: 'Propose now supports Math questions alongside Reading &amp; Writing, synced with a new command-line script for the same review queue. Offline mode is a new opt-in Lab feature — download every question image once and the app keeps working with no connection. Plus a handful of fixes: the community rating popup now opens with a single tap on mobile, Notes-category (bulleted) questions render correctly in Bluebook mode, and Mock Exam no longer repeats a question across a subject’s two modules.', items: [
       { name: 'Propose: Math questions', desc: 'A Test toggle (English/Math) on the Propose tab switches to Math’s own category and skill list, with a multiple-choice vs. student-produced response switch. A new scripts/propose_math_question.py stages Math questions from the command line into the exact same review queue, so both paths land in one place.' },
       { name: 'Offline mode (Lab)', desc: 'Turn on the new Offline mode toggle in Lab to register a service worker, then use “Download for offline” to cache every question image (~34,000 files) — the app and its images keep working with no connection.' },
@@ -9046,6 +9315,7 @@
     { id: 'terminal', label: 'Terminal', swatch: '#33ff33' },
     { id: 'halloween', label: 'Halloween', swatch: '#ff6f1f' },
     { id: 'christmas', label: 'Christmas', swatch: '#b2273a' },
+    { id: 'valentines', label: "Valentine's", swatch: '#e0356b' },
   ];
   function getLabTheme() {
     try {
@@ -9066,6 +9336,7 @@
   const SEASONAL_THEME_WINDOWS = [
     { id: 'halloween', label: 'Halloween', startMonth: 10, startDay: 24, endMonth: 10, endDay: 31 },
     { id: 'christmas', label: 'Christmas', startMonth: 12, startDay: 18, endMonth: 12, endDay: 26 },
+    { id: 'valentines', label: "Valentine's", startMonth: 2, startDay: 7, endMonth: 2, endDay: 14 },
   ];
   const SEASONAL_DISMISS_KEY = 'sat_qbank_seasonal_dismissed_v1';
   function activeSeasonalTheme(date) {
@@ -14332,7 +14603,7 @@
       const q = ALL_QUESTIONS.find(x => x.id === qid);
       if (q) xp += QUESTION_XP[q.difficulty_label] || 10;
     });
-    return xp + mockState.history.length * MOCK_EXAM_XP;
+    return xp + mockState.history.length * MOCK_EXAM_XP + state.bonusXp;
   }
 
   const LEVEL_TITLES = [
@@ -14409,6 +14680,20 @@
       progress: s => [s.bestRWScore ? Math.min(s.bestRWScore, 650) : 0, 650] },
     { id: 'clean-slate', icon: 'check', tier: 'bronze', title: 'Clean Slate', desc: "Clear your review queue to zero once you've flagged some.",
       progress: s => [s.totalDone > 0 && s.totalReview === 0 ? 1 : 0, 1] },
+    { id: 'three-quarters', icon: 'check', tier: 'gold', title: 'Three-Quarters There', desc: 'Complete 75% of the question bank.',
+      progress: s => [Math.min(s.totalDone, Math.ceil(s.totalQuestions * 0.75)), Math.max(1, Math.ceil(s.totalQuestions * 0.75))] },
+    { id: 'category-sweep', icon: 'grid', tier: 'gold', title: 'Category Sweep', desc: 'Fully complete 3 different categories.',
+      progress: s => [Math.min(s.categoriesFullyDone, 3), 3] },
+    { id: 'iron-will', icon: 'flame', tier: 'gold', title: 'Iron Will', desc: 'Reach a 60-day streak.',
+      progress: s => [Math.min(s.longestStreak, 60), 60] },
+    { id: 'weekly-warrior', icon: 'target', tier: 'silver', title: 'Weekly Warrior', desc: 'Complete 50 questions in a single week.',
+      progress: s => [Math.min(s.weeklyCount, 50), 50] },
+    { id: 'xp-hoarder', icon: 'star', tier: 'silver', title: 'XP Hoarder', desc: 'Earn 2,500 total XP.',
+      progress: s => [Math.min(s.xp, 2500), 2500] },
+    { id: 'level-20', icon: 'star', tier: 'gold', title: 'Virtuoso', desc: 'Reach level 20.',
+      progress: s => [Math.min(s.level, 20), 20] },
+    { id: 'exam-veteran', icon: 'document', tier: 'gold', title: 'Exam Veteran', desc: 'Complete 15 mock exams.',
+      progress: s => [Math.min(s.mockCount, 15), 15] },
   ];
 
   function computeGamificationStats() {
@@ -14425,13 +14710,14 @@
     // never be "mastered" for Category Master.
     const hardDone = ALL_QUESTIONS.filter(q => q.difficulty_label === 'Hard' && questionStatus(q) === 'done').length;
 
-    let bestRatio = -1, bestCategoryDone = 0, bestCategoryTotal = 1;
+    let bestRatio = -1, bestCategoryDone = 0, bestCategoryTotal = 1, categoriesFullyDone = 0;
     [...allCategories, ...mathAllCategories].forEach(cat => {
       const qs = ALL_QUESTIONS.filter(q => q.category === cat);
       if (!qs.length) return;
       const d = qs.filter(q => questionStatus(q) === 'done').length;
       const ratio = d / qs.length;
       if (ratio > bestRatio) { bestRatio = ratio; bestCategoryDone = d; bestCategoryTotal = qs.length; }
+      if (ratio >= 1) categoriesFullyDone++;
     });
 
     const goal = state.dailyGoal;
@@ -14441,9 +14727,10 @@
 
     return {
       totalDone, totalReview, totalQuestions: ALL_QUESTIONS.length, hardDone,
-      bestCategoryDone, bestCategoryTotal,
+      bestCategoryDone, bestCategoryTotal, categoriesFullyDone,
       currentStreak: streaks.current, longestStreak: streaks.longest,
       todayCount: counts[dateKey(new Date())] || 0, goal, goalDaysHit,
+      weeklyCount: weeklyCompletionCount(counts),
       mockCount: mockState.history.length, bestRWScore: bestMockRWScore(),
       xp, level: lvl.level, xpIntoLevel: lvl.xpIntoLevel, xpForNextLevel: lvl.xpForNextLevel, levelTitle: lvl.title,
     };
@@ -14967,7 +15254,7 @@
     const swatches = LAB_THEMES.map(t => `
       <button type="button" class="btn ${active === t.id || (seasonalPinned && t.id === seasonal.id) ? 'btn-accent' : ''}" style="display:inline-flex; align-items:center; gap:6px;" data-lab-theme="${t.id}">
         ${t.swatch ? `<span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:${t.swatch};"></span>` : ''}
-        ${escapeHtml(t.label)}${t.id === 'halloween' ? ' 🎃' : t.id === 'christmas' ? ' 🎄' : ''}
+        ${escapeHtml(t.label)}${t.id === 'halloween' ? ' 🎃' : t.id === 'christmas' ? ' 🎄' : t.id === 'valentines' ? ' 💝' : ''}
       </button>`).join('');
     return labCardHtml('🎨 Theme variants', `
       <div class="log-item-desc" style="margin-bottom:10px;">An alternate theme beyond light/dark — e.g. <strong>Sepia</strong>, a warm paper look. Picking one here overrides the topbar's sun/moon toggle until you pick <strong>Default</strong> again; the topbar toggle itself always stays a plain light/dark switch. ${seasonal ? `<strong>${escapeHtml(seasonal.label)}</strong> is in season and ${seasonalPinned ? 'is currently pinned as Default' : 'is available below even though you opted out of the auto-pin'} — toggle the topbar sun/moon to opt back out, or pick <strong>Default</strong> here to opt back in.` : ''}</div>
@@ -15584,6 +15871,7 @@
       notes: state.notes,
       mathOverrides: mathOverrides,
       completionLog: state.completionLog,
+      bonusXp: state.bonusXp,
       dailyGoal: state.dailyGoal,
       profile: state.profile,
       fsrsCards: state.fsrsCards,
@@ -15613,6 +15901,7 @@
     const incomingMathOverrides = parsed && typeof parsed === 'object' ? parsed.mathOverrides : null;
     const incomingMathModules = parsed && typeof parsed === 'object' ? parsed.mathModules : null; // legacy (v1) flat export, pre-per-attempt
     const incomingCompletionLog = parsed && typeof parsed === 'object' ? parsed.completionLog : null;
+    const incomingBonusXp = parsed && typeof parsed === 'object' ? parsed.bonusXp : null;
     const incomingDailyGoal = parsed && typeof parsed === 'object' ? parsed.dailyGoal : null;
     const incomingProfile = parsed && typeof parsed === 'object' ? parsed.profile : null;
     const incomingFsrsCards = parsed && typeof parsed === 'object' ? parsed.fsrsCards : null;
@@ -15628,7 +15917,7 @@
     const incomingAnswerTimeLog = parsed && typeof parsed === 'object' ? parsed.answerTimeLog : null;
     const hasIncomingMathOverrides = incomingMathOverrides && typeof incomingMathOverrides === 'object' && !Array.isArray(incomingMathOverrides);
     const hasIncomingMathModules = incomingMathModules && Number.isFinite(incomingMathModules.m1) && Number.isFinite(incomingMathModules.m2);
-    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints && !incomingTimeStats && !incomingAnswerTimeLog) {
+    if (!incomingProgress && !incomingTags && !incomingNotes && !hasIncomingMathOverrides && !hasIncomingMathModules && !incomingCompletionLog && !incomingBonusXp && !incomingFsrsCards && !incomingMockHistory && !incomingTestHistory && !incomingRWOverrides && !incomingSkillStats && !incomingProgressFocus && !incomingTrendExcluded && !incomingRecentVisits && !incomingBlueprints && !incomingTimeStats && !incomingAnswerTimeLog) {
       return false;
     }
     if (incomingProgress && typeof incomingProgress === 'object') {
@@ -15659,6 +15948,10 @@
     if (incomingCompletionLog && typeof incomingCompletionLog === 'object') {
       state.completionLog = Object.assign({}, state.completionLog, incomingCompletionLog);
       saveCompletionLog();
+    }
+    if (Number.isFinite(incomingBonusXp) && incomingBonusXp > state.bonusXp) {
+      state.bonusXp = incomingBonusXp;
+      saveBonusXp();
     }
     if (Number.isFinite(incomingDailyGoal) && incomingDailyGoal > 0) {
       state.dailyGoal = incomingDailyGoal;
