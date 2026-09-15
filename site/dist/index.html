@@ -346,13 +346,18 @@
 
   /* Seasonal theme, same auto-pin mechanism as Halloween above. */
   :root[data-theme="christmas"] {
-    --paper: #fbfbf9;
-    --paper-raised: #f4faf5;
+    /* Warm ivory instead of near-white (#fbfbf9) — less glaring, and reads
+       as "cream/gold" rather than plain white. --rule-soft picks up the
+       same gold tint so it shows up in the many hover/soft-background
+       spots that reuse it, instead of the palette only ever showing green
+       (ink/rule/easy) and red (accent/hard) at a glance. */
+    --paper: #f5f0e0;
+    --paper-raised: #eef4ec;
     --ink: #1e3a2b;
     --ink-soft: #3f5c4a;
     --ink-faint: #7c9284;
-    --rule: #bfe0c9;
-    --rule-soft: #e3efe6;
+    --rule: #a8cdb2;
+    --rule-soft: #f1e7c6;
     --accent: #b2273a;
     --accent-soft: #f6dde1;
     --accent-ink: #7a1424;
@@ -376,8 +381,8 @@
     --tier-silver-bg: #e6ebee;
     --tier-gold: #c9a227;
     --tier-gold-bg: #f5ecc8;
-    --xp: #b2273a;
-    --xp-bg: #f6dde1;
+    --xp: #b8860b;
+    --xp-bg: #f5ecc8;
     --cal-1: #dff0e3;
     --cal-2: #a9d4b3;
     --cal-3: #4f9e63;
@@ -502,12 +507,36 @@
   .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .brand-logo { display: block; height: 46px; width: auto; }
   .brand-logo-dark { display: none; }
+  /* System dark mode with no explicit theme override (no Lab theme picked,
+     topbar toggle never clicked) — resolves the same way the rest of the
+     page does. Gated to :not([data-theme]) rather than :not([data-theme=
+     "light"]) as before: that broader match also caught every light-
+     background Lab/seasonal theme (Sepia, Christmas, Valentine's — data-
+     theme is their id, which is "not light" too), forcing the white logo
+     onto a white/cream/pink header and making it unreadable whenever the
+     OS itself was set to dark. Each theme's actual logo color now comes
+     only from its own data-theme value below, never from prefers-color-
+     scheme. */
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .brand-logo-light { display: none; }
-    :root:not([data-theme="light"]) .brand-logo-dark { display: block; }
+    :root:not([data-theme]) .brand-logo-light { display: none; }
+    :root:not([data-theme]) .brand-logo-dark { display: block; }
   }
-  :root[data-theme="dark"] .brand-logo-light { display: none; }
-  :root[data-theme="dark"] .brand-logo-dark { display: block; }
+  /* Explicit dark-background themes — always the white logo, regardless of
+     the OS's own light/dark preference. Sepia/Christmas/Valentine's are
+     deliberately absent here: their --paper is light, so they keep the
+     default (dark/navy) logo from .brand-logo-light above. */
+  :root[data-theme="dark"] .brand-logo-light,
+  :root[data-theme="goblin"] .brand-logo-light,
+  :root[data-theme="terminal"] .brand-logo-light,
+  :root[data-theme="halloween"] .brand-logo-light {
+    display: none;
+  }
+  :root[data-theme="dark"] .brand-logo-dark,
+  :root[data-theme="goblin"] .brand-logo-dark,
+  :root[data-theme="terminal"] .brand-logo-dark,
+  :root[data-theme="halloween"] .brand-logo-dark {
+    display: block;
+  }
 
   .theme-toggle {
     display: inline-flex;
