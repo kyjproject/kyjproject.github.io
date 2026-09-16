@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-14T11:17:24.683Z",
+  "exportedAt": "2026-09-16T12:12:37.146Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -438,7 +438,9 @@
     "232f78e7": "done",
     "fe1ae990": "done",
     "490bd61a": "done",
-    "bc6c4fd8": "done"
+    "bc6c4fd8": "done",
+    "6203926e": "review",
+    "f176ef9e": "review"
   },
   "tags": {},
   "notes": {
@@ -921,6 +923,7 @@
     "490bd61a": "2026-09-14T10:51:35.895Z",
     "bc6c4fd8": "2026-09-14T10:51:36.888Z"
   },
+  "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
     "name": "jaylen brown"
@@ -948,6 +951,136 @@
     }
   },
   "mockHistory": [
+    {
+      "id": "1789394428566-lmajbg",
+      "completedAt": "2026-09-14T14:00:28.566Z",
+      "composition": "custom",
+      "sections": [
+        {
+          "subject": "rw",
+          "module": 1,
+          "ids": [
+            "4be9bb1c",
+            "2d35ba95",
+            "f0e70c0c",
+            "5c9c3bca",
+            "a84b11c2",
+            "1a3cbb81",
+            "99022257",
+            "8cb0c10b",
+            "a380e0c7",
+            "72c9c72e",
+            "4aa75b60",
+            "18f15be4",
+            "f176ef9e",
+            "647ea16e",
+            "dd53fb5c",
+            "08fe665d",
+            "6203926e",
+            "d4d1e6db",
+            "fdc2f73a",
+            "4efacd65",
+            "bffa7aea",
+            "b08f7afd",
+            "9c159f61",
+            "6be089ec",
+            "1d5b9a35",
+            "9c1b0ab1",
+            "368d0222"
+          ]
+        },
+        {
+          "subject": "rw",
+          "module": 2,
+          "ids": [
+            "7bd1b54b",
+            "308abfd7",
+            "6d458a07",
+            "372b3cc3",
+            "0c0e9872",
+            "3fcc2cee",
+            "4e8b863b",
+            "6c807e83",
+            "e6d591f4",
+            "18d2dfab",
+            "e7b2ca56",
+            "25f5e913",
+            "be184fba",
+            "172f5e8c",
+            "bbd93b0f",
+            "02e95b9b",
+            "f396849d",
+            "08fe665d",
+            "0d0e04ec",
+            "f3a157b1",
+            "bffa7aea",
+            "33a93756",
+            "9579edb4",
+            "5ef8db0f",
+            "8f60b266",
+            "1f851ceb",
+            "0d9560e0"
+          ]
+        }
+      ],
+      "answers": {
+        "99022257": "B",
+        "4be9bb1c": "D",
+        "2d35ba95": "D",
+        "f0e70c0c": "A",
+        "5c9c3bca": "D",
+        "a84b11c2": "C",
+        "368d0222": "B",
+        "9c1b0ab1": "A",
+        "1d5b9a35": "C",
+        "6be089ec": "C",
+        "9c159f61": "A",
+        "b08f7afd": "C",
+        "bffa7aea": "A",
+        "4efacd65": "C",
+        "fdc2f73a": "B",
+        "d4d1e6db": "D",
+        "6203926e": "A",
+        "08fe665d": "D",
+        "dd53fb5c": "B",
+        "647ea16e": "A",
+        "f176ef9e": "B",
+        "18f15be4": "C",
+        "4aa75b60": "A",
+        "72c9c72e": "D",
+        "a380e0c7": "A",
+        "8cb0c10b": "A",
+        "1a3cbb81": "A",
+        "7bd1b54b": "B",
+        "308abfd7": "A",
+        "6d458a07": "D",
+        "372b3cc3": "D",
+        "0c0e9872": "C",
+        "0d9560e0": "D",
+        "1f851ceb": "B",
+        "8f60b266": "D",
+        "5ef8db0f": "D",
+        "9579edb4": "A",
+        "33a93756": "B",
+        "f3a157b1": "C",
+        "0d0e04ec": "C",
+        "f396849d": "B",
+        "02e95b9b": "A",
+        "bbd93b0f": "C",
+        "172f5e8c": "B",
+        "be184fba": "D",
+        "25f5e913": "C",
+        "e7b2ca56": "B",
+        "18d2dfab": "C",
+        "e6d591f4": "B",
+        "6c807e83": "C",
+        "4e8b863b": "C",
+        "3fcc2cee": "D"
+      },
+      "routedHarderForSubject": {
+        "rw": true
+      }
+    },
     {
       "id": "1789379161350-9h38bx",
       "completedAt": "2026-09-14T09:46:01.351Z",
@@ -1572,17 +1705,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Cross-Text Connections": {
-      "correct": 10,
-      "total": 14,
+      "correct": 12,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1787306089956,
-          "correct": true
-        },
-        {
-          "ts": 1787306089967,
-          "correct": true
-        },
         {
           "ts": 1788697893184,
           "correct": true
@@ -1622,54 +1747,22 @@
         {
           "ts": 1789379161392,
           "correct": false
+        },
+        {
+          "ts": 1789394428576,
+          "correct": true
+        },
+        {
+          "ts": 1789394428583,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161392
+      "lastAttemptTs": 1789394428583
     },
     "Words in Context": {
-      "correct": 42,
-      "total": 50,
+      "correct": 51,
+      "total": 60,
       "recent": [
-        {
-          "ts": 1789044867816,
-          "correct": false
-        },
-        {
-          "ts": 1789044867816,
-          "correct": true
-        },
-        {
-          "ts": 1789044867816,
-          "correct": true
-        },
-        {
-          "ts": 1789044867816,
-          "correct": true
-        },
-        {
-          "ts": 1789198087272,
-          "correct": true
-        },
-        {
-          "ts": 1789379161371,
-          "correct": true
-        },
-        {
-          "ts": 1789379161373,
-          "correct": true
-        },
-        {
-          "ts": 1789379161374,
-          "correct": true
-        },
-        {
-          "ts": 1789379161374,
-          "correct": false
-        },
-        {
-          "ts": 1789379161390,
-          "correct": true
-        },
         {
           "ts": 1789379161390,
           "correct": false
@@ -1677,13 +1770,53 @@
         {
           "ts": 1789379161391,
           "correct": false
+        },
+        {
+          "ts": 1789394428573,
+          "correct": true
+        },
+        {
+          "ts": 1789394428574,
+          "correct": true
+        },
+        {
+          "ts": 1789394428575,
+          "correct": true
+        },
+        {
+          "ts": 1789394428575,
+          "correct": true
+        },
+        {
+          "ts": 1789394428575,
+          "correct": true
+        },
+        {
+          "ts": 1789394428582,
+          "correct": true
+        },
+        {
+          "ts": 1789394428582,
+          "correct": true
+        },
+        {
+          "ts": 1789394428583,
+          "correct": true
+        },
+        {
+          "ts": 1789394428583,
+          "correct": false
+        },
+        {
+          "ts": 1789394428583,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161391
+      "lastAttemptTs": 1789394428583
     },
     "Text Structure and Purpose": {
-      "correct": 26,
-      "total": 28,
+      "correct": 30,
+      "total": 32,
       "recent": [
         {
           "ts": 1788962426253,
@@ -1694,27 +1827,7 @@
           "correct": true
         },
         {
-          "ts": 1789044867812,
-          "correct": true
-        },
-        {
           "ts": 1789044867817,
-          "correct": true
-        },
-        {
-          "ts": 1789044867817,
-          "correct": true
-        },
-        {
-          "ts": 1789044867817,
-          "correct": true
-        },
-        {
-          "ts": 1789379161375,
-          "correct": true
-        },
-        {
-          "ts": 1789379161375,
           "correct": true
         },
         {
@@ -1726,32 +1839,28 @@
           "correct": true
         },
         {
-          "ts": 1789379161391,
+          "ts": 1789394428575,
           "correct": true
         },
         {
-          "ts": 1789379161391,
+          "ts": 1789394428576,
+          "correct": true
+        },
+        {
+          "ts": 1789394428583,
+          "correct": true
+        },
+        {
+          "ts": 1789394428583,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161391
+      "lastAttemptTs": 1789394428583
     },
     "Central Ideas and Details": {
-      "correct": 38,
-      "total": 44,
+      "correct": 43,
+      "total": 49,
       "recent": [
-        {
-          "ts": 1789044867817,
-          "correct": true
-        },
-        {
-          "ts": 1789044867817,
-          "correct": false
-        },
-        {
-          "ts": 1789197393925,
-          "correct": true
-        },
         {
           "ts": 1789198039221,
           "correct": true
@@ -1781,33 +1890,37 @@
           "correct": true
         },
         {
-          "ts": 1789379161393,
+          "ts": 1789394428577,
           "correct": true
         },
         {
-          "ts": 1789379161393,
+          "ts": 1789394428577,
+          "correct": true
+        },
+        {
+          "ts": 1789394428584,
+          "correct": true
+        },
+        {
+          "ts": 1789394428584,
+          "correct": true
+        },
+        {
+          "ts": 1789394428584,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161393
+      "lastAttemptTs": 1789394428584
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 21,
-      "total": 26,
+      "correct": 25,
+      "total": 30,
       "recent": [
         {
           "ts": 1788962426254,
           "correct": true
         },
         {
-          "ts": 1788962426254,
-          "correct": true
-        },
-        {
-          "ts": 1789044867814,
-          "correct": true
-        },
-        {
           "ts": 1789044867814,
           "correct": false
         },
@@ -1816,23 +1929,7 @@
           "correct": true
         },
         {
-          "ts": 1789044867818,
-          "correct": true
-        },
-        {
           "ts": 1789379161381,
-          "correct": true
-        },
-        {
-          "ts": 1789379161381,
-          "correct": true
-        },
-        {
-          "ts": 1789379161394,
-          "correct": false
-        },
-        {
-          "ts": 1789379161394,
           "correct": true
         },
         {
@@ -1842,13 +1939,29 @@
         {
           "ts": 1789380031711,
           "correct": true
+        },
+        {
+          "ts": 1789394428578,
+          "correct": true
+        },
+        {
+          "ts": 1789394428579,
+          "correct": true
+        },
+        {
+          "ts": 1789394428584,
+          "correct": true
+        },
+        {
+          "ts": 1789394428584,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789380031712
+      "lastAttemptTs": 1789394428584
     },
     "Command of Evidence (Textual)": {
-      "correct": 22,
-      "total": 24,
+      "correct": 24,
+      "total": 27,
       "recent": [
         {
           "ts": 1788786636388,
@@ -1856,14 +1969,6 @@
         },
         {
           "ts": 1788962426254,
-          "correct": true
-        },
-        {
-          "ts": 1788962426254,
-          "correct": true
-        },
-        {
-          "ts": 1789044867814,
           "correct": true
         },
         {
@@ -1888,22 +1993,26 @@
         },
         {
           "ts": 1789379161395,
-          "correct": true
-        },
-        {
-          "ts": 1789379161395,
-          "correct": true
-        },
-        {
-          "ts": 1789379161395,
           "correct": false
+        },
+        {
+          "ts": 1789394428579,
+          "correct": false
+        },
+        {
+          "ts": 1789394428584,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161395
+      "lastAttemptTs": 1789394428585
     },
     "Inferences": {
-      "correct": 24,
-      "total": 30,
+      "correct": 27,
+      "total": 33,
       "recent": [
         {
           "ts": 1788854279975,
@@ -1914,19 +2023,7 @@
           "correct": true
         },
         {
-          "ts": 1788962426254,
-          "correct": true
-        },
-        {
           "ts": 1789044867814,
-          "correct": true
-        },
-        {
-          "ts": 1789044867814,
-          "correct": true
-        },
-        {
-          "ts": 1789044867820,
           "correct": true
         },
         {
@@ -1942,50 +2039,34 @@
           "correct": true
         },
         {
-          "ts": 1789379161385,
-          "correct": true
-        },
-        {
           "ts": 1789379161395,
           "correct": true
         },
         {
           "ts": 1789379161396,
           "correct": true
+        },
+        {
+          "ts": 1789394428579,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161396
+      "lastAttemptTs": 1789394428585
     },
     "Boundaries": {
-      "correct": 21,
-      "total": 22,
+      "correct": 27,
+      "total": 28,
       "recent": [
         {
-          "ts": 1788765715118,
-          "correct": true
-        },
-        {
-          "ts": 1788786636382,
-          "correct": true
-        },
-        {
-          "ts": 1788786636382,
-          "correct": true
-        },
-        {
-          "ts": 1788786636388,
-          "correct": true
-        },
-        {
-          "ts": 1788786636388,
-          "correct": true
-        },
-        {
           "ts": 1788962426254,
-          "correct": true
-        },
-        {
-          "ts": 1789044867815,
           "correct": true
         },
         {
@@ -2007,24 +2088,40 @@
         {
           "ts": 1789379161398,
           "correct": true
+        },
+        {
+          "ts": 1789394428579,
+          "correct": true
+        },
+        {
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161398
+      "lastAttemptTs": 1789394428585
     },
     "Form, Structure, and Sense": {
-      "correct": 16,
-      "total": 16,
+      "correct": 19,
+      "total": 19,
       "recent": [
         {
           "ts": 1788697893187,
-          "correct": true
-        },
-        {
-          "ts": 1788697893187,
-          "correct": true
-        },
-        {
-          "ts": 1788697893197,
           "correct": true
         },
         {
@@ -2048,56 +2145,32 @@
           "correct": true
         },
         {
-          "ts": 1789044867815,
-          "correct": true
-        },
-        {
-          "ts": 1789044867820,
-          "correct": true
-        },
-        {
           "ts": 1789044867820,
           "correct": true
         },
         {
           "ts": 1789379161386,
           "correct": true
+        },
+        {
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428585,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161386
+      "lastAttemptTs": 1789394428585
     },
     "Transitions": {
-      "correct": 178,
-      "total": 202,
+      "correct": 185,
+      "total": 210,
       "recent": [
-        {
-          "ts": 1789044867815,
-          "correct": true
-        },
-        {
-          "ts": 1789044867815,
-          "correct": true
-        },
-        {
-          "ts": 1789044867820,
-          "correct": true
-        },
-        {
-          "ts": 1789044867820,
-          "correct": true
-        },
-        {
-          "ts": 1789044867821,
-          "correct": true
-        },
-        {
-          "ts": 1789379161387,
-          "correct": true
-        },
-        {
-          "ts": 1789379161387,
-          "correct": true
-        },
         {
           "ts": 1789379161387,
           "correct": true
@@ -2115,32 +2188,44 @@
           "correct": true
         },
         {
-          "ts": 1789379161399,
+          "ts": 1789394428580,
+          "correct": true
+        },
+        {
+          "ts": 1789394428581,
+          "correct": true
+        },
+        {
+          "ts": 1789394428581,
+          "correct": false
+        },
+        {
+          "ts": 1789394428581,
+          "correct": true
+        },
+        {
+          "ts": 1789394428586,
+          "correct": true
+        },
+        {
+          "ts": 1789394428586,
+          "correct": true
+        },
+        {
+          "ts": 1789394428586,
+          "correct": true
+        },
+        {
+          "ts": 1789394428586,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161399
+      "lastAttemptTs": 1789394428586
     },
     "Rhetorical Synthesis": {
-      "correct": 123,
-      "total": 137,
+      "correct": 129,
+      "total": 143,
       "recent": [
-        {
-          "ts": 1789200195394,
-          "correct": true
-        },
-        {
-          "ts": 1789200273256,
-          "correct": true
-        },
-        {
-          "ts": 1789200311222,
-          "correct": true
-        },
-        {
-          "ts": 1789200345768,
-          "correct": true
-        },
         {
           "ts": 1789298318874,
           "correct": false
@@ -2158,10 +2243,6 @@
           "correct": true
         },
         {
-          "ts": 1789379161389,
-          "correct": true
-        },
-        {
           "ts": 1789379161399,
           "correct": true
         },
@@ -2170,11 +2251,31 @@
           "correct": true
         },
         {
-          "ts": 1789379161400,
+          "ts": 1789394428581,
+          "correct": true
+        },
+        {
+          "ts": 1789394428582,
+          "correct": true
+        },
+        {
+          "ts": 1789394428582,
+          "correct": true
+        },
+        {
+          "ts": 1789394428586,
+          "correct": true
+        },
+        {
+          "ts": 1789394428587,
+          "correct": true
+        },
+        {
+          "ts": 1789394428587,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1789379161400
+      "lastAttemptTs": 1789394428587
     }
   },
   "progressFocus": [
@@ -2416,17 +2517,42 @@
       "count": 5,
       "lastTs": 1789379672165
     },
-    "f99639a1": {
-      "count": 1,
-      "lastTs": 1789382854430
-    },
     "19f553cc": {
       "count": 2,
       "lastTs": 1789382950275
+    },
+    "372b3cc3": {
+      "count": 4,
+      "lastTs": 1789560663578
     }
   },
   "blueprints": [],
   "timeStats": {
+    "2026-09-14": {
+      "totalMs": 9772277,
+      "viewMs": {
+        "home": 65002,
+        "mock": 9169432,
+        "profile": 4999,
+        "review": 432845,
+        "notes": 5000,
+        "leaderboard": 115000,
+        "analysis": 10000,
+        "browse": 35001
+      },
+      "categoryMs": {
+        "Vocab": 740004,
+        "Functions": 789994,
+        "Notes": 630003,
+        "Transitions": 605004,
+        "Grammar": 609996,
+        "Inferences": 560004,
+        "Textual Evidence": 1314998,
+        "Quantitative Evidence": 794995,
+        "Main Idea": 1080002,
+        "Cross-Text": 340000
+      }
+    },
     "2026-09-12": {
       "totalMs": 2511219,
       "viewMs": {
@@ -2452,28 +2578,28 @@
       },
       "categoryMs": {}
     },
-    "2026-09-14": {
-      "totalMs": 5862276,
+    "2026-09-15": {
+      "totalMs": 233310,
       "viewMs": {
-        "mock": 5294432,
-        "profile": 4999,
-        "review": 432845,
-        "notes": 5000,
-        "leaderboard": 115000,
-        "analysis": 10000
+        "profile": 10065,
+        "home": 4937,
+        "practice": 9999,
+        "lab": 65001,
+        "mock": 130001,
+        "browse": 13307
       },
-      "categoryMs": {
-        "Vocab": 295002,
-        "Functions": 309999,
-        "Notes": 360001,
-        "Transitions": 320003,
-        "Grammar": 104997,
-        "Inferences": 365002,
-        "Textual Evidence": 815000,
-        "Quantitative Evidence": 554996,
-        "Main Idea": 564999,
-        "Cross-Text": 110000
-      }
+      "categoryMs": {}
+    },
+    "2026-09-16": {
+      "totalMs": 460008,
+      "viewMs": {
+        "browse": 180008,
+        "home": 75000,
+        "lab": 85003,
+        "mock": 64987,
+        "profile": 55010
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -2718,5 +2844,5 @@
       }
     ]
   },
-  "bonusXp": 500
+  "clientUpdatedAt": 1789560752394
 }
