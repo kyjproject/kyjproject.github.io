@@ -12,6 +12,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8935", "--directory", "site/pages"],
       "port": 8935
+    },
+    {
+      "name": "sat-db-static-8000",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8000", "--directory", "site/pages"],
+      "port": 8000
     }
   ]
 }

@@ -7512,7 +7512,7 @@
     if (view === 'blueprints') renderBlueprintsBrowser();
     if (view === 'practice') renderPractice();
     if (view === 'test') renderTest();
-    if (view === 'mock') renderMock();
+    if (view === 'mock') { renderMock(); maybeTriggerHaminJumpscare(); }
     if (view === 'profile') renderProfile();
     if (view === 'analysis') { renderProgress(); renderAnalysis(); }
     if (view === 'review') renderReview();
@@ -8328,6 +8328,93 @@
   }
   function getCloudPassword() {
     try { return localStorage.getItem(CLOUD_SAVE_PASSWORD_KEY) || ''; } catch (e) { return ''; }
+  }
+
+  // ---------- Jumpscare easter egg (triggers once for the "hamin" account) ----------
+  let __haminJumpscareShown = false;
+  function maybeTriggerHaminJumpscare() {
+    try {
+      if (__haminJumpscareShown) return;
+      if ((getCloudUsername() || '').trim().toLowerCase() !== 'hamin') return;
+      __haminJumpscareShown = true;
+      showJumpscare();
+    } catch (e) {}
+  }
+  function showJumpscare() {
+    if (!document.getElementById('jumpscareStyle')) {
+      const style = document.createElement('style');
+      style.id = 'jumpscareStyle';
+      style.textContent = `
+        @keyframes jumpscareShake {
+          0% { transform: translate(0,0) scale(1.08); }
+          20% { transform: translate(-2%,2%) scale(1.14); }
+          40% { transform: translate(2%,-2%) scale(1.18); }
+          60% { transform: translate(-2%,-2%) scale(1.14); }
+          80% { transform: translate(2%,2%) scale(1.08); }
+          100% { transform: translate(0,0) scale(1.14); }
+        }
+        @keyframes jumpscareFlash {
+          0%, 100% { background: #000; }
+          50% { background: #fff; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    const overlay = document.createElement('div');
+    overlay.id = 'jumpscareOverlay';
+    Object.assign(overlay.style, {
+      position: 'fixed', inset: '0', zIndex: '999999', background: '#000',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      cursor: 'pointer', animation: 'jumpscareFlash 0.08s 4',
+    });
+    const img = document.createElement('img');
+    img.src = 'images/easter-eggs/jumpscare.jpg';
+    img.alt = '';
+    Object.assign(img.style, {
+      width: '100%', height: '100%', objectFit: 'cover',
+      animation: 'jumpscareShake 0.12s infinite',
+    });
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+    playJumpscareSound();
+    const dismiss = () => { overlay.remove(); document.removeEventListener('keydown', dismiss); };
+    overlay.addEventListener('click', dismiss);
+    document.addEventListener('keydown', dismiss);
+    setTimeout(dismiss, 3500);
+  }
+  function playJumpscareSound() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const duration = 1.2;
+      const bufferSize = Math.floor(ctx.sampleRate * duration);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 0.3);
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.001, ctx.currentTime);
+      noiseGain.gain.exponentialRampToValueAtTime(1, ctx.currentTime + 0.02);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(1200, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + duration);
+      const oscGain = ctx.createGain();
+      oscGain.gain.setValueAtTime(0.001, ctx.currentTime);
+      oscGain.gain.exponentialRampToValueAtTime(0.8, ctx.currentTime + 0.02);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+
+      noise.connect(noiseGain).connect(ctx.destination);
+      osc.connect(oscGain).connect(ctx.destination);
+      noise.start();
+      osc.start();
+      noise.stop(ctx.currentTime + duration);
+      osc.stop(ctx.currentTime + duration);
+    } catch (e) {}
   }
   function setCloudCredentials(username, password) {
     try {
