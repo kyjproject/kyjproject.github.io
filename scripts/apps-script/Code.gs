@@ -26,6 +26,12 @@
 //        GITHUB_BRANCH  e.g. "main" (optional, defaults to "main")
 //        GITHUB_DIR     e.g. "db/cloud_save" (optional, defaults to that —
 //                       holds users.json + progress/<username>.json)
+//        PROGRESS_BRANCH  e.g. "cloud-data" (optional, defaults to that —
+//                       every progress save/load goes here instead of
+//                       GITHUB_BRANCH, so per-user saves — hourly-ish with
+//                       Lab auto-sync on — don't clutter main's commit log.
+//                       Auto-created on first save by forking GITHUB_BRANCH's
+//                       current HEAD; nothing to set up by hand)
 //        ADMIN_SECRET   optional, a password only you know — set this if you
 //                       want the ability to reset a user's forgotten
 //                       password yourself (see handleAdminResetPassword_
@@ -64,6 +70,9 @@ function doPost(e) {
     else if (action === 'get_ratings') result = handleGetRatings_(body);
     else if (action === 'submit_difficulty_votes') result = handleSubmitDifficultyVotes_(body);
     else if (action === 'admin_set_rating') result = handleAdminSetRating_(body);
+    else if (action === 'submit_testimonial') result = handleSubmitTestimonial_(body);
+    else if (action === 'list_testimonials') result = handleListTestimonials_(body);
+    else if (action === 'submit_site_feedback') result = handleSiteFeedback_(body);
     else result = { ok: false, error: 'Unknown action: ' + action };
   } catch (err) {
     result = { ok: false, error: String((err && err.message) || err) };
@@ -96,6 +105,20 @@ function config_() {
 
 function usersPath_(cfg) { return cfg.dir + '/users.json'; }
 function progressPath_(cfg, username) { return cfg.dir + '/progress/' + username.toLowerCase() + '.json'; }
+// Per-user progress saves happen far more often than anything else this
+// script writes (every manual "Save progress now" click, and — with the
+// Lab auto-sync feature — potentially every couple minutes during active
+// use), which was flooding `main`'s commit log with nothing-to-read-later
+// noise. They go to their own branch instead: PROGRESS_BRANCH (optional
+// Script Property, defaults to "cloud-data") is auto-created on first
+// write (see githubEnsureBranch_) by forking main's current HEAD, so it
+// starts out with every existing user's progress already in it — no manual
+// migration step. Nothing else (build scripts, review tools) ever reads
+// this branch, so main stays exactly as clean as before regardless of sync
+// frequency.
+function progressBranch_(cfg) {
+  return PropertiesService.getScriptProperties().getProperty('PROGRESS_BRANCH') || 'cloud-data';
+}
 // Single small JSON array of every community-shared blueprint (Test/Practice
 // setup) — same one-file-holds-a-list shape as users.json, since this is a
 // personal/shared-with-friends tool and the list is expected to stay small.
@@ -116,11 +139,25 @@ function reportsPath_() { return 'db/staging/reported_questions.json'; }
 // settable by users themselves. Fixed shared location, same idea as
 // ratingsPath_/reportsPath_.
 function userTitlesPath_() { return 'db/user_titles.json'; }
+// Home-tab testimonials: submissions land in the staging file (same
+// never-live-on-its-own guarantee as proposed questions/reports) until
+// scripts/review_testimonials.py approves one into the public file, which
+// every visitor's Home tab reads via handleListTestimonials_ below — no
+// site rebuild needed to show a newly-approved one.
+function testimonialsStagingPath_() { return 'db/staging/testimonials.json'; }
+function testimonialsPath_() { return 'db/testimonials.json'; }
+// General "something's wrong with the app" / "you should add X" reports from
+// the topbar feedback popover — a separate stream from reportsPath_ above,
+// which is specifically "something's wrong with THIS question". No login
+// required to submit (see handleSiteFeedback_): the point is to lower
+// friction versus the old email-only flow, not to gate it the way a
+// public-facing testimonial needs to be.
+function siteFeedbackPath_() { return 'db/staging/site_feedback.json'; }
 
 // ---------- GitHub Contents API helpers ----------
 
-function githubGetFile_(cfg, path) {
-  var url = cfg.apiRoot + '/' + path + '?ref=' + encodeURIComponent(cfg.branch);
+function githubGetFile_(cfg, path, branch) {
+  var url = cfg.apiRoot + '/' + path + '?ref=' + encodeURIComponent(branch || cfg.branch);
   var resp = UrlFetchApp.fetch(url, { method: 'get', headers: cfg.headers, muteHttpExceptions: true });
   if (resp.getResponseCode() === 200) {
     var json = JSON.parse(resp.getContentText());
@@ -131,12 +168,12 @@ function githubGetFile_(cfg, path) {
   throw new Error('GitHub GET ' + path + ' failed: ' + resp.getResponseCode() + ' ' + resp.getContentText());
 }
 
-function githubPutFile_(cfg, path, contentText, sha, message) {
+function githubPutFile_(cfg, path, contentText, sha, message, branch) {
   var url = cfg.apiRoot + '/' + path;
   var payload = {
     message: message,
     content: Utilities.base64Encode(Utilities.newBlob(contentText).getBytes()),
-    branch: cfg.branch,
+    branch: branch || cfg.branch,
   };
   if (sha) payload.sha = sha;
   var resp = UrlFetchApp.fetch(url, {
@@ -155,9 +192,9 @@ function githubPutFile_(cfg, path, contentText, sha, message) {
 // Same as githubPutFile_, but for content that's already base64-encoded
 // (binary files, e.g. a proposed question's image) — skips the text->bytes
 // re-encoding step, which would corrupt binary data.
-function githubPutFileBase64_(cfg, path, base64Content, sha, message) {
+function githubPutFileBase64_(cfg, path, base64Content, sha, message, branch) {
   var url = cfg.apiRoot + '/' + path;
-  var payload = { message: message, content: base64Content, branch: cfg.branch };
+  var payload = { message: message, content: base64Content, branch: branch || cfg.branch };
   if (sha) payload.sha = sha;
   var resp = UrlFetchApp.fetch(url, {
     method: 'put',
@@ -170,6 +207,38 @@ function githubPutFileBase64_(cfg, path, base64Content, sha, message) {
     throw new Error('GitHub PUT ' + path + ' failed: ' + resp.getResponseCode() + ' ' + resp.getContentText());
   }
   return JSON.parse(resp.getContentText());
+}
+
+// Creates `branch` by forking it off cfg.branch's current HEAD, if it
+// doesn't already exist. Idempotent (a 404 on the ref check is the normal
+// "not created yet" case, anything else just returns). This is what lets
+// PROGRESS_BRANCH come into existence on its own on the very first
+// auto-sync/save — no manual "create this branch first" step for whoever
+// deploys the script.
+function githubEnsureBranch_(cfg, branch) {
+  var refUrl = cfg.apiRoot.replace('/contents', '/git/ref/heads/') + encodeURIComponent(branch);
+  var refResp = UrlFetchApp.fetch(refUrl, { method: 'get', headers: cfg.headers, muteHttpExceptions: true });
+  if (refResp.getResponseCode() === 200) return; // already exists
+
+  var baseUrl = cfg.apiRoot.replace('/contents', '/git/ref/heads/') + encodeURIComponent(cfg.branch);
+  var baseResp = UrlFetchApp.fetch(baseUrl, { method: 'get', headers: cfg.headers, muteHttpExceptions: true });
+  if (baseResp.getResponseCode() !== 200) {
+    throw new Error('Could not read base branch "' + cfg.branch + '" to fork ' + branch + ' from: ' + baseResp.getResponseCode());
+  }
+  var baseSha = JSON.parse(baseResp.getContentText()).object.sha;
+
+  var createUrl = cfg.apiRoot.replace('/contents', '/git/refs');
+  var createResp = UrlFetchApp.fetch(createUrl, {
+    method: 'post',
+    headers: cfg.headers,
+    contentType: 'application/json',
+    payload: JSON.stringify({ ref: 'refs/heads/' + branch, sha: baseSha }),
+    muteHttpExceptions: true,
+  });
+  // 201 = created; 422 = another concurrent request just created it first — both fine.
+  if (createResp.getResponseCode() !== 201 && createResp.getResponseCode() !== 422) {
+    throw new Error('Could not create branch ' + branch + ': ' + createResp.getResponseCode() + ' ' + createResp.getContentText());
+  }
 }
 
 // ---------- auth ----------
@@ -238,13 +307,16 @@ function handleSave_(body) {
   if (!check.ok) return check;
   if (!body.data) return { ok: false, error: 'Missing data' };
 
+  var branch = progressBranch_(cfg);
+  githubEnsureBranch_(cfg, branch);
   var path = progressPath_(cfg, check.username);
-  var existing = githubGetFile_(cfg, path);
+  var existing = githubGetFile_(cfg, path, branch);
   var result = githubPutFile_(
     cfg, path,
     JSON.stringify(body.data, null, 2),
     existing.sha,
-    body.message || ('Update ' + check.username + ' progress — ' + new Date().toISOString())
+    body.message || ('Update ' + check.username + ' progress — ' + new Date().toISOString()),
+    branch
   );
   return {
     ok: true,
@@ -258,7 +330,14 @@ function handleLoad_(body) {
   var check = checkCredentials_(cfg, body && body.username, body && body.password);
   if (!check.ok) return check;
 
-  var file = githubGetFile_(cfg, progressPath_(cfg, check.username));
+  var path = progressPath_(cfg, check.username);
+  // Progress saves live on their own branch (see progressBranch_) so they
+  // don't clutter main's commit log — but anyone who saved before that
+  // branch existed still has their only copy sitting on main, so fall back
+  // there if the progress branch doesn't have this user yet. Once they
+  // save again it lands on the progress branch like everyone else's.
+  var file = githubGetFile_(cfg, path, progressBranch_(cfg));
+  if (!file.exists) file = githubGetFile_(cfg, path, cfg.branch);
   if (!file.exists) return { ok: true, data: null };
   return { ok: true, data: JSON.parse(file.content) };
 }
@@ -474,6 +553,102 @@ function handleReportQuestion_(body) {
       result = githubPutFile_(
         cfg, path, JSON.stringify(staged, null, 2), existing.sha,
         'Report ' + records.length + ' question issue(s) (by ' + check.username + ')'
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+
+  return { ok: true, count: count, commitUrl: result.commit && result.commit.html_url };
+}
+
+// A logged-in-only "how KYJ-SAT worked for me" submission for the Home tab —
+// same spam guard (a real kyj-cloud account) and same staging-first
+// guarantee as handlePropose_/handleReportQuestion_ above.
+function handleSubmitTestimonial_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var r = body && body.record;
+  if (!r || typeof r !== 'object' || !r.quote) return { ok: false, error: 'Missing testimonial text' };
+  var rating = Number(r.rating);
+  if (!(rating >= 1 && rating <= 5)) rating = 5;
+  var record = {
+    rating: rating,
+    quote: String(r.quote).slice(0, 500),
+    author: r.author ? String(r.author).slice(0, 40) : check.username,
+    submitted_by: check.username,
+    submitted_at: new Date().toISOString(),
+  };
+
+  var path = testimonialsStagingPath_();
+  var result, count, lastErr;
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var existing = githubGetFile_(cfg, path);
+      var staged = existing.exists ? JSON.parse(existing.content) : [];
+      staged.push(record);
+      count = staged.length;
+      result = githubPutFile_(
+        cfg, path, JSON.stringify(staged, null, 2), existing.sha,
+        'Submit testimonial (by ' + check.username + ')'
+      );
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  if (!result) throw lastErr;
+
+  return { ok: true, count: count, commitUrl: result.commit && result.commit.html_url };
+}
+
+// Public read (no credentials needed) of whatever's been approved into
+// db/testimonials.json — this is what every visitor's Home tab calls.
+function handleListTestimonials_(body) {
+  var cfg = config_();
+  var file = githubGetFile_(cfg, testimonialsPath_());
+  var list = [];
+  if (file.exists) {
+    try { list = JSON.parse(file.content); } catch (e) { list = []; }
+    if (!Array.isArray(list)) list = [];
+  }
+  return { ok: true, testimonials: list };
+}
+
+// General app feedback (bug/feature/other) from the topbar popover — no
+// credential check, unlike every other write action here, since the whole
+// point is a lower-friction alternative to the old mailto link. That does
+// mean this file can accumulate spam more easily than the others; it's a
+// staging file just like proposed_questions.json, reviewed by a human
+// (scripts/review_site_feedback.py) before anything is acted on.
+function handleSiteFeedback_(body) {
+  var cfg = config_();
+  var r = body && body.record;
+  if (!r || typeof r !== 'object' || !r.message) return { ok: false, error: 'Missing feedback message' };
+  var record = {
+    type: ['bug', 'feature', 'other'].indexOf(r.type) !== -1 ? r.type : 'other',
+    message: String(r.message).slice(0, 1000),
+    contact: r.contact ? String(r.contact).slice(0, 80) : '',
+    username: r.username ? String(r.username).slice(0, 32) : '',
+    page: r.page ? String(r.page).slice(0, 40) : '',
+    submitted_at: new Date().toISOString(),
+  };
+
+  var path = siteFeedbackPath_();
+  var result, count, lastErr;
+  for (var attempt = 0; attempt < 3 && !result; attempt++) {
+    try {
+      var existing = githubGetFile_(cfg, path);
+      var staged = existing.exists ? JSON.parse(existing.content) : [];
+      staged.push(record);
+      count = staged.length;
+      result = githubPutFile_(
+        cfg, path, JSON.stringify(staged, null, 2), existing.sha,
+        'Site feedback: ' + record.type + (record.username ? ' (by ' + record.username + ')' : '')
       );
     } catch (e) {
       lastErr = e;

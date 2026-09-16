@@ -90,6 +90,10 @@ db/
   categories/*.json            one file per category, parsed question records (source of truth)
   all_questions.json           all categories concatenated (generated)
   staging/proposed_questions.json  manually-added questions awaiting review (see below), empty ([]) by default
+  staging/testimonials.json    Home-tab testimonials awaiting review, empty ([]) by default
+  testimonials.json             approved testimonials, shown live on the Home tab
+  staging/site_feedback.json   general bug/feature/other reports from the topbar feedback popover
+  staging/resolved_site_feedback.json  the same, once handled
 
 images/
   command_of_evidence/*.png    cropped chart/table images, one per R&W question that has one
@@ -105,6 +109,8 @@ scripts/
   build_site.py                site/index.template.html + data -> site/dist/index.html (single-file, for Claude Artifacts)
   build_github_pages.py        site/index.template.html + data + images -> site/pages/ (multi-file, for GitHub Pages)
   review_staged_questions.py   db/staging/proposed_questions.json -> db/categories/<category>.json, one-by-one approval
+  review_testimonials.py       db/staging/testimonials.json -> db/testimonials.json, one-by-one approval (no rebuild needed — read live via the Apps Script)
+  reports_server.py            also backs tools/review_site_feedback.html — general app feedback, separate from per-question reports
   staging_server.py            local HTTP server so tools/add_question.html works in any browser (not just Chrome/Edge)
   manage_titles.py             CLI to add/remove leaderboard title badges in db/user_titles.json (list/set/remove/templates)
   titles_server.py             local HTTP server so tools/manage_titles.html can edit db/user_titles.json from a form
@@ -427,9 +433,35 @@ everywhere a question appears instead of the long College Board hash id
   progress tracker, not something holding anything sensitive), so use a
   password you're not reusing elsewhere. Logging in on a new browser offers
   to load your existing cloud progress in (merged with whatever's already
-  local). There's no autosave or periodic sync — **Save progress now** /
-  **Load from cloud** only ever run when you click them. Credentials are
-  remembered in `localStorage` across reloads until you hit **Log out**.
+  local). **Save progress now** / **Load from cloud** only ever run when you
+  click them, by default — there's an opt-in **Auto-sync** toggle (in the
+  kyj-cloud popover itself, and in Lab — only shown once logged in) that
+  pushes for you instead: every few minutes while something's actually
+  unsaved (with a minimum gap between attempts so a burst of activity
+  doesn't queue up several pushes), plus one final push on the way out
+  when the tab is actually closed or navigated away from (via
+  `navigator.sendBeacon`) — not on every tab switch, which would be far
+  chattier for no benefit. It never discards anything — if this account
+  synced from elsewhere since this device's last known sync point, it
+  compares *when this device last actually changed anything* against a
+  timestamp the other device stamped on its own save: if the other device
+  is genuinely more recent, its copy is adopted outright; otherwise this
+  device's values win on any overlap (nothing gets silently reverted to a
+  stale value) while anything the other device added that this device never
+  touched is still merged in — either way a small toast says what happened.
+  A background push that fails doesn't just vanish either: a rejected
+  username/password turns Auto-sync back off immediately with an
+  explanation (rather than retrying forever against dead credentials), and
+  any other error gets a few quiet retries before surfacing a persistent
+  warning (in both the kyj-cloud popover and Lab) if it keeps failing —
+  your progress is always still safe in this browser's `localStorage`
+  either way, this only affects the cloud copy. Every progress save/load
+  (manual or auto) goes through `PROGRESS_BRANCH` — a dedicated branch
+  (`cloud-data` by default, auto-created on first save by forking
+  `GITHUB_BRANCH`'s current HEAD) — instead of `GITHUB_BRANCH` itself, so
+  per-user saves don't clutter `main`'s commit log; nothing else ever reads
+  that branch. Credentials are remembered in `localStorage` across reloads
+  until you hit **Log out**.
 - **Propose**: lets a student submit a new question straight from the site,
   no local setup required. Reuses the same account as cloud save — logging
   in there also unlocks this tab — and the form is the same fields as
@@ -443,6 +475,19 @@ everywhere a question appears instead of the long College Board hash id
   each one, exactly like a question added locally; nothing a student submits
   reaches the live bank without that step. Hidden when `CLOUD_SAVE_URL`
   isn't set, same as cloud save.
+- **Home**: a hero/about section plus a testimonials strip — anyone logged
+  into kyj-cloud can submit one from the **Share your experience** button,
+  which lands in `db/staging/testimonials.json` (via `handleSubmitTestimonial_`
+  in `scripts/apps-script/Code.gs`) for the site owner to approve with
+  `scripts/review_testimonials.py` into `db/testimonials.json` — read live by
+  every visitor's Home tab (`handleListTestimonials_`), no rebuild needed.
+  Nothing submitted shows up without that approval step, same guarantee as
+  Propose. The topbar feedback icon (every tab, not just Home) got the same
+  treatment: bug/feature/other reports go straight into `db/staging/
+  site_feedback.json` (`handleSiteFeedback_`, no kyj-cloud login required —
+  a separate, lower-friction stream from the per-question "Report a
+  problem" flow), reviewed with `tools/review_site_feedback.html` (served by
+  `scripts/reports_server.py`, same as the question-reports dashboard).
 - **Review**: everything flagged 🚩 for review, scheduled with **spaced
   repetition** — a from-scratch implementation of FSRS-4.5 (the same memory
   model Anki's "FSRS" scheduler uses), so the queue resurfaces each question

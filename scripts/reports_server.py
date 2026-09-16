@@ -1,4 +1,4 @@
-"""Tiny local HTTP server backing two local-only review tools:
+"""Tiny local HTTP server backing three local-only review tools:
 
   - tools/review_dashboard.html — manual QA pass over the ENTIRE question
     bank, grouped by category/difficulty, tile-grid style (like the site's
@@ -6,14 +6,21 @@
     (red), or editing (yellow) as you go through it.
   - tools/review_reports.html — the narrower queue of questions students
     flagged as broken via the in-app "Report a problem" button.
+  - tools/review_site_feedback.html — general bug/feature/other feedback
+    submitted via the topbar feedback popover (a separate stream from
+    per-question reports above — see handleSiteFeedback_ in
+    scripts/apps-script/Code.gs).
 
-Both edit db/categories/*.json directly. No third-party deps, plain fetch()
+The first two edit db/categories/*.json directly; the feedback queue only
+ever moves items between db/staging/site_feedback.json and
+db/staging/resolved_site_feedback.json. No third-party deps, plain fetch()
 from the browser, localhost only — same approach as scripts/staging_server.py.
 
 Usage:
     python3 scripts/reports_server.py
-    -> open http://localhost:8766/ (the dashboard) or
-       http://localhost:8766/tools/review_reports.html (student reports)
+    -> open http://localhost:8766/ (the dashboard),
+       http://localhost:8766/tools/review_reports.html (student reports), or
+       http://localhost:8766/tools/review_site_feedback.html (app feedback)
 
 After editing anything, rebuild the live site:
     python3 scripts/build_db.py
@@ -42,6 +49,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORTS_PATH = os.path.join(ROOT, "db", "staging", "reported_questions.json")
 RESOLVED_PATH = os.path.join(ROOT, "db", "staging", "resolved_reports.json")
 REVIEW_STATUS_PATH = os.path.join(ROOT, "db", "staging", "review_status.json")
+SITE_FEEDBACK_PATH = os.path.join(ROOT, "db", "staging", "site_feedback.json")
+RESOLVED_SITE_FEEDBACK_PATH = os.path.join(ROOT, "db", "staging", "resolved_site_feedback.json")
 CATEGORIES_DIR = os.path.join(ROOT, "db", "categories")
 PORT = 8766
 
@@ -134,6 +143,14 @@ class Handler(BaseHTTPRequestHandler):
                 joined.append({**r, "question": found[2] if found else None})
             resolved = load_json(RESOLVED_PATH, [])
             self._send_json({"ok": True, "reports": joined, "resolved": resolved})
+            return
+
+        if path == "/api/site_feedback":
+            self._send_json({
+                "ok": True,
+                "feedback": load_json(SITE_FEEDBACK_PATH, []),
+                "resolved": load_json(RESOLVED_SITE_FEEDBACK_PATH, []),
+            })
             return
 
         if path == "/api/questions":
@@ -259,6 +276,37 @@ class Handler(BaseHTTPRequestHandler):
                 save_json(REVIEW_STATUS_PATH, review_status)
 
             self._send_json({"ok": True, "path": os.path.relpath(target_path, ROOT)})
+            return
+
+        if route == "/api/resolve_site_feedback":
+            item = body.get("item")
+            if not item or not item.get("submitted_at"):
+                self._send_json({"ok": False, "error": "missing item"}, 400)
+                return
+            feedback = load_json(SITE_FEEDBACK_PATH, [])
+            remaining = [f for f in feedback if f.get("submitted_at") != item["submitted_at"]]
+            if len(remaining) == len(feedback):
+                self._send_json({"ok": False, "error": "item not found (already handled?)"}, 404)
+                return
+            save_json(SITE_FEEDBACK_PATH, remaining)
+            resolved = load_json(RESOLVED_SITE_FEEDBACK_PATH, [])
+            resolved.append({**item, "resolved_at": body.get("resolved_at")})
+            save_json(RESOLVED_SITE_FEEDBACK_PATH, resolved)
+            self._send_json({"ok": True, "remaining": len(remaining)})
+            return
+
+        if route == "/api/dismiss_site_feedback":
+            item = body.get("item")
+            if not item or not item.get("submitted_at"):
+                self._send_json({"ok": False, "error": "missing item"}, 400)
+                return
+            feedback = load_json(SITE_FEEDBACK_PATH, [])
+            remaining = [f for f in feedback if f.get("submitted_at") != item["submitted_at"]]
+            if len(remaining) == len(feedback):
+                self._send_json({"ok": False, "error": "item not found (already handled?)"}, 404)
+                return
+            save_json(SITE_FEEDBACK_PATH, remaining)
+            self._send_json({"ok": True, "remaining": len(remaining)})
             return
 
         if route == "/api/write_image":
