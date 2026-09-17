@@ -1,19 +1,19 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-17T11:05:44.092Z",
+  "exportedAt": "2026-09-17T11:06:20.019Z",
   "progress": {
-    "741374a0": "done",
+    "741374a0": "review",
     "6f03007c": "done",
     "91b4ab70": "done",
     "5c9c3bca": "done",
     "4ca341bc": "done",
     "ce9b3b84": "done",
     "f93079ee": "done",
-    "06fea80f": "done",
+    "06fea80f": "review",
     "79543afc": "done",
-    "380dee07": "done",
-    "e56aedd2": "done",
+    "380dee07": "review",
+    "e56aedd2": "review",
     "5f5deac5": "done",
     "2ee45938": "done",
     "3a519c76": "done",
@@ -27,10 +27,10 @@
     "e34403e6": "done",
     "e1137c5a": "done",
     "03c75a33": "done",
-    "7a83c8d8": "done",
+    "7a83c8d8": "review",
     "427f0eea": "done",
     "a445876d": "done",
-    "dc8ef67e": "done",
+    "dc8ef67e": "review",
     "8d93d73a": "done",
     "e1774551": "done",
     "9609a243": "done",
@@ -40,45 +40,45 @@
     "6ea5114f": "done",
     "edabd538": "done",
     "6447ef95": "done",
-    "dac47b83": "done",
+    "dac47b83": "review",
     "67a1f442": "done",
-    "2593586b": "done",
+    "2593586b": "review",
     "e2aebe0a": "done",
     "712c1559": "done",
     "1f246569": "done",
     "5ffda1dd": "done",
     "3acc2d54": "done",
     "37ccf84e": "done",
-    "d7b89c91": "done",
+    "d7b89c91": "review",
     "9d6fd619": "done",
-    "87eb538d": "done",
+    "87eb538d": "review",
     "e40007b2": "done",
     "4e693aea": "done",
-    "38f92f17": "done",
+    "38f92f17": "review",
     "2868e197": "done",
     "88c38e13": "done",
     "68609a2d": "done",
-    "943bdd80": "done",
+    "943bdd80": "review",
     "5c38a6d5": "done",
     "4165e701": "done",
     "4c27795c": "done",
     "bfbada16": "done",
-    "4c18f6b4": "done",
+    "4c18f6b4": "review",
     "41eb2101": "done",
     "90856dbc": "done",
     "358eef09": "done",
-    "21cdd49b": "done",
+    "21cdd49b": "review",
     "95649ca9": "done",
-    "c02b765d": "done",
-    "473d9645": "done",
+    "c02b765d": "review",
+    "473d9645": "review",
     "b8c6844e": "done",
-    "369ac3ca": "done",
+    "369ac3ca": "review",
     "2138137b": "done",
     "14bec4c8": "done",
-    "410d7d28": "done",
+    "410d7d28": "review",
     "dd8a1d0d": "done",
     "dffab2d7": "done",
-    "b8582018": "done"
+    "b8582018": "review"
   },
   "tags": {},
   "notes": {},
@@ -147,24 +147,7 @@
     "14bec4c8": "2026-09-15T12:58:23.678Z",
     "dd8a1d0d": "2026-09-15T12:58:27.947Z",
     "dffab2d7": "2026-09-15T12:58:29.011Z",
-    "5f5deac5": "2026-09-15T13:14:17.294Z",
-    "e56aedd2": "2026-09-17T10:43:12.273Z",
-    "380dee07": "2026-09-17T10:43:16.221Z",
-    "2593586b": "2026-09-17T10:43:18.205Z",
-    "c02b765d": "2026-09-17T10:43:20.389Z",
-    "06fea80f": "2026-09-17T10:43:21.706Z",
-    "741374a0": "2026-09-17T10:43:23.055Z",
-    "d7b89c91": "2026-09-17T10:43:25.872Z",
-    "473d9645": "2026-09-17T10:43:27.505Z",
-    "4c18f6b4": "2026-09-17T10:43:33.720Z",
-    "b8582018": "2026-09-17T10:43:36.203Z",
-    "410d7d28": "2026-09-17T10:43:37.420Z",
-    "369ac3ca": "2026-09-17T10:43:38.654Z",
-    "38f92f17": "2026-09-17T10:43:39.771Z",
-    "dac47b83": "2026-09-17T10:43:40.955Z",
-    "943bdd80": "2026-09-17T10:43:42.053Z",
-    "7a83c8d8": "2026-09-17T10:44:13.385Z",
-    "dc8ef67e": "2026-09-17T10:44:45.600Z"
+    "5f5deac5": "2026-09-15T13:14:17.294Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -661,28 +644,11 @@
   },
   "blueprints": [],
   "timeStats": {
-    "2026-09-17": {
-      "totalMs": 170092,
-      "viewMs": {
-        "home": 10001,
-        "profile": 5001,
-        "review": 120067,
-        "practice": 35023
-      },
-      "categoryMs": {
-        "Cross-Text": 5001,
-        "Functions": 5002,
-        "Grammar": 5004,
-        "Inferences": 5003,
-        "Main Idea": 5005,
-        "Transitions": 5003
-      }
-    },
     "2026-09-15": {
-      "totalMs": 7559736,
+      "totalMs": 7564733,
       "viewMs": {
         "home": 125004,
-        "profile": 72262,
+        "profile": 77259,
         "mock": 6232760,
         "blueprints": 29999,
         "math": 40001,
@@ -708,6 +674,13 @@
         "Problem-Solving and Data Analysis": 254990,
         "Geometry and Trigonometry": 254991
       }
+    },
+    "2026-09-17": {
+      "totalMs": 60004,
+      "viewMs": {
+        "profile": 60004
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -796,5 +769,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789643142225
+  "clientUpdatedAt": 1789643171824
 }
