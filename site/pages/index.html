@@ -42,6 +42,8 @@
     } catch (e) { /* best-effort */ }
   })();
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <style>
   :root {
     --paper: #f6f7f9;
@@ -1578,6 +1580,34 @@
     white-space: pre-line;
   }
 
+  /* ---------- Competition tab ---------- */
+  .comp-hms { display: flex; gap: 8px; align-items: center; }
+  .comp-hms input[type="number"] {
+    width: 68px; font: inherit; font-size: 14px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 8px 10px; text-align: center;
+  }
+  .comp-hms label { font-size: 11px; color: var(--ink-faint); margin-left: 4px; }
+  .comp-total-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 4px; }
+  .comp-record-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .comp-record-item {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 8px 10px; border: 1px solid var(--rule-soft); border-radius: 8px; background: var(--paper-raised);
+  }
+  .comp-record-name { font-weight: 700; font-size: 13px; color: var(--ink); }
+  .comp-record-desc { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
+  .comp-record-time { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
+  .comp-result-list { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+  .comp-result-item {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 9px 12px; border: 1px solid var(--rule-soft); border-radius: 8px;
+  }
+  .comp-result-period { font-weight: 700; font-size: 13px; color: var(--ink); }
+  .comp-result-outcome { font-size: 12.5px; color: var(--ink-soft); text-align: right; }
+  .comp-result-item.comp-won { background: var(--accent-soft); border-color: var(--accent); }
+  .comp-result-item.comp-lost { background: var(--paper); }
+  .comp-result-item.comp-tie { background: var(--paper-raised); }
+
   .palette-root { align-items: flex-start; padding-top: 12vh; }
   .palette-card {
     position: relative;
@@ -1705,6 +1735,13 @@
   .math-inline { height: 1.15em; vertical-align: -0.2em; margin: 0 1px; }
   .math-block { display: block; max-width: 100%; max-height: 220px; margin: 6px 0; }
   .qstem .math-inline, .stem-preview .math-inline { height: 1em; }
+  /* Newer math records use real LaTeX ("⟦LATEX:...⟧" tokens, see
+     restoreLatex()) rendered client-side via KaTeX instead of a cropped
+     image — .math-inline-latex is the mid-sentence case; a solo LATEX token
+     reuses .math-block above (KaTeX sizes itself, so max-height there is a
+     no-op safety net, not a real constraint). */
+  .math-inline-latex { display: inline-block; margin: 0 1px; }
+  .math-inline-latex .katex, .math-block .katex { color: inherit; }
   .gridin-row { margin-bottom: 14px; }
   .gridin-input {
     font: inherit;
@@ -3172,6 +3209,7 @@
     <button class="tab" data-view="mock">Mock Exam</button>
     <button class="tab" data-view="profile">Profile<span class="tab-badge" id="reviewDueBadgeMain" style="display:none;"></span></button>
     <button class="tab" data-view="propose">Propose</button>
+    <button class="tab" data-view="competition" id="competitionTabBtn" style="display:none;">Competition</button>
   </div>
   <div class="subtabs" id="profileSubtabs">
     <button class="tab subtab" data-view="profile">Profile</button>
@@ -3209,6 +3247,7 @@
     <button class="tab mobile-nav-item" data-view="lab" role="menuitem">Lab</button>
     <div class="mobile-nav-group-label">More</div>
     <button class="tab mobile-nav-item" data-view="propose" role="menuitem">Propose</button>
+    <button class="tab mobile-nav-item" data-view="competition" id="competitionTabBtnMobile" role="menuitem" style="display:none;">Competition</button>
   </div>
 
   <!-- Bluebook-style kiosk chrome — not a tab of its own. Test and Mock Exam
@@ -3437,22 +3476,22 @@
       </div>
 
       <div class="config-card">
-        <h2>What KYJ-SAT is &amp; who built it</h2>
-        <p class="lede">The short version, and the person behind it.</p>
+        <h2>What KYJ-SAT is &amp; Who Built It</h2>
+        <p class="lede">The short version, and the person behind it</p>
         <div class="about-grid">
           <div>
             <p style="font-size:13px; color:var(--ink-soft); line-height:1.6; margin:0 0 14px;">
-              The digital SAT changed format in 2024 and official practice material has stayed thin ever since — a handful of practice tests, then nothing. KYJ-SAT exists to fix that: every question from the College Board's own practice-question PDFs, parsed into a real structured database (not screenshots or a PDF viewer), with the tooling on top that real studying needs — status tracking, weak-skill targeting, spaced repetition, and a mock exam engine that actually estimates a composite score.
+              This started as a personal program where I, noting how terrible college board question banks are formatted, decided to make my own program to keep track of questions. While working on them, I continued to add new features that are conducive to preparing for the SAT more effectiely, and it eventually reached my friends' hands.
             </p>
             <div class="about-pillars">
-              <div class="about-pillar"><span class="icon">&#128218;</span><h4>Complete, not curated</h4><p>Every Reading &amp; Writing and Math question from the source material, not a "best of" sample.</p></div>
+              <div class="about-pillar"><span class="icon">&#128218;</span><h4>Complete, not curated</h4><p>Every Reading &amp; Writing and Math question from the official college board question bank, with a handful of features to practice systematically. </p></div>
               <div class="about-pillar"><span class="icon">&#127919;</span><h4>Built to actually improve you</h4><p>Weak-skill bias, FSRS spaced repetition, and a per-skill mastery breakdown — not just a pile of questions.</p></div>
               <div class="about-pillar"><span class="icon">&#128274;</span><h4>Free, always</h4><p>No paywall, no ads, no account required to use any study mode.</p></div>
             </div>
           </div>
           <div class="about-card-owner">
-            <p class="about-owner-name">kyj</p>
-            <p class="about-owner-role">Solo builder &amp; maintainer</p>
+            <p class="about-owner-name">Yong Joon Kim</p>
+            <p class="about-owner-role">Solo builder &amp; Maintainer</p>
             <p>
               <!-- EDIT ME: replace with your own background/story — why you built this, your own SAT prep experience, whatever you want students to know about who's behind the site. -->
               A student who ran out of real practice material while prepping for the digital SAT and decided to build the rest of the bank instead of doing without it. Everything here — the parsing, the site, the spaced-repetition engine — is one person's side project, not a company's.
@@ -3482,6 +3521,10 @@
 
   <div class="view" id="view-propose">
     <div class="test-shell" id="proposeShell"></div>
+  </div>
+
+  <div class="view" id="view-competition">
+    <div class="test-shell" id="competitionShell"></div>
   </div>
 </div>
 
@@ -6468,7 +6511,32 @@
   // standalone stem paragraph holding a full graph/table — renders larger
   // and on its own line; an image mixed into surrounding words renders at
   // text height, inline.
+  // Newer math records use "⟦LATEX:...⟧" tokens instead of cropped images —
+  // real LaTeX source, rendered client-side via KaTeX. The source went
+  // through escapeHtml() before this runs (same as the IMG tokens below),
+  // so &/</>/"/' inside it come back as entities and must be reversed before
+  // handing the raw string to KaTeX, which renders its own safe markup.
+  const KATEX_UNESCAPE_RE = /&amp;|&lt;|&gt;|&quot;|&#39;/g;
+  const KATEX_UNESCAPE_MAP = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
+  function unescapeHtml(s) {
+    return s.replace(KATEX_UNESCAPE_RE, m => KATEX_UNESCAPE_MAP[m]);
+  }
+  function renderLatex(source, displayMode) {
+    if (typeof katex === 'undefined') return escapeHtml(source);
+    try {
+      return katex.renderToString(source, { throwOnError: false, displayMode });
+    } catch (e) {
+      return escapeHtml(source);
+    }
+  }
+  function restoreLatex(escaped) {
+    const sole = escaped.trim().match(/^⟦LATEX:([^⟧]+)⟧$/);
+    if (sole) return `<span class="math-block">${renderLatex(unescapeHtml(sole[1]), true)}</span>`;
+    return escaped.replace(/⟦LATEX:([^⟧]+)⟧/g, (_, src) => `<span class="math-inline-latex">${renderLatex(unescapeHtml(src), false)}</span>`);
+  }
+
   function restoreMathImages(escaped) {
+    escaped = restoreLatex(escaped);
     const sole = escaped.trim().match(/^⟦IMG:([^⟧]+)⟧$/);
     if (sole) return `<img class="math-block" src="${sole[1]}" alt="math">`;
     return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="${path}" alt="math">`);
@@ -7479,7 +7547,7 @@
   const TAB_TITLES = {
     home: 'Home', browse: 'Browse', math: 'Math', blueprints: 'Blueprints', practice: 'Practice', test: 'Test', mock: 'Mock Exam',
     profile: 'Profile', analysis: 'Analysis', review: 'Review', notes: 'Notes', leaderboard: 'Leaderboard',
-    propose: 'Propose', lab: 'Lab',
+    propose: 'Propose', lab: 'Lab', competition: 'Competition',
   };
   const PROFILE_FAMILY = ['profile', 'analysis', 'review', 'notes', 'leaderboard', 'lab'];
   const BROWSE_FAMILY = ['browse', 'math', 'blueprints'];
@@ -7521,6 +7589,7 @@
     if (view === 'leaderboard') renderLeaderboard();
     if (view === 'propose') renderPropose();
     if (view === 'lab') renderLab();
+    if (view === 'competition') renderCompetition();
   }
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', (e) => {
@@ -7808,6 +7877,11 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.6', date: 'Sep 19', title: 'Auto-sync is now on by default, and cloud saves never overwrite another device', lede: 'kyj-cloud sync got safer and less manual. "Save progress now" now always merges with the cloud first instead of overwriting it outright — the old advice to "Load before you Save when switching devices" no longer applies, since Save and Load both merge either way. Tags, notes, and spaced-repetition review progress also merge more carefully now, so reviewing or tagging the same question on two devices no longer lets one side silently clobber the other. And Auto-sync, previously an opt-in Lab toggle, is now on by default for every logged-in kyj-cloud account — including anyone already signed in — since there\'s no longer a real downside to it running automatically. Still one click away to turn off in Lab if you\'d rather sync by hand.', items: [
+      { name: 'Save no longer overwrites the cloud — it merges', desc: '"Save progress now" used to push this browser\'s progress straight over whatever was already saved, which meant saving from a second device before ever loading could silently wipe out the first device\'s progress. It now loads and merges the cloud copy in first, exactly like Auto-sync already did, before pushing the combined result.' },
+      { name: 'Auto-sync is on by default now', desc: 'Previously an opt-in toggle in Lab. Now on by default for everyone signed into kyj-cloud, including accounts that were already logged in before this shipped. Still a one-click toggle in Lab if you\'d rather stick to manual saves.' },
+      { name: 'Tags, notes, and review progress merge more carefully', desc: 'Tagging or noting the same question from two different devices since your last sync used to let whichever device synced last overwrite the other\'s tag/note for that question — now both are kept. Spaced-repetition (FSRS) review progress on the same question from two devices now keeps whichever side actually reflects the more recent review, instead of an arbitrary pick.' },
+    ] },
     { version: 'v2.5', date: 'Sep 16', title: 'A rebuilt Home page, in-site feedback, and kyj-cloud auto-sync', lede: 'Home got a full pass — a real hero section, an "About &amp; who built this" writeup, and a testimonials wall, replacing the old wall of reference text with something that actually explains what this is before asking you to dig in. Feedback and bug reports now happen right in the app instead of over email, and kyj-cloud can push your progress on its own now via an opt-in Lab toggle. Plus: a fixed "Jump into Browse" button and nudges toward the features people miss.', items: [
       { name: 'Home, rebuilt', desc: 'A real hero section (what this is, in one screen), an "About &amp; who built this" section with the story behind the project and its owner, and a testimonials wall students can submit to — replacing the old Quick Start / Study Modes / Cool Features / What\'s Next reference sections, which had grown into more of a manual than a homepage. That reference material still exists — it\'s what the interactive tour and this changelog are for.' },
       { name: 'In-site feedback, not just an email link', desc: 'The feedback popover (topbar icon, next to the theme toggle) now has a real form — bug report / feature idea / something else, a message box, and an optional contact field — that posts straight into the review queue, no email client required. A one-time dot on the icon nudges you to notice it\'s there.' },
@@ -8331,6 +8405,27 @@
     try { return localStorage.getItem(CLOUD_SAVE_PASSWORD_KEY) || ''; } catch (e) { return ''; }
   }
 
+  // ---------- Competition tab access (kyjv9981/hamin only) ----------
+  // Declared up here (rather than alongside the rest of the Competition tab
+  // code further down) because updateCloudSaveTriggerState() — which calls
+  // updateCompetitionTabVisibility() — runs once at page init, long before
+  // that code's own section of the script would otherwise define these.
+  const COMPETITION_USERS = ['kyjv9981', 'hamin'];
+  function isCompetitionUser() {
+    return COMPETITION_USERS.includes((getCloudUsername() || '').trim().toLowerCase());
+  }
+  function updateCompetitionTabVisibility() {
+    const show = isCloudLoggedIn() && isCompetitionUser();
+    ['competitionTabBtn', 'competitionTabBtnMobile'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = show ? '' : 'none';
+    });
+  }
+  let competitionLoading = false;
+  let competitionData = null;
+  let competitionError = null;
+  let competitionSubmitting = false;
+
   // ---------- Jumpscare easter egg (triggers once for the "hamin" account) ----------
   let __haminJumpscareShown = false;
   function maybeTriggerHaminJumpscare() {
@@ -8653,12 +8748,31 @@
     const username = getCloudUsername();
     const password = getCloudPassword();
     if (!username || !password) return false;
-    const payload = buildCloudSavePayload();
     const btn = document.getElementById('cloudSaveNowBtn');
     const statusEl = document.getElementById('cloudSaveStatus');
     if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
     if (statusEl) { statusEl.className = 'cloud-save-status'; statusEl.textContent = 'Saving…'; }
     try {
+      // Always merge in whatever's on the cloud before pushing, even on a
+      // plain manual save — not just when Auto-sync is on. This is what
+      // closes the classic data-loss case: signing into kyj-cloud on a
+      // second/fresh device and clicking "Save progress now" before ever
+      // clicking Load, which used to silently overwrite the first device's
+      // entire remote progress with this (empty-ish) device's local state.
+      // A load failure aborts the save rather than risking a blind
+      // overwrite of progress this device hasn't actually seen yet.
+      let mergedRemote = false;
+      let remoteWasNewer = false;
+      try {
+        const loadResult = await cloudSaveRequest('load', { username, password });
+        if (loadResult.data) {
+          remoteWasNewer = mergeRemoteIntoLocal(loadResult.data);
+          mergedRemote = true;
+        }
+      } catch (e) {
+        throw new Error('Could not check cloud progress before saving: ' + ((e && e.message) || String(e)));
+      }
+      const payload = buildCloudSavePayload();
       const result = await cloudSaveRequest('save', {
         username, password,
         message: `Update ${username} progress — ${new Date().toLocaleString()}`,
@@ -8699,6 +8813,11 @@
       renderProfile();
       refreshAllQuestionCardViews();
       lastCloudSaveError = null;
+      if (mergedRemote) {
+        showSyncToast(remoteWasNewer
+          ? 'Synced in newer progress from another device.'
+          : "Kept this device's more recent changes, and merged in anything new from elsewhere.", '🔀');
+      }
       return true;
     } catch (err) {
       lastCloudSaveError = (err && err.message) || String(err);
@@ -8757,7 +8876,23 @@
   const AUTO_SYNC_FAIL_COUNT_KEY = 'sat_qbank_auto_sync_fail_count_v1';
   const AUTO_SYNC_LAST_ERROR_KEY = 'sat_qbank_auto_sync_last_error_v1';
   const AUTO_SYNC_WARN_THRESHOLD = 3; // consecutive failures before we interrupt with a sticky warning
-  let autoSyncEnabled = localStorage.getItem(AUTO_SYNC_KEY) === '1';
+  // v2.6: Auto-sync moves from opt-in to on-by-default for every kyj-cloud
+  // user, including anyone already signed in who hadn't touched the toggle
+  // (and even someone who'd explicitly turned it off — this migration only
+  // runs once, so turning it back off afterward still sticks). Safe to force
+  // now that Save/Load both always merge with the cloud first (see
+  // mergeRemoteIntoLocal) instead of ever risking an overwrite.
+  const AUTO_SYNC_DEFAULT_ON_MIGRATION_KEY = 'sat_qbank_auto_sync_default_on_v26';
+  let autoSyncEnabled = (() => {
+    try {
+      if (localStorage.getItem(AUTO_SYNC_DEFAULT_ON_MIGRATION_KEY) !== '1') {
+        localStorage.setItem(AUTO_SYNC_KEY, '1');
+        localStorage.setItem(AUTO_SYNC_DEFAULT_ON_MIGRATION_KEY, '1');
+        return true;
+      }
+      return localStorage.getItem(AUTO_SYNC_KEY) === '1';
+    } catch (e) { return true; }
+  })();
   let autoSyncInFlight = false;
   let autoSyncLastAttemptAt = 0;
   function getAutoSyncFailCount() {
@@ -8791,16 +8926,30 @@
     document.body.appendChild(el);
     if (!sticky) setTimeout(() => el.remove(), 7000);
   }
-  // Returns the remote payload if it looks like it changed since our last
-  // known sync point (i.e. some other device pushed in the meantime), or
-  // null if there's nothing to reconcile.
-  async function checkCloudSyncConflict(username, password) {
-    const last = getCloudSaveLast();
-    if (!last || !last.at) return null; // never synced from here — nothing to compare against
-    const res = await cloudSaveRequest('load', { username, password }); // let errors propagate — attemptAutoSync handles them
-    if (!res.data) return null;
-    const remoteHash = hashString(JSON.stringify(res.data));
-    return remoteHash !== last.payloadHash ? res.data : null;
+  // Merges an already-loaded remote payload into local state, choosing which
+  // side wins any real overlap by comparing when *this device* last changed
+  // anything (localLastChangedAt) against when the remote copy says it was
+  // last changed (clientUpdatedAt, stamped by whichever device pushed it —
+  // see buildCloudSavePayload). If remote is newer, this device hasn't
+  // touched anything since, so fully adopting it is safe. If this device is
+  // at least as new, adopting it wholesale risks reviving a stale value
+  // (e.g. a status this device already changed since) — instead, snapshot
+  // local first, merge remote in, then reapply the local snapshot on top so
+  // local wins any real overlap while still picking up anything remote has
+  // that local never touched. Neither path ever drops data outright; the
+  // second just resolves overlaps toward whichever side changed most
+  // recently instead of "whichever we merged last." Returns true if remote
+  // was judged newer (for callers that want to vary their toast copy).
+  function mergeRemoteIntoLocal(remoteData) {
+    const remoteUpdatedAt = typeof remoteData.clientUpdatedAt === 'number' ? remoteData.clientUpdatedAt : 0;
+    if (remoteUpdatedAt > localLastChangedAt) {
+      applyBackupPayload(remoteData);
+      return true;
+    }
+    const localSnapshot = buildBackupPayload();
+    applyBackupPayload(remoteData);
+    applyBackupPayload(localSnapshot);
+    return false;
   }
   async function attemptAutoSync() {
     if (!autoSyncEnabled || !isCloudLoggedIn() || autoSyncInFlight) return;
@@ -8809,44 +8958,12 @@
     autoSyncLastAttemptAt = Date.now();
     autoSyncInFlight = true;
     try {
-      const username = getCloudUsername();
-      const password = getCloudPassword();
-      let conflict;
-      try {
-        conflict = await checkCloudSyncConflict(username, password);
-      } catch (e) {
-        autoSyncHandleFailure((e && e.message) || String(e));
-        return;
-      }
-      if (conflict) {
-        // Which side actually holds the more recent truth: compare when
-        // *this device* last changed anything (localLastChangedAt) against
-        // when the remote copy says it was last changed (clientUpdatedAt,
-        // stamped by whichever device pushed it — see buildCloudSavePayload).
-        // If remote is newer, this device hasn't touched anything since, so
-        // fully adopting it is safe. If this device is at least as new,
-        // adopting it wholesale risks reviving a stale value (e.g. a status
-        // this device already changed since) — instead, snapshot local
-        // first, merge remote in, then reapply the local snapshot on top so
-        // local wins any real overlap while still picking up anything
-        // remote has that local never touched. Neither path ever drops
-        // data outright; the second just resolves overlaps toward whichever
-        // side changed most recently instead of "whichever we merged last."
-        const remoteUpdatedAt = typeof conflict.clientUpdatedAt === 'number' ? conflict.clientUpdatedAt : 0;
-        if (remoteUpdatedAt > localLastChangedAt) {
-          applyBackupPayload(conflict);
-          showSyncToast('Synced in newer progress from another device.', '🔀');
-        } else {
-          const localSnapshot = buildBackupPayload();
-          applyBackupPayload(conflict);
-          applyBackupPayload(localSnapshot);
-          showSyncToast("Kept this device's more recent changes, and merged in anything new from elsewhere.", '🔀');
-        }
-      }
+      // performCloudSave() itself now always loads and merges remote
+      // progress before pushing (see its own comment) — auto-sync just
+      // needs to trigger that on its own cadence and handle the result.
       const ok = await performCloudSave();
       if (ok) {
         setAutoSyncFailState(0);
-        if (!conflict) showSyncToast('Progress auto-synced to kyj-cloud.', '☁️');
       } else {
         autoSyncHandleFailure(lastCloudSaveError);
       }
@@ -9040,11 +9157,11 @@
 
     const username = getCloudUsername();
     cloudSavePopover.innerHTML = `${closeHeadHtml}
-      <p class="cloud-save-text">Logged in as <strong>${escapeHtml(username)}</strong>. ${autoSyncEnabled ? 'Auto-sync (Lab) is on — this browser pushes on its own; Save/Load below still work any time.' : "Nothing syncs automatically — press Save whenever you want this browser's progress pushed to the cloud. (An opt-in Auto-sync feature is available in Lab.)"}</p>
+      <p class="cloud-save-text">Logged in as <strong>${escapeHtml(username)}</strong>. ${autoSyncEnabled ? 'Auto-sync is on — this browser pushes on its own; Save/Load below still work any time.' : "Auto-sync is off for this browser — press Save whenever you want this browser's progress pushed to the cloud. (Turn Auto-sync back on in Lab.)"}</p>
       ${autoSyncEnabled && getAutoSyncFailCount() > 0 ? `<p class="cloud-save-text" style="color:var(--incorrect);">Auto-sync has failed ${getAutoSyncFailCount()} time${getAutoSyncFailCount() === 1 ? '' : 's'} in a row — last error: ${escapeHtml(localStorage.getItem(AUTO_SYNC_LAST_ERROR_KEY) || 'unknown')}. Still saved locally; try Save progress now below.</p>` : ''}
       <button type="button" class="cloud-save-btn primary" id="cloudSaveNowBtn">Save progress now</button>
       <button type="button" class="cloud-save-btn" id="cloudLoadBtn">Load from cloud</button>
-      <p class="cloud-save-text" style="margin-top:8px; font-size:12px; color:var(--ink-faint);"><strong>Save</strong> replaces your cloud progress with this browser's — it doesn't merge. <strong>Load</strong> merges the cloud's progress into this browser instead. Switching devices? Load here first, before you Save, or you'll overwrite newer progress from the other device.</p>
+      <p class="cloud-save-text" style="margin-top:8px; font-size:12px; color:var(--ink-faint);"><strong>Save</strong> and <strong>Load</strong> both merge with the cloud first, so switching devices is safe either way — nothing from another device gets overwritten.</p>
       <div class="cloud-save-links">
         <button type="button" class="cloud-save-link" id="cloudLogoutBtn">Log out</button>
         <span></span>
@@ -9094,8 +9211,8 @@
   const cloudSavePopover = document.getElementById('cloudSavePopover');
   function isCloudSaveOpen() { return !!cloudSavePopover && cloudSavePopover.style.display !== 'none'; }
   function updateCloudSaveTriggerState() {
-    if (!cloudSaveTriggerBtn) return;
-    cloudSaveTriggerBtn.classList.toggle('unlocked', isCloudLoggedIn());
+    if (cloudSaveTriggerBtn) cloudSaveTriggerBtn.classList.toggle('unlocked', isCloudLoggedIn());
+    updateCompetitionTabVisibility();
   }
   function openCloudSavePopover() {
     if (!cloudSavePopover) return;
@@ -9574,6 +9691,198 @@
     });
 
     $$('proposeSubmitBtn').addEventListener('click', submitProposal);
+  }
+
+  // ---------- Competition tab (kyjv9981 vs hamin only) ----------
+  // A private "who spent less time" game between two accounts: each side logs
+  // named/described time records; totals pile up into a monthly (calendar
+  // month) and yearly (Jan 1 - Dec 30) competition where whoever's total is
+  // LOWER wins that period. Neither side can see the other's running total —
+  // only the backend (get_competition, scripts/apps-script/Code.gs) computes
+  // both totals for a closed period and hands back just the winner + the
+  // time difference, never the raw numbers, so this stays a surprise until
+  // the period actually ends. (COMPETITION_USERS / isCompetitionUser /
+  // updateCompetitionTabVisibility live earlier in the script, next to
+  // getCloudPassword — see the comment there for why.)
+
+  function formatCompetitionDuration(totalSeconds) {
+    const s = Math.max(0, Math.round(totalSeconds));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    if (h > 0) return `${h}h ${m}m ${sec}s`;
+    if (m > 0) return `${m}m ${sec}s`;
+    return `${sec}s`;
+  }
+
+  function competitionResultRowHtml(result, me) {
+    const outcome = result.tie
+      ? 'Tie — you both logged the exact same time'
+      : (result.winner === me
+        ? `You won, with ${formatCompetitionDuration(result.diffSeconds)} less time`
+        : `${escapeHtml(result.winner)} won, with ${formatCompetitionDuration(result.diffSeconds)} less time`);
+    const cls = result.tie ? 'comp-tie' : (result.winner === me ? 'comp-won' : 'comp-lost');
+    return `<div class="comp-result-item ${cls}">
+      <span class="comp-result-period">${escapeHtml(result.label)}</span>
+      <span class="comp-result-outcome">${outcome}</span>
+    </div>`;
+  }
+
+  function competitionShellHtml(inner) {
+    return `<div class="config-card"><h2>Competition</h2>${inner}</div>`;
+  }
+
+  async function renderCompetition() {
+    const shell = document.getElementById('competitionShell');
+    if (!shell) return;
+
+    if (!CLOUD_SAVE_URL) {
+      shell.innerHTML = competitionShellHtml(`<p style="margin:0; color:var(--ink-faint); font-size:13px;">
+        Competition isn't set up on this deployment yet — it needs the same Apps Script backend as cloud save.</p>`);
+      return;
+    }
+    if (!isCloudLoggedIn() || !isCompetitionUser()) {
+      shell.innerHTML = competitionShellHtml(`<p style="margin:0; color:var(--ink-faint); font-size:13px;">
+        This tab is limited to specific accounts.</p>`);
+      return;
+    }
+
+    if (competitionLoading) return;
+    if (!competitionData && !competitionError) {
+      competitionLoading = true;
+      shell.innerHTML = competitionShellHtml(`<p style="margin:0; color:var(--ink-faint); font-size:13px;">Loading…</p>`);
+      try {
+        const result = await cloudSaveRequest('get_competition', { username: getCloudUsername(), password: getCloudPassword() });
+        competitionData = result;
+        competitionError = null;
+      } catch (err) {
+        competitionError = err.message || 'Failed to load';
+        competitionData = null;
+      }
+      competitionLoading = false;
+      renderCompetition();
+      return;
+    }
+
+    if (competitionError) {
+      shell.innerHTML = competitionShellHtml(`
+        <p style="margin:0 0 10px; color:var(--danger, #b3452c); font-size:13px;">Couldn't load: ${escapeHtml(competitionError)}</p>
+        <button type="button" class="btn" id="competitionRetryBtn">Retry</button>`);
+      const retryBtn = document.getElementById('competitionRetryBtn');
+      if (retryBtn) retryBtn.addEventListener('click', () => { competitionError = null; renderCompetition(); });
+      return;
+    }
+
+    const me = getCloudUsername().trim().toLowerCase();
+    const records = competitionData.ownRecords || [];
+    const totalSeconds = records.reduce((sum, r) => sum + (Number(r.seconds) || 0), 0);
+    const now = new Date();
+    const monthKey = now.getUTCFullYear() + '-' + String(now.getUTCMonth() + 1).padStart(2, '0');
+    const monthSeconds = records.filter(r => new Date(r.createdAt).getUTCFullYear() + '-' + String(new Date(r.createdAt).getUTCMonth() + 1).padStart(2, '0') === monthKey)
+      .reduce((sum, r) => sum + (Number(r.seconds) || 0), 0);
+    const yearSeconds = records.filter(r => new Date(r.createdAt).getUTCFullYear() === now.getUTCFullYear())
+      .reduce((sum, r) => sum + (Number(r.seconds) || 0), 0);
+
+    const monthlyResults = (competitionData.monthlyResults || []).slice().reverse();
+    const yearlyResults = (competitionData.yearlyResults || []).slice().reverse();
+
+    shell.innerHTML = `
+      <div class="config-card">
+        <h2>Your time</h2>
+        <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">
+          You can only see your own totals — the other side's stays hidden until a month or year ends,
+          then this shows who won and by how much (never the raw numbers).
+        </p>
+        <div class="comp-total-row">
+          <div class="stat"><span class="n">${formatCompetitionDuration(totalSeconds)}</span><span class="l">All time</span></div>
+          <div class="stat"><span class="n">${formatCompetitionDuration(monthSeconds)}</span><span class="l">${escapeHtml(competitionData.currentMonthLabel || 'This month')}</span></div>
+          <div class="stat"><span class="n">${formatCompetitionDuration(yearSeconds)}</span><span class="l">${escapeHtml(competitionData.currentYearLabel || 'This year')}</span></div>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <h2>Add a time record</h2>
+        <div id="competitionErrBox"></div>
+        <div class="propose-field">
+          <label for="compRecordName">Name</label>
+          <input type="text" id="compRecordName" placeholder="e.g. &quot;Essay draft&quot;" maxlength="120" />
+        </div>
+        <div class="propose-field">
+          <label for="compRecordDesc">Description (optional)</label>
+          <textarea id="compRecordDesc" maxlength="500" style="min-height:60px;"></textarea>
+        </div>
+        <div class="propose-field">
+          <label>Duration</label>
+          <div class="comp-hms">
+            <input type="number" id="compRecordH" min="0" max="99" value="0" /><label>h</label>
+            <input type="number" id="compRecordM" min="0" max="59" value="0" /><label>m</label>
+            <input type="number" id="compRecordS" min="0" max="59" value="0" /><label>s</label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-accent" id="compAddRecordBtn" ${competitionSubmitting ? 'disabled' : ''}>${competitionSubmitting ? 'Adding…' : 'Add record'}</button>
+      </div>
+
+      <div class="config-card">
+        <h2>Your records</h2>
+        ${records.length ? `<div class="comp-record-list">${records.map(r => `
+          <div class="comp-record-item">
+            <div>
+              <div class="comp-record-name">${escapeHtml(r.name)}</div>
+              ${r.description ? `<div class="comp-record-desc">${escapeHtml(r.description)}</div>` : ''}
+            </div>
+            <div class="comp-record-time">${formatCompetitionDuration(r.seconds)}<br>${escapeHtml(new Date(r.createdAt).toLocaleDateString())}</div>
+          </div>`).join('')}</div>` : `<p style="margin:0; color:var(--ink-faint); font-size:13px;">No records yet.</p>`}
+      </div>
+
+      <div class="config-card">
+        <h2>Monthly results</h2>
+        ${monthlyResults.length
+          ? `<div class="comp-result-list">${monthlyResults.map(r => competitionResultRowHtml(r, me)).join('')}</div>`
+          : `<p style="margin:0; color:var(--ink-faint); font-size:13px;">No month has ended yet — results show up here automatically once one does.</p>`}
+      </div>
+
+      <div class="config-card">
+        <h2>Yearly results</h2>
+        ${yearlyResults.length
+          ? `<div class="comp-result-list">${yearlyResults.map(r => competitionResultRowHtml(r, me)).join('')}</div>`
+          : `<p style="margin:0; color:var(--ink-faint); font-size:13px;">The yearly competition (Jan 1 – Dec 30) hasn't ended yet.</p>`}
+      </div>
+    `;
+
+    const addBtn = document.getElementById('compAddRecordBtn');
+    if (addBtn) addBtn.addEventListener('click', submitCompetitionRecord);
+  }
+
+  async function submitCompetitionRecord() {
+    const errBox = document.getElementById('competitionErrBox');
+    if (errBox) errBox.innerHTML = '';
+    const name = document.getElementById('compRecordName').value.trim();
+    const description = document.getElementById('compRecordDesc').value.trim();
+    const h = Number(document.getElementById('compRecordH').value) || 0;
+    const m = Number(document.getElementById('compRecordM').value) || 0;
+    const s = Number(document.getElementById('compRecordS').value) || 0;
+    const seconds = Math.round(h * 3600 + m * 60 + s);
+
+    const showErr = (msg) => { if (errBox) errBox.innerHTML = `<div class="propose-error-box">${escapeHtml(msg)}</div>`; };
+    if (!name) return showErr('Enter a name for this record.');
+    if (seconds <= 0) return showErr('Enter a duration greater than zero.');
+
+    competitionSubmitting = true;
+    renderCompetition();
+    try {
+      await cloudSaveRequest('add_time_record', {
+        username: getCloudUsername(), password: getCloudPassword(),
+        name, description, seconds,
+      });
+      competitionData = null; // force a fresh fetch so totals/records include the new one
+    } catch (err) {
+      competitionSubmitting = false;
+      renderCompetition();
+      showErr(err.message || 'Failed to add record');
+      return;
+    }
+    competitionSubmitting = false;
+    renderCompetition();
   }
 
   // ---------- Timer hide/show toggle (delegated — the button is re-rendered
@@ -15873,7 +16182,7 @@
     const username = getCloudUsername();
     const last = getCloudSaveLast();
     const statusText = loggedIn
-      ? `Connected as <strong>${escapeHtml(username)}</strong>.${last && last.at ? ` Last saved ${escapeHtml(new Date(last.at).toLocaleString())}.` : ''} Save overwrites the cloud with this device; Load merges the cloud into this device — Load first when switching devices.`
+      ? `Connected as <strong>${escapeHtml(username)}</strong>.${last && last.at ? ` Last saved ${escapeHtml(new Date(last.at).toLocaleString())}.` : ''} Save and Load both merge with the cloud, so switching devices is safe either way.`
       : `Sync your progress across devices — sign up with just a username and password. Local progress keeps working either way.`;
     return `
       <div class="progress-summary">
@@ -16341,7 +16650,7 @@
     }
     const failCount = getAutoSyncFailCount();
     return labCardHtml('☁️ Auto-sync (kyj-cloud)', `
-      ${labToggleRowHtml('labAutoSync', 'Sync progress automatically', `Off by default — "Save progress now" on your Profile tab stays a manual, one-click push either way. Turn this on and the app pushes for you instead: every few minutes while something's actually unsaved, plus a final push when you actually close or navigate away from the tab (not just switching to another one). It never overwrites another device's progress — if this account synced from somewhere else since your last sync, that gets merged in first (you'll see a small toast when it happens), then the combined result is what gets pushed.`, autoSyncEnabled)}
+      ${labToggleRowHtml('labAutoSync', 'Sync progress automatically', `On by default — "Save progress now" on your Profile tab stays available as a manual, one-click push either way. With this on, the app also pushes for you on its own: every few minutes while something's actually unsaved, plus a final push when you actually close or navigate away from the tab (not just switching to another one). It never overwrites another device's progress — if this account synced from somewhere else since your last sync, that gets merged in first (you'll see a small toast when it happens), then the combined result is what gets pushed.`, autoSyncEnabled)}
       ${autoSyncEnabled && failCount > 0 ? `<div class="log-item-desc" style="color:var(--incorrect); margin-top:10px;">Failed ${failCount} time${failCount === 1 ? '' : 's'} in a row — last error: ${escapeHtml(localStorage.getItem(AUTO_SYNC_LAST_ERROR_KEY) || 'unknown')}. Your progress is still safe locally; use "Save progress now" (cloud icon in the topbar) to retry by hand.</div>` : ''}`);
   }
   function labRatedDifficultyCardHtml() {
@@ -16998,11 +17307,44 @@
       saveProgress();
     }
     if (incomingTags && typeof incomingTags === 'object') {
-      state.tags = Object.assign({}, state.tags, incomingTags);
+      // Union per question rather than replacing the whole array, so tagging
+      // the same question on two devices since the last sync keeps both
+      // additions instead of whichever side merges last clobbering the
+      // other's tag(s). Case-insensitive dedupe matches addTag() above.
+      const mergedTags = Object.assign({}, state.tags);
+      Object.entries(incomingTags).forEach(([qid, tags]) => {
+        if (!Array.isArray(tags)) return;
+        const existing = mergedTags[qid] || [];
+        const seen = new Map(existing.map(t => [String(t).toLowerCase(), t]));
+        tags.forEach(t => {
+          if (typeof t !== 'string') return;
+          const key = t.toLowerCase();
+          if (!seen.has(key)) seen.set(key, t);
+        });
+        mergedTags[qid] = [...seen.values()];
+      });
+      state.tags = mergedTags;
       saveTags();
     }
     if (incomingNotes && typeof incomingNotes === 'object') {
-      state.notes = Object.assign({}, state.notes, incomingNotes);
+      // Same union-per-question reasoning as tags above: a note added on one
+      // device must survive a note added to the same question on another.
+      // Deduped by (ts, text) rather than ts alone — two notes added in the
+      // same millisecond on different devices are still distinct notes and
+      // must not collapse into one.
+      const mergedNotes = Object.assign({}, state.notes);
+      Object.entries(incomingNotes).forEach(([qid, notes]) => {
+        if (!Array.isArray(notes)) return;
+        const existing = mergedNotes[qid] || [];
+        const seen = new Map(existing.map(n => [n.ts + '|' + n.text, n]));
+        notes.forEach(n => {
+          if (!n || typeof n.text !== 'string' || !Number.isFinite(n.ts)) return;
+          const key = n.ts + '|' + n.text;
+          if (!seen.has(key)) seen.set(key, n);
+        });
+        mergedNotes[qid] = [...seen.values()].sort((a, b) => a.ts - b.ts);
+      });
+      state.notes = mergedNotes;
       saveNotes();
     }
     if (hasIncomingMathOverrides) {
@@ -17041,7 +17383,28 @@
       }
     }
     if (incomingFsrsCards && typeof incomingFsrsCards === 'object') {
-      state.fsrsCards = Object.assign({}, state.fsrsCards, incomingFsrsCards);
+      // Per-card, keep whichever side reflects the more recent real review
+      // (last_review, tie-broken by reps) instead of an arbitrary
+      // last-applied-wins object replace — otherwise reviewing the same
+      // question on two devices since the last sync can silently revert
+      // the more advanced card back to the less-reviewed one.
+      const mergedCards = Object.assign({}, state.fsrsCards);
+      Object.entries(incomingFsrsCards).forEach(([qid, card]) => {
+        if (!card || typeof card !== 'object') return;
+        const existing = mergedCards[qid];
+        if (!existing) { mergedCards[qid] = card; return; }
+        const reviewTime = (c) => {
+          if (!c || !c.last_review) return -Infinity;
+          const t = new Date(c.last_review).getTime();
+          return Number.isFinite(t) ? t : -Infinity;
+        };
+        const existingT = reviewTime(existing);
+        const incomingT = reviewTime(card);
+        if (incomingT > existingT || (incomingT === existingT && (card.reps || 0) > (existing.reps || 0))) {
+          mergedCards[qid] = card;
+        }
+      });
+      state.fsrsCards = mergedCards;
       saveFsrsCards();
     }
     if (Array.isArray(incomingMockHistory) && incomingMockHistory.length) {
