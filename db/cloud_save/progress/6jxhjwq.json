@@ -1,12 +1,24 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-17T08:24:51.934Z",
-  "progress": {},
+  "exportedAt": "2026-09-18T07:45:51.041Z",
+  "progress": {
+    "8b52201d": "done",
+    "271ef622": "done",
+    "f7347d3a": "done",
+    "bf1fe112": "done",
+    "66b10ad8": "done"
+  },
   "tags": {},
   "notes": {},
   "mathOverrides": {},
-  "completionLog": {},
+  "completionLog": {
+    "8b52201d": "2026-09-18T02:52:05.070Z",
+    "271ef622": "2026-09-18T07:35:55.353Z",
+    "f7347d3a": "2026-09-18T07:40:43.382Z",
+    "bf1fe112": "2026-09-18T07:43:47.120Z",
+    "66b10ad8": "2026-09-18T07:44:48.091Z"
+  },
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
@@ -16,24 +28,171 @@
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
-  "skillStats": {},
+  "skillStats": {
+    "Words in Context": {
+      "correct": 1,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789699772955,
+          "correct": false
+        },
+        {
+          "ts": 1789699777215,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789699777215
+    },
+    "Central Ideas and Details": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789716951098,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789716951099
+    },
+    "Command of Evidence (Quantitative)": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789717240429,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789717240429
+    },
+    "Command of Evidence (Textual)": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789717424476,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789717424476
+    },
+    "Inferences": {
+      "correct": 1,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789717472537,
+          "correct": false
+        },
+        {
+          "ts": 1789717485478,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789717485478
+    }
+  },
   "progressFocus": [
     "Easy",
     "Medium",
     "Hard"
   ],
   "trendExcluded": [],
-  "recentVisits": {},
+  "recentVisits": {
+    "8b52201d": {
+      "count": 3,
+      "lastTs": 1789717284910
+    },
+    "271ef622": {
+      "count": 3,
+      "lastTs": 1789717279442
+    },
+    "f7347d3a": {
+      "count": 1,
+      "lastTs": 1789717064023
+    },
+    "bf1fe112": {
+      "count": 1,
+      "lastTs": 1789717332720
+    },
+    "66b10ad8": {
+      "count": 1,
+      "lastTs": 1789717455392
+    },
+    "45391bbf": {
+      "count": 1,
+      "lastTs": 1789717512739
+    }
+  },
   "blueprints": [],
   "timeStats": {
-    "2026-09-17": {
-      "totalMs": 35002,
+    "2026-09-15": {
+      "totalMs": 65076,
       "viewMs": {
-        "home": 35002
+        "home": 65076
+      },
+      "categoryMs": {}
+    },
+    "2026-09-17": {
+      "totalMs": 172054,
+      "viewMs": {
+        "home": 172054
+      },
+      "categoryMs": {}
+    },
+    "2026-09-18": {
+      "totalMs": 1724927,
+      "viewMs": {
+        "home": 183690,
+        "notes": 5004,
+        "leaderboard": 110090,
+        "browse": 1366129,
+        "review": 5006,
+        "practice": 55008
       },
       "categoryMs": {}
     }
   },
-  "answerTimeLog": {},
-  "clientUpdatedAt": 1789633489458
+  "answerTimeLog": {
+    "8b52201d": [
+      {
+        "ts": 1789699772956,
+        "ms": 295716
+      },
+      {
+        "ts": 1789699777215,
+        "ms": 1553
+      }
+    ],
+    "271ef622": [
+      {
+        "ts": 1789716951099,
+        "ms": 17123327
+      }
+    ],
+    "f7347d3a": [
+      {
+        "ts": 1789717240429,
+        "ms": 176403
+      }
+    ],
+    "bf1fe112": [
+      {
+        "ts": 1789717424476,
+        "ms": 91754
+      }
+    ],
+    "66b10ad8": [
+      {
+        "ts": 1789717472537,
+        "ms": 17144
+      },
+      {
+        "ts": 1789717485478,
+        "ms": 8799
+      }
+    ]
+  },
+  "clientUpdatedAt": 1789717547287
 }
