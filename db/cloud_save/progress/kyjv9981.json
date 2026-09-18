@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-15T07:43:29.169Z",
+  "exportedAt": "2026-09-18T17:47:49.194Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -1253,6 +1253,7 @@
     "d9799723": "2026-09-15T06:32:57.734Z",
     "68fb4847": "2026-09-15T06:33:20.934Z"
   },
+  "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
     "name": "Yong Joon Kim"
@@ -3121,6 +3122,27 @@
     }
   ],
   "timeStats": {
+    "2026-09-17": {
+      "totalMs": 45585,
+      "viewMs": {
+        "home": 23641,
+        "profile": 21944
+      },
+      "categoryMs": {}
+    },
+    "2026-09-18": {
+      "totalMs": 91413,
+      "viewMs": {
+        "browse": 26365,
+        "mock": 25021,
+        "profile": 10006,
+        "leaderboard": 5004,
+        "review": 5005,
+        "blueprints": 15012,
+        "home": 5000
+      },
+      "categoryMs": {}
+    },
     "2026-09-14": {
       "totalMs": 214170,
       "viewMs": {
@@ -3186,6 +3208,13 @@
         "Vocab": 5001,
         "Cross-Text": 10007
       }
+    },
+    "2026-09-19": {
+      "totalMs": 53926,
+      "viewMs": {
+        "home": 53926
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -3255,5 +3284,6 @@
         "ms": 12262
       }
     ]
-  }
+  },
+  "clientUpdatedAt": 1789753668581
 }
