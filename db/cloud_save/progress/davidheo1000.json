@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-19T07:30:24.834Z",
+  "exportedAt": "2026-09-19T07:43:08.370Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -2476,6 +2476,26 @@
     "271ef622": {
       "count": 1,
       "lastTs": 1789802427139
+    },
+    "8217606b": {
+      "count": 2,
+      "lastTs": 1789803679073
+    },
+    "a51ff0d6": {
+      "count": 1,
+      "lastTs": 1789803700858
+    },
+    "0e4cd7da": {
+      "count": 1,
+      "lastTs": 1789803707939
+    },
+    "a1397504": {
+      "count": 2,
+      "lastTs": 1789803774056
+    },
+    "427f0eea": {
+      "count": 2,
+      "lastTs": 1789803770173
     }
   },
   "blueprints": [],
@@ -2533,20 +2553,20 @@
       }
     },
     "2026-09-19": {
-      "totalMs": 3651095,
+      "totalMs": 3841215,
       "viewMs": {
         "practice": 1784979,
         "test": 30022,
         "mock": 950497,
-        "home": 20007,
+        "home": 50006,
         "browse": 130103,
-        "profile": 50038,
-        "math": 225147,
+        "profile": 55041,
+        "math": 360250,
         "blueprints": 5004,
         "review": 260199,
         "analysis": 145070,
         "propose": 5004,
-        "lab": 45025
+        "lab": 65040
       },
       "categoryMs": {
         "Advanced Math": 610385,
@@ -3598,5 +3618,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789803021085
+  "clientUpdatedAt": 1789803783922
 }
