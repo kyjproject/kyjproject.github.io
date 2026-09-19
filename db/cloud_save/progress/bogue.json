@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-09T06:20:51.715Z",
+  "exportedAt": "2026-09-19T07:28:22.578Z",
   "progress": {
     "a8c35eaf": "done",
     "26ac2597": "done",
@@ -71,6 +71,7 @@
     "eceefa95": "2020-01-01T00:00:00.000Z",
     "dd415de8": "2020-01-01T00:00:00.000Z"
   },
+  "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
     "name": "Goonie's 1st apprentice"
@@ -253,5 +254,18 @@
       "lastTs": 1788934587926
     }
   },
-  "blueprints": []
+  "blueprints": [],
+  "timeStats": {
+    "2026-09-19": {
+      "totalMs": 165664,
+      "viewMs": {
+        "home": 150640,
+        "leaderboard": 9995,
+        "practice": 5029
+      },
+      "categoryMs": {}
+    }
+  },
+  "answerTimeLog": {},
+  "clientUpdatedAt": 1789802900075
 }
