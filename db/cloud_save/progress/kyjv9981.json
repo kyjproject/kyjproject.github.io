@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-18T17:47:49.194Z",
+  "exportedAt": "2026-09-19T09:20:46.189Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2741,8 +2741,8 @@
       "lastTs": 1787297697502
     },
     "a0120582": {
-      "count": 16,
-      "lastTs": 1789150850684
+      "count": 19,
+      "lastTs": 1789809280914
     },
     "9171f2b5": {
       "count": 2,
@@ -2785,8 +2785,8 @@
       "lastTs": 1788785052110
     },
     "271ef622": {
-      "count": 7,
-      "lastTs": 1789452793382
+      "count": 8,
+      "lastTs": 1789608607772
     },
     "bf1fe112": {
       "count": 6,
@@ -2829,8 +2829,8 @@
       "lastTs": 1789150866120
     },
     "45391bbf": {
-      "count": 2,
-      "lastTs": 1788935293108
+      "count": 3,
+      "lastTs": 1789809586852
     },
     "a23fe6aa": {
       "count": 1,
@@ -2937,8 +2937,8 @@
       "lastTs": 1789151393780
     },
     "66b10ad8": {
-      "count": 2,
-      "lastTs": 1789453091233
+      "count": 3,
+      "lastTs": 1789809613678
     },
     "0c20fb42": {
       "count": 1,
@@ -3122,97 +3122,150 @@
     }
   ],
   "timeStats": {
-    "2026-09-17": {
-      "totalMs": 45585,
-      "viewMs": {
-        "home": 23641,
-        "profile": 21944
-      },
-      "categoryMs": {}
-    },
-    "2026-09-18": {
-      "totalMs": 91413,
-      "viewMs": {
-        "browse": 26365,
-        "mock": 25021,
-        "profile": 10006,
-        "leaderboard": 5004,
-        "review": 5005,
-        "blueprints": 15012,
-        "home": 5000
-      },
-      "categoryMs": {}
-    },
-    "2026-09-14": {
-      "totalMs": 214170,
-      "viewMs": {
-        "home": 124073,
-        "profile": 25052,
-        "leaderboard": 15016,
-        "test": 15010,
-        "lab": 10005,
-        "practice": 5002,
-        "browse": 10006,
-        "review": 5005,
-        "propose": 5001
-      },
-      "categoryMs": {}
-    },
     "2026-09-11": {
-      "totalMs": 776208,
+      "totalMs": 2728346,
       "viewMs": {
-        "leaderboard": 403815,
-        "test": 25017,
-        "mock": 112940,
-        "practice": 21695,
-        "analysis": 34191,
-        "notes": 16685,
-        "profile": 32544,
-        "propose": 5636,
-        "browse": 33796,
-        "math": 15042,
-        "lab": 10009,
-        "home": 64838
+        "home": 319640,
+        "profile": 133948,
+        "propose": 10004,
+        "browse": 204501,
+        "mock": 1262344,
+        "practice": 294993,
+        "test": 204709,
+        "analysis": 123528,
+        "notes": 20016,
+        "review": 29860,
+        "math": 71679,
+        "lab": 38115,
+        "leaderboard": 403815
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Transitions": 10009,
+        "Algebra": 5002
+      }
     },
     "2026-09-12": {
-      "totalMs": 80298,
+      "totalMs": 749903,
       "viewMs": {
-        "mock": 30025,
-        "test": 20013,
-        "practice": 15158,
-        "home": 5103,
-        "profile": 4998,
-        "math": 5001
+        "mock": 348767,
+        "test": 211301,
+        "notes": 15017,
+        "lab": 10009,
+        "leaderboard": 40000,
+        "analysis": 30000,
+        "profile": 15410,
+        "practice": 93403,
+        "home": 40987,
+        "math": 10000,
+        "browse": 125000
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Algebra": 10010,
+        "Problem-Solving and Data Analysis": 10021,
+        "Main Idea": 5005,
+        "Vocab": 10010,
+        "Notes": 5004
+      }
+    },
+    "2026-09-13": {
+      "totalMs": 106477,
+      "viewMs": {
+        "profile": 25023,
+        "mock": 71449,
+        "leaderboard": 10005
+      },
+      "categoryMs": {
+        "Vocab": 15014
+      }
+    },
+    "2026-09-14": {
+      "totalMs": 266892,
+      "viewMs": {
+        "mock": 117000,
+        "browse": 10006,
+        "test": 15010,
+        "home": 124073,
+        "propose": 25023,
+        "profile": 25052,
+        "lab": 10014,
+        "practice": 10007,
+        "notes": 5002,
+        "analysis": 5001,
+        "leaderboard": 15016,
+        "review": 5005
+      },
+      "categoryMs": {
+        "Vocab": 50029,
+        "Notes": 20020
+      }
     },
     "2026-09-15": {
-      "totalMs": 1585840,
+      "totalMs": 1786061,
       "viewMs": {
+        "home": 25048,
+        "profile": 60046,
+        "lab": 55058,
+        "analysis": 90088,
+        "practice": 101095,
+        "blueprints": 100126,
+        "test": 228539,
+        "math": 225167,
         "leaderboard": 120119,
         "review": 10010,
-        "lab": 15015,
-        "analysis": 90088,
-        "home": 5001,
         "browse": 705658,
-        "profile": 60046,
-        "mock": 183050,
-        "notes": 5002,
-        "practice": 5002,
-        "math": 225167,
-        "test": 161682
+        "mock": 226123,
+        "notes": 5002
       },
       "categoryMs": {
         "Vocab": 5001,
         "Cross-Text": 10007
       }
     },
-    "2026-09-19": {
-      "totalMs": 53926,
+    "2026-09-16": {
+      "totalMs": 898851,
       "viewMs": {
-        "home": 53926
+        "home": 764076,
+        "lab": 40042,
+        "profile": 34045,
+        "practice": 5003,
+        "mock": 10652,
+        "browse": 20018,
+        "test": 15010,
+        "propose": 5005,
+        "blueprints": 5000
+      },
+      "categoryMs": {}
+    },
+    "2026-09-17": {
+      "totalMs": 211498,
+      "viewMs": {
+        "home": 71069,
+        "browse": 140429,
+        "profile": 21944
+      },
+      "categoryMs": {}
+    },
+    "2026-09-18": {
+      "totalMs": 153934,
+      "viewMs": {
+        "competition": 135199,
+        "browse": 26365,
+        "home": 13734,
+        "mock": 25021,
+        "profile": 10006,
+        "leaderboard": 5004,
+        "review": 5005,
+        "blueprints": 15012
+      },
+      "categoryMs": {}
+    },
+    "2026-09-19": {
+      "totalMs": 85059,
+      "viewMs": {
+        "practice": 10008,
+        "browse": 65044,
+        "home": 53926,
+        "test": 5003
       },
       "categoryMs": {}
     }
@@ -3285,5 +3338,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789753668581
+  "clientUpdatedAt": 1789809645718
 }
