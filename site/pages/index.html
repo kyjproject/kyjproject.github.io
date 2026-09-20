@@ -2907,8 +2907,24 @@
     transition: background 0.12s ease;
   }
   .mock-side-nav-trigger:hover { background: var(--accent); }
-  .mock-side-nav-columns { display: flex; flex-direction: row; align-items: flex-start; gap: 8px; }
-  .mock-side-nav-col { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  /* --mock-nav-col-w matches .mock-side-dot's own width below (inherited by
+     it, since dots sit inside these columns) — keeps the "show ~4 columns"
+     math in one place instead of two separately-maintained magic numbers.
+     A long exam (Test chunked into 25s, easily 6-8+ columns) would otherwise
+     just keep growing the strip wider without bound — past 4 columns this
+     scrolls horizontally instead. */
+  .mock-side-nav-columns {
+    --mock-nav-col-w: 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+    max-width: calc(4 * var(--mock-nav-col-w) + 3 * 8px + 6px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 3px;
+  }
+  .mock-side-nav-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: none; }
   .mock-side-nav-col-label {
     font-size: 9px;
     font-weight: 700;
@@ -2918,8 +2934,8 @@
   }
   .mock-side-nav-group { display: flex; flex-direction: column; gap: 3px; }
   .mock-side-dot {
-    width: 13px;
-    height: 13px;
+    width: var(--mock-nav-col-w, 13px);
+    height: var(--mock-nav-col-w, 13px);
     flex: none;
     padding: 0;
     border: none;
@@ -8189,9 +8205,10 @@
       { name: 'Drag-to-resize content width', desc: 'A small grip handle on the right edge of the main content column (Practice, Test, Mock Exam, Profile, Analysis, Review, Lab, Propose, and the Bluebook-style directions/review pages) can be dragged to widen or narrow that column, from the 760px default up to 1600px. Double-click it to reset. Saved per-browser, so it stays put across visits. Kept visibly highlighted (not just on hover) so it doesn\'t blend into the edge unnoticed.' },
       { name: 'Also adjustable from Lab', desc: 'Lab → Content width has the same control as a slider, for anyone who\'d rather type/click than drag — kept in sync with the handle either way. "Reset all Lab settings to defaults" resets this too.' },
       { name: 'Fix: mock exams missing from the score trend, category/difficulty breakdown, and domain trend', desc: 'Every mock exam has saved as a "Custom"-composition attempt since the Mock Exam engine was unified into one Modules builder — but Profile\'s score trend, Analysis\'s accuracy-by-category-and-difficulty grid, domain trend, and missed-skill digest still only knew the older shape, so they silently excluded every one of those exams (effectively all of them). They now score and count a Custom attempt the same way its own results screen already did.' },
-      { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead (1&ndash;25, 26&ndash;50, etc.). A GitHub-contributions-style alternative to scrolling back up every time.' },
+      { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead. Past 4 columns (a long Test easily has more), the strip scrolls sideways instead of growing wider without limit. A GitHub-contributions-style alternative to scrolling back up every time.' },
       { name: 'A full question navigator, one tap away', desc: 'The &#129517; button atop that strip opens a bigger, numbered version of the same grid — grouped the same way as the strip (by module, or by 25s for Test) — laid out as a bottom sheet like the Bluebook kiosk\'s own Question Navigator, for jumping around a long exam without scanning a thin column of squares one at a time. Esc, the Close button, or tapping outside it all dismiss it.' },
       { name: 'Faster with lots of images or math on screen', desc: 'Chart/table images and rendered math now load lazily and get their LaTeX re-render skipped when the same expression has already been rendered once — noticeable on question-heavy pages like a full mock exam review or a long Practice session with charts.' },
+      { name: 'Log out can now reset this device to a blank slate', desc: 'Logging out used to only forget the kyj-cloud login, leaving your progress sitting in this browser regardless. It now resets local progress (completed/reviewed marks, spaced-repetition data, streak/XP/achievements) too, but only once that progress is provably backed up — either it already matched the last successful cloud save, or one final save succeeds before logging out. If that can\'t be confirmed, nothing local is touched and logging out works exactly as before. Makes switching between two kyj-cloud accounts on the same device safe by default, with no confirmation dialog to click through each time.' },
     ] },
     { version: 'v2.6', date: 'Sep 19', title: 'Auto-sync is now on by default, and cloud saves never overwrite another device', lede: 'kyj-cloud sync got safer and less manual. "Save progress now" now always merges with the cloud first instead of overwriting it outright — the old advice to "Load before you Save when switching devices" no longer applies, since Save and Load both merge either way. Tags, notes, and spaced-repetition review progress also merge more carefully now, so reviewing or tagging the same question on two devices no longer lets one side silently clobber the other. And Auto-sync, previously an opt-in Lab toggle, is now on by default for every logged-in kyj-cloud account — including anyone already signed in — since there\'s no longer a real downside to it running automatically. Still one click away to turn off in Lab if you\'d rather sync by hand.', items: [
       { name: 'Save no longer overwrites the cloud — it merges', desc: '"Save progress now" used to push this browser\'s progress straight over whatever was already saved, which meant saving from a second device before ever loading could silently wipe out the first device\'s progress. It now loads and merges the cloud copy in first, exactly like Auto-sync already did, before pushing the combined result.' },
@@ -9533,11 +9550,44 @@
     });
 
     const logoutBtn = document.getElementById('cloudLogoutBtn');
-    if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    if (logoutBtn) logoutBtn.addEventListener('click', async () => {
+      // Only wipe local progress once it's provably on the cloud —
+      // hasUnsavedCloudProgress() already accounts for auto-sync being off,
+      // a failed push, or edits made since the last successful save.
+      let safeToReset = false;
+      if (isCloudLoggedIn()) {
+        if (!hasUnsavedCloudProgress()) {
+          safeToReset = true;
+        } else {
+          logoutBtn.disabled = true;
+          logoutBtn.textContent = 'Syncing…';
+          safeToReset = await performCloudSave();
+          logoutBtn.disabled = false;
+          logoutBtn.textContent = 'Log out';
+        }
+      }
+
       clearCloudCredentials();
       cloudLoadOffer = null;
       leaderboardEntries = null;
       leaderboardError = null;
+
+      if (safeToReset) {
+        state.progress = {};
+        state.completionLog = {};
+        state.fsrsCards = {};
+        state.skillStats = {};
+        saveProgress();
+        saveCompletionLog();
+        saveFsrsCards();
+        saveSkillStats();
+        renderFilters();
+        renderBrowse();
+        renderProgress();
+        renderAnalysis();
+        renderReview();
+        renderStats();
+      }
       updateCloudSaveTriggerState();
       renderCloudSavePopover();
       renderProfile();
