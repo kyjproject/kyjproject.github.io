@@ -40,8 +40,16 @@
         }
       }
     } catch (e) { /* best-effort */ }
+    try {
+      var savedWidth = parseInt(localStorage.getItem('sat_qbank_content_width_v1'), 10);
+      if (savedWidth >= 760 && savedWidth <= 1600) {
+        document.documentElement.style.setProperty('--content-width', savedWidth + 'px');
+      }
+    } catch (e) { /* best-effort */ }
   })();
 </script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <style>
@@ -698,6 +706,61 @@
 
   .view { flex: 1; display: none; }
   .view.active { display: block; }
+
+  /* ---------- Content width resize handle (Lab: content width) ---------- */
+  .content-resize-handle {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: calc(50% + (var(--content-width, 760px) / 2));
+    width: 14px;
+    height: 100vh;
+    margin-left: -7px;
+    z-index: 40;
+    cursor: col-resize;
+    touch-action: none;
+  }
+  body.show-resize-handle .content-resize-handle { display: block; }
+  .content-resize-handle::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 6px;
+    width: 2px;
+    background: transparent;
+    transition: background 0.12s ease;
+  }
+  .content-resize-handle:hover::before,
+  .content-resize-handle.dragging::before {
+    background: var(--accent);
+  }
+  .content-resize-handle::after {
+    content: "⋮";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 6px;
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: -1px;
+    opacity: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    animation: content-width-nudge-pulse 2.4s ease-in-out infinite;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  }
+  .content-resize-handle:hover::after { animation: none; }
+  @keyframes content-width-nudge-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-soft); }
+    50% { box-shadow: 0 0 0 6px var(--accent-soft); }
+  }
 
   /* ---------- Browse layout ---------- */
   .browse-layout {
@@ -1778,7 +1841,7 @@
   .empty-state { text-align: center; padding: 60px 20px; color: var(--ink-faint); }
 
   /* ---------- Practice / Test shell ---------- */
-  .test-shell { max-width: 760px; margin: 0 auto; padding: 30px 24px 60px; }
+  .test-shell { max-width: var(--content-width, 760px); margin: 0 auto; padding: 30px 24px 60px; }
   .config-card {
     background: var(--paper-raised);
     border: 1px solid var(--rule);
@@ -2489,7 +2552,7 @@
   .bb-nav-tile.answered { background: #e8e8e8; }
   .bb-nav-tile .flag-dot { position: absolute; top: -8px; right: -8px; font-size: 12px; }
 
-  .bb-directions, .bb-review-page { max-width: 820px; margin: 0 auto; padding: 40px 28px 60px; overflow-y: auto; flex: 1; width: 100%; }
+  .bb-directions, .bb-review-page { max-width: calc(var(--content-width, 760px) + 60px); margin: 0 auto; padding: 40px 28px 60px; overflow-y: auto; flex: 1; width: 100%; }
   .bb-directions p { line-height: 1.7; margin: 0 0 14px; font-size: 15px; }
   .bb-review-row {
     display: flex; align-items: center; justify-content: space-between;
@@ -2800,6 +2863,127 @@
   .mock-tile-legend .swatch { width: 10px; height: 10px; border-radius: 3px; border: 1.5px solid var(--rule); display: inline-block; }
   .mock-tile-legend .swatch.status-correct { border-color: var(--easy); }
   .mock-tile-legend .swatch.status-incorrect { border-color: var(--hard); }
+
+  /* ---------- Mock Exam results: quick-jump nav ---------- */
+  /* Hugs the content column's own left edge (mirroring the content-width
+     resize handle's mirror-image position on the right edge) instead of
+     pinning to the raw viewport edge — on a wide screen with the default
+     760px column that used to leave it stranded out in empty space, far
+     from anything it relates to. max() keeps it from running off-screen on
+     a narrower viewport or a wide custom content width. Wider now (up to 4
+     side-by-side columns, one per module) so the breakpoint that hides it
+     on a cramped viewport moved up from 980px to 1100px to match. */
+  .mock-side-nav {
+    display: flex;
+    position: fixed;
+    left: max(10px, calc(50% - (var(--content-width, 760px) / 2) - 96px));
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-height: 78vh;
+    overflow-y: auto;
+    padding: 10px 8px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    z-index: 30;
+  }
+  .mock-side-nav-trigger {
+    width: 26px;
+    height: 26px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 7px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    transition: background 0.12s ease;
+  }
+  .mock-side-nav-trigger:hover { background: var(--accent); }
+  .mock-side-nav-columns { display: flex; flex-direction: row; align-items: flex-start; gap: 8px; }
+  .mock-side-nav-col { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .mock-side-nav-col-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .mock-side-nav-group { display: flex; flex-direction: column; gap: 3px; }
+  .mock-side-dot {
+    width: 13px;
+    height: 13px;
+    flex: none;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+  .mock-side-dot:hover { opacity: 1; transform: scale(1.35); }
+  .mock-side-dot.status-correct { background: var(--easy); }
+  .mock-side-dot.status-incorrect { background: var(--hard); }
+  .mock-side-dot.status-unanswered { background: var(--review); }
+  @media (max-width: 1100px) {
+    .mock-side-nav { display: none; }
+  }
+
+  /* ---------- Mock Exam results: full question-navigator modal ---------- */
+  /* Same bottom-sheet-with-a-tile-grid layout as the Bluebook kiosk's own
+     Question Navigator (.bb-navigator/.bb-nav-tile), so it feels like the
+     same feature — but themed with the app's normal (dark-mode-aware) CSS
+     variables instead of the kiosk's deliberately fixed-light styling, and
+     colored by correct/incorrect/unanswered instead of answered/flagged. */
+  .mock-nav-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex; align-items: flex-end; justify-content: center;
+    z-index: 60;
+  }
+  .mock-nav-modal {
+    background: var(--paper-raised);
+    color: var(--ink);
+    width: 100%;
+    max-width: 640px;
+    max-height: 76vh;
+    overflow-y: auto;
+    padding: 22px 26px 28px;
+    border: 1px solid var(--rule);
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+  }
+  .mock-nav-modal-head { display: flex; justify-content: space-between; align-items: center; }
+  .mock-nav-modal-head h3 { margin: 0; font-size: 16px; font-family: var(--serif); }
+  .mock-nav-legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 10px 0 4px; }
+  .mock-nav-legend span { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--ink-faint); }
+  .mock-nav-legend .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .mock-nav-group-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin: 16px 0 6px; }
+  .mock-nav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 7px; }
+  .mock-nav-tile {
+    position: relative;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 7px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.65);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .mock-nav-tile:hover { transform: scale(1.08); }
+  .mock-nav-tile.status-correct { background: var(--easy); }
+  .mock-nav-tile.status-incorrect { background: var(--hard); color: rgba(255,255,255,0.85); }
+  .mock-nav-tile.status-unanswered { background: var(--review); }
+
   @keyframes flashHighlight {
     0%, 100% { box-shadow: none; }
     30% { box-shadow: 0 0 0 3px var(--accent); }
@@ -3209,6 +3393,7 @@
     <button class="tab" data-view="mock">Mock Exam</button>
     <button class="tab" data-view="profile">Profile<span class="tab-badge" id="reviewDueBadgeMain" style="display:none;"></span></button>
     <button class="tab" data-view="propose">Propose</button>
+    <button class="tab" id="presentationTabBtn" style="display:none;">Presentation</button>
     <button class="tab" data-view="competition" id="competitionTabBtn" style="display:none;">Competition</button>
   </div>
   <div class="subtabs" id="profileSubtabs">
@@ -3247,6 +3432,7 @@
     <button class="tab mobile-nav-item" data-view="lab" role="menuitem">Lab</button>
     <div class="mobile-nav-group-label">More</div>
     <button class="tab mobile-nav-item" data-view="propose" role="menuitem">Propose</button>
+    <button class="tab mobile-nav-item" id="presentationTabBtnMobile" role="menuitem" style="display:none;">Presentation</button>
     <button class="tab mobile-nav-item" data-view="competition" id="competitionTabBtnMobile" role="menuitem" style="display:none;">Competition</button>
   </div>
 
@@ -3257,6 +3443,8 @@
        its position:fixed overlay renders regardless of which tab is
        "active" underneath while a kiosk session is running. -->
   <div id="bluebookShell"></div>
+
+  <div class="content-resize-handle" id="contentResizeHandle" title="Drag to resize content width (double-click to reset) — also in Lab settings"></div>
 
   <div class="view" id="view-browse">
     <div class="browse-layout">
@@ -5166,6 +5354,31 @@
     return result ? Object.assign({}, result, { overridden: hasOverride && result.assumed }) : null;
   }
 
+  // Every mock attempt saved by the current engine (adaptive full runs
+  // included) goes through saveCustomMockAttempt and is stored with
+  // {composition:'custom', sections}, not the older {module1Ids, module2Ids}
+  // shape effectiveRWScore/resolveMockAttempt expect — only genuinely
+  // ancient history predating that unification still has the old shape. The
+  // two helpers below dispatch on `composition` so trend/breakdown code can
+  // treat every attempt uniformly instead of silently skipping the shape
+  // almost everyone actually has (customSubjectBreakdown already computes a
+  // real R&W/Math composite for a custom attempt — same one shown on that
+  // attempt's own results screen — so there's no need to exclude it).
+  function effectiveRWScoreAny(attempt) {
+    if (attempt.composition === 'custom') {
+      const b = customSubjectBreakdown(resolveCustomMockAttempt(attempt), 'rw', attempt.id);
+      return { score: b.score, assumed: b.assumed, overridden: false, m1: b.m1, m2: b.m2, m1Real: b.m1Real, m2Real: b.m2Real };
+    }
+    return effectiveRWScore(attempt);
+  }
+
+  function attemptQuestionIds(attempt) {
+    if (attempt.composition === 'custom') {
+      return (attempt.sections || []).flatMap(s => s.ids || []);
+    }
+    return [...(attempt.module1Ids || []), ...(attempt.module2Ids || [])];
+  }
+
   // Same reverse-engineering, same additive model, sampled straight off
   // Albert's Math sliders (0-22 each, 44 total) — see the R&W tables above
   // for how these were derived and verified (529 combinations checked,
@@ -5681,10 +5894,7 @@
   // live as you mark questions and take mock exams (see setStatus/saveCustomMockAttempt).
   function bestMockRWScore() {
     if (!mockState.history.length) return null;
-    // Custom-composition attempts don't have the module1Ids/module2Ids shape
-    // effectiveRWScore/resolveMockAttempt expect (they use {sections}
-    // instead) and don't have a single R&W composite to begin with — skip them.
-    const scores = mockState.history.filter(a => a.composition !== 'custom').map(a => effectiveRWScore(a)).filter(Boolean).map(s => s.score);
+    const scores = mockState.history.map(a => effectiveRWScoreAny(a)).filter(Boolean).map(s => s.score);
     return scores.length ? Math.max(...scores) : null;
   }
 
@@ -6119,7 +6329,7 @@
     if (!q.has_image || !q.image_paths || !q.image_paths.length) return '';
     const src = q.image_paths[0].path || q.image_paths[0];
     return `<div class="qimage-wrap">
-      <img class="qimage" src="${escapeHtml(src)}" alt="Chart or table for question ${q.id}"
+      <img class="qimage" src="${escapeHtml(src)}" alt="Chart or table for question ${q.id}" loading="lazy" decoding="async"
         onerror="this.closest('.qimage-wrap').innerHTML='<div class=&quot;qimage-missing&quot;>Chart/table image not available in this view.</div>'" />
     </div>`;
   }
@@ -6520,13 +6730,26 @@
   function unescapeHtml(s) {
     return s.replace(KATEX_UNESCAPE_RE, m => KATEX_UNESCAPE_MAP[m]);
   }
+  // KaTeX parsing/layout is real CPU work, and the same LaTeX source gets
+  // re-rendered repeatedly — every time a question's detail panel redraws
+  // (submitting, toggling "show answer", switching choices all re-run
+  // qDetailHtml, which re-renders every choice's rationale from scratch),
+  // and again each time the same question is reopened. Caching by
+  // "source:displayMode" turns all of those repeats into a Map lookup.
+  const katexRenderCache = new Map();
   function renderLatex(source, displayMode) {
     if (typeof katex === 'undefined') return escapeHtml(source);
+    const cacheKey = displayMode + ':' + source;
+    const cached = katexRenderCache.get(cacheKey);
+    if (cached !== undefined) return cached;
+    let result;
     try {
-      return katex.renderToString(source, { throwOnError: false, displayMode });
+      result = katex.renderToString(source, { throwOnError: false, displayMode });
     } catch (e) {
-      return escapeHtml(source);
+      result = escapeHtml(source);
     }
+    katexRenderCache.set(cacheKey, result);
+    return result;
   }
   function restoreLatex(escaped) {
     const sole = escaped.trim().match(/^⟦LATEX:([^⟧]+)⟧$/);
@@ -6537,8 +6760,8 @@
   function restoreMathImages(escaped) {
     escaped = restoreLatex(escaped);
     const sole = escaped.trim().match(/^⟦IMG:([^⟧]+)⟧$/);
-    if (sole) return `<img class="math-block" src="${sole[1]}" alt="math">`;
-    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="${path}" alt="math">`);
+    if (sole) return `<img class="math-block" src="${sole[1]}" alt="math" loading="lazy" decoding="async">`;
+    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="${path}" alt="math" loading="lazy" decoding="async">`);
   }
 
   // Use in place of escapeHtml(...) for any field that can contain math
@@ -7576,6 +7799,7 @@
     document.getElementById('view-' + view).classList.add('active');
     document.getElementById('profileSubtabs').classList.toggle('visible', PROFILE_FAMILY.includes(view));
     setTitleForView(view);
+    updateResizeHandleVisibility();
     try { localStorage.setItem(LAST_VIEW_KEY, view); } catch (e) {}
     if (view === 'blueprints') renderBlueprintsBrowser();
     if (view === 'practice') renderPractice();
@@ -7604,6 +7828,13 @@
         group.classList.toggle('open', opening);
         tab.setAttribute('aria-expanded', String(opening));
         if (opening) positionBrowseDropdown();
+        return;
+      }
+      // Presentation has no in-app view (no data-view/view-* pair) — it just
+      // opens the static presentation bundle in its own tab.
+      if (tab.id === 'presentationTabBtn' || tab.id === 'presentationTabBtnMobile') {
+        e.stopPropagation();
+        window.open('presentation/index.html', '_blank', 'noopener');
         return;
       }
       activateView(tab.dataset.view, tab);
@@ -7783,6 +8014,83 @@
     if (typeof setLabTheme === 'function') setLabTheme('default');
   });
 
+  // ---------- Content width (Lab: content width) ----------
+  const CONTENT_WIDTH_KEY = 'sat_qbank_content_width_v1';
+  const CONTENT_WIDTH_MIN = 760;
+  const CONTENT_WIDTH_MAX = 1600;
+  const CONTENT_WIDTH_DEFAULT = 760;
+  const resizeHandle = document.getElementById('contentResizeHandle');
+
+  function updateResizeHandleVisibility() {
+    const active = document.querySelector('.view.active');
+    document.body.classList.toggle('show-resize-handle', !!(active && active.querySelector('.test-shell')));
+  }
+  updateResizeHandleVisibility();
+
+  function currentContentWidth() {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue('--content-width');
+    const parsed = parseInt(raw, 10);
+    return Number.isFinite(parsed) ? parsed : CONTENT_WIDTH_DEFAULT;
+  }
+
+  function setContentWidth(px, persist) {
+    const clamped = Math.max(CONTENT_WIDTH_MIN, Math.min(CONTENT_WIDTH_MAX, Math.round(px)));
+    document.documentElement.style.setProperty('--content-width', clamped + 'px');
+    if (persist) {
+      try { localStorage.setItem(CONTENT_WIDTH_KEY, String(clamped)); } catch (e) { /* best-effort */ }
+    }
+    return clamped;
+  }
+
+  function resetContentWidth() {
+    document.documentElement.style.removeProperty('--content-width');
+    try { localStorage.removeItem(CONTENT_WIDTH_KEY); } catch (e) { /* best-effort */ }
+  }
+
+  if (resizeHandle) {
+    let dragging = false;
+    let startX = 0;
+    let startWidth = CONTENT_WIDTH_DEFAULT;
+
+    function onWidthDragMove(e) {
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      const delta = (x - startX) * 2; // dragging the right edge moves both sides since content is centered
+      setContentWidth(startWidth + delta, false);
+    }
+
+    function onWidthDragEnd() {
+      if (!dragging) return;
+      dragging = false;
+      resizeHandle.classList.remove('dragging');
+      setContentWidth(currentContentWidth(), true);
+      if (document.getElementById('labShell')) renderLab();
+      document.removeEventListener('mousemove', onWidthDragMove);
+      document.removeEventListener('mouseup', onWidthDragEnd);
+      document.removeEventListener('touchmove', onWidthDragMove);
+      document.removeEventListener('touchend', onWidthDragEnd);
+    }
+
+    function onWidthDragStart(e) {
+      dragging = true;
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+      startWidth = currentContentWidth();
+      resizeHandle.classList.add('dragging');
+      document.addEventListener('mousemove', onWidthDragMove);
+      document.addEventListener('mouseup', onWidthDragEnd);
+      document.addEventListener('touchmove', onWidthDragMove, { passive: true });
+      document.addEventListener('touchend', onWidthDragEnd);
+      e.preventDefault();
+    }
+
+    resizeHandle.addEventListener('mousedown', onWidthDragStart);
+    resizeHandle.addEventListener('touchstart', onWidthDragStart, { passive: false });
+    resizeHandle.addEventListener('dblclick', () => {
+      resetContentWidth();
+      if (document.getElementById('labShell')) renderLab();
+    });
+  }
+
   // ---------- Command palette trigger ----------
   const paletteTriggerBtn = document.getElementById('paletteTriggerBtn');
   if (paletteTriggerBtn) paletteTriggerBtn.addEventListener('click', () => openPalette());
@@ -7876,6 +8184,14 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.7', date: 'Sep 20', title: 'Resize the content column, a fixed score trend, and a results-screen quick-jump nav', lede: 'Practice, Test, Mock Exam, Profile, and the rest of the main content column defaulted to a fixed, narrow 760px with no way to change it. A draggable handle now sits on the right edge of that column, highlighted so it\'s easy to spot — grab it (or use the new slider in Lab) to widen things up to 1600px on bigger screens. Plus two fixes from user reports: the Profile score trend was silently skipping every mock exam taken since the Mock Exam engine was unified into one Custom-modules builder (so, in practice, every recent mock), and the Test/Mock Exam review list had no way to jump between questions without scrolling all the way back up to the tile grid.', items: [
+      { name: 'Drag-to-resize content width', desc: 'A small grip handle on the right edge of the main content column (Practice, Test, Mock Exam, Profile, Analysis, Review, Lab, Propose, and the Bluebook-style directions/review pages) can be dragged to widen or narrow that column, from the 760px default up to 1600px. Double-click it to reset. Saved per-browser, so it stays put across visits. Kept visibly highlighted (not just on hover) so it doesn\'t blend into the edge unnoticed.' },
+      { name: 'Also adjustable from Lab', desc: 'Lab → Content width has the same control as a slider, for anyone who\'d rather type/click than drag — kept in sync with the handle either way. "Reset all Lab settings to defaults" resets this too.' },
+      { name: 'Fix: mock exams missing from the score trend, category/difficulty breakdown, and domain trend', desc: 'Every mock exam has saved as a "Custom"-composition attempt since the Mock Exam engine was unified into one Modules builder — but Profile\'s score trend, Analysis\'s accuracy-by-category-and-difficulty grid, domain trend, and missed-skill digest still only knew the older shape, so they silently excluded every one of those exams (effectively all of them). They now score and count a Custom attempt the same way its own results screen already did.' },
+      { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead (1&ndash;25, 26&ndash;50, etc.). A GitHub-contributions-style alternative to scrolling back up every time.' },
+      { name: 'A full question navigator, one tap away', desc: 'The &#129517; button atop that strip opens a bigger, numbered version of the same grid — grouped the same way as the strip (by module, or by 25s for Test) — laid out as a bottom sheet like the Bluebook kiosk\'s own Question Navigator, for jumping around a long exam without scanning a thin column of squares one at a time. Esc, the Close button, or tapping outside it all dismiss it.' },
+      { name: 'Faster with lots of images or math on screen', desc: 'Chart/table images and rendered math now load lazily and get their LaTeX re-render skipped when the same expression has already been rendered once — noticeable on question-heavy pages like a full mock exam review or a long Practice session with charts.' },
+    ] },
     { version: 'v2.6', date: 'Sep 19', title: 'Auto-sync is now on by default, and cloud saves never overwrite another device', lede: 'kyj-cloud sync got safer and less manual. "Save progress now" now always merges with the cloud first instead of overwriting it outright — the old advice to "Load before you Save when switching devices" no longer applies, since Save and Load both merge either way. Tags, notes, and spaced-repetition review progress also merge more carefully now, so reviewing or tagging the same question on two devices no longer lets one side silently clobber the other. And Auto-sync, previously an opt-in Lab toggle, is now on by default for every logged-in kyj-cloud account — including anyone already signed in — since there\'s no longer a real downside to it running automatically. Still one click away to turn off in Lab if you\'d rather sync by hand.', items: [
       { name: 'Save no longer overwrites the cloud — it merges', desc: '"Save progress now" used to push this browser\'s progress straight over whatever was already saved, which meant saving from a second device before ever loading could silently wipe out the first device\'s progress. It now loads and merges the cloud copy in first, exactly like Auto-sync already did, before pushing the combined result.' },
       { name: 'Auto-sync is on by default now', desc: 'Previously an opt-in toggle in Lab. Now on by default for everyone signed into kyj-cloud, including accounts that were already logged in before this shipped. Still a one-click toggle in Lab if you\'d rather stick to manual saves.' },
@@ -8420,6 +8736,21 @@
       if (el) el.style.display = show ? '' : 'none';
     });
   }
+  // ---------- Presentation tab access (tft demo account only) ----------
+  // "tft" isn't a real kyj-cloud account (see the local-only login bypass in
+  // the login-popover submit handler below) — it exists solely to gate this
+  // button, so username-only is enough here.
+  const PRESENTATION_USERS = ['tft'];
+  function isPresentationUser() {
+    return PRESENTATION_USERS.includes((getCloudUsername() || '').trim().toLowerCase());
+  }
+  function updatePresentationTabVisibility() {
+    const show = isCloudLoggedIn() && isPresentationUser();
+    ['presentationTabBtn', 'presentationTabBtnMobile'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = show ? '' : 'none';
+    });
+  }
   let competitionLoading = false;
   let competitionData = null;
   let competitionError = null;
@@ -8952,6 +9283,7 @@
   }
   async function attemptAutoSync() {
     if (!autoSyncEnabled || !isCloudLoggedIn() || autoSyncInFlight) return;
+    if (isPresentationUser()) return; // "tft" demo login isn't a real cloud account
     if (!hasUnsavedCloudProgress()) return;
     if (Date.now() - autoSyncLastAttemptAt < AUTO_SYNC_MIN_GAP_MS) return;
     autoSyncLastAttemptAt = Date.now();
@@ -9099,8 +9431,12 @@
         submitBtn.textContent = cloudSaveMode === 'signup' ? 'Creating…' : 'Logging in…';
         statusEl.className = 'cloud-save-status';
         statusEl.textContent = '';
+        // "tft" / "password" is a local-only demo login that unlocks the
+        // Presentation button — it isn't a real kyj-cloud account, so it
+        // skips the backend entirely instead of failing against it.
+        const isTftDemoLogin = cloudSaveMode === 'login' && username.toLowerCase() === 'tft' && password === 'password';
         try {
-          await cloudSaveRequest(cloudSaveMode, { username, password });
+          if (!isTftDemoLogin) await cloudSaveRequest(cloudSaveMode, { username, password });
           setCloudCredentials(username, password);
           if (cloudSaveMode === 'signup' && (!state.profile.name || state.profile.name === DEFAULT_PROFILE_NAME)) {
             state.profile = { name: username.slice(0, 24) };
@@ -9109,10 +9445,12 @@
           leaderboardEntries = null;
           leaderboardError = null;
           let offer = null;
-          try {
-            const loadResult = await cloudSaveRequest('load', { username, password });
-            if (loadResult.data) offer = { data: loadResult.data, at: loadResult.updatedAt || null };
-          } catch (e) { /* no cloud data yet, or the load failed — not fatal, just skip the offer */ }
+          if (!isTftDemoLogin) {
+            try {
+              const loadResult = await cloudSaveRequest('load', { username, password });
+              if (loadResult.data) offer = { data: loadResult.data, at: loadResult.updatedAt || null };
+            } catch (e) { /* no cloud data yet, or the load failed — not fatal, just skip the offer */ }
+          }
           cloudLoadOffer = offer;
           updateCloudSaveTriggerState();
           renderCloudSavePopover();
@@ -9212,6 +9550,7 @@
   function updateCloudSaveTriggerState() {
     if (cloudSaveTriggerBtn) cloudSaveTriggerBtn.classList.toggle('unlocked', isCloudLoggedIn());
     updateCompetitionTabVisibility();
+    updatePresentationTabVisibility();
   }
   function openCloudSavePopover() {
     if (!cloudSavePopover) return;
@@ -10617,6 +10956,7 @@
     BROWSE_FILTER_OPTIONS.forEach(opt => setMathBrowseFilterEnabled(opt.key, DEFAULT_BROWSE_FILTERS[opt.key]));
     if (typeof clearDisabledBrowseFacets === 'function') clearDisabledBrowseFacets();
     if (typeof clearDisabledMathBrowseFacets === 'function') clearDisabledMathBrowseFacets();
+    if (typeof resetContentWidth === 'function') resetContentWidth();
     rebindingAction = null;
     labResetConfirmPending = false;
   }
@@ -11668,6 +12008,7 @@
         <div style="max-width:280px; margin:18px auto 0; text-align:left;">${skillRows}</div>
         <button class="btn" id="retakeBtn" style="margin-top:18px;">${isHistory ? 'Back to tests' : 'New test'}</button>
       </div>
+      ${testSideNavHtml(questions, data)}
       <h3 style="font-family:var(--serif); font-size:16px; margin:0 0 10px;">Review</h3>
       ${reviewHtml}`;
   }
@@ -11846,6 +12187,10 @@
         renderTest();
       });
       wireStatusButtons(shell, renderTest);
+      shell.querySelectorAll('[data-scroll-to]').forEach(el => {
+        el.addEventListener('click', () => scrollToReviewTarget(el.dataset.scrollTo));
+      });
+      wireQuizNavOpenBtn('testNavOpenBtn', 'testNavOverlay', 'testNavCloseBtn', () => testResultsNavigatorHtml(data.questions, data));
       // Click a Review card to open it in the same modal Browse/Mock use —
       // Prev/Next pages through this test's questions in order.
       const reviewModalList = data.questions;
@@ -15266,7 +15611,164 @@
       </div>`;
   }
 
+  // A fixed left-edge strip, one small square per question across every
+  // section in order, colored by status — a quick-jump nav that stays put
+  // while you scroll the (potentially very long) Review list below, instead
+  // of having to scroll back up to the "Module breakdown" tile grid every
+  // time you want to jump to a different question. Grouped by section
+  // (subject+module) with a small gap between groups, same order as Review.
+  function reviewItemStatus(yours, correctAnswer) {
+    return !yours ? 'unanswered' : (yours === correctAnswer ? 'correct' : 'incorrect');
+  }
+
+  // Scrolls a review card into view and flashes it — shared by the side
+  // strip, the full navigator modal, and the module tile grids (Mock and
+  // Test alike), via each one's [data-scroll-to] buttons.
+  function scrollToReviewTarget(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.classList.remove('flash-highlight');
+    void target.offsetWidth; // restart the animation if clicked again quickly
+    target.classList.add('flash-highlight');
+    setTimeout(() => target.classList.remove('flash-highlight'), 900);
+  }
+
+  // Wires the &#129517; button that opens a quiz results screen's full
+  // question-navigator modal — built and appended to <body> on demand
+  // rather than baked into the results re-render, so opening/closing it
+  // never disturbs the page's scroll position the way a full re-render
+  // would. `buildOverlayHtml` is called fresh on each open, so it always
+  // reflects the latest answers/status.
+  function wireQuizNavOpenBtn(openBtnId, overlayId, closeId, buildOverlayHtml) {
+    const btn = document.getElementById(openBtnId);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      if (document.getElementById(overlayId)) return;
+      document.body.insertAdjacentHTML('beforeend', buildOverlayHtml());
+      const overlay = document.getElementById(overlayId);
+      const closeNav = () => { overlay.remove(); document.removeEventListener('keydown', onKey); };
+      function onKey(e) { if (e.key === 'Escape') closeNav(); }
+      document.addEventListener('keydown', onKey);
+      document.getElementById(closeId).addEventListener('click', closeNav);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeNav(); });
+      overlay.querySelectorAll('[data-scroll-to]').forEach(el => {
+        el.addEventListener('click', () => {
+          closeNav();
+          scrollToReviewTarget(el.dataset.scrollTo);
+        });
+      });
+    });
+  }
+
+  // Shared by the Mock Exam and Test results screens: a fixed side strip
+  // of colored squares (green/red/yellow, correct/incorrect/unanswered),
+  // one column per `groups` entry, for jumping to a question without
+  // scrolling back up — and the &#129517; button atop it that opens a
+  // bigger, all-at-once version of the same grid as a modal (see
+  // quizNavigatorModalHtml), styled like the Bluebook kiosk's own Question
+  // Navigator. `groups` is `[{ label, shortLabel, items }]`, where each
+  // item is `{ id, status, num, title }`; `reviewIdPrefix` + item.id must
+  // match that review card's element id (e.g. "mock-review-" / "test-review-").
+  function quizSideNavHtml(navId, triggerId, groups, reviewIdPrefix) {
+    const total = groups.reduce((n, g) => n + g.items.length, 0);
+    if (total < 2) return '';
+    const colsHtml = groups.map(g => {
+      const dots = g.items.map(it =>
+        `<button type="button" class="mock-side-dot status-${it.status}" data-scroll-to="${reviewIdPrefix}${it.id}" title="${escapeHtml(it.title)}"></button>`
+      ).join('');
+      return `
+        <div class="mock-side-nav-col" title="${escapeHtml(g.label)}">
+          <span class="mock-side-nav-col-label">${escapeHtml(g.shortLabel)}</span>
+          <div class="mock-side-nav-group">${dots}</div>
+        </div>`;
+    }).join('');
+    return `<div class="mock-side-nav" id="${navId}" aria-label="Jump to a question"><button type="button" class="mock-side-nav-trigger" id="${triggerId}" title="Open question navigator">&#129517;</button><div class="mock-side-nav-columns">${colsHtml}</div></div>`;
+  }
+
+  function quizNavigatorModalHtml(overlayId, closeId, groups, reviewIdPrefix) {
+    const groupsHtml = groups.map(g => {
+      const tiles = g.items.map(it =>
+        `<button type="button" class="mock-nav-tile status-${it.status}" data-scroll-to="${reviewIdPrefix}${it.id}" title="${escapeHtml(it.title)}">${it.num}</button>`
+      ).join('');
+      return `
+        <div class="mock-nav-group-label">${escapeHtml(g.label)}</div>
+        <div class="mock-nav-grid">${tiles}</div>`;
+    }).join('');
+    return `
+      <div class="mock-nav-overlay" id="${overlayId}">
+        <div class="mock-nav-modal">
+          <div class="mock-nav-modal-head">
+            <h3>&#129517; Question navigator</h3>
+            <button type="button" class="btn" id="${closeId}">Close</button>
+          </div>
+          <div class="mock-nav-legend">
+            <span><span class="swatch" style="background:var(--easy);"></span>Correct</span>
+            <span><span class="swatch" style="background:var(--hard);"></span>Incorrect</span>
+            <span><span class="swatch" style="background:var(--review);"></span>Unanswered</span>
+          </div>
+          ${groupsHtml}
+        </div>
+      </div>`;
+  }
+
+  // One column per section (module) side by side, instead of one long
+  // stacked column — up to 4 (English M1/M2, Math M1/M2).
+  function mockNavGroups(sections, data) {
+    return sections.filter(sec => sec.questions.length).map(sec => ({
+      label: `${MOCK_CUSTOM_MODULE_LABELS[sec.subject]} — Module ${sec.module}`,
+      shortLabel: `${MOCK_CUSTOM_MODULE_LABELS[sec.subject][0]}${sec.module}`,
+      items: sec.questions.map((q, i) => {
+        const yours = data.answers[q.id];
+        const status = reviewItemStatus(yours, q.correct_answer);
+        const detail = status === 'unanswered' ? 'Not answered' : status === 'correct' ? `Correct (${yours})` : `Incorrect — yours: ${yours}, correct: ${q.correct_answer}`;
+        return { id: q.id, status, num: i + 1, title: `${MOCK_CUSTOM_MODULE_LABELS[sec.subject]} M${sec.module} #${i + 1} — ${detail}` };
+      }),
+    }));
+  }
+
+  function mockSideNavHtml(sections, data) {
+    return quizSideNavHtml('mockSideNav', 'mockNavOpenBtn', mockNavGroups(sections, data), 'mock-review-');
+  }
+
+  function mockResultsNavigatorHtml(sections, data) {
+    return quizNavigatorModalHtml('mockNavOverlay', 'mockNavCloseBtn', mockNavGroups(sections, data), 'mock-review-');
+  }
+
   const MOCK_CUSTOM_MODULE_LABELS = { rw: 'English', math: 'Math' };
+
+  // Test has no modules to group by (it's just N questions in a row), so
+  // instead of one column per module (Mock), it gets one column per 25
+  // questions — "Questions 1-25", "26-50", etc. — same side strip/navigator
+  // otherwise.
+  const TEST_NAV_CHUNK_SIZE = 25;
+  function testNavGroups(questions, data) {
+    const groups = [];
+    for (let start = 0; start < questions.length; start += TEST_NAV_CHUNK_SIZE) {
+      const chunk = questions.slice(start, start + TEST_NAV_CHUNK_SIZE);
+      const from = start + 1, to = start + chunk.length;
+      groups.push({
+        label: `Questions ${from}–${to}`,
+        shortLabel: `${from}–${to}`,
+        items: chunk.map((q, i) => {
+          const num = start + i + 1;
+          const yours = data.answers[q.id];
+          const status = reviewItemStatus(yours, q.correct_answer);
+          const detail = status === 'unanswered' ? 'Not answered' : status === 'correct' ? `Correct (${yours})` : `Incorrect — yours: ${yours}, correct: ${q.correct_answer}`;
+          return { id: q.id, status, num, title: `Question ${num} — ${detail}` };
+        }),
+      });
+    }
+    return groups;
+  }
+
+  function testSideNavHtml(questions, data) {
+    return quizSideNavHtml('testSideNav', 'testNavOpenBtn', testNavGroups(questions, data), 'test-review-');
+  }
+
+  function testResultsNavigatorHtml(questions, data) {
+    return quizNavigatorModalHtml('testNavOverlay', 'testNavCloseBtn', testNavGroups(questions, data), 'test-review-');
+  }
 
   function saveCustomMockAttempt() {
     const attempt = {
@@ -15521,6 +16023,7 @@
         <span><span class="swatch status-unanswered"></span>Unanswered</span>
       </div>
       ${sections.map(sec => mockModuleTilesHtml(sec.questions, `${MOCK_CUSTOM_MODULE_LABELS[sec.subject]} Module ${sec.module}`, data)).join('')}
+      ${mockSideNavHtml(sections, data)}
       <h3 style="font-family:var(--serif); font-size:16px; margin:18px 0 10px;">Review</h3>
       ${reviewHtml}`;
   }
@@ -15842,16 +16345,11 @@
         wireScoreCard(scRw ? scRw.score : null, { rw: scRw, attemptId: scAttemptId });
       }
       shell.querySelectorAll('[data-scroll-to]').forEach(el => {
-        el.addEventListener('click', () => {
-          const target = document.getElementById(el.dataset.scrollTo);
-          if (!target) return;
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          target.classList.remove('flash-highlight');
-          void target.offsetWidth; // restart the animation if clicked again quickly
-          target.classList.add('flash-highlight');
-          setTimeout(() => target.classList.remove('flash-highlight'), 900);
-        });
+        el.addEventListener('click', () => scrollToReviewTarget(el.dataset.scrollTo));
       });
+      if (isCustom) {
+        wireQuizNavOpenBtn('mockNavOpenBtn', 'mockNavOverlay', 'mockNavCloseBtn', () => mockResultsNavigatorHtml(data.sections, data));
+      }
       // Click a Review card to open it in the same modal Browse uses —
       // Prev/Next pages through this exam's questions in Module 1 -> Module 2
       // order, same pattern as Browse paging through its filtered list.
@@ -16379,10 +16877,7 @@
   }
 
   function scoreTrendHtml() {
-    // Custom-composition attempts don't have a single R&W/Math composite to
-    // trend (they're a mix of whichever modules were picked) — leave them
-    // out of this chart/table, same as bestMockRWScore above.
-    const attempts = mockState.history.filter(a => a.composition !== 'custom').slice(0, SCORE_TREND_ATTEMPTS).slice().reverse();
+    const attempts = mockState.history.slice(0, SCORE_TREND_ATTEMPTS).slice().reverse();
     if (!attempts.length) {
       return `
         <div class="progress-summary score-trend-card">
@@ -16396,7 +16891,7 @@
     // unchecking a bad attempt (sick day, distracted run, whatever) drops it
     // from the trend without deleting the mock exam itself.
     const allScored = attempts.map(a => {
-      const eff = effectiveRWScore(a);
+      const eff = effectiveRWScoreAny(a);
       if (!eff) return null;
       return {
         id: a.id, date: new Date(a.completedAt), rw: eff.score, assumed: eff.assumed, overridden: eff.overridden,
@@ -16642,6 +17137,16 @@
     return labCardHtml('⏱️ Strict timing mode', `
       ${labToggleRowHtml('labStrictTiming', 'Auto-submit when time runs out', "Currently, the Bluebook-style Test's whole-test timer just parks you on the review page at 0:00 without submitting (Mock Exam's module clock and every per-question timer already auto-advance/submit on their own strict setting). Turn this on to auto-submit the Test the instant its timer hits zero, matching real proctored conditions.", strictTimingEnabled)}`);
   }
+  function labContentWidthCardHtml() {
+    const width = typeof currentContentWidth === 'function' ? currentContentWidth() : 760;
+    return labCardHtml('↔️ Content width', `
+      <div class="log-item-desc" style="margin-bottom:10px;">Practice, Test, Mock Exam, Profile, and the rest of the main content column default to a narrow, centered 760px so lines of text stay easy to read. Drag the highlighted handle on the right edge of the content (double-click it to reset), or use the slider here, to widen it up to 1600px on bigger screens. Purely cosmetic — doesn't change how many questions are shown.</div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <input type="range" id="labContentWidth" min="${CONTENT_WIDTH_MIN}" max="${CONTENT_WIDTH_MAX}" step="10" value="${width}" style="flex:1;" />
+        <span class="log-item-name" id="labContentWidthValue" style="min-width:60px; text-align:right;">${width}px</span>
+        <button type="button" class="btn" id="labContentWidthResetBtn">Reset</button>
+      </div>`);
+  }
   function labAutoSyncCardHtml() {
     if (!CLOUD_SAVE_URL) return '';
     if (!isCloudLoggedIn()) {
@@ -16719,7 +17224,7 @@
         <p style="margin:-6px 0 16px; color:var(--ink-faint); font-size:13px;">Experimental, opt-in customization. Everything here defaults to off/unchanged behavior, except Rated Difficulty (on by default — opt out below).</p>
         ${labResetConfirmPending ? `
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--incorrect-bg); border:1px solid var(--incorrect); color:var(--incorrect); border-radius:8px; padding:10px 14px;">
-            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, strict timing, auto-sync, and offline mode go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters (both English and Math) go back to Category/Difficulty/Status/Community rating shown, Skill hidden. Any already-downloaded offline images are left alone — clear those separately if you want them gone too.</span>
+            <span style="font-weight:600;">Reset every Lab setting to default? Keybindings, theme, choice drilling, strict timing, auto-sync, offline mode, and content width go back to off/unchanged; community difficulty ratings go back to <strong>on</strong>; the College Board difficulty pill goes back to shown; Browse filters (both English and Math) go back to Category/Difficulty/Status/Community rating shown, Skill hidden. Any already-downloaded offline images are left alone — clear those separately if you want them gone too.</span>
             <div style="display:flex; gap:8px; margin-left:auto;">
               <button type="button" class="btn" id="labResetCancelBtn">Cancel</button>
               <button type="button" class="btn btn-accent" id="labResetConfirmBtn">Yes, reset everything</button>
@@ -16729,6 +17234,7 @@
       </div>
       ${labAutoSyncCardHtml()}
       ${labThemeCardHtml()}
+      ${labContentWidthCardHtml()}
       ${labChoicesCardHtml()}
       ${labStrictTimingCardHtml()}
       ${labRatedDifficultyCardHtml()}
@@ -16744,6 +17250,14 @@
     if (resetCancelBtn) resetCancelBtn.addEventListener('click', () => { labResetConfirmPending = false; renderLab(); });
     const resetConfirmBtn = document.getElementById('labResetConfirmBtn');
     if (resetConfirmBtn) resetConfirmBtn.addEventListener('click', () => { resetLabSettings(); renderLab(); refreshAllQuestionCardViews(); });
+    const contentWidthSlider = document.getElementById('labContentWidth');
+    const contentWidthValue = document.getElementById('labContentWidthValue');
+    if (contentWidthSlider) contentWidthSlider.addEventListener('input', () => {
+      const clamped = setContentWidth(parseInt(contentWidthSlider.value, 10), true);
+      if (contentWidthValue) contentWidthValue.textContent = clamped + 'px';
+    });
+    const contentWidthResetBtn = document.getElementById('labContentWidthResetBtn');
+    if (contentWidthResetBtn) contentWidthResetBtn.addEventListener('click', () => { resetContentWidth(); renderLab(); });
     const ratedDifficultyBox = document.getElementById('labRatedDifficulty');
     if (ratedDifficultyBox) ratedDifficultyBox.addEventListener('change', () => {
       setRatedDifficultyLabEnabled(ratedDifficultyBox.checked);
@@ -17779,8 +18293,8 @@
   function categoryDifficultyGrid() {
     const byId = id => QUESTIONS.find(x => x.id === id);
     const grid = {};
-    mockState.history.filter(a => a.composition !== 'custom').forEach(attempt => {
-      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+    mockState.history.forEach(attempt => {
+      attemptQuestionIds(attempt).forEach(id => {
         const q = byId(id);
         if (!q) return;
         const yours = attempt.answers[id];
@@ -17840,13 +18354,13 @@
   function domainTrendRows() {
     if (!mockState.history.length) return null;
     const byId = id => QUESTIONS.find(x => x.id === id);
-    const chron = mockState.history.filter(a => a.composition !== 'custom').slice().reverse(); // oldest first
+    const chron = mockState.history.slice().reverse(); // oldest first
     const mid = Math.floor(chron.length / 2);
     const agg = {};
     MOCK_DOMAIN_ORDER.forEach(d => { agg[d] = { all: { c: 0, t: 0 }, early: { c: 0, t: 0 }, late: { c: 0, t: 0 } }; });
     chron.forEach((attempt, idx) => {
       const bucket = idx < mid ? 'early' : 'late';
-      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+      attemptQuestionIds(attempt).forEach(id => {
         const q = byId(id);
         if (!q) return;
         const yours = attempt.answers[id];
@@ -17906,8 +18420,8 @@
   function missedSkillDigest() {
     const byId = id => QUESTIONS.find(x => x.id === id);
     const bySkill = {};
-    mockState.history.filter(a => a.composition !== 'custom').forEach(attempt => {
-      [...attempt.module1Ids, ...attempt.module2Ids].forEach(id => {
+    mockState.history.forEach(attempt => {
+      attemptQuestionIds(attempt).forEach(id => {
         const q = byId(id);
         if (!q) return;
         const yours = attempt.answers[id];

@@ -73,6 +73,8 @@ function doPost(e) {
     else if (action === 'submit_testimonial') result = handleSubmitTestimonial_(body);
     else if (action === 'list_testimonials') result = handleListTestimonials_(body);
     else if (action === 'submit_site_feedback') result = handleSiteFeedback_(body);
+    else if (action === 'add_time_record') result = handleAddTimeRecord_(body);
+    else if (action === 'get_competition') result = handleGetCompetition_(body);
     else result = { ok: false, error: 'Unknown action: ' + action };
   } catch (err) {
     result = { ok: false, error: String((err && err.message) || err) };
@@ -146,6 +148,16 @@ function userTitlesPath_() { return 'db/user_titles.json'; }
 // site rebuild needed to show a newly-approved one.
 function testimonialsStagingPath_() { return 'db/staging/testimonials.json'; }
 function testimonialsPath_() { return 'db/testimonials.json'; }
+// Shared file, not per-user (only two accounts ever use it) — a "Competition"
+// tab where the two of you log time spent on things and compete monthly
+// (calendar month) and yearly (Jan 1 - Dec 30) on whoever logs LESS total
+// time. Kept in one file, keyed by username, so the aggregate math below
+// can compare both sides without a second round trip. See handleGetCompetition_
+// for why this is safe to keep in one file despite each side not being able
+// to see the other's raw numbers.
+function competitionPath_() { return 'db/competition/time_records.json'; }
+function COMPETITION_USERS_() { return ['hamin', 'kyjv9981']; }
+
 // General "something's wrong with the app" / "you should add X" reports from
 // the topbar feedback popover — a separate stream from reportsPath_ above,
 // which is specifically "something's wrong with THIS question". No login
@@ -952,4 +964,167 @@ function handleAdminSetRating_(body) {
     }
   }
   throw lastErr;
+}
+
+// ---------- Competition tab (kyjv9981 vs hamin) ----------
+// db/competition/time_records.json shape: { "<username>": [ { id, name,
+// description, seconds, createdAt } ] } — createdAt is when the record was
+// added (UTC ISO string), which is what buckets it into a month/year below.
+// Not a "log what day you did this" field; add-as-you-go is the whole point.
+
+function loadCompetitionData_(cfg) {
+  var file = githubGetFile_(cfg, competitionPath_());
+  var data = {};
+  if (file.exists) {
+    try { data = JSON.parse(file.content); } catch (e) { data = {}; }
+    if (!data || typeof data !== 'object') data = {};
+  }
+  return { sha: file.sha, data: data };
+}
+
+function requireCompetitionUser_(check) {
+  var lower = check.username.toLowerCase();
+  if (COMPETITION_USERS_().indexOf(lower) === -1) {
+    return { ok: false, error: 'The competition tab is limited to specific accounts' };
+  }
+  return null;
+}
+
+function handleAddTimeRecord_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+  var deny = requireCompetitionUser_(check);
+  if (deny) return deny;
+
+  var name = typeof (body && body.name) === 'string' ? body.name.trim() : '';
+  var description = typeof (body && body.description) === 'string' ? body.description.trim() : '';
+  var seconds = Math.floor(Number(body && body.seconds));
+  if (!name || name.length > 120) return { ok: false, error: 'Name must be 1-120 characters' };
+  if (description.length > 500) return { ok: false, error: 'Description is too long' };
+  if (!(seconds > 0 && seconds <= 100 * 3600)) return { ok: false, error: 'Duration must be between 1 second and 100 hours' };
+
+  var lower = check.username.toLowerCase();
+  var record = {
+    id: Utilities.getUuid(),
+    name: name,
+    description: description,
+    seconds: seconds,
+    createdAt: new Date().toISOString(),
+  };
+  var lastErr;
+  for (var attempt = 0; attempt < 3; attempt++) {
+    try {
+      var loaded = loadCompetitionData_(cfg);
+      var data = loaded.data;
+      if (!Array.isArray(data[lower])) data[lower] = [];
+      data[lower].push(record);
+      githubPutFile_(
+        cfg, competitionPath_(), JSON.stringify(data, null, 2), loaded.sha,
+        'Competition: time record from ' + check.username
+      );
+      return { ok: true, record: record };
+    } catch (e) {
+      lastErr = e;
+      Utilities.sleep(300 * (attempt + 1));
+    }
+  }
+  throw lastErr;
+}
+
+function pad2_(n) { return n < 10 ? '0' + n : String(n); }
+var COMPETITION_MONTH_NAMES_ = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+
+// Sums each user's records into per-user seconds totals for a period,
+// determined by a predicate on each record's createdAt Date.
+function competitionTotalsForPeriod_(data, users, inPeriod) {
+  var totals = {};
+  users.forEach(function (u) {
+    var records = Array.isArray(data[u]) ? data[u] : [];
+    totals[u] = records.reduce(function (sum, r) {
+      var d = new Date(r.createdAt);
+      return inPeriod(d) ? sum + (Number(r.seconds) || 0) : sum;
+    }, 0);
+  });
+  return totals;
+}
+
+// { winner: username|null, tie: bool, diffSeconds } — never the raw totals,
+// so a closed-period result never leaks how much time either side actually
+// logged, only who came out ahead (by logging LESS time) and by how much.
+function competitionResultFromTotals_(users, totals) {
+  var a = users[0], b = users[1];
+  if (totals[a] === totals[b]) return { winner: null, tie: true, diffSeconds: 0 };
+  var winner = totals[a] < totals[b] ? a : b;
+  return { winner: winner, tie: false, diffSeconds: Math.abs(totals[a] - totals[b]) };
+}
+
+function handleGetCompetition_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+  var deny = requireCompetitionUser_(check);
+  if (deny) return deny;
+
+  var users = COMPETITION_USERS_();
+  var lower = check.username.toLowerCase();
+  var loaded = loadCompetitionData_(cfg);
+  var data = loaded.data;
+  var ownRecords = (Array.isArray(data[lower]) ? data[lower] : []).slice()
+    .sort(function (x, y) { return new Date(y.createdAt) - new Date(x.createdAt); });
+
+  var now = new Date();
+  var currentMonthKey = now.getUTCFullYear() + '-' + pad2_(now.getUTCMonth() + 1);
+  var currentYear = now.getUTCFullYear();
+  // Dec 30 of the current year, end-of-day UTC — the yearly period is
+  // Jan 1 - Dec 30 (not Dec 31), per how the competition was defined.
+  var currentYearCloses = Date.UTC(currentYear, 11, 31); // first instant AFTER Dec 30
+
+  // Every month/year key either user has at least one record in, so a
+  // period both users happened to record zero time in still isn't silently
+  // skipped once it's closed (it's a legitimate tie).
+  var monthKeys = {}, yearKeys = {};
+  users.forEach(function (u) {
+    (Array.isArray(data[u]) ? data[u] : []).forEach(function (r) {
+      var d = new Date(r.createdAt);
+      monthKeys[d.getUTCFullYear() + '-' + pad2_(d.getUTCMonth() + 1)] = true;
+      yearKeys[d.getUTCFullYear()] = true;
+    });
+  });
+
+  var monthlyResults = Object.keys(monthKeys).filter(function (k) { return k < currentMonthKey; })
+    .sort().map(function (key) {
+      var parts = key.split('-');
+      var y = Number(parts[0]), m = Number(parts[1]);
+      var totals = competitionTotalsForPeriod_(data, users, function (d) {
+        return d.getUTCFullYear() === y && d.getUTCMonth() + 1 === m;
+      });
+      var result = competitionResultFromTotals_(users, totals);
+      result.period = key;
+      result.label = COMPETITION_MONTH_NAMES_[m - 1] + ' ' + y;
+      return result;
+    });
+
+  var yearlyResults = Object.keys(yearKeys).map(Number).filter(function (y) {
+    return Date.UTC(y, 11, 31) <= now.getTime();
+  }).sort().map(function (y) {
+    var totals = competitionTotalsForPeriod_(data, users, function (d) {
+      return d.getUTCFullYear() === y && Date.UTC(y, 0, 1) <= d.getTime() && d.getTime() < Date.UTC(y, 11, 31);
+    });
+    var result = competitionResultFromTotals_(users, totals);
+    result.period = String(y);
+    result.label = String(y);
+    return result;
+  });
+
+  return {
+    ok: true,
+    ownRecords: ownRecords,
+    monthlyResults: monthlyResults,
+    yearlyResults: yearlyResults,
+    currentMonthLabel: COMPETITION_MONTH_NAMES_[now.getUTCMonth()] + ' ' + currentYear,
+    currentYearLabel: String(currentYear),
+    currentYearClosed: currentYearCloses <= now.getTime(),
+  };
 }

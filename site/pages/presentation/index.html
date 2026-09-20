@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // Applied before CSS resolves so a returning visitor's saved theme doesn't flash.
+  try{
+    var t = localStorage.getItem('bt-theme');
+    if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
+  }catch(e){}
+</script>
+<title>Brighter Trails</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --ground:#F7F4EA;
+    --ground-raised:#FFFFFF;
+    --ink:#1C2A20;
+    --ink-soft:rgba(28,42,32,0.64);
+    --ink-faint:rgba(28,42,32,0.40);
+    --forest:#2C4B31;
+    --forest-2:#3C6142;
+    --moss:#6E8F5C;
+    --sun:#DC9A34;
+    --sun-ink:#7A5215;
+    --sky:#3E7185;
+    --line:rgba(28,42,32,0.14);
+    --line-strong:rgba(28,42,32,0.24);
+    --card-bg:#FFFFFF;
+    --shadow:0 1px 2px rgba(28,42,32,0.05), 0 10px 28px -14px rgba(28,42,32,0.28);
+    --chrome-bg:rgba(247,244,234,0.82);
+    --chrome-ink:#1C2A20;
+    --danger:#A64B3C;
+
+    /* fixed waypoint identity — intentionally constant across themes */
+    --wp-bg:#152218;
+    --wp-bg-2:#1E3324;
+    --wp-ink:#F3ECD9;
+    --wp-ink-soft:rgba(243,236,217,0.68);
+    --wp-accent:#E7AC4E;
+    --wp-line:rgba(243,236,217,0.16);
+
+    /* fixed solid-fill identity for chips/headers/primary nodes — always a deep
+       forest fill with cream text, regardless of theme (a filled surface, not
+       a text color, so it must not flip with --forest) */
+    --solid-fill:#2C4B31;
+    --solid-fill-2:#3C6142;
+    --solid-ink:#F3EFDF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#12180F;
+      --ground-raised:#181F16;
+      --ink:#ECE7D9;
+      --ink-soft:rgba(236,231,217,0.66);
+      --ink-faint:rgba(236,231,217,0.42);
+      --forest:#8FBB88;
+      --forest-2:#6E8F5C;
+      --moss:#9BB98B;
+      --sun:#EFB85B;
+      --sun-ink:#F6D19B;
+      --sky:#7FB2C4;
+      --line:rgba(236,231,217,0.14);
+      --line-strong:rgba(236,231,217,0.26);
+      --card-bg:#181F16;
+      --shadow:0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.6);
+      --chrome-bg:rgba(18,24,15,0.82);
+      --chrome-ink:#ECE7D9;
+      --danger:#D98C7C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#12180F;
+    --ground-raised:#181F16;
+    --ink:#ECE7D9;
+    --ink-soft:rgba(236,231,217,0.66);
+    --ink-faint:rgba(236,231,217,0.42);
+    --forest:#8FBB88;
+    --forest-2:#6E8F5C;
+    --moss:#9BB98B;
+    --sun:#EFB85B;
+    --sun-ink:#F6D19B;
+    --sky:#7FB2C4;
+    --line:rgba(236,231,217,0.14);
+    --line-strong:rgba(236,231,217,0.26);
+    --card-bg:#181F16;
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.6);
+    --chrome-bg:rgba(18,24,15,0.82);
+    --chrome-ink:#ECE7D9;
+    --danger:#D98C7C;
+  }
+
+  /* ============ RESET / BASE ============ */
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Work Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  h1,h2,h3,p,ul,ol{margin:0;}
+  ul,ol{padding:0;list-style:none;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  .serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+  /* ============ DECK / SLIDES ============ */
+  #deck{
+    display:flex;
+    height:100dvh;
+    width:100vw;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+  }
+  #deck::-webkit-scrollbar{display:none;}
+  .slide{
+    flex:0 0 100vw;
+    height:100dvh;
+    scroll-snap-align:start;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:clamp(1.4rem,4vw,3.2rem) clamp(1.6rem,7vw,7rem);
+  }
+  .slide-inner{
+    width:100%;
+    max-width:1200px;
+    max-height:100%;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(0.9rem,2vw,1.6rem);
+    scrollbar-width:none;
+  }
+  .slide-inner::-webkit-scrollbar{display:none;}
+
+  .slide--content{
+    background:
+      radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0) 0 0/30px 30px,
+      var(--ground);
+  }
+  .slide--waypoint{
+    background:
+      radial-gradient(ellipse 900px 500px at 82% 8%, var(--wp-bg-2) 0%, transparent 60%),
+      var(--wp-bg);
+    color:var(--wp-ink);
+  }
+
+  /* ============ TYPE ============ */
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--sun-ink);
+    font-weight:600;
+  }
+  .slide--waypoint .kicker{color:var(--wp-accent);}
+  .headline{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(1.9rem,4vw,3.2rem);
+    line-height:1.08;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .headline--xl{font-size:clamp(3rem,7.2vw,6.4rem); font-weight:600;}
+  .lede{
+    font-size:clamp(1rem,1.5vw,1.22rem);
+    color:var(--ink-soft);
+    max-width:62ch;
+    line-height:1.55;
+  }
+  .slide--waypoint .lede{color:var(--wp-ink-soft);}
+  .quote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,3.1vw,2.6rem);
+    line-height:1.28;
+    text-wrap:balance;
+    max-width:22ch;
+  }
+  .quote--lg{font-size:clamp(1.8rem,4vw,3.4rem); max-width:20ch;}
+  .body-text{font-size:clamp(0.95rem,1.15vw,1.05rem); line-height:1.6; color:var(--ink-soft); max-width:60ch;}
+  .slide--waypoint .body-text{color:var(--wp-ink-soft);}
+  .label-sm{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint);}
+
+  /* trail-blaze bullet marker */
+  .blaze-list{display:flex; flex-direction:column; gap:0.7rem;}
+  .blaze-list li{position:relative; padding-left:1.4rem; font-size:clamp(0.92rem,1.1vw,1.02rem); line-height:1.5; color:var(--ink);}
+  .blaze-list li::before{
+    content:'';
+    position:absolute; left:0; top:0.28em;
+    width:9px; height:9px;
+    background:var(--sun);
+    clip-path:polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  .blaze-list li b, .blaze-list li strong{color:var(--forest);}
+  .slide--waypoint .blaze-list li{color:var(--wp-ink);}
+
+  /* ============ LAYOUT HELPERS ============ */
+  .row{display:flex; gap:clamp(1rem,3vw,2.4rem);}
+  .row--wrap{flex-wrap:wrap;}
+  .col{display:flex; flex-direction:column; gap:0.6rem;}
+  .grid{display:grid; gap:clamp(0.8rem,1.6vw,1.3rem);}
+  .grid-2{grid-template-columns:1fr 1fr;}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  .divider{height:1px; background:var(--line); width:100%;}
+  .stack-sm{display:flex; flex-direction:column; gap:0.35rem;}
+
+  /* ============ COMPONENTS ============ */
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:clamp(1rem,1.6vw,1.4rem);
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:0.5rem;
+  }
+  .card .card-num{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--sun-ink); font-weight:600;}
+  .card h3{font-family:'Fraunces',serif; font-size:clamp(1.05rem,1.5vw,1.3rem); font-weight:600; color:var(--forest);}
+  .card p{font-size:0.9rem; line-height:1.5; color:var(--ink-soft);}
+
+  .tag{
+    display:inline-flex; align-items:center; gap:0.3em;
+    font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:0.24em 0.6em; border-radius:99px; font-weight:600;
+    border:1px solid var(--line-strong);
+    color:var(--ink-soft);
+    width:fit-content;
+  }
+  .tag--core{background:var(--solid-fill); border-color:var(--solid-fill); color:var(--solid-ink);}
+  .tag--explore{background:transparent; border-color:var(--sun); color:var(--sun-ink);}
+  .slide--waypoint .tag{border-color:var(--wp-line); color:var(--wp-ink-soft);}
+
+  .stat{display:flex; flex-direction:column; gap:0.2rem;}
+  .stat .num{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(1.8rem,3.2vw,2.7rem); color:var(--forest); font-variant-numeric:tabular-nums; line-height:1;}
+  .stat .cap{font-size:0.8rem; color:var(--ink-soft); max-width:20ch;}
+
+  table{border-collapse:collapse; width:100%;}
+  .ttable th{
+    font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase;
+    text-align:left; color:var(--solid-ink); background:var(--solid-fill);
+    padding:0.55em 0.8em; font-weight:600;
+  }
+  .ttable th:first-child{border-radius:5px 0 0 0;}
+  .ttable th:last-child{border-radius:0 5px 0 0;}
+  .ttable td{
+    padding:0.6em 0.8em; border-bottom:1px solid var(--line);
+    font-size:0.88rem; color:var(--ink); vertical-align:top;
+  }
+  .ttable tr:last-child td{border-bottom:none;}
+  .ttable td.name{font-weight:600; color:var(--forest);}
+  .ttable td.dim{color:var(--ink-soft);}
+
+  .badge-sdg{
+    border:1px solid var(--line-strong); border-radius:6px; padding:0.9rem 1rem;
+    display:flex; flex-direction:column; gap:0.35rem; background:var(--card-bg); box-shadow:var(--shadow);
+  }
+  .badge-sdg .sdg-num{font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:1.05rem; letter-spacing:0.03em; color:var(--sun-ink);}
+  .badge-sdg h4{font-family:'Fraunces',serif; font-size:1rem; font-weight:600; color:var(--forest);}
+  .badge-sdg p{font-size:0.82rem; color:var(--ink-soft); line-height:1.45;}
+
+  /* checklist grid (safety steps) */
+  .step{
+    display:flex; gap:0.7rem; align-items:flex-start;
+    border-left:2px solid var(--line-strong); padding-left:0.8rem;
+  }
+  .step .step-n{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:0.78rem; color:var(--solid-ink);
+    background:var(--solid-fill); border-radius:50%; width:1.6rem; height:1.6rem;
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .step p{font-size:0.88rem; color:var(--ink); line-height:1.4; padding-top:0.15rem;}
+
+  /* vertical timeline */
+  .timeline{position:relative; display:flex; flex-direction:column; gap:0;}
+  .timeline::before{
+    content:''; position:absolute; left:5.6rem; top:0.4rem; bottom:0.4rem; width:1.5px; background:var(--line-strong);
+  }
+  .t-item{display:grid; grid-template-columns:5.6rem 1.6rem 1fr; align-items:start; padding:0.55rem 0;}
+  .t-date{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--ink-soft); padding-top:0.15rem; text-align:right; padding-right:0.9rem;}
+  .t-dot-wrap{display:flex; justify-content:center;}
+  .t-dot{width:9px; height:9px; margin-top:0.32rem; background:var(--sun); clip-path:polygon(50% 0%, 100% 100%, 0% 100%); z-index:1;}
+  .t-body h4{font-family:'Fraunces',serif; font-size:0.98rem; font-weight:600; color:var(--forest); margin-bottom:0.1rem;}
+  .t-body p{font-size:0.8rem; color:var(--ink-soft); line-height:1.4;}
+
+  /* org flow diagram */
+  .flow{display:flex; align-items:center; justify-content:center; gap:0.6rem; flex-wrap:wrap;}
+  .flow-node{
+    background:var(--card-bg); border:1px solid var(--line-strong); border-radius:6px;
+    padding:0.9rem 1.1rem; text-align:center; box-shadow:var(--shadow);
+    min-width:150px; max-width:220px; flex:1 1 190px;
+  }
+  .flow-node.primary{background:var(--solid-fill); border-color:var(--solid-fill);}
+  .flow-node.primary h4{color:var(--solid-ink);}
+  .flow-node h4{font-family:'Fraunces',serif; font-weight:600; font-size:0.95rem; color:var(--forest); margin-bottom:0.25rem;}
+  .flow-node p{font-size:0.74rem; color:var(--ink-soft); line-height:1.35;}
+  .flow-node.primary p{color:rgba(243,239,223,0.75);}
+  .flow-arrow{font-size:1.3rem; color:var(--ink-faint); flex:none;}
+  .flow-support{display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;}
+
+  /* loop diagram (explore -> act -> learn -> lead -> repeat) */
+  .loop{display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;}
+  .loop-node{display:flex; flex-direction:column; align-items:center; gap:0.45rem; width:104px;}
+  .loop-node .loop-n{
+    width:2.7rem; height:2.7rem; border-radius:50%; background:var(--card-bg);
+    border:1.5px solid var(--line-strong); display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; color:var(--forest); box-shadow:var(--shadow);
+  }
+  .loop-node h4{font-family:'Fraunces',serif; font-weight:600; font-size:0.85rem; color:var(--ink); text-align:center;}
+  .loop-node--repeat .loop-n{background:var(--solid-fill); border-color:var(--solid-fill); color:var(--solid-ink); font-size:1.15rem;}
+
+  /* real photos — framed, captioned */
+  .pic{border-radius:8px; overflow:hidden; box-shadow:var(--shadow); position:relative; background:var(--line);}
+  .pic img{display:block; width:100%; height:100%; object-fit:cover;}
+  .pic .pic-cap{
+    position:absolute; left:0; right:0; bottom:0; padding:0.5rem 0.7rem;
+    background:linear-gradient(180deg, transparent, rgba(10,14,9,0.72));
+    color:#F3EFDF; font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.03em; line-height:1.3;
+  }
+  .photo-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:100px; grid-auto-flow:dense; gap:0.6rem;}
+
+  /* full-bleed photo slides (hero/hook/alarm moments) */
+  .slide--photo{color:#F3ECD9;}
+  .slide--photo .photo-bg{position:absolute; inset:0; background-size:cover; background-position:center; z-index:0;}
+  .slide--photo .photo-overlay{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(15,20,14,0.30) 0%, rgba(15,20,14,0.48) 45%, rgba(15,20,14,0.90) 100%);
+  }
+  .slide--photo .slide-inner{position:relative; z-index:2;}
+  .slide--photo .kicker{color:var(--wp-accent);}
+  .slide--photo .lede{color:rgba(243,236,217,0.78);}
+  .slide--photo .headline, .slide--photo .quote{color:#F3ECD9;}
+  .slide--photo .label-sm{color:rgba(243,236,217,0.55);}
+
+  /* completed (past) timeline marker — solid dot instead of a blaze mark */
+  .t-dot--done{clip-path:none; border-radius:50%; background:var(--forest);}
+
+  /* hook connector: two poles joined by a dashed line with a circled question mark */
+  .connector{display:flex; align-items:center; justify-content:center; width:100%; max-width:620px; margin:0 auto;}
+  .connector-pole{flex:none; display:flex; flex-direction:column; align-items:center; gap:0.3rem;}
+  .connector-pole .connector-icon{width:2.6rem; height:2.6rem; object-fit:contain;}
+  .connector-pole .connector-label{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.06em; line-height:1.5; text-align:center; color:var(--wp-ink);}
+  .connector-line{flex:1; height:1px; background:repeating-linear-gradient(to right, var(--wp-line) 0 6px, transparent 6px 13px); margin:0 1.1rem; display:flex; align-items:center; justify-content:center;}
+  .connector-q{
+    background:var(--wp-bg); border:1.5px solid var(--wp-accent); color:var(--wp-accent);
+    width:2.7rem; height:2.7rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; flex:none;
+  }
+
+  /* majority-share bars (real registration data) */
+  .majority{display:flex; flex-direction:column; gap:1rem; width:100%;}
+  .majority-row{display:flex; flex-direction:column; gap:0.4rem;}
+  .majority-label{display:flex; justify-content:space-between; align-items:baseline; gap:0.6rem;}
+  .majority-label strong{font-family:'Fraunces',serif; font-weight:600; color:var(--forest); font-size:1rem;}
+  .majority-bar{display:flex; width:100%; height:2.3rem; border-radius:6px; overflow:hidden; box-shadow:var(--shadow);}
+  .majority-seg{display:flex; align-items:center; padding:0 0.7rem; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600; white-space:nowrap; overflow:hidden;}
+  .majority-seg--bright{background:var(--solid-fill); color:var(--solid-ink);}
+  .majority-seg--other{background:var(--line-strong); color:var(--ink-soft);}
+  .slide--waypoint .majority-label strong{color:var(--wp-ink);}
+  .slide--waypoint .majority-seg--other{background:rgba(243,236,217,0.14); color:var(--wp-ink-soft);}
+
+  /* bare chapter-marker title (no quote) — a brief, simple pause between acts */
+  .chapter-title{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(2.2rem,5vw,4rem); color:var(--wp-ink);}
+
+  .logo-mark{display:block; flex:none;}
+
+  /* ============ CHROME ============ */
+  #progress-bar{position:fixed; top:0; left:0; height:3px; background:var(--sun); z-index:60; transition:width 0.35s ease;}
+  #topbar{
+    position:fixed; top:3px; left:0; right:0; z-index:55;
+    height:46px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 clamp(1rem,3vw,2rem);
+    background:var(--chrome-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    color:var(--chrome-ink);
+  }
+  #topbar .tb-left{display:flex; align-items:center; gap:0.55rem;}
+  #topbar .tb-word{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; font-weight:600;}
+  #topbar .tb-mid{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); opacity:0.85;}
+  #topbar .tb-right{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-variant-numeric:tabular-nums; color:var(--ink-soft);}
+
+  #navbar{
+    position:fixed; right:clamp(0.9rem,2.5vw,1.8rem); bottom:clamp(0.9rem,2.5vw,1.8rem); z-index:55;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .nbtn{
+    width:2.4rem; height:2.4rem; border-radius:50%; border:1px solid var(--line-strong);
+    background:var(--chrome-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    color:var(--chrome-ink); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:1rem; transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .nbtn:hover{transform:translateY(-1px); background:var(--ground-raised);}
+  .nbtn:active{transform:translateY(0px);}
+  .nbtn:focus-visible{outline:2px solid var(--sun); outline-offset:2px;}
+
+  .clickzone{position:fixed; top:46px; bottom:0; width:5%; z-index:40; cursor:pointer;}
+  .clickzone.left{left:0;}
+  .clickzone.right{right:0;}
+
+  @media (max-width:760px){
+    .grid-2, .grid-3, .grid-4{grid-template-columns:1fr;}
+    .timeline::before{left:4.4rem;}
+    .t-date{width:4.4rem;}
+    .t-item{grid-template-columns:4.4rem 1.2rem 1fr;}
+    #topbar .tb-mid{display:none;}
+    .clickzone{width:9%;}
+    .photo-grid{grid-template-columns:repeat(2,1fr);}
+    .loop-node{width:84px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:0%"></div>
+<div id="topbar">
+  <div class="tb-left">
+    <svg class="logo-mark" width="20" height="16" viewBox="0 0 100 80" aria-hidden="true">
+      <circle cx="50" cy="30" r="16" fill="var(--sun)"/>
+      <path d="M0,78 L28,40 L46,58 L64,32 L100,78 Z" fill="var(--forest)"/>
+    </svg>
+    <span class="tb-word">BRIGHTER TRAILS</span>
+  </div>
+  <div class="tb-mid" id="tb-section">Opening</div>
+  <div class="tb-right" id="tb-counter">01 / 34</div>
+</div>
+
+<div class="clickzone left" id="zone-prev" aria-hidden="true"></div>
+<div class="clickzone right" id="zone-next" aria-hidden="true"></div>
+
+<div id="navbar">
+  <button class="nbtn" id="btn-theme" title="Theme: auto — click to change" aria-label="Toggle color theme">◐</button>
+  <button class="nbtn" id="btn-fs" title="Toggle fullscreen (f)" aria-label="Toggle fullscreen">⛶</button>
+  <button class="nbtn" id="btn-prev" title="Previous (←)" aria-label="Previous slide">‹</button>
+  <button class="nbtn" id="btn-next" title="Next (→)" aria-label="Next slide">›</button>
+</div>
+
+<main id="deck">
+
+  <!-- S1 — TITLE (real photo) -->
+  <section class="slide slide--photo" data-section="Opening">
+    <div class="photo-bg" style="background-image:url('assets/trail-sunset-walk.jpg');"></div>
+    <div class="photo-overlay"></div>
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:1.5rem;">
+      <p class="kicker">Student Organization Proposal</p>
+      <img src="assets/brighter-trails-logo.png" alt="Brighter Trails logo" style="width:76px; height:auto;">
+      <h1 class="headline headline--xl serif">Brighter Trails</h1>
+      <p class="quote" style="max-width:26ch;">A B.R.I.G.H.T. Student Organization</p>
+      <p class="lede" style="max-width:44ch;">Environmental stewardship through student leadership and community action.</p>
+      <div class="divider" style="background:rgba(243,236,217,0.25); max-width:220px; margin:0.4rem auto;"></div>
+      <p class="mono" style="font-size:0.72rem; letter-spacing:0.06em; color:rgba(243,236,217,0.72);">Prepared by the Brighter Trails Core Group &nbsp;·&nbsp; In affiliation with Trash Free Trails (TFT) &nbsp;·&nbsp; September 1, 2026</p>
+    </div>
+  </section>
+
+  <!-- S2 — HOOK: WHAT CONNECTS US? -->
+  <section class="slide slide--waypoint" data-section="Opening">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:2rem;">
+      <p class="kicker">Before we talk about an organization</p>
+      <h2 class="headline serif" style="color:var(--wp-ink); font-size:clamp(1.5rem,2.9vw,2.3rem); max-width:32ch;">What's one value that already connects B.R.I.G.H.T. Academy and environmental stewardship?</h2>
+      <div class="connector" style="margin-top:0.6rem;">
+        <div class="connector-pole">
+          <img class="connector-icon" src="assets/brighter-trails-logo.png" alt="">
+          <span class="connector-label">B.R.I.G.H.T.<br>ACADEMY</span>
+        </div>
+        <div class="connector-line"><span class="connector-q">?</span></div>
+        <div class="connector-pole">
+          <svg class="connector-icon" viewBox="0 0 24 24" fill="none" stroke="var(--wp-accent)" stroke-width="1.4" aria-hidden="true"><path d="M12 21c4-3 7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 3 8 7 11Z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+          <span class="connector-label">THE<br>ENVIRONMENT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 — A SHARED RESPONSIBILITY (SDG REVEAL) -->
+  <section class="slide slide--content" data-section="Opening">
+    <div class="slide-inner">
+      <p class="kicker">A shared responsibility</p>
+      <h2 class="headline">The answer: <span style="color:var(--sun-ink);">SDGs</span> — the Sustainable Development Goals</h2>
+      <p class="body-text">The UN's 17 Sustainable Development Goals are the framework schools worldwide are asked to teach toward. Three <strong style="color:var(--forest);">SDGs</strong> connect B.R.I.G.H.T. and environmental stewardship directly.</p>
+      <div class="grid grid-3" style="margin-top:0.3rem;">
+        <div class="badge-sdg"><span class="sdg-num">SDG 4</span><h4>Quality Education</h4><p>Target 4.7 — education that builds the knowledge and skills for sustainable development.</p></div>
+        <div class="badge-sdg"><span class="sdg-num">SDG 15</span><h4>Life on Land</h4><p>Protecting trails, mountains, and natural spaces — beyond the coast.</p></div>
+        <div class="badge-sdg"><span class="sdg-num">SDG 17</span><h4>Partnerships for the Goals</h4><p>Cross-sector partnership between students, school, and TFT.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 — THE BRIDGE -->
+  <section class="slide slide--waypoint" data-section="Opening">
+    <div class="slide-inner" style="align-items:flex-start; gap:1.3rem;">
+      <p class="kicker">The bridge</p>
+      <h2 class="quote quote--lg">"If education is meant to build responsible, capable people, environmental stewardship can become part of that education."</h2>
+      <p class="lede">Not a separate obligation. An extension of what school is already for.</p>
+    </div>
+  </section>
+
+  <!-- S5 — THE OPPORTUNITY (KNOW -> CARE -> ACT -> CONTINUE) -->
+  <section class="slide slide--content" data-section="Opening">
+    <div class="slide-inner" style="align-items:center;">
+      <p class="kicker" style="align-self:flex-start;">The opportunity</p>
+      <h2 class="headline" style="align-self:flex-start;">Students already know. Most already care. Few get to keep acting.</h2>
+      <div class="flow" style="margin-top:0.9rem;">
+        <div class="flow-node"><h4>Know</h4><p>Environmental lessons in the classroom</p></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node"><h4>Care</h4><p>Awareness turns into concern</p></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node"><h4>Act</h4><p>An occasional activity, one day at a time</p></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node primary"><h4>Continue</h4><p>The missing piece — recurring, lasting practice</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 — WHY IT MATTERS (ALARMING STAT, used once) -->
+  <section class="slide slide--photo" data-section="Opening">
+    <div class="photo-bg" style="background-image:url('assets/trash-bag-carry.jpg');"></div>
+    <div class="photo-overlay"></div>
+    <div class="slide-inner" style="align-items:flex-start; gap:1rem;">
+      <p class="kicker">Why "continue" matters</p>
+      <p class="serif" style="font-size:clamp(2.4rem,5.6vw,4.2rem); font-weight:600; line-height:1.02; max-width:14ch;">8–11 million tonnes</p>
+      <p class="lede" style="max-width:46ch; font-size:1.08rem;">of plastic enter the world's oceans every year — and the Philippines is home to seven of the world's ten most plastic-polluted rivers.</p>
+      <p class="label-sm" style="margin-top:0.2rem;">Sources: 2026 ocean-plastic trackers (Our World in Data, Ocean Blue Project); river plastic-emissions research cited in Philippine environmental reporting</p>
+    </div>
+  </section>
+
+  <!-- S7 — OUR PROPOSAL -->
+  <section class="slide slide--content" data-section="Opening">
+    <div class="slide-inner" style="align-items:center; text-align:center;">
+      <p class="kicker">Our solution</p>
+      <img src="assets/brighter-trails-logo.png" alt="Brighter Trails logo" style="width:108px; height:auto; margin:0.2rem 0 0.4rem;">
+      <h2 class="headline" style="max-width:36ch;">Our solution to that gap is Brighter Trails</h2>
+      <p class="lede" style="max-width:52ch;">Turning environmental education into recurring, hands-on action — not a one-day activity, but a lasting practice.</p>
+    </div>
+  </section>
+
+  <!-- S8 — ROADMAP -->
+  <section class="slide slide--content" data-section="Opening">
+    <div class="slide-inner">
+      <p class="kicker">How we'll walk through this</p>
+      <h2 class="headline">Eight stops on the trail</h2>
+      <div class="grid grid-2" style="margin-top:0.4rem;">
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">01</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Foundation</strong><span class="body-text" style="max-width:none;">What Brighter Trails &amp; TFT are</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">02</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Philosophy</strong><span class="body-text" style="max-width:none;">Why this, why now</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">03</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Structure</strong><span class="body-text" style="max-width:none;">Who leads, how it works</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">04</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Programs</strong><span class="body-text" style="max-width:none;">What we'll actually run</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">05</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Risk &amp; Cost</strong><span class="body-text" style="max-width:none;">Being prepared, briefly</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">06</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Timeline</strong><span class="body-text" style="max-width:none;">The year, mapped out</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">07</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">Proof</strong><span class="body-text" style="max-width:none;">What's already happened</span></div>
+        <div class="col"><span class="mono" style="color:var(--sun-ink); font-weight:600;">08</span><strong style="font-family:'Fraunces',serif; color:var(--forest);">The Ask</strong><span class="body-text" style="max-width:none;">What we need from you</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S9 — TRANSITION: FOUNDATION -->
+  <section class="slide slide--waypoint" data-section="01 — Foundation">
+    <div class="slide-inner" style="align-items:flex-start; gap:1.2rem;">
+      <p class="kicker">01 — Foundation</p>
+      <h2 class="quote quote--lg" style="font-size:clamp(1.6rem,3.4vw,2.8rem);">"We're not starting<br>from zero."</h2>
+      <p class="lede">At real TFT Cebu cleanups, B.R.I.G.H.T. students haven't just shown up — they've regularly made up the majority.</p>
+      <div class="majority" style="margin-top:0.4rem;">
+        <div class="majority-row">
+          <div class="majority-label"><strong style="color:var(--wp-ink);">TFT Mangrove Planting — Feb 21, 2026</strong><span class="label-sm">44 total participants</span></div>
+          <div class="majority-bar">
+            <div class="majority-seg majority-seg--bright" style="width:63.6%;">B.R.I.G.H.T. — 28 (64%)</div>
+            <div class="majority-seg majority-seg--other" style="width:36.4%;">Other schools — 16</div>
+          </div>
+        </div>
+        <div class="majority-row">
+          <div class="majority-label"><strong style="color:var(--wp-ink);">TFT Trash Picking — Feb 2, 2026</strong><span class="label-sm">33 total participants</span></div>
+          <div class="majority-bar">
+            <div class="majority-seg majority-seg--bright" style="width:66.7%;">B.R.I.G.H.T. — 22 (67%)</div>
+            <div class="majority-seg majority-seg--other" style="width:33.3%;">Other schools — 11</div>
+          </div>
+        </div>
+      </div>
+      <p class="label-sm">Source: Trash Free Trails registration data</p>
+    </div>
+  </section>
+
+  <!-- S10 — WHAT IS BRIGHTER TRAILS / WHAT IS TFT -->
+  <section class="slide slide--content" data-section="01 — Foundation">
+    <div class="slide-inner">
+      <p class="kicker">The basics, first</p>
+      <h2 class="headline">What Brighter Trails is — and who we'd run it with</h2>
+      <div class="grid grid-2" style="margin-top:0.4rem; align-items:start;">
+        <div class="card">
+          <div class="row" style="align-items:center; gap:0.55rem;">
+            <img src="assets/brighter-trails-logo.png" alt="Brighter Trails logo" style="width:32px; height:32px; object-fit:contain; flex:none;">
+            <h3>Brighter Trails</h3>
+          </div>
+          <p>A student-led environmental organization that organizes cleanup and restoration activities in natural spaces, develops student leadership, and builds community stewardship.</p>
+        </div>
+        <div class="card">
+          <div class="row" style="align-items:center; gap:0.55rem;">
+            <img src="assets/tft-badge.png" alt="Trash Free Trails badge" style="width:32px; height:32px; border-radius:50%; object-fit:cover; flex:none;">
+            <h3>Trash Free Trails (TFT)</h3>
+          </div>
+          <p>An established global environmental movement — a registered non-profit protecting trails and natural spaces through a "Do It Ourselves" (DIO) approach, operating as a "Community of Communities."</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="label-sm">We operate in line with TFT — using their proven frameworks and resources, while keeping full autonomy in planning and execution.</p>
+    </div>
+  </section>
+
+  <!-- S11 — TFT STATS -->
+  <section class="slide slide--content" data-section="01 — Foundation">
+    <div class="slide-inner">
+      <p class="kicker">Trash Free Trails (TFT)</p>
+      <h2 class="headline">An established global movement, not a startup idea</h2>
+      <p class="body-text">TFT's own track record — the resources and standards we'd be operating under.</p>
+      <div class="grid grid-4" style="margin-top:0.3rem;">
+        <div class="stat"><span class="num">572,830+</span><span class="cap">items of single-use pollution removed &amp; surveyed</span></div>
+        <div class="stat"><span class="num">15,408+</span><span class="cap">kilometers of trails cleared</span></div>
+        <div class="stat"><span class="num">78%</span><span class="cap">of volunteers report increased connection to nature</span></div>
+        <div class="stat"><span class="num">Multi-continent</span><span class="cap">active community hubs &amp; partnerships</span></div>
+      </div>
+      <div class="pic" style="height:150px; margin-top:0.3rem;">
+        <img src="assets/global-tft-group.jpg" alt="Trash Free Trails volunteers gathered at a global cleanup event">
+        <span class="pic-cap">Trash Free Trails — a global "Community of Communities," not just us.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S12 — PARTNERSHIP -->
+  <section class="slide slide--content" data-section="01 — Foundation">
+    <div class="slide-inner">
+      <p class="kicker">Our local connection</p>
+      <h2 class="headline">An authorized partner, not a loose association</h2>
+      <div class="grid grid-2" style="margin-top:0.3rem; align-items:start;">
+        <div class="stack-sm">
+          <p class="body-text" style="max-width:none;">We operate in direct partnership with <strong style="color:var(--forest);">Trash Free Trails Cebu</strong>, led by <strong style="color:var(--forest);">Sem Kim</strong>, who serves as our Strategic Advisor — guiding organizational decisions, ensuring TFT standards, and opening doors to TFT's resources.</p>
+          <ul class="blaze-list" style="margin-top:0.4rem;">
+            <li>Host cleanups under TFT's proven framework</li>
+            <li>Operate with full authority in TFT's name</li>
+            <li>Follow TFT's safety &amp; citizen-science standards</li>
+            <li>Retain full autonomy in planning &amp; execution</li>
+          </ul>
+        </div>
+        <div class="pic" style="height:340px;">
+          <img src="assets/tft-shirt-closeup.jpg" alt="B.R.I.G.H.T. Academy students at a Trash Free Trails Cebu briefing">
+          <span class="pic-cap">Our own students, in TFT Cebu gear, at a real briefing.</span>
+        </div>
+      </div>
+      <p class="quote" style="font-size:clamp(1.1rem,1.8vw,1.5rem); max-width:50ch; color:var(--forest);">Credibility and access — without giving up student ownership.</p>
+    </div>
+  </section>
+
+  <!-- S13 — CHAPTER: PHILOSOPHY -->
+  <section class="slide slide--waypoint" data-section="02 — Philosophy">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:0.8rem;">
+      <p class="kicker">02</p>
+      <h2 class="chapter-title">Philosophies</h2>
+    </div>
+  </section>
+
+  <!-- S15 — THREE PILLARS OVERVIEW -->
+  <section class="slide slide--content" data-section="02 — Philosophy">
+    <div class="slide-inner">
+      <p class="kicker">The philosophy, in three parts</p>
+      <h2 class="headline">Three Core Pillar Philosophies of Brighter Trails</h2>
+      <div class="grid grid-3" style="margin-top:0.5rem;">
+        <div class="card"><span class="card-num">01</span><h3>Student Leadership &amp; Development</h3><p>Students plan, lead, and carry real responsibility — from idea to execution.</p></div>
+        <div class="card"><span class="card-num">02</span><h3>Real Environmental Action</h3><p>Restoration and citizen-science data, not just removal.</p></div>
+        <div class="card"><span class="card-num">03</span><h3>Transformation &amp; Lasting Change</h3><p>Built to outlast any single year, event, or student.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S16 — PILLAR 1 -->
+  <section class="slide slide--content" data-section="02 — Philosophy">
+    <div class="slide-inner">
+      <p class="kicker">Part one</p>
+      <h2 class="headline">Student Leadership &amp; Development</h2>
+      <div class="grid grid-3" style="margin-top:0.4rem;">
+        <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Student-Led Leadership</strong><p class="body-text" style="max-width:none;">Students conceptualize, recruit, and lead — from planning through execution.</p></div>
+        <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Practical Development</strong><p class="body-text" style="max-width:none;">Leadership, public speaking, and logistics grow as a byproduct — not the point.</p></div>
+        <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">A Place for Everyone</strong><p class="body-text" style="max-width:none;">No experience required. Participation comes first; skill follows.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S17 — PILLAR 2 -->
+  <section class="slide slide--content" data-section="02 — Philosophy">
+    <div class="slide-inner">
+      <p class="kicker">Part two</p>
+      <h2 class="headline">Real Environmental Action</h2>
+      <div class="grid grid-2" style="margin-top:0.5rem; align-items:center;">
+        <div class="stack-sm" style="gap:0.9rem;">
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Restoration, Not Just Removal</strong><p class="body-text" style="max-width:none;">We remove waste, but we also restore and appreciate the places we visit.</p></div>
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Beyond the Coast</strong><p class="body-text" style="max-width:none;">Extending B.R.I.G.H.T.'s coastal cleanup tradition to trails, mountains, and uplands.</p></div>
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Real Science, Real Data</strong><p class="body-text" style="max-width:none;">Citizen-science reporting connects naturally to Biology, DRRR, and Chemistry.</p></div>
+        </div>
+        <div class="pic" style="height:320px;">
+          <img src="assets/upland-gloves-cleanup.jpg" alt="Student in gloves collecting litter on an upland trail">
+          <span class="pic-cap">Trail cleanup, Kanirag Mountain — beyond the coast, in practice.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S18 — PILLAR 3 -->
+  <section class="slide slide--content" data-section="02 — Philosophy">
+    <div class="slide-inner">
+      <p class="kicker">Part three</p>
+      <h2 class="headline">Transformation &amp; Lasting Change</h2>
+      <div class="grid grid-2" style="margin-top:0.5rem; align-items:center;">
+        <div class="pic" style="height:320px;">
+          <img src="assets/mangrove-mud-action.jpg" alt="Students planting mangroves together in the mud">
+          <span class="pic-cap">Mangrove planting, Danao — a shared, memorable experience.</span>
+        </div>
+        <div class="stack-sm" style="gap:0.9rem;">
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Play to Learn</strong><p class="body-text" style="max-width:none;">Stewardship should be enjoyable, not just dutiful.</p></div>
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Built to Last</strong><p class="body-text" style="max-width:none;">Mentorship and handover so each cohort improves on the last.</p></div>
+          <div class="stack-sm"><strong style="font-family:'Fraunces',serif; color:var(--forest); font-size:1.02rem;">Wellbeing &amp; Nature Connection</strong><p class="body-text" style="max-width:none;">Time outdoors as a break from screen-heavy, scheduled school life.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S19 — CHAPTER: STRUCTURE -->
+  <section class="slide slide--waypoint" data-section="03 — Structure">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:0.8rem;">
+      <p class="kicker">03</p>
+      <h2 class="chapter-title">Organizational Structure</h2>
+    </div>
+  </section>
+
+  <!-- S12 — LEADERSHIP TEAM -->
+  <section class="slide slide--content" data-section="03 — Structure">
+    <div class="slide-inner">
+      <p class="kicker">The core group</p>
+      <h2 class="headline">Who's already in place</h2>
+      <div style="overflow-x:auto;">
+      <table class="ttable">
+        <thead><tr><th>Role</th><th>Name</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Executive Director</td><td>Bogue Kwon (12A)</td><td class="dim">Vision, strategy, partnerships</td></tr>
+          <tr><td class="name">Event Coordinator</td><td>Haeun Kang (11B)</td><td class="dim">Trail cleanup planning &amp; logistics</td></tr>
+          <tr><td class="name">Community Manager</td><td>Hamin Park (12B)</td><td class="dim">Recruitment &amp; outreach</td></tr>
+          <tr><td class="name">Finance &amp; Operations Manager</td><td>Yong Joon Kim (12A)</td><td class="dim">Budget &amp; procurement</td></tr>
+          <tr><td class="name">Flexible Contributor</td><td>David Heo (11B)</td><td class="dim">Social media, event-day support, data</td></tr>
+          <tr><td class="name">Strategic Advisor</td><td>Sem Kim — TFT Cebu</td><td class="dim">Guidance, standards, TFT access</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="label-sm">Roles set ahead of our first TFT cleanup — open to adding roles as the team grows.</p>
+    </div>
+  </section>
+
+  <!-- S13 — WORKING MODEL -->
+  <section class="slide slide--content" data-section="03 — Structure">
+    <div class="slide-inner" style="align-items:center;">
+      <p class="kicker" style="align-self:flex-start;">Organizational structure</p>
+      <h2 class="headline" style="align-self:flex-start;">How It Works</h2>
+      <div class="flow" style="margin-top:0.8rem;">
+        <div class="flow-node primary"><h4>Core Student Leadership</h4><p>Sets direction, coordinates projects, maintains the organization</p></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node"><h4>Project Leads</h4><p>Own individual initiatives, assemble temporary working teams</p></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node"><h4>Members &amp; Volunteers</h4><p>Participate in activities, support event execution</p></div>
+      </div>
+      <div class="row" style="margin-top:0.6rem; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
+        <div class="flow-node" style="min-width:200px;"><h4>School Contact</h4><p>A clear channel for school-related questions &amp; coordination</p></div>
+        <div class="flow-node" style="min-width:200px;"><h4>TFT Connection</h4><p>Established framework, community, tools &amp; opportunities</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S14 — SCHOOL COORDINATION -->
+  <section class="slide slide--content" data-section="03 — Structure">
+    <div class="slide-inner">
+      <p class="kicker">Where the school fits</p>
+      <h2 class="headline">A collaborative partnership, not a hand-off</h2>
+      <p class="body-text">Students lead and carry operational responsibility. The school isn't expected to plan or run activities — but its guidance matters at every stage.</p>
+      <div class="grid grid-2" style="margin-top:0.3rem;">
+        <div class="stack-sm">
+          <span class="label-sm">We'd ask the school to</span>
+          <ul class="blaze-list">
+            <li>Provide a designated school contact</li>
+            <li>Help us understand procedures — transportation, consent, off-campus activities</li>
+            <li>Guide us to the right office or process</li>
+            <li>Review our proposals and share feedback</li>
+          </ul>
+        </div>
+        <div class="stack-sm">
+          <span class="label-sm">In return, we commit to</span>
+          <ul class="blaze-list">
+            <li>Communicating in advance about major activities</li>
+            <li>Following all applicable school procedures</li>
+            <li>Staying open to adjustments that fit B.R.I.G.H.T.'s existing framework</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S15 — CHAPTER: PROGRAMS -->
+  <section class="slide slide--waypoint" data-section="04 — Programs">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:0.8rem;">
+      <p class="kicker">04</p>
+      <h2 class="chapter-title">Projects We're Planning</h2>
+    </div>
+  </section>
+
+  <!-- S16 — PROGRAMS OVERVIEW -->
+  <section class="slide slide--content" data-section="04 — Programs">
+    <div class="slide-inner">
+      <p class="kicker">Four initiatives, each independent</p>
+      <h2 class="headline">Projects we hope to run this year</h2>
+      <div class="grid grid-2" style="margin-top:0.3rem;">
+        <div class="card"><span class="tag tag--core">Core</span><h3>TFT Cleanup Activities</h3><p>2–3 initiatives — the anchor program, at trails, mountains, and parks.</p></div>
+        <div class="card"><span class="tag tag--core">Core</span><h3>Planting &amp; Restoration</h3><p>1 activity, if a suitable site and opportunity line up.</p></div>
+        <div class="card"><span class="tag tag--explore">Exploring</span><h3>School Environmental Activities</h3><p>On-campus stewardship, where welcomed by the school.</p></div>
+        <div class="card"><span class="tag tag--explore">Exploring · Not final</span><h3>Community Fun Run</h3><p>Feasibility, route, and timing still being reviewed.</p></div>
+      </div>
+      <p class="label-sm" style="margin-top:0.2rem;">Each can move forward, adjust, or pause independently — the plan doesn't depend on all four succeeding at once.</p>
+    </div>
+  </section>
+
+  <!-- S17 — TFT CLEANUP DETAIL -->
+  <section class="slide slide--content" data-section="04 — Programs">
+    <div class="slide-inner">
+      <p class="kicker">Program 01</p>
+      <h2 class="headline">TFT Cleanup Activities</h2>
+      <div class="grid grid-2" style="margin-top:0.4rem; align-items:center;">
+        <div class="stack-sm" style="gap:0.8rem;">
+          <p class="body-text" style="max-width:none;">Student-organized removal of litter and debris at trails, mountains, upland areas, and parks — beyond the school campus.</p>
+          <div class="grid grid-2" style="gap:0.7rem;">
+            <div class="col"><span class="label-sm">Goal</span><span style="font-weight:600;">2–3 initiatives / year</span></div>
+            <div class="col"><span class="label-sm">Frequency</span><span style="font-weight:600;">~ every 2–3 months</span></div>
+            <div class="col"><span class="label-sm">Participants (target)</span><span style="font-weight:600;">~40 per event</span></div>
+            <div class="col"><span class="label-sm">Event lead</span><span style="font-weight:600;">Appointed by student leadership</span></div>
+          </div>
+          <p class="label-sm">Key considerations → transportation, site risk, weather, participant age, consent, first aid.</p>
+        </div>
+        <div class="pic" style="height:300px;">
+          <img src="assets/upland-wide-landscape.jpg" alt="Wide view of an upland trail cleanup with volunteers scattered across the hillside">
+          <span class="pic-cap">An upland trail cleanup we've already run.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S18 — PLANTING & RESTORATION -->
+  <section class="slide slide--content" data-section="04 — Programs">
+    <div class="slide-inner">
+      <p class="kicker">Program 02</p>
+      <h2 class="headline">Planting &amp; Restoration Initiative</h2>
+      <div class="grid grid-2" style="margin-top:0.5rem; align-items:center;">
+        <div class="stack-sm" style="gap:0.7rem;">
+          <p class="body-text" style="max-width:none;">Gives students a longer-term, visible connection to a place they help care for — restoration, not just removal.</p>
+          <ul class="blaze-list">
+            <li>Locations: school grounds, cleanup sites, nearby parks</li>
+            <li>Considerations: site suitability, permissions, aftercare</li>
+          </ul>
+        </div>
+        <div class="pic" style="height:300px;">
+          <img src="assets/mangrove-group-wide.jpg" alt="Group of students wading and planting mangroves in shallow water">
+          <span class="pic-cap">Mangrove planting, Danao — already run once.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S19 — EXPLORING: SCHOOL ACTIVITIES + FUN RUN -->
+  <section class="slide slide--content" data-section="04 — Programs">
+    <div class="slide-inner">
+      <p class="kicker">Exploring — two possibilities</p>
+      <h2 class="headline">Two more projects we're exploring</h2>
+      <div class="grid grid-2" style="margin-top:0.4rem; align-items:start;">
+        <div class="card">
+          <span class="tag tag--explore">Exploring</span>
+          <h3>School Environmental Activities</h3>
+          <p>On-campus cleanup support — e.g. after Family Day or Sports Fest. Not a mandatory school-wide schedule; just visible stewardship in everyday school life.</p>
+        </div>
+        <div class="card">
+          <span class="tag tag--explore">Not final</span>
+          <h3>Community Fun Run</h3>
+          <p>A community running event first, with a clear environmental purpose — not a novelty "trash-picking run." Depends on route, permits, funding, and calendar.</p>
+        </div>
+      </div>
+      <p class="label-sm" style="margin-top:0.3rem;">TFT already runs this model globally through <strong style="color:var(--forest);">Trash Free Races</strong> — "Nothing is left behind. At best, the place is cleaner because you were there."</p>
+    </div>
+  </section>
+
+  <!-- S20 — CHAPTER: BEING PREPARED -->
+  <section class="slide slide--waypoint" data-section="05 — Risk &amp; Cost">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:0.9rem;">
+      <p class="kicker">05</p>
+      <h2 class="chapter-title">Being Prepared</h2>
+      <p class="lede" style="max-width:44ch;">A quick, honest look at risk, cost, access, and how we'd know it's working — not the point of the proposal, but proof we've thought it through.</p>
+    </div>
+  </section>
+
+  <!-- S21 — RISK, SAFETY & CONTINGENCY -->
+  <section class="slide slide--content" data-section="05 — Risk &amp; Cost">
+    <div class="slide-inner">
+      <p class="kicker">What could go wrong, and our plan</p>
+      <h2 class="headline">Risk &amp; Safety</h2>
+      <div style="overflow-x:auto; margin-top:0.2rem;">
+      <table class="ttable">
+        <thead><tr><th>Risk</th><th>Likelihood / Impact</th><th>Planned mitigation</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Injury or accident</td><td class="dim">Medium / High</td><td class="dim">Pre-event risk assessment, consent, first aid on hand</td></tr>
+          <tr><td class="name">Weather / site conditions</td><td class="dim">Medium / High</td><td class="dim">Pre-event check, rain-date or alternate plan</td></tr>
+          <tr><td class="name">Low turnout</td><td class="dim">Medium / Medium</td><td class="dim">Early recruitment, peer referral, right-sized events</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="label-sm" style="margin-top:0.3rem;">If something does happen: the on-site Event Lead responds first, the Executive Director and school contact are notified immediately, and TFT's insurance-backed risk framework covers the rest.</p>
+      <div class="divider"></div>
+      <p class="body-text">Access is kept simple too — open across grade levels where the activity allows, grouped into smaller teams, with consent and waivers handled per activity.</p>
+    </div>
+  </section>
+
+  <!-- S22 — COST & FUNDING -->
+  <section class="slide slide--content" data-section="05 — Risk &amp; Cost">
+    <div class="slide-inner">
+      <p class="kicker">How we'd fund this</p>
+      <h2 class="headline">Cost &amp; Funding</h2>
+      <p class="body-text">Not asking for a standing budget — each event carries its own funding plan, built once location, transport, and participant count are known.</p>
+      <div class="grid grid-4" style="margin-top:0.3rem;">
+        <div class="card"><h3 style="font-size:1rem;">Voluntary contributions</h3><p>Simple, event-specific, kept reasonable.</p></div>
+        <div class="card"><h3 style="font-size:1rem;">Seed funding</h3><p>Small, short-term startup costs only.</p></div>
+        <div class="card"><h3 style="font-size:1rem;">Sponsorships</h3><p>For larger events like the fun run.</p></div>
+        <div class="card"><h3 style="font-size:1rem;">TFT / transport support</h3><p>Existing transport &amp; TFT-specific resources.</p></div>
+      </div>
+      <p class="label-sm" style="margin-top:0.2rem;">We'll bring specific, real budgets per event — not speculative numbers today.</p>
+    </div>
+  </section>
+
+  <!-- S23 — MASTER TIMELINE -->
+  <section class="slide slide--content" data-section="06 — Timeline">
+    <div class="slide-inner">
+      <p class="kicker">06 — Timeline</p>
+      <h2 class="headline">The year, mapped out</h2>
+      <div class="timeline" style="margin-top:0.3rem;">
+        <div class="t-item"><span class="t-date">Nov '25</span><span class="t-dot-wrap"><span class="t-dot t-dot--done"></span></span><div class="t-body"><h4>Pilot trail cleanup — completed</h4><p>Ran before recognition, proof the model already works</p></div></div>
+        <div class="t-item"><span class="t-date">Aug–Sep '26</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>Finalize proposal &amp; recognition</h4><p>School review and student-team refinement</p></div></div>
+        <div class="t-item"><span class="t-date">Sep '26</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>Confirm roles, begin recruitment</h4><p>Student appointments and communications plan</p></div></div>
+        <div class="t-item"><span class="t-date">Sep–Oct '26</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>First TFT cleanup</h4><p>Site, transport, and safety planning</p></div></div>
+        <div class="t-item"><span class="t-date">Oct–Dec '26</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>Fun run concept &amp; feasibility</h4><p>Route, permissions, resources, funding plan</p></div></div>
+        <div class="t-item"><span class="t-date">Jan–Feb '27</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>Second TFT cleanup</h4><p>Suitable opportunity and event planning</p></div></div>
+        <div class="t-item"><span class="t-date">Feb–Apr '27</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>Planting / restoration activity</h4><p>Suitable site and restoration opportunity</p></div></div>
+        <div class="t-item"><span class="t-date">Apr–May '27</span><span class="t-dot-wrap"><span class="t-dot"></span></span><div class="t-body"><h4>End-of-year review</h4><p>Outcomes, lessons, handover to next leadership</p></div></div>
+      </div>
+      <div class="divider" style="margin-top:0.2rem;"></div>
+      <p class="label-sm">How we'd know it's working → attendance, waste collected, and a quick survey after every event, feeding straight into the next one.</p>
+    </div>
+  </section>
+
+  <!-- S30 — A TRACK RECORD, NOT A HYPOTHESIS (emphasis slide before the ask) -->
+  <section class="slide slide--content" data-section="07 — Proof">
+    <div class="slide-inner">
+      <p class="kicker">This isn't just a proposal</p>
+      <h2 class="headline">A track record, not a hypothesis</h2>
+      <div class="photo-grid" style="margin-top:0.3rem;">
+        <div class="pic" style="grid-column:span 2; grid-row:span 2;">
+          <img src="assets/downhill-carrying-bags.jpg" alt="Students carrying full trash bags downhill after a trail cleanup, overlooking the coastline" style="object-position:center 82%;">
+          <span class="pic-cap">Carrying it out — literally</span>
+        </div>
+        <div class="pic"><img src="assets/bag-peace-sign.jpg" alt="A student holding up a full trash bag with a peace sign"><span class="pic-cap">A full bag, our first cleanup</span></div>
+        <div class="pic"><img src="assets/briefing-lecture-area.jpg" alt="Students gathered at a pre-event safety briefing"><span class="pic-cap">Safety briefing, live</span></div>
+        <div class="pic"><img src="assets/resting-with-bags.jpg" alt="Two students resting on a hillside beside filled trash bags"><span class="pic-cap">Between the work</span></div>
+        <div class="pic"><img src="assets/mangrove-mud-action.jpg" alt="Students planting mangroves together in the mud"><span class="pic-cap">Mangrove planting, Danao</span></div>
+      </div>
+      <div class="divider" style="margin-top:0.4rem;"></div>
+      <p class="body-text">Our first trail cleanup ran <strong style="color:var(--forest);">November 15, 2025</strong>. When a typhoon threatened Cebu ahead of a mangrove planting activity, we postponed it and issued full refunds to every registered participant — the same risk protocol from a few slides ago, already lived, not hypothetical. At our last two TFT Cebu cleanups, B.R.I.G.H.T. students made up the majority of everyone there. Recruitment is active and ongoing.</p>
+    </div>
+  </section>
+
+  <!-- S31 — THE ASK -->
+  <section class="slide slide--content" data-section="08 — The Ask">
+    <div class="slide-inner">
+      <p class="kicker">What we need from you</p>
+      <h2 class="headline">Official recognition — a formal place within the school</h2>
+      <ul class="blaze-list" style="margin-top:0.4rem; gap:0.9rem;">
+        <li style="font-size:1.02rem;">Recognition as an official B.R.I.G.H.T. student organization</li>
+        <li style="font-size:1.02rem;">A designated school contact for coordination</li>
+        <li style="font-size:1.02rem;">Guidance on procedures — transportation, consent, off-campus activities</li>
+        <li style="font-size:1.02rem;">Review and feedback on our activity proposals</li>
+        <li style="font-size:1.02rem;">Flexibility to adapt the plan as the year unfolds</li>
+      </ul>
+      <div class="divider" style="margin-top:0.3rem;"></div>
+      <p class="quote" style="font-size:clamp(1.1rem,1.8vw,1.4rem); color:var(--forest); max-width:50ch;">Everything else — the plan, the partner, the team — is already in place.</p>
+    </div>
+  </section>
+
+  <!-- S32 — CLOSING -->
+  <section class="slide slide--waypoint" data-section="Closing">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:1.3rem;">
+      <p class="kicker">Closing note</p>
+      <h2 class="quote quote--lg" style="max-width:30ch;">"This could become part of B.R.I.G.H.T. culture. Something students remember. Something future cohorts inherit and build on."</h2>
+      <p class="lede" style="max-width:48ch;">We welcome your guidance, your input, and your partnership as we make this happen.</p>
+      <p class="label-sm" style="margin-top:0.2rem;">We asked what connects B.R.I.G.H.T. Academy and the environment. This is our answer.</p>
+      <h3 class="headline serif" style="margin-top:0.4rem; font-size:clamp(1.6rem,3vw,2.4rem); color:var(--wp-accent);">Brighter Trails starts here.</h3>
+      <div class="divider" style="background:var(--wp-line); max-width:220px; margin:0.6rem auto;"></div>
+      <p class="mono" style="font-size:0.72rem; letter-spacing:0.06em; color:var(--wp-ink-soft);">Bogue Kwon · Haeun Kang · Hamin Park · Yong Joon Kim · David Heo — Thank you.</p>
+    </div>
+  </section>
+
+  <!-- S33 — QUESTIONS -->
+  <section class="slide slide--waypoint" data-section="Questions">
+    <div class="slide-inner" style="align-items:center; text-align:center; gap:1.3rem;">
+      <img src="assets/brighter-trails-logo.png" alt="Brighter Trails logo" style="width:84px; height:auto;">
+      <h2 class="headline serif" style="font-size:clamp(2rem,4.2vw,3.3rem); color:var(--wp-ink);">Do you have any questions?</h2>
+      <p class="lede">Bogue Kwon · Haeun Kang · Hamin Park · Yong Joon Kim · David Heo</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const progressBar = document.getElementById('progress-bar');
+  const tbSection = document.getElementById('tb-section');
+  const tbCounter = document.getElementById('tb-counter');
+  let current = 0;
+  let programmatic = false;
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function updateChrome(i){
+    current = i;
+    const s = slides[i];
+    tbSection.textContent = s.dataset.section || '';
+    tbCounter.textContent = pad(i+1) + ' / ' + pad(total);
+    progressBar.style.width = (((i) / (total-1)) * 100).toFixed(2) + '%';
+  }
+
+  function goTo(i){
+    i = Math.max(0, Math.min(total-1, i));
+    programmatic = true;
+    slides[i].scrollIntoView({behavior:'smooth', inline:'start', block:'start'});
+    updateChrome(i);
+    window.clearTimeout(goTo._t);
+    goTo._t = window.setTimeout(()=>{ programmatic = false; }, 500);
+  }
+
+  // Track current slide via scroll position (covers manual swipe/scroll too)
+  let scrollTimeout;
+  deck.addEventListener('scroll', ()=>{
+    window.clearTimeout(scrollTimeout);
+    scrollTimeout = window.setTimeout(()=>{
+      const idx = Math.round(deck.scrollLeft / window.innerWidth);
+      if(idx !== current){ updateChrome(idx); }
+    }, 80);
+  }, {passive:true});
+
+  // Convert vertical wheel to horizontal navigation
+  deck.addEventListener('wheel', (e)=>{
+    if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+      e.preventDefault();
+      deck.scrollLeft += e.deltaY;
+    }
+  }, {passive:false});
+
+  document.getElementById('btn-next').addEventListener('click', ()=> goTo(current+1));
+  document.getElementById('btn-prev').addEventListener('click', ()=> goTo(current-1));
+  document.getElementById('zone-next').addEventListener('click', ()=> goTo(current+1));
+  document.getElementById('zone-prev').addEventListener('click', ()=> goTo(current-1));
+
+  document.addEventListener('keydown', (e)=>{
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); goTo(current+1); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); goTo(current-1); }
+    else if(e.key === 'Home'){ e.preventDefault(); goTo(0); }
+    else if(e.key === 'End'){ e.preventDefault(); goTo(total-1); }
+    else if(e.key === 'f' || e.key === 'F'){ toggleFullscreen(); }
+  });
+
+  function toggleFullscreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen().catch(()=>{});
+    }
+  }
+  document.getElementById('btn-fs').addEventListener('click', toggleFullscreen);
+
+  // Theme toggle: cycles auto (system) → light → dark → auto.
+  // The DOM attribute is the source of truth (not localStorage) so the toggle
+  // still works correctly in contexts where storage is blocked or throws
+  // (private browsing, sandboxed previews) — persistence is best-effort only.
+  function currentMode(){
+    const attr = document.documentElement.getAttribute('data-theme');
+    return (attr === 'light' || attr === 'dark') ? attr : 'auto';
+  }
+  function applyTheme(mode){
+    if(mode === 'auto'){ document.documentElement.removeAttribute('data-theme'); }
+    else { document.documentElement.setAttribute('data-theme', mode); }
+    try{
+      if(mode === 'auto'){ localStorage.removeItem('bt-theme'); }
+      else { localStorage.setItem('bt-theme', mode); }
+    }catch(e){}
+    updateThemeIcon();
+  }
+  function updateThemeIcon(){
+    const s = currentMode();
+    const btn = document.getElementById('btn-theme');
+    if(s === 'light'){ btn.textContent = '☀'; btn.title = 'Theme: light — click for dark'; }
+    else if(s === 'dark'){ btn.textContent = '☾'; btn.title = 'Theme: dark — click for auto'; }
+    else { btn.textContent = '◐'; btn.title = 'Theme: auto — click for light'; }
+  }
+  document.getElementById('btn-theme').addEventListener('click', ()=>{
+    const s = currentMode();
+    if(s === 'light'){ applyTheme('dark'); }
+    else if(s === 'dark'){ applyTheme('auto'); }
+    else { applyTheme('light'); }
+  });
+  updateThemeIcon();
+
+  window.addEventListener('resize', ()=>{ goTo(current); });
+
+  updateChrome(0);
+})();
+</script>
+
+</body>
+</html>

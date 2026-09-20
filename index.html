@@ -5615,10 +5615,44 @@
     });
 
     const logoutBtn = document.getElementById('cloudLogoutBtn');
-    if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    if (logoutBtn) logoutBtn.addEventListener('click', async () => {
+      // Only offer to wipe local progress if we can confirm it's actually
+      // backed up — autosave lags up to 5min and can fail silently, so a
+      // stale lastAutosavedJson must never be trusted on its own.
+      let safeToReset = false;
+      if (isCloudLoggedIn()) {
+        const currentJson = JSON.stringify(buildBackupPayload());
+        if (currentJson === lastAutosavedJson) {
+          safeToReset = true;
+        } else {
+          logoutBtn.disabled = true;
+          logoutBtn.textContent = 'Syncing…';
+          safeToReset = await performCloudSave({ silent: true });
+          logoutBtn.disabled = false;
+          logoutBtn.textContent = 'Log out';
+        }
+      }
+
       stopCloudAutosave();
       clearCloudCredentials();
       cloudLoadOffer = null;
+
+      if (safeToReset) {
+        state.progress = {};
+        state.completionLog = {};
+        state.fsrsCards = {};
+        state.skillStats = {};
+        saveProgress();
+        saveCompletionLog();
+        saveFsrsCards();
+        saveSkillStats();
+        renderFilters();
+        renderBrowse();
+        renderProgress();
+        renderAnalysis();
+        renderReview();
+        renderStats();
+      }
       updateCloudSaveTriggerState();
       renderCloudSavePopover();
       renderProfile();

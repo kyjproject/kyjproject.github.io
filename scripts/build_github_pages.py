@@ -17,6 +17,7 @@ TEMPLATE_PATH = os.path.join(ROOT, "site", "index.template.html")
 SW_SRC_PATH = os.path.join(ROOT, "site", "sw.js")
 ALL_JSON_PATH = os.path.join(ROOT, "db", "all_questions.json")
 IMAGES_SRC_DIR = os.path.join(ROOT, "images")
+PRESENTATION_SRC_DIR = os.path.join(ROOT, "presentation")
 OUT_DIR = os.path.join(ROOT, "site", "pages")
 
 
@@ -86,6 +87,14 @@ def main():
             shutil.rmtree(images_out)
         shutil.copytree(IMAGES_SRC_DIR, images_out)
         n_images = count_files(images_out)
+
+    # Static asset for the "tft" demo account's Presentation button — small
+    # and fixed, so unlike images/ it's just mirrored in place each build.
+    presentation_out = os.path.join(OUT_DIR, "presentation")
+    if os.path.isdir(PRESENTATION_SRC_DIR):
+        if os.path.exists(presentation_out):
+            shutil.rmtree(presentation_out)
+        shutil.copytree(PRESENTATION_SRC_DIR, presentation_out)
 
     html_size = os.path.getsize(os.path.join(OUT_DIR, "index.html"))
     data_size = os.path.getsize(os.path.join(OUT_DIR, "data.js"))
