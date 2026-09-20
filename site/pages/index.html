@@ -8208,7 +8208,8 @@
       { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead. Past 4 columns (a long Test easily has more), the strip scrolls sideways instead of growing wider without limit. A GitHub-contributions-style alternative to scrolling back up every time. Also works on mock exams saved before the engine moved to today\'s Custom-composition format — those older attempts render through a separate legacy path that got the same strip and navigator modal too, so it\'s not just new exams that benefit.' },
       { name: 'A full question navigator, one tap away', desc: 'The &#129517; button atop that strip opens a bigger, numbered version of the same grid — grouped the same way as the strip (by module, or by 25s for Test) — laid out as a bottom sheet like the Bluebook kiosk\'s own Question Navigator, for jumping around a long exam without scanning a thin column of squares one at a time. Esc, the Close button, or tapping outside it all dismiss it.' },
       { name: 'Faster with lots of images or math on screen', desc: 'Chart/table images and rendered math now load lazily and get their LaTeX re-render skipped when the same expression has already been rendered once — noticeable on question-heavy pages like a full mock exam review or a long Practice session with charts.' },
-      { name: 'Log out can now reset this device to a blank slate', desc: 'Logging out used to only forget the kyj-cloud login, leaving your progress sitting in this browser regardless. It now resets local progress (completed/reviewed marks, spaced-repetition data, streak/XP/achievements) too, but only once that progress is provably backed up — either it already matched the last successful cloud save, or one final save succeeds before logging out. If that can\'t be confirmed, nothing local is touched and logging out works exactly as before. Makes switching between two kyj-cloud accounts on the same device safe by default, with no confirmation dialog to click through each time.' },
+      { name: 'Log out now wipes this device to a blank slate', desc: 'Logging out used to only forget the kyj-cloud login, leaving every bit of local progress sitting in this browser regardless — including stray leftovers (tags, notes, mock/test history, blueprints...) that the old version of this reset missed. It\'s now the same total reset as "Reset all progress" (recoverable from the same auto-stashed local snapshot), but only once that progress is provably backed up — either it already matched the last successful cloud save, or one final save succeeds before logging out. If that can\'t be confirmed, nothing local is touched and logging out works exactly as before. Makes switching between two kyj-cloud accounts on the same device safe by default, with no confirmation dialog to click through each time.' },
+      { name: 'Logging in syncs your progress in immediately', desc: 'Logging into an account with existing cloud progress used to stop and ask "Load into this browser?" before doing anything. It now merges that progress in right away — nothing on this device was ever at risk, since the merge only ever adds, never overwrites — so signing in feels the way it does on Facebook/Instagram/etc.: your stuff is just there.' },
     ] },
     { version: 'v2.6', date: 'Sep 19', title: 'Auto-sync is now on by default, and cloud saves never overwrite another device', lede: 'kyj-cloud sync got safer and less manual. "Save progress now" now always merges with the cloud first instead of overwriting it outright — the old advice to "Load before you Save when switching devices" no longer applies, since Save and Load both merge either way. Tags, notes, and spaced-repetition review progress also merge more carefully now, so reviewing or tagging the same question on two devices no longer lets one side silently clobber the other. And Auto-sync, previously an opt-in Lab toggle, is now on by default for every logged-in kyj-cloud account — including anyone already signed in — since there\'s no longer a real downside to it running automatically. Still one click away to turn off in Lab if you\'d rather sync by hand.', items: [
       { name: 'Save no longer overwrites the cloud — it merges', desc: '"Save progress now" used to push this browser\'s progress straight over whatever was already saved, which meant saving from a second device before ever loading could silently wipe out the first device\'s progress. It now loads and merges the cloud copy in first, exactly like Auto-sync already did, before pushing the combined result.' },
@@ -9087,7 +9088,6 @@
   loadTestimonials();
 
   let cloudSaveMode = 'login'; // 'login' | 'signup' — which tab the logged-out form shows
-  let cloudLoadOffer = null; // { data, at } set right after a fresh login/signup that found existing cloud progress
 
   // The actual push, shared by the manual "Save progress now" button and
   // the Auto-sync feature (see attemptAutoSync below) — the only
@@ -9462,14 +9462,20 @@
           }
           leaderboardEntries = null;
           leaderboardError = null;
-          let offer = null;
+          // Load and merge immediately rather than asking first — applyBackupPayload
+          // only ever merges additively (see its own comment above), so there's
+          // nothing on this device a fresh login could actually lose by doing
+          // this automatically instead of waiting on a "Load into this browser?"
+          // click, the same way Facebook/etc. just have your stuff there already.
           if (!isTftDemoLogin) {
             try {
               const loadResult = await cloudSaveRequest('load', { username, password });
-              if (loadResult.data) offer = { data: loadResult.data, at: loadResult.updatedAt || null };
-            } catch (e) { /* no cloud data yet, or the load failed — not fatal, just skip the offer */ }
+              if (loadResult.data) {
+                applyBackupPayload(loadResult.data);
+                showSyncToast('Synced in your progress from kyj-cloud.', '☁️');
+              }
+            } catch (e) { /* no cloud data yet, or the load failed — not fatal, login still succeeds */ }
           }
-          cloudLoadOffer = offer;
           updateCloudSaveTriggerState();
           renderCloudSavePopover();
           renderProfile();
@@ -9487,26 +9493,6 @@
       [userInput, passInput, confirmInput].forEach(el => {
         if (el) el.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit(); });
       });
-      return;
-    }
-
-    if (cloudLoadOffer) {
-      const when = cloudLoadOffer.at ? escapeHtml(new Date(cloudLoadOffer.at).toLocaleString()) : 'earlier';
-      cloudSavePopover.innerHTML = `${closeHeadHtml}
-        <p class="cloud-save-text">Found progress already saved to the cloud (${when}). Load it into this browser? This merges with what's already here — nothing on this device gets deleted.</p>
-        <button type="button" class="cloud-save-btn primary" id="cloudLoadOfferBtn">Load into this browser</button>
-        <div class="cloud-save-links">
-          <button type="button" class="cloud-save-link" id="cloudSkipLoadBtn">Skip</button>
-          <span></span>
-        </div>`;
-      const loadBtn = document.getElementById('cloudLoadOfferBtn');
-      if (loadBtn) loadBtn.addEventListener('click', () => {
-        applyBackupPayload(cloudLoadOffer.data);
-        cloudLoadOffer = null;
-        renderCloudSavePopover();
-      });
-      const skipBtn = document.getElementById('cloudSkipLoadBtn');
-      if (skipBtn) skipBtn.addEventListener('click', () => { cloudLoadOffer = null; renderCloudSavePopover(); });
       return;
     }
 
@@ -9567,27 +9553,23 @@
         }
       }
 
+      if (safeToReset) {
+        // Same total wipe as "Reset all progress" (localStorage.clear(),
+        // recoverable via the auto-stashed snapshot) rather than clearing
+        // fields one by one — that field list drifts as new progress-shaped
+        // state gets added, quietly leaving stragglers (tags, mock history,
+        // blueprints, ...) behind after a logout. A clean device is the
+        // whole point when switching kyj-cloud accounts.
+        const backups = stashResetBackup();
+        try { localStorage.clear(); } catch (e) { /* best-effort */ }
+        saveResetBackups(backups);
+        location.reload();
+        return;
+      }
+
       clearCloudCredentials();
-      cloudLoadOffer = null;
       leaderboardEntries = null;
       leaderboardError = null;
-
-      if (safeToReset) {
-        state.progress = {};
-        state.completionLog = {};
-        state.fsrsCards = {};
-        state.skillStats = {};
-        saveProgress();
-        saveCompletionLog();
-        saveFsrsCards();
-        saveSkillStats();
-        renderFilters();
-        renderBrowse();
-        renderProgress();
-        renderAnalysis();
-        renderReview();
-        renderStats();
-      }
       updateCloudSaveTriggerState();
       renderCloudSavePopover();
       renderProfile();
