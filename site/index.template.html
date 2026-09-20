@@ -15679,7 +15679,7 @@
       ).join('');
       return `
         <div class="mock-side-nav-col" title="${escapeHtml(g.label)}">
-          <span class="mock-side-nav-col-label">${escapeHtml(g.shortLabel)}</span>
+          ${g.shortLabel ? `<span class="mock-side-nav-col-label">${escapeHtml(g.shortLabel)}</span>` : ''}
           <div class="mock-side-nav-group">${dots}</div>
         </div>`;
     }).join('');
@@ -15748,8 +15748,12 @@
       const chunk = questions.slice(start, start + TEST_NAV_CHUNK_SIZE);
       const from = start + 1, to = start + chunk.length;
       groups.push({
+        // No shortLabel — unlike Mock's short module labels (E1/M2), a
+        // range like "26–50" is wide enough to stretch a narrow column and
+        // throw off the strip's spacing, so Test's side strip skips the
+        // per-column label entirely (the tooltip and the navigator modal's
+        // own group heading still say which range it is).
         label: `Questions ${from}–${to}`,
-        shortLabel: `${from}–${to}`,
         items: chunk.map((q, i) => {
           const num = start + i + 1;
           const yours = data.answers[q.id];
