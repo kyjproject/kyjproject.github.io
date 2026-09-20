@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-20T14:12:51.457Z",
+  "exportedAt": "2026-09-20T14:15:50.572Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -1826,17 +1826,62 @@
       "routedHarder": true
     }
   ],
-  "testHistory": [],
+  "testHistory": [
+    {
+      "id": "1789913625302-zgsdh8",
+      "completedAt": "2026-09-20T14:13:45.302Z",
+      "questionIds": [
+        "19e19d21",
+        "c83508f3",
+        "a5307779",
+        "c1f1a631",
+        "ef9e1e81",
+        "38a981d0",
+        "ef3ea612",
+        "529ab62c",
+        "87d834ef",
+        "e01b2aaa",
+        "5cbd602c",
+        "cd75bd44",
+        "4c18f6b4",
+        "7424ea31",
+        "bea987a6",
+        "cdbcb6d4",
+        "9171f2b5",
+        "5ad0b3b6",
+        "bf0c8b48",
+        "d3cb31fe"
+      ],
+      "answers": {
+        "19e19d21": "C",
+        "c83508f3": "A",
+        "a5307779": "C",
+        "c1f1a631": "B",
+        "ef9e1e81": "C",
+        "38a981d0": "C",
+        "ef3ea612": "C",
+        "529ab62c": "C",
+        "87d834ef": "A",
+        "e01b2aaa": "D",
+        "5cbd602c": "B",
+        "cd75bd44": "C",
+        "4c18f6b4": "C",
+        "7424ea31": "C",
+        "bea987a6": "D",
+        "cdbcb6d4": "D",
+        "9171f2b5": "C",
+        "5ad0b3b6": "A",
+        "bf0c8b48": "C",
+        "d3cb31fe": "D"
+      }
+    }
+  ],
   "rwOverrides": {},
   "skillStats": {
     "Cross-Text Connections": {
-      "correct": 12,
-      "total": 16,
+      "correct": 13,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1788697893184,
-          "correct": true
-        },
         {
           "ts": 1788697893194,
           "correct": false
@@ -1880,13 +1925,17 @@
         {
           "ts": 1789394428583,
           "correct": true
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428583
+      "lastAttemptTs": 1789913625302
     },
     "Words in Context": {
-      "correct": 51,
-      "total": 60,
+      "correct": 53,
+      "total": 63,
       "recent": [
         {
           "ts": 1789379161390,
@@ -1915,13 +1964,21 @@
         {
           "ts": 1789394428583,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": false
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428583
+      "lastAttemptTs": 1789913625302
     },
     "Text Structure and Purpose": {
-      "correct": 30,
-      "total": 32,
+      "correct": 31,
+      "total": 34,
       "recent": [
         {
           "ts": 1788962426253,
@@ -1954,13 +2011,17 @@
         {
           "ts": 1789394428583,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428583
+      "lastAttemptTs": 1789913625300
     },
     "Central Ideas and Details": {
-      "correct": 43,
-      "total": 49,
+      "correct": 47,
+      "total": 53,
       "recent": [
         {
           "ts": 1789198039221,
@@ -1997,13 +2058,25 @@
         {
           "ts": 1789394428584,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": true
+        },
+        {
+          "ts": 1789913625301,
+          "correct": true
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428584
+      "lastAttemptTs": 1789913625302
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 25,
-      "total": 30,
+      "correct": 27,
+      "total": 32,
       "recent": [
         {
           "ts": 1788962426254,
@@ -2040,13 +2113,21 @@
         {
           "ts": 1789394428584,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": true
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428584
+      "lastAttemptTs": 1789913625302
     },
     "Command of Evidence (Textual)": {
-      "correct": 24,
-      "total": 27,
+      "correct": 26,
+      "total": 29,
       "recent": [
         {
           "ts": 1788786636388,
@@ -2091,13 +2172,17 @@
         {
           "ts": 1789394428585,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428585
+      "lastAttemptTs": 1789913625301
     },
     "Inferences": {
-      "correct": 27,
-      "total": 33,
+      "correct": 28,
+      "total": 35,
       "recent": [
         {
           "ts": 1788854279975,
@@ -2138,9 +2223,13 @@
         {
           "ts": 1789394428585,
           "correct": true
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428585
+      "lastAttemptTs": 1789913625302
     },
     "Boundaries": {
       "correct": 27,
@@ -2268,13 +2357,9 @@
       "lastAttemptTs": 1789394428586
     },
     "Rhetorical Synthesis": {
-      "correct": 129,
-      "total": 143,
+      "correct": 133,
+      "total": 147,
       "recent": [
-        {
-          "ts": 1789298318874,
-          "correct": false
-        },
         {
           "ts": 1789298344997,
           "correct": true
@@ -2310,9 +2395,21 @@
         {
           "ts": 1789394428587,
           "correct": true
+        },
+        {
+          "ts": 1789913625300,
+          "correct": true
+        },
+        {
+          "ts": 1789913625301,
+          "correct": true
+        },
+        {
+          "ts": 1789913625302,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789394428587
+      "lastAttemptTs": 1789913625302
     },
     "Linear functions": {
       "correct": 2,
@@ -2988,19 +3085,19 @@
       "categoryMs": {}
     },
     "2026-09-20": {
-      "totalMs": 2326955,
+      "totalMs": 2506955,
       "viewMs": {
         "mock": 210012,
-        "test": 2016942,
+        "test": 2196942,
         "practice": 100001
       },
       "categoryMs": {
         "Vocab": 130000,
-        "Quantitative Evidence": 189999,
+        "Quantitative Evidence": 195000,
         "Functions": 275000,
-        "Main Idea": 450003,
+        "Main Idea": 475002,
         "Notes": 195001,
-        "Textual Evidence": 254999,
+        "Textual Evidence": 280000,
         "Cross-Text": 80000,
         "Inferences": 174998
       }
@@ -3304,5 +3401,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789913567158
+  "clientUpdatedAt": 1789913747158
 }
