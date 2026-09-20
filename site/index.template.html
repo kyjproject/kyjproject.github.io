@@ -8204,7 +8204,7 @@
       { name: 'Drag-to-resize content width', desc: 'A small grip handle on the right edge of the main content column (Practice, Test, Mock Exam, Profile, Analysis, Review, Lab, Propose, and the Bluebook-style directions/review pages) can be dragged to widen or narrow that column, from the 760px default up to 1600px. Double-click it to reset. Saved per-browser, so it stays put across visits. Kept visibly highlighted (not just on hover) so it doesn\'t blend into the edge unnoticed.' },
       { name: 'Also adjustable from Lab', desc: 'Lab → Content width has the same control as a slider, for anyone who\'d rather type/click than drag — kept in sync with the handle either way. "Reset all Lab settings to defaults" resets this too.' },
       { name: 'Fix: mock exams missing from the score trend, category/difficulty breakdown, and domain trend', desc: 'Every mock exam has saved as a "Custom"-composition attempt since the Mock Exam engine was unified into one Modules builder — but Profile\'s score trend, Analysis\'s accuracy-by-category-and-difficulty grid, domain trend, and missed-skill digest still only knew the older shape, so they silently excluded every one of those exams (effectively all of them). They now score and count a Custom attempt the same way its own results screen already did.' },
-      { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead. Past 4 columns (a long Test easily has more), the strip scrolls sideways instead of growing wider without limit. A GitHub-contributions-style alternative to scrolling back up every time.' },
+      { name: 'A quick-jump nav on the Test and Mock Exam review screens', desc: 'Labeled strips of colored squares (green/red/yellow for correct/incorrect/unanswered) now sit fixed beside the content column on a Test or Mock Exam\'s results screen — click any square to jump straight to that question in the Review list below, no matter how far down the page you\'ve scrolled. Mock Exam gets one column per module (E1/E2/M1/M2); Test, which has no modules, gets one column per 25 questions instead. Past 4 columns (a long Test easily has more), the strip scrolls sideways instead of growing wider without limit. A GitHub-contributions-style alternative to scrolling back up every time. Also works on mock exams saved before the engine moved to today\'s Custom-composition format — those older attempts render through a separate legacy path that got the same strip and navigator modal too, so it\'s not just new exams that benefit.' },
       { name: 'A full question navigator, one tap away', desc: 'The &#129517; button atop that strip opens a bigger, numbered version of the same grid — grouped the same way as the strip (by module, or by 25s for Test) — laid out as a bottom sheet like the Bluebook kiosk\'s own Question Navigator, for jumping around a long exam without scanning a thin column of squares one at a time. Esc, the Close button, or tapping outside it all dismiss it.' },
       { name: 'Faster with lots of images or math on screen', desc: 'Chart/table images and rendered math now load lazily and get their LaTeX re-render skipped when the same expression has already been rendered once — noticeable on question-heavy pages like a full mock exam review or a long Practice session with charts.' },
       { name: 'Log out can now reset this device to a blank slate', desc: 'Logging out used to only forget the kyj-cloud login, leaving your progress sitting in this browser regardless. It now resets local progress (completed/reviewed marks, spaced-repetition data, streak/XP/achievements) too, but only once that progress is provably backed up — either it already matched the last successful cloud save, or one final save succeeds before logging out. If that can\'t be confirmed, nothing local is touched and logging out works exactly as before. Makes switching between two kyj-cloud accounts on the same device safe by default, with no confirmation dialog to click through each time.' },
@@ -15824,6 +15824,35 @@
     return quizNavigatorModalHtml('testNavOverlay', 'testNavCloseBtn', testNavGroups(questions, data), 'test-review-');
   }
 
+  // Same side strip / navigator modal, for the older pre-unification mock
+  // shape (mockResultsHtml, {module1Questions, module2Questions}) — anyone
+  // with mock history saved before the Mock Exam engine moved to the
+  // {sections} Custom-composition shape still views those old attempts
+  // through that function, so they'd otherwise never get this feature.
+  function mockLegacyNavGroups(data) {
+    return [
+      { label: 'Module 1', shortLabel: 'M1', questions: data.module1Questions },
+      { label: 'Module 2', shortLabel: 'M2', questions: data.module2Questions },
+    ].filter(m => m.questions.length).map(m => ({
+      label: m.label,
+      shortLabel: m.shortLabel,
+      items: m.questions.map((q, i) => {
+        const yours = data.answers[q.id];
+        const status = reviewItemStatus(yours, q.correct_answer);
+        const detail = status === 'unanswered' ? 'Not answered' : status === 'correct' ? `Correct (${yours})` : `Incorrect — yours: ${yours}, correct: ${q.correct_answer}`;
+        return { id: q.id, status, num: i + 1, title: `${m.label} #${i + 1} — ${detail}` };
+      }),
+    }));
+  }
+
+  function mockLegacySideNavHtml(data) {
+    return quizSideNavHtml('mockSideNav', 'mockNavOpenBtn', mockLegacyNavGroups(data), 'mock-review-');
+  }
+
+  function mockLegacyResultsNavigatorHtml(data) {
+    return quizNavigatorModalHtml('mockNavOverlay', 'mockNavCloseBtn', mockLegacyNavGroups(data), 'mock-review-');
+  }
+
   function saveCustomMockAttempt() {
     const attempt = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -16200,6 +16229,7 @@
       </div>
       ${mockModuleTilesHtml(data.module1Questions, 'Module 1', data)}
       ${mockModuleTilesHtml(data.module2Questions, 'Module 2', data)}
+      ${mockLegacySideNavHtml(data)}
       <h3 style="font-family:var(--serif); font-size:16px; margin:18px 0 10px;">Review</h3>
       ${reviewHtml}`;
   }
@@ -16403,6 +16433,8 @@
       });
       if (isCustom) {
         wireQuizNavOpenBtn('mockNavOpenBtn', 'mockNavOverlay', 'mockNavCloseBtn', () => mockResultsNavigatorHtml(data.sections, data));
+      } else {
+        wireQuizNavOpenBtn('mockNavOpenBtn', 'mockNavOverlay', 'mockNavCloseBtn', () => mockLegacyResultsNavigatorHtml(data));
       }
       // Click a Review card to open it in the same modal Browse uses —
       // Prev/Next pages through this exam's questions in Module 1 -> Module 2
