@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-20T08:32:53.692Z",
+  "exportedAt": "2026-09-20T08:34:02.653Z",
   "progress": {
     "741374a0": "done",
     "6f03007c": "done",
@@ -198,6 +198,16 @@
       "difficulty": 5.282434422319005,
       "due": "2026-09-23T08:31:58.274Z",
       "last_review": "2026-09-20T08:31:58.274Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "741374a0": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-09-23T08:33:20.351Z",
+      "last_review": "2026-09-20T08:33:20.351Z",
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
@@ -761,9 +771,9 @@
       }
     },
     "2026-09-20": {
-      "totalMs": 408579,
+      "totalMs": 473629,
       "viewMs": {
-        "review": 328538,
+        "review": 393588,
         "test": 5001,
         "profile": 15009,
         "analysis": 45022,
@@ -881,6 +891,5 @@
         "ms": 635
       }
     ]
-  },
-  "clientUpdatedAt": 1789893173340
+  }
 }
