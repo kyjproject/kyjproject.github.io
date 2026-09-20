@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-20T08:29:42.332Z",
+  "exportedAt": "2026-09-20T08:32:53.692Z",
   "progress": {
     "741374a0": "done",
     "6f03007c": "done",
@@ -191,6 +191,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "3acc2d54": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-09-23T08:31:58.274Z",
+      "last_review": "2026-09-20T08:31:58.274Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
     }
   },
   "mockHistory": [],
@@ -305,8 +315,8 @@
       "lastAttemptTs": 1789892910674
     },
     "Command of Evidence (Textual)": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1789476362269,
@@ -315,9 +325,13 @@
         {
           "ts": 1789476362271,
           "correct": true
+        },
+        {
+          "ts": 1789893110642,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789476362271
+      "lastAttemptTs": 1789893110642
     },
     "Inferences": {
       "correct": 2,
@@ -335,8 +349,8 @@
       "lastAttemptTs": 1789476362271
     },
     "Boundaries": {
-      "correct": 4,
-      "total": 8,
+      "correct": 5,
+      "total": 10,
       "recent": [
         {
           "ts": 1789476362269,
@@ -357,9 +371,17 @@
         {
           "ts": 1789892975120,
           "correct": true
+        },
+        {
+          "ts": 1789893168221,
+          "correct": false
+        },
+        {
+          "ts": 1789893169854,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789892975120
+      "lastAttemptTs": 1789893169854
     },
     "Form, Structure, and Sense": {
       "correct": 2,
@@ -739,9 +761,9 @@
       }
     },
     "2026-09-20": {
-      "totalMs": 213430,
+      "totalMs": 408579,
       "viewMs": {
-        "review": 133389,
+        "review": 328538,
         "test": 5001,
         "profile": 15009,
         "analysis": 45022,
@@ -842,7 +864,23 @@
         "ts": 1789478208217,
         "ms": 1181
       }
+    ],
+    "3acc2d54": [
+      {
+        "ts": 1789893110642,
+        "ms": 131088
+      }
+    ],
+    "741374a0": [
+      {
+        "ts": 1789893168221,
+        "ms": 49945
+      },
+      {
+        "ts": 1789893169855,
+        "ms": 635
+      }
     ]
   },
-  "clientUpdatedAt": 1789892978191
+  "clientUpdatedAt": 1789893173340
 }
