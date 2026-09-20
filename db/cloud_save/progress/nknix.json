@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-20T08:26:38.044Z",
+  "exportedAt": "2026-09-20T08:29:42.332Z",
   "progress": {
     "741374a0": "done",
     "6f03007c": "done",
@@ -171,7 +171,28 @@
   "profile": {
     "name": "nknix"
   },
-  "fsrsCards": {},
+  "fsrsCards": {
+    "5f5deac5": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-09-23T08:28:35.990Z",
+      "last_review": "2026-09-20T08:28:35.990Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "37ccf84e": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-06T08:29:39.552Z",
+      "last_review": "2026-09-20T08:29:39.552Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    }
+  },
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
@@ -257,8 +278,8 @@
       "lastAttemptTs": 1789476362271
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 4,
-      "total": 5,
+      "correct": 5,
+      "total": 6,
       "recent": [
         {
           "ts": 1789476362268,
@@ -275,9 +296,13 @@
         {
           "ts": 1789477457723,
           "correct": true
+        },
+        {
+          "ts": 1789892910674,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789477457723
+      "lastAttemptTs": 1789892910674
     },
     "Command of Evidence (Textual)": {
       "correct": 3,
@@ -310,8 +335,8 @@
       "lastAttemptTs": 1789476362271
     },
     "Boundaries": {
-      "correct": 3,
-      "total": 7,
+      "correct": 4,
+      "total": 8,
       "recent": [
         {
           "ts": 1789476362269,
@@ -328,9 +353,13 @@
         {
           "ts": 1789477215648,
           "correct": true
+        },
+        {
+          "ts": 1789892975120,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789477215648
+      "lastAttemptTs": 1789892975120
     },
     "Form, Structure, and Sense": {
       "correct": 2,
@@ -710,9 +739,13 @@
       }
     },
     "2026-09-20": {
-      "totalMs": 33313,
+      "totalMs": 213430,
       "viewMs": {
-        "review": 33313
+        "review": 133389,
+        "test": 5001,
+        "profile": 15009,
+        "analysis": 45022,
+        "mock": 15009
       },
       "categoryMs": {}
     }
@@ -774,6 +807,10 @@
       {
         "ts": 1789477215648,
         "ms": 902
+      },
+      {
+        "ts": 1789892975120,
+        "ms": 59129
       }
     ],
     "7a83c8d8": [
@@ -786,6 +823,10 @@
       {
         "ts": 1789477457723,
         "ms": 225023
+      },
+      {
+        "ts": 1789892910674,
+        "ms": 14528
       }
     ],
     "e56aedd2": [
@@ -802,5 +843,6 @@
         "ms": 1181
       }
     ]
-  }
+  },
+  "clientUpdatedAt": 1789892978191
 }
