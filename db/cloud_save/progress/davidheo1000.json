@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T07:33:37.885Z",
+  "exportedAt": "2026-09-21T07:36:40.579Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -2766,6 +2766,10 @@
     "c7f7ccdd": {
       "count": 1,
       "lastTs": 1789803848188
+    },
+    "d9799723": {
+      "count": 1,
+      "lastTs": 1789976200104
     }
   },
   "blueprints": [],
@@ -2848,13 +2852,13 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 972424,
+      "totalMs": 1088301,
       "viewMs": {
         "lab": 85057,
         "practice": 155101,
         "browse": 5004,
-        "math": 185147,
-        "mock": 542115
+        "math": 205163,
+        "mock": 637976
       },
       "categoryMs": {
         "Geometry and Trigonometry": 95046,
@@ -4386,5 +4390,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789976015118
+  "clientUpdatedAt": 1789976198410
 }
