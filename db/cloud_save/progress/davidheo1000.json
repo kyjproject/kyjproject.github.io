@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T12:07:25.269Z",
+  "exportedAt": "2026-09-21T12:10:12.840Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -2044,12 +2044,8 @@
     },
     "Equivalent expressions": {
       "correct": 17,
-      "total": 31,
+      "total": 32,
       "recent": [
-        {
-          "ts": 1789977931211,
-          "correct": false
-        },
         {
           "ts": 1789977932227,
           "correct": false
@@ -2093,9 +2089,13 @@
         {
           "ts": 1789979668893,
           "correct": true
+        },
+        {
+          "ts": 1789992526044,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1789979668893
+      "lastAttemptTs": 1789992526044
     },
     "Linear equations in two variables": {
       "correct": 13,
@@ -3033,12 +3033,12 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 6276803,
+      "totalMs": 6446938,
       "viewMs": {
         "lab": 100057,
         "practice": 320225,
         "browse": 5004,
-        "math": 4781586,
+        "math": 4951721,
         "mock": 954941,
         "profile": 109986,
         "propose": 5004
@@ -5159,7 +5159,13 @@
         "ts": 1789992438159,
         "ms": 152601
       }
+    ],
+    "b136bc4f": [
+      {
+        "ts": 1789992526044,
+        "ms": 72382
+      }
     ]
   },
-  "clientUpdatedAt": 1789992440463
+  "clientUpdatedAt": 1789992610599
 }
