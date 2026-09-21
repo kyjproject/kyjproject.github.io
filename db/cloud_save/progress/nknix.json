@@ -782,8 +782,8 @@
       "lastAttemptTs": 1789999090457
     },
     "Inferences": {
-      "correct": 4,
-      "total": 7,
+      "correct": 5,
+      "total": 10,
       "recent": [
         {
           "ts": 1789476362269,
@@ -804,9 +804,21 @@
         {
           "ts": 1789999241854,
           "correct": true
+        },
+        {
+          "ts": 1789999372858,
+          "correct": false
+        },
+        {
+          "ts": 1789999374734,
+          "correct": false
+        },
+        {
+          "ts": 1789999377723,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789999241854
+      "lastAttemptTs": 1789999377723
     },
     "Boundaries": {
       "correct": 9,
@@ -1423,16 +1435,17 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 545001,
+      "totalMs": 570004,
       "viewMs": {
         "review": 35012,
-        "practice": 509989
+        "practice": 534992
       },
       "categoryMs": {
         "Quantitative Evidence": 159992,
         "Textual Evidence": 80004,
         "Grammar": 20002,
-        "Inferences": 249991
+        "Inferences": 269996,
+        "Vocab": 4998
       }
     },
     "2026-09-20": {
@@ -1594,6 +1607,20 @@
       {
         "ts": 1789999241854,
         "ms": 119966
+      }
+    ],
+    "1e5b95dd": [
+      {
+        "ts": 1789999372858,
+        "ms": 127346
+      },
+      {
+        "ts": 1789999374735,
+        "ms": 816
+      },
+      {
+        "ts": 1789999377723,
+        "ms": 1286
       }
     ]
   },
