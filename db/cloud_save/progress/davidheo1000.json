@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T08:37:06.358Z",
+  "exportedAt": "2026-09-21T09:52:14.996Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -550,7 +550,8 @@
     "a44eb7d8": "done",
     "79eb41b9": "done",
     "f85886ff": "done",
-    "1844a2ab": "done"
+    "1844a2ab": "done",
+    "98a35f81": "done"
   },
   "tags": {},
   "notes": {},
@@ -1112,7 +1113,8 @@
     "a44eb7d8": "2026-09-21T08:31:26.356Z",
     "79eb41b9": "2026-09-21T08:32:53.391Z",
     "f85886ff": "2026-09-21T08:34:13.227Z",
-    "1844a2ab": "2026-09-21T08:35:07.627Z"
+    "1844a2ab": "2026-09-21T08:35:07.627Z",
+    "98a35f81": "2026-09-21T08:39:13.328Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1876,13 +1878,9 @@
       "lastAttemptTs": 1787294130223
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 32,
-      "total": 56,
+      "correct": 33,
+      "total": 57,
       "recent": [
-        {
-          "ts": 1789976215572,
-          "correct": true
-        },
         {
           "ts": 1789976253039,
           "correct": false
@@ -1926,9 +1924,13 @@
         {
           "ts": 1789979706060,
           "correct": true
+        },
+        {
+          "ts": 1789979951661,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789979706060
+      "lastAttemptTs": 1789979951661
     },
     "Nonlinear functions": {
       "correct": 56,
@@ -2976,19 +2978,20 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 3852762,
+      "totalMs": 4193017,
       "viewMs": {
         "lab": 85057,
         "practice": 155101,
         "browse": 5004,
-        "math": 2969624,
-        "mock": 637976
+        "math": 3104815,
+        "mock": 793074,
+        "profile": 49966
       },
       "categoryMs": {
         "Geometry and Trigonometry": 95046,
         "Problem-Solving and Data Analysis": 195070,
-        "Advanced Math": 136886,
-        "Algebra": 260205
+        "Advanced Math": 216937,
+        "Algebra": 330252
       }
     }
   },
@@ -4898,7 +4901,13 @@
         "ts": 1789979706060,
         "ms": 43215
       }
+    ],
+    "98a35f81": [
+      {
+        "ts": 1789979951661,
+        "ms": 105782
+      }
     ]
   },
-  "clientUpdatedAt": 1789979824519
+  "clientUpdatedAt": 1789984332263
 }
