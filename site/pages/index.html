@@ -8986,12 +8986,24 @@
   // 1 in 5-10 calls, independent of anything here — confirmed by hammering
   // the endpoint directly. performCloudSave chains two of these calls
   // (load, then save), so a single-request failure rate that was already
-  // noticeable becomes a much more visible sync failure. Retrying a couple
-  // times with backoff absorbs that flakiness instead of surfacing it as a
-  // broken sync; a real application-level error (bad password, etc, i.e.
-  // `json.ok === false`) is never retried since retrying wouldn't change it.
-  const CLOUD_SAVE_MAX_ATTEMPTS = 3;
-  const CLOUD_SAVE_TIMEOUT_MS = 12000;
+  // noticeable becomes a much more visible sync failure. Retrying once
+  // absorbs that flakiness instead of surfacing it as a broken sync; a real
+  // application-level error (bad password, etc, i.e. `json.ok === false`)
+  // is never retried since retrying wouldn't change it.
+  //
+  // The timeout below is a "this call is actually stuck" ceiling, not a
+  // routine trigger — a normal call through the echo redirect + several
+  // sequential GitHub API round-trips inside doPost genuinely takes
+  // anywhere from ~1.5s to ~10s on its own (measured directly against the
+  // live endpoint), so a short timeout was firing on calls that were about
+  // to succeed and restarting them from scratch, making saves *slower* and
+  // occasionally *less* likely to finish in time for things like logout's
+  // gated reset. Only 2 attempts total (not 3): a real flake fails fast
+  // (an immediate CORS/network rejection, not a hang) so it doesn't need a
+  // long timeout to be retried quickly; a third attempt mostly just adds
+  // worst-case latency without meaningfully improving success odds.
+  const CLOUD_SAVE_MAX_ATTEMPTS = 2;
+  const CLOUD_SAVE_TIMEOUT_MS = 25000;
   async function cloudSaveRequest(action, extra) {
     let lastErr;
     for (let attempt = 0; attempt < CLOUD_SAVE_MAX_ATTEMPTS; attempt++) {
