@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T16:03:16.811Z",
+  "exportedAt": "2026-09-21T16:03:48.130Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -31,6 +31,7 @@
     "e1137c5a": "done",
     "03c75a33": "done",
     "7a83c8d8": "done",
+    "427f0eea": "done",
     "a445876d": "done",
     "dc8ef67e": "done",
     "8d93d73a": "done",
@@ -153,7 +154,6 @@
     "b0e12b3a": "review",
     "51be7407": "done",
     "994aa0df": "done",
-    "427f0eea": "done",
     "fe6b22a2": "done",
     "1ad71c23": "done",
     "d9799723": "done",
@@ -1866,6 +1866,34 @@
       "count": 1,
       "lastTs": 1789477104804
     },
+    "9609a243": {
+      "count": 1,
+      "lastTs": 1789895274861
+    },
+    "d55d1acd": {
+      "count": 1,
+      "lastTs": 1789895275994
+    },
+    "a83cf688": {
+      "count": 2,
+      "lastTs": 1789895285993
+    },
+    "e34403e6": {
+      "count": 1,
+      "lastTs": 1789895284610
+    },
+    "0f1cfed0": {
+      "count": 2,
+      "lastTs": 1789895330985
+    },
+    "3a519c76": {
+      "count": 1,
+      "lastTs": 1789895333447
+    },
+    "e1137c5a": {
+      "count": 1,
+      "lastTs": 1789895335596
+    },
     "c6ad6232": {
       "count": 1,
       "lastTs": 1789649565736
@@ -1973,38 +2001,37 @@
     "d0a51d4e": {
       "count": 1,
       "lastTs": 1790006336153
-    },
-    "9609a243": {
-      "count": 1,
-      "lastTs": 1789895274861
-    },
-    "d55d1acd": {
-      "count": 1,
-      "lastTs": 1789895275994
-    },
-    "a83cf688": {
-      "count": 2,
-      "lastTs": 1789895285993
-    },
-    "e34403e6": {
-      "count": 1,
-      "lastTs": 1789895284610
-    },
-    "0f1cfed0": {
-      "count": 2,
-      "lastTs": 1789895330985
-    },
-    "3a519c76": {
-      "count": 1,
-      "lastTs": 1789895333447
-    },
-    "e1137c5a": {
-      "count": 1,
-      "lastTs": 1789895335596
     }
   },
   "blueprints": [],
   "timeStats": {
+    "2026-09-17": {
+      "totalMs": 7585099,
+      "viewMs": {
+        "home": 10001,
+        "profile": 94995,
+        "review": 285079,
+        "practice": 40023,
+        "mock": 6644999,
+        "test": 565005
+      },
+      "categoryMs": {
+        "Cross-Text": 234979,
+        "Functions": 150007,
+        "Grammar": 745022,
+        "Inferences": 500013,
+        "Main Idea": 195016,
+        "Transitions": 359999,
+        "Vocab": 585017,
+        "Notes": 329997,
+        "Quantitative Evidence": 464974,
+        "Textual Evidence": 455009,
+        "Algebra": 839970,
+        "Advanced Math": 950007,
+        "Problem-Solving and Data Analysis": 335015,
+        "Geometry and Trigonometry": 319997
+      }
+    },
     "2026-09-15": {
       "totalMs": 7564733,
       "viewMs": {
@@ -2036,32 +2063,28 @@
         "Geometry and Trigonometry": 254991
       }
     },
-    "2026-09-17": {
-      "totalMs": 7585099,
+    "2026-09-20": {
+      "totalMs": 742477,
       "viewMs": {
-        "profile": 94995,
-        "home": 10001,
-        "review": 285079,
-        "practice": 40023,
-        "mock": 6644999,
-        "test": 565005
+        "review": 415967,
+        "test": 40026,
+        "profile": 20009,
+        "analysis": 114917,
+        "mock": 20009,
+        "propose": 10001,
+        "practice": 11133,
+        "math": 110415
       },
-      "categoryMs": {
-        "Cross-Text": 234979,
-        "Functions": 150007,
-        "Grammar": 745022,
-        "Inferences": 500013,
-        "Main Idea": 195016,
-        "Transitions": 359999,
-        "Vocab": 585017,
-        "Notes": 329997,
-        "Quantitative Evidence": 464974,
-        "Textual Evidence": 455009,
-        "Algebra": 839970,
-        "Advanced Math": 950007,
-        "Problem-Solving and Data Analysis": 335015,
-        "Geometry and Trigonometry": 319997
-      }
+      "categoryMs": {}
+    },
+    "2026-09-22": {
+      "totalMs": 137085,
+      "viewMs": {
+        "math": 77095,
+        "review": 120014,
+        "profile": 5001
+      },
+      "categoryMs": {}
     },
     "2026-09-21": {
       "totalMs": 7254994,
@@ -2087,28 +2110,6 @@
         "Problem-Solving and Data Analysis": 265000,
         "Geometry and Trigonometry": 559993
       }
-    },
-    "2026-09-20": {
-      "totalMs": 742477,
-      "viewMs": {
-        "review": 415967,
-        "test": 40026,
-        "profile": 20009,
-        "analysis": 114917,
-        "mock": 20009,
-        "propose": 10001,
-        "practice": 11133,
-        "math": 110415
-      },
-      "categoryMs": {}
-    },
-    "2026-09-22": {
-      "totalMs": 120014,
-      "viewMs": {
-        "review": 120014,
-        "math": 60024
-      },
-      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -2214,12 +2215,6 @@
         "ms": 1181
       }
     ],
-    "c6ad6232": [
-      {
-        "ts": 1789649636995,
-        "ms": 71252
-      }
-    ],
     "3acc2d54": [
       {
         "ts": 1789893110642,
@@ -2234,6 +2229,12 @@
       {
         "ts": 1789893169855,
         "ms": 635
+      }
+    ],
+    "c6ad6232": [
+      {
+        "ts": 1789649636995,
+        "ms": 71252
       }
     ],
     "7fa2cfb0": [
@@ -2311,5 +2312,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790006592034
+  "clientUpdatedAt": 1790006626886
 }
