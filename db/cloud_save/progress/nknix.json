@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T16:30:44.694Z",
+  "exportedAt": "2026-09-21T16:33:51.224Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -82,14 +82,14 @@
     "dd8a1d0d": "done",
     "dffab2d7": "done",
     "b8582018": "done",
-    "1e5b95dd": "review",
+    "1e5b95dd": "done",
     "b3492de4": "done",
     "e4bd0f5a": "done",
     "02cac697": "done",
     "0e48e4cb": "done",
-    "b81a4da4": "review",
+    "b81a4da4": "done",
     "c9e4bac1": "done",
-    "c6ad6232": "review",
+    "c6ad6232": "done",
     "ad15efee": "done",
     "a6dc0fde": "done",
     "e170e55b": "done",
@@ -476,7 +476,9 @@
     "6285cfe8": "2026-09-21T16:26:14.608Z",
     "c9e4bac1": "2026-09-21T16:29:00.555Z",
     "252d6b8a": "2026-09-21T16:30:12.029Z",
-    "8f9ba995": "2026-09-21T16:30:19.678Z"
+    "8f9ba995": "2026-09-21T16:30:19.678Z",
+    "1e5b95dd": "2026-09-21T16:32:06.508Z",
+    "c6ad6232": "2026-09-21T16:32:56.766Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1407,8 +1409,8 @@
       "lastAttemptTs": 1790005967300
     },
     "Systems of two linear equations in two variables": {
-      "correct": 7,
-      "total": 7,
+      "correct": 8,
+      "total": 8,
       "recent": [
         {
           "ts": 1789476362272,
@@ -1437,9 +1439,13 @@
         {
           "ts": 1790005967302,
           "correct": true
+        },
+        {
+          "ts": 1790008246429,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790005967302
+      "lastAttemptTs": 1790008246429
     },
     "Nonlinear functions": {
       "correct": 12,
@@ -2159,10 +2165,10 @@
       "categoryMs": {}
     },
     "2026-09-22": {
-      "totalMs": 872823,
+      "totalMs": 997808,
       "viewMs": {
         "math": 77095,
-        "review": 213459,
+        "review": 338444,
         "profile": 35021,
         "home": 20011,
         "propose": 5003,
@@ -2403,7 +2409,13 @@
         "ts": 1790007264678,
         "ms": 3646
       }
+    ],
+    "8f9ba995": [
+      {
+        "ts": 1790008246429,
+        "ms": 30159
+      }
     ]
   },
-  "clientUpdatedAt": 1790008244169
+  "clientUpdatedAt": 1790008429514
 }
