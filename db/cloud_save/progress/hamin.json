@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T09:13:33.597Z",
+  "exportedAt": "2026-09-21T09:16:24.377Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -209,7 +209,7 @@
     "b8582018": "done",
     "6abb55e7": "done",
     "369ac3ca": "done",
-    "943bdd80": "review",
+    "943bdd80": "done",
     "8b52201d": "done",
     "f3aa5f58": "done",
     "f60a20af": "done",
@@ -1084,7 +1084,8 @@
     "a5307779": "2026-09-21T08:54:25.405Z",
     "c83508f3": "2026-09-21T09:01:06.277Z",
     "cdbcb6d4": "2026-09-21T09:02:59.948Z",
-    "4f6504f2": "2026-09-21T09:12:18.700Z"
+    "4f6504f2": "2026-09-21T09:12:18.700Z",
+    "943bdd80": "2026-09-21T09:13:44.701Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3157,17 +3158,17 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 1515172,
+      "totalMs": 1645172,
       "viewMs": {
         "profile": 59994,
         "home": 27507,
         "leaderboard": 10007,
         "analysis": 5000,
         "review": 1204513,
-        "practice": 208151
+        "practice": 338151
       },
       "categoryMs": {
-        "Vocab": 208151
+        "Vocab": 338151
       }
     }
   },
@@ -3497,5 +3498,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789982011516
+  "clientUpdatedAt": 1789982181517
 }
