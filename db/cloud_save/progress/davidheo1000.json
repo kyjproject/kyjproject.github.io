@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T07:09:37.675Z",
+  "exportedAt": "2026-09-21T07:12:37.278Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -2418,8 +2418,8 @@
       "lastAttemptTs": 1789817623299
     },
     "Lines, angles, and triangles": {
-      "correct": 7,
-      "total": 11,
+      "correct": 8,
+      "total": 12,
       "recent": [
         {
           "ts": 1789559310669,
@@ -2464,9 +2464,13 @@
         {
           "ts": 1789974388963,
           "correct": true
+        },
+        {
+          "ts": 1789974749370,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789974388963
+      "lastAttemptTs": 1789974749370
     },
     "Right triangles and trigonometry": {
       "correct": 6,
@@ -2842,12 +2846,12 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 325226,
+      "totalMs": 360254,
       "viewMs": {
         "lab": 85057,
         "practice": 155101,
         "browse": 5004,
-        "math": 80064
+        "math": 115092
       },
       "categoryMs": {
         "Geometry and Trigonometry": 30024,
@@ -4371,7 +4375,13 @@
         "ts": 1789974485150,
         "ms": 401
       }
+    ],
+    "a0d55a7e": [
+      {
+        "ts": 1789974749370,
+        "ms": 246704
+      }
     ]
   },
-  "clientUpdatedAt": 1789974576054
+  "clientUpdatedAt": 1789974756196
 }
