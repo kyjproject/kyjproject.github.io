@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T14:02:50.473Z",
+  "exportedAt": "2026-09-21T14:05:47.198Z",
   "progress": {
     "31926070": "done",
     "741374a0": "done",
@@ -150,7 +150,7 @@
     "4b2c5fbe": "done",
     "b0e12b3a": "review",
     "51be7407": "done",
-    "994aa0df": "review",
+    "994aa0df": "done",
     "427f0eea": "done",
     "fe6b22a2": "done",
     "1ad71c23": "done",
@@ -317,7 +317,8 @@
     "5cd676da": "2026-09-17T13:11:23.914Z",
     "7fa2cfb0": "2026-09-21T13:56:56.155Z",
     "9b815ddc": "2026-09-21T13:58:17.570Z",
-    "0e48e4cb": "2026-09-21T14:00:44.701Z"
+    "0e48e4cb": "2026-09-21T14:00:44.701Z",
+    "994aa0df": "2026-09-21T14:05:12.820Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -584,8 +585,8 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 14,
-      "total": 19,
+      "correct": 16,
+      "total": 22,
       "recent": [
         {
           "ts": 1789476362267,
@@ -622,9 +623,21 @@
         {
           "ts": 1789649457799,
           "correct": false
+        },
+        {
+          "ts": 1789999416295,
+          "correct": false
+        },
+        {
+          "ts": 1789999460208,
+          "correct": true
+        },
+        {
+          "ts": 1789999507297,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789649457799
+      "lastAttemptTs": 1789999507297
     },
     "Text Structure and Purpose": {
       "correct": 6,
@@ -1435,17 +1448,18 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 570004,
+      "totalMs": 725002,
       "viewMs": {
         "review": 35012,
-        "practice": 534992
+        "practice": 669990,
+        "profile": 20000
       },
       "categoryMs": {
         "Quantitative Evidence": 159992,
         "Textual Evidence": 80004,
         "Grammar": 20002,
         "Inferences": 269996,
-        "Vocab": 4998
+        "Vocab": 134995
       }
     },
     "2026-09-20": {
@@ -1622,7 +1636,25 @@
         "ts": 1789999377723,
         "ms": 1286
       }
+    ],
+    "7ce3feba": [
+      {
+        "ts": 1789999416296,
+        "ms": 31492
+      }
+    ],
+    "b0e12b3a": [
+      {
+        "ts": 1789999460208,
+        "ms": 38870
+      }
+    ],
+    "994aa0df": [
+      {
+        "ts": 1789999507297,
+        "ms": 42417
+      }
     ]
   },
-  "clientUpdatedAt": 1789999367031
+  "clientUpdatedAt": 1789999547031
 }
