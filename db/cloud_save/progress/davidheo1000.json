@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T07:12:37.278Z",
+  "exportedAt": "2026-09-21T07:15:37.411Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -505,7 +505,8 @@
     "d3151792": "done",
     "78eae128": "done",
     "8fed560d": "done",
-    "8e53811f": "done"
+    "8e53811f": "done",
+    "a0d55a7e": "done"
   },
   "tags": {},
   "notes": {},
@@ -1022,7 +1023,8 @@
     "d3151792": "2026-09-21T07:06:30.397Z",
     "78eae128": "2026-09-21T07:06:49.298Z",
     "8fed560d": "2026-09-21T07:07:50.582Z",
-    "8e53811f": "2026-09-21T07:08:06.516Z"
+    "8e53811f": "2026-09-21T07:08:06.516Z",
+    "a0d55a7e": "2026-09-21T07:13:03.121Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2714,16 +2716,16 @@
       "lastTs": 1789801294542
     },
     "9f2728be": {
-      "count": 4,
-      "lastTs": 1789802346664
+      "count": 5,
+      "lastTs": 1789974785188
     },
     "a0d55a7e": {
       "count": 2,
       "lastTs": 1789974502665
     },
     "669f307b": {
-      "count": 1,
-      "lastTs": 1789801426972
+      "count": 2,
+      "lastTs": 1789974788386
     },
     "271ef622": {
       "count": 1,
@@ -2846,18 +2848,19 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 360254,
+      "totalMs": 540398,
       "viewMs": {
         "lab": 85057,
         "practice": 155101,
         "browse": 5004,
-        "math": 115092
+        "math": 185147,
+        "mock": 110089
       },
       "categoryMs": {
         "Geometry and Trigonometry": 30024,
         "Problem-Solving and Data Analysis": 55020,
-        "Advanced Math": 30025,
-        "Algebra": 35027
+        "Advanced Math": 40034,
+        "Algebra": 130103
       }
     }
   },
@@ -4383,5 +4386,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789974756196
+  "clientUpdatedAt": 1789974936341
 }
