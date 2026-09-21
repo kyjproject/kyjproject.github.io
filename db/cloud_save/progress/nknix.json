@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T13:54:11.460Z",
+  "exportedAt": "2026-09-21T13:56:55.068Z",
   "progress": {
     "31926070": "done",
     "741374a0": "done",
@@ -705,8 +705,8 @@
       "lastAttemptTs": 1789649457800
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 7,
-      "total": 9,
+      "correct": 8,
+      "total": 11,
       "recent": [
         {
           "ts": 1789476362268,
@@ -735,9 +735,17 @@
         {
           "ts": 1789892910674,
           "correct": true
+        },
+        {
+          "ts": 1789998914485,
+          "correct": false
+        },
+        {
+          "ts": 1789998978271,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789892910674
+      "lastAttemptTs": 1789998978271
     },
     "Command of Evidence (Textual)": {
       "correct": 5,
@@ -1400,11 +1408,14 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 25009,
+      "totalMs": 190005,
       "viewMs": {
-        "review": 25009
+        "review": 35012,
+        "practice": 154993
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Quantitative Evidence": 154993
+      }
     },
     "2026-09-20": {
       "totalMs": 627216,
@@ -1538,7 +1549,17 @@
         "ts": 1789893169855,
         "ms": 635
       }
+    ],
+    "7fa2cfb0": [
+      {
+        "ts": 1789998914486,
+        "ms": 54686
+      },
+      {
+        "ts": 1789998978271,
+        "ms": 50190
+      }
     ]
   },
-  "clientUpdatedAt": 1789998847039
+  "clientUpdatedAt": 1789999012039
 }
