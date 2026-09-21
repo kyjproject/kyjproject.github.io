@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T10:48:32.026Z",
+  "exportedAt": "2026-09-21T10:51:31.828Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -306,7 +306,7 @@
     "0a7fe3ce": "done",
     "fda65f0a": "done",
     "8e316e56": "done",
-    "2891bf1b": "review",
+    "2891bf1b": "done",
     "3d7ee626": "done",
     "c7e43751": "done",
     "27f23e11": "done",
@@ -522,9 +522,9 @@
     "bf0c8b48": "done",
     "d3cb31fe": "done",
     "bfad2097": "review",
-    "296f8a05": "review",
+    "296f8a05": "done",
     "8cc6b27a": "done",
-    "dac47b83": "review",
+    "dac47b83": "done",
     "826c2a7e": "review",
     "c02b765d": "done",
     "2a57b2a8": "done",
@@ -1097,7 +1097,9 @@
     "82f640c7": "2026-09-21T10:48:13.791Z",
     "2a57b2a8": "2026-09-21T10:48:19.515Z",
     "8cc6b27a": "2026-09-21T10:48:23.483Z",
-    "c02b765d": "2026-09-21T10:48:29.616Z"
+    "c02b765d": "2026-09-21T10:48:29.616Z",
+    "296f8a05": "2026-09-21T10:50:29.214Z",
+    "dac47b83": "2026-09-21T10:50:35.474Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3346,15 +3348,15 @@
       }
     },
     "2026-09-21": {
-      "totalMs": 6211175,
+      "totalMs": 6380768,
       "viewMs": {
         "profile": 64997,
         "home": 27507,
         "leaderboard": 10007,
         "analysis": 5000,
-        "review": 1234508,
+        "review": 1369508,
         "practice": 343151,
-        "mock": 4526005
+        "mock": 4560598
       },
       "categoryMs": {
         "Vocab": 818147,
@@ -3696,5 +3698,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1789987708743
+  "clientUpdatedAt": 1789987888738
 }
