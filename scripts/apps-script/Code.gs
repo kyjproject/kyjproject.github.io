@@ -35,16 +35,33 @@
 //        ADMIN_SECRET   optional, a password only you know — set this if you
 //                       want the ability to reset a user's forgotten
 //                       password yourself (see handleAdminResetPassword_
-//                       below). Passwords are one-way hashed, so this is a
-//                       reset, not a recovery — you can never see the
-//                       original password, yours or anyone else's.
+//                       below), or to list usernames (handleAdminListUsers_).
+//                       Passwords are one-way hashed, so this is a reset, not
+//                       a recovery — you can never see the original
+//                       password, yours or anyone else's. This is also the
+//                       secret scripts/dashboard_server.py needs in its own
+//                       (untracked) db/staging/dashboard_config.json to
+//                       drive the "Users & Passwords" tab of tools/dashboard.html.
+//        ADMIN_EMAIL    optional, where sendAdminDigestEmail_ sends its
+//                       summary (defaults to yongjoon9981@gmail.com) — see
+//                       "Admin digest email" setup below.
 //   3. Deploy -> New deployment -> type "Web app".
 //        Execute as: Me
 //        Who has access: Anyone
 //      (public access is fine — every write still requires a matching
 //      username/password, and the token itself never leaves this script)
 //   4. Copy the resulting /exec URL into CLOUD_SAVE_URL near the top of
-//      site/index.template.html, then rebuild (see README.md).
+//      site/index.template.html, then rebuild (see README.md). Also put it
+//      in db/staging/dashboard_config.json's cloud_save_url (see below).
+//
+// Admin digest email (optional): once deployed, open this same Apps Script
+// project, pick installAdminDigestTrigger_ from the function dropdown, and
+// click Run once (authorize Gmail access when asked). That schedules
+// sendAdminDigestEmail_ to check every 30 minutes for new student question
+// reports, site feedback, and proposed questions, and emails a summary to
+// ADMIN_EMAIL/yongjoon9981@gmail.com whenever there's something new — this
+// runs on Google's servers, so it keeps working even when your computer is
+// off. See the "Admin digest email" comment further down for details.
 
 function doPost(e) {
   var result;
@@ -61,7 +78,9 @@ function doPost(e) {
     else if (action === 'propose_question') result = handlePropose_(body);
     else if (action === 'report_question') result = handleReportQuestion_(body);
     else if (action === 'leaderboard') result = handleLeaderboard_(body);
+    else if (action === 'get_jumpscare_status') result = handleGetJumpscareStatus_(body);
     else if (action === 'admin_reset_password') result = handleAdminResetPassword_(body);
+    else if (action === 'admin_list_users') result = handleAdminListUsers_(body);
     else if (action === 'save_blueprint') result = handleSaveBlueprint_(body);
     else if (action === 'load_blueprint') result = handleLoadBlueprint_(body);
     else if (action === 'list_blueprints') result = handleListBlueprints_(body);
@@ -141,6 +160,14 @@ function reportsPath_() { return 'db/staging/reported_questions.json'; }
 // settable by users themselves. Fixed shared location, same idea as
 // ratingsPath_/reportsPath_.
 function userTitlesPath_() { return 'db/user_titles.json'; }
+// Same idea, same fixed shared location — who the mock-exam jumpscare
+// easter egg (site/index.template.html's showJumpscare()) fires for. Shape:
+// {"enabled": true, "users": ["hamin"]} — "enabled" is a kill switch that
+// doesn't require clearing the user list, "users" is lowercase usernames.
+// Edited from tools/manage_jumpscare.html (scripts/dashboard_server.py),
+// same "edit locally, commit + push to reach the live site" flow as
+// user_titles.json — see manage_titles.py's header comment for why.
+function jumpscareConfigPath_() { return 'db/jumpscare_config.json'; }
 // Home-tab testimonials: submissions land in the staging file (same
 // never-live-on-its-own guarantee as proposed questions/reports) until
 // scripts/review_testimonials.py approves one into the public file, which
@@ -227,10 +254,27 @@ function githubPutFileBase64_(cfg, path, base64Content, sha, message, branch) {
 // PROGRESS_BRANCH come into existence on its own on the very first
 // auto-sync/save — no manual "create this branch first" step for whoever
 // deploys the script.
+//
+// Once a branch exists it never stops existing, so the ref-check GET below
+// is wasted latency on every single save after the first — one more
+// sequential GitHub round-trip inside a doPost call that's already several
+// deep (checkCredentials_ + this + the pre-existing-file GET + the PUT),
+// which widens the window for the exec->echo redirect hop to flake (see
+// cloudSaveRequest's retry logic client-side). CacheService remembers a
+// confirmed-existing branch for the rest of the day so most saves skip
+// straight past this — a cold cache (new day, new script version, or the
+// 6hr GAS cache ceiling) just re-checks once and refills it, same as before.
 function githubEnsureBranch_(cfg, branch) {
+  var cache = CacheService.getScriptCache();
+  var cacheKey = 'branch-exists:' + branch;
+  if (cache.get(cacheKey)) return;
+
   var refUrl = cfg.apiRoot.replace('/contents', '/git/ref/heads/') + encodeURIComponent(branch);
   var refResp = UrlFetchApp.fetch(refUrl, { method: 'get', headers: cfg.headers, muteHttpExceptions: true });
-  if (refResp.getResponseCode() === 200) return; // already exists
+  if (refResp.getResponseCode() === 200) {
+    cache.put(cacheKey, '1', 21600); // 6hr — CacheService's own max
+    return;
+  }
 
   var baseUrl = cfg.apiRoot.replace('/contents', '/git/ref/heads/') + encodeURIComponent(cfg.branch);
   var baseResp = UrlFetchApp.fetch(baseUrl, { method: 'get', headers: cfg.headers, muteHttpExceptions: true });
@@ -251,6 +295,7 @@ function githubEnsureBranch_(cfg, branch) {
   if (createResp.getResponseCode() !== 201 && createResp.getResponseCode() !== 422) {
     throw new Error('Could not create branch ' + branch + ': ' + createResp.getResponseCode() + ' ' + createResp.getContentText());
   }
+  cache.put(cacheKey, '1', 21600);
 }
 
 // ---------- auth ----------
@@ -439,6 +484,29 @@ function handleLeaderboard_(body) {
   return { ok: true, entries: entries };
 }
 
+// Whether the mock-exam jumpscare easter egg should fire for this user —
+// requires a login same as the leaderboard, since who's on the list isn't
+// meant to be publicly enumerable. Reads jumpscareConfigPath_() fresh from
+// GitHub every call (no caching) so a toggle from tools/manage_jumpscare.html
+// reaches the live site as soon as it's committed + pushed, no rebuild.
+function handleGetJumpscareStatus_(body) {
+  var cfg = config_();
+  var check = checkCredentials_(cfg, body && body.username, body && body.password);
+  if (!check.ok) return check;
+
+  var file = githubGetFile_(cfg, jumpscareConfigPath_());
+  var conf = { enabled: true, users: [] };
+  if (file.exists) {
+    try {
+      var parsed = JSON.parse(file.content);
+      if (parsed && typeof parsed === 'object') conf = parsed;
+    } catch (e) { /* keep default */ }
+  }
+  var users = (conf.users || []).map(function (u) { return String(u).toLowerCase(); });
+  var enabled = conf.enabled !== false && users.indexOf(check.username.toLowerCase()) !== -1;
+  return { ok: true, enabled: enabled };
+}
+
 // Lets the site owner reset a user's password without knowing the old one
 // (passwords are stored as a one-way hash — see checkCredentials_ — so
 // there's no way to recover the original). Not exposed in any UI; call it
@@ -468,6 +536,24 @@ function handleAdminResetPassword_(body) {
   rec.passwordHash = sha256Hex_(String(newPassword));
   githubPutFile_(cfg, usersPath_(cfg), JSON.stringify(loaded.users, null, 2), loaded.sha, 'Admin reset password for ' + rec.username);
   return { ok: true, username: rec.username };
+}
+
+// Site-owner-only, same shared-secret pattern as handleAdminResetPassword_ —
+// lets the local dashboard (scripts/dashboard_server.py -> tools/manage_users.html)
+// populate a username picker without ever seeing passwordHash values.
+function handleAdminListUsers_(body) {
+  var props = PropertiesService.getScriptProperties();
+  var adminSecret = props.getProperty('ADMIN_SECRET');
+  if (!adminSecret) return { ok: false, error: 'ADMIN_SECRET is not set in Script Properties' };
+  if (!body || body.adminSecret !== adminSecret) return { ok: false, error: 'Not authorized' };
+
+  var cfg = config_();
+  var users = loadUsers_(cfg).users;
+  var list = Object.keys(users).map(function (key) {
+    var u = users[key] || {};
+    return { username: u.username || key, createdAt: u.createdAt || null };
+  }).sort(function (a, b) { return a.username.localeCompare(b.username); });
+  return { ok: true, users: list };
 }
 
 // A student-submitted question (from the site's "Propose" tab). This only
@@ -1127,4 +1213,88 @@ function handleGetCompetition_(body) {
     currentYearLabel: String(currentYear),
     currentYearClosed: currentYearCloses <= now.getTime(),
   };
+}
+
+// ---------- Admin digest email ----------
+// Runs on a time-driven trigger (see installAdminDigestTrigger_ below), not
+// via doPost — nobody can invoke this over the web. Each feed below is a
+// staging file students write to (question reports, general site feedback,
+// proposed questions); this walks each one, finds items newer than the
+// last run's high-water mark (kept in Script Properties, one property per
+// feed, so items that get resolved/removed locally afterward don't cause
+// them to be re-reported as "new" next time), and — only if there's
+// something actually new — sends one summary email. Silent (no email) on a
+// run with nothing new, so this can run every 30 minutes without becoming
+// noise.
+function adminDigestFeeds_() {
+  return [
+    {
+      key: 'REPORTS', path: reportsPath_(), timeField: 'reported_at', label: 'question report(s)',
+      describe: function (r) { return (r.shortId || r.qid) + ' — ' + r.reason + ' (by ' + r.reported_by + ')'; },
+    },
+    {
+      key: 'FEEDBACK', path: siteFeedbackPath_(), timeField: 'submitted_at', label: 'site feedback item(s)',
+      describe: function (r) { return '[' + r.type + '] ' + String(r.message || '').slice(0, 90); },
+    },
+    {
+      key: 'PROPOSED', path: stagingPath_(), timeField: 'proposed_at', label: 'proposed question(s)',
+      describe: function (r) { return (r.title || r.id) + ' (' + r.category + ', by ' + r.proposed_by + ')'; },
+    },
+  ];
+}
+
+function sendAdminDigestEmail_() {
+  var cfg = config_();
+  var props = PropertiesService.getScriptProperties();
+  var to = props.getProperty('ADMIN_EMAIL') || 'yongjoon9981@gmail.com';
+
+  var sections = [];
+  var totalNew = 0;
+
+  adminDigestFeeds_().forEach(function (feed) {
+    var propKey = 'DIGEST_LAST_' + feed.key;
+    var lastSeen = props.getProperty(propKey) || '';
+    var file = githubGetFile_(cfg, feed.path);
+    var items = [];
+    if (file.exists) {
+      try { items = JSON.parse(file.content); } catch (e) { items = []; }
+      if (!Array.isArray(items)) items = [];
+    }
+    var fresh = items.filter(function (it) { return String((it && it[feed.timeField]) || '') > lastSeen; });
+    if (!fresh.length) return;
+    fresh.sort(function (a, b) { return String(a[feed.timeField]).localeCompare(String(b[feed.timeField])); });
+
+    totalNew += fresh.length;
+    var shown = fresh.slice(0, 10).map(function (it) { return '  - ' + feed.describe(it); });
+    if (fresh.length > 10) shown.push('  ...and ' + (fresh.length - 10) + ' more');
+    sections.push(fresh.length + ' new ' + feed.label + ':\n' + shown.join('\n'));
+
+    var maxSeen = fresh.reduce(function (m, it) {
+      var t = String(it[feed.timeField] || '');
+      return t > m ? t : m;
+    }, lastSeen);
+    props.setProperty(propKey, maxSeen);
+  });
+
+  if (!totalNew) return;
+  var subject = 'KYJ-SAT: ' + totalNew + ' new item' + (totalNew === 1 ? '' : 's') + ' to review';
+  var body = 'New activity since the last check:\n\n' + sections.join('\n\n') +
+    '\n\nOpen the local admin dashboard (python3 scripts/dashboard_server.py) to review and act on these.';
+  MailApp.sendEmail(to, subject, body);
+}
+
+// One-time setup: open this project at https://script.google.com/, pick
+// installAdminDigestTrigger_ from the function dropdown next to "Run", and
+// click Run once (you'll be asked to authorize Gmail/MailApp access the
+// first time). That schedules sendAdminDigestEmail_ to run automatically
+// every 30 minutes on Google's servers — it keeps working even when your
+// computer is off. Re-running this is safe: it clears any previous trigger
+// for the same function first, so you never end up with duplicates. Set an
+// ADMIN_EMAIL Script Property first if you want the digest to go somewhere
+// other than yongjoon9981@gmail.com.
+function installAdminDigestTrigger_() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'sendAdminDigestEmail_') ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('sendAdminDigestEmail_').timeBased().everyMinutes(30).create();
 }

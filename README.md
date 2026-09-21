@@ -114,11 +114,17 @@ scripts/
   staging_server.py            local HTTP server so tools/add_question.html works in any browser (not just Chrome/Edge)
   manage_titles.py             CLI to add/remove leaderboard title badges in db/user_titles.json (list/set/remove/templates)
   titles_server.py             local HTTP server so tools/manage_titles.html can edit db/user_titles.json from a form
+  dashboard_server.py          local HTTP server for tools/dashboard.html — the single admin hub (see "Admin dashboard" below);
+                                supersedes running titles_server.py/reports_server.py/admin_dashboard_server.py separately,
+                                though those three still work standalone if you only need one piece
   apps-script/Code.gs           Google Apps Script backend for kyj-cloud, the app's optional login/sync feature (deployed separately, not part of this build)
 
 tools/
   add_question.html            local form for staging a new hand-written question into db/staging/proposed_questions.json
   manage_titles.html           local form for adding/removing leaderboard title badges (db/user_titles.json) — run via titles_server.py
+  dashboard.html                the admin hub: nudge overview + tabs for proposed questions, student reports, site
+                                feedback/bugs, question bank review, titles, user password resets, and progress —
+                                run via dashboard_server.py
 
 site/
   index.template.html          the web app (single file, vanilla JS, no build tooling)
@@ -283,6 +289,49 @@ without a deliberate approval step.
 3. If anything was approved, rebuild like normal (see Regenerating below):
    `build_db.py`, `build_site_data.py`, `build_site.py`,
    `build_github_pages.py`.
+
+## Admin dashboard
+
+`scripts/dashboard_server.py` + `tools/dashboard.html` is a single local hub
+for everything above that needs a human to look at it, instead of running
+several separate local servers on separate ports. Run
+`python3 scripts/dashboard_server.py` and open
+`http://localhost:8770/tools/dashboard.html`. It has:
+
+- **Overview** — how many new items showed up in each queue since you last
+  opened it ("nudges"), with a badge in the sidebar too.
+- **Proposed Questions** — a browser version of
+  `scripts/review_staged_questions.py`: approve (same validation) or reject
+  student-submitted questions from `db/staging/proposed_questions.json`.
+- **Student Reports** / **Site Feedback / Bugs** / **Question Bank Review** —
+  the same tools as `tools/review_reports.html` / `review_site_feedback.html`
+  / `review_dashboard.html`, embedded as tabs (those pages still work
+  standalone too, via `python3 scripts/reports_server.py`).
+- **Titles** — same as `tools/manage_titles.html`.
+- **Jumpscare** — who the mock-exam jumpscare easter egg (`showJumpscare()` in
+  `site/index.template.html`) fires for, plus a master on/off switch. Editable
+  per-account instead of hardcoded; writes `db/jumpscare_config.json`, which
+  `handleGetJumpscareStatus_` in Code.gs reads live from GitHub (same
+  commit-and-push-to-go-live pattern as `db/user_titles.json` — no rebuild).
+- **Users & Passwords** — reset a user's forgotten password (relays to the
+  Apps Script `admin_reset_password` action — see below), and list known
+  usernames. Needs a local, untracked `db/staging/dashboard_config.json`
+  (never committed — see `.gitignore`):
+  ```json
+  {"cloud_save_url": "<your Apps Script /exec URL>", "admin_secret": "<your ADMIN_SECRET Script Property>"}
+  ```
+  Every other tab works without this file; this one shows setup
+  instructions in place of the form until it's there.
+- **Progress** — same as `tools/admin_dashboard.html`.
+
+**Email nudges:** to get an email whenever a new question report, site
+feedback item, or proposed question shows up — even when your computer is
+off — open the Apps Script project (`scripts/apps-script/Code.gs`, deployed
+per its own setup comment), pick `installAdminDigestTrigger_` from the
+function dropdown, and click Run once (authorize Gmail access when asked).
+That schedules a check every 30 minutes; it only emails
+`yongjoon9981@gmail.com` (override with an `ADMIN_EMAIL` Script Property)
+when there's actually something new.
 
 ## Regenerating
 

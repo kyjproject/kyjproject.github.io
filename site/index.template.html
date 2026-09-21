@@ -7820,7 +7820,7 @@
     if (view === 'blueprints') renderBlueprintsBrowser();
     if (view === 'practice') renderPractice();
     if (view === 'test') renderTest();
-    if (view === 'mock') { renderMock(); maybeTriggerHaminJumpscare(); }
+    if (view === 'mock') { renderMock(); maybeTriggerJumpscare(); }
     if (view === 'profile') renderProfile();
     if (view === 'analysis') { renderProgress(); renderAnalysis(); }
     if (view === 'review') renderReview();
@@ -8200,6 +8200,7 @@
   // Guide tab used to carry its own hand-written copy of this; now it just
   // links here instead, so there's a single place to add a new entry.
   const CHANGELOG = [
+    { version: 'v2.9', date: 'Sep 20', title: 'Math questions: converting to real LaTeX (in progress)', lede: 'Started replacing the cropped-PDF-image math from v2.0 with real LaTeX, rendered client-side via KaTeX — consistently sized, theme-colored, and free of the old crop bugs (stray fragments, missing choices, mis-bounded graphs) along the way. Currently 200 of 1,292 math questions converted; the rest still render as cropped images until their turn comes up.' },
     { version: 'v2.8', date: 'Sep 20', title: 'Bug fix: kyj-cloud sync on log out/log in', lede: 'Two kyj-cloud sync bugs fixed: logging out wasn\'t actually clearing local progress, and logging in made you confirm a load you didn\'t need to.', items: [
       { name: 'Fix: logging out left progress behind', desc: 'Logging out was supposed to reset this device once its progress was confirmed backed up to the cloud, but only ever cleared 4 fields (completed/reviewed marks, review scheduling, skill stats) — tags, notes, mock/test history, blueprints, and more were silently left behind. It now does the same total reset as "Reset all progress" (recoverable from that feature\'s own auto-stashed local snapshot), still only once sync is confirmed. Fixes switching between two kyj-cloud accounts on the same device leaking progress from one into the other.' },
       { name: 'Fix: logging in required an extra confirm to actually load your progress', desc: 'Logging into an account with existing cloud progress used to stop and ask "Load into this browser?" before doing anything, even though that merge only ever adds and was never at risk of overwriting anything. It now merges that progress in immediately with a toast — no click required.' },
@@ -8777,13 +8778,37 @@
   let competitionError = null;
   let competitionSubmitting = false;
 
-  // ---------- Jumpscare easter egg (triggers once for the "hamin" account) ----------
-  let __haminJumpscareShown = false;
-  function maybeTriggerHaminJumpscare() {
+  // ---------- Jumpscare easter egg ----------
+  // Who it fires for is admin-controlled (db/jumpscare_config.json, edited
+  // from tools/manage_jumpscare.html), not hardcoded — handleGetJumpscareStatus_
+  // in Code.gs checks the logged-in username against it fresh on every call,
+  // so a toggle reaches everyone already on the site with no rebuild needed.
+  //
+  // __jumpscareStatusPromise holds the *in-flight* (not yet-awaited) status
+  // check, kicked off as early as possible — right after page load if
+  // already logged in, or right after a fresh login — via
+  // prefetchJumpscareStatus() below, rather than only starting the network
+  // round-trip once the student actually opens a mock exam. By the time
+  // maybeTriggerJumpscare() runs, that request has usually already resolved,
+  // so awaiting it here is instant instead of adding a visible delay before
+  // the jumpscare can fire.
+  let __jumpscareShown = false;
+  let __jumpscareStatusPromise = null;
+  function prefetchJumpscareStatus() {
+    const username = (getCloudUsername() || '').trim();
+    if (!username || !CLOUD_SAVE_URL) { __jumpscareStatusPromise = null; return; }
+    __jumpscareStatusPromise = cloudSaveRequest('get_jumpscare_status', {
+      username, password: getCloudPassword(),
+    }).then(r => !!r.enabled).catch(() => false);
+  }
+  async function maybeTriggerJumpscare() {
     try {
-      if (__haminJumpscareShown) return;
-      if ((getCloudUsername() || '').trim().toLowerCase() !== 'hamin') return;
-      __haminJumpscareShown = true;
+      if (__jumpscareShown) return;
+      if (!isCloudLoggedIn()) return;
+      if (!__jumpscareStatusPromise) prefetchJumpscareStatus(); // fallback if the earlier prefetch never ran
+      const enabled = await __jumpscareStatusPromise;
+      if (!enabled || __jumpscareShown) return;
+      __jumpscareShown = true;
       showJumpscare();
     } catch (e) {}
   }
@@ -8953,16 +8978,44 @@
   // One request shape for signup/login/save/load — the script dispatches on
   // `action`. text/plain avoids a CORS preflight (Apps Script web apps don't
   // answer OPTIONS); the script parses the body as JSON regardless.
+  //
+  // Apps Script's /exec endpoint redirects every call through a one-time
+  // script.googleusercontent.com/macros/echo link, and that hop flakes on
+  // its own (hangs, or comes back as a broken Drive redirect) on roughly
+  // 1 in 5-10 calls, independent of anything here — confirmed by hammering
+  // the endpoint directly. performCloudSave chains two of these calls
+  // (load, then save), so a single-request failure rate that was already
+  // noticeable becomes a much more visible sync failure. Retrying a couple
+  // times with backoff absorbs that flakiness instead of surfacing it as a
+  // broken sync; a real application-level error (bad password, etc, i.e.
+  // `json.ok === false`) is never retried since retrying wouldn't change it.
+  const CLOUD_SAVE_MAX_ATTEMPTS = 3;
+  const CLOUD_SAVE_TIMEOUT_MS = 12000;
   async function cloudSaveRequest(action, extra) {
-    const res = await fetch(CLOUD_SAVE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(Object.assign({ action }, extra)),
-    });
-    const json = await res.json().catch(() => null);
-    if (!json) throw new Error(`HTTP ${res.status}`);
-    if (!json.ok) throw new Error(json.error || 'Request failed');
-    return json;
+    let lastErr;
+    for (let attempt = 0; attempt < CLOUD_SAVE_MAX_ATTEMPTS; attempt++) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), CLOUD_SAVE_TIMEOUT_MS);
+      try {
+        const res = await fetch(CLOUD_SAVE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(Object.assign({ action }, extra)),
+          signal: ctrl.signal,
+        });
+        clearTimeout(timer);
+        const json = await res.json().catch(() => null);
+        if (!json) throw new Error(`HTTP ${res.status}`);
+        if (!json.ok) throw Object.assign(new Error(json.error || 'Request failed'), { noRetry: true });
+        return json;
+      } catch (e) {
+        clearTimeout(timer);
+        lastErr = e;
+        if ((e && e.noRetry) || attempt === CLOUD_SAVE_MAX_ATTEMPTS - 1) throw e;
+        await new Promise(r => setTimeout(r, 500 * Math.pow(2, attempt)));
+      }
+    }
+    throw lastErr;
   }
 
   // ---------- Testimonials (Home tab) ----------
@@ -9458,6 +9511,7 @@
         try {
           if (!isTftDemoLogin) await cloudSaveRequest(cloudSaveMode, { username, password });
           setCloudCredentials(username, password);
+          prefetchJumpscareStatus();
           if (cloudSaveMode === 'signup' && (!state.profile.name || state.profile.name === DEFAULT_PROFILE_NAME)) {
             state.profile = { name: username.slice(0, 24) };
             saveProfile();
@@ -9570,6 +9624,7 @@
       }
 
       clearCloudCredentials();
+      __jumpscareStatusPromise = null;
       leaderboardEntries = null;
       leaderboardError = null;
       updateCloudSaveTriggerState();
@@ -9616,6 +9671,11 @@
   });
 
   updateCloudSaveTriggerState();
+  // Covers a returning visitor whose login persisted in localStorage from a
+  // previous visit — same prefetch a fresh login triggers above, just also
+  // kicked off unconditionally at page load so it's already resolved well
+  // before anyone reaches a mock exam.
+  if (isCloudLoggedIn()) prefetchJumpscareStatus();
 
   // ---------- Propose a question ----------
   // Students submit through the same cloud-save account (for attribution and

@@ -381,5 +381,134 @@
       }
     },
     "resolved_at": "2026-09-20T09:54:39.247Z"
+  },
+  {
+    "qid": "427f0eea",
+    "shortId": "Advanced Math #12",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "nknix",
+    "reported_at": "2026-09-17T13:15:10.384Z",
+    "question": {
+      "id": "427f0eea",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear functions",
+      "skill_code": "NLFUNC",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "C",
+      "has_image": true,
+      "image_paths": [],
+      "page": 13,
+      "stem": "The function ⟦LATEX:f⟧ gives the product of a number, ⟦LATEX:x⟧, and a number that is ⟦LATEX:91⟧ more than ⟦LATEX:x⟧. Which equation defines ⟦LATEX:f⟧?",
+      "choices": {
+        "A": "⟦LATEX:f(x)=x^2+x+91⟧",
+        "B": "⟦LATEX:f(x)=x^2+91⟧",
+        "C": "⟦LATEX:f(x)=x^2+91x⟧",
+        "D": "⟦LATEX:f(x)=x^2+91x+91⟧"
+      },
+      "rationale_full": "Choice C is correct. It's given that the function ⟦LATEX:f⟧ gives the product of a number, ⟦LATEX:x⟧, and a number that is ⟦LATEX:91⟧ more than ⟦LATEX:x⟧. A number that is ⟦LATEX:91⟧ more than ⟦LATEX:x⟧ can be represented by the expression ⟦LATEX:x+91⟧. Therefore, ⟦LATEX:f⟧ can be defined by the equation ⟦LATEX:f(x)=x(x+91)⟧, or ⟦LATEX:f(x)=x^2+91x⟧. Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "C": "Choice C is correct. It's given that the function ⟦LATEX:f⟧ gives the product of a number, ⟦LATEX:x⟧, and a number that is ⟦LATEX:91⟧ more than ⟦LATEX:x⟧. A number that is ⟦LATEX:91⟧ more than ⟦LATEX:x⟧ can be represented by the expression ⟦LATEX:x+91⟧. Therefore, ⟦LATEX:f⟧ can be defined by the equation ⟦LATEX:f(x)=x(x+91)⟧, or ⟦LATEX:f(x)=x^2+91x⟧.",
+        "A": "Choice A is incorrect and may result from conceptual or calculation errors.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-20T14:19:25.214Z"
+  },
+  {
+    "qid": "8d93d73a",
+    "shortId": "Algebra #5",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-19T07:43:13.525Z",
+    "question": {
+      "id": "8d93d73a",
+      "category": "Algebra",
+      "source_pdf": "Algebra.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Algebra",
+      "domain_code": "ALG",
+      "skill": "Linear inequalities in one or two variables",
+      "skill_code": "LINEQ",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "A",
+      "has_image": true,
+      "image_paths": [],
+      "page": 7,
+      "stem": "⟦LATEX:y < 5x + 6⟧\n\nFor which of the following tables are all the values of ⟦LATEX:x⟧ and their corresponding values of ⟦LATEX:y⟧ solutions to the given inequality?",
+      "choices": {
+        "A": "⟦LATEX:\\begin{array}{c|c} x & y \\\\ \\hline 3 & 17 \\\\ 5 & 27 \\\\ 7 & 37 \\end{array}⟧",
+        "B": "⟦LATEX:\\begin{array}{c|c} x & y \\\\ \\hline 3 & 17 \\\\ 5 & 35 \\\\ 7 & 37 \\end{array}⟧",
+        "C": "⟦LATEX:\\begin{array}{c|c} x & y \\\\ \\hline 3 & 25 \\\\ 5 & 35 \\\\ 7 & 45 \\end{array}⟧",
+        "D": "⟦LATEX:\\begin{array}{c|c} x & y \\\\ \\hline 3 & 21 \\\\ 5 & 31 \\\\ 7 & 41 \\end{array}⟧"
+      },
+      "rationale_full": "Choice A is correct. Substituting ⟦LATEX:3⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(3) + 6⟧, or ⟦LATEX:y < 21⟧. Therefore, when ⟦LATEX:x = 3⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:21⟧. Substituting ⟦LATEX:5⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(5) + 6⟧, or ⟦LATEX:y < 31⟧. Therefore, when ⟦LATEX:x = 5⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:31⟧. Substituting ⟦LATEX:7⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(7) + 6⟧, or ⟦LATEX:y < 41⟧. Therefore, when ⟦LATEX:x = 7⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:41⟧. For the table in choice A, when ⟦LATEX:x = 3⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:17⟧, which is less than ⟦LATEX:21⟧; when ⟦LATEX:x = 5⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:27⟧, which is less than ⟦LATEX:31⟧; and when ⟦LATEX:x = 7⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:37⟧, which is less than ⟦LATEX:41⟧. Therefore, the table in choice A gives values of ⟦LATEX:x⟧ and their corresponding values of ⟦LATEX:y⟧ that are all solutions to the given inequality.\n\nChoice B is incorrect and may result from conceptual or calculation errors.\n\nChoice C is incorrect and may result from conceptual or calculation errors.\n\nChoice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "A": "Choice A is correct. Substituting ⟦LATEX:3⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(3) + 6⟧, or ⟦LATEX:y < 21⟧. Therefore, when ⟦LATEX:x = 3⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:21⟧. Substituting ⟦LATEX:5⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(5) + 6⟧, or ⟦LATEX:y < 31⟧. Therefore, when ⟦LATEX:x = 5⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:31⟧. Substituting ⟦LATEX:7⟧ for ⟦LATEX:x⟧ in the given inequality yields ⟦LATEX:y < 5(7) + 6⟧, or ⟦LATEX:y < 41⟧. Therefore, when ⟦LATEX:x = 7⟧, the corresponding value of ⟦LATEX:y⟧ is less than ⟦LATEX:41⟧. For the table in choice A, when ⟦LATEX:x = 3⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:17⟧, which is less than ⟦LATEX:21⟧; when ⟦LATEX:x = 5⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:27⟧, which is less than ⟦LATEX:31⟧; and when ⟦LATEX:x = 7⟧, the corresponding value of ⟦LATEX:y⟧ is ⟦LATEX:37⟧, which is less than ⟦LATEX:41⟧. Therefore, the table in choice A gives values of ⟦LATEX:x⟧ and their corresponding values of ⟦LATEX:y⟧ that are all solutions to the given inequality.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "C": "Choice C is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-20T14:35:51.531Z"
+  },
+  {
+    "qid": "0106a3a1",
+    "shortId": "Advanced Math #240",
+    "reason": "Wrong answer or rationale",
+    "note": "Wro",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-19T07:43:13.521Z",
+    "question": {
+      "id": "0106a3a1",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear equations in one variable and systems of equations in two variables",
+      "skill_code": "NLEQ",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 262,
+      "stem": "⟦IMG:images/math/advanced_math/0106a3a1_8313.png⟧\n\n⟦IMG:images/math/advanced_math/0106a3a1_8314.png⟧\n\n⟦IMG:images/math/advanced_math/0106a3a1_8315.png⟧\n\nHow many distinct real solutions does the given equation have?",
+      "choices": {
+        "A": "Exactly one",
+        "B": "Exactly two",
+        "C": "Inﬁnitely many",
+        "D": "Zero"
+      },
+      "rationale_full": "Choice D is correct. Since the square of a real number is never negative, the given equation isn't true for any real value of ⟦IMG:images/math/advanced_math/0106a3a1_8316.png⟧. Therefore, the given equation has zero distinct real solutions. Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice C is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. Since the square of a real number is never negative, the given equation isn't true for any real value of ⟦IMG:images/math/advanced_math/0106a3a1_8316.png⟧. Therefore, the given equation has zero distinct real solutions.",
+        "A": "Choice A is incorrect and may result from conceptual or calculation errors.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "C": "Choice C is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-20T14:50:13.108Z"
   }
 ]

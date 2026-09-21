@@ -2,3 +2,9 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# scripts/dashboard_server.py — local-only, never committed: holds the
+# ADMIN_SECRET (dashboard_config.json) and per-viewer "last seen" state
+# (dashboard_seen.json) for tools/dashboard.html.
+db/staging/dashboard_config.json
+db/staging/dashboard_seen.json

@@ -1,0 +1,189 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Users &amp; Passwords</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--rule); background: var(--paper-raised); flex-wrap: wrap; }
+  h1 { font-size: 16px; margin: 0 18px 0 0; white-space: nowrap; }
+  #connStatus { font-size: 12.5px; color: var(--ink-faint); margin-left: auto; }
+  #connStatus.ok { color: var(--done); }
+  #connStatus.bad { color: var(--bad); }
+  main { max-width: 640px; margin: 0 auto; padding: 20px; }
+  .card { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+  .card h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 12px; }
+  label { display: block; font-size: 12.5px; color: var(--ink-soft); margin: 12px 0 4px; }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], input[type="password"], select {
+    width: 100%; font: inherit; background: var(--paper); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  .btn { appearance: none; font: inherit; font-weight: 600; font-size: 13px; background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: #0b1310; }
+  .actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+  #resetStatus, #listStatus { font-size: 12.5px; color: var(--ink-faint); }
+  #resetStatus.ok { color: var(--done); }
+  #resetStatus.bad { color: var(--bad); }
+  .userRow { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--rule-soft); }
+  .userRow:last-child { border-bottom: none; }
+  .userRow .created { color: var(--ink-faint); font-size: 12px; }
+  .setupBox { background: var(--warn-bg); border: 1px solid var(--warn); color: var(--warn); border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 1.6; }
+  .setupBox code { font-family: var(--mono); background: rgba(0,0,0,0.2); padding: 1px 5px; border-radius: 4px; }
+  .toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .hint { font-size: 12px; color: var(--ink-faint); margin: 8px 0 0; }
+</style>
+
+<header>
+  <h1>🔑 Users &amp; Passwords</h1>
+  <span id="connStatus">Connecting…</span>
+</header>
+
+<main>
+  <div id="setupSection" style="display:none;">
+    <div class="setupBox">
+      Not configured yet. Create <code>db/staging/dashboard_config.json</code> (untracked, never committed)
+      with:
+      <pre style="white-space:pre-wrap;">{"cloud_save_url": "&lt;your Apps Script /exec URL&gt;", "admin_secret": "&lt;your ADMIN_SECRET Script Property&gt;"}</pre>
+      The URL is the same one in <code>CLOUD_SAVE_URL</code> near the top of
+      <code>site/index.template.html</code>. The secret must match the <code>ADMIN_SECRET</code> Script
+      Property on the Apps Script project (see the setup comment at the top of
+      <code>scripts/apps-script/Code.gs</code>).
+    </div>
+  </div>
+
+  <div id="mainSection">
+    <div class="card">
+      <h3>Reset a user's password</h3>
+      <label for="username">Username</label>
+      <input type="text" id="username" list="userList" autocomplete="off" placeholder="e.g. hamin" />
+      <datalist id="userList"></datalist>
+
+      <label for="newPassword">New password (4+ characters)</label>
+      <input type="password" id="newPassword" autocomplete="new-password" />
+
+      <div class="actions">
+        <button class="btn btn-accent" id="resetBtn" type="button">Reset password</button>
+        <span id="resetStatus"></span>
+      </div>
+      <div class="hint">
+        Passwords are one-way hashed server-side — this sets a new one, it can't recover the old one.
+        Tell the user their new password out-of-band; there's no email/recovery flow.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <h3 style="margin:0;">Known users</h3>
+        <button class="btn" id="refreshUsersBtn" type="button" style="margin-left:auto;">Refresh</button>
+      </div>
+      <span id="listStatus"></span>
+      <div id="userListWrap"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  let users = [];
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    try { return new Date(iso).toLocaleDateString(); } catch (e) { return iso; }
+  }
+
+  async function loadUsers() {
+    $("listStatus").textContent = "Loading…";
+    try {
+      const res = await fetch("/api/admin_users", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+      const data = await res.json();
+      if (!data.ok) {
+        if (/not configured/i.test(data.error || "")) {
+          $("setupSection").style.display = "block";
+          $("mainSection").style.display = "none";
+          $("connStatus").textContent = "Not configured";
+          $("connStatus").className = "bad";
+          return;
+        }
+        throw new Error(data.error || "server error");
+      }
+      $("setupSection").style.display = "none";
+      $("mainSection").style.display = "block";
+      $("connStatus").textContent = "Connected ✓";
+      $("connStatus").className = "ok";
+      users = data.users || [];
+      renderUsers();
+    } catch (e) {
+      $("listStatus").textContent = "Couldn't load users: " + e.message;
+      $("connStatus").textContent = "Not connected — run scripts/dashboard_server.py";
+      $("connStatus").className = "bad";
+    }
+  }
+
+  function renderUsers() {
+    $("listStatus").textContent = `${users.length} user${users.length === 1 ? "" : "s"}`;
+    $("userList").innerHTML = users.map(u => `<option value="${u.username}"></option>`).join("");
+    $("userListWrap").innerHTML = users.map(u =>
+      `<div class="userRow"><span>${u.username}</span><span class="created">joined ${fmtDate(u.createdAt)}</span></div>`
+    ).join("") || `<p class="hint">No users yet.</p>`;
+  }
+
+  async function resetPassword() {
+    const username = $("username").value.trim();
+    const newPassword = $("newPassword").value;
+    const status = $("resetStatus");
+    if (!username) { status.textContent = "Enter a username."; status.className = "bad"; return; }
+    if (newPassword.length < 4) { status.textContent = "New password must be at least 4 characters."; status.className = "bad"; return; }
+    if (!confirm(`Reset the password for "${username}"? They'll need the new password to log in next time.`)) return;
+
+    const btn = $("resetBtn");
+    btn.disabled = true;
+    status.textContent = "Resetting…";
+    status.className = "";
+    try {
+      const res = await fetch("/api/reset_password", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, new_password: newPassword }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      status.textContent = `Password reset for ${data.username || username} ✓`;
+      status.className = "ok";
+      $("newPassword").value = "";
+    } catch (e) {
+      status.textContent = "Reset failed: " + e.message;
+      status.className = "bad";
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  $("resetBtn").addEventListener("click", resetPassword);
+  $("refreshUsersBtn").addEventListener("click", loadUsers);
+  loadUsers();
+})();
+</script>

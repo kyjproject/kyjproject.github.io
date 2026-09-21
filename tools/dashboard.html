@@ -1,0 +1,231 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #14181f;
+    --paper-raised: #1b212a;
+    --ink: #e8eaee;
+    --ink-soft: #aab1bd;
+    --ink-faint: #6b7280;
+    --rule: #2c333e;
+    --rule-soft: #232a34;
+    --accent: #5fb3a3;
+    --accent-soft: #1c2e2b;
+    --accent-ink: #a8ddd0;
+    --done: #6ec48b;
+    --done-bg: #1b2b21;
+    --warn: #dcab5c;
+    --warn-bg: #2e2515;
+    --bad: #e37c83;
+    --bad-bg: #331d1f;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 14px; }
+  #shell { display: flex; height: 100vh; }
+
+  nav { width: 230px; flex: none; background: var(--paper-raised); border-right: 1px solid var(--rule); display: flex; flex-direction: column; overflow-y: auto; }
+  nav .brand { padding: 16px 16px 10px; font-weight: 700; font-size: 15px; border-bottom: 1px solid var(--rule); }
+  nav .brand small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 11.5px; margin-top: 2px; }
+  .navItem {
+    display: flex; align-items: center; gap: 8px; padding: 10px 16px; cursor: pointer;
+    color: var(--ink-soft); font-size: 13.5px; border-left: 3px solid transparent;
+  }
+  .navItem:hover { background: var(--rule-soft); color: var(--ink); }
+  .navItem.active { background: var(--accent-soft); color: var(--accent-ink); border-left-color: var(--accent); }
+  .navItem .label { flex: 1; }
+  .badge {
+    font-size: 10.5px; font-weight: 700; background: var(--bad); color: #1a0b0c;
+    border-radius: 99px; padding: 1px 7px; min-width: 16px; text-align: center;
+  }
+  .navSpacer { flex: 1; }
+  .navFoot { padding: 12px 16px; font-size: 11px; color: var(--ink-faint); border-top: 1px solid var(--rule); line-height: 1.5; }
+
+  main { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  iframe { flex: 1; border: none; width: 100%; background: var(--paper); }
+
+  #overview { flex: 1; overflow-y: auto; padding: 28px; max-width: 780px; }
+  #overview h2 { margin: 0 0 4px; font-size: 20px; }
+  #overview .sub { color: var(--ink-faint); font-size: 13px; margin: 0 0 24px; }
+  .nudgeGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .nudgeGrid { grid-template-columns: 1fr; } }
+  .nudgeCard {
+    background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 16px 18px; cursor: pointer; transition: border-color 0.15s;
+  }
+  .nudgeCard:hover { border-color: var(--accent); }
+  .nudgeCard.hasNew { border-color: var(--warn); background: var(--warn-bg); }
+  .nudgeCard .top { display: flex; align-items: baseline; justify-content: space-between; }
+  .nudgeCard .name { font-weight: 700; font-size: 14px; }
+  .nudgeCard .count { font-size: 26px; font-weight: 700; color: var(--accent-ink); }
+  .nudgeCard.hasNew .count { color: var(--warn); }
+  .nudgeCard .open { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+  .nudgeCard .newLabel { font-size: 11px; color: var(--warn); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  #nudgeStatus { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 16px; }
+  .allClear { color: var(--done); }
+  .quickLinks { margin-top: 28px; }
+  .quickLinks h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin: 0 0 10px; }
+  .quickLinks a.btn {
+    display: inline-block; margin: 0 8px 8px 0; font-weight: 600; font-size: 13px;
+    background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 8px 14px; text-decoration: none; cursor: pointer;
+  }
+  .quickLinks a.btn:hover { border-color: var(--ink-faint); }
+</style>
+
+<div id="shell">
+  <nav>
+    <div class="brand">🛠️ Admin Dashboard<small>KYJ-SAT</small></div>
+    <div class="navItem active" data-tab="overview"><span class="label">Overview</span></div>
+    <div class="navItem" data-tab="proposed"><span class="label">Proposed Questions</span><span class="badge" data-badge="proposed" hidden></span></div>
+    <div class="navItem" data-tab="reports"><span class="label">Student Reports</span><span class="badge" data-badge="reports" hidden></span></div>
+    <div class="navItem" data-tab="feedback"><span class="label">Site Feedback / Bugs</span><span class="badge" data-badge="site_feedback" hidden></span></div>
+    <div class="navItem" data-tab="questionbank"><span class="label">Question Bank Review</span></div>
+    <div class="navItem" data-tab="titles"><span class="label">Titles</span></div>
+    <div class="navItem" data-tab="jumpscare"><span class="label">Jumpscare 😱</span></div>
+    <div class="navItem" data-tab="users"><span class="label">Users &amp; Passwords</span></div>
+    <div class="navItem" data-tab="progress"><span class="label">Progress</span></div>
+    <div class="navSpacer"></div>
+    <div class="navFoot">
+      Local-only — run <code>python3 scripts/dashboard_server.py</code>.<br />
+      New-item digest emails: set up once via <code>installAdminDigestTrigger_</code> in Code.gs.
+    </div>
+  </nav>
+  <main>
+    <div id="overview">
+      <h2>Overview</h2>
+      <p class="sub">What's new since you last checked each queue.</p>
+      <div id="nudgeStatus">Loading…</div>
+      <div class="nudgeGrid" id="nudgeGrid"></div>
+      <div class="quickLinks">
+        <h3>Everything else</h3>
+        <a class="btn" data-tab="questionbank">Question Bank Review</a>
+        <a class="btn" data-tab="titles">Titles</a>
+        <a class="btn" data-tab="jumpscare">Jumpscare</a>
+        <a class="btn" data-tab="users">Users &amp; Passwords</a>
+        <a class="btn" data-tab="progress">Progress</a>
+      </div>
+    </div>
+    <iframe id="frame" style="display:none;"></iframe>
+  </main>
+</div>
+
+<script>
+(function () {
+  const TAB_SRC = {
+    proposed: "/tools/review_proposed.html",
+    reports: "/tools/review_reports.html",
+    feedback: "/tools/review_site_feedback.html",
+    questionbank: "/tools/review_dashboard.html",
+    titles: "/tools/manage_titles.html",
+    jumpscare: "/tools/manage_jumpscare.html",
+    users: "/tools/manage_users.html",
+    progress: "/tools/admin_dashboard.html",
+  };
+  // dashboard nav tab -> /api/nudges section key (only queues that have a
+  // "new since last visit" concept; titles/users/progress don't).
+  const TAB_SECTION = { proposed: "proposed", reports: "reports", feedback: "site_feedback" };
+  const SECTION_LABEL = {
+    proposed: { name: "Proposed Questions", tab: "proposed" },
+    reports: { name: "Student Reports", tab: "reports" },
+    site_feedback: { name: "Site Feedback / Bugs", tab: "feedback" },
+  };
+
+  const $ = (sel) => document.querySelector(sel);
+  const frame = $("#frame");
+  const overview = $("#overview");
+  let currentTab = "overview";
+
+  function showTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll(".navItem").forEach(el => el.classList.toggle("active", el.dataset.tab === tab));
+    if (tab === "overview") {
+      overview.style.display = "block";
+      frame.style.display = "none";
+      loadNudges();
+    } else {
+      overview.style.display = "none";
+      frame.style.display = "block";
+      frame.src = TAB_SRC[tab];
+      const section = TAB_SECTION[tab];
+      if (section) markSeen(section);
+    }
+  }
+
+  async function markSeen(section) {
+    try {
+      await fetch("/api/mark_seen", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ section }),
+      });
+    } catch (e) { /* best-effort */ }
+  }
+
+  async function loadNudges() {
+    $("#nudgeStatus").textContent = "Loading…";
+    try {
+      const res = await fetch("/api/nudges");
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "server error");
+      renderNudges(data.nudges);
+    } catch (e) {
+      $("#nudgeStatus").textContent = "Couldn't load — is scripts/dashboard_server.py running? (" + e.message + ")";
+    }
+  }
+
+  function renderNudges(nudges) {
+    const totalNew = nudges.total_new || 0;
+    $("#nudgeStatus").innerHTML = totalNew
+      ? `<strong style="color:var(--warn);">${totalNew} new item${totalNew === 1 ? "" : "s"}</strong> to look at.`
+      : `<span class="allClear">All caught up — nothing new since your last visit.</span>`;
+
+    const grid = $("#nudgeGrid");
+    grid.innerHTML = Object.keys(SECTION_LABEL).map(key => {
+      const meta = SECTION_LABEL[key];
+      const c = nudges[key] || { new: 0, open: 0 };
+      return `<div class="nudgeCard${c.new ? " hasNew" : ""}" data-tab="${meta.tab}">
+        <div class="top">
+          <span class="name">${meta.name}</span>
+          <span class="count">${c.open}</span>
+        </div>
+        <div class="open">open item${c.open === 1 ? "" : "s"}</div>
+        ${c.new ? `<div class="newLabel">${c.new} new</div>` : ""}
+      </div>`;
+    }).join("");
+    grid.querySelectorAll("[data-tab]").forEach(el => {
+      el.addEventListener("click", () => showTab(el.dataset.tab));
+    });
+    // Update the sidebar badges too.
+    document.querySelectorAll("[data-badge]").forEach(el => {
+      const n = (nudges[el.dataset.badge] || {}).new || 0;
+      el.hidden = !n;
+      el.textContent = n;
+    });
+  }
+
+  document.querySelectorAll("[data-tab]").forEach(el => {
+    el.addEventListener("click", () => showTab(el.dataset.tab));
+  });
+
+  showTab("overview");
+  // Keep the sidebar badges fresh even while sitting on one tab a while.
+  setInterval(() => { if (currentTab === "overview") loadNudges(); else refreshBadgesOnly(); }, 60000);
+
+  async function refreshBadgesOnly() {
+    try {
+      const res = await fetch("/api/nudges");
+      const data = await res.json();
+      if (data.ok) {
+        document.querySelectorAll("[data-badge]").forEach(el => {
+          const n = (data.nudges[el.dataset.badge] || {}).new || 0;
+          el.hidden = !n;
+          el.textContent = n;
+        });
+      }
+    } catch (e) { /* best-effort */ }
+  }
+})();
+</script>
