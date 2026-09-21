@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-19T11:38:02.847Z",
+  "exportedAt": "2026-09-21T07:06:37.460Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -497,7 +497,12 @@
     "9ecfa82d": "done",
     "43e69f94": "done",
     "b81a4da4": "done",
-    "a4b12e2f": "done"
+    "a4b12e2f": "done",
+    "14787dca": "done",
+    "02545fec": "done",
+    "6fbfbe0d": "done",
+    "dc1b988f": "done",
+    "d3151792": "done"
   },
   "tags": {},
   "notes": {},
@@ -1006,7 +1011,12 @@
     "9ecfa82d": "2026-09-19T11:37:08.722Z",
     "43e69f94": "2026-09-19T11:37:13.567Z",
     "b81a4da4": "2026-09-19T11:37:20.878Z",
-    "a4b12e2f": "2026-09-19T11:37:54.488Z"
+    "a4b12e2f": "2026-09-19T11:37:54.488Z",
+    "14787dca": "2026-09-19T11:38:20.871Z",
+    "02545fec": "2026-09-21T07:05:30.712Z",
+    "6fbfbe0d": "2026-09-21T07:06:00.279Z",
+    "dc1b988f": "2026-09-21T07:06:15.513Z",
+    "d3151792": "2026-09-21T07:06:30.397Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1770,25 +1780,9 @@
       "lastAttemptTs": 1787294130223
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 22,
-      "total": 37,
+      "correct": 24,
+      "total": 41,
       "recent": [
-        {
-          "ts": 1789797756118,
-          "correct": true
-        },
-        {
-          "ts": 1789797901203,
-          "correct": true
-        },
-        {
-          "ts": 1789797911736,
-          "correct": false
-        },
-        {
-          "ts": 1789797913404,
-          "correct": true
-        },
         {
           "ts": 1789816229810,
           "correct": true
@@ -1820,9 +1814,25 @@
         {
           "ts": 1789817873171,
           "correct": true
+        },
+        {
+          "ts": 1789817896637,
+          "correct": false
+        },
+        {
+          "ts": 1789817897570,
+          "correct": false
+        },
+        {
+          "ts": 1789817898337,
+          "correct": true
+        },
+        {
+          "ts": 1789974358980,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789817873171
+      "lastAttemptTs": 1789974358980
     },
     "Nonlinear functions": {
       "correct": 34,
@@ -2155,13 +2165,9 @@
       "lastAttemptTs": 1789817839579
     },
     "Linear equations in one variable": {
-      "correct": 10,
-      "total": 12,
+      "correct": 11,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1789558710044,
-          "correct": true
-        },
         {
           "ts": 1789560230339,
           "correct": true
@@ -2205,9 +2211,13 @@
         {
           "ts": 1789817843427,
           "correct": true
+        },
+        {
+          "ts": 1789974374546,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789817843427
+      "lastAttemptTs": 1789974374546
     },
     "Percentages": {
       "correct": 8,
@@ -2394,8 +2404,8 @@
       "lastAttemptTs": 1789817623299
     },
     "Lines, angles, and triangles": {
-      "correct": 6,
-      "total": 10,
+      "correct": 7,
+      "total": 11,
       "recent": [
         {
           "ts": 1789559310669,
@@ -2436,9 +2446,13 @@
         {
           "ts": 1789817638282,
           "correct": true
+        },
+        {
+          "ts": 1789974388963,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789817638282
+      "lastAttemptTs": 1789974388963
     },
     "Right triangles and trigonometry": {
       "correct": 6,
@@ -2476,8 +2490,8 @@
       "lastAttemptTs": 1789817644516
     },
     "Area and volume": {
-      "correct": 6,
-      "total": 9,
+      "correct": 7,
+      "total": 12,
       "recent": [
         {
           "ts": 1789559390354,
@@ -2514,9 +2528,21 @@
         {
           "ts": 1789817652083,
           "correct": true
+        },
+        {
+          "ts": 1789974324829,
+          "correct": false
+        },
+        {
+          "ts": 1789974326561,
+          "correct": false
+        },
+        {
+          "ts": 1789974328495,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789817652083
+      "lastAttemptTs": 1789974328495
     },
     "Circles": {
       "correct": 3,
@@ -2777,9 +2803,9 @@
       }
     },
     "2026-09-19": {
-      "totalMs": 5472856,
+      "totalMs": 5587946,
       "viewMs": {
-        "practice": 3056443,
+        "practice": 3151518,
         "test": 35026,
         "mock": 950497,
         "home": 50006,
@@ -2790,15 +2816,28 @@
         "review": 275210,
         "analysis": 145070,
         "propose": 5004,
-        "lab": 80052
+        "lab": 100067
       },
       "categoryMs": {
-        "Advanced Math": 850564,
+        "Advanced Math": 945639,
         "Algebra": 1549846,
         "Geometry and Trigonometry": 280200,
         "Problem-Solving and Data Analysis": 664349,
         "Vocab": 65051,
         "Functions": 10007
+      }
+    },
+    "2026-09-21": {
+      "totalMs": 170125,
+      "viewMs": {
+        "lab": 85057,
+        "practice": 85068
+      },
+      "categoryMs": {
+        "Geometry and Trigonometry": 30024,
+        "Problem-Solving and Data Analysis": 20015,
+        "Advanced Math": 15012,
+        "Algebra": 15012
       }
     }
   },
@@ -4232,7 +4271,53 @@
         "ts": 1789817873171,
         "ms": 28310
       }
+    ],
+    "14787dca": [
+      {
+        "ts": 1789817896637,
+        "ms": 21548
+      },
+      {
+        "ts": 1789817897570,
+        "ms": 384
+      },
+      {
+        "ts": 1789817898337,
+        "ms": 317
+      }
+    ],
+    "02545fec": [
+      {
+        "ts": 1789974324829,
+        "ms": 4832
+      },
+      {
+        "ts": 1789974326561,
+        "ms": 1267
+      },
+      {
+        "ts": 1789974328495,
+        "ms": 1368
+      }
+    ],
+    "6fbfbe0d": [
+      {
+        "ts": 1789974358980,
+        "ms": 8199
+      }
+    ],
+    "dc1b988f": [
+      {
+        "ts": 1789974374546,
+        "ms": 13099
+      }
+    ],
+    "d3151792": [
+      {
+        "ts": 1789974388963,
+        "ms": 10713
+      }
     ]
   },
-  "clientUpdatedAt": 1789817881407
+  "clientUpdatedAt": 1789974395086
 }
