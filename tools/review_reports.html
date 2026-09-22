@@ -99,7 +99,8 @@
   .toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
   .toolbar .hint { margin: 0; }
 
-  .reportCard { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .reportCard { background: var(--paper-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; cursor: pointer; }
+  .reportCard.focused { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
   .reportHead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
   .reportTitle { font-weight: 700; font-size: 14.5px; }
   .pill { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 2.5px 8px; border-radius: 99px; background: var(--rule-soft); color: var(--ink-soft); }
@@ -120,7 +121,8 @@
   img.math-block { max-width: 100%; max-height: 160px; background: #fff; border-radius: 3px; }
   img.math-inline { max-height: 1.4em; vertical-align: middle; background: #fff; border-radius: 2px; margin: 0 1px; }
   .math-inline-latex, .math-block .katex { color: inherit; }
-  .editUnsupported { font-size: 12px; color: var(--ink-faint); align-self: center; }
+  .editUnsupported, .editUnsupported:visited { font-size: 12px; color: var(--accent-ink); align-self: center; text-decoration: none; }
+  .editUnsupported:hover { text-decoration: underline; }
   .reportActions { display: flex; gap: 8px; align-items: center; }
   .reportActions .btn { padding: 5px 12px; font-size: 12.5px; }
   .resolvedBadge { color: var(--done); font-size: 12px; }
@@ -231,16 +233,14 @@
   </div>
 
   <div class="help">
-    Run <code>python3 scripts/reports_server.py</code> and open
-    <code>http://localhost:8766/tools/review_reports.html</code> (the link it prints) to use this page — it needs
-    the local server to read <code>db/staging/reported_questions.json</code> and edit
-    <code>db/categories/*.json</code> directly.
+    Run <code>python3 scripts/dashboard_server.py</code> and open
+    <code>http://localhost:8770/tools/dashboard.html</code> (or this page directly) to use this page — it reads
+    <code>db/staging/reported_questions.json</code> from the local server.
     <br /><br />
-    Editing here changes the live question data immediately, but the pre-built site
-    (<code>db/all_questions.json</code>, <code>site/data.js</code>, <code>site/dist/index.html</code>) needs a
-    rebuild to pick it up:
-    <code>build_db.py</code> → <code>build_site_data.py</code> → <code>build_site.py</code> →
-    <code>build_github_pages.py</code>.
+    Click a card (or tap <strong>g</strong> / <strong>h</strong>) to move focus up/down the list and scroll it into
+    view — a quick way to step through a long queue without reaching for the mouse. To actually fix a question,
+    open it in <a class="navlink" style="padding:1px 6px;" href="/tools/review_dashboard.html">Question Bank
+    Review</a> — that editor handles every category (Math included), unlike this page.
     <br /><br />
     "Mark resolved" removes the report from the active list (and logs it to
     <code>db/staging/resolved_reports.json</code>) — use it once you've fixed the question, or decided the report
@@ -267,6 +267,7 @@
   let activeReports = [];
   let resolvedReports = [];
   let view = "active"; // "active" | "resolved"
+  let focusedIdx = -1; // index (within the current view's rows) g/h step through
   let editingReport = null; // the report row currently being edited
   let editingRecord = null; // the full live question record being edited
   let pastedBlob = null;
@@ -384,20 +385,15 @@
       const preview = q ? renderQuestionPreview(q) : `<div class="qMissing">Question ${escapeHtml(r.qid)} not found in db/categories — it may have been deleted already.</div>`;
       const actions = view === "active"
         ? `<div class="reportActions">
-             ${q ? `<button class="btn" data-edit-idx="${i}" type="button">Edit question</button>` : ""}
              <button class="btn btn-danger" data-resolve-idx="${i}" type="button">Mark resolved</button>
            </div>`
         : `<span class="resolvedBadge">✓ resolved</span>`;
-      return `<div class="reportCard">${head}${meta}${note}${preview}${actions}</div>`;
+      const focused = i === focusedIdx ? " focused" : "";
+      return `<div class="reportCard${focused}" data-card-idx="${i}">${head}${meta}${note}${preview}${actions}</div>`;
     }).join("");
+    if (focusedIdx >= rows.length) focusedIdx = rows.length ? rows.length - 1 : -1;
 
     if (view === "active") {
-      wrap.querySelectorAll("[data-edit-idx]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const r = activeReports[parseInt(btn.dataset.editIdx, 10)];
-          if (r && r.question) startEdit(r);
-        });
-      });
       wrap.querySelectorAll("[data-resolve-idx]").forEach(btn => {
         btn.addEventListener("click", () => {
           const r = activeReports[parseInt(btn.dataset.resolveIdx, 10)];
@@ -405,7 +401,41 @@
         });
       });
     }
+
+    wrap.querySelectorAll("[data-card-idx]").forEach(card => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("button")) return; // let Mark resolved handle its own click
+        setFocus(parseInt(card.dataset.cardIdx, 10));
+      });
+    });
   }
+
+  // g/h step focus to the previous/next report card in the current view and
+  // scroll it into view — same idea as Question Bank Review's g/h, so a
+  // reviewer can move through a long list without reaching for the mouse.
+  // Just highlights + scrolls (no full re-render) so scroll position and any
+  // in-progress reading isn't disturbed.
+  function setFocus(idx) {
+    const wrap = $("listWrap");
+    wrap.querySelectorAll("[data-card-idx]").forEach(card => {
+      card.classList.toggle("focused", parseInt(card.dataset.cardIdx, 10) === idx);
+    });
+    focusedIdx = idx;
+    const target = wrap.querySelector(`[data-card-idx="${idx}"]`);
+    if (target) target.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "g" && e.key !== "G" && e.key !== "h" && e.key !== "H") return;
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    const rows = view === "active" ? activeReports : resolvedReports;
+    if (!rows.length) return;
+    e.preventDefault();
+    const isPrev = e.key === "g" || e.key === "G";
+    const next = focusedIdx === -1 ? 0 : Math.max(0, Math.min(rows.length - 1, focusedIdx + (isPrev ? -1 : 1)));
+    setFocus(next);
+  });
 
   function renderQuestionPreview(q) {
     const hasChoices = Object.keys(q.choices || {}).length > 0;

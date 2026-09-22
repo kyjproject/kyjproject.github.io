@@ -170,15 +170,15 @@
   <div id="content"></div>
 
   <div class="help">
-    Run <code>python3 scripts/reports_server.py</code> and open
-    <code>http://localhost:8766/</code> (the link it prints) to use this page.
+    Run <code>python3 scripts/dashboard_server.py</code> and open
+    <code>http://localhost:8770/tools/dashboard.html</code> (or this page directly) to use this page.
     Click any tile to open a question, then <strong>Approve</strong> (green), <strong>Flag problem</strong> (red), or
     <strong>Edit</strong> it — editing marks it yellow while the form is open, then green once you save. A small
     dot on a tile means a student reported that question (see <a class="navlink" style="padding:1px 6px;" href="/tools/review_reports.html">Student reports</a>).
-    Once a question's open, use <strong>← Prev</strong> / <strong>Next →</strong> (or the arrow keys) to step
-    through the same list you had on screen — the open category's tiles, or your search results — without going
-    back to the grid each time. Math questions render the same way they do on the live site: real LaTeX via
-    KaTeX for newer questions, cropped images for ones not yet converted.
+    Once a question's open, use <strong>← Prev</strong> / <strong>Next →</strong> — or just tap <strong>g</strong> /
+    <strong>h</strong> — to step through the same list you had on screen (the open category's tiles, or your search
+    results) without going back to the grid or touching the mouse. Math questions render the same way they do on
+    the live site: real LaTeX via KaTeX for newer questions, cropped images for ones not yet converted.
     <br /><br />
     Edits write straight to <code>db/categories/*.json</code>. The pre-built site still needs a rebuild to pick
     changes up: <code>build_db.py</code> → <code>build_site_data.py</code> → <code>build_site.py</code> →
@@ -267,7 +267,7 @@
       $("connStatus").className = "ok";
       render();
     } catch (e) {
-      $("connStatus").textContent = "Not connected — run scripts/reports_server.py";
+      $("connStatus").textContent = "Not connected — run scripts/dashboard_server.py";
       $("connStatus").className = "bad";
     }
   }
@@ -495,9 +495,8 @@
     document.querySelectorAll("[data-toggle-qid]").forEach(el => {
       el.addEventListener("click", () => {
         const qid = el.dataset.toggleQid;
-        state.openQid = state.openQid === qid ? null : qid;
-        state.editingQid = null;
-        render();
+        if (state.openQid === qid) { state.openQid = null; state.editingQid = null; render(); }
+        else openQuestion(qid);
       });
     });
     document.querySelectorAll("[data-open-qid]").forEach(el => {
@@ -643,19 +642,23 @@
     }, 150);
   });
 
-  // ←/→ step through the currently open question the same way the Prev/Next
-  // buttons do, so a reviewer can keep both hands on the keyboard — approve
-  // (there's no shortcut for that, deliberately: it's a real decision) or
-  // arrow to the next one. Ignored while typing in the edit form or search
-  // box, and while no question is open.
+  // g/h (and ←/→ as an alias) step through the currently open question the
+  // same way the Prev/Next buttons do, so a reviewer can keep one hand on
+  // the keyboard — g back, h forward, no mouse needed between questions.
+  // Ignored while typing in the edit form or search box, and while no
+  // question is open.
+  const NAV_PREV_KEYS = ["g", "G", "ArrowLeft"];
+  const NAV_NEXT_KEYS = ["h", "H", "ArrowRight"];
   document.addEventListener("keydown", (e) => {
-    if (!state.openQid || (e.key !== "ArrowLeft" && e.key !== "ArrowRight")) return;
+    const isPrev = NAV_PREV_KEYS.includes(e.key);
+    const isNext = NAV_NEXT_KEYS.includes(e.key);
+    if (!state.openQid || (!isPrev && !isNext)) return;
     const tag = document.activeElement && document.activeElement.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
     const navList = computeNavList();
     const idx = navList.findIndex(x => x.id === state.openQid);
     if (idx === -1) return;
-    const target = e.key === "ArrowLeft" ? navList[idx - 1] : navList[idx + 1];
+    const target = isPrev ? navList[idx - 1] : navList[idx + 1];
     if (target) { e.preventDefault(); openQuestion(target.id); }
   });
 

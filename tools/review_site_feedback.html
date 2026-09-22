@@ -57,6 +57,7 @@
   }
   .pill.bug { color: var(--bad); border-color: var(--bad); }
   .pill.feature { color: var(--accent-ink); border-color: var(--accent); }
+  .pill.account_recovery { color: var(--warn); border-color: var(--warn); }
   .meta { font-size: 12px; color: var(--ink-faint); margin-left: auto; white-space: nowrap; }
   .message { font-size: 13.5px; white-space: pre-wrap; margin-bottom: 10px; }
   .contact { font-size: 12px; color: var(--ink-soft); margin-bottom: 10px; }
@@ -126,16 +127,18 @@
       return;
     }
     wrap.innerHTML = rows.slice().reverse().map((f) => {
-      const contact = [f.username ? `kyj-cloud: ${f.username}` : "", f.contact || ""].filter(Boolean).join(" · ");
+      const contact = [f.username ? `KYJ-Cloud: ${f.username}` : "", f.contact || ""].filter(Boolean).join(" · ");
       const actions = view === "active"
         ? `<div class="actions">
              <button class="btn btn-danger" data-resolve="${escapeHtml(f.submitted_at)}" type="button">Mark resolved</button>
              <button class="btn" data-dismiss="${escapeHtml(f.submitted_at)}" type="button">Dismiss (spam)</button>
            </div>`
         : `<span class="resolvedBadge">✓ resolved ${escapeHtml(fmtDate(f.resolved_at))}</span>`;
+      const typeLabels = { account_recovery: "account recovery" };
+      const type = f.type || "other";
       return `<div class="card">
         <div class="cardHead">
-          <span class="pill ${escapeHtml(f.type || "other")}">${escapeHtml(f.type || "other")}</span>
+          <span class="pill ${escapeHtml(type)}">${escapeHtml(typeLabels[type] || type)}</span>
           ${f.page ? `<span class="pill">${escapeHtml(f.page)}</span>` : ""}
           <span class="meta">${escapeHtml(fmtDate(f.submitted_at))}</span>
         </div>

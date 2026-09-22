@@ -74,6 +74,17 @@
     border-radius: 8px; padding: 8px 14px; text-decoration: none; cursor: pointer;
   }
   .quickLinks a.btn:hover { border-color: var(--ink-faint); }
+
+  .rebuildBox { padding: 12px 16px; border-top: 1px solid var(--rule); }
+  .rebuildBox .btn {
+    width: 100%; font-weight: 600; font-size: 13px; background: var(--paper-raised); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; cursor: pointer;
+  }
+  .rebuildBox .btn:hover { border-color: var(--accent); }
+  .rebuildBox .btn:disabled { opacity: 0.5; cursor: wait; }
+  .rebuildBox .status { font-size: 11px; color: var(--ink-faint); margin-top: 6px; line-height: 1.5; white-space: pre-wrap; max-height: 120px; overflow-y: auto; }
+  .rebuildBox .status.ok { color: var(--done); }
+  .rebuildBox .status.bad { color: var(--bad); }
 </style>
 
 <div id="shell">
@@ -89,6 +100,10 @@
     <div class="navItem" data-tab="users"><span class="label">Users &amp; Passwords</span></div>
     <div class="navItem" data-tab="progress"><span class="label">Progress</span></div>
     <div class="navSpacer"></div>
+    <div class="rebuildBox">
+      <button class="btn" id="rebuildBtn" type="button" title="Runs build_db.py → build_site_data.py → build_site.py → build_github_pages.py, same as `kyj-sat rebuild`">⟳ Rebuild site now</button>
+      <div class="status" id="rebuildStatus"></div>
+    </div>
     <div class="navFoot">
       Local-only — run <code>python3 scripts/dashboard_server.py</code>.<br />
       New-item digest emails: set up once via <code>installAdminDigestTrigger_</code> in Code.gs.
@@ -208,6 +223,27 @@
 
   document.querySelectorAll("[data-tab]").forEach(el => {
     el.addEventListener("click", () => showTab(el.dataset.tab));
+  });
+
+  $("#rebuildBtn").addEventListener("click", async () => {
+    const btn = $("#rebuildBtn");
+    const status = $("#rebuildStatus");
+    btn.disabled = true;
+    btn.textContent = "⟳ Rebuilding…";
+    status.className = "status";
+    status.textContent = "Running build_db.py → build_site_data.py → build_site.py → build_github_pages.py…";
+    try {
+      const res = await fetch("/api/rebuild", { method: "POST" });
+      const data = await res.json();
+      status.className = "status " + (data.ok ? "ok" : "bad");
+      status.textContent = (data.ok ? "Rebuilt ✓ — refresh any open site preview.\n\n" : "Rebuild failed:\n\n") + (data.log || data.error || "");
+    } catch (e) {
+      status.className = "status bad";
+      status.textContent = "Rebuild request failed: " + e.message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "⟳ Rebuild site now";
+    }
   });
 
   showTab("overview");

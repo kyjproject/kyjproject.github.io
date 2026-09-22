@@ -33,6 +33,7 @@ import base64
 import glob
 import json
 import os
+import subprocess
 import sys
 import threading
 import urllib.error
@@ -150,6 +151,28 @@ def find_question(qid):
             if r.get("id") == qid:
                 return path, i, r
     return None
+
+
+# Same 4 steps as `kyj-sat rebuild` (scripts/kyj-sat) — everything
+# downstream of db/categories/*.json: the SQLite db, the aggregated
+# db/all_questions.json + site/data.js, and both site builds (site/dist for
+# the Claude Artifact, site/pages for GitHub Pages / the local static
+# preview). Run from the dashboard so an edit shows up on a locally-served
+# site without switching to a terminal.
+REBUILD_SCRIPTS = ["build_db.py", "build_site_data.py", "build_site.py", "build_github_pages.py"]
+
+
+def run_rebuild():
+    logs = []
+    for name in REBUILD_SCRIPTS:
+        proc = subprocess.run(
+            [sys.executable, os.path.join(ROOT, "scripts", name)],
+            cwd=ROOT, capture_output=True, text=True, timeout=180,
+        )
+        logs.append(f"$ python3 scripts/{name}\n{proc.stdout}{proc.stderr}".rstrip())
+        if proc.returncode != 0:
+            return False, "\n\n".join(logs)
+    return True, "\n\n".join(logs)
 
 
 def load_dashboard_config():
@@ -513,6 +536,14 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/api/admin_users":
             result = call_apps_script("admin_list_users", {})
             self._send_json(result, 200 if result.get("ok") else 400)
+            return
+
+        if route == "/api/rebuild":
+            try:
+                ok, log = run_rebuild()
+            except subprocess.TimeoutExpired as e:
+                ok, log = False, f"Timed out after {e.timeout}s running {e.cmd}"
+            self._send_json({"ok": ok, "log": log}, 200 if ok else 500)
             return
 
         self._send_json({"ok": False, "error": "not found"}, 404)

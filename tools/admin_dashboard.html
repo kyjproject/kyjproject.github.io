@@ -135,8 +135,25 @@ const API = { users: '/api/users', progress: u => '/api/progress/' + encodeURICo
 // uses for XP/level/streaks/mock scoring) so numbers here match the site ----
 const QUESTION_XP = { Easy: 10, Medium: 15, Hard: 25 };
 const MOCK_EXAM_XP = 50;
+// "Full adaptive" attempts (old {module1Ids,module2Ids} shape, real routing)
+// score off raw total (0-54) + which Module 2 pool you were routed into.
 const RW_CURVE_HARDER = [[0, 200], [10, 320], [20, 430], [27, 490], [35, 570], [40, 630], [45, 690], [49, 740], [52, 780], [54, 800]];
 const RW_CURVE_EASIER = [[0, 200], [10, 290], [20, 380], [27, 440], [35, 510], [40, 560], [45, 600], [49, 630], [54, 650]];
+const MOCK_MODULE_LEN = 27; // R&W questions per module
+const MATH_MODULE_LEN = 22; // Math questions per module
+// The Custom mock engine (site/index.template.html's estimateRWScore/
+// estimateMathScore) instead scores off the two module raw counts directly,
+// via lookup tables — no routing concept, since Module 2's pool there is
+// picked by the student, not by accuracy. Every attempt saved by the
+// current site build (Full adaptive included) goes through this shape now;
+// only genuinely old history still uses the module1Ids/module2Ids + curve
+// path above. Table values copied verbatim from the site.
+const RW_MODULE1_SCORE = [200, 200, 220, 240, 260, 270, 280, 290, 300, 300, 310, 310, 320, 330, 340, 360, 370, 390, 410, 420, 440, 460, 470, 490, 510, 530, 540, 560];
+const RW_MODULE2_BONUS = [0, 0, 0, 10, 10, 10, 20, 20, 20, 30, 30, 40, 50, 70, 90, 90, 100, 110, 130, 140, 150, 160, 180, 190, 200, 210, 230, 240];
+const estimateRWModulesScore = (m1, m2) => Math.max(200, Math.min(800, RW_MODULE1_SCORE[m1] + RW_MODULE2_BONUS[m2]));
+const MATH_MODULE1_SCORE = [200, 200, 220, 240, 260, 260, 280, 280, 300, 300, 310, 340, 360, 380, 400, 420, 440, 460, 490, 510, 530, 550, 570];
+const MATH_MODULE2_BONUS = [0, 0, 0, 20, 20, 30, 50, 70, 70, 70, 90, 90, 100, 100, 110, 130, 140, 160, 170, 190, 200, 220, 230];
+const estimateMathScore = (m1, m2) => Math.max(200, Math.min(800, MATH_MODULE1_SCORE[m1] + MATH_MODULE2_BONUS[m2]));
 const LEVEL_TITLES = [[1, 'Newcomer'], [3, 'Apprentice'], [6, 'Scholar'], [10, 'Strategist'], [15, 'Sharpshooter'], [20, 'Virtuoso'], [30, 'Master'], [40, 'Grandmaster']];
 
 function interpCurve(curve, raw) {
@@ -221,6 +238,37 @@ async function loadAll() {
 }
 
 function computeAttemptScore(attempt) {
+  // Newer "Custom" mock runs (site/index.template.html's saveCustomMockAttempt)
+  // use {composition:'custom', sections:[{subject,module,ids}]} instead of a
+  // fixed module1Ids/module2Ids pair — any mix of R&W/Math, 0-2 modules per
+  // subject, no adaptive routing (Module 2's pool is picked by the student).
+  // Every attempt the current site build saves goes through this shape now.
+  // Mirrors site/index.template.html's customSubjectBreakdown exactly,
+  // including its convention for a module you didn't take this run: assumed
+  // at full marks (matching loadMathModules'/loadRWModules' own untouched
+  // default) rather than left blank, so every Custom attempt gets a real
+  // score instead of a partial fraction.
+  if (attempt.composition === 'custom') {
+    const answers = attempt.answers || {};
+    const sections = attempt.sections || [];
+    const breakdown = (subject) => {
+      const isMath = subject === 'math';
+      const len = isMath ? MATH_MODULE_LEN : MOCK_MODULE_LEN;
+      const m1Sec = sections.find(s => s.subject === subject && s.module === 1);
+      const m2Sec = sections.find(s => s.subject === subject && s.module === 2);
+      const secCorrect = sec => (sec.ids || []).reduce((n, id) => { const q = QMAP.get(id); return n + (q && answers[id] === q.correct_answer ? 1 : 0); }, 0);
+      const m1Real = !!(m1Sec && (m1Sec.ids || []).length);
+      const m2Real = !!(m2Sec && (m2Sec.ids || []).length);
+      const m1 = m1Real ? secCorrect(m1Sec) : len;
+      const m2 = m2Real ? secCorrect(m2Sec) : len;
+      const score = isMath ? estimateMathScore(m1, m2) : estimateRWModulesScore(m1, m2);
+      return { m1, m2, m1Real, m2Real, assumed: !m1Real || !m2Real, score };
+    };
+    const rw = breakdown('rw'), math = breakdown('math');
+    if (!rw.m1Real && !rw.m2Real && !math.m1Real && !math.m2Real) return { kind: 'empty' };
+    return { kind: 'custom', total: rw.score + math.score, rw, math };
+  }
+
   const m1Ids = attempt.module1Ids || [], m2Ids = attempt.module2Ids || [];
   const answers = attempt.answers || {};
   const correctOf = ids => ids.reduce((n, id) => { const q = QMAP.get(id); return n + (q && answers[id] === q.correct_answer ? 1 : 0); }, 0);
@@ -230,8 +278,20 @@ function computeAttemptScore(attempt) {
     const m2c = correctOf(m2Ids);
     return { kind: 'full', score: estimateRWScore(m1c + m2c, !!attempt.routedHarder), m1c, m2c };
   }
-  if (m1Len) { const m1c = Number.isFinite(attempt.module1Correct) ? attempt.module1Correct : correctOf(m1Ids); return { kind: 'module1', raw: m1c, of: m1Len }; }
-  if (m2Len) { const m2c = correctOf(m2Ids); return { kind: 'module2', raw: m2c, of: m2Len }; }
+  // Legacy single-module attempt (this old shape predates Custom mode) —
+  // mirrors site/index.template.html's computeAttemptRW default guess: the
+  // untaken module is assumed to score at the same accuracy rate as the one
+  // you did take, not full marks (that convention is Custom-only, above).
+  if (m1Len) {
+    const m1c = Number.isFinite(attempt.module1Correct) ? attempt.module1Correct : correctOf(m1Ids);
+    const m2Guess = Math.round((m1c / m1Len) * MOCK_MODULE_LEN);
+    return { kind: 'module1', raw: m1c, of: m1Len, score: estimateRWModulesScore(m1c, m2Guess) };
+  }
+  if (m2Len) {
+    const m2c = correctOf(m2Ids);
+    const m1Guess = Math.round((m2c / m2Len) * MOCK_MODULE_LEN);
+    return { kind: 'module2', raw: m2c, of: m2Len, score: estimateRWModulesScore(m1Guess, m2c) };
+  }
   return { kind: 'empty' };
 }
 
@@ -270,9 +330,21 @@ function computeStats(username, raw) {
     .slice(0, 5);
 
   const scoredMocks = mockHistory.map(a => ({ ...a, result: computeAttemptScore(a) }));
-  const fullScores = scoredMocks.filter(a => a.result.kind === 'full').map(a => a.result.score);
-  const bestRW = fullScores.length ? Math.max(...fullScores) : null;
-  const latestRW = fullScores.length ? fullScores[0] : null; // history is newest-first, matches site convention
+  // "Best/Latest RW" is specifically the R&W (200-800) component — a Custom
+  // attempt's own `score` is the combined R&W+Math total (out of 1600, a
+  // different scale), so it uses result.rw.score instead. Excludes 'empty'
+  // only; every other kind now carries a real R&W-scale estimate (see
+  // computeAttemptScore) instead of the historical 'full'-only filter here,
+  // which was silently ignoring nearly all recent history once the site
+  // moved everything to the Custom-composition shape.
+  const rwScores = scoredMocks
+    .map(a => a.result.kind === 'full' ? a.result.score
+      : a.result.kind === 'custom' ? a.result.rw.score
+      : a.result.kind === 'module1' || a.result.kind === 'module2' ? a.result.score
+      : null)
+    .filter(s => s !== null);
+  const bestRW = rwScores.length ? Math.max(...rwScores) : null;
+  const latestRW = rwScores.length ? rwScores[0] : null; // history is newest-first, matches site convention
 
   const notes = raw.notes || {};
   const noteCount = Object.values(notes).reduce((n, arr) => n + (Array.isArray(arr) ? arr.length : 0), 0);
@@ -355,7 +427,22 @@ function mockRowHtml(a) {
   }
   if (a.result.kind === 'module1' || a.result.kind === 'module2') {
     const label = a.result.kind === 'module1' ? 'Module 1 only' : 'Module 2 only';
-    return `<div class="mock-row"><div class="score">${a.result.raw}/${a.result.of}</div><div class="meta">${label}</div><div class="date">${date}</div></div>`;
+    return `<div class="mock-row"><div class="score">~${a.result.score}</div><div class="meta">${label} (${a.result.raw}/${a.result.of}) · other module assumed at the same accuracy</div><div class="date">${date}</div></div>`;
+  }
+  if (a.result.kind === 'custom') {
+    const rw = a.result.rw, math = a.result.math;
+    // Per-subject breakdown: raw M1/M2 counts with a "~" on any module that
+    // wasn't actually taken this run (assumed at full marks — see
+    // computeAttemptScore), so an all-real score reads clean while a partial
+    // one is still honest about which half is a guess.
+    const subjPart = (label, b, len) => {
+      const m1 = b.m1Real ? b.m1 : `${b.m1}~`;
+      const m2 = b.m2Real ? b.m2 : `${b.m2}~`;
+      return `${label} ${b.assumed ? '~' : ''}${b.score} (M1 ${m1}/${len}, M2 ${m2}/${len})`;
+    };
+    const meta = `Custom · ${subjPart('R&W', rw, MOCK_MODULE_LEN)} · ${subjPart('Math', math, MATH_MODULE_LEN)}`;
+    const assumedAny = rw.assumed || math.assumed;
+    return `<div class="mock-row"><div class="score">${assumedAny ? '~' : ''}${a.result.total}</div><div class="meta">${meta}</div><div class="date">${date}</div></div>`;
   }
   return `<div class="mock-row"><div class="meta">Empty attempt</div><div class="date">${date}</div></div>`;
 }

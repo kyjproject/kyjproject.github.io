@@ -126,6 +126,28 @@ function config_() {
 
 function usersPath_(cfg) { return cfg.dir + '/users.json'; }
 function progressPath_(cfg, username) { return cfg.dir + '/progress/' + username.toLowerCase() + '.json'; }
+// Small per-user file written alongside the full progress save, holding
+// only the handful of fields the Leaderboard needs — see handleLeaderboard_.
+// Reading these instead of everyone's full progress blob is what makes the
+// leaderboard fast and (structurally, not just by convention) unable to go
+// stale the way reading progress from the wrong branch used to.
+function leaderboardSummaryPath_(cfg, username) { return cfg.dir + '/leaderboard/' + username.toLowerCase() + '.json'; }
+// Shared by handleSave_ (writes it) and handleLeaderboard_'s no-summary-yet
+// fallback (derives one on the fly from a full progress file so first-time
+// reads before this ever ran are still correct, just slower).
+function leaderboardSummaryFor_(username, data) {
+  var progress = (data && data.progress) || {};
+  var totalDone = Object.keys(progress).filter(function (qid) { return progress[qid] === 'done'; }).length;
+  return {
+    username: username,
+    name: (data && data.profile && data.profile.name) || username,
+    optOut: !!(data && data.profile && data.profile.leaderboardOptOut),
+    completionLog: (data && data.completionLog) || {},
+    dailyGoal: (data && data.dailyGoal) || 10,
+    mockCount: ((data && data.mockHistory) || []).length,
+    totalDone: totalDone,
+  };
+}
 // Per-user progress saves happen far more often than anything else this
 // script writes (every manual "Save progress now" click, and — with the
 // Lab auto-sync feature — potentially every couple minutes during active
@@ -375,6 +397,20 @@ function handleSave_(body) {
     body.message || ('Update ' + check.username + ' progress — ' + new Date().toISOString()),
     branch
   );
+  // Best-effort: keep the leaderboard's small summary file in step with
+  // every real save, so handleLeaderboard_ almost never needs its slow
+  // full-file fallback — but never let this fail the save itself.
+  try {
+    var summaryPath = leaderboardSummaryPath_(cfg, check.username);
+    var existingSummary = githubGetFile_(cfg, summaryPath, branch);
+    githubPutFile_(
+      cfg, summaryPath,
+      JSON.stringify(leaderboardSummaryFor_(check.username, body.data), null, 2),
+      existingSummary.sha,
+      'Update ' + check.username + ' leaderboard summary',
+      branch
+    );
+  } catch (e) { /* leaderboard summary is best-effort */ }
   return {
     ok: true,
     commitSha: result.commit && result.commit.sha,
@@ -460,25 +496,41 @@ function handleLeaderboard_(body) {
 
   var titles = loadUserTitles_(cfg);
   var users = loadUsers_(cfg).users;
+  var branch = progressBranch_(cfg);
 
   var entries = [];
   Object.keys(users).forEach(function (key) {
     var rec = users[key];
-    var file = githubGetFile_(cfg, progressPath_(cfg, rec.username));
-    if (!file.exists) return;
-    var data;
-    try { data = JSON.parse(file.content); } catch (e) { return; }
-    var progress = data.progress || {};
-    var totalDone = Object.keys(progress).filter(function (qid) { return progress[qid] === 'done'; }).length;
+    var summary = null;
+    var summaryFile = githubGetFile_(cfg, leaderboardSummaryPath_(cfg, rec.username), branch);
+    if (summaryFile.exists) {
+      try { summary = JSON.parse(summaryFile.content); } catch (e) { summary = null; }
+    }
+    if (!summary) {
+      // No summary yet (first read after this was introduced, or their
+      // last save predates it) — fall back to a full-file read, same
+      // fallback as handleLoad_: real saves live on the progress branch,
+      // not main — reading only cfg.branch (main) here is what served
+      // stale/absent data for every user whose main snapshot wasn't
+      // manually refreshed. Self-heals next time they save.
+      var path = progressPath_(cfg, rec.username);
+      var file = githubGetFile_(cfg, path, branch);
+      if (!file.exists) file = githubGetFile_(cfg, path, cfg.branch);
+      if (!file.exists) return;
+      var data;
+      try { data = JSON.parse(file.content); } catch (e) { return; }
+      summary = leaderboardSummaryFor_(rec.username, data);
+    }
+    if (summary.optOut) return;
 
     entries.push({
       username: rec.username,
-      name: (data.profile && data.profile.name) || rec.username,
+      name: summary.name || rec.username,
       badges: LEADERBOARD_BADGES_ENABLED_ ? badgesForUser_(titles, rec.username) : [],
-      completionLog: data.completionLog || {},
-      dailyGoal: data.dailyGoal || 10,
-      mockCount: (data.mockHistory || []).length,
-      totalDone: totalDone,
+      completionLog: summary.completionLog || {},
+      dailyGoal: summary.dailyGoal || 10,
+      mockCount: summary.mockCount || 0,
+      totalDone: summary.totalDone || 0,
     });
   });
   return { ok: true, entries: entries };
@@ -728,7 +780,7 @@ function handleSiteFeedback_(body) {
   var r = body && body.record;
   if (!r || typeof r !== 'object' || !r.message) return { ok: false, error: 'Missing feedback message' };
   var record = {
-    type: ['bug', 'feature', 'other'].indexOf(r.type) !== -1 ? r.type : 'other',
+    type: ['bug', 'feature', 'other', 'account_recovery'].indexOf(r.type) !== -1 ? r.type : 'other',
     message: String(r.message).slice(0, 1000),
     contact: r.contact ? String(r.contact).slice(0, 80) : '',
     username: r.username ? String(r.username).slice(0, 32) : '',
