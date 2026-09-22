@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T10:09:46.404Z",
+  "exportedAt": "2026-09-22T10:12:12.990Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -612,14 +612,6 @@
     ]
   },
   "mathOverrides": {
-    "1789899644697-q9bnz3": {
-      "m1": 0,
-      "m2": 0
-    },
-    "1790036147327-kl7nik": {
-      "m1": 0,
-      "m2": 0
-    },
     "1787306089891-7kx492": {
       "m1": 22,
       "m2": 22
@@ -627,6 +619,14 @@
     "1789044867764-qr3n8y": {
       "m1": 22,
       "m2": 22
+    },
+    "1789899644697-q9bnz3": {
+      "m1": 0,
+      "m2": 0
+    },
+    "1790036147327-kl7nik": {
+      "m1": 0,
+      "m2": 0
     }
   },
   "completionLog": {
@@ -1206,7 +1206,7 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "Student"
+    "name": "jaylen brown"
   },
   "fsrsCards": {
     "b89072a5": {
@@ -2774,48 +2774,6 @@
   ],
   "rwOverrides": {},
   "skillStats": {
-    "Nonlinear functions": {
-      "correct": 2,
-      "total": 2,
-      "recent": [
-        {
-          "ts": 1789565005334,
-          "correct": true
-        },
-        {
-          "ts": 1789565029683,
-          "correct": true
-        },
-        {
-          "ts": 1789898017979,
-          "correct": true
-        }
-      ],
-      "lastAttemptTs": 1789898017979
-    },
-    "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 2,
-      "total": 3,
-      "recent": [
-        {
-          "ts": 1789564840089,
-          "correct": false
-        },
-        {
-          "ts": 1789564841709,
-          "correct": true
-        },
-        {
-          "ts": 1789564948356,
-          "correct": true
-        },
-        {
-          "ts": 1789913979858,
-          "correct": false
-        }
-      ],
-      "lastAttemptTs": 1789913979858
-    },
     "Cross-Text Connections": {
       "correct": 15,
       "total": 19,
@@ -3445,107 +3403,57 @@
         }
       ],
       "lastAttemptTs": 1789564797991
+    },
+    "Nonlinear equations in one variable and systems of equations in two variables": {
+      "correct": 2,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789564840089,
+          "correct": false
+        },
+        {
+          "ts": 1789564841709,
+          "correct": true
+        },
+        {
+          "ts": 1789564948356,
+          "correct": true
+        },
+        {
+          "ts": 1789913979858,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789913979858
+    },
+    "Nonlinear functions": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789565005334,
+          "correct": true
+        },
+        {
+          "ts": 1789565029683,
+          "correct": true
+        },
+        {
+          "ts": 1789898017979,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789898017979
     }
   },
   "progressFocus": [
-    "Easy",
     "Medium",
+    "Easy",
     "Hard"
   ],
   "trendExcluded": [],
   "recentVisits": {
-    "e6d591f4": {
-      "count": 1,
-      "lastTs": 1789897513465
-    },
-    "427f0eea": {
-      "count": 2,
-      "lastTs": 1789898073562
-    },
-    "ef6fc66f": {
-      "count": 1,
-      "lastTs": 1789898188894
-    },
-    "b5874ed0": {
-      "count": 1,
-      "lastTs": 1789898190594
-    },
-    "a0120582": {
-      "count": 7,
-      "lastTs": 1790036351564
-    },
-    "e4db4454": {
-      "count": 1,
-      "lastTs": 1789912280916
-    },
-    "fe6b22a2": {
-      "count": 1,
-      "lastTs": 1789913950660
-    },
-    "0106a3a1": {
-      "count": 4,
-      "lastTs": 1789915800721
-    },
-    "89f5185f": {
-      "count": 1,
-      "lastTs": 1789915819682
-    },
-    "3138e379": {
-      "count": 2,
-      "lastTs": 1790035979547
-    },
-    "429c2a72": {
-      "count": 1,
-      "lastTs": 1790035746518
-    },
-    "fd77ca64": {
-      "count": 1,
-      "lastTs": 1790035775928
-    },
-    "2d1e5eff": {
-      "count": 2,
-      "lastTs": 1790071335224
-    },
-    "6e1be879": {
-      "count": 1,
-      "lastTs": 1790036365213
-    },
-    "132aefb3": {
-      "count": 1,
-      "lastTs": 1790036369527
-    },
-    "3ee345a1": {
-      "count": 2,
-      "lastTs": 1790036382712
-    },
-    "f95c357a": {
-      "count": 1,
-      "lastTs": 1790036388657
-    },
-    "00048e15": {
-      "count": 1,
-      "lastTs": 1790036392402
-    },
-    "5192a9a8": {
-      "count": 1,
-      "lastTs": 1790036394546
-    },
-    "6f43ec88": {
-      "count": 1,
-      "lastTs": 1790036396616
-    },
-    "733b819d": {
-      "count": 1,
-      "lastTs": 1790036399925
-    },
-    "1cab63df": {
-      "count": 1,
-      "lastTs": 1790071260321
-    },
-    "6ee5222e": {
-      "count": 1,
-      "lastTs": 1790071423960
-    },
     "af117e6b": {
       "count": 2,
       "lastTs": 1787306145219
@@ -3633,6 +3541,10 @@
     "4e564c4f": {
       "count": 2,
       "lastTs": 1787746921648
+    },
+    "a0120582": {
+      "count": 7,
+      "lastTs": 1790036351564
     },
     "9dcc184d": {
       "count": 2,
@@ -3781,6 +3693,94 @@
     "372b3cc3": {
       "count": 5,
       "lastTs": 1789911750512
+    },
+    "e6d591f4": {
+      "count": 1,
+      "lastTs": 1789897513465
+    },
+    "427f0eea": {
+      "count": 2,
+      "lastTs": 1789898073562
+    },
+    "ef6fc66f": {
+      "count": 1,
+      "lastTs": 1789898188894
+    },
+    "b5874ed0": {
+      "count": 1,
+      "lastTs": 1789898190594
+    },
+    "e4db4454": {
+      "count": 1,
+      "lastTs": 1789912280916
+    },
+    "fe6b22a2": {
+      "count": 1,
+      "lastTs": 1789913950660
+    },
+    "0106a3a1": {
+      "count": 4,
+      "lastTs": 1789915800721
+    },
+    "89f5185f": {
+      "count": 1,
+      "lastTs": 1789915819682
+    },
+    "3138e379": {
+      "count": 2,
+      "lastTs": 1790035979547
+    },
+    "429c2a72": {
+      "count": 1,
+      "lastTs": 1790035746518
+    },
+    "fd77ca64": {
+      "count": 1,
+      "lastTs": 1790035775928
+    },
+    "2d1e5eff": {
+      "count": 2,
+      "lastTs": 1790071335224
+    },
+    "6e1be879": {
+      "count": 1,
+      "lastTs": 1790036365213
+    },
+    "132aefb3": {
+      "count": 1,
+      "lastTs": 1790036369527
+    },
+    "3ee345a1": {
+      "count": 2,
+      "lastTs": 1790036382712
+    },
+    "f95c357a": {
+      "count": 1,
+      "lastTs": 1790036388657
+    },
+    "00048e15": {
+      "count": 1,
+      "lastTs": 1790036392402
+    },
+    "5192a9a8": {
+      "count": 1,
+      "lastTs": 1790036394546
+    },
+    "6f43ec88": {
+      "count": 1,
+      "lastTs": 1790036396616
+    },
+    "733b819d": {
+      "count": 1,
+      "lastTs": 1790036399925
+    },
+    "1cab63df": {
+      "count": 1,
+      "lastTs": 1790071260321
+    },
+    "6ee5222e": {
+      "count": 1,
+      "lastTs": 1790071423960
     }
   },
   "blueprints": [
@@ -4239,16 +4239,17 @@
       }
     },
     "2026-09-22": {
-      "totalMs": 710840,
+      "totalMs": 845930,
       "viewMs": {
         "math": 395365,
         "browse": 30029,
-        "mock": 125172,
-        "profile": 20120,
+        "mock": 165197,
+        "profile": 95169,
         "practice": 40034,
-        "home": 45039,
+        "home": 60052,
         "propose": 5004,
-        "analysis": 50077
+        "analysis": 50077,
+        "leaderboard": 5003
       },
       "categoryMs": {
         "Advanced Math": 25028,
@@ -4283,18 +4284,6 @@
     }
   },
   "answerTimeLog": {
-    "427f0eea": [
-      {
-        "ts": 1789898017979,
-        "ms": 25136
-      }
-    ],
-    "0106a3a1": [
-      {
-        "ts": 1789913979859,
-        "ms": 4054
-      }
-    ],
     "271ef622": [
       {
         "ts": 1789198039223,
@@ -4618,7 +4607,19 @@
         "ts": 1789981377247,
         "ms": 107987
       }
+    ],
+    "427f0eea": [
+      {
+        "ts": 1789898017979,
+        "ms": 25136
+      }
+    ],
+    "0106a3a1": [
+      {
+        "ts": 1789913979859,
+        "ms": 4054
+      }
     ]
   },
-  "clientUpdatedAt": 1790071782376
+  "clientUpdatedAt": 1790071930608
 }
