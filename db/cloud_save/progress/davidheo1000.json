@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T13:33:18.148Z",
+  "exportedAt": "2026-09-22T13:36:17.993Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -610,7 +610,12 @@
     "aea3b524": "done",
     "bcbf0e45": "done",
     "9a182495": "done",
-    "0bb72c19": "done"
+    "0bb72c19": "done",
+    "c3e3b12e": "done",
+    "dba8a697": "done",
+    "c9e4bac1": "done",
+    "9903ff5b": "done",
+    "4782fd69": "done"
   },
   "tags": {},
   "notes": {},
@@ -1231,7 +1236,12 @@
     "aea3b524": "2026-09-22T13:29:45.128Z",
     "bcbf0e45": "2026-09-22T13:30:37.612Z",
     "9a182495": "2026-09-22T13:31:16.330Z",
-    "0bb72c19": "2026-09-22T13:31:45.348Z"
+    "0bb72c19": "2026-09-22T13:31:45.348Z",
+    "c3e3b12e": "2026-09-22T13:34:18.001Z",
+    "dba8a697": "2026-09-22T13:35:03.669Z",
+    "c9e4bac1": "2026-09-22T13:35:24.435Z",
+    "9903ff5b": "2026-09-22T13:35:35.056Z",
+    "4782fd69": "2026-09-22T13:36:11.514Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1996,12 +2006,8 @@
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 54,
-      "total": 85,
+      "total": 86,
       "recent": [
-        {
-          "ts": 1789992676097,
-          "correct": false
-        },
         {
           "ts": 1789992690245,
           "correct": true
@@ -2045,54 +2051,18 @@
         {
           "ts": 1790083875262,
           "correct": true
+        },
+        {
+          "ts": 1790084080634,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790083875262
+      "lastAttemptTs": 1790084080634
     },
     "Nonlinear functions": {
-      "correct": 88,
-      "total": 160,
+      "correct": 92,
+      "total": 170,
       "recent": [
-        {
-          "ts": 1790083515973,
-          "correct": false
-        },
-        {
-          "ts": 1790083518373,
-          "correct": false
-        },
-        {
-          "ts": 1790083521973,
-          "correct": false
-        },
-        {
-          "ts": 1790083525623,
-          "correct": true
-        },
-        {
-          "ts": 1790083597350,
-          "correct": true
-        },
-        {
-          "ts": 1790083759227,
-          "correct": true
-        },
-        {
-          "ts": 1790083767860,
-          "correct": true
-        },
-        {
-          "ts": 1790083779177,
-          "correct": false
-        },
-        {
-          "ts": 1790083780577,
-          "correct": false
-        },
-        {
-          "ts": 1790083782477,
-          "correct": false
-        },
         {
           "ts": 1790083783643,
           "correct": true
@@ -2100,9 +2070,49 @@
         {
           "ts": 1790083887680,
           "correct": true
+        },
+        {
+          "ts": 1790084052600,
+          "correct": false
+        },
+        {
+          "ts": 1790084054034,
+          "correct": true
+        },
+        {
+          "ts": 1790084120353,
+          "correct": false
+        },
+        {
+          "ts": 1790084122768,
+          "correct": true
+        },
+        {
+          "ts": 1790084130902,
+          "correct": false
+        },
+        {
+          "ts": 1790084132086,
+          "correct": false
+        },
+        {
+          "ts": 1790084133289,
+          "correct": true
+        },
+        {
+          "ts": 1790084165947,
+          "correct": false
+        },
+        {
+          "ts": 1790084166946,
+          "correct": false
+        },
+        {
+          "ts": 1790084168516,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790083887680
+      "lastAttemptTs": 1790084168516
     },
     "Equivalent expressions": {
       "correct": 18,
@@ -3131,11 +3141,11 @@
       }
     },
     "2026-09-22": {
-      "totalMs": 1260974,
+      "totalMs": 1440968,
       "viewMs": {
         "propose": 156778,
         "test": 25049,
-        "math": 1079147
+        "math": 1259141
       },
       "categoryMs": {}
     }
@@ -5524,7 +5534,61 @@
         "ts": 1790083887681,
         "ms": 9518
       }
+    ],
+    "c3e3b12e": [
+      {
+        "ts": 1790084052600,
+        "ms": 145586
+      },
+      {
+        "ts": 1790084054034,
+        "ms": 634
+      }
+    ],
+    "dba8a697": [
+      {
+        "ts": 1790084080634,
+        "ms": 21900
+      }
+    ],
+    "c9e4bac1": [
+      {
+        "ts": 1790084120353,
+        "ms": 15968
+      },
+      {
+        "ts": 1790084122769,
+        "ms": 1827
+      }
+    ],
+    "9903ff5b": [
+      {
+        "ts": 1790084130902,
+        "ms": 5717
+      },
+      {
+        "ts": 1790084132086,
+        "ms": 594
+      },
+      {
+        "ts": 1790084133289,
+        "ms": 604
+      }
+    ],
+    "4782fd69": [
+      {
+        "ts": 1790084165947,
+        "ms": 28112
+      },
+      {
+        "ts": 1790084166946,
+        "ms": 460
+      },
+      {
+        "ts": 1790084168516,
+        "ms": 986
+      }
     ]
   },
-  "clientUpdatedAt": 1790083995549
+  "clientUpdatedAt": 1790084176079
 }
