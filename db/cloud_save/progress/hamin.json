@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T10:12:46.608Z",
+  "exportedAt": "2026-09-22T11:28:15.548Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -612,14 +612,6 @@
     ]
   },
   "mathOverrides": {
-    "1789899644697-q9bnz3": {
-      "m1": 0,
-      "m2": 0
-    },
-    "1790036147327-kl7nik": {
-      "m1": 0,
-      "m2": 0
-    },
     "1787306089891-7kx492": {
       "m1": 22,
       "m2": 22
@@ -627,6 +619,14 @@
     "1789044867764-qr3n8y": {
       "m1": 22,
       "m2": 22
+    },
+    "1789899644697-q9bnz3": {
+      "m1": 0,
+      "m2": 0
+    },
+    "1790036147327-kl7nik": {
+      "m1": 0,
+      "m2": 0
     }
   },
   "completionLog": {
@@ -2774,48 +2774,6 @@
   ],
   "rwOverrides": {},
   "skillStats": {
-    "Nonlinear functions": {
-      "correct": 2,
-      "total": 2,
-      "recent": [
-        {
-          "ts": 1789565005334,
-          "correct": true
-        },
-        {
-          "ts": 1789565029683,
-          "correct": true
-        },
-        {
-          "ts": 1789898017979,
-          "correct": true
-        }
-      ],
-      "lastAttemptTs": 1789898017979
-    },
-    "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 2,
-      "total": 3,
-      "recent": [
-        {
-          "ts": 1789564840089,
-          "correct": false
-        },
-        {
-          "ts": 1789564841709,
-          "correct": true
-        },
-        {
-          "ts": 1789564948356,
-          "correct": true
-        },
-        {
-          "ts": 1789913979858,
-          "correct": false
-        }
-      ],
-      "lastAttemptTs": 1789913979858
-    },
     "Cross-Text Connections": {
       "correct": 15,
       "total": 19,
@@ -3445,6 +3403,48 @@
         }
       ],
       "lastAttemptTs": 1789564797991
+    },
+    "Nonlinear equations in one variable and systems of equations in two variables": {
+      "correct": 2,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789564840089,
+          "correct": false
+        },
+        {
+          "ts": 1789564841709,
+          "correct": true
+        },
+        {
+          "ts": 1789564948356,
+          "correct": true
+        },
+        {
+          "ts": 1789913979858,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789913979858
+    },
+    "Nonlinear functions": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789565005334,
+          "correct": true
+        },
+        {
+          "ts": 1789565029683,
+          "correct": true
+        },
+        {
+          "ts": 1789898017979,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789898017979
     }
   },
   "progressFocus": [
@@ -3454,98 +3454,6 @@
   ],
   "trendExcluded": [],
   "recentVisits": {
-    "e6d591f4": {
-      "count": 1,
-      "lastTs": 1789897513465
-    },
-    "427f0eea": {
-      "count": 2,
-      "lastTs": 1789898073562
-    },
-    "ef6fc66f": {
-      "count": 1,
-      "lastTs": 1789898188894
-    },
-    "b5874ed0": {
-      "count": 1,
-      "lastTs": 1789898190594
-    },
-    "a0120582": {
-      "count": 7,
-      "lastTs": 1790036351564
-    },
-    "e4db4454": {
-      "count": 1,
-      "lastTs": 1789912280916
-    },
-    "fe6b22a2": {
-      "count": 1,
-      "lastTs": 1789913950660
-    },
-    "0106a3a1": {
-      "count": 4,
-      "lastTs": 1789915800721
-    },
-    "89f5185f": {
-      "count": 1,
-      "lastTs": 1789915819682
-    },
-    "3138e379": {
-      "count": 2,
-      "lastTs": 1790035979547
-    },
-    "429c2a72": {
-      "count": 1,
-      "lastTs": 1790035746518
-    },
-    "fd77ca64": {
-      "count": 1,
-      "lastTs": 1790035775928
-    },
-    "2d1e5eff": {
-      "count": 2,
-      "lastTs": 1790071335224
-    },
-    "6e1be879": {
-      "count": 1,
-      "lastTs": 1790036365213
-    },
-    "132aefb3": {
-      "count": 1,
-      "lastTs": 1790036369527
-    },
-    "3ee345a1": {
-      "count": 2,
-      "lastTs": 1790036382712
-    },
-    "f95c357a": {
-      "count": 1,
-      "lastTs": 1790036388657
-    },
-    "00048e15": {
-      "count": 1,
-      "lastTs": 1790036392402
-    },
-    "5192a9a8": {
-      "count": 1,
-      "lastTs": 1790036394546
-    },
-    "6f43ec88": {
-      "count": 1,
-      "lastTs": 1790036396616
-    },
-    "733b819d": {
-      "count": 1,
-      "lastTs": 1790036399925
-    },
-    "1cab63df": {
-      "count": 1,
-      "lastTs": 1790071260321
-    },
-    "6ee5222e": {
-      "count": 1,
-      "lastTs": 1790071423960
-    },
     "af117e6b": {
       "count": 2,
       "lastTs": 1787306145219
@@ -3633,6 +3541,10 @@
     "4e564c4f": {
       "count": 2,
       "lastTs": 1787746921648
+    },
+    "a0120582": {
+      "count": 7,
+      "lastTs": 1790036351564
     },
     "9dcc184d": {
       "count": 2,
@@ -3781,6 +3693,94 @@
     "372b3cc3": {
       "count": 5,
       "lastTs": 1789911750512
+    },
+    "e6d591f4": {
+      "count": 1,
+      "lastTs": 1789897513465
+    },
+    "427f0eea": {
+      "count": 2,
+      "lastTs": 1789898073562
+    },
+    "ef6fc66f": {
+      "count": 1,
+      "lastTs": 1789898188894
+    },
+    "b5874ed0": {
+      "count": 1,
+      "lastTs": 1789898190594
+    },
+    "e4db4454": {
+      "count": 1,
+      "lastTs": 1789912280916
+    },
+    "fe6b22a2": {
+      "count": 1,
+      "lastTs": 1789913950660
+    },
+    "0106a3a1": {
+      "count": 4,
+      "lastTs": 1789915800721
+    },
+    "89f5185f": {
+      "count": 1,
+      "lastTs": 1789915819682
+    },
+    "3138e379": {
+      "count": 2,
+      "lastTs": 1790035979547
+    },
+    "429c2a72": {
+      "count": 1,
+      "lastTs": 1790035746518
+    },
+    "fd77ca64": {
+      "count": 1,
+      "lastTs": 1790035775928
+    },
+    "2d1e5eff": {
+      "count": 2,
+      "lastTs": 1790071335224
+    },
+    "6e1be879": {
+      "count": 1,
+      "lastTs": 1790036365213
+    },
+    "132aefb3": {
+      "count": 1,
+      "lastTs": 1790036369527
+    },
+    "3ee345a1": {
+      "count": 2,
+      "lastTs": 1790036382712
+    },
+    "f95c357a": {
+      "count": 1,
+      "lastTs": 1790036388657
+    },
+    "00048e15": {
+      "count": 1,
+      "lastTs": 1790036392402
+    },
+    "5192a9a8": {
+      "count": 1,
+      "lastTs": 1790036394546
+    },
+    "6f43ec88": {
+      "count": 1,
+      "lastTs": 1790036396616
+    },
+    "733b819d": {
+      "count": 1,
+      "lastTs": 1790036399925
+    },
+    "1cab63df": {
+      "count": 1,
+      "lastTs": 1790071260321
+    },
+    "6ee5222e": {
+      "count": 1,
+      "lastTs": 1790071423960
     }
   },
   "blueprints": [
@@ -4043,42 +4043,49 @@
     }
   ],
   "timeStats": {
-    "2026-09-11": {
-      "totalMs": 2728346,
+    "2026-09-14": {
+      "totalMs": 9772277,
       "viewMs": {
-        "home": 319640,
-        "profile": 133948,
-        "propose": 10004,
-        "browse": 204501,
-        "mock": 1262344,
-        "practice": 294993,
-        "test": 204709,
-        "analysis": 123528,
-        "notes": 20016,
-        "review": 29860,
-        "math": 71679,
-        "lab": 38115,
-        "leaderboard": 403815
+        "home": 124073,
+        "mock": 9169432,
+        "profile": 25052,
+        "review": 432845,
+        "notes": 5002,
+        "leaderboard": 115000,
+        "analysis": 10000,
+        "browse": 35001,
+        "test": 15010,
+        "propose": 25023,
+        "lab": 10014,
+        "practice": 10007
       },
       "categoryMs": {
-        "Transitions": 10009,
-        "Algebra": 5002
+        "Vocab": 740004,
+        "Functions": 789994,
+        "Notes": 630003,
+        "Transitions": 605004,
+        "Grammar": 609996,
+        "Inferences": 560004,
+        "Textual Evidence": 1314998,
+        "Quantitative Evidence": 794995,
+        "Main Idea": 1080002,
+        "Cross-Text": 340000
       }
     },
     "2026-09-12": {
       "totalMs": 2511219,
       "viewMs": {
+        "leaderboard": 40000,
+        "math": 10000,
+        "browse": 125000,
         "mock": 348767,
+        "profile": 45011,
+        "analysis": 1916215,
+        "practice": 115004,
         "test": 211301,
         "notes": 15017,
         "lab": 10009,
-        "leaderboard": 40000,
-        "analysis": 1916215,
-        "profile": 45011,
-        "practice": 115004,
-        "home": 40987,
-        "math": 10000,
-        "browse": 125000
+        "home": 40987
       },
       "categoryMs": {
         "Algebra": 10010,
@@ -4091,62 +4098,33 @@
     "2026-09-13": {
       "totalMs": 1367755,
       "viewMs": {
-        "profile": 25023,
-        "mock": 932748,
-        "leaderboard": 10005,
         "practice": 10001,
         "test": 4999,
+        "mock": 932748,
         "review": 110001,
-        "notes": 310006
+        "notes": 310006,
+        "profile": 25023,
+        "leaderboard": 10005
       },
       "categoryMs": {
         "Vocab": 15014
       }
     },
-    "2026-09-14": {
-      "totalMs": 9772277,
-      "viewMs": {
-        "mock": 9169432,
-        "browse": 35001,
-        "test": 15010,
-        "home": 124073,
-        "propose": 25023,
-        "profile": 25052,
-        "lab": 10014,
-        "practice": 10007,
-        "notes": 5002,
-        "analysis": 10000,
-        "leaderboard": 115000,
-        "review": 432845
-      },
-      "categoryMs": {
-        "Vocab": 740004,
-        "Notes": 630003,
-        "Functions": 789994,
-        "Transitions": 605004,
-        "Grammar": 609996,
-        "Inferences": 560004,
-        "Textual Evidence": 1314998,
-        "Quantitative Evidence": 794995,
-        "Main Idea": 1080002,
-        "Cross-Text": 340000
-      }
-    },
     "2026-09-15": {
       "totalMs": 1786061,
       "viewMs": {
-        "home": 25048,
         "profile": 60046,
-        "lab": 65001,
-        "analysis": 90088,
+        "home": 25048,
         "practice": 101095,
+        "lab": 65001,
+        "mock": 226123,
+        "browse": 705658,
+        "analysis": 90088,
         "blueprints": 100126,
         "test": 228539,
         "math": 225167,
         "leaderboard": 120119,
         "review": 10010,
-        "browse": 705658,
-        "mock": 226123,
         "notes": 5002
       },
       "categoryMs": {
@@ -4157,17 +4135,17 @@
     "2026-09-16": {
       "totalMs": 2949405,
       "viewMs": {
+        "browse": 254979,
         "home": 764076,
         "lab": 115002,
+        "mock": 540141,
         "profile": 135015,
         "practice": 1354997,
-        "mock": 540141,
-        "browse": 254979,
-        "test": 15010,
-        "propose": 5005,
         "blueprints": 124996,
         "leaderboard": 309288,
-        "math": 25002
+        "math": 25002,
+        "test": 15010,
+        "propose": 5005
       },
       "categoryMs": {
         "Algebra": 845000,
@@ -4177,85 +4155,40 @@
     "2026-09-17": {
       "totalMs": 211498,
       "viewMs": {
-        "home": 71069,
-        "browse": 140429,
-        "profile": 21944,
         "math": 5003,
-        "analysis": 29998
-      },
-      "categoryMs": {}
-    },
-    "2026-09-18": {
-      "totalMs": 153934,
-      "viewMs": {
-        "competition": 135199,
-        "browse": 26365,
-        "home": 13734,
-        "mock": 25021,
-        "profile": 10006,
-        "leaderboard": 5004,
-        "review": 5005,
-        "blueprints": 15012
-      },
-      "categoryMs": {}
-    },
-    "2026-09-19": {
-      "totalMs": 410039,
-      "viewMs": {
-        "practice": 32826,
-        "browse": 65044,
-        "home": 351088,
-        "test": 5003,
-        "profile": 5000
+        "browse": 140429,
+        "analysis": 29998,
+        "home": 71069,
+        "profile": 21944
       },
       "categoryMs": {}
     },
     "2026-09-20": {
       "totalMs": 3087022,
       "viewMs": {
-        "home": 102858,
-        "browse": 25219,
-        "profile": 85027,
-        "lab": 15010,
-        "practice": 100001,
-        "review": 54998,
-        "leaderboard": 240038,
-        "math": 91066,
         "mock": 305586,
         "test": 2381944,
-        "competition": 10001
+        "practice": 100001,
+        "profile": 85027,
+        "review": 54998,
+        "leaderboard": 240038,
+        "competition": 10001,
+        "home": 102858,
+        "browse": 25219,
+        "lab": 15010,
+        "math": 91066
       },
       "categoryMs": {
-        "Notes": 195001,
-        "Algebra": 5006,
-        "Grammar": 5015,
         "Vocab": 130000,
         "Quantitative Evidence": 195000,
         "Functions": 275000,
         "Main Idea": 475002,
+        "Notes": 195001,
         "Textual Evidence": 280000,
         "Cross-Text": 80000,
-        "Inferences": 174998
-      }
-    },
-    "2026-09-22": {
-      "totalMs": 845930,
-      "viewMs": {
-        "math": 395365,
-        "browse": 30029,
-        "mock": 165197,
-        "profile": 95169,
-        "practice": 40034,
-        "home": 60052,
-        "propose": 5004,
-        "analysis": 50077,
-        "leaderboard": 5003
-      },
-      "categoryMs": {
-        "Advanced Math": 25028,
-        "Algebra": 10010,
-        "Geometry and Trigonometry": 10012,
-        "Problem-Solving and Data Analysis": 10009
+        "Inferences": 174998,
+        "Algebra": 5006,
+        "Grammar": 5015
       }
     },
     "2026-09-21": {
@@ -4281,21 +4214,76 @@
         "Cross-Text": 629999,
         "Functions": 300000
       }
+    },
+    "2026-09-22": {
+      "totalMs": 915163,
+      "viewMs": {
+        "mock": 179427,
+        "math": 395365,
+        "browse": 30029,
+        "profile": 100172,
+        "practice": 40034,
+        "home": 60052,
+        "propose": 5004,
+        "analysis": 50077,
+        "leaderboard": 55003
+      },
+      "categoryMs": {
+        "Advanced Math": 25028,
+        "Algebra": 10010,
+        "Geometry and Trigonometry": 10012,
+        "Problem-Solving and Data Analysis": 10009
+      }
+    },
+    "2026-09-11": {
+      "totalMs": 2728346,
+      "viewMs": {
+        "home": 319640,
+        "profile": 133948,
+        "propose": 10004,
+        "browse": 204501,
+        "mock": 1262344,
+        "practice": 294993,
+        "test": 204709,
+        "analysis": 123528,
+        "notes": 20016,
+        "review": 29860,
+        "math": 71679,
+        "lab": 38115,
+        "leaderboard": 403815
+      },
+      "categoryMs": {
+        "Transitions": 10009,
+        "Algebra": 5002
+      }
+    },
+    "2026-09-18": {
+      "totalMs": 153934,
+      "viewMs": {
+        "competition": 135199,
+        "browse": 26365,
+        "home": 13734,
+        "mock": 25021,
+        "profile": 10006,
+        "leaderboard": 5004,
+        "review": 5005,
+        "blueprints": 15012
+      },
+      "categoryMs": {}
+    },
+    "2026-09-19": {
+      "totalMs": 410039,
+      "viewMs": {
+        "practice": 32826,
+        "browse": 65044,
+        "home": 351088,
+        "test": 5003,
+        "profile": 5000
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
-    "427f0eea": [
-      {
-        "ts": 1789898017979,
-        "ms": 25136
-      }
-    ],
-    "0106a3a1": [
-      {
-        "ts": 1789913979859,
-        "ms": 4054
-      }
-    ],
     "271ef622": [
       {
         "ts": 1789198039223,
@@ -4619,7 +4607,19 @@
         "ts": 1789981377247,
         "ms": 107987
       }
+    ],
+    "427f0eea": [
+      {
+        "ts": 1789898017979,
+        "ms": 25136
+      }
+    ],
+    "0106a3a1": [
+      {
+        "ts": 1789913979859,
+        "ms": 4054
+      }
     ]
   },
-  "clientUpdatedAt": 1790071964912
+  "clientUpdatedAt": 1790076492810
 }
