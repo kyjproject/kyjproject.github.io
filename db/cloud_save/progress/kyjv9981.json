@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T10:31:50.001Z",
+  "exportedAt": "2026-09-22T10:34:50.981Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2732,6 +2732,10 @@
   ],
   "trendExcluded": [],
   "recentVisits": {
+    "31883279": {
+      "count": 1,
+      "lastTs": 1790073118503
+    },
     "68298043": {
       "count": 1,
       "lastTs": 1789151111039
@@ -2832,14 +2836,6 @@
       "count": 3,
       "lastTs": 1789809586852
     },
-    "5c9ca033": {
-      "count": 1,
-      "lastTs": 1788928325635
-    },
-    "e49ca22d": {
-      "count": 1,
-      "lastTs": 1788928365065
-    },
     "f7347d3a": {
       "count": 9,
       "lastTs": 1789452773816
@@ -2847,10 +2843,6 @@
     "cd920288": {
       "count": 2,
       "lastTs": 1788937081366
-    },
-    "4d671b68": {
-      "count": 1,
-      "lastTs": 1788937085182
     },
     "21188a4a": {
       "count": 1,
@@ -2971,6 +2963,26 @@
     "e95ae88a": {
       "count": 1,
       "lastTs": 1790073069482
+    },
+    "03c75a33": {
+      "count": 1,
+      "lastTs": 1790073113370
+    },
+    "0106a3a1": {
+      "count": 1,
+      "lastTs": 1790073163843
+    },
+    "5c9ca033": {
+      "count": 1,
+      "lastTs": 1788928325635
+    },
+    "e49ca22d": {
+      "count": 1,
+      "lastTs": 1788928365065
+    },
+    "4d671b68": {
+      "count": 1,
+      "lastTs": 1788937085182
     },
     "a23fe6aa": {
       "count": 1,
@@ -3317,14 +3329,14 @@
       "categoryMs": {}
     },
     "2026-09-22": {
-      "totalMs": 225123,
+      "totalMs": 300240,
       "viewMs": {
         "home": 39994,
         "leaderboard": 30020,
         "mock": 21286,
         "profile": 10012,
         "analysis": 10001,
-        "math": 113810
+        "math": 188927
       },
       "categoryMs": {}
     }
@@ -3397,5 +3409,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790073109284
+  "clientUpdatedAt": 1790073288028
 }
