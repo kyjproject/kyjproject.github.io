@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T17:58:34.865Z",
+  "exportedAt": "2026-09-22T18:05:09.718Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -1256,7 +1256,8 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "Yong Joon Kim"
+    "name": "Yong Joon Kim",
+    "leaderboardOptOut": false
   },
   "fsrsCards": {
     "a0120582": {
@@ -3393,18 +3394,21 @@
       }
     },
     "2026-09-23": {
-      "totalMs": 299925,
+      "totalMs": 605286,
       "viewMs": {
-        "math": 165767,
+        "math": 175777,
         "leaderboard": 20021,
-        "home": 49085,
+        "home": 134182,
         "practice": 5005,
-        "test": 5001,
-        "mock": 5006,
+        "test": 10005,
+        "mock": 15017,
         "notes": 15010,
-        "lab": 5005,
-        "analysis": 20017,
-        "profile": 10008
+        "lab": 10007,
+        "analysis": 170220,
+        "profile": 10008,
+        "propose": 20020,
+        "competition": 10007,
+        "browse": 10007
       },
       "categoryMs": {}
     }
@@ -3509,5 +3513,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790099910848
+  "clientUpdatedAt": 1790100306816
 }
