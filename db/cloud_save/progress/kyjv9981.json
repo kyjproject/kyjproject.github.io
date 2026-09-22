@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T07:02:17.488Z",
+  "exportedAt": "2026-09-22T10:31:50.001Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2832,26 +2832,6 @@
       "count": 3,
       "lastTs": 1789809586852
     },
-    "a23fe6aa": {
-      "count": 1,
-      "lastTs": 1788928150279
-    },
-    "50aeedba": {
-      "count": 1,
-      "lastTs": 1788928180726
-    },
-    "40fb86bb": {
-      "count": 1,
-      "lastTs": 1788928250078
-    },
-    "79a52183": {
-      "count": 1,
-      "lastTs": 1788928288839
-    },
-    "e75682db": {
-      "count": 1,
-      "lastTs": 1788928294908
-    },
     "5c9ca033": {
       "count": 1,
       "lastTs": 1788928325635
@@ -2971,6 +2951,46 @@
     "9298a52e": {
       "count": 1,
       "lastTs": 1789454013722
+    },
+    "a6b0b2d1": {
+      "count": 1,
+      "lastTs": 1790072990158
+    },
+    "42c3e1dd": {
+      "count": 1,
+      "lastTs": 1790072996668
+    },
+    "e7696b61": {
+      "count": 1,
+      "lastTs": 1790073002572
+    },
+    "96e950f2": {
+      "count": 1,
+      "lastTs": 1790073026005
+    },
+    "e95ae88a": {
+      "count": 1,
+      "lastTs": 1790073069482
+    },
+    "a23fe6aa": {
+      "count": 1,
+      "lastTs": 1788928150279
+    },
+    "50aeedba": {
+      "count": 1,
+      "lastTs": 1788928180726
+    },
+    "40fb86bb": {
+      "count": 1,
+      "lastTs": 1788928250078
+    },
+    "79a52183": {
+      "count": 1,
+      "lastTs": 1788928288839
+    },
+    "e75682db": {
+      "count": 1,
+      "lastTs": 1788928294908
     }
   },
   "blueprints": [
@@ -3297,9 +3317,14 @@
       "categoryMs": {}
     },
     "2026-09-22": {
-      "totalMs": 10006,
+      "totalMs": 225123,
       "viewMs": {
-        "home": 10006
+        "home": 39994,
+        "leaderboard": 30020,
+        "mock": 21286,
+        "profile": 10012,
+        "analysis": 10001,
+        "math": 113810
       },
       "categoryMs": {}
     }
@@ -3372,5 +3397,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790060534106
+  "clientUpdatedAt": 1790073109284
 }
