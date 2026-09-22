@@ -2,6 +2,8 @@
 <meta charset="utf-8" />
 <title>Reported Questions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <style>
   :root {
     --paper: #14181f;
@@ -112,7 +114,14 @@
   .qChoice.correct { color: var(--done); font-weight: 600; }
   .qRationale { font-size: 12px; color: var(--ink-faint); margin: 2px 0 2px 16px; }
   .qMissing { color: var(--bad); font-size: 13px; }
-  .reportActions { display: flex; gap: 8px; }
+  /* Same math-token rendering as site/index.template.html's mathHtml() — see
+     tools/review_dashboard.html's copy of this comment for the JS half. */
+  .math-block { display: block; margin: 6px 0; }
+  img.math-block { max-width: 100%; max-height: 160px; background: #fff; border-radius: 3px; }
+  img.math-inline { max-height: 1.4em; vertical-align: middle; background: #fff; border-radius: 2px; margin: 0 1px; }
+  .math-inline-latex, .math-block .katex { color: inherit; }
+  .editUnsupported { font-size: 12px; color: var(--ink-faint); align-self: center; }
+  .reportActions { display: flex; gap: 8px; align-items: center; }
   .reportActions .btn { padding: 5px 12px; font-size: 12.5px; }
   .resolvedBadge { color: var(--done); font-size: 12px; }
 
@@ -274,6 +283,37 @@
     try { return new Date(iso).toLocaleString(); } catch (e) { return iso; }
   }
 
+  // Ported from site/index.template.html's renderLatex/restoreLatex/
+  // restoreMathImages/mathHtml (see tools/review_dashboard.html's copy of
+  // this comment) — renders ⟦LATEX:...⟧ via KaTeX and ⟦IMG:path⟧ as inline
+  // images, instead of showing the raw tokens.
+  const KATEX_UNESCAPE_RE = /&amp;|&lt;|&gt;|&quot;|&#39;/g;
+  const KATEX_UNESCAPE_MAP = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
+  function unescapeHtml(s) { return s.replace(KATEX_UNESCAPE_RE, m => KATEX_UNESCAPE_MAP[m]); }
+  const katexRenderCache = new Map();
+  function renderLatex(source, displayMode) {
+    if (typeof katex === "undefined") return escapeHtml(source);
+    const cacheKey = displayMode + ":" + source;
+    const cached = katexRenderCache.get(cacheKey);
+    if (cached !== undefined) return cached;
+    let result;
+    try { result = katex.renderToString(source, { throwOnError: false, displayMode }); }
+    catch (e) { result = escapeHtml(source); }
+    katexRenderCache.set(cacheKey, result);
+    return result;
+  }
+  function restoreLatex(escaped) {
+    const sole = escaped.trim().match(/^⟦LATEX:([^⟧]+)⟧$/);
+    if (sole) return `<span class="math-block">${renderLatex(unescapeHtml(sole[1]), true)}</span>`;
+    return escaped.replace(/⟦LATEX:([^⟧]+)⟧/g, (_, src) => `<span class="math-inline-latex">${renderLatex(unescapeHtml(src), false)}</span>`);
+  }
+  function mathHtml(text) {
+    const escaped = restoreLatex(escapeHtml(text));
+    const sole = escaped.trim().match(/^⟦IMG:([^⟧]+)⟧$/);
+    if (sole) return `<img class="math-block" src="/${sole[1]}" alt="math" loading="lazy" decoding="async">`;
+    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="/${path}" alt="math" loading="lazy" decoding="async">`);
+  }
+
   function populateCategorySelect() {
     const sel = $("edit_category");
     sel.innerHTML = Object.keys(CATEGORY_META).map(c => `<option value="${c}">${c}</option>`).join("");
@@ -368,20 +408,27 @@
   }
 
   function renderQuestionPreview(q) {
-    const choices = q.choices || {};
+    const hasChoices = Object.keys(q.choices || {}).length > 0;
     const rbc = q.rationale_by_choice || {};
-    const choiceLines = ["A", "B", "C", "D"].map(l => {
-      const isCorrect = q.correct_answer === l;
-      return `<div class="qChoice${isCorrect ? " correct" : ""}">${l}. ${escapeHtml(choices[l] || "")}${isCorrect ? " ✓" : ""}</div>
-              <div class="qRationale">${escapeHtml(rbc[l] || "")}</div>`;
-    }).join("");
+    const body = hasChoices
+      ? ["A", "B", "C", "D"].filter(l => l in q.choices).map(l => {
+          const isCorrect = q.correct_answer === l;
+          return `<div class="qChoice${isCorrect ? " correct" : ""}">${l}. ${mathHtml(q.choices[l] || "")}${isCorrect ? " ✓" : ""}</div>
+                  <div class="qRationale">${mathHtml(rbc[l] || "")}</div>`;
+        }).join("")
+      : `<div class="qChoice correct">Answer: ${mathHtml(q.correct_answer || "")} ✓</div>
+         <div class="qRationale">${mathHtml(q.rationale_full || "")}</div>`;
+    // has_image + a nonempty image_paths is the R&W chart/table convention
+    // (one attached image); math questions instead carry ⟦IMG:...⟧/⟦LATEX:...⟧
+    // tokens inline in stem/choices/rationale, already rendered above/below —
+    // no separate note needed for those.
     const img = q.has_image && q.image_paths && q.image_paths.length
       ? `<div class="hint">image: ${escapeHtml(q.image_paths.map(p => (p && p.path) || p).join(", "))}</div>`
       : "";
     return `<div class="qPreview">
-      <div class="qStem">${escapeHtml(q.stem || "")}</div>
-      <div class="qPrompt">${escapeHtml(q.prompt || "")}</div>
-      ${choiceLines}
+      <div class="qStem">${mathHtml(q.stem || "")}</div>
+      <div class="qPrompt">${mathHtml(q.prompt || "")}</div>
+      ${body}
       ${img}
     </div>`;
   }

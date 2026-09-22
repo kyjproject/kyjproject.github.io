@@ -2,6 +2,8 @@
 <meta charset="utf-8" />
 <title>Question Review Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <style>
   :root {
     --paper: #14181f;
@@ -111,9 +113,21 @@
   .qChoice.correct { color: var(--done); font-weight: 600; }
   .qRationale { font-size: 12px; color: var(--ink-faint); margin: 2px 0 2px 16px; }
   .inline-token-img { max-width: 100%; max-height: 90px; vertical-align: middle; background: #fff; border-radius: 3px; margin: 2px 1px; }
+  /* Same math-token rendering as site/index.template.html's mathHtml() —
+     .math-block for a token that's the sole content of its line (rendered
+     larger, own line), .math-inline-latex/.math-inline for one mixed into
+     surrounding text (rendered at text height). Kept in sync by eye since
+     this is a copy, not a shared include — see renderLatex/restoreMathImages
+     below for the matching JS half. */
+  .math-block { display: block; margin: 6px 0; }
+  img.math-block { max-width: 100%; max-height: 160px; background: #fff; border-radius: 3px; }
+  img.math-inline { max-height: 1.4em; vertical-align: middle; background: #fff; border-radius: 2px; margin: 0 1px; }
+  .math-inline-latex, .math-block .katex { color: inherit; }
   .qNote { font-size: 12.5px; color: var(--ink-soft); background: var(--rule-soft); border-radius: 8px; padding: 7px 10px; margin: 8px 0; }
 
   .qActions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .navBtns { display: flex; gap: 6px; margin-left: auto; }
+  .navBtns .btn { padding: 4px 10px; font-size: 12px; }
 
   .editForm { margin-top: 14px; border-top: 1px solid var(--rule-soft); padding-top: 12px; }
   .editForm label { display: block; font-size: 12px; color: var(--ink-soft); margin: 10px 0 4px; }
@@ -161,6 +175,10 @@
     Click any tile to open a question, then <strong>Approve</strong> (green), <strong>Flag problem</strong> (red), or
     <strong>Edit</strong> it — editing marks it yellow while the form is open, then green once you save. A small
     dot on a tile means a student reported that question (see <a class="navlink" style="padding:1px 6px;" href="/tools/review_reports.html">Student reports</a>).
+    Once a question's open, use <strong>← Prev</strong> / <strong>Next →</strong> (or the arrow keys) to step
+    through the same list you had on screen — the open category's tiles, or your search results — without going
+    back to the grid each time. Math questions render the same way they do on the live site: real LaTeX via
+    KaTeX for newer questions, cropped images for ones not yet converted.
     <br /><br />
     Edits write straight to <code>db/categories/*.json</code>. The pre-built site still needs a rebuild to pick
     changes up: <code>build_db.py</code> → <code>build_site_data.py</code> → <code>build_site.py</code> →
@@ -197,12 +215,37 @@
     return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
+  // Ported from site/index.template.html's renderLatex/restoreLatex/
+  // restoreMathImages/mathHtml — same ⟦LATEX:...⟧ (real LaTeX, rendered via
+  // KaTeX) and ⟦IMG:path⟧ (cropped-image, pre-LaTeX-migration questions)
+  // token handling the live site uses, so a reviewer sees exactly what a
+  // student would instead of a wall of raw tokens. Kept as a copy rather
+  // than a shared include (this is a plain static file with no build step).
+  const KATEX_UNESCAPE_RE = /&amp;|&lt;|&gt;|&quot;|&#39;/g;
+  const KATEX_UNESCAPE_MAP = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
+  function unescapeHtml(s) { return s.replace(KATEX_UNESCAPE_RE, m => KATEX_UNESCAPE_MAP[m]); }
+  const katexRenderCache = new Map();
+  function renderLatex(source, displayMode) {
+    if (typeof katex === "undefined") return escapeHtml(source);
+    const cacheKey = displayMode + ":" + source;
+    const cached = katexRenderCache.get(cacheKey);
+    if (cached !== undefined) return cached;
+    let result;
+    try { result = katex.renderToString(source, { throwOnError: false, displayMode }); }
+    catch (e) { result = escapeHtml(source); }
+    katexRenderCache.set(cacheKey, result);
+    return result;
+  }
+  function restoreLatex(escaped) {
+    const sole = escaped.trim().match(/^⟦LATEX:([^⟧]+)⟧$/);
+    if (sole) return `<span class="math-block">${renderLatex(unescapeHtml(sole[1]), true)}</span>`;
+    return escaped.replace(/⟦LATEX:([^⟧]+)⟧/g, (_, src) => `<span class="math-inline-latex">${renderLatex(unescapeHtml(src), false)}</span>`);
+  }
   function renderTokens(text) {
-    // ⟦IMG:path⟧ tokens (mostly in math questions) become inline images so a
-    // reviewer can actually see the rendered question, not a wall of tokens.
-    const escaped = escapeHtml(text);
-    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) =>
-      `<img class="inline-token-img" src="/${path}" alt="" />`);
+    const escaped = restoreLatex(escapeHtml(text));
+    const sole = escaped.trim().match(/^⟦IMG:([^⟧]+)⟧$/);
+    if (sole) return `<img class="math-block" src="/${sole[1]}" alt="math" loading="lazy" decoding="async">`;
+    return escaped.replace(/⟦IMG:([^⟧]+)⟧/g, (_, path) => `<img class="math-inline" src="/${path}" alt="math" loading="lazy" decoding="async">`);
   }
 
   function statusOf(qid) {
@@ -320,10 +363,42 @@
     </div>`;
   }
 
+  // The order a reviewer can step through with Prev/Next — same order as
+  // whatever's currently on screen (search results, or the open category's
+  // tile grid in its Easy/Medium/Hard groups) so the arrows always match
+  // what you'd get clicking tiles by hand.
+  function computeNavList() {
+    if (state.search.trim()) {
+      const term = state.search.trim().toLowerCase();
+      return allQuestions.filter(q =>
+        (q.id || "").toLowerCase().includes(term) ||
+        (q.stem || "").toLowerCase().includes(term) ||
+        (q.prompt || "").toLowerCase().includes(term)
+      ).slice(0, 80);
+    }
+    if (state.openCat) {
+      const list = allQuestions.filter(q => q.category === state.openCat);
+      return DIFF_ORDER.flatMap(d => list.filter(q => q.difficulty_label === d));
+    }
+    return [];
+  }
+
+  function openQuestion(qid) {
+    state.openQid = qid;
+    state.editingQid = null;
+    render();
+    const panel = document.querySelector(`[data-panel-qid="${CSS.escape(qid)}"]`);
+    if (panel) panel.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+
   function renderPanel(q) {
     const s = statusOf(q.id);
     const note = (reviewStatus[q.id] && reviewStatus[q.id].note) || "";
     const isEditing = state.editingQid === q.id;
+    const navList = computeNavList();
+    const idx = navList.findIndex(x => x.id === q.id);
+    const prevQ = idx > 0 ? navList[idx - 1] : null;
+    const nextQ = idx !== -1 && idx < navList.length - 1 ? navList[idx + 1] : null;
     return `<div class="qPanel" data-panel-qid="${q.id}">
       <div class="qPanelHead">
         <span class="qPanelTitle">${escapeHtml(q.id)}</span>
@@ -331,6 +406,11 @@
         <span class="pill">${escapeHtml(q.difficulty_label || "")}</span>
         ${reportedQids.has(q.id) ? `<span class="pill reported">reported</span>` : ""}
         ${s ? `<span class="pill ${s}">${s}</span>` : ""}
+        <span class="navBtns">
+          <button class="btn" data-nav-prev type="button" title="Previous (←)" ${prevQ ? `data-qid="${prevQ.id}"` : "disabled"}>← Prev</button>
+          ${idx !== -1 ? `<span class="hint" style="align-self:center;">${idx + 1}/${navList.length}</span>` : ""}
+          <button class="btn" data-nav-next type="button" title="Next (→)" ${nextQ ? `data-qid="${nextQ.id}"` : "disabled"}>Next →</button>
+        </span>
         <button class="qPanelClose" data-close-panel type="button">✕</button>
       </div>
       ${note ? `<div class="qNote">${escapeHtml(note)}</div>` : ""}
@@ -423,9 +503,8 @@
     document.querySelectorAll("[data-open-qid]").forEach(el => {
       el.addEventListener("click", () => {
         const qid = el.dataset.openQid;
-        state.openQid = state.openQid === qid ? null : qid;
-        state.editingQid = null;
-        render();
+        if (state.openQid === qid) { state.openQid = null; state.editingQid = null; render(); }
+        else openQuestion(qid);
       });
     });
     document.querySelectorAll("[data-close-panel]").forEach(el => {
@@ -434,6 +513,9 @@
         state.editingQid = null;
         render();
       });
+    });
+    document.querySelectorAll("[data-nav-prev], [data-nav-next]").forEach(el => {
+      el.addEventListener("click", () => { if (el.dataset.qid) openQuestion(el.dataset.qid); });
     });
     document.querySelectorAll("[data-approve-qid]").forEach(el => {
       el.addEventListener("click", () => setStatus(el.dataset.approveQid, "approved"));
@@ -559,6 +641,22 @@
       state.editingQid = null;
       render();
     }, 150);
+  });
+
+  // ←/→ step through the currently open question the same way the Prev/Next
+  // buttons do, so a reviewer can keep both hands on the keyboard — approve
+  // (there's no shortcut for that, deliberately: it's a real decision) or
+  // arrow to the next one. Ignored while typing in the edit form or search
+  // box, and while no question is open.
+  document.addEventListener("keydown", (e) => {
+    if (!state.openQid || (e.key !== "ArrowLeft" && e.key !== "ArrowRight")) return;
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    const navList = computeNavList();
+    const idx = navList.findIndex(x => x.id === state.openQid);
+    if (idx === -1) return;
+    const target = e.key === "ArrowLeft" ? navList[idx - 1] : navList[idx + 1];
+    if (target) { e.preventDefault(); openQuestion(target.id); }
   });
 
   loadAll();
