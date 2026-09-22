@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T14:12:03.645Z",
+  "exportedAt": "2026-09-22T14:15:16.614Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -235,11 +235,11 @@
     "01785861": "done",
     "308abfd7": "done",
     "17ece48a": "review",
-    "57949c2b": "review",
     "baa60c44": "review",
     "0a589ca9": "review",
     "84a32bb2": "review",
-    "a28ad182": "review"
+    "a28ad182": "review",
+    "57949c2b": "review"
   },
   "tags": {},
   "notes": {},
@@ -2199,7 +2199,7 @@
       "categoryMs": {}
     },
     "2026-09-22": {
-      "totalMs": 2824316,
+      "totalMs": 3014311,
       "viewMs": {
         "review": 368452,
         "math": 77095,
@@ -2207,15 +2207,15 @@
         "home": 20011,
         "propose": 5003,
         "leaderboard": 45036,
-        "mock": 2278723,
+        "mock": 2468718,
         "test": 39996,
         "practice": 5004
       },
       "categoryMs": {
-        "Vocab": 149992,
-        "Inferences": 165006,
-        "Grammar": 185001,
-        "Transitions": 165001,
+        "Vocab": 174981,
+        "Inferences": 230003,
+        "Grammar": 265005,
+        "Transitions": 185006,
         "Notes": 84997,
         "Functions": 204994,
         "Cross-Text": 90003,
@@ -2445,5 +2445,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790086322406
+  "clientUpdatedAt": 1790086512408
 }
