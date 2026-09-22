@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T13:24:21.923Z",
+  "exportedAt": "2026-09-22T13:27:24.606Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -598,7 +598,13 @@
     "385cd016": "done",
     "ca44c7ce": "done",
     "5b955063": "done",
-    "99b8a5c8": "done"
+    "99b8a5c8": "done",
+    "ab245384": "done",
+    "98f7ab7a": "review",
+    "06fac60b": "done",
+    "2aaaec85": "done",
+    "da9efa2f": "done",
+    "36ca6037": "done"
   },
   "tags": {},
   "notes": {},
@@ -1208,7 +1214,12 @@
     "385cd016": "2026-09-22T13:22:04.469Z",
     "ca44c7ce": "2026-09-22T13:22:34.553Z",
     "5b955063": "2026-09-22T13:24:01.787Z",
-    "99b8a5c8": "2026-09-22T13:24:12.047Z"
+    "99b8a5c8": "2026-09-22T13:24:12.047Z",
+    "ab245384": "2026-09-22T13:24:45.654Z",
+    "06fac60b": "2026-09-22T13:25:27.523Z",
+    "2aaaec85": "2026-09-22T13:26:18.907Z",
+    "da9efa2f": "2026-09-22T13:26:39.224Z",
+    "36ca6037": "2026-09-22T13:27:21.075Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1972,21 +1983,9 @@
       "lastAttemptTs": 1787294130223
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 51,
-      "total": 81,
+      "correct": 53,
+      "total": 84,
       "recent": [
-        {
-          "ts": 1789992180507,
-          "correct": false
-        },
-        {
-          "ts": 1789992181573,
-          "correct": true
-        },
-        {
-          "ts": 1789992238491,
-          "correct": true
-        },
         {
           "ts": 1789992652661,
           "correct": true
@@ -2022,38 +2021,26 @@
         {
           "ts": 1790082852792,
           "correct": true
+        },
+        {
+          "ts": 1790083577540,
+          "correct": true
+        },
+        {
+          "ts": 1790083635142,
+          "correct": false
+        },
+        {
+          "ts": 1790083639109,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790082852792
+      "lastAttemptTs": 1790083639109
     },
     "Nonlinear functions": {
-      "correct": 81,
-      "total": 147,
+      "correct": 84,
+      "total": 153,
       "recent": [
-        {
-          "ts": 1790083287751,
-          "correct": false
-        },
-        {
-          "ts": 1790083289003,
-          "correct": false
-        },
-        {
-          "ts": 1790083290051,
-          "correct": false
-        },
-        {
-          "ts": 1790083291234,
-          "correct": true
-        },
-        {
-          "ts": 1790083311467,
-          "correct": true
-        },
-        {
-          "ts": 1790083322551,
-          "correct": true
-        },
         {
           "ts": 1790083352569,
           "correct": true
@@ -2077,18 +2064,38 @@
         {
           "ts": 1790083450354,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790083450354
-    },
-    "Equivalent expressions": {
-      "correct": 17,
-      "total": 32,
-      "recent": [
+        },
         {
-          "ts": 1789977932227,
+          "ts": 1790083502505,
+          "correct": true
+        },
+        {
+          "ts": 1790083515973,
           "correct": false
         },
+        {
+          "ts": 1790083518373,
+          "correct": false
+        },
+        {
+          "ts": 1790083521973,
+          "correct": false
+        },
+        {
+          "ts": 1790083525623,
+          "correct": true
+        },
+        {
+          "ts": 1790083597350,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790083597350
+    },
+    "Equivalent expressions": {
+      "correct": 18,
+      "total": 33,
+      "recent": [
         {
           "ts": 1789977933344,
           "correct": true
@@ -2132,9 +2139,13 @@
         {
           "ts": 1789992526044,
           "correct": false
+        },
+        {
+          "ts": 1790083483222,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789992526044
+      "lastAttemptTs": 1790083483222
     },
     "Linear equations in two variables": {
       "correct": 13,
@@ -3100,11 +3111,11 @@
       }
     },
     "2026-09-22": {
-      "totalMs": 737790,
+      "totalMs": 905121,
       "viewMs": {
         "propose": 156778,
         "test": 25049,
-        "math": 555963
+        "math": 723294
       },
       "categoryMs": {}
     }
@@ -5393,7 +5404,59 @@
         "ts": 1790083450354,
         "ms": 506
       }
+    ],
+    "ab245384": [
+      {
+        "ts": 1790083483222,
+        "ms": 25651
+      }
+    ],
+    "98f7ab7a": [
+      {
+        "ts": 1790083502505,
+        "ms": 15431
+      }
+    ],
+    "06fac60b": [
+      {
+        "ts": 1790083515973,
+        "ms": 5033
+      },
+      {
+        "ts": 1790083518373,
+        "ms": 1684
+      },
+      {
+        "ts": 1790083521973,
+        "ms": 1650
+      },
+      {
+        "ts": 1790083525623,
+        "ms": 1630
+      }
+    ],
+    "2aaaec85": [
+      {
+        "ts": 1790083577540,
+        "ms": 49249
+      }
+    ],
+    "da9efa2f": [
+      {
+        "ts": 1790083597351,
+        "ms": 17759
+      }
+    ],
+    "36ca6037": [
+      {
+        "ts": 1790083635142,
+        "ms": 16317
+      },
+      {
+        "ts": 1790083639110,
+        "ms": 2036
+      }
     ]
   },
-  "clientUpdatedAt": 1790083458463
+  "clientUpdatedAt": 1790083639697
 }
