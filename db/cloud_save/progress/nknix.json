@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-21T16:33:51.224Z",
+  "exportedAt": "2026-09-22T09:20:35.897Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -31,7 +31,6 @@
     "e1137c5a": "done",
     "03c75a33": "done",
     "7a83c8d8": "done",
-    "427f0eea": "done",
     "a445876d": "done",
     "dc8ef67e": "done",
     "8d93d73a": "done",
@@ -125,7 +124,7 @@
     "c3ef9de3": "done",
     "9f04b826": "done",
     "d1f9725e": "done",
-    "7ce3feba": "review",
+    "7ce3feba": "done",
     "ad1fc529": "done",
     "ac55b33a": "done",
     "c9ecaf7d": "done",
@@ -151,9 +150,10 @@
     "9fa95c2c": "done",
     "6b16c91b": "done",
     "4b2c5fbe": "done",
-    "b0e12b3a": "review",
+    "b0e12b3a": "done",
     "51be7407": "done",
     "994aa0df": "done",
+    "427f0eea": "done",
     "fe6b22a2": "done",
     "1ad71c23": "done",
     "d9799723": "done",
@@ -478,7 +478,9 @@
     "252d6b8a": "2026-09-21T16:30:12.029Z",
     "8f9ba995": "2026-09-21T16:30:19.678Z",
     "1e5b95dd": "2026-09-21T16:32:06.508Z",
-    "c6ad6232": "2026-09-21T16:32:56.766Z"
+    "c6ad6232": "2026-09-21T16:32:56.766Z",
+    "7ce3feba": "2026-09-22T09:17:56.096Z",
+    "b0e12b3a": "2026-09-22T09:18:11.727Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -928,17 +930,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 23,
-      "total": 33,
+      "correct": 25,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1789649457798,
-          "correct": true
-        },
-        {
-          "ts": 1789649457799,
-          "correct": false
-        },
         {
           "ts": 1789999416295,
           "correct": false
@@ -978,9 +972,17 @@
         {
           "ts": 1790006344686,
           "correct": true
+        },
+        {
+          "ts": 1790068674463,
+          "correct": true
+        },
+        {
+          "ts": 1790068687760,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790006344686
+      "lastAttemptTs": 1790068687760
     },
     "Text Structure and Purpose": {
       "correct": 8,
@@ -1837,6 +1839,14 @@
       "count": 2,
       "lastTs": 1790007087509
     },
+    "581be4a1": {
+      "count": 1,
+      "lastTs": 1789476407670
+    },
+    "6b56736a": {
+      "count": 1,
+      "lastTs": 1789476521759
+    },
     "7a83c8d8": {
       "count": 2,
       "lastTs": 1789895279277
@@ -1856,6 +1866,14 @@
     "8d93d73a": {
       "count": 4,
       "lastTs": 1789895272494
+    },
+    "a9e93fa1": {
+      "count": 1,
+      "lastTs": 1789476667704
+    },
+    "675148a3": {
+      "count": 1,
+      "lastTs": 1789476811382
     },
     "b8582018": {
       "count": 1,
@@ -1880,34 +1898,6 @@
     "410d7d28": {
       "count": 1,
       "lastTs": 1789477104804
-    },
-    "9609a243": {
-      "count": 1,
-      "lastTs": 1789895274861
-    },
-    "d55d1acd": {
-      "count": 1,
-      "lastTs": 1789895275994
-    },
-    "a83cf688": {
-      "count": 2,
-      "lastTs": 1789895285993
-    },
-    "e34403e6": {
-      "count": 1,
-      "lastTs": 1789895284610
-    },
-    "0f1cfed0": {
-      "count": 2,
-      "lastTs": 1789895330985
-    },
-    "3a519c76": {
-      "count": 1,
-      "lastTs": 1789895333447
-    },
-    "e1137c5a": {
-      "count": 1,
-      "lastTs": 1789895335596
     },
     "c6ad6232": {
       "count": 1,
@@ -2017,6 +2007,34 @@
       "count": 3,
       "lastTs": 1790007158537
     },
+    "9609a243": {
+      "count": 1,
+      "lastTs": 1789895274861
+    },
+    "d55d1acd": {
+      "count": 1,
+      "lastTs": 1789895275994
+    },
+    "a83cf688": {
+      "count": 2,
+      "lastTs": 1789895285993
+    },
+    "e34403e6": {
+      "count": 1,
+      "lastTs": 1789895284610
+    },
+    "0f1cfed0": {
+      "count": 2,
+      "lastTs": 1789895330985
+    },
+    "3a519c76": {
+      "count": 1,
+      "lastTs": 1789895333447
+    },
+    "e1137c5a": {
+      "count": 1,
+      "lastTs": 1789895335596
+    },
     "268c349d": {
       "count": 1,
       "lastTs": 1790007183552
@@ -2072,53 +2090,10 @@
     "6285cfe8": {
       "count": 1,
       "lastTs": 1790007952405
-    },
-    "a9e93fa1": {
-      "count": 1,
-      "lastTs": 1789476667704
-    },
-    "675148a3": {
-      "count": 1,
-      "lastTs": 1789476811382
-    },
-    "581be4a1": {
-      "count": 1,
-      "lastTs": 1789476407670
-    },
-    "6b56736a": {
-      "count": 1,
-      "lastTs": 1789476521759
     }
   },
   "blueprints": [],
   "timeStats": {
-    "2026-09-17": {
-      "totalMs": 7585099,
-      "viewMs": {
-        "home": 10001,
-        "profile": 94995,
-        "review": 285079,
-        "practice": 40023,
-        "mock": 6644999,
-        "test": 565005
-      },
-      "categoryMs": {
-        "Cross-Text": 234979,
-        "Functions": 150007,
-        "Grammar": 745022,
-        "Inferences": 500013,
-        "Main Idea": 195016,
-        "Transitions": 359999,
-        "Vocab": 585017,
-        "Notes": 329997,
-        "Quantitative Evidence": 464974,
-        "Textual Evidence": 455009,
-        "Algebra": 839970,
-        "Advanced Math": 950007,
-        "Problem-Solving and Data Analysis": 335015,
-        "Geometry and Trigonometry": 319997
-      }
-    },
     "2026-09-15": {
       "totalMs": 7564733,
       "viewMs": {
@@ -2150,34 +2125,32 @@
         "Geometry and Trigonometry": 254991
       }
     },
-    "2026-09-20": {
-      "totalMs": 742477,
+    "2026-09-17": {
+      "totalMs": 7585099,
       "viewMs": {
-        "review": 415967,
-        "test": 40026,
-        "profile": 20009,
-        "analysis": 114917,
-        "mock": 20009,
-        "propose": 10001,
-        "practice": 11133,
-        "math": 110415
+        "profile": 94995,
+        "home": 10001,
+        "review": 285079,
+        "practice": 40023,
+        "mock": 6644999,
+        "test": 565005
       },
-      "categoryMs": {}
-    },
-    "2026-09-22": {
-      "totalMs": 997808,
-      "viewMs": {
-        "math": 77095,
-        "review": 338444,
-        "profile": 35021,
-        "home": 20011,
-        "propose": 5003,
-        "leaderboard": 45036,
-        "mock": 532214,
-        "test": 5005,
-        "practice": 5004
-      },
-      "categoryMs": {}
+      "categoryMs": {
+        "Cross-Text": 234979,
+        "Functions": 150007,
+        "Grammar": 745022,
+        "Inferences": 500013,
+        "Main Idea": 195016,
+        "Transitions": 359999,
+        "Vocab": 585017,
+        "Notes": 329997,
+        "Quantitative Evidence": 464974,
+        "Textual Evidence": 455009,
+        "Algebra": 839970,
+        "Advanced Math": 950007,
+        "Problem-Solving and Data Analysis": 335015,
+        "Geometry and Trigonometry": 319997
+      }
     },
     "2026-09-21": {
       "totalMs": 7254994,
@@ -2203,6 +2176,35 @@
         "Problem-Solving and Data Analysis": 265000,
         "Geometry and Trigonometry": 559993
       }
+    },
+    "2026-09-20": {
+      "totalMs": 742477,
+      "viewMs": {
+        "review": 415967,
+        "test": 40026,
+        "profile": 20009,
+        "analysis": 114917,
+        "mock": 20009,
+        "propose": 10001,
+        "practice": 11133,
+        "math": 110415
+      },
+      "categoryMs": {}
+    },
+    "2026-09-22": {
+      "totalMs": 1037813,
+      "viewMs": {
+        "review": 368452,
+        "math": 77095,
+        "profile": 45018,
+        "home": 20011,
+        "propose": 5003,
+        "leaderboard": 45036,
+        "mock": 532214,
+        "test": 5005,
+        "practice": 5004
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -2308,6 +2310,12 @@
         "ms": 1181
       }
     ],
+    "c6ad6232": [
+      {
+        "ts": 1789649636995,
+        "ms": 71252
+      }
+    ],
     "3acc2d54": [
       {
         "ts": 1789893110642,
@@ -2322,12 +2330,6 @@
       {
         "ts": 1789893169855,
         "ms": 635
-      }
-    ],
-    "c6ad6232": [
-      {
-        "ts": 1789649636995,
-        "ms": 71252
       }
     ],
     "7fa2cfb0": [
@@ -2376,12 +2378,20 @@
       {
         "ts": 1789999416296,
         "ms": 31492
+      },
+      {
+        "ts": 1790068674464,
+        "ms": 6014
       }
     ],
     "b0e12b3a": [
       {
         "ts": 1789999460208,
         "ms": 38870
+      },
+      {
+        "ts": 1790068687761,
+        "ms": 7547
       }
     ],
     "994aa0df": [
@@ -2417,5 +2427,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790008429514
+  "clientUpdatedAt": 1790068833296
 }
