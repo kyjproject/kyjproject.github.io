@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T19:19:56.013Z",
+  "exportedAt": "2026-09-23T04:51:29.397Z",
   "progress": {
     "39430569": "done",
     "56845779": "done",
@@ -714,7 +714,8 @@
     "bec3c9d0": "done",
     "a65952d9": "done",
     "b465f388": "done",
-    "8e3878fd": "done"
+    "8e3878fd": "done",
+    "6ee5222e": "done"
   },
   "tags": {},
   "notes": {},
@@ -1441,7 +1442,8 @@
     "a65952d9": "2026-09-22T19:15:21.838Z",
     "b465f388": "2026-09-22T19:15:30.905Z",
     "8e3878fd": "2026-09-22T19:15:40.388Z",
-    "36f0ebb0": "2026-09-22T19:15:56.522Z"
+    "36f0ebb0": "2026-09-22T19:15:56.522Z",
+    "6ee5222e": "2026-09-22T19:21:57.497Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2370,25 +2372,9 @@
       "lastAttemptTs": 1790104520788
     },
     "Linear equations in two variables": {
-      "correct": 13,
-      "total": 16,
+      "correct": 14,
+      "total": 20,
       "recent": [
-        {
-          "ts": 1789561850224,
-          "correct": true
-        },
-        {
-          "ts": 1789797236363,
-          "correct": true
-        },
-        {
-          "ts": 1789797267313,
-          "correct": false
-        },
-        {
-          "ts": 1789797269663,
-          "correct": false
-        },
         {
           "ts": 1789797271746,
           "correct": true
@@ -2420,9 +2406,25 @@
         {
           "ts": 1789990235218,
           "correct": true
+        },
+        {
+          "ts": 1790104913363,
+          "correct": false
+        },
+        {
+          "ts": 1790104914296,
+          "correct": false
+        },
+        {
+          "ts": 1790104915346,
+          "correct": false
+        },
+        {
+          "ts": 1790104916246,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789990235218
+      "lastAttemptTs": 1790104916246
     },
     "Systems of two linear equations in two variables": {
       "correct": 10,
@@ -3350,13 +3352,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 2467170,
+      "totalMs": 2663621,
       "viewMs": {
-        "profile": 262327,
+        "profile": 332383,
         "review": 105084,
         "leaderboard": 5003,
-        "analysis": 2089751,
-        "home": 5005
+        "analysis": 2159791,
+        "home": 5005,
+        "practice": 10006,
+        "math": 19951,
+        "mock": 10005,
+        "lab": 16393
       },
       "categoryMs": {}
     }
@@ -6609,7 +6615,25 @@
         "ts": 1790104554889,
         "ms": 1397466
       }
+    ],
+    "6ee5222e": [
+      {
+        "ts": 1790104913363,
+        "ms": 13602
+      },
+      {
+        "ts": 1790104914296,
+        "ms": 434
+      },
+      {
+        "ts": 1790104915346,
+        "ms": 583
+      },
+      {
+        "ts": 1790104916246,
+        "ms": 451
+      }
     ]
   },
-  "clientUpdatedAt": 1790104793387
+  "clientUpdatedAt": 1790139088534
 }
