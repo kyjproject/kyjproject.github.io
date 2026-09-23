@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T10:29:38.842Z",
+  "exportedAt": "2026-09-23T10:32:38.320Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -609,7 +609,11 @@
     "70474bfb": "done",
     "4443355f": "done",
     "56d2643d": "done",
-    "9d146dca": "done"
+    "9d146dca": "done",
+    "16a076ae": "done",
+    "84877fd5": "done",
+    "d184e28c": "done",
+    "b2e26a55": "done"
   },
   "tags": {},
   "notes": {
@@ -1263,7 +1267,11 @@
     "70474bfb": "2026-09-23T09:08:17.381Z",
     "4443355f": "2026-09-23T09:10:33.280Z",
     "56d2643d": "2026-09-23T09:11:35.523Z",
-    "9d146dca": "2026-09-23T09:12:21.083Z"
+    "9d146dca": "2026-09-23T09:12:21.083Z",
+    "16a076ae": "2026-09-23T10:29:47.681Z",
+    "84877fd5": "2026-09-23T10:30:46.551Z",
+    "d184e28c": "2026-09-23T10:31:30.002Z",
+    "b2e26a55": "2026-09-23T10:32:14.734Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3148,8 +3156,8 @@
       "lastAttemptTs": 1789987186162
     },
     "Linear functions": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1789564620196,
@@ -3170,9 +3178,13 @@
         {
           "ts": 1790153878593,
           "correct": true
+        },
+        {
+          "ts": 1790159447222,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153878593
+      "lastAttemptTs": 1790159447222
     },
     "Linear inequalities in one or two variables": {
       "correct": 2,
@@ -3229,8 +3241,8 @@
       "lastAttemptTs": 1790154496237
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 6,
-      "total": 9,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1789564840089,
@@ -3271,9 +3283,13 @@
         {
           "ts": 1790153775744,
           "correct": true
+        },
+        {
+          "ts": 1790159529371,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153775744
+      "lastAttemptTs": 1790159529371
     },
     "Nonlinear functions": {
       "correct": 10,
@@ -3376,8 +3392,8 @@
       "lastAttemptTs": 1790152399062
     },
     "Percentages": {
-      "correct": 3,
-      "total": 3,
+      "correct": 5,
+      "total": 5,
       "recent": [
         {
           "ts": 1790152583053,
@@ -3390,13 +3406,21 @@
         {
           "ts": 1790153731127,
           "correct": true
+        },
+        {
+          "ts": 1790159487395,
+          "correct": true
+        },
+        {
+          "ts": 1790159489017,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153731127
+      "lastAttemptTs": 1790159489017
     },
     "Area and volume": {
-      "correct": 2,
-      "total": 4,
+      "correct": 3,
+      "total": 5,
       "recent": [
         {
           "ts": 1790153011586,
@@ -3413,9 +3437,13 @@
         {
           "ts": 1790159155630,
           "correct": false
+        },
+        {
+          "ts": 1790159388438,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790159155630
+      "lastAttemptTs": 1790159388438
     },
     "Systems of two linear equations in two variables": {
       "correct": 2,
@@ -4302,17 +4330,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 3081325,
+      "totalMs": 3251325,
       "viewMs": {
-        "practice": 2981134,
+        "practice": 3151134,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 199947,
-        "Algebra": 526370,
-        "Advanced Math": 1359999,
-        "Geometry and Trigonometry": 735008
+        "Problem-Solving and Data Analysis": 244942,
+        "Algebra": 581370,
+        "Advanced Math": 1400000,
+        "Geometry and Trigonometry": 765012
       }
     }
   },
@@ -4901,8 +4929,34 @@
       {
         "ts": 1790159155630,
         "ms": 98210
+      },
+      {
+        "ts": 1790159388438,
+        "ms": 231608
+      }
+    ],
+    "84877fd5": [
+      {
+        "ts": 1790159447223,
+        "ms": 54265
+      }
+    ],
+    "d184e28c": [
+      {
+        "ts": 1790159487395,
+        "ms": 39099
+      },
+      {
+        "ts": 1790159489018,
+        "ms": 1304
+      }
+    ],
+    "b2e26a55": [
+      {
+        "ts": 1790159529372,
+        "ms": 38890
       }
     ]
   },
-  "clientUpdatedAt": 1790159375411
+  "clientUpdatedAt": 1790159555414
 }
