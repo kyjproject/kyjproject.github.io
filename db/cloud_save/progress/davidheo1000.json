@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T06:22:38.369Z",
+  "exportedAt": "2026-09-23T06:25:50.382Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -739,7 +739,9 @@
     "42ad4855": "done",
     "9f664752": "done",
     "1215eb0a": "done",
-    "669f307b": "done"
+    "669f307b": "done",
+    "20c18190": "done",
+    "6692f86d": "review"
   },
   "tags": {},
   "notes": {},
@@ -1491,7 +1493,8 @@
     "42ad4855": "2026-09-23T06:10:39.293Z",
     "9f664752": "2026-09-23T06:10:52.544Z",
     "1215eb0a": "2026-09-23T06:11:12.229Z",
-    "669f307b": "2026-09-23T06:22:20.349Z"
+    "669f307b": "2026-09-23T06:22:20.349Z",
+    "20c18190": "2026-09-23T06:23:58.184Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2962,8 +2965,8 @@
       "lastAttemptTs": 1790143851327
     },
     "Right triangles and trigonometry": {
-      "correct": 8,
-      "total": 9,
+      "correct": 9,
+      "total": 10,
       "recent": [
         {
           "ts": 1789559375136,
@@ -3000,18 +3003,18 @@
         {
           "ts": 1790144538618,
           "correct": true
+        },
+        {
+          "ts": 1790144636448,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790144538618
+      "lastAttemptTs": 1790144636448
     },
     "Area and volume": {
-      "correct": 8,
-      "total": 13,
+      "correct": 9,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1789560230338,
-          "correct": true
-        },
         {
           "ts": 1789799134406,
           "correct": true
@@ -3055,9 +3058,13 @@
         {
           "ts": 1790143887763,
           "correct": true
+        },
+        {
+          "ts": 1790144649064,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790143887763
+      "lastAttemptTs": 1790144649064
     },
     "Circles": {
       "correct": 3,
@@ -3426,7 +3433,7 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 3889408,
+      "totalMs": 4019418,
       "viewMs": {
         "profile": 427462,
         "review": 110088,
@@ -3434,7 +3441,7 @@
         "analysis": 2408997,
         "home": 5005,
         "practice": 619050,
-        "math": 242368,
+        "math": 372378,
         "mock": 10005,
         "lab": 16393,
         "notes": 5004
@@ -6921,7 +6928,19 @@
         "ts": 1790144538618,
         "ms": 395466
       }
+    ],
+    "20c18190": [
+      {
+        "ts": 1790144636448,
+        "ms": 95429
+      }
+    ],
+    "6692f86d": [
+      {
+        "ts": 1790144649064,
+        "ms": 9262
+      }
     ]
   },
-  "clientUpdatedAt": 1790144553611
+  "clientUpdatedAt": 1790144749383
 }
