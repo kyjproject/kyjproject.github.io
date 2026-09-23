@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T11:47:24.920Z",
+  "exportedAt": "2026-09-23T11:50:25.167Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -3333,12 +3333,8 @@
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 8,
-      "total": 11,
+      "total": 12,
       "recent": [
-        {
-          "ts": 1789564840089,
-          "correct": false
-        },
         {
           "ts": 1789564841709,
           "correct": true
@@ -3382,9 +3378,13 @@
         {
           "ts": 1790161488185,
           "correct": true
+        },
+        {
+          "ts": 1790164123262,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790161488185
+      "lastAttemptTs": 1790164123262
     },
     "Nonlinear functions": {
       "correct": 16,
@@ -4507,9 +4507,9 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5591349,
+      "totalMs": 5761355,
       "viewMs": {
-        "practice": 5481157,
+        "practice": 5651163,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
@@ -4517,7 +4517,7 @@
       "categoryMs": {
         "Problem-Solving and Data Analysis": 869946,
         "Algebra": 1106368,
-        "Advanced Math": 2010030,
+        "Advanced Math": 2180036,
         "Geometry and Trigonometry": 1335003
       }
     }
@@ -5324,7 +5324,13 @@
         "ts": 1790164040039,
         "ms": 112467
       }
+    ],
+    "95b69a20": [
+      {
+        "ts": 1790164123262,
+        "ms": 81926
+      }
     ]
   },
-  "clientUpdatedAt": 1790164042021
+  "clientUpdatedAt": 1790164222024
 }
