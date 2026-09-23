@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T08:02:49.421Z",
+  "exportedAt": "2026-09-23T08:05:49.762Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -753,7 +753,8 @@
     "d3cb31fe": "done",
     "398f2cb7": "done",
     "75de8012": "done",
-    "268c349d": "done"
+    "268c349d": "done",
+    "9a5e205b": "done"
   },
   "tags": {},
   "notes": {},
@@ -1517,7 +1518,8 @@
     "d3cb31fe": "2026-09-23T07:44:45.626Z",
     "398f2cb7": "2026-09-23T07:51:21.261Z",
     "75de8012": "2026-09-23T07:53:15.317Z",
-    "268c349d": "2026-09-23T07:54:05.220Z"
+    "268c349d": "2026-09-23T07:54:05.220Z",
+    "9a5e205b": "2026-09-23T08:02:54.827Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1929,21 +1931,9 @@
       "lastAttemptTs": 1789560895684
     },
     "Central Ideas and Details": {
-      "correct": 36,
-      "total": 53,
+      "correct": 37,
+      "total": 56,
       "recent": [
-        {
-          "ts": 1789799858651,
-          "correct": false
-        },
-        {
-          "ts": 1789799859685,
-          "correct": false
-        },
-        {
-          "ts": 1789799860802,
-          "correct": true
-        },
         {
           "ts": 1789799864387,
           "correct": false
@@ -1979,9 +1969,21 @@
         {
           "ts": 1789799879355,
           "correct": true
+        },
+        {
+          "ts": 1790150570494,
+          "correct": false
+        },
+        {
+          "ts": 1790150572427,
+          "correct": false
+        },
+        {
+          "ts": 1790150573527,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789799879355
+      "lastAttemptTs": 1790150573527
     },
     "Form, Structure, and Sense": {
       "correct": 36,
@@ -3465,14 +3467,14 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5868311,
+      "totalMs": 5978385,
       "viewMs": {
         "profile": 582366,
         "review": 110088,
         "leaderboard": 105045,
         "analysis": 2424006,
         "home": 5005,
-        "practice": 1584069,
+        "practice": 1694143,
         "math": 440515,
         "mock": 539712,
         "lab": 16393,
@@ -3489,7 +3491,7 @@
         "Vocab": 324658,
         "Functions": 355280,
         "Cross-Text": 195016,
-        "Main Idea": 75060
+        "Main Idea": 185134
       }
     }
   },
@@ -7083,7 +7085,21 @@
         "ts": 1790150043871,
         "ms": 47870
       }
+    ],
+    "9a5e205b": [
+      {
+        "ts": 1790150570494,
+        "ms": 75552
+      },
+      {
+        "ts": 1790150572427,
+        "ms": 1301
+      },
+      {
+        "ts": 1790150573527,
+        "ms": 467
+      }
     ]
   },
-  "clientUpdatedAt": 1790150566739
+  "clientUpdatedAt": 1790150745909
 }
