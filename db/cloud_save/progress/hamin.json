@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T10:57:09.539Z",
+  "exportedAt": "2026-09-23T10:59:39.257Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -3173,8 +3173,8 @@
       "lastAttemptTs": 1789987186162
     },
     "Linear functions": {
-      "correct": 6,
-      "total": 7,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1789564620196,
@@ -3203,9 +3203,21 @@
         {
           "ts": 1790161006599,
           "correct": false
+        },
+        {
+          "ts": 1790161055901,
+          "correct": false
+        },
+        {
+          "ts": 1790161113689,
+          "correct": false
+        },
+        {
+          "ts": 1790161115075,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790161006599
+      "lastAttemptTs": 1790161115075
     },
     "Linear inequalities in one or two variables": {
       "correct": 2,
@@ -4387,15 +4399,15 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 4231335,
+      "totalMs": 4381336,
       "viewMs": {
-        "practice": 4131144,
+        "practice": 4281145,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 319937,
-        "Algebra": 711368,
+        "Algebra": 861369,
         "Advanced Math": 1660024,
         "Geometry and Trigonometry": 1280005
       }
@@ -5080,8 +5092,20 @@
       {
         "ts": 1790161006599,
         "ms": 97468
+      },
+      {
+        "ts": 1790161055901,
+        "ms": 48334
+      },
+      {
+        "ts": 1790161113690,
+        "ms": 57083
+      },
+      {
+        "ts": 1790161115076,
+        "ms": 553
       }
     ]
   },
-  "clientUpdatedAt": 1790161025415
+  "clientUpdatedAt": 1790161175412
 }
