@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T09:25:00.607Z",
+  "exportedAt": "2026-09-23T09:28:00.107Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -871,7 +871,9 @@
     "dd880033": "done",
     "c7593483": "done",
     "f4680374": "done",
-    "e5ba4117": "done"
+    "e5ba4117": "done",
+    "7d5a0f4e": "done",
+    "b0e72232": "done"
   },
   "tags": {},
   "notes": {},
@@ -1753,7 +1755,9 @@
     "dd880033": "2026-09-23T09:22:09.133Z",
     "c7593483": "2026-09-23T09:22:38.151Z",
     "f4680374": "2026-09-23T09:22:49.568Z",
-    "e5ba4117": "2026-09-23T09:22:58.768Z"
+    "e5ba4117": "2026-09-23T09:22:58.768Z",
+    "7d5a0f4e": "2026-09-23T09:25:15.737Z",
+    "b0e72232": "2026-09-23T09:26:44.772Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2794,25 +2798,9 @@
       "lastAttemptTs": 1790155180072
     },
     "Systems of two linear equations in two variables": {
-      "correct": 12,
-      "total": 21,
+      "correct": 14,
+      "total": 25,
       "recent": [
-        {
-          "ts": 1789797404714,
-          "correct": false
-        },
-        {
-          "ts": 1789797405848,
-          "correct": true
-        },
-        {
-          "ts": 1789804404150,
-          "correct": true
-        },
-        {
-          "ts": 1789817269628,
-          "correct": false
-        },
         {
           "ts": 1789817270595,
           "correct": false
@@ -2844,9 +2832,25 @@
         {
           "ts": 1790155200488,
           "correct": true
+        },
+        {
+          "ts": 1790155514821,
+          "correct": true
+        },
+        {
+          "ts": 1790155600005,
+          "correct": false
+        },
+        {
+          "ts": 1790155601421,
+          "correct": false
+        },
+        {
+          "ts": 1790155603155,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790155200488
+      "lastAttemptTs": 1790155603155
     },
     "Linear functions": {
       "correct": 24,
@@ -3767,12 +3771,12 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 8356814,
+      "totalMs": 8521944,
       "viewMs": {
         "profile": 597377,
         "review": 110088,
         "leaderboard": 535570,
-        "analysis": 2684201,
+        "analysis": 2849331,
         "home": 5005,
         "practice": 2576179,
         "math": 1226175,
@@ -8336,7 +8340,27 @@
         "ts": 1790155378251,
         "ms": 785
       }
+    ],
+    "7d5a0f4e": [
+      {
+        "ts": 1790155514821,
+        "ms": 99633
+      }
+    ],
+    "b0e72232": [
+      {
+        "ts": 1790155600005,
+        "ms": 33462
+      },
+      {
+        "ts": 1790155601421,
+        "ms": 301
+      },
+      {
+        "ts": 1790155603155,
+        "ms": 1101
+      }
     ]
   },
-  "clientUpdatedAt": 1790155496963
+  "clientUpdatedAt": 1790155677105
 }
