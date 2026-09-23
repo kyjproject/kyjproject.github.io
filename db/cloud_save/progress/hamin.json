@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T09:26:03.158Z",
+  "exportedAt": "2026-09-23T10:26:39.271Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -3396,7 +3396,7 @@
     },
     "Area and volume": {
       "correct": 2,
-      "total": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1790153011586,
@@ -3409,9 +3409,13 @@
         {
           "ts": 1790154148257,
           "correct": true
+        },
+        {
+          "ts": 1790159155630,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790154148257
+      "lastAttemptTs": 1790159155630
     },
     "Systems of two linear equations in two variables": {
       "correct": 2,
@@ -4298,9 +4302,9 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 2731317,
+      "totalMs": 2906323,
       "viewMs": {
-        "practice": 2631126,
+        "practice": 2806132,
         "profile": 100191,
         "mock": 55210
       },
@@ -4308,7 +4312,7 @@
         "Problem-Solving and Data Analysis": 199947,
         "Algebra": 526370,
         "Advanced Math": 1359999,
-        "Geometry and Trigonometry": 425002
+        "Geometry and Trigonometry": 560006
       }
     }
   },
@@ -4892,7 +4896,13 @@
         "ts": 1790154737895,
         "ms": 41436
       }
+    ],
+    "16a076ae": [
+      {
+        "ts": 1790159155630,
+        "ms": 98210
+      }
     ]
   },
-  "clientUpdatedAt": 1790155559766
+  "clientUpdatedAt": 1790159195411
 }
