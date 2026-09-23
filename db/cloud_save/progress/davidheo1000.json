@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T06:43:54.801Z",
+  "exportedAt": "2026-09-23T06:50:30.353Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -1501,7 +1501,8 @@
   "bonusXp": 0,
   "dailyGoal": 30,
   "profile": {
-    "name": "David Heo"
+    "name": "David Heo",
+    "leaderboardOptOut": false
   },
   "fsrsCards": {},
   "mockHistory": [
@@ -3435,26 +3436,27 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 4675319,
+      "totalMs": 4882213,
       "viewMs": {
-        "profile": 542351,
+        "profile": 582366,
         "review": 110088,
-        "leaderboard": 45036,
-        "analysis": 2408997,
+        "leaderboard": 105045,
+        "analysis": 2424006,
         "home": 5005,
-        "practice": 619050,
+        "practice": 624054,
         "math": 440515,
-        "mock": 472871,
+        "mock": 539712,
         "lab": 16393,
         "notes": 5004,
         "propose": 5004,
-        "test": 5005
+        "test": 25021
       },
       "categoryMs": {
-        "Algebra": 445252,
-        "Advanced Math": 185149,
+        "Algebra": 485267,
+        "Advanced Math": 200897,
         "Problem-Solving and Data Analysis": 260211,
-        "Geometry and Trigonometry": 45038
+        "Geometry and Trigonometry": 45038,
+        "Quantitative Evidence": 10009
       }
     }
   },
@@ -6952,5 +6954,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790145833880
+  "clientUpdatedAt": 1790146226647
 }
