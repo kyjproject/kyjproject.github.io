@@ -916,7 +916,9 @@
     "4898aa47": "done",
     "b2f892c3": "done",
     "e5b53db0": "done",
-    "c96a90a2": "done"
+    "c96a90a2": "done",
+    "1c72d95e": "done",
+    "6285cfe8": "done"
   },
   "tags": {},
   "notes": {},
@@ -1843,7 +1845,9 @@
     "4898aa47": "2026-09-23T10:18:23.517Z",
     "b2f892c3": "2026-09-23T10:18:56.434Z",
     "e5b53db0": "2026-09-23T10:20:18.504Z",
-    "c96a90a2": "2026-09-23T10:20:23.238Z"
+    "c96a90a2": "2026-09-23T10:20:23.238Z",
+    "1c72d95e": "2026-09-23T10:20:52.318Z",
+    "6285cfe8": "2026-09-23T10:20:58.953Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2884,13 +2888,9 @@
       "lastAttemptTs": 1790158507919
     },
     "Systems of two linear equations in two variables": {
-      "correct": 29,
-      "total": 48,
+      "correct": 30,
+      "total": 49,
       "recent": [
-        {
-          "ts": 1790158401147,
-          "correct": false
-        },
         {
           "ts": 1790158401997,
           "correct": true
@@ -2934,22 +2934,18 @@
         {
           "ts": 1790158809016,
           "correct": true
+        },
+        {
+          "ts": 1790158850585,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790158809016
+      "lastAttemptTs": 1790158850585
     },
     "Linear functions": {
-      "correct": 35,
-      "total": 56,
+      "correct": 36,
+      "total": 58,
       "recent": [
-        {
-          "ts": 1790158476748,
-          "correct": true
-        },
-        {
-          "ts": 1790158494581,
-          "correct": false
-        },
         {
           "ts": 1790158495564,
           "correct": false
@@ -2989,9 +2985,17 @@
         {
           "ts": 1790158822150,
           "correct": true
+        },
+        {
+          "ts": 1790158856188,
+          "correct": false
+        },
+        {
+          "ts": 1790158857201,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790158822150
+      "lastAttemptTs": 1790158857201
     },
     "Linear inequalities in one or two variables": {
       "correct": 19,
@@ -3877,7 +3881,7 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 10790332,
+      "totalMs": 10815356,
       "viewMs": {
         "profile": 597377,
         "review": 110088,
@@ -3885,7 +3889,7 @@
         "analysis": 3865092,
         "home": 5005,
         "practice": 2576179,
-        "math": 2478802,
+        "math": 2503826,
         "mock": 544714,
         "lab": 16393,
         "notes": 5004,
@@ -8891,6 +8895,22 @@
       {
         "ts": 1790158822150,
         "ms": 2982
+      }
+    ],
+    "1c72d95e": [
+      {
+        "ts": 1790158850585,
+        "ms": 26700
+      }
+    ],
+    "6285cfe8": [
+      {
+        "ts": 1790158856188,
+        "ms": 3204
+      },
+      {
+        "ts": 1790158857201,
+        "ms": 497
       }
     ]
   },
