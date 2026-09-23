@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T11:32:25.179Z",
+  "exportedAt": "2026-09-23T11:35:25.183Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -626,7 +626,11 @@
     "68fb4847": "done",
     "6a8a7fbd": "done",
     "6963dfb3": "done",
-    "ff37e18d": "done"
+    "ff37e18d": "done",
+    "ac73d6d9": "done",
+    "89f5185f": "done",
+    "7189ece4": "done",
+    "5ec80061": "done"
   },
   "tags": {},
   "notes": {
@@ -1296,7 +1300,11 @@
     "68fb4847": "2026-09-23T11:00:57.245Z",
     "6a8a7fbd": "2026-09-23T11:03:43.005Z",
     "6963dfb3": "2026-09-23T11:04:14.443Z",
-    "ff37e18d": "2026-09-23T11:30:35.178Z"
+    "ff37e18d": "2026-09-23T11:30:35.178Z",
+    "ac73d6d9": "2026-09-23T11:32:25.373Z",
+    "89f5185f": "2026-09-23T11:33:17.626Z",
+    "7189ece4": "2026-09-23T11:33:35.437Z",
+    "5ec80061": "2026-09-23T11:34:01.964Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3228,8 +3236,8 @@
       "lastAttemptTs": 1790161115075
     },
     "Linear inequalities in one or two variables": {
-      "correct": 2,
-      "total": 4,
+      "correct": 3,
+      "total": 5,
       "recent": [
         {
           "ts": 1789564748504,
@@ -3246,9 +3254,13 @@
         {
           "ts": 1790154694384,
           "correct": true
+        },
+        {
+          "ts": 1790163195999,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790154694384
+      "lastAttemptTs": 1790163195999
     },
     "Linear equations in one variable": {
       "correct": 6,
@@ -3341,17 +3353,9 @@
       "lastAttemptTs": 1790161488185
     },
     "Nonlinear functions": {
-      "correct": 13,
-      "total": 14,
+      "correct": 15,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1790152911908,
-          "correct": true
-        },
-        {
-          "ts": 1790153210811,
-          "correct": true
-        },
         {
           "ts": 1790153396094,
           "correct": true
@@ -3391,9 +3395,17 @@
         {
           "ts": 1790161421883,
           "correct": true
+        },
+        {
+          "ts": 1790163214358,
+          "correct": true
+        },
+        {
+          "ts": 1790163240895,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790161421883
+      "lastAttemptTs": 1790163240895
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 3,
@@ -4434,17 +4446,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 4851340,
+      "totalMs": 5031340,
       "viewMs": {
-        "practice": 4741148,
+        "practice": 4921148,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 544938,
-        "Algebra": 921368,
-        "Advanced Math": 1835027,
+        "Problem-Solving and Data Analysis": 624938,
+        "Algebra": 976368,
+        "Advanced Math": 1880027,
         "Geometry and Trigonometry": 1280005
       }
     }
@@ -5177,7 +5189,25 @@
         "ts": 1790163144139,
         "ms": 108184
       }
+    ],
+    "89f5185f": [
+      {
+        "ts": 1790163195999,
+        "ms": 50171
+      }
+    ],
+    "7189ece4": [
+      {
+        "ts": 1790163214359,
+        "ms": 16306
+      }
+    ],
+    "5ec80061": [
+      {
+        "ts": 1790163240896,
+        "ms": 25133
+      }
     ]
   },
-  "clientUpdatedAt": 1790163142022
+  "clientUpdatedAt": 1790163322024
 }
