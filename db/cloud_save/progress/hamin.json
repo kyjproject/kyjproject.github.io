@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T12:08:27.183Z",
+  "exportedAt": "2026-09-23T12:11:25.638Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -655,7 +655,9 @@
     "aea3b524": "done",
     "7b54c7af": "done",
     "a6c47b9c": "done",
-    "b939a904": "done"
+    "b939a904": "done",
+    "8fed560d": "done",
+    "2d8f1f6a": "done"
   },
   "tags": {},
   "notes": {
@@ -1354,7 +1356,9 @@
     "aea3b524": "2026-09-23T12:06:02.656Z",
     "7b54c7af": "2026-09-23T12:06:30.927Z",
     "a6c47b9c": "2026-09-23T12:06:42.961Z",
-    "b939a904": "2026-09-23T12:07:26.906Z"
+    "b939a904": "2026-09-23T12:07:26.906Z",
+    "8fed560d": "2026-09-23T12:09:51.998Z",
+    "2d8f1f6a": "2026-09-23T12:09:53.668Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3486,8 +3490,8 @@
       "lastAttemptTs": 1790165202024
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 3,
-      "total": 5,
+      "correct": 4,
+      "total": 6,
       "recent": [
         {
           "ts": 1790152162641,
@@ -3508,9 +3512,13 @@
         {
           "ts": 1790163033779,
           "correct": true
+        },
+        {
+          "ts": 1790165387359,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790163033779
+      "lastAttemptTs": 1790165387359
     },
     "Linear equations in two variables": {
       "correct": 5,
@@ -4579,15 +4587,15 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 6426347,
+      "totalMs": 6606339,
       "viewMs": {
-        "practice": 6316155,
+        "practice": 6496147,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 989955,
+        "Problem-Solving and Data Analysis": 1079947,
         "Algebra": 1451370,
         "Advanced Math": 2285026,
         "Geometry and Trigonometry": 1429994
@@ -5510,7 +5518,13 @@
         "ts": 1790165284961,
         "ms": 37349
       }
+    ],
+    "8fed560d": [
+      {
+        "ts": 1790165387360,
+        "ms": 184075
+      }
     ]
   },
-  "clientUpdatedAt": 1790165302023
+  "clientUpdatedAt": 1790165482029
 }
