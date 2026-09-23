@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T11:41:25.935Z",
+  "exportedAt": "2026-09-23T11:44:51.254Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -635,7 +635,8 @@
     "3ab9020f": "done",
     "a4a86ebb": "done",
     "7a83c8d8": "done",
-    "2a366aeb": "done"
+    "2a366aeb": "done",
+    "56effdcf": "done"
   },
   "tags": {},
   "notes": {
@@ -1314,7 +1315,8 @@
     "3ab9020f": "2026-09-23T11:37:22.333Z",
     "a4a86ebb": "2026-09-23T11:40:29.869Z",
     "7a83c8d8": "2026-09-23T11:41:01.489Z",
-    "2a366aeb": "2026-09-23T11:41:22.629Z"
+    "2a366aeb": "2026-09-23T11:41:22.629Z",
+    "56effdcf": "2026-09-23T11:42:45.474Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3622,15 +3624,19 @@
       "lastAttemptTs": 1790161256040
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790161453021,
           "correct": true
+        },
+        {
+          "ts": 1790163764408,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790161453021
+      "lastAttemptTs": 1790163764408
     },
     "Probability and conditional probability": {
       "correct": 1,
@@ -4483,18 +4489,18 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5351347,
+      "totalMs": 5511354,
       "viewMs": {
-        "practice": 5241155,
+        "practice": 5401162,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 724936,
+        "Problem-Solving and Data Analysis": 869946,
         "Algebra": 1071374,
         "Advanced Math": 2005030,
-        "Geometry and Trigonometry": 1280005
+        "Geometry and Trigonometry": 1295002
       }
     }
   },
@@ -5276,7 +5282,13 @@
         "ts": 1790163681754,
         "ms": 19580
       }
+    ],
+    "56effdcf": [
+      {
+        "ts": 1790163764408,
+        "ms": 81242
+      }
     ]
   },
-  "clientUpdatedAt": 1790163682021
+  "clientUpdatedAt": 1790163887023
 }
