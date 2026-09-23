@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T08:59:02.871Z",
+  "exportedAt": "2026-09-23T09:02:03.192Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -599,7 +599,9 @@
     "6ea5114f": "done",
     "f59a7e23": "done",
     "409b7ab8": "done",
-    "aefae524": "done"
+    "aefae524": "done",
+    "75cef981": "done",
+    "b0e72232": "done"
   },
   "tags": {},
   "notes": {
@@ -1243,7 +1245,9 @@
     "6ea5114f": "2026-09-23T08:54:35.067Z",
     "f59a7e23": "2026-09-23T08:55:32.286Z",
     "409b7ab8": "2026-09-23T08:56:17.163Z",
-    "aefae524": "2026-09-23T08:57:26.152Z"
+    "aefae524": "2026-09-23T08:57:26.152Z",
+    "75cef981": "2026-09-23T09:00:47.516Z",
+    "b0e72232": "2026-09-23T09:01:12.271Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3362,26 +3366,34 @@
       "lastAttemptTs": 1790153043333
     },
     "Systems of two linear equations in two variables": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790153251800,
           "correct": true
+        },
+        {
+          "ts": 1790154075478,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153251800
+      "lastAttemptTs": 1790154075478
     },
     "Lines, angles, and triangles": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790153470523,
           "correct": true
+        },
+        {
+          "ts": 1790154046408,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153470523
+      "lastAttemptTs": 1790154046408
     }
   },
   "progressFocus": [
@@ -4223,17 +4235,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 1781316,
+      "totalMs": 1886315,
       "viewMs": {
-        "practice": 1681125,
+        "practice": 1786124,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 199947,
-        "Algebra": 296371,
+        "Algebra": 326370,
         "Advanced Math": 744997,
-        "Geometry and Trigonometry": 320002
+        "Geometry and Trigonometry": 395002
       }
     }
   },
@@ -4749,7 +4761,19 @@
         "ts": 1790153845017,
         "ms": 67246
       }
+    ],
+    "75cef981": [
+      {
+        "ts": 1790154046409,
+        "ms": 165970
+      }
+    ],
+    "b0e72232": [
+      {
+        "ts": 1790154075478,
+        "ms": 27394
+      }
     ]
   },
-  "clientUpdatedAt": 1790153939766
+  "clientUpdatedAt": 1790154119768
 }
