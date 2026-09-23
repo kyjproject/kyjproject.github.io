@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T11:50:25.167Z",
+  "exportedAt": "2026-09-23T11:53:25.144Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -639,7 +639,11 @@
     "56effdcf": "done",
     "a445876d": "done",
     "76f470b6": "done",
-    "1ad71c23": "done"
+    "1ad71c23": "done",
+    "95b69a20": "done",
+    "0b28166c": "done",
+    "f2fe78cb": "done",
+    "132aefb3": "done"
   },
   "tags": {},
   "notes": {
@@ -1322,7 +1326,11 @@
     "56effdcf": "2026-09-23T11:42:45.474Z",
     "a445876d": "2026-09-23T11:45:01.482Z",
     "76f470b6": "2026-09-23T11:45:26.637Z",
-    "1ad71c23": "2026-09-23T11:47:23.484Z"
+    "1ad71c23": "2026-09-23T11:47:23.484Z",
+    "95b69a20": "2026-09-23T11:50:33.666Z",
+    "0b28166c": "2026-09-23T11:51:40.365Z",
+    "f2fe78cb": "2026-09-23T11:52:32.277Z",
+    "132aefb3": "2026-09-23T11:53:12.844Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3332,17 +3340,9 @@
       "lastAttemptTs": 1790163681754
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 8,
-      "total": 12,
+      "correct": 9,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1789564841709,
-          "correct": true
-        },
-        {
-          "ts": 1789564948356,
-          "correct": true
-        },
         {
           "ts": 1789913979858,
           "correct": false
@@ -3382,9 +3382,17 @@
         {
           "ts": 1790164123262,
           "correct": false
+        },
+        {
+          "ts": 1790164229909,
+          "correct": false
+        },
+        {
+          "ts": 1790164232444,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790164123262
+      "lastAttemptTs": 1790164232444
     },
     "Nonlinear functions": {
       "correct": 16,
@@ -3503,8 +3511,8 @@
       "lastAttemptTs": 1790159613972
     },
     "Percentages": {
-      "correct": 6,
-      "total": 6,
+      "correct": 7,
+      "total": 7,
       "recent": [
         {
           "ts": 1790152583053,
@@ -3529,9 +3537,13 @@
         {
           "ts": 1790159834462,
           "correct": true
+        },
+        {
+          "ts": 1790164351127,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790159834462
+      "lastAttemptTs": 1790164351127
     },
     "Area and volume": {
       "correct": 4,
@@ -3565,8 +3577,8 @@
       "lastAttemptTs": 1790163925586
     },
     "Systems of two linear equations in two variables": {
-      "correct": 4,
-      "total": 4,
+      "correct": 5,
+      "total": 5,
       "recent": [
         {
           "ts": 1790153251800,
@@ -3583,9 +3595,13 @@
         {
           "ts": 1790163144138,
           "correct": true
+        },
+        {
+          "ts": 1790164299230,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790163144138
+      "lastAttemptTs": 1790164299230
     },
     "Lines, angles, and triangles": {
       "correct": 4,
@@ -3657,15 +3673,19 @@
       "lastAttemptTs": 1790163764408
     },
     "Probability and conditional probability": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790163404333,
           "correct": true
+        },
+        {
+          "ts": 1790164391626,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790163404333
+      "lastAttemptTs": 1790164391626
     }
   },
   "progressFocus": [
@@ -4507,17 +4527,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5761355,
+      "totalMs": 5896346,
       "viewMs": {
-        "practice": 5651163,
+        "practice": 5786154,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 869946,
-        "Algebra": 1106368,
-        "Advanced Math": 2180036,
+        "Problem-Solving and Data Analysis": 964945,
+        "Algebra": 1131368,
+        "Advanced Math": 2195028,
         "Geometry and Trigonometry": 1335003
       }
     }
@@ -5329,8 +5349,34 @@
       {
         "ts": 1790164123262,
         "ms": 81926
+      },
+      {
+        "ts": 1790164229909,
+        "ms": 106016
+      },
+      {
+        "ts": 1790164232444,
+        "ms": 1829
+      }
+    ],
+    "0b28166c": [
+      {
+        "ts": 1790164299230,
+        "ms": 64625
+      }
+    ],
+    "f2fe78cb": [
+      {
+        "ts": 1790164351128,
+        "ms": 50445
+      }
+    ],
+    "132aefb3": [
+      {
+        "ts": 1790164391626,
+        "ms": 38973
       }
     ]
   },
-  "clientUpdatedAt": 1790164222024
+  "clientUpdatedAt": 1790164402032
 }
