@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T10:59:39.257Z",
+  "exportedAt": "2026-09-23T11:02:38.265Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -622,7 +622,8 @@
     "81aa6aa9": "done",
     "d3151792": "review",
     "8f9ba995": "done",
-    "ec3981ea": "done"
+    "ec3981ea": "done",
+    "68fb4847": "done"
   },
   "tags": {},
   "notes": {
@@ -1288,7 +1289,8 @@
     "6baeb1d2": "2026-09-23T10:37:15.695Z",
     "81aa6aa9": "2026-09-23T10:40:06.214Z",
     "8f9ba995": "2026-09-23T10:55:06.971Z",
-    "ec3981ea": "2026-09-23T10:56:09.071Z"
+    "ec3981ea": "2026-09-23T10:56:09.071Z",
+    "68fb4847": "2026-09-23T11:00:57.245Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3537,8 +3539,8 @@
       "lastAttemptTs": 1790160874170
     },
     "Equivalent expressions": {
-      "correct": 3,
-      "total": 4,
+      "correct": 4,
+      "total": 5,
       "recent": [
         {
           "ts": 1790154631724,
@@ -3555,9 +3557,13 @@
         {
           "ts": 1790160967832,
           "correct": true
+        },
+        {
+          "ts": 1790161256040,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790160967832
+      "lastAttemptTs": 1790161256040
     }
   },
   "progressFocus": [
@@ -4399,16 +4405,16 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 4381336,
+      "totalMs": 4556337,
       "viewMs": {
-        "practice": 4281145,
+        "practice": 4456146,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 319937,
-        "Algebra": 861369,
-        "Advanced Math": 1660024,
+        "Algebra": 871368,
+        "Advanced Math": 1825026,
         "Geometry and Trigonometry": 1280005
       }
     }
@@ -5105,7 +5111,13 @@
         "ts": 1790161115076,
         "ms": 553
       }
+    ],
+    "68fb4847": [
+      {
+        "ts": 1790161256040,
+        "ms": 70352
+      }
     ]
   },
-  "clientUpdatedAt": 1790161175412
+  "clientUpdatedAt": 1790161355412
 }
