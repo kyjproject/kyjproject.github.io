@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T08:32:03.051Z",
+  "exportedAt": "2026-09-23T08:35:04.981Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -577,7 +577,9 @@
     "0fe917af": "done",
     "e5175dad": "done",
     "6ee5222e": "done",
-    "36ca6037": "done"
+    "36ca6037": "done",
+    "b40b491b": "done",
+    "50cd2366": "done"
   },
   "tags": {},
   "notes": {
@@ -1199,7 +1201,9 @@
     "0fe917af": "2026-09-21T10:58:23.852Z",
     "e5175dad": "2026-09-23T08:29:28.846Z",
     "6ee5222e": "2026-09-23T08:31:32.980Z",
-    "36ca6037": "2026-09-23T08:32:01.513Z"
+    "36ca6037": "2026-09-23T08:32:01.513Z",
+    "b40b491b": "2026-09-23T08:32:42.914Z",
+    "50cd2366": "2026-09-23T08:33:20.579Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3125,8 +3129,8 @@
       "lastAttemptTs": 1789564797991
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 3,
-      "total": 4,
+      "correct": 4,
+      "total": 5,
       "recent": [
         {
           "ts": 1789564840089,
@@ -3147,9 +3151,13 @@
         {
           "ts": 1790152319836,
           "correct": true
+        },
+        {
+          "ts": 1790152361692,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790152319836
+      "lastAttemptTs": 1790152361692
     },
     "Nonlinear functions": {
       "correct": 2,
@@ -3191,6 +3199,17 @@
         }
       ],
       "lastAttemptTs": 1790152290993
+    },
+    "Right triangles and trigonometry": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790152399061,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790152399062
     }
   },
   "progressFocus": [
@@ -4032,16 +4051,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 436317,
+      "totalMs": 606317,
       "viewMs": {
-        "practice": 336126,
+        "practice": 506126,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 89963,
         "Algebra": 96355,
-        "Advanced Math": 30000
+        "Advanced Math": 159998,
+        "Geometry and Trigonometry": 40002
       }
     }
   },
@@ -4399,7 +4419,19 @@
         "ts": 1790152319836,
         "ms": 25248
       }
+    ],
+    "b40b491b": [
+      {
+        "ts": 1790152361692,
+        "ms": 39766
+      }
+    ],
+    "50cd2366": [
+      {
+        "ts": 1790152399062,
+        "ms": 35312
+      }
     ]
   },
-  "clientUpdatedAt": 1790152319765
+  "clientUpdatedAt": 1790152499765
 }
