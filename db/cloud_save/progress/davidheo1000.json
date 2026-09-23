@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T06:50:30.353Z",
+  "exportedAt": "2026-09-23T06:55:30.738Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -742,7 +742,9 @@
     "669f307b": "done",
     "20c18190": "done",
     "6692f86d": "review",
-    "5a4c2576": "done"
+    "5a4c2576": "done",
+    "c2d55ff0": "done",
+    "3c731121": "done"
   },
   "tags": {},
   "notes": {},
@@ -1496,7 +1498,9 @@
     "1215eb0a": "2026-09-23T06:11:12.229Z",
     "669f307b": "2026-09-23T06:22:20.349Z",
     "20c18190": "2026-09-23T06:23:58.184Z",
-    "5a4c2576": "2026-09-23T06:26:04.552Z"
+    "5a4c2576": "2026-09-23T06:26:04.552Z",
+    "c2d55ff0": "2026-09-23T06:52:52.953Z",
+    "3c731121": "2026-09-23T06:54:00.270Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1798,17 +1802,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 33,
-      "total": 53,
+      "correct": 35,
+      "total": 55,
       "recent": [
-        {
-          "ts": 1787319744945,
-          "correct": false
-        },
-        {
-          "ts": 1787319746078,
-          "correct": true
-        },
         {
           "ts": 1789799902385,
           "correct": false
@@ -1848,9 +1844,17 @@
         {
           "ts": 1789799959319,
           "correct": true
+        },
+        {
+          "ts": 1790146371970,
+          "correct": true
+        },
+        {
+          "ts": 1790146438870,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789799959319
+      "lastAttemptTs": 1790146438870
     },
     "Boundaries": {
       "correct": 45,
@@ -3436,27 +3440,28 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 4882213,
+      "totalMs": 4972791,
       "viewMs": {
         "profile": 582366,
         "review": 110088,
         "leaderboard": 105045,
         "analysis": 2424006,
         "home": 5005,
-        "practice": 624054,
+        "practice": 688549,
         "math": 440515,
         "mock": 539712,
         "lab": 16393,
         "notes": 5004,
         "propose": 5004,
-        "test": 25021
+        "test": 51104
       },
       "categoryMs": {
         "Algebra": 485267,
         "Advanced Math": 200897,
         "Problem-Solving and Data Analysis": 260211,
         "Geometry and Trigonometry": 45038,
-        "Quantitative Evidence": 10009
+        "Quantitative Evidence": 25020,
+        "Vocab": 64495
       }
     }
   },
@@ -6952,7 +6957,19 @@
         "ts": 1790144762667,
         "ms": 91963
       }
+    ],
+    "c2d55ff0": [
+      {
+        "ts": 1790146371970,
+        "ms": 25932
+      }
+    ],
+    "3c731121": [
+      {
+        "ts": 1790146438870,
+        "ms": 30449
+      }
     ]
   },
-  "clientUpdatedAt": 1790146226647
+  "clientUpdatedAt": 1790146526349
 }
