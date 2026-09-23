@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T07:43:50.301Z",
+  "exportedAt": "2026-09-23T07:53:25.311Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -749,7 +749,10 @@
     "74ce57b4": "done",
     "950d740f": "done",
     "102db0b9": "done",
-    "8a4a2079": "done"
+    "8a4a2079": "done",
+    "d3cb31fe": "done",
+    "398f2cb7": "done",
+    "75de8012": "done"
   },
   "tags": {},
   "notes": {},
@@ -1509,7 +1512,10 @@
     "74ce57b4": "2026-09-23T06:57:58.619Z",
     "950d740f": "2026-09-23T07:00:27.128Z",
     "102db0b9": "2026-09-23T07:42:23.507Z",
-    "8a4a2079": "2026-09-23T07:43:15.955Z"
+    "8a4a2079": "2026-09-23T07:43:15.955Z",
+    "d3cb31fe": "2026-09-23T07:44:45.626Z",
+    "398f2cb7": "2026-09-23T07:51:21.261Z",
+    "75de8012": "2026-09-23T07:53:15.317Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -1811,21 +1817,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 38,
-      "total": 64,
+      "correct": 39,
+      "total": 67,
       "recent": [
-        {
-          "ts": 1789799959319,
-          "correct": true
-        },
-        {
-          "ts": 1790146371970,
-          "correct": true
-        },
-        {
-          "ts": 1790146438870,
-          "correct": true
-        },
         {
           "ts": 1790146563029,
           "correct": false
@@ -1861,9 +1855,21 @@
         {
           "ts": 1790149394538,
           "correct": true
+        },
+        {
+          "ts": 1790149464408,
+          "correct": false
+        },
+        {
+          "ts": 1790149465842,
+          "correct": false
+        },
+        {
+          "ts": 1790149466958,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790149394538
+      "lastAttemptTs": 1790149466958
     },
     "Boundaries": {
       "correct": 45,
@@ -2127,17 +2133,9 @@
       "lastAttemptTs": 1789560772845
     },
     "Text Structure and Purpose": {
-      "correct": 20,
-      "total": 32,
+      "correct": 22,
+      "total": 34,
       "recent": [
-        {
-          "ts": 1787224036244,
-          "correct": true
-        },
-        {
-          "ts": 1787288234937,
-          "correct": true
-        },
         {
           "ts": 1787288234939,
           "correct": true
@@ -2177,9 +2175,17 @@
         {
           "ts": 1790146825694,
           "correct": true
+        },
+        {
+          "ts": 1790149880461,
+          "correct": true
+        },
+        {
+          "ts": 1790149994584,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790146825694
+      "lastAttemptTs": 1790149994584
     },
     "Cross-Text Connections": {
       "correct": 4,
@@ -3453,14 +3459,14 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5453103,
+      "totalMs": 5623242,
       "viewMs": {
         "profile": 582366,
         "review": 110088,
         "leaderboard": 105045,
         "analysis": 2424006,
         "home": 5005,
-        "practice": 1168861,
+        "practice": 1339000,
         "math": 440515,
         "mock": 539712,
         "lab": 16393,
@@ -3474,9 +3480,9 @@
         "Problem-Solving and Data Analysis": 260211,
         "Geometry and Trigonometry": 45038,
         "Quantitative Evidence": 25020,
-        "Vocab": 274618,
-        "Functions": 240184,
-        "Cross-Text": 20004
+        "Vocab": 324658,
+        "Functions": 355280,
+        "Cross-Text": 25007
       }
     }
   },
@@ -7038,7 +7044,33 @@
         "ts": 1790149394538,
         "ms": 918
       }
+    ],
+    "d3cb31fe": [
+      {
+        "ts": 1790149464408,
+        "ms": 6000
+      },
+      {
+        "ts": 1790149465842,
+        "ms": 502
+      },
+      {
+        "ts": 1790149466958,
+        "ms": 484
+      }
+    ],
+    "398f2cb7": [
+      {
+        "ts": 1790149880462,
+        "ms": 418819
+      }
+    ],
+    "75de8012": [
+      {
+        "ts": 1790149994584,
+        "ms": 110823
+      }
     ]
   },
-  "clientUpdatedAt": 1790149427781
+  "clientUpdatedAt": 1790150000584
 }
