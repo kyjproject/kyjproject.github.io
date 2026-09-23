@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T09:02:03.192Z",
+  "exportedAt": "2026-09-23T09:05:03.621Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -601,7 +601,8 @@
     "409b7ab8": "done",
     "aefae524": "done",
     "75cef981": "done",
-    "b0e72232": "done"
+    "b0e72232": "done",
+    "5a4c2576": "done"
   },
   "tags": {},
   "notes": {
@@ -1247,7 +1248,8 @@
     "409b7ab8": "2026-09-23T08:56:17.163Z",
     "aefae524": "2026-09-23T08:57:26.152Z",
     "75cef981": "2026-09-23T09:00:47.516Z",
-    "b0e72232": "2026-09-23T09:01:12.271Z"
+    "b0e72232": "2026-09-23T09:01:12.271Z",
+    "5a4c2576": "2026-09-23T09:02:29.558Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3351,8 +3353,8 @@
       "lastAttemptTs": 1790153731127
     },
     "Area and volume": {
-      "correct": 1,
-      "total": 2,
+      "correct": 2,
+      "total": 3,
       "recent": [
         {
           "ts": 1790153011586,
@@ -3361,9 +3363,13 @@
         {
           "ts": 1790153043333,
           "correct": true
+        },
+        {
+          "ts": 1790154148257,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790153043333
+      "lastAttemptTs": 1790154148257
     },
     "Systems of two linear equations in two variables": {
       "correct": 2,
@@ -4235,17 +4241,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 1886315,
+      "totalMs": 2066315,
       "viewMs": {
-        "practice": 1786124,
+        "practice": 1966124,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 199947,
         "Algebra": 326370,
-        "Advanced Math": 744997,
-        "Geometry and Trigonometry": 395002
+        "Advanced Math": 894997,
+        "Geometry and Trigonometry": 425002
       }
     }
   },
@@ -4773,7 +4779,13 @@
         "ts": 1790154075478,
         "ms": 27394
       }
+    ],
+    "5a4c2576": [
+      {
+        "ts": 1790154148257,
+        "ms": 71905
+      }
     ]
   },
-  "clientUpdatedAt": 1790154119768
+  "clientUpdatedAt": 1790154299764
 }
