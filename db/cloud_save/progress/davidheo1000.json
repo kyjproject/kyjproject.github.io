@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T09:35:37.122Z",
+  "exportedAt": "2026-09-23T09:38:15.080Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -877,7 +877,8 @@
     "9609a243": "done",
     "0876dbef": "done",
     "a3f57d54": "done",
-    "252d6b8a": "done"
+    "252d6b8a": "done",
+    "52007f35": "done"
   },
   "tags": {},
   "notes": {},
@@ -1765,7 +1766,8 @@
     "9609a243": "2026-09-23T09:30:25.053Z",
     "0876dbef": "2026-09-23T09:33:17.173Z",
     "a3f57d54": "2026-09-23T09:34:29.257Z",
-    "252d6b8a": "2026-09-23T09:34:59.408Z"
+    "252d6b8a": "2026-09-23T09:34:59.408Z",
+    "52007f35": "2026-09-23T09:36:12.126Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2806,13 +2808,9 @@
       "lastAttemptTs": 1790156097457
     },
     "Systems of two linear equations in two variables": {
-      "correct": 16,
-      "total": 27,
+      "correct": 17,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1789817816151,
-          "correct": true
-        },
         {
           "ts": 1790139810263,
           "correct": true
@@ -2856,9 +2854,13 @@
         {
           "ts": 1790155995973,
           "correct": true
+        },
+        {
+          "ts": 1790156170826,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790155995973
+      "lastAttemptTs": 1790156170826
     },
     "Linear functions": {
       "correct": 25,
@@ -3779,12 +3781,12 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 8847171,
+      "totalMs": 8987280,
       "viewMs": {
         "profile": 597377,
         "review": 110088,
         "leaderboard": 535570,
-        "analysis": 3174558,
+        "analysis": 3314667,
         "home": 5005,
         "practice": 2576179,
         "math": 1226175,
@@ -8396,7 +8398,13 @@
         "ts": 1790156097457,
         "ms": 367
       }
+    ],
+    "52007f35": [
+      {
+        "ts": 1790156170826,
+        "ms": 55963
+      }
     ]
   },
-  "clientUpdatedAt": 1790156132417
+  "clientUpdatedAt": 1790156292543
 }
