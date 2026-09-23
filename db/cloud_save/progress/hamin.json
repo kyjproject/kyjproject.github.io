@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T10:35:40.399Z",
+  "exportedAt": "2026-09-23T10:42:00.255Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -616,7 +616,10 @@
     "b2e26a55": "done",
     "669f307b": "done",
     "dc1b988f": "done",
-    "6b56736a": "done"
+    "6b56736a": "done",
+    "3de3402c": "done",
+    "6baeb1d2": "done",
+    "81aa6aa9": "done"
   },
   "tags": {},
   "notes": {
@@ -1277,7 +1280,10 @@
     "b2e26a55": "2026-09-23T10:32:14.734Z",
     "669f307b": "2026-09-23T10:33:35.406Z",
     "dc1b988f": "2026-09-23T10:34:12.707Z",
-    "6b56736a": "2026-09-23T10:34:46.149Z"
+    "6b56736a": "2026-09-23T10:34:46.149Z",
+    "3de3402c": "2026-09-23T10:36:01.312Z",
+    "6baeb1d2": "2026-09-23T10:37:15.695Z",
+    "81aa6aa9": "2026-09-23T10:40:06.214Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3302,17 +3308,9 @@
       "lastAttemptTs": 1790159529371
     },
     "Nonlinear functions": {
-      "correct": 10,
-      "total": 10,
+      "correct": 12,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1789565005334,
-          "correct": true
-        },
-        {
-          "ts": 1789565029683,
-          "correct": true
-        },
         {
           "ts": 1789898017979,
           "correct": true
@@ -3348,9 +3346,21 @@
         {
           "ts": 1790154303632,
           "correct": true
+        },
+        {
+          "ts": 1790159748659,
+          "correct": false
+        },
+        {
+          "ts": 1790159759808,
+          "correct": true
+        },
+        {
+          "ts": 1790160004696,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790154303632
+      "lastAttemptTs": 1790160004696
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 2,
@@ -3406,8 +3416,8 @@
       "lastAttemptTs": 1790159613972
     },
     "Percentages": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1790152583053,
@@ -3428,9 +3438,13 @@
         {
           "ts": 1790159489017,
           "correct": true
+        },
+        {
+          "ts": 1790159834462,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790159489017
+      "lastAttemptTs": 1790159834462
     },
     "Area and volume": {
       "correct": 3,
@@ -4348,17 +4362,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 3431324,
+      "totalMs": 3721335,
       "viewMs": {
-        "practice": 3331133,
+        "practice": 3621144,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
-        "Problem-Solving and Data Analysis": 244942,
+        "Problem-Solving and Data Analysis": 319937,
         "Algebra": 616370,
-        "Advanced Math": 1485000,
-        "Geometry and Trigonometry": 825011
+        "Advanced Math": 1605022,
+        "Geometry and Trigonometry": 920005
       }
     }
   },
@@ -4992,7 +5006,29 @@
         "ts": 1790159685034,
         "ms": 31757
       }
+    ],
+    "3de3402c": [
+      {
+        "ts": 1790159748659,
+        "ms": 61797
+      },
+      {
+        "ts": 1790159759810,
+        "ms": 10466
+      }
+    ],
+    "6baeb1d2": [
+      {
+        "ts": 1790159834463,
+        "ms": 71891
+      }
+    ],
+    "81aa6aa9": [
+      {
+        "ts": 1790160004696,
+        "ms": 168411
+      }
     ]
   },
-  "clientUpdatedAt": 1790159735417
+  "clientUpdatedAt": 1790160115418
 }
