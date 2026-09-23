@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T11:53:25.144Z",
+  "exportedAt": "2026-09-23T11:56:24.687Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -643,7 +643,9 @@
     "95b69a20": "done",
     "0b28166c": "done",
     "f2fe78cb": "done",
-    "132aefb3": "done"
+    "132aefb3": "done",
+    "a0b9a635": "done",
+    "e4db4454": "done"
   },
   "tags": {},
   "notes": {
@@ -1330,7 +1332,9 @@
     "95b69a20": "2026-09-23T11:50:33.666Z",
     "0b28166c": "2026-09-23T11:51:40.365Z",
     "f2fe78cb": "2026-09-23T11:52:32.277Z",
-    "132aefb3": "2026-09-23T11:53:12.844Z"
+    "132aefb3": "2026-09-23T11:53:12.844Z",
+    "a0b9a635": "2026-09-23T11:53:48.212Z",
+    "e4db4454": "2026-09-23T11:54:26.426Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3395,13 +3399,9 @@
       "lastAttemptTs": 1790164232444
     },
     "Nonlinear functions": {
-      "correct": 16,
-      "total": 17,
+      "correct": 17,
+      "total": 18,
       "recent": [
-        {
-          "ts": 1790153443172,
-          "correct": true
-        },
         {
           "ts": 1790153508724,
           "correct": true
@@ -3445,9 +3445,13 @@
         {
           "ts": 1790163628267,
           "correct": true
+        },
+        {
+          "ts": 1790164427178,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790163628267
+      "lastAttemptTs": 1790164427178
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 3,
@@ -3477,8 +3481,8 @@
       "lastAttemptTs": 1790163033779
     },
     "Linear equations in two variables": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1790152290993,
@@ -3491,9 +3495,13 @@
         {
           "ts": 1790164040038,
           "correct": true
+        },
+        {
+          "ts": 1790164465309,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790164040038
+      "lastAttemptTs": 1790164465309
     },
     "Right triangles and trigonometry": {
       "correct": 2,
@@ -4527,18 +4535,18 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 5896346,
+      "totalMs": 6031340,
       "viewMs": {
-        "practice": 5786154,
+        "practice": 5921148,
         "profile": 100191,
         "mock": 55210,
         "lab": 10001
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 964945,
-        "Algebra": 1131368,
-        "Advanced Math": 2195028,
-        "Geometry and Trigonometry": 1335003
+        "Algebra": 1171372,
+        "Advanced Math": 2200029,
+        "Geometry and Trigonometry": 1424992
       }
     }
   },
@@ -5376,7 +5384,19 @@
         "ts": 1790164391626,
         "ms": 38973
       }
+    ],
+    "a0b9a635": [
+      {
+        "ts": 1790164427178,
+        "ms": 33589
+      }
+    ],
+    "e4db4454": [
+      {
+        "ts": 1790164465309,
+        "ms": 36308
+      }
     ]
   },
-  "clientUpdatedAt": 1790164402032
+  "clientUpdatedAt": 1790164582021
 }
