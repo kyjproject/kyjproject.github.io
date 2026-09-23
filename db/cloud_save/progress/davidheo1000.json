@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T09:53:14.906Z",
+  "exportedAt": "2026-09-23T09:56:25.679Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -896,7 +896,9 @@
     "c73c84cc": "done",
     "35978b89": "done",
     "9a67367f": "done",
-    "efaeaf88": "done"
+    "efaeaf88": "done",
+    "df8ae774": "done",
+    "be844d92": "done"
   },
   "tags": {},
   "notes": {},
@@ -1803,7 +1805,9 @@
     "c73c84cc": "2026-09-23T09:49:41.584Z",
     "35978b89": "2026-09-23T09:50:12.453Z",
     "9a67367f": "2026-09-23T09:50:47.285Z",
-    "efaeaf88": "2026-09-23T09:52:03.953Z"
+    "efaeaf88": "2026-09-23T09:52:03.953Z",
+    "df8ae774": "2026-09-23T09:54:14.211Z",
+    "be844d92": "2026-09-23T09:55:06.714Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3009,21 +3013,9 @@
       "lastAttemptTs": 1790157146221
     },
     "Linear equations in one variable": {
-      "correct": 13,
-      "total": 16,
+      "correct": 14,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1789797651184,
-          "correct": true
-        },
-        {
-          "ts": 1789797659784,
-          "correct": false
-        },
-        {
-          "ts": 1789797660534,
-          "correct": false
-        },
         {
           "ts": 1789797661516,
           "correct": true
@@ -3059,9 +3051,21 @@
         {
           "ts": 1790155266607,
           "correct": true
+        },
+        {
+          "ts": 1790157231755,
+          "correct": false
+        },
+        {
+          "ts": 1790157258961,
+          "correct": true
+        },
+        {
+          "ts": 1790157296484,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790155266607
+      "lastAttemptTs": 1790157296484
     },
     "Percentages": {
       "correct": 10,
@@ -3821,7 +3825,7 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 9827959,
+      "totalMs": 10018136,
       "viewMs": {
         "profile": 597377,
         "review": 110088,
@@ -3829,7 +3833,7 @@
         "analysis": 3865092,
         "home": 5005,
         "practice": 2576179,
-        "math": 1516429,
+        "math": 1706606,
         "mock": 544714,
         "lab": 16393,
         "notes": 5004,
@@ -4589,6 +4593,10 @@
       {
         "ts": 1789817843427,
         "ms": 2064
+      },
+      {
+        "ts": 1790157258961,
+        "ms": 4266
       }
     ],
     "3e50584f": [
@@ -8596,7 +8604,19 @@
         "ts": 1790157123052,
         "ms": 42484
       }
+    ],
+    "df8ae774": [
+      {
+        "ts": 1790157231755,
+        "ms": 84485
+      }
+    ],
+    "be844d92": [
+      {
+        "ts": 1790157296484,
+        "ms": 36404
+      }
     ]
   },
-  "clientUpdatedAt": 1790157191756
+  "clientUpdatedAt": 1790157381933
 }
