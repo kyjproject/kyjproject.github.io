@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T06:19:39.449Z",
+  "exportedAt": "2026-09-23T06:22:38.369Z",
   "progress": {
     "39430569": "done",
     "50821477": "done",
@@ -738,7 +738,8 @@
     "e5175dad": "done",
     "42ad4855": "done",
     "9f664752": "done",
-    "1215eb0a": "done"
+    "1215eb0a": "done",
+    "669f307b": "done"
   },
   "tags": {},
   "notes": {},
@@ -1489,7 +1490,8 @@
     "e5175dad": "2026-09-23T06:10:01.558Z",
     "42ad4855": "2026-09-23T06:10:39.293Z",
     "9f664752": "2026-09-23T06:10:52.544Z",
-    "1215eb0a": "2026-09-23T06:11:12.229Z"
+    "1215eb0a": "2026-09-23T06:11:12.229Z",
+    "669f307b": "2026-09-23T06:22:20.349Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -2960,8 +2962,8 @@
       "lastAttemptTs": 1790143851327
     },
     "Right triangles and trigonometry": {
-      "correct": 7,
-      "total": 8,
+      "correct": 8,
+      "total": 9,
       "recent": [
         {
           "ts": 1789559375136,
@@ -2994,9 +2996,13 @@
         {
           "ts": 1790143864462,
           "correct": true
+        },
+        {
+          "ts": 1790144538618,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790143864462
+      "lastAttemptTs": 1790144538618
     },
     "Area and volume": {
       "correct": 8,
@@ -3215,8 +3221,8 @@
       "lastTs": 1789974502665
     },
     "669f307b": {
-      "count": 2,
-      "lastTs": 1789974788386
+      "count": 3,
+      "lastTs": 1790144396696
     },
     "271ef622": {
       "count": 1,
@@ -3420,15 +3426,15 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 3764305,
+      "totalMs": 3889408,
       "viewMs": {
         "profile": 427462,
         "review": 110088,
         "leaderboard": 45036,
-        "analysis": 2403992,
+        "analysis": 2408997,
         "home": 5005,
         "practice": 619050,
-        "math": 122270,
+        "math": 242368,
         "mock": 10005,
         "lab": 16393,
         "notes": 5004
@@ -6909,7 +6915,13 @@
         "ts": 1790143864462,
         "ms": 9667
       }
+    ],
+    "669f307b": [
+      {
+        "ts": 1790144538618,
+        "ms": 395466
+      }
     ]
   },
-  "clientUpdatedAt": 1790144375047
+  "clientUpdatedAt": 1790144553611
 }
