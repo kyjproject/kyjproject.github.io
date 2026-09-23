@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-22T16:11:34.824Z",
+  "exportedAt": "2026-09-23T08:32:03.051Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -574,7 +574,10 @@
     "5efdc098": "done",
     "59aa305b": "done",
     "21f19050": "done",
-    "0fe917af": "done"
+    "0fe917af": "done",
+    "e5175dad": "done",
+    "6ee5222e": "done",
+    "36ca6037": "done"
   },
   "tags": {},
   "notes": {
@@ -1193,7 +1196,10 @@
     "5efdc098": "2026-09-21T10:58:18.502Z",
     "59aa305b": "2026-09-21T10:58:22.065Z",
     "21f19050": "2026-09-21T10:58:22.966Z",
-    "0fe917af": "2026-09-21T10:58:23.852Z"
+    "0fe917af": "2026-09-21T10:58:23.852Z",
+    "e5175dad": "2026-09-23T08:29:28.846Z",
+    "6ee5222e": "2026-09-23T08:31:32.980Z",
+    "36ca6037": "2026-09-23T08:32:01.513Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3119,8 +3125,8 @@
       "lastAttemptTs": 1789564797991
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 2,
-      "total": 3,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1789564840089,
@@ -3137,9 +3143,13 @@
         {
           "ts": 1789913979858,
           "correct": false
+        },
+        {
+          "ts": 1790152319836,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789913979858
+      "lastAttemptTs": 1790152319836
     },
     "Nonlinear functions": {
       "correct": 2,
@@ -3159,6 +3169,28 @@
         }
       ],
       "lastAttemptTs": 1789898017979
+    },
+    "One-variable data: Distributions and measures of center and spread": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790152162641,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790152162641
+    },
+    "Linear equations in two variables": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790152290993,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790152290993
     }
   },
   "progressFocus": [
@@ -3757,14 +3789,6 @@
     }
   ],
   "timeStats": {
-    "2026-09-23": {
-      "totalMs": 125283,
-      "viewMs": {
-        "profile": 70073,
-        "mock": 55210
-      },
-      "categoryMs": {}
-    },
     "2026-09-14": {
       "totalMs": 9772277,
       "viewMs": {
@@ -3938,13 +3962,13 @@
       }
     },
     "2026-09-22": {
-      "totalMs": 1564455,
+      "totalMs": 1569449,
       "viewMs": {
         "mock": 493710,
         "math": 395365,
         "browse": 210034,
         "profile": 225173,
-        "practice": 50035,
+        "practice": 55029,
         "home": 60052,
         "propose": 5004,
         "analysis": 50077,
@@ -4006,6 +4030,19 @@
         "profile": 5000
       },
       "categoryMs": {}
+    },
+    "2026-09-23": {
+      "totalMs": 436317,
+      "viewMs": {
+        "practice": 336126,
+        "profile": 100191,
+        "mock": 55210
+      },
+      "categoryMs": {
+        "Problem-Solving and Data Analysis": 89963,
+        "Algebra": 96355,
+        "Advanced Math": 30000
+      }
     }
   },
   "answerTimeLog": {
@@ -4344,7 +4381,25 @@
         "ts": 1789913979859,
         "ms": 4054
       }
+    ],
+    "e5175dad": [
+      {
+        "ts": 1790152162643,
+        "ms": 78853
+      }
+    ],
+    "6ee5222e": [
+      {
+        "ts": 1790152290993,
+        "ms": 124264
+      }
+    ],
+    "36ca6037": [
+      {
+        "ts": 1790152319836,
+        "ms": 25248
+      }
     ]
   },
-  "clientUpdatedAt": 1790093490298
+  "clientUpdatedAt": 1790152319765
 }
