@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-23T08:41:03.495Z",
+  "exportedAt": "2026-09-23T08:44:02.650Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -3178,8 +3178,8 @@
       "lastAttemptTs": 1790152571446
     },
     "Nonlinear functions": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1789565005334,
@@ -3192,9 +3192,13 @@
         {
           "ts": 1789898017979,
           "correct": true
+        },
+        {
+          "ts": 1790152911908,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1789898017979
+      "lastAttemptTs": 1790152911908
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 1,
@@ -3239,6 +3243,17 @@
         }
       ],
       "lastAttemptTs": 1790152583053
+    },
+    "Area and volume": {
+      "correct": 0,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790153011586,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1790153011586
     }
   },
   "progressFocus": [
@@ -4080,17 +4095,17 @@
       "categoryMs": {}
     },
     "2026-09-23": {
-      "totalMs": 776320,
+      "totalMs": 911326,
       "viewMs": {
-        "practice": 676129,
+        "practice": 811135,
         "profile": 100191,
         "mock": 55210
       },
       "categoryMs": {
         "Problem-Solving and Data Analysis": 104958,
         "Algebra": 126357,
-        "Advanced Math": 285004,
-        "Geometry and Trigonometry": 40002
+        "Advanced Math": 310004,
+        "Geometry and Trigonometry": 150008
       }
     }
   },
@@ -4482,7 +4497,19 @@
         "ts": 1790152613770,
         "ms": 28544
       }
+    ],
+    "a4a86ebb": [
+      {
+        "ts": 1790152911908,
+        "ms": 295592
+      }
+    ],
+    "429c2a72": [
+      {
+        "ts": 1790153011586,
+        "ms": 81647
+      }
     ]
   },
-  "clientUpdatedAt": 1790152859771
+  "clientUpdatedAt": 1790153039766
 }
