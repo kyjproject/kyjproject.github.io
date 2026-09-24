@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T11:30:38.798Z",
+  "exportedAt": "2026-09-24T11:33:53.476Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -255,14 +255,15 @@
     "edf2d791": "review",
     "5219fa75": "done",
     "62e50f59": "done",
-    "502bdb1e": "review",
+    "502bdb1e": "done",
     "267f8986": "done",
     "5ff54c6e": "review",
     "70f512e7": "done",
     "8174f406": "review",
     "93a05d57": "done",
     "be7e3f1e": "review",
-    "c5db164e": "done"
+    "c5db164e": "done",
+    "b249902a": "review"
   },
   "tags": {},
   "notes": {},
@@ -535,7 +536,8 @@
     "4e66210f": "2026-09-24T11:25:12.419Z",
     "267f8986": "2026-09-24T11:29:13.270Z",
     "4f6504f2": "2026-09-24T11:29:41.918Z",
-    "8a4a2079": "2026-09-24T11:29:52.787Z"
+    "8a4a2079": "2026-09-24T11:29:52.787Z",
+    "502bdb1e": "2026-09-24T11:30:48.548Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2714,18 +2716,19 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 1634992,
+      "totalMs": 1829992,
       "viewMs": {
-        "profile": 4999,
+        "profile": 24992,
         "review": 529997,
-        "practice": 1099996
+        "practice": 1115003,
+        "mock": 160000
       },
       "categoryMs": {
         "Functions": 99995,
-        "Grammar": 365002,
+        "Grammar": 505001,
         "Inferences": 204996,
         "Main Idea": 245006,
-        "Vocab": 184997
+        "Vocab": 194997
       }
     }
   },
@@ -3185,5 +3188,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790249436751
+  "clientUpdatedAt": 1790249631748
 }
