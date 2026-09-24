@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T12:52:35.819Z",
+  "exportedAt": "2026-09-24T13:21:39.488Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -276,7 +276,10 @@
     "cd742fda": "review",
     "43aa094b": "review",
     "40aa7b00": "review",
-    "ba427654": "review"
+    "ba427654": "review",
+    "e9fc3093": "review",
+    "dbb64b2b": "review",
+    "aefae524": "review"
   },
   "tags": {},
   "notes": {},
@@ -2729,12 +2732,12 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 5750148,
+      "totalMs": 6655148,
       "viewMs": {
         "profile": 24992,
         "review": 529997,
         "practice": 1115003,
-        "mock": 4080156
+        "mock": 4985156
       },
       "categoryMs": {
         "Functions": 664988,
@@ -2746,7 +2749,11 @@
         "Notes": 175009,
         "Cross-Text": 175009,
         "Quantitative Evidence": 200006,
-        "Textual Evidence": 349999
+        "Textual Evidence": 349999,
+        "Advanced Math": 405025,
+        "Algebra": 259976,
+        "Problem-Solving and Data Analysis": 135010,
+        "Geometry and Trigonometry": 104989
       }
     }
   },
@@ -3205,6 +3212,5 @@
         "ms": 27252
       }
     ]
-  },
-  "clientUpdatedAt": 1790254340517
+  }
 }
