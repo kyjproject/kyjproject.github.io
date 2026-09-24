@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T11:24:42.355Z",
+  "exportedAt": "2026-09-24T11:27:35.324Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -247,7 +247,7 @@
     "2f887164": "review",
     "8a4a2079": "review",
     "6c807e83": "done",
-    "4e66210f": "review",
+    "4e66210f": "done",
     "eb5814a5": "review",
     "e038ac56": "done",
     "11059bb6": "review",
@@ -531,7 +531,8 @@
     "4287e4c4": "2026-09-24T11:19:09.099Z",
     "62e50f59": "2026-09-24T11:20:03.641Z",
     "93a05d57": "2026-09-24T11:21:26.189Z",
-    "a28ad182": "2026-09-24T11:21:41.473Z"
+    "a28ad182": "2026-09-24T11:21:41.473Z",
+    "4e66210f": "2026-09-24T11:25:12.419Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1360,21 +1361,9 @@
       "lastAttemptTs": 1790248272837
     },
     "Central Ideas and Details": {
-      "correct": 20,
-      "total": 24,
+      "correct": 22,
+      "total": 27,
       "recent": [
-        {
-          "ts": 1789476362268,
-          "correct": true
-        },
-        {
-          "ts": 1789476362271,
-          "correct": false
-        },
-        {
-          "ts": 1789649457795,
-          "correct": true
-        },
         {
           "ts": 1789649457800,
           "correct": true
@@ -1410,9 +1399,21 @@
         {
           "ts": 1790249065107,
           "correct": false
+        },
+        {
+          "ts": 1790249111199,
+          "correct": true
+        },
+        {
+          "ts": 1790249240077,
+          "correct": false
+        },
+        {
+          "ts": 1790249242132,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790249065107
+      "lastAttemptTs": 1790249242132
     },
     "Command of Evidence (Quantitative)": {
       "correct": 15,
@@ -2710,17 +2711,17 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 1279988,
+      "totalMs": 1449995,
       "viewMs": {
         "profile": 4999,
         "review": 529997,
-        "practice": 744992
+        "practice": 914999
       },
       "categoryMs": {
         "Functions": 99995,
         "Grammar": 365002,
         "Inferences": 204996,
-        "Main Idea": 74999
+        "Main Idea": 245006
       }
     }
   },
@@ -3128,7 +3129,23 @@
         "ts": 1790249065108,
         "ms": 54206
       }
+    ],
+    "4e66210f": [
+      {
+        "ts": 1790249111199,
+        "ms": 40382
+      }
+    ],
+    "5ff54c6e": [
+      {
+        "ts": 1790249240077,
+        "ms": 125485
+      },
+      {
+        "ts": 1790249242132,
+        "ms": 914
+      }
     ]
   },
-  "clientUpdatedAt": 1790249081752
+  "clientUpdatedAt": 1790249251744
 }
