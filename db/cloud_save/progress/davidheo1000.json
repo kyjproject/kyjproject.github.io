@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T05:40:41.161Z",
+  "exportedAt": "2026-09-24T07:13:21.547Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1140,7 +1140,10 @@
     "831c2cb3": "done",
     "1f976ac6": "done",
     "f0684572": "done",
-    "d1dd92d8": "done"
+    "d1dd92d8": "done",
+    "0f1d42fd": "done",
+    "7989c1bb": "done",
+    "9198f2d6": "done"
   },
   "tags": {},
   "notes": {
@@ -2299,7 +2302,10 @@
     "831c2cb3": "2026-09-24T05:39:19.132Z",
     "1f976ac6": "2026-09-24T05:39:24.482Z",
     "f0684572": "2026-09-24T05:39:30.232Z",
-    "d1dd92d8": "2026-09-24T05:39:56.932Z"
+    "d1dd92d8": "2026-09-24T05:39:56.932Z",
+    "0f1d42fd": "2026-09-24T05:40:46.304Z",
+    "7989c1bb": "2026-09-24T05:41:19.970Z",
+    "9198f2d6": "2026-09-24T05:41:52.088Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3615,13 +3621,9 @@
       "lastAttemptTs": 1790228421966
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 9,
-      "total": 24,
+      "correct": 10,
+      "total": 25,
       "recent": [
-        {
-          "ts": 1789817605265,
-          "correct": true
-        },
         {
           "ts": 1790140120892,
           "correct": false
@@ -3665,30 +3667,18 @@
         {
           "ts": 1790228440600,
           "correct": true
+        },
+        {
+          "ts": 1790228479284,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790228440600
+      "lastAttemptTs": 1790228479284
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 8,
-      "total": 15,
+      "correct": 9,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1789798684871,
-          "correct": true
-        },
-        {
-          "ts": 1789798764858,
-          "correct": true
-        },
-        {
-          "ts": 1789817610865,
-          "correct": false
-        },
-        {
-          "ts": 1789817611915,
-          "correct": true
-        },
         {
           "ts": 1789974468748,
           "correct": false
@@ -3720,9 +3710,25 @@
         {
           "ts": 1790155342117,
           "correct": true
+        },
+        {
+          "ts": 1790228503470,
+          "correct": false
+        },
+        {
+          "ts": 1790228506687,
+          "correct": false
+        },
+        {
+          "ts": 1790228507774,
+          "correct": false
+        },
+        {
+          "ts": 1790228508720,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790155342117
+      "lastAttemptTs": 1790228508720
     },
     "Probability and conditional probability": {
       "correct": 6,
@@ -4426,10 +4432,10 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 3008101,
+      "totalMs": 3123330,
       "viewMs": {
         "leaderboard": 185053,
-        "math": 2813028,
+        "math": 2928257,
         "notes": 5011,
         "mock": 5009
       },
@@ -11504,7 +11510,31 @@
         "ts": 1790228440600,
         "ms": 434
       }
+    ],
+    "7989c1bb": [
+      {
+        "ts": 1790228479284,
+        "ms": 31508
+      }
+    ],
+    "9198f2d6": [
+      {
+        "ts": 1790228503471,
+        "ms": 15634
+      },
+      {
+        "ts": 1790228506687,
+        "ms": 451
+      },
+      {
+        "ts": 1790228507774,
+        "ms": 471
+      },
+      {
+        "ts": 1790228508720,
+        "ms": 417
+      }
     ]
   },
-  "clientUpdatedAt": 1790228440927
+  "clientUpdatedAt": 1790233997757
 }
