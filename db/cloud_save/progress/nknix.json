@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T15:38:46.356Z",
+  "exportedAt": "2026-09-24T15:39:17.214Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -3069,6 +3069,36 @@
   },
   "blueprints": [],
   "timeStats": {
+    "2026-09-24": {
+      "totalMs": 13950778,
+      "viewMs": {
+        "home": 260094,
+        "profile": 90008,
+        "review": 770062,
+        "practice": 1549987,
+        "mock": 9843986,
+        "analysis": 14999,
+        "propose": 5001,
+        "leaderboard": 1073397,
+        "test": 693401
+      },
+      "categoryMs": {
+        "Functions": 1320007,
+        "Grammar": 1349997,
+        "Inferences": 979984,
+        "Main Idea": 1505019,
+        "Vocab": 914991,
+        "Transitions": 1090014,
+        "Notes": 405011,
+        "Cross-Text": 394983,
+        "Quantitative Evidence": 440007,
+        "Textual Evidence": 809979,
+        "Advanced Math": 972287,
+        "Algebra": 668199,
+        "Problem-Solving and Data Analysis": 348375,
+        "Geometry and Trigonometry": 144055
+      }
+    },
     "2026-09-15": {
       "totalMs": 7564733,
       "viewMs": {
@@ -3213,36 +3243,6 @@
         "Quantitative Evidence": 120003,
         "Textual Evidence": 124996,
         "Inferences": 259998
-      }
-    },
-    "2026-09-24": {
-      "totalMs": 13960779,
-      "viewMs": {
-        "profile": 95151,
-        "review": 785063,
-        "practice": 1554990,
-        "mock": 9843986,
-        "analysis": 14999,
-        "propose": 5001,
-        "leaderboard": 1088251,
-        "test": 693401,
-        "home": 230094
-      },
-      "categoryMs": {
-        "Functions": 1320007,
-        "Grammar": 1349997,
-        "Inferences": 979984,
-        "Main Idea": 1505019,
-        "Vocab": 914991,
-        "Transitions": 1090014,
-        "Notes": 405011,
-        "Cross-Text": 394983,
-        "Quantitative Evidence": 440007,
-        "Textual Evidence": 809979,
-        "Advanced Math": 972287,
-        "Algebra": 668199,
-        "Problem-Solving and Data Analysis": 348375,
-        "Geometry and Trigonometry": 144055
       }
     }
   },
@@ -3859,6 +3859,5 @@
         "ms": 52644
       }
     ]
-  },
-  "clientUpdatedAt": 1790264324778
+  }
 }
