@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T10:10:06.821Z",
+  "exportedAt": "2026-09-24T10:12:36.647Z",
   "progress": {
     "8b52201d": "done",
     "271ef622": "done",
@@ -311,15 +311,19 @@
       "lastAttemptTs": 1790244544772
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790244562658,
           "correct": true
+        },
+        {
+          "ts": 1790244748510,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790244562658
+      "lastAttemptTs": 1790244748510
     }
   },
   "progressFocus": [
@@ -376,6 +380,10 @@
     "68fb4847": {
       "count": 1,
       "lastTs": 1790244511611
+    },
+    "2d1e5eff": {
+      "count": 1,
+      "lastTs": 1790244642450
     }
   },
   "blueprints": [],
@@ -414,12 +422,12 @@
       "categoryMs": {}
     },
     "2026-09-24": {
-      "totalMs": 217264,
+      "totalMs": 364692,
       "viewMs": {
         "browse": 21559,
         "profile": 5001,
         "leaderboard": 65003,
-        "math": 125701
+        "math": 273129
       },
       "categoryMs": {}
     }
@@ -698,7 +706,13 @@
         "ts": 1790244562658,
         "ms": 65556
       }
+    ],
+    "2d1e5eff": [
+      {
+        "ts": 1790244748510,
+        "ms": 106055
+      }
     ]
   },
-  "clientUpdatedAt": 1790244604462
+  "clientUpdatedAt": 1790244751890
 }
