@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T11:09:51.053Z",
+  "exportedAt": "2026-09-24T11:12:34.109Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -246,7 +246,7 @@
     "4f6504f2": "review",
     "2f887164": "review",
     "8a4a2079": "review",
-    "6c807e83": "review",
+    "6c807e83": "done",
     "4e66210f": "review",
     "eb5814a5": "review",
     "e038ac56": "done",
@@ -521,7 +521,8 @@
     "0a589ca9": "2026-09-22T14:18:21.465Z",
     "84a32bb2": "2026-09-22T14:18:31.630Z",
     "e038ac56": "2026-09-24T11:06:16.584Z",
-    "70f512e7": "2026-09-24T11:08:21.599Z"
+    "70f512e7": "2026-09-24T11:08:21.599Z",
+    "6c807e83": "2026-09-24T11:12:09.941Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -589,6 +590,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
+    },
+    "6c807e83": {
+      "state": "review",
+      "stability": 1.18385,
+      "difficulty": 6.488305268471453,
+      "due": "2026-09-25T11:11:43.204Z",
+      "last_review": "2026-09-24T11:11:43.204Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 1
     }
   },
   "mockHistory": [
@@ -1277,8 +1288,8 @@
       "lastAttemptTs": 1790091085233
     },
     "Cross-Text Connections": {
-      "correct": 6,
-      "total": 11,
+      "correct": 7,
+      "total": 12,
       "recent": [
         {
           "ts": 1789476362268,
@@ -1323,9 +1334,13 @@
         {
           "ts": 1790091085233,
           "correct": true
+        },
+        {
+          "ts": 1790248272837,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790091085233
+      "lastAttemptTs": 1790248272837
     },
     "Central Ideas and Details": {
       "correct": 20,
@@ -2662,12 +2677,15 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 384992,
+      "totalMs": 549995,
       "viewMs": {
         "profile": 4999,
-        "review": 379993
+        "review": 529997,
+        "practice": 14999
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Functions": 14999
+      }
     }
   },
   "answerTimeLog": {
@@ -2984,7 +3002,13 @@
         "ts": 1790248098777,
         "ms": 113401
       }
+    ],
+    "6c807e83": [
+      {
+        "ts": 1790248272837,
+        "ms": 169859
+      }
     ]
   },
-  "clientUpdatedAt": 1790248186751
+  "clientUpdatedAt": 1790248351751
 }
