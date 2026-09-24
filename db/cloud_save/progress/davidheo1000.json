@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T12:30:55.575Z",
+  "exportedAt": "2026-09-24T12:33:40.265Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1177,7 +1177,8 @@
     "2c082034": "done",
     "74510a38": "done",
     "776fdbc4": "done",
-    "493bd7fa": "done"
+    "493bd7fa": "done",
+    "9bad9c95": "done"
   },
   "tags": {},
   "notes": {
@@ -2373,7 +2374,8 @@
     "2c082034": "2026-09-24T07:20:54.656Z",
     "74510a38": "2026-09-24T07:21:08.939Z",
     "776fdbc4": "2026-09-24T07:21:15.823Z",
-    "493bd7fa": "2026-09-24T07:21:56.724Z"
+    "493bd7fa": "2026-09-24T07:21:56.724Z",
+    "9bad9c95": "2026-09-24T12:33:21.833Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3579,13 +3581,9 @@
       "lastAttemptTs": 1790228358265
     },
     "Linear equations in one variable": {
-      "correct": 66,
-      "total": 95,
+      "correct": 67,
+      "total": 96,
       "recent": [
-        {
-          "ts": 1790218851382,
-          "correct": true
-        },
         {
           "ts": 1790228309263,
           "correct": true
@@ -3629,9 +3627,13 @@
         {
           "ts": 1790234380204,
           "correct": true
+        },
+        {
+          "ts": 1790253133504,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790234380204
+      "lastAttemptTs": 1790253133504
     },
     "Percentages": {
       "correct": 13,
@@ -4101,10 +4103,6 @@
       "count": 3,
       "lastTs": 1790144396696
     },
-    "271ef622": {
-      "count": 1,
-      "lastTs": 1789802427139
-    },
     "8217606b": {
       "count": 6,
       "lastTs": 1789976276205
@@ -4288,6 +4286,14 @@
     "edf8a6ae": {
       "count": 1,
       "lastTs": 1790234297387
+    },
+    "9bad9c95": {
+      "count": 1,
+      "lastTs": 1790253068072
+    },
+    "271ef622": {
+      "count": 1,
+      "lastTs": 1789802427139
     },
     "73935d4f": {
       "count": 1,
@@ -4512,10 +4518,10 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 3674394,
+      "totalMs": 3784508,
       "viewMs": {
         "leaderboard": 185053,
-        "math": 3464291,
+        "math": 3574405,
         "notes": 5011,
         "mock": 5009,
         "profile": 15030
@@ -11923,7 +11929,13 @@
         "ts": 1790234515574,
         "ms": 217
       }
+    ],
+    "9bad9c95": [
+      {
+        "ts": 1790253133504,
+        "ms": 65430
+      }
     ]
   },
-  "clientUpdatedAt": 1790253051828
+  "clientUpdatedAt": 1790253215606
 }
