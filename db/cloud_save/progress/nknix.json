@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T15:40:23.349Z",
+  "exportedAt": "2026-09-24T15:41:58.693Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -3069,6 +3069,64 @@
   },
   "blueprints": [],
   "timeStats": {
+    "2026-09-24": {
+      "totalMs": 14050781,
+      "viewMs": {
+        "home": 375106,
+        "review": 800064,
+        "profile": 95151,
+        "practice": 1554990,
+        "mock": 9843986,
+        "analysis": 14999,
+        "propose": 5001,
+        "leaderboard": 1158248,
+        "test": 693401,
+        "lab": 5001
+      },
+      "categoryMs": {
+        "Functions": 1320007,
+        "Grammar": 1349997,
+        "Inferences": 979984,
+        "Main Idea": 1505019,
+        "Vocab": 914991,
+        "Transitions": 1090014,
+        "Notes": 405011,
+        "Cross-Text": 394983,
+        "Quantitative Evidence": 440007,
+        "Textual Evidence": 809979,
+        "Advanced Math": 972287,
+        "Algebra": 668199,
+        "Problem-Solving and Data Analysis": 348375,
+        "Geometry and Trigonometry": 144055
+      }
+    },
+    "2026-09-17": {
+      "totalMs": 7585099,
+      "viewMs": {
+        "home": 10001,
+        "profile": 94995,
+        "review": 285079,
+        "practice": 40023,
+        "mock": 6644999,
+        "test": 565005
+      },
+      "categoryMs": {
+        "Cross-Text": 234979,
+        "Functions": 150007,
+        "Grammar": 745022,
+        "Inferences": 500013,
+        "Main Idea": 195016,
+        "Transitions": 359999,
+        "Vocab": 585017,
+        "Notes": 329997,
+        "Quantitative Evidence": 464974,
+        "Textual Evidence": 455009,
+        "Algebra": 839970,
+        "Advanced Math": 950007,
+        "Problem-Solving and Data Analysis": 335015,
+        "Geometry and Trigonometry": 319997
+      }
+    },
     "2026-09-15": {
       "totalMs": 7564733,
       "viewMs": {
@@ -3100,31 +3158,48 @@
         "Geometry and Trigonometry": 254991
       }
     },
-    "2026-09-17": {
-      "totalMs": 7585099,
+    "2026-09-20": {
+      "totalMs": 742477,
       "viewMs": {
-        "profile": 94995,
-        "home": 10001,
-        "review": 285079,
-        "practice": 40023,
-        "mock": 6644999,
-        "test": 565005
+        "review": 415967,
+        "test": 40026,
+        "profile": 20009,
+        "analysis": 114917,
+        "mock": 20009,
+        "propose": 10001,
+        "practice": 11133,
+        "math": 110415
+      },
+      "categoryMs": {}
+    },
+    "2026-09-22": {
+      "totalMs": 7683714,
+      "viewMs": {
+        "math": 77095,
+        "review": 555696,
+        "profile": 95033,
+        "home": 20011,
+        "propose": 5003,
+        "leaderboard": 45036,
+        "mock": 6921211,
+        "test": 39996,
+        "practice": 5004
       },
       "categoryMs": {
-        "Cross-Text": 234979,
-        "Functions": 150007,
-        "Grammar": 745022,
-        "Inferences": 500013,
-        "Main Idea": 195016,
-        "Transitions": 359999,
-        "Vocab": 585017,
-        "Notes": 329997,
-        "Quantitative Evidence": 464974,
-        "Textual Evidence": 455009,
-        "Algebra": 839970,
-        "Advanced Math": 950007,
-        "Problem-Solving and Data Analysis": 335015,
-        "Geometry and Trigonometry": 319997
+        "Vocab": 454847,
+        "Inferences": 290004,
+        "Grammar": 485008,
+        "Transitions": 370001,
+        "Notes": 274999,
+        "Functions": 415009,
+        "Cross-Text": 250002,
+        "Main Idea": 729998,
+        "Quantitative Evidence": 304991,
+        "Textual Evidence": 259999,
+        "Problem-Solving and Data Analysis": 653150,
+        "Algebra": 563392,
+        "Advanced Math": 388184,
+        "Geometry and Trigonometry": 212237
       }
     },
     "2026-09-21": {
@@ -3152,50 +3227,6 @@
         "Geometry and Trigonometry": 559993
       }
     },
-    "2026-09-20": {
-      "totalMs": 742477,
-      "viewMs": {
-        "review": 415967,
-        "test": 40026,
-        "profile": 20009,
-        "analysis": 114917,
-        "mock": 20009,
-        "propose": 10001,
-        "practice": 11133,
-        "math": 110415
-      },
-      "categoryMs": {}
-    },
-    "2026-09-22": {
-      "totalMs": 7683714,
-      "viewMs": {
-        "review": 555696,
-        "math": 77095,
-        "profile": 95033,
-        "home": 20011,
-        "propose": 5003,
-        "leaderboard": 45036,
-        "mock": 6921211,
-        "test": 39996,
-        "practice": 5004
-      },
-      "categoryMs": {
-        "Vocab": 454847,
-        "Inferences": 290004,
-        "Grammar": 485008,
-        "Transitions": 370001,
-        "Notes": 274999,
-        "Functions": 415009,
-        "Cross-Text": 250002,
-        "Main Idea": 729998,
-        "Quantitative Evidence": 304991,
-        "Textual Evidence": 259999,
-        "Problem-Solving and Data Analysis": 653150,
-        "Algebra": 563392,
-        "Advanced Math": 388184,
-        "Geometry and Trigonometry": 212237
-      }
-    },
     "2026-09-23": {
       "totalMs": 2404998,
       "viewMs": {
@@ -3213,36 +3244,6 @@
         "Quantitative Evidence": 120003,
         "Textual Evidence": 124996,
         "Inferences": 259998
-      }
-    },
-    "2026-09-24": {
-      "totalMs": 14045777,
-      "viewMs": {
-        "profile": 95151,
-        "review": 800064,
-        "practice": 1554990,
-        "mock": 9843986,
-        "analysis": 14999,
-        "propose": 5001,
-        "leaderboard": 1158248,
-        "test": 693401,
-        "home": 230094
-      },
-      "categoryMs": {
-        "Functions": 1320007,
-        "Grammar": 1349997,
-        "Inferences": 979984,
-        "Main Idea": 1505019,
-        "Vocab": 914991,
-        "Transitions": 1090014,
-        "Notes": 405011,
-        "Cross-Text": 394983,
-        "Quantitative Evidence": 440007,
-        "Textual Evidence": 809979,
-        "Advanced Math": 972287,
-        "Algebra": 668199,
-        "Problem-Solving and Data Analysis": 348375,
-        "Geometry and Trigonometry": 144055
       }
     }
   },
@@ -3860,5 +3861,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790264420518
+  "clientUpdatedAt": 1790264518073
 }
