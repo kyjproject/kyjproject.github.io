@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-18T11:09:40.580Z",
+  "exportedAt": "2026-09-24T10:09:36.696Z",
   "progress": {
     "8b52201d": "done",
     "271ef622": "done",
@@ -82,7 +82,8 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "6jxhjwq"
+    "name": "Student",
+    "leaderboardOptOut": false
   },
   "fsrsCards": {},
   "mockHistory": [],
@@ -297,6 +298,28 @@
         }
       ],
       "lastAttemptTs": 1789729052658
+    },
+    "Equivalent expressions": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790244544772,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790244544772
+    },
+    "Nonlinear equations in one variable and systems of equations in two variables": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790244562658,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790244562658
     }
   },
   "progressFocus": [
@@ -345,6 +368,14 @@
     "04b15c4f": {
       "count": 3,
       "lastTs": 1789727298841
+    },
+    "d9799723": {
+      "count": 1,
+      "lastTs": 1790244497096
+    },
+    "68fb4847": {
+      "count": 1,
+      "lastTs": 1790244511611
     }
   },
   "blueprints": [],
@@ -364,14 +395,31 @@
       "categoryMs": {}
     },
     "2026-09-18": {
-      "totalMs": 6473699,
+      "totalMs": 6499172,
       "viewMs": {
         "home": 183690,
         "notes": 10004,
         "leaderboard": 170099,
-        "browse": 6049892,
+        "browse": 6075365,
         "review": 5006,
         "practice": 55008
+      },
+      "categoryMs": {}
+    },
+    "2026-09-20": {
+      "totalMs": 4104,
+      "viewMs": {
+        "browse": 4104
+      },
+      "categoryMs": {}
+    },
+    "2026-09-24": {
+      "totalMs": 183661,
+      "viewMs": {
+        "browse": 21559,
+        "profile": 5001,
+        "leaderboard": 65003,
+        "math": 92098
       },
       "categoryMs": {}
     }
@@ -638,7 +686,19 @@
         "ts": 1789729052659,
         "ms": 19814
       }
+    ],
+    "68fb4847": [
+      {
+        "ts": 1790244544772,
+        "ms": 33155
+      }
+    ],
+    "d9799723": [
+      {
+        "ts": 1790244562658,
+        "ms": 65556
+      }
     ]
   },
-  "clientUpdatedAt": 1789729780511
+  "clientUpdatedAt": 1790244570859
 }
