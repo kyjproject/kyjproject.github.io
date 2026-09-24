@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T11:06:39.967Z",
+  "exportedAt": "2026-09-24T11:09:51.053Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -258,7 +258,7 @@
     "502bdb1e": "review",
     "267f8986": "review",
     "5ff54c6e": "review",
-    "70f512e7": "review",
+    "70f512e7": "done",
     "8174f406": "review",
     "93a05d57": "review",
     "be7e3f1e": "review",
@@ -520,7 +520,8 @@
     "baa60c44": "2026-09-22T14:18:14.212Z",
     "0a589ca9": "2026-09-22T14:18:21.465Z",
     "84a32bb2": "2026-09-22T14:18:31.630Z",
-    "e038ac56": "2026-09-24T11:06:16.584Z"
+    "e038ac56": "2026-09-24T11:06:16.584Z",
+    "70f512e7": "2026-09-24T11:08:21.599Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -575,6 +576,16 @@
       "difficulty": 5.282434422319005,
       "due": "2026-09-27T11:06:25.362Z",
       "last_review": "2026-09-24T11:06:25.362Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "70f512e7": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-09-27T11:08:22.967Z",
+      "last_review": "2026-09-24T11:08:22.967Z",
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
@@ -1368,13 +1379,9 @@
       "lastAttemptTs": 1790091085234
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 14,
-      "total": 20,
+      "correct": 15,
+      "total": 21,
       "recent": [
-        {
-          "ts": 1789477457723,
-          "correct": true
-        },
         {
           "ts": 1789649457796,
           "correct": true
@@ -1418,9 +1425,13 @@
         {
           "ts": 1790247946798,
           "correct": true
+        },
+        {
+          "ts": 1790248098777,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790247946798
+      "lastAttemptTs": 1790248098777
     },
     "Command of Evidence (Textual)": {
       "correct": 12,
@@ -2651,10 +2662,10 @@
       }
     },
     "2026-09-24": {
-      "totalMs": 219994,
+      "totalMs": 384992,
       "viewMs": {
         "profile": 4999,
-        "review": 214995
+        "review": 379993
       },
       "categoryMs": {}
     }
@@ -2967,7 +2978,13 @@
         "ts": 1790247946798,
         "ms": 135116
       }
+    ],
+    "70f512e7": [
+      {
+        "ts": 1790248098777,
+        "ms": 113401
+      }
     ]
   },
-  "clientUpdatedAt": 1790247996755
+  "clientUpdatedAt": 1790248186751
 }
