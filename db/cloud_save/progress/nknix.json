@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-24T22:43:49.719Z",
+  "exportedAt": "2026-09-25T00:29:20.081Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -690,7 +690,7 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "nknix",
+    "name": "Student",
     "leaderboardOptOut": false
   },
   "fsrsCards": {
@@ -3069,37 +3069,6 @@
   },
   "blueprints": [],
   "timeStats": {
-    "2026-09-24": {
-      "totalMs": 14070796,
-      "viewMs": {
-        "home": 375106,
-        "review": 800064,
-        "profile": 115166,
-        "practice": 1554990,
-        "mock": 9843986,
-        "analysis": 14999,
-        "propose": 5001,
-        "leaderboard": 1158248,
-        "test": 693401,
-        "lab": 5001
-      },
-      "categoryMs": {
-        "Functions": 1320007,
-        "Grammar": 1349997,
-        "Inferences": 979984,
-        "Main Idea": 1505019,
-        "Vocab": 914991,
-        "Transitions": 1090014,
-        "Notes": 405011,
-        "Cross-Text": 394983,
-        "Quantitative Evidence": 440007,
-        "Textual Evidence": 809979,
-        "Advanced Math": 972287,
-        "Algebra": 668199,
-        "Problem-Solving and Data Analysis": 348375,
-        "Geometry and Trigonometry": 144055
-      }
-    },
     "2026-09-17": {
       "totalMs": 7585099,
       "viewMs": {
@@ -3227,6 +3196,37 @@
         "Geometry and Trigonometry": 559993
       }
     },
+    "2026-09-24": {
+      "totalMs": 14070796,
+      "viewMs": {
+        "review": 800064,
+        "profile": 115166,
+        "practice": 1554990,
+        "mock": 9843986,
+        "analysis": 14999,
+        "propose": 5001,
+        "leaderboard": 1158248,
+        "test": 693401,
+        "home": 375106,
+        "lab": 5001
+      },
+      "categoryMs": {
+        "Functions": 1320007,
+        "Grammar": 1349997,
+        "Inferences": 979984,
+        "Main Idea": 1505019,
+        "Vocab": 914991,
+        "Transitions": 1090014,
+        "Notes": 405011,
+        "Cross-Text": 394983,
+        "Quantitative Evidence": 440007,
+        "Textual Evidence": 809979,
+        "Advanced Math": 972287,
+        "Algebra": 668199,
+        "Problem-Solving and Data Analysis": 348375,
+        "Geometry and Trigonometry": 144055
+      }
+    },
     "2026-09-23": {
       "totalMs": 2404998,
       "viewMs": {
@@ -3245,6 +3245,13 @@
         "Textual Evidence": 124996,
         "Inferences": 259998
       }
+    },
+    "2026-09-25": {
+      "totalMs": 2816,
+      "viewMs": {
+        "home": 2816
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -3860,5 +3867,6 @@
         "ms": 52644
       }
     ]
-  }
+  },
+  "clientUpdatedAt": 1790296155823
 }
