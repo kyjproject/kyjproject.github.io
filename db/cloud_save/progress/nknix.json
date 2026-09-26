@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:19:10.312Z",
+  "exportedAt": "2026-09-26T12:22:19.585Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -358,7 +358,8 @@
     "4fb712ae": "done",
     "a2d5ec41": "done",
     "41ab1df4": "done",
-    "1b0b382b": "done"
+    "1b0b382b": "done",
+    "0b28166c": "review"
   },
   "tags": {},
   "notes": {},
@@ -2202,21 +2203,9 @@
       "lastAttemptTs": 1790262534079
     },
     "Systems of two linear equations in two variables": {
-      "correct": 14,
-      "total": 14,
+      "correct": 15,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1789649457802,
-          "correct": true
-        },
-        {
-          "ts": 1789649457803,
-          "correct": true
-        },
-        {
-          "ts": 1789650663114,
-          "correct": true
-        },
         {
           "ts": 1790005967300,
           "correct": true
@@ -2252,9 +2241,21 @@
         {
           "ts": 1790424487006,
           "correct": true
+        },
+        {
+          "ts": 1790425239665,
+          "correct": false
+        },
+        {
+          "ts": 1790425296364,
+          "correct": false
+        },
+        {
+          "ts": 1790425301931,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790424487006
+      "lastAttemptTs": 1790425301931
     },
     "Nonlinear functions": {
       "correct": 28,
@@ -2882,10 +2883,6 @@
       "count": 2,
       "lastTs": 1790006171286
     },
-    "51459b74": {
-      "count": 1,
-      "lastTs": 1790006194498
-    },
     "38a981d0": {
       "count": 1,
       "lastTs": 1790006199798
@@ -3065,6 +3062,14 @@
     "6d37f1b4": {
       "count": 1,
       "lastTs": 1790424134834
+    },
+    "0b28166c": {
+      "count": 1,
+      "lastTs": 1790425257726
+    },
+    "51459b74": {
+      "count": 1,
+      "lastTs": 1790006194498
     },
     "73935d4f": {
       "count": 1,
@@ -3350,12 +3355,12 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 1250032,
+      "totalMs": 1440027,
       "viewMs": {
         "leaderboard": 40024,
         "review": 9993,
         "practice": 44997,
-        "mock": 1155018
+        "mock": 1345013
       },
       "categoryMs": {
         "Textual Evidence": 35002,
@@ -4081,7 +4086,21 @@
         "ts": 1790425116025,
         "ms": 32483
       }
+    ],
+    "0b28166c": [
+      {
+        "ts": 1790425239665,
+        "ms": 122188
+      },
+      {
+        "ts": 1790425296364,
+        "ms": 46965
+      },
+      {
+        "ts": 1790425301932,
+        "ms": 1085
+      }
     ]
   },
-  "clientUpdatedAt": 1790425147892
+  "clientUpdatedAt": 1790425337901
 }
