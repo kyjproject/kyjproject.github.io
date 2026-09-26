@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:55:11.188Z",
+  "exportedAt": "2026-09-26T12:58:10.694Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -335,7 +335,7 @@
     "841a15d0": "review",
     "bda73a5a": "done",
     "2cd8bd76": "done",
-    "3508affd": "review",
+    "3508affd": "done",
     "119c4069": "done",
     "f1341fe1": "review",
     "26dca99e": "done",
@@ -837,7 +837,8 @@
     "a8e43ae3": "2026-09-26T12:42:45.207Z",
     "3c503333": "2026-09-26T12:42:50.681Z",
     "edf2d791": "2026-09-26T12:43:01.368Z",
-    "9b0fb532": "2026-09-26T12:45:34.599Z"
+    "9b0fb532": "2026-09-26T12:45:34.599Z",
+    "3508affd": "2026-09-26T12:55:48.285Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1832,12 +1833,8 @@
     },
     "Cross-Text Connections": {
       "correct": 8,
-      "total": 14,
+      "total": 15,
       "recent": [
-        {
-          "ts": 1789478203908,
-          "correct": false
-        },
         {
           "ts": 1789478205677,
           "correct": false
@@ -1881,9 +1878,13 @@
         {
           "ts": 1790262534076,
           "correct": false
+        },
+        {
+          "ts": 1790427484713,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790262534076
+      "lastAttemptTs": 1790427484713
     },
     "Central Ideas and Details": {
       "correct": 28,
@@ -1941,13 +1942,9 @@
       "lastAttemptTs": 1790262534077
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 18,
-      "total": 25,
+      "correct": 19,
+      "total": 26,
       "recent": [
-        {
-          "ts": 1789998914485,
-          "correct": false
-        },
         {
           "ts": 1789998978271,
           "correct": true
@@ -1991,9 +1988,13 @@
         {
           "ts": 1790262534077,
           "correct": false
+        },
+        {
+          "ts": 1790427344264,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534077
+      "lastAttemptTs": 1790427344264
     },
     "Command of Evidence (Textual)": {
       "correct": 18,
@@ -3582,17 +3583,18 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 3263845,
+      "totalMs": 3438836,
       "viewMs": {
         "leaderboard": 40024,
         "review": 98131,
-        "practice": 470005,
+        "practice": 644996,
         "mock": 2650669,
         "profile": 5016
       },
       "categoryMs": {
         "Textual Evidence": 445004,
-        "Quantitative Evidence": 25001
+        "Quantitative Evidence": 79998,
+        "Cross-Text": 119994
       }
     }
   },
@@ -4462,7 +4464,19 @@
         "ts": 1790427284668,
         "ms": 1135
       }
+    ],
+    "3508affd": [
+      {
+        "ts": 1790427344264,
+        "ms": 3402572
+      }
+    ],
+    "841a15d0": [
+      {
+        "ts": 1790427484714,
+        "ms": 3379659
+      }
     ]
   },
-  "clientUpdatedAt": 1790427307897
+  "clientUpdatedAt": 1790427487900
 }
