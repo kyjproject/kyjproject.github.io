@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:22:19.585Z",
+  "exportedAt": "2026-09-26T12:25:12.140Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -359,7 +359,9 @@
     "a2d5ec41": "done",
     "41ab1df4": "done",
     "1b0b382b": "done",
-    "0b28166c": "review"
+    "0b28166c": "review",
+    "9dc82916": "done",
+    "2901277b": "done"
   },
   "tags": {},
   "notes": {},
@@ -718,7 +720,9 @@
     "4fb712ae": "2026-09-26T12:17:00.249Z",
     "a2d5ec41": "2026-09-26T12:17:20.047Z",
     "41ab1df4": "2026-09-26T12:18:02.609Z",
-    "1b0b382b": "2026-09-26T12:18:34.919Z"
+    "1b0b382b": "2026-09-26T12:18:34.919Z",
+    "9dc82916": "2026-09-26T12:22:47.285Z",
+    "2901277b": "2026-09-26T12:24:05.620Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2399,13 +2403,9 @@
       "lastAttemptTs": 1790424271874
     },
     "Linear equations in one variable": {
-      "correct": 13,
-      "total": 16,
+      "correct": 14,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1789650663113,
-          "correct": true
-        },
         {
           "ts": 1790005967300,
           "correct": true
@@ -2449,9 +2449,13 @@
         {
           "ts": 1790424345642,
           "correct": true
+        },
+        {
+          "ts": 1790425365552,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790424345642
+      "lastAttemptTs": 1790425365552
     },
     "Linear equations in two variables": {
       "correct": 6,
@@ -2610,8 +2614,8 @@
       "lastAttemptTs": 1790424595594
     },
     "Lines, angles, and triangles": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1789476362273,
@@ -2632,9 +2636,13 @@
         {
           "ts": 1790262534081,
           "correct": true
+        },
+        {
+          "ts": 1790425444336,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534081
+      "lastAttemptTs": 1790425444336
     },
     "Two-variable data: Models and scatterplots": {
       "correct": 5,
@@ -3355,12 +3363,12 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 1440027,
+      "totalMs": 1610037,
       "viewMs": {
         "leaderboard": 40024,
         "review": 9993,
         "practice": 44997,
-        "mock": 1345013
+        "mock": 1515023
       },
       "categoryMs": {
         "Textual Evidence": 35002,
@@ -4100,7 +4108,19 @@
         "ts": 1790425301932,
         "ms": 1085
       }
+    ],
+    "9dc82916": [
+      {
+        "ts": 1790425365552,
+        "ms": 19152
+      }
+    ],
+    "2901277b": [
+      {
+        "ts": 1790425444337,
+        "ms": 76014
+      }
     ]
   },
-  "clientUpdatedAt": 1790425337901
+  "clientUpdatedAt": 1790425507895
 }
