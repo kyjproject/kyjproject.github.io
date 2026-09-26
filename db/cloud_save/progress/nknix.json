@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:10:14.890Z",
+  "exportedAt": "2026-09-26T12:13:10.775Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -350,7 +350,8 @@
     "ea0720d1": "done",
     "9b6c20fe": "done",
     "0f1d42fd": "done",
-    "91f6f890": "done"
+    "91f6f890": "done",
+    "2d1e5eff": "done"
   },
   "tags": {},
   "notes": {},
@@ -2687,8 +2688,8 @@
       "lastAttemptTs": 1790262534082
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 6,
-      "total": 8,
+      "correct": 7,
+      "total": 9,
       "recent": [
         {
           "ts": 1789476362273,
@@ -2721,9 +2722,13 @@
         {
           "ts": 1790262534080,
           "correct": true
+        },
+        {
+          "ts": 1790424713886,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534080
+      "lastAttemptTs": 1790424713886
     },
     "Area and volume": {
       "correct": 5,
@@ -3319,12 +3324,12 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 740020,
+      "totalMs": 905013,
       "viewMs": {
         "leaderboard": 40024,
         "review": 9993,
         "practice": 44997,
-        "mock": 645006
+        "mock": 809999
       },
       "categoryMs": {
         "Textual Evidence": 35002,
@@ -4002,7 +4007,13 @@
         "ts": 1790424606369,
         "ms": 7443
       }
+    ],
+    "2d1e5eff": [
+      {
+        "ts": 1790424713886,
+        "ms": 105290
+      }
     ]
   },
-  "clientUpdatedAt": 1790424612906
+  "clientUpdatedAt": 1790424787902
 }
