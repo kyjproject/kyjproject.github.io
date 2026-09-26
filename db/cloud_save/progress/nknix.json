@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:04:11.165Z",
+  "exportedAt": "2026-09-26T12:07:10.390Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -343,7 +343,10 @@
     "274d8844": "done",
     "108fb9e7": "done",
     "74cd4ae2": "done",
-    "5cbd602c": "done"
+    "5cbd602c": "done",
+    "6d37f1b4": "done",
+    "ddb43390": "done",
+    "eb08d61f": "done"
   },
   "tags": {},
   "notes": {},
@@ -2344,8 +2347,8 @@
       "lastAttemptTs": 1790262534080
     },
     "Probability and conditional probability": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1789476362273,
@@ -2366,18 +2369,18 @@
         {
           "ts": 1790262534079,
           "correct": true
+        },
+        {
+          "ts": 1790424271874,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534079
+      "lastAttemptTs": 1790424271874
     },
     "Linear equations in one variable": {
-      "correct": 12,
-      "total": 15,
+      "correct": 13,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1789649457802,
-          "correct": true
-        },
         {
           "ts": 1789650663113,
           "correct": true
@@ -2421,9 +2424,13 @@
         {
           "ts": 1790262534081,
           "correct": true
+        },
+        {
+          "ts": 1790424345642,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534081
+      "lastAttemptTs": 1790424345642
     },
     "Linear equations in two variables": {
       "correct": 6,
@@ -2597,8 +2604,8 @@
       "lastAttemptTs": 1790262534081
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 4,
-      "total": 5,
+      "correct": 5,
+      "total": 6,
       "recent": [
         {
           "ts": 1789476362273,
@@ -2619,9 +2626,13 @@
         {
           "ts": 1790262534079,
           "correct": true
+        },
+        {
+          "ts": 1790424282435,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534079
+      "lastAttemptTs": 1790424282435
     },
     "Linear inequalities in one or two variables": {
       "correct": 6,
@@ -3295,12 +3306,12 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 385020,
+      "totalMs": 565013,
       "viewMs": {
         "leaderboard": 40024,
         "review": 9993,
         "practice": 44997,
-        "mock": 290006
+        "mock": 469999
       },
       "categoryMs": {
         "Textual Evidence": 35002,
@@ -3936,7 +3947,25 @@
         "ts": 1790424091930,
         "ms": 788
       }
+    ],
+    "6d37f1b4": [
+      {
+        "ts": 1790424271874,
+        "ms": 137027
+      }
+    ],
+    "ddb43390": [
+      {
+        "ts": 1790424282435,
+        "ms": 7182
+      }
+    ],
+    "eb08d61f": [
+      {
+        "ts": 1790424345642,
+        "ms": 61401
+      }
     ]
   },
-  "clientUpdatedAt": 1790424247907
+  "clientUpdatedAt": 1790424427899
 }
