@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T17:52:11.101Z",
+  "exportedAt": "2026-09-26T17:55:10.958Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -423,7 +423,7 @@
     "8cfad1fb": "done",
     "bb869158": "done",
     "a085915d": "review",
-    "0fd6f290": "review"
+    "0fd6f290": "done"
   },
   "tags": {},
   "notes": {},
@@ -868,7 +868,8 @@
     "b99e3267": "2026-09-26T13:15:52.856Z",
     "0b28166c": "2026-09-26T13:16:15.102Z",
     "8cfad1fb": "2026-09-26T17:51:50.257Z",
-    "bb869158": "2026-09-26T17:52:01.285Z"
+    "bb869158": "2026-09-26T17:52:01.285Z",
+    "0fd6f290": "2026-09-26T17:53:09.761Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1752,29 +1753,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 51,
-      "total": 73,
+      "correct": 53,
+      "total": 78,
       "recent": [
-        {
-          "ts": 1790424066445,
-          "correct": true
-        },
-        {
-          "ts": 1790424090017,
-          "correct": false
-        },
-        {
-          "ts": 1790424091930,
-          "correct": true
-        },
-        {
-          "ts": 1790426858287,
-          "correct": false
-        },
-        {
-          "ts": 1790426860427,
-          "correct": false
-        },
         {
           "ts": 1790426862413,
           "correct": false
@@ -1802,9 +1783,29 @@
         {
           "ts": 1790445126749,
           "correct": false
+        },
+        {
+          "ts": 1790445174452,
+          "correct": true
+        },
+        {
+          "ts": 1790445245327,
+          "correct": false
+        },
+        {
+          "ts": 1790445247223,
+          "correct": false
+        },
+        {
+          "ts": 1790445248896,
+          "correct": false
+        },
+        {
+          "ts": 1790445250547,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790445126749
+      "lastAttemptTs": 1790445250547
     },
     "Text Structure and Purpose": {
       "correct": 21,
@@ -3649,12 +3650,12 @@
       "categoryMs": {}
     },
     "2026-09-27": {
-      "totalMs": 1801368,
+      "totalMs": 1981362,
       "viewMs": {
         "mock": 1626377,
         "leaderboard": 114994,
         "profile": 35012,
-        "review": 55007
+        "review": 235001
       },
       "categoryMs": {
         "Vocab": 249996,
@@ -4759,8 +4760,30 @@
       {
         "ts": 1790445126750,
         "ms": 2441
+      },
+      {
+        "ts": 1790445174452,
+        "ms": 711
+      }
+    ],
+    "a085915d": [
+      {
+        "ts": 1790445245328,
+        "ms": 28900
+      },
+      {
+        "ts": 1790445247223,
+        "ms": 562
+      },
+      {
+        "ts": 1790445248896,
+        "ms": 675
+      },
+      {
+        "ts": 1790445250548,
+        "ms": 709
       }
     ]
   },
-  "clientUpdatedAt": 1790445127891
+  "clientUpdatedAt": 1790445307902
 }
