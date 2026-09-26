@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T11:58:07.725Z",
+  "exportedAt": "2026-09-26T12:04:11.165Z",
   "progress": {
     "31926070": "done",
     "35256536": "done",
@@ -292,18 +292,18 @@
     "68fb4847": "done",
     "6ee5222e": "done",
     "064ba59a": "done",
-    "2a2a4f43": "review",
-    "9c159f61": "review",
-    "b3aeb2a9": "review",
-    "172f5e8c": "review",
-    "bda394f3": "review",
+    "2a2a4f43": "done",
+    "9c159f61": "done",
+    "b3aeb2a9": "done",
+    "172f5e8c": "done",
+    "bda394f3": "done",
     "8f2d7e11": "review",
-    "f99639a1": "review",
+    "f99639a1": "done",
     "ff6dbb27": "review",
-    "4c6cff04": "review",
-    "2ee50bdd": "review",
+    "4c6cff04": "done",
+    "2ee50bdd": "done",
     "e8e987a7": "review",
-    "d3fe0b12": "review",
+    "d3fe0b12": "done",
     "c7e43751": "review",
     "bea987a6": "review",
     "3a627ae3": "done",
@@ -685,7 +685,16 @@
     "ea0720d1": "2026-09-24T15:11:38.491Z",
     "9b6c20fe": "2026-09-24T15:11:39.792Z",
     "91f6f890": "2026-09-24T15:11:42.258Z",
-    "2d1e5eff": "2026-09-24T15:11:43.733Z"
+    "2d1e5eff": "2026-09-24T15:11:43.733Z",
+    "b3aeb2a9": "2026-09-26T12:00:02.951Z",
+    "172f5e8c": "2026-09-26T12:00:32.381Z",
+    "bda394f3": "2026-09-26T12:00:38.288Z",
+    "2a2a4f43": "2026-09-26T12:00:41.029Z",
+    "2ee50bdd": "2026-09-26T12:00:52.155Z",
+    "d3fe0b12": "2026-09-26T12:01:39.716Z",
+    "841a15d0": "2026-09-26T12:01:43.724Z",
+    "f99639a1": "2026-09-26T12:02:04.450Z",
+    "4c6cff04": "2026-09-26T12:02:10.635Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1569,21 +1578,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 46,
-      "total": 61,
+      "correct": 48,
+      "total": 64,
       "recent": [
-        {
-          "ts": 1790249292202,
-          "correct": true
-        },
-        {
-          "ts": 1790249351417,
-          "correct": true
-        },
-        {
-          "ts": 1790249365966,
-          "correct": true
-        },
         {
           "ts": 1790249391198,
           "correct": true
@@ -1619,9 +1616,21 @@
         {
           "ts": 1790262534076,
           "correct": false
+        },
+        {
+          "ts": 1790424066445,
+          "correct": true
+        },
+        {
+          "ts": 1790424090017,
+          "correct": false
+        },
+        {
+          "ts": 1790424091930,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534076
+      "lastAttemptTs": 1790424091930
     },
     "Text Structure and Purpose": {
       "correct": 19,
@@ -2763,8 +2772,8 @@
   "trendExcluded": [],
   "recentVisits": {
     "40614504": {
-      "count": 1,
-      "lastTs": 1790262578079
+      "count": 2,
+      "lastTs": 1790424021243
     },
     "87832416": {
       "count": 2,
@@ -2802,29 +2811,9 @@
       "count": 3,
       "lastTs": 1789649896678
     },
-    "73935d4f": {
-      "count": 1,
-      "lastTs": 1790006020421
-    },
-    "ec3981ea": {
-      "count": 1,
-      "lastTs": 1790006036706
-    },
-    "1215eb0a": {
-      "count": 1,
-      "lastTs": 1790006042523
-    },
     "84f5f182": {
       "count": 3,
       "lastTs": 1790007905109
-    },
-    "8f9ba995": {
-      "count": 1,
-      "lastTs": 1790006127282
-    },
-    "42ad4855": {
-      "count": 1,
-      "lastTs": 1790006130246
     },
     "0035c393": {
       "count": 3,
@@ -2837,14 +2826,6 @@
     "4abd4abf": {
       "count": 2,
       "lastTs": 1790006171286
-    },
-    "005e9982": {
-      "count": 1,
-      "lastTs": 1790006166376
-    },
-    "635e58a2": {
-      "count": 1,
-      "lastTs": 1790006188146
     },
     "51459b74": {
       "count": 1,
@@ -2886,21 +2867,9 @@
       "count": 2,
       "lastTs": 1789895285993
     },
-    "e34403e6": {
-      "count": 1,
-      "lastTs": 1789895284610
-    },
     "0f1cfed0": {
       "count": 2,
       "lastTs": 1789895330985
-    },
-    "3a519c76": {
-      "count": 1,
-      "lastTs": 1789895333447
-    },
-    "e1137c5a": {
-      "count": 1,
-      "lastTs": 1789895335596
     },
     "268c349d": {
       "count": 1,
@@ -3001,6 +2970,86 @@
     "5cbd602c": {
       "count": 1,
       "lastTs": 1790262733244
+    },
+    "b3aeb2a9": {
+      "count": 1,
+      "lastTs": 1790423965121
+    },
+    "172f5e8c": {
+      "count": 1,
+      "lastTs": 1790424030307
+    },
+    "bda394f3": {
+      "count": 1,
+      "lastTs": 1790424035243
+    },
+    "9c159f61": {
+      "count": 2,
+      "lastTs": 1790424047165
+    },
+    "2ee50bdd": {
+      "count": 2,
+      "lastTs": 1790424063979
+    },
+    "e8e987a7": {
+      "count": 2,
+      "lastTs": 1790424096073
+    },
+    "d3fe0b12": {
+      "count": 1,
+      "lastTs": 1790424101025
+    },
+    "841a15d0": {
+      "count": 1,
+      "lastTs": 1790424105053
+    },
+    "f99639a1": {
+      "count": 1,
+      "lastTs": 1790424126410
+    },
+    "6d37f1b4": {
+      "count": 1,
+      "lastTs": 1790424134834
+    },
+    "73935d4f": {
+      "count": 1,
+      "lastTs": 1790006020421
+    },
+    "ec3981ea": {
+      "count": 1,
+      "lastTs": 1790006036706
+    },
+    "1215eb0a": {
+      "count": 1,
+      "lastTs": 1790006042523
+    },
+    "8f9ba995": {
+      "count": 1,
+      "lastTs": 1790006127282
+    },
+    "42ad4855": {
+      "count": 1,
+      "lastTs": 1790006130246
+    },
+    "005e9982": {
+      "count": 1,
+      "lastTs": 1790006166376
+    },
+    "635e58a2": {
+      "count": 1,
+      "lastTs": 1790006188146
+    },
+    "e34403e6": {
+      "count": 1,
+      "lastTs": 1789895284610
+    },
+    "3a519c76": {
+      "count": 1,
+      "lastTs": 1789895333447
+    },
+    "e1137c5a": {
+      "count": 1,
+      "lastTs": 1789895335596
     },
     "57fb41c0": {
       "count": 1,
@@ -3246,11 +3295,17 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 30013,
+      "totalMs": 385020,
       "viewMs": {
-        "leaderboard": 30013
+        "leaderboard": 40024,
+        "review": 9993,
+        "practice": 44997,
+        "mock": 290006
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Textual Evidence": 35002,
+        "Quantitative Evidence": 9995
+      }
     }
   },
   "answerTimeLog": {
@@ -3865,6 +3920,23 @@
         "ts": 1790257597551,
         "ms": 52644
       }
+    ],
+    "2ee50bdd": [
+      {
+        "ts": 1790424066446,
+        "ms": 12365
+      }
+    ],
+    "e8e987a7": [
+      {
+        "ts": 1790424090018,
+        "ms": 21270
+      },
+      {
+        "ts": 1790424091930,
+        "ms": 788
+      }
     ]
-  }
+  },
+  "clientUpdatedAt": 1790424247907
 }
