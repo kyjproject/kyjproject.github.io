@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-26T12:58:10.694Z",
+  "exportedAt": "2026-09-26T13:01:10.564Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -1777,13 +1777,9 @@
       "lastAttemptTs": 1790426864193
     },
     "Text Structure and Purpose": {
-      "correct": 19,
-      "total": 32,
+      "correct": 20,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1790248370893,
-          "correct": false
-        },
         {
           "ts": 1790248427601,
           "correct": true
@@ -1827,26 +1823,18 @@
         {
           "ts": 1790262534076,
           "correct": true
+        },
+        {
+          "ts": 1790427546456,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790262534076
+      "lastAttemptTs": 1790427546456
     },
     "Cross-Text Connections": {
-      "correct": 8,
-      "total": 15,
+      "correct": 9,
+      "total": 18,
       "recent": [
-        {
-          "ts": 1789478205677,
-          "correct": false
-        },
-        {
-          "ts": 1789478208217,
-          "correct": true
-        },
-        {
-          "ts": 1789649457795,
-          "correct": true
-        },
         {
           "ts": 1789649457799,
           "correct": true
@@ -1882,9 +1870,21 @@
         {
           "ts": 1790427484713,
           "correct": false
+        },
+        {
+          "ts": 1790427492572,
+          "correct": false
+        },
+        {
+          "ts": 1790427494560,
+          "correct": false
+        },
+        {
+          "ts": 1790427495856,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790427484713
+      "lastAttemptTs": 1790427495856
     },
     "Central Ideas and Details": {
       "correct": 28,
@@ -3583,18 +3583,19 @@
       }
     },
     "2026-09-26": {
-      "totalMs": 3438836,
+      "totalMs": 3610239,
       "viewMs": {
-        "leaderboard": 40024,
-        "review": 98131,
-        "practice": 644996,
+        "leaderboard": 95008,
+        "review": 144535,
+        "practice": 710001,
         "mock": 2650669,
-        "profile": 5016
+        "profile": 10026
       },
       "categoryMs": {
         "Textual Evidence": 445004,
         "Quantitative Evidence": 79998,
-        "Cross-Text": 119994
+        "Cross-Text": 130002,
+        "Functions": 49996
       }
     }
   },
@@ -4123,6 +4124,10 @@
       {
         "ts": 1790256353207,
         "ms": 842
+      },
+      {
+        "ts": 1790427546457,
+        "ms": 46013
       }
     ],
     "7d1c8a2b": [
@@ -4475,8 +4480,20 @@
       {
         "ts": 1790427484714,
         "ms": 3379659
+      },
+      {
+        "ts": 1790427492572,
+        "ms": 1316
+      },
+      {
+        "ts": 1790427494560,
+        "ms": 1035
+      },
+      {
+        "ts": 1790427495856,
+        "ms": 668
       }
     ]
   },
-  "clientUpdatedAt": 1790427487900
+  "clientUpdatedAt": 1790427667891
 }
