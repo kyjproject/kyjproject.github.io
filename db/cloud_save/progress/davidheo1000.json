@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-27T05:47:06.825Z",
+  "exportedAt": "2026-09-27T07:18:56.476Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -4159,10 +4159,6 @@
       "count": 2,
       "lastTs": 1789978244479
     },
-    "032caee7": {
-      "count": 1,
-      "lastTs": 1789992812347
-    },
     "94dc4ce8": {
       "count": 1,
       "lastTs": 1790082826096
@@ -4311,6 +4307,14 @@
       "count": 1,
       "lastTs": 1790311891339
     },
+    "2d1e5eff": {
+      "count": 2,
+      "lastTs": 1790488056560
+    },
+    "032caee7": {
+      "count": 1,
+      "lastTs": 1789992812347
+    },
     "32dc74a4": {
       "count": 1,
       "lastTs": 1789803816439
@@ -4362,10 +4366,6 @@
     "fe81a236": {
       "count": 1,
       "lastTs": 1789543892866
-    },
-    "2d1e5eff": {
-      "count": 1,
-      "lastTs": 1789543499340
     },
     "005e9982": {
       "count": 1,
@@ -4604,6 +4604,22 @@
         "analysis": 228435
       },
       "categoryMs": {}
+    },
+    "2026-09-27": {
+      "totalMs": 306025,
+      "viewMs": {
+        "review": 4972,
+        "lab": 5000,
+        "practice": 5004,
+        "math": 35863,
+        "mock": 190133,
+        "leaderboard": 65053
+      },
+      "categoryMs": {
+        "Algebra": 100075,
+        "Problem-Solving and Data Analysis": 55044,
+        "Geometry and Trigonometry": 10007
+      }
     }
   },
   "answerTimeLog": {
@@ -12086,5 +12102,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790488022494
+  "clientUpdatedAt": 1790493532657
 }
