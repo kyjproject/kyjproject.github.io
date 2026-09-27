@@ -1719,5 +1719,302 @@
       }
     },
     "resolved_at": "2026-09-22T17:15:33.393Z"
+  },
+  {
+    "qid": "bf0c8b48",
+    "shortId": "Vocab #10",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "hamin",
+    "reported_at": "2026-09-20T14:12:56.544Z",
+    "question": {
+      "id": "bf0c8b48",
+      "category": "Vocab",
+      "source_pdf": "Vocab.pdf",
+      "assessment": "SAT",
+      "test": "Reading and Writing",
+      "domain": "Craft and Structure",
+      "domain_code": "CAS",
+      "skill": "Words in Context",
+      "skill_code": "WIC",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "stem": "The following text is adapted from George Eliot’s 1871–72 novel Middlemarch.\n\n[Mr. Brooke] had travelled in his younger years, and was held in this part of the country to have contracted a too rambling habit of mind. Mr. Brooke’s conclusions were as difficult to predict as the weather.",
+      "prompt": "As used in the text, what does the word “contracted” most nearly mean?",
+      "choices": {
+        "A": "Restricted",
+        "B": "Described",
+        "C": "Developed",
+        "D": "Settled"
+      },
+      "correct_answer": "C",
+      "rationale_full": "Choice A is incorrect. Although “contracted” can mean limited or restricted in some contexts, here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow limited or restricted. Choice B is incorrect. Although the text describes Mr. Brooke’s habit of mind, nothing suggests that those are his descriptions or, indeed, that he described his habit of mind at all. Choice C is the best answer because as used in the text, “contracted” most nearly means developed. The text explains that Mr. Brooke has a “too rambling habit of mind,” which the text likens to a disease, saying he is thought to have contracted it. To contract a disease means to acquire or develop a disease. In other words, the text indicates that Mr. Brooke is believed to have acquired, or developed, the habit of mind described in the text. Choice D is incorrect because settled means calmed or mitigated, but here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow calmed or mitigated.",
+      "rationale_by_choice": {
+        "A": "Choice A is incorrect. Although “contracted” can mean limited or restricted in some contexts, here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow limited or restricted.",
+        "B": "Choice B is incorrect. Although the text describes Mr. Brooke’s habit of mind, nothing suggests that those are his descriptions or, indeed, that he described his habit of mind at all.",
+        "C": "Choice C is the best answer because as used in the text, “contracted” most nearly means developed. The text explains that Mr. Brooke has a “too rambling habit of mind,” which the text likens to a disease, saying he is thought to have contracted it. To contract a disease means to acquire or develop a disease. In other words, the text indicates that Mr. Brooke is believed to have acquired, or developed, the habit of mind described in the text.",
+        "D": "Choice D is incorrect because settled means calmed or mitigated, but here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow calmed or mitigated."
+      },
+      "has_image": false,
+      "image_paths": [],
+      "page": 11,
+      "is_mc": true
+    },
+    "resolved_at": "2026-09-23T05:46:37.618Z"
+  },
+  {
+    "qid": "ef160f02",
+    "shortId": "Algebra #219",
+    "reason": "Broken image or table",
+    "note": "There is nothing only the wordings",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-21T12:01:18.569Z",
+    "question": {
+      "id": "ef160f02",
+      "category": "Algebra",
+      "source_pdf": "Algebra.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Algebra",
+      "domain_code": "ALG",
+      "skill": "Systems of two linear equations in two variables",
+      "skill_code": "SYS2",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "B",
+      "has_image": false,
+      "image_paths": [],
+      "page": 245,
+      "stem": "⟦IMG:images/math/algebra/ef160f02_fixEq.png⟧\n\nThe given equations represent the possible numbers of beach chairs, ⟦IMG:images/math/algebra/ef160f02_fixVarX.png⟧, and umbrellas, ⟦IMG:images/math/algebra/ef160f02_fixVarY.png⟧, rented at a park last month and the total spent, in dollars, to rent those beach chairs and umbrellas. Which of the following graphs represents this situation?",
+      "rationale_full": "Choice B is correct. The intercepts of the graph of each equation can be found by substituting 0 for one variable at a time. For the equation x + y = 53, substituting 0 for y yields x = 53, so the x-intercept of the graph of the equation is (53, 0). Substituting 0 for x in this equation yields y = 53, so the y-intercept of the graph of the equation is (0, 53). Thus, the graph of the equation x + y = 53 has intercepts at (53, 0) and (0, 53). For the equation 11x + 18y = 730, substituting 0 for y yields x = 730/11, so the x-intercept of the graph of the equation is approximately (66, 0). Substituting 0 for x in this equation yields y = 730/18, so the y-intercept of the graph of the equation is approximately (0, 41). Thus, the graph of the equation 11x + 18y = 730 has intercepts at approximately (66, 0) and (0, 41). Choice B is a graph that shows one line with intercepts at (0, 53) and (53, 0) and another line with intercepts at approximately (0, 41) and (66, 0). Thus, choice B represents this situation.\n\nChoice A is incorrect. This graph represents the equations y = x and 11x + 18y = 730.\n\nChoice C is incorrect. This graph represents the equations x + y = 53 and -11x + 18y = 730.\n\nChoice D is incorrect. This graph represents the equations y = 53 and -11x + 18y = 730.",
+      "choices": {
+        "A": "⟦IMG:images/math/algebra/ef160f02_fixA.png⟧",
+        "B": "⟦IMG:images/math/algebra/ef160f02_fixB.png⟧",
+        "C": "⟦IMG:images/math/algebra/ef160f02_fixC.png⟧",
+        "D": "⟦IMG:images/math/algebra/ef160f02_fixD.png⟧"
+      },
+      "rationale_by_choice": {
+        "B": "Choice B is correct. The intercepts of the graph of each equation can be found by substituting 0 for one variable at a time. For the equation x + y = 53, substituting 0 for y yields x = 53, so the x-intercept of the graph of the equation is (53, 0). Substituting 0 for x in this equation yields y = 53, so the y-intercept of the graph of the equation is (0, 53). Thus, the graph of the equation x + y = 53 has intercepts at (53, 0) and (0, 53). For the equation 11x + 18y = 730, substituting 0 for y yields x = 730/11, so the x-intercept of the graph of the equation is approximately (66, 0). Substituting 0 for x in this equation yields y = 730/18, so the y-intercept of the graph of the equation is approximately (0, 41). Thus, the graph of the equation 11x + 18y = 730 has intercepts at approximately (66, 0) and (0, 41). Choice B is a graph that shows one line with intercepts at (0, 53) and (53, 0) and another line with intercepts at approximately (0, 41) and (66, 0). Thus, choice B represents this situation.",
+        "A": "Choice A is incorrect. This graph represents the equations y = x and 11x + 18y = 730.",
+        "C": "Choice C is incorrect. This graph represents the equations x + y = 53 and -11x + 18y = 730.",
+        "D": "Choice D is incorrect. This graph represents the equations y = 53 and -11x + 18y = 730."
+      }
+    },
+    "resolved_at": "2026-09-23T05:47:38.513Z"
+  },
+  {
+    "qid": "14787dca",
+    "shortId": "Advanced Math #103",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "nknix",
+    "reported_at": "2026-09-21T15:30:33.000Z",
+    "question": {
+      "id": "14787dca",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear equations in one variable and systems of equations in two variables",
+      "skill_code": "NLEQ",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "C",
+      "has_image": true,
+      "image_paths": [],
+      "page": 108,
+      "stem": "⟦LATEX:x - 29 = (x-a)(x-29)⟧\n\nWhich of the following are solutions to the given equation, where ⟦LATEX:a⟧ is a constant and ⟦LATEX:a>30⟧? I. ⟦LATEX:a⟧ II. ⟦LATEX:a+1⟧ III. ⟦LATEX:29⟧",
+      "choices": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II, and III"
+      },
+      "rationale_full": "Choice C is correct. Subtracting the expression ⟦LATEX:(x-29)⟧ from both sides of the given equation yields ⟦LATEX:0 = (x-a)(x-29) - (x-29)⟧, which can be rewritten as ⟦LATEX:0 = (x-a)(x-29) + (-1)(x-29)⟧. Since the two terms on the right-hand side of this equation have a common factor of ⟦LATEX:(x-29)⟧, it can be rewritten as ⟦LATEX:0 = (x-29)(x-a+(-1))⟧, or ⟦LATEX:0 = (x-29)(x-a-1)⟧. Since ⟦LATEX:x-a-1⟧ is equivalent to ⟦LATEX:x-(a+1)⟧, the equation ⟦LATEX:0=(x-29)(x-a-1)⟧ can be rewritten as ⟦LATEX:0=(x-29)(x-(a+1))⟧. By the zero product property, it follows that ⟦LATEX:x-29=0⟧ or ⟦LATEX:x-(a+1)=0⟧. Adding ⟦LATEX:29⟧ to both sides of the equation ⟦LATEX:x-29=0⟧ yields ⟦LATEX:x=29⟧. Adding ⟦LATEX:a+1⟧ to both sides of the equation ⟦LATEX:x-(a+1)=0⟧ yields ⟦LATEX:x=a+1⟧. Therefore, the two solutions to the given equation are ⟦LATEX:29⟧ and ⟦LATEX:a+1⟧. Thus, only ⟦LATEX:a+1⟧ and ⟦LATEX:29⟧, not ⟦LATEX:a⟧, are solutions to the given equation. Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "C": "Choice C is correct. Subtracting the expression ⟦LATEX:(x-29)⟧ from both sides of the given equation yields ⟦LATEX:0 = (x-a)(x-29) - (x-29)⟧, which can be rewritten as ⟦LATEX:0 = (x-a)(x-29) + (-1)(x-29)⟧. Since the two terms on the right-hand side of this equation have a common factor of ⟦LATEX:(x-29)⟧, it can be rewritten as ⟦LATEX:0 = (x-29)(x-a+(-1))⟧, or ⟦LATEX:0 = (x-29)(x-a-1)⟧. Since ⟦LATEX:x-a-1⟧ is equivalent to ⟦LATEX:x-(a+1)⟧, the equation ⟦LATEX:0=(x-29)(x-a-1)⟧ can be rewritten as ⟦LATEX:0=(x-29)(x-(a+1))⟧. By the zero product property, it follows that ⟦LATEX:x-29=0⟧ or ⟦LATEX:x-(a+1)=0⟧. Adding ⟦LATEX:29⟧ to both sides of the equation ⟦LATEX:x-29=0⟧ yields ⟦LATEX:x=29⟧. Adding ⟦LATEX:a+1⟧ to both sides of the equation ⟦LATEX:x-(a+1)=0⟧ yields ⟦LATEX:x=a+1⟧. Therefore, the two solutions to the given equation are ⟦LATEX:29⟧ and ⟦LATEX:a+1⟧. Thus, only ⟦LATEX:a+1⟧ and ⟦LATEX:29⟧, not ⟦LATEX:a⟧, are solutions to the given equation.",
+        "A": "Choice A is incorrect and may result from conceptual or calculation errors.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-23T05:51:29.326Z"
+  },
+  {
+    "qid": "e7696b61",
+    "shortId": "Advanced Math #220",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "nknix",
+    "reported_at": "2026-09-21T15:30:33.000Z",
+    "question": {
+      "id": "e7696b61",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear functions",
+      "skill_code": "NLFUNC",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 236,
+      "stem": "⟦IMG:images/math/advanced_math/e7696b61_fixDiagram.png⟧\n\nFor the quadratic function ⟦LATEX:f⟧, the table shows three values of ⟦LATEX:x⟧ and their corresponding values of ⟦LATEX:f(x)⟧. Which equation defines ⟦LATEX:f⟧?",
+      "choices": {
+        "A": "⟦LATEX:f(x)=3x^2+3x+14⟧",
+        "B": "⟦LATEX:f(x)=5x^2+x+14⟧",
+        "C": "⟦LATEX:f(x)=9x^2-x+14⟧",
+        "D": "⟦LATEX:f(x)=x^2+5x+14⟧"
+      },
+      "rationale_full": "Choice D is correct. The equation of a quadratic function can be written in the form ⟦LATEX:f(x)=a(x-h)^2+k⟧, where ⟦LATEX:a⟧, ⟦LATEX:h⟧, and ⟦LATEX:k⟧ are constants. It’s given in the table that when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:10⟧. Substituting ⟦LATEX:-1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:10⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:10=a(-1-h)^2+k⟧, which is equivalent to ⟦LATEX:10=a(1+2h+h^2)+k⟧, or ⟦LATEX:10=a+2ah+ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=0⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧. Substituting ⟦LATEX:0⟧ for ⟦LATEX:x⟧ and ⟦LATEX:14⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:14=a(0-h)^2+k⟧, or ⟦LATEX:14=ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:20⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:20⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:20=a(1-h)^2+k⟧, which is equivalent to ⟦LATEX:20=a(1-2h+h^2)+k⟧, or ⟦LATEX:20=a-2ah+ah^2+k⟧. Adding ⟦LATEX:10=a+2ah+ah^2+k⟧ to the equation ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:30=2a+2ah^2+2k⟧. Dividing both sides of this equation by ⟦LATEX:2⟧ gives ⟦LATEX:15=a+ah^2+k⟧. Since ⟦LATEX:14=ah^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:ah^2+k⟧ into the equation gives ⟦LATEX:15=a+14⟧. Subtracting ⟦LATEX:14⟧ from both sides of this equation gives ⟦LATEX:a=1⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧ in the equations ⟦LATEX:14=ah^2+k⟧ and ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:14=h^2+k⟧ and ⟦LATEX:20=1-2h+h^2+k⟧, respectively. Since ⟦LATEX:14=h^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:h^2+k⟧ in the equation ⟦LATEX:20=1-2h+h^2+k⟧ gives ⟦LATEX:20=1-2h+14⟧, or ⟦LATEX:20=15-2h⟧. Subtracting ⟦LATEX:15⟧ from both sides of this equation gives ⟦LATEX:5=-2h⟧. Dividing both sides of this equation by ⟦LATEX:-2⟧ gives ⟦LATEX:-\\frac{5}{2}=h⟧. Substituting ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧ into the equation ⟦LATEX:14=h^2+k⟧ gives ⟦LATEX:14=(-\\frac{5}{2})^2+k⟧, or ⟦LATEX:14=\\frac{25}{4}+k⟧. Subtracting ⟦LATEX:\\frac{25}{4}⟧ from both sides of this equation gives ⟦LATEX:\\frac{31}{4}=k⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧, ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧, and ⟦LATEX:\\frac{31}{4}⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:f(x)=(x+\\frac{5}{2})^2+\\frac{31}{4}⟧, which is equivalent to ⟦LATEX:f(x)=x^2+5x+\\frac{25}{4}+\\frac{31}{4}⟧, or ⟦LATEX:f(x)=x^2+5x+14⟧. Therefore, ⟦LATEX:f(x)=x^2+5x+14⟧ defines ⟦LATEX:f⟧. Choice A is incorrect. If ⟦LATEX:f(x)=3x^2+3x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧, not ⟦LATEX:10⟧. Choice B is incorrect. If ⟦LATEX:f(x)=5x^2+x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:18⟧, not ⟦LATEX:10⟧.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. The equation of a quadratic function can be written in the form ⟦LATEX:f(x)=a(x-h)^2+k⟧, where ⟦LATEX:a⟧, ⟦LATEX:h⟧, and ⟦LATEX:k⟧ are constants. It’s given in the table that when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:10⟧. Substituting ⟦LATEX:-1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:10⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:10=a(-1-h)^2+k⟧, which is equivalent to ⟦LATEX:10=a(1+2h+h^2)+k⟧, or ⟦LATEX:10=a+2ah+ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=0⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧. Substituting ⟦LATEX:0⟧ for ⟦LATEX:x⟧ and ⟦LATEX:14⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:14=a(0-h)^2+k⟧, or ⟦LATEX:14=ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:20⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:20⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:20=a(1-h)^2+k⟧, which is equivalent to ⟦LATEX:20=a(1-2h+h^2)+k⟧, or ⟦LATEX:20=a-2ah+ah^2+k⟧. Adding ⟦LATEX:10=a+2ah+ah^2+k⟧ to the equation ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:30=2a+2ah^2+2k⟧. Dividing both sides of this equation by ⟦LATEX:2⟧ gives ⟦LATEX:15=a+ah^2+k⟧. Since ⟦LATEX:14=ah^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:ah^2+k⟧ into the equation gives ⟦LATEX:15=a+14⟧. Subtracting ⟦LATEX:14⟧ from both sides of this equation gives ⟦LATEX:a=1⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧ in the equations ⟦LATEX:14=ah^2+k⟧ and ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:14=h^2+k⟧ and ⟦LATEX:20=1-2h+h^2+k⟧, respectively. Since ⟦LATEX:14=h^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:h^2+k⟧ in the equation ⟦LATEX:20=1-2h+h^2+k⟧ gives ⟦LATEX:20=1-2h+14⟧, or ⟦LATEX:20=15-2h⟧. Subtracting ⟦LATEX:15⟧ from both sides of this equation gives ⟦LATEX:5=-2h⟧. Dividing both sides of this equation by ⟦LATEX:-2⟧ gives ⟦LATEX:-\\frac{5}{2}=h⟧. Substituting ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧ into the equation ⟦LATEX:14=h^2+k⟧ gives ⟦LATEX:14=(-\\frac{5}{2})^2+k⟧, or ⟦LATEX:14=\\frac{25}{4}+k⟧. Subtracting ⟦LATEX:\\frac{25}{4}⟧ from both sides of this equation gives ⟦LATEX:\\frac{31}{4}=k⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧, ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧, and ⟦LATEX:\\frac{31}{4}⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:f(x)=(x+\\frac{5}{2})^2+\\frac{31}{4}⟧, which is equivalent to ⟦LATEX:f(x)=x^2+5x+\\frac{25}{4}+\\frac{31}{4}⟧, or ⟦LATEX:f(x)=x^2+5x+14⟧. Therefore, ⟦LATEX:f(x)=x^2+5x+14⟧ defines ⟦LATEX:f⟧.",
+        "A": "Choice A is incorrect. If ⟦LATEX:f(x)=3x^2+3x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧, not ⟦LATEX:10⟧."
+      }
+    },
+    "resolved_at": "2026-09-23T05:51:57.028Z"
+  },
+  {
+    "qid": "8fed560d",
+    "shortId": "Problem-Solving and Data Analysis #28",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-21T07:09:42.758Z",
+    "question": {
+      "id": "8fed560d",
+      "category": "Problem-Solving and Data Analysis",
+      "source_pdf": "Problem Solving and Data Analysis.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Problem-Solving and Data Analysis",
+      "domain_code": "PSDA",
+      "skill": "One-variable data: Distributions and measures of center and spread",
+      "skill_code": "ONEVAR",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "A",
+      "has_image": true,
+      "image_paths": [],
+      "page": 34,
+      "stem": "Each of the following frequency tables represents a data set. Which data set has the greatest mean?",
+      "choices": {
+        "A": "⟦IMG:images/math/problem_solving_and_data_analysis/8fed560d_fixDiagram.png⟧",
+        "B": "⟦IMG:images/math/problem_solving_and_data_analysis/8fed560d_fixDiagramB.png⟧",
+        "C": "⟦IMG:images/math/problem_solving_and_data_analysis/8fed560d_fixDiagramC.png⟧",
+        "D": "⟦IMG:images/math/problem_solving_and_data_analysis/8fed560d_fixDiagramD.png⟧"
+      },
+      "rationale_full": "Choice A is correct. The tables in choices B, C, and D each represent a data set where the values ⟦LATEX:80⟧ and ⟦LATEX:90⟧ have the same frequency and the values ⟦LATEX:70⟧ and ⟦LATEX:100⟧ have the same frequency. It follows that each of these data sets is symmetric around the value halfway between ⟦LATEX:80⟧ and ⟦LATEX:90⟧, or ⟦LATEX:85⟧. When a data set is symmetric around a value, that value is the mean of the data set. Therefore, the data sets represented by the tables in choices B, C, and D each have a mean of ⟦LATEX:85⟧. The table in choice A represents a data set where the value ⟦LATEX:90⟧ has a greater frequency than the value ⟦LATEX:80⟧ and the value ⟦LATEX:100⟧ has a greater frequency than the value ⟦LATEX:70⟧. It follows that this data set has a mean greater than ⟦LATEX:85⟧. Therefore, of the given choices, choice A represents the data set with the greatest mean. Choice B is incorrect and may result from conceptual or calculation errors. Choice C is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "C": "Choice C is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-23T05:52:04.859Z"
+  },
+  {
+    "qid": "36f0ebb0",
+    "shortId": "Advanced Math #183",
+    "reason": "Weird formatting",
+    "note": "I may be tweaking but it is weird",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-22T19:17:28.744Z",
+    "question": {
+      "id": "36f0ebb0",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear functions",
+      "skill_code": "NLFUNC",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 194,
+      "stem": "⟦IMG:images/math/advanced_math/36f0ebb0_fixDiagram.png⟧\n\nThe graph of the rational function ⟦LATEX:f⟧ is shown, where ⟦LATEX:y = f(x)⟧ and ⟦LATEX:x \\ge 0⟧. Which of the following is the graph of ⟦LATEX:y = f(x) + 5⟧, where ⟦LATEX:x \\ge 0⟧?",
+      "choices": {
+        "A": "⟦IMG:images/math/advanced_math/36f0ebb0_fixA.png⟧",
+        "B": "⟦IMG:images/math/advanced_math/36f0ebb0_fixB.png⟧",
+        "C": "⟦IMG:images/math/advanced_math/36f0ebb0_fixC.png⟧",
+        "D": "⟦IMG:images/math/advanced_math/36f0ebb0_fixD.png⟧"
+      },
+      "rationale_full": "Choice D is correct. It's given that the graph of the rational function ⟦LATEX:f⟧ is shown, where ⟦LATEX:y=f(x)⟧ and ⟦LATEX:x \\ge 0⟧. The graph shown passes through the point ⟦LATEX:(3, 3)⟧. It follows that when the value of ⟦LATEX:x⟧ is ⟦LATEX:3⟧, the value of ⟦LATEX:f(x)⟧ is ⟦LATEX:3⟧. When the value of ⟦LATEX:f(x)⟧ is ⟦LATEX:3⟧, the value of ⟦LATEX:f(x)+5⟧ is ⟦LATEX:3+5⟧, or ⟦LATEX:8⟧. Therefore, the graph of ⟦LATEX:y=f(x)+5⟧ passes through the point ⟦LATEX:(3,8)⟧. Of the given choices, choice D is the only graph that passes through the point ⟦LATEX:(3,8)⟧ and is therefore the graph of ⟦LATEX:y=f(x)+5⟧.\n\nChoice A is incorrect. This is the graph of ⟦LATEX:y=f(x)-5⟧, rather than ⟦LATEX:y=f(x)+5⟧. Choice B is incorrect. This is the graph of ⟦LATEX:y=\\frac{f(x)}{5}⟧, rather than ⟦LATEX:y=f(x)+5⟧. Choice C is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. It's given that the graph of the rational function ⟦LATEX:f⟧ is shown, where ⟦LATEX:y=f(x)⟧ and ⟦LATEX:x \\ge 0⟧. The graph shown passes through the point ⟦LATEX:(3, 3)⟧. It follows that when the value of ⟦LATEX:x⟧ is ⟦LATEX:3⟧, the value of ⟦LATEX:f(x)⟧ is ⟦LATEX:3⟧. When the value of ⟦LATEX:f(x)⟧ is ⟦LATEX:3⟧, the value of ⟦LATEX:f(x)+5⟧ is ⟦LATEX:3+5⟧, or ⟦LATEX:8⟧. Therefore, the graph of ⟦LATEX:y=f(x)+5⟧ passes through the point ⟦LATEX:(3,8)⟧. Of the given choices, choice D is the only graph that passes through the point ⟦LATEX:(3,8)⟧ and is therefore the graph of ⟦LATEX:y=f(x)+5⟧.",
+        "A": "Choice A is incorrect. This is the graph of ⟦LATEX:y=f(x)-5⟧, rather than ⟦LATEX:y=f(x)+5⟧.",
+        "B": "Choice B is incorrect. This is the graph of ⟦LATEX:y=\\frac{f(x)}{5}⟧, rather than ⟦LATEX:y=f(x)+5⟧.",
+        "C": "Choice C is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-23T05:53:24.711Z"
+  },
+  {
+    "qid": "f2af8e90",
+    "shortId": "Problem-Solving and Data Analysis #241",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "kyjv9981",
+    "reported_at": "2026-09-22T10:34:56.774Z",
+    "question": {
+      "id": "f2af8e90",
+      "category": "Problem-Solving and Data Analysis",
+      "source_pdf": "Problem Solving and Data Analysis.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Problem-Solving and Data Analysis",
+      "domain_code": "PSDA",
+      "skill": "Probability and conditional probability",
+      "skill_code": "PROB",
+      "difficulty_label": "Easy",
+      "difficulty": 1,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 283,
+      "stem": "1 visit, 2 or more visits, Total\nLess than ⟦LATEX:40⟧ years old: ⟦LATEX:15⟧, ⟦LATEX:15⟧, ⟦LATEX:30⟧\nAt least ⟦LATEX:40⟧ years old: ⟦LATEX:20⟧, ⟦LATEX:85⟧, ⟦LATEX:105⟧\nTotal: ⟦LATEX:35⟧, ⟦LATEX:100⟧, ⟦LATEX:135⟧\n\nThe table summarizes customers who visited a car dealership in the last month by age and number of visits they made to the dealership. If a customer from the last month is selected at random, what is the probability that the selected customer is at least ⟦LATEX:40⟧ years old?",
+      "choices": {
+        "A": "⟦LATEX:\\frac{30}{135}⟧",
+        "B": "⟦LATEX:\\frac{35}{135}⟧",
+        "C": "⟦LATEX:\\frac{100}{135}⟧",
+        "D": "⟦LATEX:\\frac{105}{135}⟧"
+      },
+      "rationale_full": "Choice D is correct. Based on the table, there are a total of ⟦LATEX:135⟧ customers who visited the car dealership in the last month, and ⟦LATEX:105⟧ of these customers are at least ⟦LATEX:40⟧ years old. If a customer from the last month is selected at random, the probability that the selected customer is at least ⟦LATEX:40⟧ years old is equal to the number of customers who are at least ⟦LATEX:40⟧ years old divided by the total number of customers. Therefore, the probability that the selected customer is at least ⟦LATEX:40⟧ years old is ⟦LATEX:\\frac{105}{135}⟧. Choice A is incorrect. This is the probability that the selected customer is less than ⟦LATEX:40⟧ years old. Choice B is incorrect. This is the probability that the selected customer visited the dealership ⟦LATEX:1⟧ time in the last month. Choice C is incorrect. This is the probability that the selected customer visited the dealership ⟦LATEX:2⟧ or more times in the last month.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. Based on the table, there are a total of ⟦LATEX:135⟧ customers who visited the car dealership in the last month, and ⟦LATEX:105⟧ of these customers are at least ⟦LATEX:40⟧ years old. If a customer from the last month is selected at random, the probability that the selected customer is at least ⟦LATEX:40⟧ years old is equal to the number of customers who are at least ⟦LATEX:40⟧ years old divided by the total number of customers. Therefore, the probability that the selected customer is at least ⟦LATEX:40⟧ years old is ⟦LATEX:\\frac{105}{135}⟧.",
+        "A": "Choice A is incorrect. This is the probability that the selected customer is less than ⟦LATEX:40⟧ years old.",
+        "B": "Choice B is incorrect. This is the probability that the selected customer visited the dealership ⟦LATEX:1⟧ time in the last month.",
+        "C": "Choice C is incorrect. This is the probability that the selected customer visited the dealership ⟦LATEX:2⟧ or more times in the last month."
+      }
+    },
+    "resolved_at": "2026-09-23T05:53:29.597Z"
   }
 ]
