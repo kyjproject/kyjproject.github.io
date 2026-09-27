@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-27T12:38:30.617Z",
+  "exportedAt": "2026-09-27T12:41:31.198Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -438,7 +438,7 @@
     "123cf5db": "review",
     "3fcc2cee": "review",
     "da17503b": "review",
-    "d8e0ab29": "review",
+    "d8e0ab29": "done",
     "6deb3100": "done",
     "cd9fa443": "done",
     "6f8503f0": "done",
@@ -447,11 +447,11 @@
     "70474bfb": "review",
     "45f3c80a": "done",
     "fb052096": "done",
-    "9d893693": "review",
+    "9d893693": "done",
     "695c3f5f": "done",
     "a901c1d5": "done",
     "8ff6fda0": "done",
-    "0a22512b": "review",
+    "0a22512b": "done",
     "4d3feaea": "done",
     "8b1ab636": "done",
     "fe7af99a": "done",
@@ -1055,7 +1055,10 @@
     "05cec180": "2026-09-27T12:31:11.548Z",
     "b7f055bc": "2026-09-27T12:31:12.650Z",
     "b40b491b": "2026-09-27T12:31:19.134Z",
-    "6963dfb3": "2026-09-27T12:31:55.784Z"
+    "6963dfb3": "2026-09-27T12:31:55.784Z",
+    "d8e0ab29": "2026-09-27T12:40:33.971Z",
+    "0a22512b": "2026-09-27T12:41:00.172Z",
+    "9d893693": "2026-09-27T12:41:28.877Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2302,17 +2305,9 @@
       "lastAttemptTs": 1790485268304
     },
     "Cross-Text Connections": {
-      "correct": 10,
-      "total": 20,
+      "correct": 11,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1790005967296,
-          "correct": false
-        },
-        {
-          "ts": 1790091085224,
-          "correct": true
-        },
         {
           "ts": 1790091085233,
           "correct": true
@@ -2352,9 +2347,17 @@
         {
           "ts": 1790485268304,
           "correct": true
+        },
+        {
+          "ts": 1790512868106,
+          "correct": false
+        },
+        {
+          "ts": 1790512869731,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790485268304
+      "lastAttemptTs": 1790512869731
     },
     "Central Ideas and Details": {
       "correct": 36,
@@ -4319,13 +4322,13 @@
       "categoryMs": {}
     },
     "2026-09-27": {
-      "totalMs": 10135359,
+      "totalMs": 10180357,
       "viewMs": {
         "mock": 9368272,
         "leaderboard": 139994,
         "profile": 70042,
         "review": 457065,
-        "practice": 130008
+        "practice": 175006
       },
       "categoryMs": {
         "Vocab": 859273,
@@ -4334,9 +4337,9 @@
         "Transitions": 714989,
         "Notes": 380001,
         "Functions": 699995,
-        "Cross-Text": 309997,
+        "Cross-Text": 324997,
         "Main Idea": 610001,
-        "Quantitative Evidence": 330014,
+        "Quantitative Evidence": 360012,
         "Textual Evidence": 240001,
         "Algebra": 1288744,
         "Advanced Math": 979321,
@@ -5605,7 +5608,17 @@
         "ts": 1790482734891,
         "ms": 9402
       }
+    ],
+    "9d893693": [
+      {
+        "ts": 1790512868107,
+        "ms": 6201
+      },
+      {
+        "ts": 1790512869731,
+        "ms": 964
+      }
     ]
   },
-  "clientUpdatedAt": 1790512708050
+  "clientUpdatedAt": 1790512888048
 }
