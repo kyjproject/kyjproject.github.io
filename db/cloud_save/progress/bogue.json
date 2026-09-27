@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-09T06:20:51.715Z",
+  "exportedAt": "2026-09-19T09:13:42.353Z",
   "progress": {
     "a8c35eaf": "done",
     "26ac2597": "done",
@@ -71,9 +71,10 @@
     "eceefa95": "2020-01-01T00:00:00.000Z",
     "dd415de8": "2020-01-01T00:00:00.000Z"
   },
+  "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "Goonie's 1st apprentice"
+    "name": "bogue"
   },
   "fsrsCards": {},
   "mockHistory": [
@@ -251,7 +252,29 @@
     "f7347d3a": {
       "count": 1,
       "lastTs": 1788934587926
+    },
+    "b89072a5": {
+      "count": 1,
+      "lastTs": 1789803612065
     }
   },
-  "blueprints": []
+  "blueprints": [],
+  "timeStats": {
+    "2026-09-19": {
+      "totalMs": 545684,
+      "viewMs": {
+        "home": 275648,
+        "leaderboard": 110007,
+        "practice": 10027,
+        "browse": 29995,
+        "profile": 5003,
+        "lab": 75000,
+        "test": 35000,
+        "mock": 5004
+      },
+      "categoryMs": {}
+    }
+  },
+  "answerTimeLog": {},
+  "clientUpdatedAt": 1789809211960
 }
