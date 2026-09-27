@@ -2016,5 +2016,413 @@
       }
     },
     "resolved_at": "2026-09-23T05:53:29.597Z"
+  },
+  {
+    "qid": "bf0c8b48",
+    "shortId": "Vocab #10",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "hamin",
+    "reported_at": "2026-09-20T14:12:56.544Z",
+    "question": {
+      "id": "bf0c8b48",
+      "category": "Vocab",
+      "source_pdf": "Vocab.pdf",
+      "assessment": "SAT",
+      "test": "Reading and Writing",
+      "domain": "Craft and Structure",
+      "domain_code": "CAS",
+      "skill": "Words in Context",
+      "skill_code": "WIC",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "stem": "The following text is adapted from George Eliot’s 1871–72 novel Middlemarch.\n\n[Mr. Brooke] had travelled in his younger years, and was held in this part of the country to have contracted a too rambling habit of mind. Mr. Brooke’s conclusions were as difficult to predict as the weather.",
+      "prompt": "As used in the text, what does the word “contracted” most nearly mean?",
+      "choices": {
+        "A": "Restricted",
+        "B": "Described",
+        "C": "Developed",
+        "D": "Settled"
+      },
+      "correct_answer": "C",
+      "rationale_full": "Choice A is incorrect. Although “contracted” can mean limited or restricted in some contexts, here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow limited or restricted. Choice B is incorrect. Although the text describes Mr. Brooke’s habit of mind, nothing suggests that those are his descriptions or, indeed, that he described his habit of mind at all. Choice C is the best answer because as used in the text, “contracted” most nearly means developed. The text explains that Mr. Brooke has a “too rambling habit of mind,” which the text likens to a disease, saying he is thought to have contracted it. To contract a disease means to acquire or develop a disease. In other words, the text indicates that Mr. Brooke is believed to have acquired, or developed, the habit of mind described in the text. Choice D is incorrect because settled means calmed or mitigated, but here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow calmed or mitigated.",
+      "rationale_by_choice": {
+        "A": "Choice A is incorrect. Although “contracted” can mean limited or restricted in some contexts, here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow limited or restricted.",
+        "B": "Choice B is incorrect. Although the text describes Mr. Brooke’s habit of mind, nothing suggests that those are his descriptions or, indeed, that he described his habit of mind at all.",
+        "C": "Choice C is the best answer because as used in the text, “contracted” most nearly means developed. The text explains that Mr. Brooke has a “too rambling habit of mind,” which the text likens to a disease, saying he is thought to have contracted it. To contract a disease means to acquire or develop a disease. In other words, the text indicates that Mr. Brooke is believed to have acquired, or developed, the habit of mind described in the text.",
+        "D": "Choice D is incorrect because settled means calmed or mitigated, but here Mr. Brooke is said to draw unpredictable conclusions, suggesting that he exhibits this “too rambling habit of mind,” not that it has been somehow calmed or mitigated."
+      },
+      "has_image": false,
+      "image_paths": [],
+      "page": 11,
+      "is_mc": true
+    },
+    "resolved_at": "2026-09-27T14:29:57.833Z"
+  },
+  {
+    "qid": "14787dca",
+    "shortId": "Advanced Math #103",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "nknix",
+    "reported_at": "2026-09-21T15:30:33.000Z",
+    "question": {
+      "id": "14787dca",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear equations in one variable and systems of equations in two variables",
+      "skill_code": "NLEQ",
+      "difficulty_label": "Hard",
+      "difficulty": 3,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "C",
+      "has_image": true,
+      "image_paths": [],
+      "page": 108,
+      "stem": "⟦LATEX:x - 29 = (x-a)(x-29)⟧\n\nWhich of the following are solutions to the given equation, where ⟦LATEX:a⟧ is a constant and ⟦LATEX:a>30⟧? \nI. ⟦LATEX:a⟧ \nII. ⟦LATEX:a+1⟧ \nIII. ⟦LATEX:29⟧",
+      "choices": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II, and III"
+      },
+      "rationale_full": "Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice C is correct. Subtracting the expression ⟦LATEX:(x-29)⟧ from both sides of the given equation yields ⟦LATEX:0 = (x-a)(x-29) - (x-29)⟧, which can be rewritten as ⟦LATEX:0 = (x-a)(x-29) + (-1)(x-29)⟧. Since the two terms on the right-hand side of this equation have a common factor of ⟦LATEX:(x-29)⟧, it can be rewritten as ⟦LATEX:0 = (x-29)(x-a+(-1))⟧, or ⟦LATEX:0 = (x-29)(x-a-1)⟧. Since ⟦LATEX:x-a-1⟧ is equivalent to ⟦LATEX:x-(a+1)⟧, the equation ⟦LATEX:0=(x-29)(x-a-1)⟧ can be rewritten as ⟦LATEX:0=(x-29)(x-(a+1))⟧. By the zero product property, it follows that ⟦LATEX:x-29=0⟧ or ⟦LATEX:x-(a+1)=0⟧. Adding ⟦LATEX:29⟧ to both sides of the equation ⟦LATEX:x-29=0⟧ yields ⟦LATEX:x=29⟧. Adding ⟦LATEX:a+1⟧ to both sides of the equation ⟦LATEX:x-(a+1)=0⟧ yields ⟦LATEX:x=a+1⟧. Therefore, the two solutions to the given equation are ⟦LATEX:29⟧ and ⟦LATEX:a+1⟧. Thus, only ⟦LATEX:a+1⟧ and ⟦LATEX:29⟧, not ⟦LATEX:a⟧, are solutions to the given equation. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "C": "Choice C is correct. Subtracting the expression ⟦LATEX:(x-29)⟧ from both sides of the given equation yields ⟦LATEX:0 = (x-a)(x-29) - (x-29)⟧, which can be rewritten as ⟦LATEX:0 = (x-a)(x-29) + (-1)(x-29)⟧. Since the two terms on the right-hand side of this equation have a common factor of ⟦LATEX:(x-29)⟧, it can be rewritten as ⟦LATEX:0 = (x-29)(x-a+(-1))⟧, or ⟦LATEX:0 = (x-29)(x-a-1)⟧. Since ⟦LATEX:x-a-1⟧ is equivalent to ⟦LATEX:x-(a+1)⟧, the equation ⟦LATEX:0=(x-29)(x-a-1)⟧ can be rewritten as ⟦LATEX:0=(x-29)(x-(a+1))⟧. By the zero product property, it follows that ⟦LATEX:x-29=0⟧ or ⟦LATEX:x-(a+1)=0⟧. Adding ⟦LATEX:29⟧ to both sides of the equation ⟦LATEX:x-29=0⟧ yields ⟦LATEX:x=29⟧. Adding ⟦LATEX:a+1⟧ to both sides of the equation ⟦LATEX:x-(a+1)=0⟧ yields ⟦LATEX:x=a+1⟧. Therefore, the two solutions to the given equation are ⟦LATEX:29⟧ and ⟦LATEX:a+1⟧. Thus, only ⟦LATEX:a+1⟧ and ⟦LATEX:29⟧, not ⟦LATEX:a⟧, are solutions to the given equation.",
+        "A": "Choice A is incorrect and may result from conceptual or calculation errors.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-27T14:30:41.238Z"
+  },
+  {
+    "qid": "e7696b61",
+    "shortId": "Advanced Math #220",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "nknix",
+    "reported_at": "2026-09-21T15:30:33.000Z",
+    "question": {
+      "id": "e7696b61",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Nonlinear functions",
+      "skill_code": "NLFUNC",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 236,
+      "stem": "⟦IMG:images/math/advanced_math/e7696b61_fixDiagram.png⟧\n\nFor the quadratic function ⟦LATEX:f⟧, the table shows three values of ⟦LATEX:x⟧ and their corresponding values of ⟦LATEX:f(x)⟧. Which equation defines ⟦LATEX:f⟧?",
+      "choices": {
+        "A": "⟦LATEX:f(x)=3x^2+3x+14⟧",
+        "B": "⟦LATEX:f(x)=5x^2+x+14⟧",
+        "C": "⟦LATEX:f(x)=9x^2-x+14⟧",
+        "D": "⟦LATEX:f(x)=x^2+5x+14⟧"
+      },
+      "rationale_full": "Choice D is correct. The equation of a quadratic function can be written in the form ⟦LATEX:f(x)=a(x-h)^2+k⟧, where ⟦LATEX:a⟧, ⟦LATEX:h⟧, and ⟦LATEX:k⟧ are constants. It’s given in the table that when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:10⟧. Substituting ⟦LATEX:-1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:10⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:10=a(-1-h)^2+k⟧, which is equivalent to ⟦LATEX:10=a(1+2h+h^2)+k⟧, or ⟦LATEX:10=a+2ah+ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=0⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧. Substituting ⟦LATEX:0⟧ for ⟦LATEX:x⟧ and ⟦LATEX:14⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:14=a(0-h)^2+k⟧, or ⟦LATEX:14=ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:20⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:20⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:20=a(1-h)^2+k⟧, which is equivalent to ⟦LATEX:20=a(1-2h+h^2)+k⟧, or ⟦LATEX:20=a-2ah+ah^2+k⟧. Adding ⟦LATEX:10=a+2ah+ah^2+k⟧ to the equation ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:30=2a+2ah^2+2k⟧. Dividing both sides of this equation by ⟦LATEX:2⟧ gives ⟦LATEX:15=a+ah^2+k⟧. Since ⟦LATEX:14=ah^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:ah^2+k⟧ into the equation gives ⟦LATEX:15=a+14⟧. Subtracting ⟦LATEX:14⟧ from both sides of this equation gives ⟦LATEX:a=1⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧ in the equations ⟦LATEX:14=ah^2+k⟧ and ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:14=h^2+k⟧ and ⟦LATEX:20=1-2h+h^2+k⟧, respectively. Since ⟦LATEX:14=h^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:h^2+k⟧ in the equation ⟦LATEX:20=1-2h+h^2+k⟧ gives ⟦LATEX:20=1-2h+14⟧, or ⟦LATEX:20=15-2h⟧. Subtracting ⟦LATEX:15⟧ from both sides of this equation gives ⟦LATEX:5=-2h⟧. Dividing both sides of this equation by ⟦LATEX:-2⟧ gives ⟦LATEX:-\\frac{5}{2}=h⟧. Substituting ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧ into the equation ⟦LATEX:14=h^2+k⟧ gives ⟦LATEX:14=(-\\frac{5}{2})^2+k⟧, or ⟦LATEX:14=\\frac{25}{4}+k⟧. Subtracting ⟦LATEX:\\frac{25}{4}⟧ from both sides of this equation gives ⟦LATEX:\\frac{31}{4}=k⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧, ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧, and ⟦LATEX:\\frac{31}{4}⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:f(x)=(x+\\frac{5}{2})^2+\\frac{31}{4}⟧, which is equivalent to ⟦LATEX:f(x)=x^2+5x+\\frac{25}{4}+\\frac{31}{4}⟧, or ⟦LATEX:f(x)=x^2+5x+14⟧. Therefore, ⟦LATEX:f(x)=x^2+5x+14⟧ defines ⟦LATEX:f⟧. Choice A is incorrect. If ⟦LATEX:f(x)=3x^2+3x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧, not ⟦LATEX:10⟧. Choice B is incorrect. If ⟦LATEX:f(x)=5x^2+x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:18⟧, not ⟦LATEX:10⟧.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. The equation of a quadratic function can be written in the form ⟦LATEX:f(x)=a(x-h)^2+k⟧, where ⟦LATEX:a⟧, ⟦LATEX:h⟧, and ⟦LATEX:k⟧ are constants. It’s given in the table that when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:10⟧. Substituting ⟦LATEX:-1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:10⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:10=a(-1-h)^2+k⟧, which is equivalent to ⟦LATEX:10=a(1+2h+h^2)+k⟧, or ⟦LATEX:10=a+2ah+ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=0⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧. Substituting ⟦LATEX:0⟧ for ⟦LATEX:x⟧ and ⟦LATEX:14⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:14=a(0-h)^2+k⟧, or ⟦LATEX:14=ah^2+k⟧. It’s given in the table that when ⟦LATEX:x=1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:20⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:x⟧ and ⟦LATEX:20⟧ for ⟦LATEX:f(x)⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:20=a(1-h)^2+k⟧, which is equivalent to ⟦LATEX:20=a(1-2h+h^2)+k⟧, or ⟦LATEX:20=a-2ah+ah^2+k⟧. Adding ⟦LATEX:10=a+2ah+ah^2+k⟧ to the equation ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:30=2a+2ah^2+2k⟧. Dividing both sides of this equation by ⟦LATEX:2⟧ gives ⟦LATEX:15=a+ah^2+k⟧. Since ⟦LATEX:14=ah^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:ah^2+k⟧ into the equation gives ⟦LATEX:15=a+14⟧. Subtracting ⟦LATEX:14⟧ from both sides of this equation gives ⟦LATEX:a=1⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧ in the equations ⟦LATEX:14=ah^2+k⟧ and ⟦LATEX:20=a-2ah+ah^2+k⟧ gives ⟦LATEX:14=h^2+k⟧ and ⟦LATEX:20=1-2h+h^2+k⟧, respectively. Since ⟦LATEX:14=h^2+k⟧, substituting ⟦LATEX:14⟧ for ⟦LATEX:h^2+k⟧ in the equation ⟦LATEX:20=1-2h+h^2+k⟧ gives ⟦LATEX:20=1-2h+14⟧, or ⟦LATEX:20=15-2h⟧. Subtracting ⟦LATEX:15⟧ from both sides of this equation gives ⟦LATEX:5=-2h⟧. Dividing both sides of this equation by ⟦LATEX:-2⟧ gives ⟦LATEX:-\\frac{5}{2}=h⟧. Substituting ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧ into the equation ⟦LATEX:14=h^2+k⟧ gives ⟦LATEX:14=(-\\frac{5}{2})^2+k⟧, or ⟦LATEX:14=\\frac{25}{4}+k⟧. Subtracting ⟦LATEX:\\frac{25}{4}⟧ from both sides of this equation gives ⟦LATEX:\\frac{31}{4}=k⟧. Substituting ⟦LATEX:1⟧ for ⟦LATEX:a⟧, ⟦LATEX:-\\frac{5}{2}⟧ for ⟦LATEX:h⟧, and ⟦LATEX:\\frac{31}{4}⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:f(x)=a(x-h)^2+k⟧ gives ⟦LATEX:f(x)=(x+\\frac{5}{2})^2+\\frac{31}{4}⟧, which is equivalent to ⟦LATEX:f(x)=x^2+5x+\\frac{25}{4}+\\frac{31}{4}⟧, or ⟦LATEX:f(x)=x^2+5x+14⟧. Therefore, ⟦LATEX:f(x)=x^2+5x+14⟧ defines ⟦LATEX:f⟧.",
+        "A": "Choice A is incorrect. If ⟦LATEX:f(x)=3x^2+3x+14⟧, then when ⟦LATEX:x=-1⟧, the corresponding value of ⟦LATEX:f(x)⟧ is ⟦LATEX:14⟧, not ⟦LATEX:10⟧."
+      }
+    },
+    "resolved_at": "2026-09-27T14:30:46.538Z"
+  },
+  {
+    "qid": "88041348",
+    "shortId": "Geometry and Trigonometry #138",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.090Z",
+    "question": {
+      "id": "88041348",
+      "category": "Geometry and Trigonometry",
+      "source_pdf": "Geometry and Trigonometry.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Geometry and Trigonometry",
+      "domain_code": "GEOT",
+      "skill": "Circles",
+      "skill_code": "CIRC",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "D",
+      "has_image": true,
+      "image_paths": [],
+      "page": 149,
+      "stem": "A circle in the xy-plane has its center at ⟦LATEX:(-4,5)⟧ and the point ⟦LATEX:(-8,8)⟧ lies on the circle. Which equation represents this circle?",
+      "choices": {
+        "A": "⟦LATEX:(x-4)^2+(y+5)^2=5⟧",
+        "B": "⟦LATEX:(x+4)^2+(y-5)^2=5⟧",
+        "C": "⟦LATEX:(x-4)^2+(y+5)^2=25⟧",
+        "D": "⟦LATEX:(x+4)^2+(y-5)^2=25⟧"
+      },
+      "rationale_full": "Choice D is correct. A circle in the xy-plane can be represented by an equation of the form ⟦LATEX:(x-h)^2+(y-k)^2=r^2⟧, where ⟦LATEX:(h,k)⟧ is the center of the circle and ⟦LATEX:r⟧ is the length of a radius of the circle. It's given that the circle has its center at ⟦LATEX:(-4,5)⟧. Therefore, ⟦LATEX:h=-4⟧ and ⟦LATEX:k=5⟧. Substituting ⟦LATEX:-4⟧ for ⟦LATEX:h⟧ and ⟦LATEX:5⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:(x-h)^2+(y-k)^2=r^2⟧ yields ⟦LATEX:(x-(-4))^2+(y-5)^2=r^2⟧, or ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧. It's also given that the point ⟦LATEX:(-8,8)⟧ lies on the circle. Substituting ⟦LATEX:-8⟧ for ⟦LATEX:x⟧ and ⟦LATEX:8⟧ for ⟦LATEX:y⟧ in the equation ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧ yields ⟦LATEX:(-8+4)^2+(8-5)^2=r^2⟧, or ⟦LATEX:(-4)^2+(3)^2=r^2⟧, which is equivalent to ⟦LATEX:16+9=r^2⟧, or ⟦LATEX:25=r^2⟧. Substituting ⟦LATEX:25⟧ for ⟦LATEX:r^2⟧ in the equation ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧ yields ⟦LATEX:(x+4)^2+(y-5)^2=25⟧. Thus, the equation ⟦LATEX:(x+4)^2+(y-5)^2=25⟧ represents the circle. Choice A is incorrect. The circle represented by this equation has its center at ⟦LATEX:(4,-5)⟧, not ⟦LATEX:(-4,5)⟧, and the point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle. Choice B is incorrect. The point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle represented by this equation. Choice C is incorrect. The circle represented by this equation has its center at ⟦LATEX:(4,-5)⟧, not ⟦LATEX:(-4,5)⟧, and the point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle.",
+      "rationale_by_choice": {
+        "D": "Choice D is correct. A circle in the xy-plane can be represented by an equation of the form ⟦LATEX:(x-h)^2+(y-k)^2=r^2⟧, where ⟦LATEX:(h,k)⟧ is the center of the circle and ⟦LATEX:r⟧ is the length of a radius of the circle. It's given that the circle has its center at ⟦LATEX:(-4,5)⟧. Therefore, ⟦LATEX:h=-4⟧ and ⟦LATEX:k=5⟧. Substituting ⟦LATEX:-4⟧ for ⟦LATEX:h⟧ and ⟦LATEX:5⟧ for ⟦LATEX:k⟧ in the equation ⟦LATEX:(x-h)^2+(y-k)^2=r^2⟧ yields ⟦LATEX:(x-(-4))^2+(y-5)^2=r^2⟧, or ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧. It's also given that the point ⟦LATEX:(-8,8)⟧ lies on the circle. Substituting ⟦LATEX:-8⟧ for ⟦LATEX:x⟧ and ⟦LATEX:8⟧ for ⟦LATEX:y⟧ in the equation ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧ yields ⟦LATEX:(-8+4)^2+(8-5)^2=r^2⟧, or ⟦LATEX:(-4)^2+(3)^2=r^2⟧, which is equivalent to ⟦LATEX:16+9=r^2⟧, or ⟦LATEX:25=r^2⟧. Substituting ⟦LATEX:25⟧ for ⟦LATEX:r^2⟧ in the equation ⟦LATEX:(x+4)^2+(y-5)^2=r^2⟧ yields ⟦LATEX:(x+4)^2+(y-5)^2=25⟧. Thus, the equation ⟦LATEX:(x+4)^2+(y-5)^2=25⟧ represents the circle.",
+        "A": "Choice A is incorrect. The circle represented by this equation has its center at ⟦LATEX:(4,-5)⟧, not ⟦LATEX:(-4,5)⟧, and the point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle.",
+        "B": "Choice B is incorrect. The point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle represented by this equation.",
+        "C": "Choice C is incorrect. The circle represented by this equation has its center at ⟦LATEX:(4,-5)⟧, not ⟦LATEX:(-4,5)⟧, and the point ⟦LATEX:(-8,8)⟧ doesn't lie on the circle."
+      }
+    },
+    "resolved_at": "2026-09-27T14:32:34.431Z"
+  },
+  {
+    "qid": "aeef182c",
+    "shortId": "Advanced Math #252",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.090Z",
+    "question": {
+      "id": "aeef182c",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Equivalent expressions",
+      "skill_code": "EQUIV",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "C",
+      "has_image": true,
+      "image_paths": [],
+      "page": 274,
+      "stem": "⟦LATEX:f(x) = x^2 + bx⟧\n⟦LATEX:g(x) = 9x^2 - 27x⟧\n\nFunctions ⟦LATEX:f⟧ and ⟦LATEX:g⟧ are given, and in function ⟦LATEX:f⟧, ⟦LATEX:b⟧ is a constant. If ⟦LATEX:f(x) \\cdot g(x) = 9x^4 - 26x^3 - 3x^2⟧, what is the value of ⟦LATEX:b⟧?",
+      "choices": {
+        "A": "⟦LATEX:-26⟧",
+        "B": "⟦LATEX:-\\frac{26}{9}⟧",
+        "C": "⟦LATEX:\\frac{1}{9}⟧",
+        "D": "⟦LATEX:9⟧"
+      },
+      "rationale_full": "Choice C is correct. Multiplying the given functions ⟦LATEX:f⟧ and ⟦LATEX:g⟧ yields ⟦LATEX:f(x) \\cdot g(x) = (x^2 + bx)(9x^2 - 27x)⟧. Applying the distributive property to the right-hand side of this equation yields ⟦LATEX:f(x) \\cdot g(x) = (x^2)(9x^2 - 27x) + (bx)(9x^2 - 27x)⟧. Applying the distributive property once again to the right-hand side of this equation yields ⟦LATEX:f(x) \\cdot g(x) = (x^2)(9x^2) - (x^2)(27x) + (bx)(9x^2) - (bx)(27x)⟧, which is equivalent to ⟦LATEX:f(x) \\cdot g(x) = 9x^4 - 27x^3 + 9bx^3 - 27bx^2⟧. Factoring out ⟦LATEX:x^3⟧ from the second and third terms yields ⟦LATEX:f(x) \\cdot g(x) = 9x^4 + (-27 + 9b)x^3 - 27bx^2⟧. Since the left-hand sides of ⟦LATEX:f(x) \\cdot g(x) = 9x^4 + (-27 + 9b)x^3 - 27bx^2⟧ and ⟦LATEX:f(x) \\cdot g(x) = 9x^4 - 26x^3 - 3x^2⟧ are equal, it follows that ⟦LATEX:(-27 + 9b)x^3 = -26x^3⟧, or ⟦LATEX:-27 + 9b = -26⟧, and ⟦LATEX:-27bx^2 = -3x^2⟧, or ⟦LATEX:-27b = -3⟧. Adding ⟦LATEX:27⟧ to each side of ⟦LATEX:-27 + 9b = -26⟧ yields ⟦LATEX:9b = 1⟧. Dividing each side of this equation by ⟦LATEX:9⟧ yields ⟦LATEX:b = \\frac{1}{9}⟧. Similarly, dividing each side of ⟦LATEX:-27b = -3⟧ by ⟦LATEX:-27⟧ yields ⟦LATEX:b = \\frac{1}{9}⟧. Therefore, the value of ⟦LATEX:b⟧ is ⟦LATEX:\\frac{1}{9}⟧. Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "C": "Choice C is correct. Multiplying the given functions ⟦LATEX:f⟧ and ⟦LATEX:g⟧ yields ⟦LATEX:f(x) \\cdot g(x) = (x^2 + bx)(9x^2 - 27x)⟧. Applying the distributive property to the right-hand side of this equation yields ⟦LATEX:f(x) \\cdot g(x) = (x^2)(9x^2 - 27x) + (bx)(9x^2 - 27x)⟧. Applying the distributive property once again to the right-hand side of this equation yields ⟦LATEX:f(x) \\cdot g(x) = (x^2)(9x^2) - (x^2)(27x) + (bx)(9x^2) - (bx)(27x)⟧, which is equivalent to ⟦LATEX:f(x) \\cdot g(x) = 9x^4 - 27x^3 + 9bx^3 - 27bx^2⟧. Factoring out ⟦LATEX:x^3⟧ from the second and third terms yields ⟦LATEX:f(x) \\cdot g(x) = 9x^4 + (-27 + 9b)x^3 - 27bx^2⟧. Since the left-hand sides of ⟦LATEX:f(x) \\cdot g(x) = 9x^4 + (-27 + 9b)x^3 - 27bx^2⟧ and ⟦LATEX:f(x) \\cdot g(x) = 9x^4 - 26x^3 - 3x^2⟧ are equal, it follows that ⟦LATEX:(-27 + 9b)x^3 = -26x^3⟧, or ⟦LATEX:-27 + 9b = -26⟧, and ⟦LATEX:-27bx^2 = -3x^2⟧, or ⟦LATEX:-27b = -3⟧. Adding ⟦LATEX:27⟧ to each side of ⟦LATEX:-27 + 9b = -26⟧ yields ⟦LATEX:9b = 1⟧. Dividing each side of this equation by ⟦LATEX:9⟧ yields ⟦LATEX:b = \\frac{1}{9}⟧. Similarly, dividing each side of ⟦LATEX:-27b = -3⟧ by ⟦LATEX:-27⟧ yields ⟦LATEX:b = \\frac{1}{9}⟧. Therefore, the value of ⟦LATEX:b⟧ is ⟦LATEX:\\frac{1}{9}⟧.",
+        "A": "Choice A is incorrect and may result from conceptual or calculation errors.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-27T14:32:46.757Z"
+  },
+  {
+    "qid": "ce53810c",
+    "shortId": "Advanced Math #239",
+    "reason": "Broken image or table",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.090Z",
+    "question": {
+      "id": "ce53810c",
+      "category": "Advanced Math",
+      "source_pdf": "Advanced Math.pdf",
+      "assessment": "SAT",
+      "test": "Math",
+      "domain": "Advanced Math",
+      "domain_code": "ADVM",
+      "skill": "Equivalent expressions",
+      "skill_code": "EQUIV",
+      "difficulty_label": "Medium",
+      "difficulty": 2,
+      "tags": [],
+      "prompt": "",
+      "is_mc": true,
+      "correct_answer": "A",
+      "has_image": true,
+      "image_paths": [],
+      "page": 261,
+      "stem": "Which expression is equivalent to ⟦LATEX:\\frac{h^{15}q^7}{h^5q^{21}}⟧, where ⟦LATEX:h > 0⟧ and ⟦LATEX:q > 0⟧?",
+      "choices": {
+        "A": "⟦LATEX:\\frac{h^{10}}{q^{14}}⟧",
+        "B": "⟦LATEX:\\frac{h^3}{q^3}⟧",
+        "C": "⟦LATEX:h^{10}q^{14}⟧",
+        "D": "⟦LATEX:h^3q^3⟧"
+      },
+      "rationale_full": "Choice A is correct. For positive values of ⟦LATEX:a⟧, ⟦LATEX:\\frac{a^m}{a^n} = a^{(m-n)}⟧, where ⟦LATEX:m⟧ and ⟦LATEX:n⟧ are integers. Since it's given that ⟦LATEX:h > 0⟧ and ⟦LATEX:q > 0⟧, this property can be applied to rewrite the given expression as ⟦LATEX:(h^{(15-5)})(q^{(7-21)})⟧, which is equivalent to ⟦LATEX:h^{10}q^{-14}⟧. For positive values of ⟦LATEX:a⟧, ⟦LATEX:a^{-n} = \\frac{1}{a^n}⟧. This property can be applied to rewrite the expression ⟦LATEX:h^{10}q^{-14}⟧ as ⟦LATEX:(h^{10})\\left(\\frac{1}{q^{14}}\\right)⟧, which is equivalent to ⟦LATEX:\\frac{h^{10}}{q^{14}}⟧. Choice B is incorrect and may result from conceptual or calculation errors. Choice C is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors.",
+      "rationale_by_choice": {
+        "A": "Choice A is correct. For positive values of ⟦LATEX:a⟧, ⟦LATEX:\\frac{a^m}{a^n} = a^{(m-n)}⟧, where ⟦LATEX:m⟧ and ⟦LATEX:n⟧ are integers. Since it's given that ⟦LATEX:h > 0⟧ and ⟦LATEX:q > 0⟧, this property can be applied to rewrite the given expression as ⟦LATEX:(h^{(15-5)})(q^{(7-21)})⟧, which is equivalent to ⟦LATEX:h^{10}q^{-14}⟧. For positive values of ⟦LATEX:a⟧, ⟦LATEX:a^{-n} = \\frac{1}{a^n}⟧. This property can be applied to rewrite the expression ⟦LATEX:h^{10}q^{-14}⟧ as ⟦LATEX:(h^{10})\\left(\\frac{1}{q^{14}}\\right)⟧, which is equivalent to ⟦LATEX:\\frac{h^{10}}{q^{14}}⟧.",
+        "B": "Choice B is incorrect and may result from conceptual or calculation errors.",
+        "C": "Choice C is incorrect and may result from conceptual or calculation errors.",
+        "D": "Choice D is incorrect and may result from conceptual or calculation errors."
+      }
+    },
+    "resolved_at": "2026-09-27T14:33:18.032Z"
+  },
+  {
+    "qid": "89f5185f",
+    "shortId": "Algebra #91",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-19T07:43:13.525Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "1bb4e088",
+    "shortId": "Advanced Math #306",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-19T07:43:13.525Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "8fed560d",
+    "shortId": "Problem-Solving and Data Analysis #28",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-21T07:09:42.758Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "ef160f02",
+    "shortId": "Algebra #219",
+    "reason": "Broken image or table",
+    "note": "There is nothing only the wordings",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-21T12:01:18.569Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "5f970630",
+    "shortId": "Algebra #230",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "kyjv9981",
+    "reported_at": "2026-09-22T10:31:54.881Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "f2af8e90",
+    "shortId": "Problem-Solving and Data Analysis #241",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "kyjv9981",
+    "reported_at": "2026-09-22T10:34:56.774Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "36f0ebb0",
+    "shortId": "Advanced Math #183",
+    "reason": "Weird formatting",
+    "note": "I may be tweaking but it is weird",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-22T19:17:28.744Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "e5175dad",
+    "shortId": "Problem-Solving and Data Analysis #56",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "hamin",
+    "reported_at": "2026-09-23T08:32:10.680Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "be844d92",
+    "shortId": "Algebra #39",
+    "reason": "Wrong answer or rationale",
+    "note": "Right ans but wrong + exp says so",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-23T10:14:36.759Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "2b384315",
+    "shortId": "Algebra #429",
+    "reason": "Broken image or table",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.089Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "06ee10bb",
+    "shortId": "Advanced Math #243",
+    "reason": "Broken image or table",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.090Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "de6d51e1",
+    "shortId": "Geometry and Trigonometry #104",
+    "reason": "Broken image or table",
+    "note": "",
+    "reported_by": "SML1019",
+    "reported_at": "2026-09-23T11:16:06.090Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "c05a6f72",
+    "shortId": "Algebra #216",
+    "reason": "Other",
+    "note": "Answer is given in the graph",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-24T02:41:47.075Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "607bf204",
+    "shortId": "Algebra #223",
+    "reason": "Other",
+    "note": "Answer is given in the graph",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-24T02:41:47.076Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "5f970630",
+    "shortId": "Algebra #230",
+    "reason": "Weird formatting",
+    "note": "Answer is given",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-24T02:41:47.076Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "b272276f",
+    "shortId": "Algebra #241",
+    "reason": "Weird formatting",
+    "note": "",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-24T02:44:45.714Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
+  },
+  {
+    "qid": "e914e737",
+    "shortId": "Algebra #296",
+    "reason": "Weird formatting",
+    "note": "There are no option",
+    "reported_by": "Davidheo1000",
+    "reported_at": "2026-09-24T02:57:32.320Z",
+    "resolved_at": "2026-09-27T14:42:08.000Z"
   }
 ]
