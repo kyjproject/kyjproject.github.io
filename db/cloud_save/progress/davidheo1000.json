@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-27T07:18:56.476Z",
+  "exportedAt": "2026-09-28T07:23:52.200Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1186,7 +1186,8 @@
     "150f4a6c": "done",
     "2e29c990": "done",
     "136de2ff": "done",
-    "410c3c0e": "done"
+    "410c3c0e": "done",
+    "d184e28c": "done"
   },
   "tags": {},
   "notes": {
@@ -2391,7 +2392,8 @@
     "150f4a6c": "2026-09-25T04:46:20.597Z",
     "2e29c990": "2026-09-25T04:46:28.567Z",
     "136de2ff": "2026-09-25T04:46:38.619Z",
-    "410c3c0e": "2026-09-25T04:46:47.550Z"
+    "410c3c0e": "2026-09-25T04:46:47.550Z",
+    "d184e28c": "2026-09-28T07:23:07.341Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3377,13 +3379,9 @@
       "lastAttemptTs": 1790312152896
     },
     "Linear equations in two variables": {
-      "correct": 98,
-      "total": 166,
+      "correct": 99,
+      "total": 167,
       "recent": [
-        {
-          "ts": 1790234462756,
-          "correct": false
-        },
         {
           "ts": 1790234463806,
           "correct": false
@@ -3427,26 +3425,18 @@
         {
           "ts": 1790311484984,
           "correct": true
+        },
+        {
+          "ts": 1790580127607,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790311484984
+      "lastAttemptTs": 1790580127607
     },
     "Systems of two linear equations in two variables": {
-      "correct": 88,
-      "total": 145,
+      "correct": 89,
+      "total": 148,
       "recent": [
-        {
-          "ts": 1790218934415,
-          "correct": true
-        },
-        {
-          "ts": 1790218938965,
-          "correct": true
-        },
-        {
-          "ts": 1790234109941,
-          "correct": true
-        },
         {
           "ts": 1790234137332,
           "correct": false
@@ -3482,9 +3472,21 @@
         {
           "ts": 1790234446807,
           "correct": true
+        },
+        {
+          "ts": 1790580135390,
+          "correct": false
+        },
+        {
+          "ts": 1790580136557,
+          "correct": false
+        },
+        {
+          "ts": 1790580138207,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790234446807
+      "lastAttemptTs": 1790580138207
     },
     "Linear functions": {
       "correct": 116,
@@ -3652,25 +3654,9 @@
       "lastAttemptTs": 1790311451702
     },
     "Percentages": {
-      "correct": 13,
-      "total": 27,
+      "correct": 14,
+      "total": 31,
       "recent": [
-        {
-          "ts": 1789817582148,
-          "correct": true
-        },
-        {
-          "ts": 1790140105975,
-          "correct": false
-        },
-        {
-          "ts": 1790140110559,
-          "correct": false
-        },
-        {
-          "ts": 1790140111409,
-          "correct": false
-        },
         {
           "ts": 1790140112192,
           "correct": true
@@ -3702,9 +3688,25 @@
         {
           "ts": 1790228421966,
           "correct": true
+        },
+        {
+          "ts": 1790580174041,
+          "correct": false
+        },
+        {
+          "ts": 1790580174907,
+          "correct": false
+        },
+        {
+          "ts": 1790580177024,
+          "correct": false
+        },
+        {
+          "ts": 1790580177857,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790228421966
+      "lastAttemptTs": 1790580177857
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 10,
@@ -4606,19 +4608,33 @@
       "categoryMs": {}
     },
     "2026-09-27": {
-      "totalMs": 306025,
+      "totalMs": 322043,
       "viewMs": {
         "review": 4972,
         "lab": 5000,
         "practice": 5004,
         "math": 35863,
         "mock": 190133,
-        "leaderboard": 65053
+        "leaderboard": 81071
       },
       "categoryMs": {
         "Algebra": 100075,
         "Problem-Solving and Data Analysis": 55044,
         "Geometry and Trigonometry": 10007
+      }
+    },
+    "2026-09-28": {
+      "totalMs": 178317,
+      "viewMs": {
+        "profile": 8193,
+        "lab": 25016,
+        "leaderboard": 10002,
+        "practice": 135106
+      },
+      "categoryMs": {
+        "Algebra": 40031,
+        "Advanced Math": 5003,
+        "Problem-Solving and Data Analysis": 80064
       }
     }
   },
@@ -5387,16 +5403,24 @@
     ],
     "0b28166c": [
       {
-        "ts": 1789797363580,
-        "ms": 8747
-      },
-      {
         "ts": 1789797366050,
         "ms": 1769
       },
       {
         "ts": 1790158304731,
         "ms": 12429
+      },
+      {
+        "ts": 1790580135390,
+        "ms": 6133
+      },
+      {
+        "ts": 1790580136557,
+        "ms": 468
+      },
+      {
+        "ts": 1790580138207,
+        "ms": 518
       }
     ],
     "85cf3e80": [
@@ -9645,6 +9669,10 @@
       {
         "ts": 1790156676732,
         "ms": 12829
+      },
+      {
+        "ts": 1790580127608,
+        "ms": 18714
       }
     ],
     "1cc52a1f": [
@@ -12100,7 +12128,25 @@
         "ts": 1790311606684,
         "ms": 6301
       }
+    ],
+    "d184e28c": [
+      {
+        "ts": 1790580174041,
+        "ms": 22334
+      },
+      {
+        "ts": 1790580174907,
+        "ms": 401
+      },
+      {
+        "ts": 1790580177024,
+        "ms": 1568
+      },
+      {
+        "ts": 1790580177857,
+        "ms": 367
+      }
     ]
   },
-  "clientUpdatedAt": 1790493532657
+  "clientUpdatedAt": 1790580229656
 }
