@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T08:59:39.875Z",
+  "exportedAt": "2026-09-28T09:02:40.321Z",
   "progress": {
     "68298043": "review",
     "8b52201d": "done",
@@ -42,7 +42,9 @@
     "2d1e5eff": "done",
     "d9799723": "done",
     "68fb4847": "done",
-    "005e9982": "done"
+    "005e9982": "done",
+    "65244c8d": "done",
+    "5822c232": "done"
   },
   "tags": {},
   "notes": {},
@@ -87,7 +89,9 @@
     "2d1e5eff": "2026-09-24T10:12:37.497Z",
     "005e9982": "2026-09-24T10:12:43.460Z",
     "d9799723": "2026-09-24T10:13:08.094Z",
-    "68fb4847": "2026-09-24T10:13:11.978Z"
+    "68fb4847": "2026-09-24T10:13:11.978Z",
+    "65244c8d": "2026-09-28T08:59:57.055Z",
+    "5822c232": "2026-09-28T09:00:52.478Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -310,19 +314,23 @@
       "lastAttemptTs": 1789729052658
     },
     "Equivalent expressions": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1790244544772,
           "correct": true
+        },
+        {
+          "ts": 1790586054065,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790244544772
+      "lastAttemptTs": 1790586054065
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1790244562658,
@@ -335,9 +343,13 @@
         {
           "ts": 1790585949359,
           "correct": true
+        },
+        {
+          "ts": 1790585993935,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790585949359
+      "lastAttemptTs": 1790585993935
     },
     "Nonlinear functions": {
       "correct": 1,
@@ -465,9 +477,9 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 617599,
+      "totalMs": 752908,
       "viewMs": {
-        "math": 617599
+        "math": 752908
       },
       "categoryMs": {}
     }
@@ -768,7 +780,19 @@
         "ts": 1790585522296,
         "ms": 3484
       }
+    ],
+    "65244c8d": [
+      {
+        "ts": 1790585993935,
+        "ms": 941343
+      }
+    ],
+    "5822c232": [
+      {
+        "ts": 1790586054065,
+        "ms": 999188
+      }
     ]
   },
-  "clientUpdatedAt": 1790585975120
+  "clientUpdatedAt": 1790586155901
 }
