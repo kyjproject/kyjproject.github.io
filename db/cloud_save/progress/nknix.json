@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T12:35:50.472Z",
+  "exportedAt": "2026-09-28T12:41:50.513Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -545,7 +545,8 @@
     "dd56f034": "review",
     "5c37d685": "review",
     "c087f68d": "review",
-    "0106a3a1": "review"
+    "0106a3a1": "done",
+    "2321f18a": "done"
   },
   "tags": {},
   "notes": {},
@@ -1109,7 +1110,9 @@
     "0a6b66b3": "2026-09-28T11:21:42.271Z",
     "318da9d3": "2026-09-28T11:21:57.947Z",
     "3167db00": "2026-09-28T11:55:42.887Z",
-    "d902a695": "2026-09-28T11:56:07.658Z"
+    "d902a695": "2026-09-28T11:56:07.658Z",
+    "2321f18a": "2026-09-28T12:36:17.881Z",
+    "0106a3a1": "2026-09-28T12:36:32.649Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2934,13 +2937,9 @@
       "lastAttemptTs": 1790514721880
     },
     "Nonlinear functions": {
-      "correct": 41,
-      "total": 49,
+      "correct": 42,
+      "total": 50,
       "recent": [
-        {
-          "ts": 1790425080799,
-          "correct": true
-        },
         {
           "ts": 1790425887748,
           "correct": false
@@ -2984,9 +2983,13 @@
         {
           "ts": 1790514721879,
           "correct": true
+        },
+        {
+          "ts": 1790598984629,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790514721879
+      "lastAttemptTs": 1790598984629
     },
     "Equivalent expressions": {
       "correct": 19,
@@ -3193,13 +3196,9 @@
       "lastAttemptTs": 1790514721879
     },
     "Linear functions": {
-      "correct": 17,
-      "total": 22,
+      "correct": 18,
+      "total": 23,
       "recent": [
-        {
-          "ts": 1790257539702,
-          "correct": true
-        },
         {
           "ts": 1790262534080,
           "correct": true
@@ -3243,9 +3242,13 @@
         {
           "ts": 1790514721879,
           "correct": false
+        },
+        {
+          "ts": 1790598977095,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790514721879
+      "lastAttemptTs": 1790598977095
     },
     "Right triangles and trigonometry": {
       "correct": 8,
@@ -3463,13 +3466,9 @@
       "lastAttemptTs": 1790514721879
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 12,
-      "total": 16,
+      "correct": 13,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1790005967301,
-          "correct": false
-        },
         {
           "ts": 1790091085238,
           "correct": true
@@ -3513,9 +3512,13 @@
         {
           "ts": 1790514870495,
           "correct": true
+        },
+        {
+          "ts": 1790598991917,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790514870495
+      "lastAttemptTs": 1790598991917
     },
     "Area and volume": {
       "correct": 8,
@@ -4466,13 +4469,14 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 5987861,
+      "totalMs": 6200745,
       "viewMs": {
-        "mock": 5224649,
+        "mock": 5407530,
         "leaderboard": 338129,
-        "review": 35006,
+        "review": 54991,
         "practice": 180007,
-        "profile": 210070
+        "profile": 215073,
+        "test": 5015
       },
       "categoryMs": {
         "Vocab": 345007,
@@ -4485,10 +4489,10 @@
         "Main Idea": 510004,
         "Quantitative Evidence": 510011,
         "Textual Evidence": 254994,
-        "Algebra": 527812,
-        "Advanced Math": 274993,
-        "Problem-Solving and Data Analysis": 195001,
-        "Geometry and Trigonometry": 166932
+        "Algebra": 602798,
+        "Advanced Math": 279991,
+        "Problem-Solving and Data Analysis": 200006,
+        "Geometry and Trigonometry": 171934
       }
     }
   },
@@ -5902,7 +5906,25 @@
         "ts": 1790596604562,
         "ms": 8726
       }
+    ],
+    "2321f18a": [
+      {
+        "ts": 1790598977095,
+        "ms": 2691
+      }
+    ],
+    "005e9982": [
+      {
+        "ts": 1790598984629,
+        "ms": 3165
+      }
+    ],
+    "0106a3a1": [
+      {
+        "ts": 1790598991917,
+        "ms": 2838
+      }
     ]
   },
-  "clientUpdatedAt": 1790598946477
+  "clientUpdatedAt": 1790599306487
 }
