@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T08:19:18.291Z",
+  "exportedAt": "2026-09-28T08:24:49.791Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1258,7 +1258,8 @@
     "fdd71b2a": "done",
     "30268a5b": "done",
     "3218eacf": "done",
-    "d9029f13": "done"
+    "d9029f13": "done",
+    "11059bb6": "done"
   },
   "tags": {},
   "notes": {
@@ -2535,7 +2536,8 @@
     "fdd71b2a": "2026-09-28T07:58:06.037Z",
     "30268a5b": "2026-09-28T07:58:15.770Z",
     "3218eacf": "2026-09-28T07:58:27.353Z",
-    "d9029f13": "2026-09-28T07:58:34.770Z"
+    "d9029f13": "2026-09-28T07:58:34.770Z",
+    "11059bb6": "2026-09-28T08:20:38.687Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3796,13 +3798,9 @@
       "lastAttemptTs": 1790582313721
     },
     "Percentages": {
-      "correct": 14,
-      "total": 31,
+      "correct": 15,
+      "total": 32,
       "recent": [
-        {
-          "ts": 1790140112192,
-          "correct": true
-        },
         {
           "ts": 1790155322466,
           "correct": false
@@ -3846,9 +3844,13 @@
         {
           "ts": 1790580177857,
           "correct": true
+        },
+        {
+          "ts": 1790583628305,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790580177857
+      "lastAttemptTs": 1790583628305
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 10,
@@ -4307,18 +4309,6 @@
       "count": 2,
       "lastTs": 1789978244479
     },
-    "0e1dbc1d": {
-      "count": 1,
-      "lastTs": 1790158105048
-    },
-    "68e48b4c": {
-      "count": 1,
-      "lastTs": 1790158133478
-    },
-    "652119ce": {
-      "count": 1,
-      "lastTs": 1790158354498
-    },
     "b2d50dc7": {
       "count": 1,
       "lastTs": 1790158660416
@@ -4458,6 +4448,30 @@
     "c066203a": {
       "count": 1,
       "lastTs": 1790581409155
+    },
+    "c10968c1": {
+      "count": 2,
+      "lastTs": 1790583665596
+    },
+    "11059bb6": {
+      "count": 1,
+      "lastTs": 1790583613973
+    },
+    "ea2c91c1": {
+      "count": 1,
+      "lastTs": 1790583641338
+    },
+    "0e1dbc1d": {
+      "count": 1,
+      "lastTs": 1790158105048
+    },
+    "68e48b4c": {
+      "count": 1,
+      "lastTs": 1790158133478
+    },
+    "652119ce": {
+      "count": 1,
+      "lastTs": 1790158354498
     },
     "c73c84cc": {
       "count": 1,
@@ -4790,13 +4804,13 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 1834303,
+      "totalMs": 2136392,
       "viewMs": {
         "profile": 16609,
         "lab": 195149,
-        "leaderboard": 110062,
+        "leaderboard": 115067,
         "practice": 346862,
-        "math": 1130593,
+        "math": 1427677,
         "analysis": 20016,
         "review": 5004,
         "notes": 10008
@@ -11894,6 +11908,10 @@
       {
         "ts": 1790228421966,
         "ms": 11798
+      },
+      {
+        "ts": 1790583628305,
+        "ms": 14331
       }
     ],
     "0f1d42fd": [
@@ -12829,5 +12847,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790583553660
+  "clientUpdatedAt": 1790583885182
 }
