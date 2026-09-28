@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T00:39:01.483Z",
+  "exportedAt": "2026-09-28T00:42:01.188Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -429,8 +429,8 @@
       "lastAttemptTs": 1790254891529
     },
     "Words in Context": {
-      "correct": 10,
-      "total": 11,
+      "correct": 12,
+      "total": 13,
       "recent": [
         {
           "ts": 1788934144947,
@@ -459,9 +459,17 @@
         {
           "ts": 1790257282772,
           "correct": true
+        },
+        {
+          "ts": 1790556054512,
+          "correct": true
+        },
+        {
+          "ts": 1790556101462,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790257282772
+      "lastAttemptTs": 1790556101462
     },
     "Central Ideas and Details": {
       "correct": 8,
@@ -868,13 +876,14 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 119759,
+      "totalMs": 214259,
       "viewMs": {
         "mock": 5002,
-        "practice": 114757
+        "practice": 209257
       },
       "categoryMs": {
-        "Vocab": 59753
+        "Vocab": 139251,
+        "Functions": 15002
       }
     }
   },
@@ -912,7 +921,19 @@
         "ts": 1790325509337,
         "ms": 743
       }
+    ],
+    "267f8986": [
+      {
+        "ts": 1790556054513,
+        "ms": 234895
+      }
+    ],
+    "26ac2597": [
+      {
+        "ts": 1790556101462,
+        "ms": 45106
+      }
     ]
   },
-  "clientUpdatedAt": 1790555938498
+  "clientUpdatedAt": 1790556118499
 }
