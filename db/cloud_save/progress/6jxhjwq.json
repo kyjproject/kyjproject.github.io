@@ -1,8 +1,9 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T08:56:39.565Z",
+  "exportedAt": "2026-09-28T08:59:39.875Z",
   "progress": {
+    "68298043": "review",
     "8b52201d": "done",
     "271ef622": "done",
     "f7347d3a": "done",
@@ -47,6 +48,7 @@
   "notes": {},
   "mathOverrides": {},
   "completionLog": {
+    "68298043": "2026-09-28T08:59:13.508Z",
     "8b52201d": "2026-09-18T02:52:05.070Z",
     "271ef622": "2026-09-18T07:35:55.353Z",
     "f7347d3a": "2026-09-18T07:40:43.382Z",
@@ -319,8 +321,8 @@
       "lastAttemptTs": 1790244544772
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1790244562658,
@@ -329,9 +331,13 @@
         {
           "ts": 1790244748510,
           "correct": true
+        },
+        {
+          "ts": 1790585949359,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790244748510
+      "lastAttemptTs": 1790585949359
     },
     "Nonlinear functions": {
       "correct": 1,
@@ -459,14 +465,20 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 602051,
+      "totalMs": 617599,
       "viewMs": {
-        "math": 602051
+        "math": 617599
       },
       "categoryMs": {}
     }
   },
   "answerTimeLog": {
+    "68298043": [
+      {
+        "ts": 1790585949359,
+        "ms": 899884
+      }
+    ],
     "8b52201d": [
       {
         "ts": 1789699772956,
@@ -758,5 +770,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790585797301
+  "clientUpdatedAt": 1790585975120
 }
