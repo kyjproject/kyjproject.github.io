@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T09:14:40.070Z",
+  "exportedAt": "2026-09-28T09:17:39.420Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1284,7 +1284,19 @@
     "494cbff8": "done",
     "d32d4957": "done",
     "6ea5114f": "done",
-    "335fc7f5": "done"
+    "335fc7f5": "done",
+    "ff37e18d": "done",
+    "07aa4624": "done",
+    "edf2d791": "done",
+    "acb49e4b": "done",
+    "012489f9": "done",
+    "f59a7e23": "done",
+    "4f6f2989": "done",
+    "c6ad6232": "done",
+    "3f24389a": "done",
+    "614e5d4f": "done",
+    "3ee345a1": "done",
+    "e351a82d": "done"
   },
   "tags": {},
   "notes": {
@@ -2587,7 +2599,19 @@
     "494cbff8": "2026-09-28T09:11:52.113Z",
     "d32d4957": "2026-09-28T09:11:59.996Z",
     "6ea5114f": "2026-09-28T09:13:48.412Z",
-    "335fc7f5": "2026-09-28T09:14:27.146Z"
+    "335fc7f5": "2026-09-28T09:14:27.146Z",
+    "ff37e18d": "2026-09-28T09:14:42.329Z",
+    "07aa4624": "2026-09-28T09:14:55.030Z",
+    "edf2d791": "2026-09-28T09:15:19.530Z",
+    "acb49e4b": "2026-09-28T09:15:33.180Z",
+    "012489f9": "2026-09-28T09:15:39.197Z",
+    "f59a7e23": "2026-09-28T09:16:16.772Z",
+    "4f6f2989": "2026-09-28T09:16:25.689Z",
+    "c6ad6232": "2026-09-28T09:16:40.956Z",
+    "3f24389a": "2026-09-28T09:16:48.806Z",
+    "614e5d4f": "2026-09-28T09:16:53.122Z",
+    "3ee345a1": "2026-09-28T09:17:02.065Z",
+    "e351a82d": "2026-09-28T09:17:30.840Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3848,25 +3872,9 @@
       "lastAttemptTs": 1790582313721
     },
     "Percentages": {
-      "correct": 19,
-      "total": 42,
+      "correct": 21,
+      "total": 46,
       "recent": [
-        {
-          "ts": 1790580177857,
-          "correct": true
-        },
-        {
-          "ts": 1790583628305,
-          "correct": true
-        },
-        {
-          "ts": 1790584325957,
-          "correct": false
-        },
-        {
-          "ts": 1790584327207,
-          "correct": true
-        },
         {
           "ts": 1790584396091,
           "correct": true
@@ -3898,26 +3906,30 @@
         {
           "ts": 1790586827612,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790586827612
-    },
-    "Ratios, rates, proportional relationships, and units": {
-      "correct": 14,
-      "total": 30,
-      "recent": [
+        },
         {
-          "ts": 1790155335800,
+          "ts": 1790586974225,
           "correct": false
         },
         {
-          "ts": 1790155336533,
+          "ts": 1790586975059,
           "correct": false
         },
         {
-          "ts": 1790155337117,
+          "ts": 1790586975990,
           "correct": true
         },
+        {
+          "ts": 1790586984888,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790586984888
+    },
+    "Ratios, rates, proportional relationships, and units": {
+      "correct": 15,
+      "total": 33,
+      "recent": [
         {
           "ts": 1790228437733,
           "correct": false
@@ -3953,34 +3965,26 @@
         {
           "ts": 1790586866112,
           "correct": true
+        },
+        {
+          "ts": 1790586994672,
+          "correct": false
+        },
+        {
+          "ts": 1790586995856,
+          "correct": false
+        },
+        {
+          "ts": 1790586997422,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586866112
+      "lastAttemptTs": 1790586997422
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 12,
-      "total": 26,
+      "correct": 14,
+      "total": 31,
       "recent": [
-        {
-          "ts": 1790155342117,
-          "correct": true
-        },
-        {
-          "ts": 1790228503470,
-          "correct": false
-        },
-        {
-          "ts": 1790228506687,
-          "correct": false
-        },
-        {
-          "ts": 1790228507774,
-          "correct": false
-        },
-        {
-          "ts": 1790228508720,
-          "correct": true
-        },
         {
           "ts": 1790584345857,
           "correct": false
@@ -4008,26 +4012,34 @@
         {
           "ts": 1790586879046,
           "correct": false
-        }
-      ],
-      "lastAttemptTs": 1790586879046
-    },
-    "Probability and conditional probability": {
-      "correct": 10,
-      "total": 17,
-      "recent": [
-        {
-          "ts": 1789817620798,
-          "correct": false
         },
         {
-          "ts": 1789817622282,
-          "correct": false
-        },
-        {
-          "ts": 1789817623299,
+          "ts": 1790586880077,
           "correct": true
         },
+        {
+          "ts": 1790587003773,
+          "correct": false
+        },
+        {
+          "ts": 1790587004589,
+          "correct": false
+        },
+        {
+          "ts": 1790587005455,
+          "correct": false
+        },
+        {
+          "ts": 1790587006972,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790587006972
+    },
+    "Probability and conditional probability": {
+      "correct": 12,
+      "total": 20,
+      "recent": [
         {
           "ts": 1790143828959,
           "correct": false
@@ -4063,26 +4075,26 @@
         {
           "ts": 1790586692065,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790586692065
-    },
-    "Lines, angles, and triangles": {
-      "correct": 14,
-      "total": 28,
-      "recent": [
+        },
         {
-          "ts": 1790155363167,
+          "ts": 1790586894231,
+          "correct": true
+        },
+        {
+          "ts": 1790587011455,
           "correct": false
         },
         {
-          "ts": 1790155364134,
+          "ts": 1790587012339,
           "correct": true
-        },
-        {
-          "ts": 1790580680514,
-          "correct": true
-        },
+        }
+      ],
+      "lastAttemptTs": 1790587012339
+    },
+    "Lines, angles, and triangles": {
+      "correct": 15,
+      "total": 31,
+      "recent": [
         {
           "ts": 1790584368290,
           "correct": false
@@ -4118,18 +4130,26 @@
         {
           "ts": 1790586710864,
           "correct": true
+        },
+        {
+          "ts": 1790586915963,
+          "correct": false
+        },
+        {
+          "ts": 1790586917214,
+          "correct": false
+        },
+        {
+          "ts": 1790586918146,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586710864
+      "lastAttemptTs": 1790586918146
     },
     "Right triangles and trigonometry": {
-      "correct": 14,
-      "total": 21,
+      "correct": 15,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1790144636448,
-          "correct": true
-        },
         {
           "ts": 1790155367734,
           "correct": false
@@ -4173,22 +4193,18 @@
         {
           "ts": 1790586719281,
           "correct": true
+        },
+        {
+          "ts": 1790586931080,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586719281
+      "lastAttemptTs": 1790586931080
     },
     "Area and volume": {
-      "correct": 16,
-      "total": 23,
+      "correct": 17,
+      "total": 25,
       "recent": [
-        {
-          "ts": 1789974328495,
-          "correct": true
-        },
-        {
-          "ts": 1790143887763,
-          "correct": true
-        },
         {
           "ts": 1790144649064,
           "correct": true
@@ -4228,9 +4244,17 @@
         {
           "ts": 1790586751128,
           "correct": true
+        },
+        {
+          "ts": 1790586936114,
+          "correct": false
+        },
+        {
+          "ts": 1790586937530,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586751128
+      "lastAttemptTs": 1790586937530
     },
     "Circles": {
       "correct": 4,
@@ -4262,6 +4286,36 @@
         }
       ],
       "lastAttemptTs": 1790584020706
+    },
+    "Two-variable data: Models and scatterplots": {
+      "correct": 1,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1790587018823,
+          "correct": false
+        },
+        {
+          "ts": 1790587019839,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790587019839
+    },
+    "Inference from sample statistics and margin of error": {
+      "correct": 1,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1790587047206,
+          "correct": false
+        },
+        {
+          "ts": 1790587048306,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790587048306
     }
   },
   "progressFocus": [
@@ -4862,12 +4916,12 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 3241746,
+      "totalMs": 3417150,
       "viewMs": {
         "profile": 26629,
         "lab": 195149,
         "leaderboard": 180197,
-        "practice": 1113356,
+        "practice": 1288760,
         "math": 1691387,
         "analysis": 20016,
         "review": 5004,
@@ -4876,8 +4930,8 @@
       "categoryMs": {
         "Algebra": 40031,
         "Advanced Math": 5003,
-        "Problem-Solving and Data Analysis": 462230,
-        "Geometry and Trigonometry": 250424
+        "Problem-Solving and Data Analysis": 572448,
+        "Geometry and Trigonometry": 285493
       }
     }
   },
@@ -13150,8 +13204,130 @@
       {
         "ts": 1790586879046,
         "ms": 8582
+      },
+      {
+        "ts": 1790586880077,
+        "ms": 532
+      }
+    ],
+    "07aa4624": [
+      {
+        "ts": 1790586894231,
+        "ms": 10233
+      }
+    ],
+    "edf2d791": [
+      {
+        "ts": 1790586915963,
+        "ms": 10781
+      },
+      {
+        "ts": 1790586917214,
+        "ms": 568
+      },
+      {
+        "ts": 1790586918147,
+        "ms": 450
+      }
+    ],
+    "acb49e4b": [
+      {
+        "ts": 1790586931080,
+        "ms": 6947
+      }
+    ],
+    "012489f9": [
+      {
+        "ts": 1790586936114,
+        "ms": 2232
+      },
+      {
+        "ts": 1790586937530,
+        "ms": 517
+      }
+    ],
+    "f59a7e23": [
+      {
+        "ts": 1790586974225,
+        "ms": 6467
+      },
+      {
+        "ts": 1790586975059,
+        "ms": 403
+      },
+      {
+        "ts": 1790586975990,
+        "ms": 367
+      }
+    ],
+    "4f6f2989": [
+      {
+        "ts": 1790586984888,
+        "ms": 5280
+      }
+    ],
+    "c6ad6232": [
+      {
+        "ts": 1790586994672,
+        "ms": 4148
+      },
+      {
+        "ts": 1790586995856,
+        "ms": 517
+      },
+      {
+        "ts": 1790586997422,
+        "ms": 400
+      }
+    ],
+    "3f24389a": [
+      {
+        "ts": 1790587003773,
+        "ms": 1882
+      },
+      {
+        "ts": 1790587004589,
+        "ms": 367
+      },
+      {
+        "ts": 1790587005457,
+        "ms": 401
+      },
+      {
+        "ts": 1790587006972,
+        "ms": 1000
+      }
+    ],
+    "614e5d4f": [
+      {
+        "ts": 1790587011455,
+        "ms": 1882
+      },
+      {
+        "ts": 1790587012339,
+        "ms": 368
+      }
+    ],
+    "3ee345a1": [
+      {
+        "ts": 1790587018823,
+        "ms": 3066
+      },
+      {
+        "ts": 1790587019839,
+        "ms": 584
+      }
+    ],
+    "e351a82d": [
+      {
+        "ts": 1790587047206,
+        "ms": 23598
+      },
+      {
+        "ts": 1790587048306,
+        "ms": 450
       }
     ]
   },
-  "clientUpdatedAt": 1790586877274
+  "clientUpdatedAt": 1790587057688
 }
