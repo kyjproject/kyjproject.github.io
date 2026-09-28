@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T00:45:03.795Z",
+  "exportedAt": "2026-09-28T00:48:02.113Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -85,7 +85,10 @@
     "0a017199": "done",
     "767f55a5": "done",
     "e5f76480": "done",
-    "c89da8bc": "done"
+    "c89da8bc": "done",
+    "6c807e83": "done",
+    "4c27795c": "done",
+    "267f8986": "done"
   },
   "tags": {},
   "notes": {},
@@ -173,7 +176,10 @@
     "0a017199": "2026-09-26T07:51:47.940Z",
     "767f55a5": "2026-09-26T07:51:49.434Z",
     "e5f76480": "2026-09-26T07:51:50.524Z",
-    "c89da8bc": "2026-09-26T07:51:52.081Z"
+    "c89da8bc": "2026-09-26T07:51:52.081Z",
+    "6c807e83": "2026-09-28T00:46:51.113Z",
+    "4c27795c": "2026-09-28T00:46:53.214Z",
+    "267f8986": "2026-09-28T00:46:56.733Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -557,8 +563,8 @@
       "lastAttemptTs": 1790556193586
     },
     "Cross-Text Connections": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1790254891526,
@@ -567,9 +573,17 @@
         {
           "ts": 1790254891528,
           "correct": true
+        },
+        {
+          "ts": 1790556348585,
+          "correct": false
+        },
+        {
+          "ts": 1790556350307,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790254891528
+      "lastAttemptTs": 1790556350307
     },
     "Command of Evidence (Textual)": {
       "correct": 4,
@@ -880,15 +894,16 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 399259,
+      "totalMs": 559260,
       "viewMs": {
         "mock": 5002,
-        "practice": 394257
+        "practice": 554258
       },
       "categoryMs": {
-        "Vocab": 139251,
-        "Functions": 90005,
-        "Cross-Text": 109997
+        "Vocab": 144252,
+        "Functions": 95000,
+        "Cross-Text": 154998,
+        "Main Idea": 105004
       }
     }
   },
@@ -944,7 +959,17 @@
         "ts": 1790556193586,
         "ms": 88897
       }
+    ],
+    "6c807e83": [
+      {
+        "ts": 1790556348585,
+        "ms": 151696
+      },
+      {
+        "ts": 1790556350307,
+        "ms": 606
+      }
     ]
   },
-  "clientUpdatedAt": 1790556303500
+  "clientUpdatedAt": 1790556478499
 }
