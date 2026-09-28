@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T07:26:52.290Z",
+  "exportedAt": "2026-09-28T07:31:21.779Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1187,7 +1187,8 @@
     "2e29c990": "done",
     "136de2ff": "done",
     "410c3c0e": "done",
-    "d184e28c": "done"
+    "d184e28c": "done",
+    "9b0fb532": "done"
   },
   "tags": {},
   "notes": {
@@ -2393,7 +2394,8 @@
     "2e29c990": "2026-09-25T04:46:28.567Z",
     "136de2ff": "2026-09-25T04:46:38.619Z",
     "410c3c0e": "2026-09-25T04:46:47.550Z",
-    "d184e28c": "2026-09-28T07:23:07.341Z"
+    "d184e28c": "2026-09-28T07:23:07.341Z",
+    "9b0fb532": "2026-09-28T07:30:21.946Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3819,17 +3821,9 @@
       "lastAttemptTs": 1790228508720
     },
     "Probability and conditional probability": {
-      "correct": 6,
-      "total": 11,
+      "correct": 7,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1789559101001,
-          "correct": true
-        },
-        {
-          "ts": 1789798983276,
-          "correct": false
-        },
         {
           "ts": 1789798986225,
           "correct": true
@@ -3865,18 +3859,26 @@
         {
           "ts": 1790155357250,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790155357250
-    },
-    "Lines, angles, and triangles": {
-      "correct": 10,
-      "total": 18,
-      "recent": [
+        },
         {
-          "ts": 1789816389544,
+          "ts": 1790580617879,
           "correct": false
         },
+        {
+          "ts": 1790580619529,
+          "correct": false
+        },
+        {
+          "ts": 1790580620295,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790580620295
+    },
+    "Lines, angles, and triangles": {
+      "correct": 11,
+      "total": 19,
+      "recent": [
         {
           "ts": 1789816390644,
           "correct": false
@@ -3920,9 +3922,13 @@
         {
           "ts": 1790155364134,
           "correct": true
+        },
+        {
+          "ts": 1790580680514,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790155364134
+      "lastAttemptTs": 1790580680514
     },
     "Right triangles and trigonometry": {
       "correct": 10,
@@ -4624,17 +4630,18 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 315015,
+      "totalMs": 380065,
       "viewMs": {
         "profile": 8193,
         "lab": 25016,
         "leaderboard": 10002,
-        "practice": 271804
+        "practice": 336854
       },
       "categoryMs": {
         "Algebra": 40031,
         "Advanced Math": 5003,
-        "Problem-Solving and Data Analysis": 216762
+        "Problem-Solving and Data Analysis": 226769,
+        "Geometry and Trigonometry": 55043
       }
     }
   },
@@ -12146,7 +12153,27 @@
         "ts": 1790580177857,
         "ms": 367
       }
+    ],
+    "9b0fb532": [
+      {
+        "ts": 1790580617879,
+        "ms": 417020
+      },
+      {
+        "ts": 1790580619529,
+        "ms": 1235
+      },
+      {
+        "ts": 1790580620296,
+        "ms": 335
+      }
+    ],
+    "2901277b": [
+      {
+        "ts": 1790580680514,
+        "ms": 57032
+      }
     ]
   },
-  "clientUpdatedAt": 1790580411562
+  "clientUpdatedAt": 1790580677537
 }
