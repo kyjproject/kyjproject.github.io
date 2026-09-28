@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T08:33:23.865Z",
+  "exportedAt": "2026-09-28T08:59:40.461Z",
   "progress": {
     "16915678": "done",
     "37036956": "done",
@@ -1269,7 +1269,13 @@
     "a445876d": "done",
     "50cd2366": "done",
     "76f470b6": "done",
-    "f2fe78cb": "done"
+    "f2fe78cb": "done",
+    "6963dfb3": "done",
+    "f95c357a": "done",
+    "cd9e9a28": "done",
+    "4bedd065": "done",
+    "dce70c97": "done",
+    "16a076ae": "done"
   },
   "tags": {},
   "notes": {
@@ -2557,7 +2563,13 @@
     "a445876d": "2026-09-28T08:32:51.141Z",
     "50cd2366": "2026-09-28T08:33:01.424Z",
     "76f470b6": "2026-09-28T08:33:07.457Z",
-    "f2fe78cb": "2026-09-28T08:33:17.107Z"
+    "f2fe78cb": "2026-09-28T08:33:17.107Z",
+    "6963dfb3": "2026-09-28T08:33:29.508Z",
+    "f95c357a": "2026-09-28T08:33:35.355Z",
+    "cd9e9a28": "2026-09-28T08:33:47.591Z",
+    "4bedd065": "2026-09-28T08:34:47.525Z",
+    "dce70c97": "2026-09-28T08:35:16.758Z",
+    "16a076ae": "2026-09-28T08:35:24.674Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3873,17 +3885,9 @@
       "lastAttemptTs": 1790584396091
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 11,
-      "total": 26,
+      "correct": 12,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1790140121610,
-          "correct": false
-        },
-        {
-          "ts": 1790140122692,
-          "correct": false
-        },
         {
           "ts": 1790140123259,
           "correct": true
@@ -3923,18 +3927,22 @@
         {
           "ts": 1790584337124,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790584337124
-    },
-    "One-variable data: Distributions and measures of center and spread": {
-      "correct": 10,
-      "total": 22,
-      "recent": [
+        },
         {
-          "ts": 1790143795207,
+          "ts": 1790584405057,
           "correct": false
         },
+        {
+          "ts": 1790584406424,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790584406424
+    },
+    "One-variable data: Distributions and measures of center and spread": {
+      "correct": 11,
+      "total": 23,
+      "recent": [
         {
           "ts": 1790143797541,
           "correct": false
@@ -3978,18 +3986,18 @@
         {
           "ts": 1790584347940,
           "correct": true
+        },
+        {
+          "ts": 1790584412475,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790584347940
+      "lastAttemptTs": 1790584412475
     },
     "Probability and conditional probability": {
-      "correct": 8,
-      "total": 15,
+      "correct": 9,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1789816383844,
-          "correct": false
-        },
         {
           "ts": 1789816385461,
           "correct": true
@@ -4033,26 +4041,18 @@
         {
           "ts": 1790584360424,
           "correct": true
+        },
+        {
+          "ts": 1790584426224,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790584360424
+      "lastAttemptTs": 1790584426224
     },
     "Lines, angles, and triangles": {
-      "correct": 12,
-      "total": 22,
+      "correct": 13,
+      "total": 25,
       "recent": [
-        {
-          "ts": 1789974388963,
-          "correct": true
-        },
-        {
-          "ts": 1789974749370,
-          "correct": true
-        },
-        {
-          "ts": 1790143849844,
-          "correct": false
-        },
         {
           "ts": 1790143851327,
           "correct": true
@@ -4088,18 +4088,26 @@
         {
           "ts": 1790584370024,
           "correct": true
+        },
+        {
+          "ts": 1790584461141,
+          "correct": false
+        },
+        {
+          "ts": 1790584462174,
+          "correct": false
+        },
+        {
+          "ts": 1790584463257,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790584370024
+      "lastAttemptTs": 1790584463257
     },
     "Right triangles and trigonometry": {
-      "correct": 12,
-      "total": 16,
+      "correct": 13,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1789816401944,
-          "correct": true
-        },
         {
           "ts": 1789817643632,
           "correct": false
@@ -4143,22 +4151,18 @@
         {
           "ts": 1790584379790,
           "correct": true
+        },
+        {
+          "ts": 1790584515924,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790584379790
+      "lastAttemptTs": 1790584515924
     },
     "Area and volume": {
-      "correct": 14,
-      "total": 19,
+      "correct": 15,
+      "total": 21,
       "recent": [
-        {
-          "ts": 1789817651115,
-          "correct": false
-        },
-        {
-          "ts": 1789817652083,
-          "correct": true
-        },
         {
           "ts": 1789974324829,
           "correct": false
@@ -4198,9 +4202,17 @@
         {
           "ts": 1790584386424,
           "correct": true
+        },
+        {
+          "ts": 1790584523041,
+          "correct": false
+        },
+        {
+          "ts": 1790584523824,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790584386424
+      "lastAttemptTs": 1790584523824
     },
     "Circles": {
       "correct": 4,
@@ -4832,12 +4844,12 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 2580460,
+      "totalMs": 2725749,
       "viewMs": {
         "profile": 26629,
         "lab": 195149,
         "leaderboard": 180197,
-        "practice": 452070,
+        "practice": 597359,
         "math": 1691387,
         "analysis": 20016,
         "review": 5004,
@@ -4846,8 +4858,8 @@
       "categoryMs": {
         "Algebra": 40031,
         "Advanced Math": 5003,
-        "Problem-Solving and Data Analysis": 291897,
-        "Geometry and Trigonometry": 85097
+        "Problem-Solving and Data Analysis": 316947,
+        "Geometry and Trigonometry": 180286
       }
     }
   },
@@ -12961,7 +12973,59 @@
         "ts": 1790584396091,
         "ms": 3016
       }
+    ],
+    "6963dfb3": [
+      {
+        "ts": 1790584405057,
+        "ms": 5716
+      },
+      {
+        "ts": 1790584406424,
+        "ms": 518
+      }
+    ],
+    "f95c357a": [
+      {
+        "ts": 1790584412475,
+        "ms": 1950
+      }
+    ],
+    "cd9e9a28": [
+      {
+        "ts": 1790584426224,
+        "ms": 9432
+      }
+    ],
+    "4bedd065": [
+      {
+        "ts": 1790584461141,
+        "ms": 31133
+      },
+      {
+        "ts": 1790584462174,
+        "ms": 484
+      },
+      {
+        "ts": 1790584463258,
+        "ms": 418
+      }
+    ],
+    "dce70c97": [
+      {
+        "ts": 1790584515924,
+        "ms": 27298
+      }
+    ],
+    "16a076ae": [
+      {
+        "ts": 1790584523041,
+        "ms": 4766
+      },
+      {
+        "ts": 1790584523824,
+        "ms": 318
+      }
     ]
   },
-  "clientUpdatedAt": 1790584401682
+  "clientUpdatedAt": 1790585976506
 }
