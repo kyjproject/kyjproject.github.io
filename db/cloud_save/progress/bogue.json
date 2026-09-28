@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T01:00:01.129Z",
+  "exportedAt": "2026-09-28T09:29:31.463Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -400,8 +400,8 @@
   "rwOverrides": {},
   "skillStats": {
     "Rhetorical Synthesis": {
-      "correct": 13,
-      "total": 16,
+      "correct": 14,
+      "total": 18,
       "recent": [
         {
           "ts": 1787230898150,
@@ -438,9 +438,17 @@
         {
           "ts": 1790254891529,
           "correct": true
+        },
+        {
+          "ts": 1790557243114,
+          "correct": false
+        },
+        {
+          "ts": 1790557244865,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790254891529
+      "lastAttemptTs": 1790557244865
     },
     "Words in Context": {
       "correct": 12,
@@ -942,13 +950,13 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 1234252,
+      "totalMs": 1459252,
       "viewMs": {
-        "mock": 5002,
-        "practice": 1229250
+        "mock": 165005,
+        "practice": 1294247
       },
       "categoryMs": {
-        "Vocab": 144252,
+        "Vocab": 264256,
         "Functions": 95000,
         "Cross-Text": 154998,
         "Main Idea": 120005,
@@ -956,7 +964,7 @@
         "Textual Evidence": 159999,
         "Inferences": 95002,
         "Transitions": 174993,
-        "Notes": 35000
+        "Notes": 85000
       }
     }
   },
@@ -1072,7 +1080,17 @@
         "ts": 1790557103157,
         "ms": 797
       }
+    ],
+    "38a981d0": [
+      {
+        "ts": 1790557243114,
+        "ms": 76478
+      },
+      {
+        "ts": 1790557244866,
+        "ms": 951
+      }
     ]
   },
-  "clientUpdatedAt": 1790557198495
+  "clientUpdatedAt": 1790587768901
 }
