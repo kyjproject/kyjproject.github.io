@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T10:58:21.423Z",
+  "exportedAt": "2026-09-28T11:02:06.263Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1342,7 +1342,9 @@
     "d15c457b": "done",
     "42b13db6": "done",
     "b24342e7": "done",
-    "5a8846a0": "done"
+    "5a8846a0": "done",
+    "b8c6844e": "done",
+    "e8a79e6a": "done"
   },
   "tags": {},
   "notes": {
@@ -2703,7 +2705,9 @@
     "d15c457b": "2026-09-28T10:56:16.010Z",
     "42b13db6": "2026-09-28T10:56:35.343Z",
     "b24342e7": "2026-09-28T10:56:54.109Z",
-    "5a8846a0": "2026-09-28T10:57:07.843Z"
+    "5a8846a0": "2026-09-28T10:57:07.843Z",
+    "b8c6844e": "2026-09-28T10:58:33.943Z",
+    "e8a79e6a": "2026-09-28T10:59:32.643Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3231,17 +3235,9 @@
       "lastAttemptTs": null
     },
     "Transitions": {
-      "correct": 70,
-      "total": 106,
+      "correct": 72,
+      "total": 108,
       "recent": [
-        {
-          "ts": 1790592717993,
-          "correct": true
-        },
-        {
-          "ts": 1790592858361,
-          "correct": true
-        },
         {
           "ts": 1790592902477,
           "correct": false
@@ -3281,9 +3277,17 @@
         {
           "ts": 1790593027076,
           "correct": true
+        },
+        {
+          "ts": 1790593113143,
+          "correct": true
+        },
+        {
+          "ts": 1790593171793,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790593027076
+      "lastAttemptTs": 1790593171793
     },
     "Rhetorical Synthesis": {
       "correct": 35,
@@ -5055,7 +5059,7 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 5583275,
+      "totalMs": 5668444,
       "viewMs": {
         "profile": 111764,
         "lab": 200159,
@@ -5065,7 +5069,7 @@
         "analysis": 218936,
         "review": 5004,
         "notes": 10008,
-        "browse": 1377748
+        "browse": 1462917
       },
       "categoryMs": {
         "Algebra": 45041,
@@ -13883,7 +13887,19 @@
         "ts": 1790593027076,
         "ms": 400
       }
+    ],
+    "b8c6844e": [
+      {
+        "ts": 1790593113143,
+        "ms": 62232
+      }
+    ],
+    "e8a79e6a": [
+      {
+        "ts": 1790593171793,
+        "ms": 57067
+      }
     ]
   },
-  "clientUpdatedAt": 1790593100973
+  "clientUpdatedAt": 1790593322193
 }
