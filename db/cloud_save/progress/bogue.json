@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T00:57:03.059Z",
+  "exportedAt": "2026-09-28T01:00:01.129Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -674,8 +674,8 @@
       "lastAttemptTs": 1790254891528
     },
     "Transitions": {
-      "correct": 8,
-      "total": 9,
+      "correct": 9,
+      "total": 13,
       "recent": [
         {
           "ts": 1790254891526,
@@ -696,9 +696,25 @@
         {
           "ts": 1790255995981,
           "correct": true
+        },
+        {
+          "ts": 1790557097773,
+          "correct": false
+        },
+        {
+          "ts": 1790557099554,
+          "correct": false
+        },
+        {
+          "ts": 1790557101454,
+          "correct": false
+        },
+        {
+          "ts": 1790557103157,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790255995981
+      "lastAttemptTs": 1790557103157
     }
   },
   "progressFocus": [
@@ -926,10 +942,10 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 1064259,
+      "totalMs": 1234252,
       "viewMs": {
         "mock": 5002,
-        "practice": 1059257
+        "practice": 1229250
       },
       "categoryMs": {
         "Vocab": 144252,
@@ -939,7 +955,8 @@
         "Quantitative Evidence": 194997,
         "Textual Evidence": 159999,
         "Inferences": 95002,
-        "Transitions": 40000
+        "Transitions": 174993,
+        "Notes": 35000
       }
     }
   },
@@ -1037,7 +1054,25 @@
         "ts": 1790556979960,
         "ms": 110115
       }
+    ],
+    "a2941bd8": [
+      {
+        "ts": 1790557097773,
+        "ms": 114601
+      },
+      {
+        "ts": 1790557099554,
+        "ms": 664
+      },
+      {
+        "ts": 1790557101454,
+        "ms": 743
+      },
+      {
+        "ts": 1790557103157,
+        "ms": 797
+      }
     ]
   },
-  "clientUpdatedAt": 1790557018507
+  "clientUpdatedAt": 1790557198495
 }
