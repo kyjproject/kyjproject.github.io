@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T11:58:41.182Z",
+  "exportedAt": "2026-09-28T12:01:04.299Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1389,6 +1389,10 @@
     "1789560230337-nv8dey": {
       "m1": 20,
       "m2": 22
+    },
+    "1790596862309-75zc2n": {
+      "m1": 19,
+      "m2": 18
     }
   },
   "completionLog": {
@@ -2770,6 +2774,118 @@
   "fsrsCards": {},
   "mockHistory": [
     {
+      "id": "1790596862309-75zc2n",
+      "completedAt": "2026-09-28T12:01:02.309Z",
+      "composition": "custom",
+      "sections": [
+        {
+          "subject": "math",
+          "module": 1,
+          "ids": [
+            "21be3fbd",
+            "80045c4a",
+            "a4a5e4ad",
+            "2f3f970c",
+            "eab050e1",
+            "2321f18a",
+            "5883daba",
+            "dbb64b2b",
+            "06ee10bb",
+            "f637b1a9",
+            "dd880033",
+            "dadfd136",
+            "34f7cb5d",
+            "1c7b6b0a",
+            "2733f318",
+            "e8971daa",
+            "43e876eb",
+            "a2bf1dd6",
+            "a4a86ebb",
+            "5c415b89",
+            "5987c039",
+            "7eb3fa96"
+          ]
+        },
+        {
+          "subject": "math",
+          "module": 2,
+          "ids": [
+            "aeef182c",
+            "b3597518",
+            "f2d396f3",
+            "e13b9cac",
+            "6075b3e6",
+            "76f470b6",
+            "35978b89",
+            "2a366aeb",
+            "443794ac",
+            "494cbff8",
+            "81aa6aa9",
+            "1215eb0a",
+            "d02e610e",
+            "78eae128",
+            "132aefb3",
+            "e1a1754e",
+            "10df349c",
+            "dc8ef67e",
+            "68fb4847",
+            "ac3df64f",
+            "b939a904",
+            "5cc1eacc"
+          ]
+        }
+      ],
+      "answers": {
+        "21be3fbd": "D",
+        "80045c4a": "C",
+        "a4a5e4ad": "A",
+        "2f3f970c": "C",
+        "eab050e1": "A",
+        "2321f18a": "A",
+        "5883daba": "B",
+        "dbb64b2b": "C",
+        "06ee10bb": "A",
+        "f637b1a9": "A",
+        "dd880033": "A",
+        "dadfd136": "A",
+        "34f7cb5d": "D",
+        "1c7b6b0a": "A",
+        "2733f318": "C",
+        "e8971daa": "B",
+        "43e876eb": "D",
+        "a2bf1dd6": "B",
+        "a4a86ebb": "D",
+        "5c415b89": "D",
+        "5987c039": "A",
+        "7eb3fa96": "A",
+        "aeef182c": "C",
+        "b3597518": "B",
+        "f2d396f3": "C",
+        "e13b9cac": "A",
+        "6075b3e6": "B",
+        "76f470b6": "D",
+        "35978b89": "C",
+        "2a366aeb": "D",
+        "443794ac": "D",
+        "494cbff8": "D",
+        "81aa6aa9": "B",
+        "1215eb0a": "C",
+        "d02e610e": "D",
+        "78eae128": "A",
+        "132aefb3": "A",
+        "e1a1754e": "A",
+        "10df349c": "D",
+        "dc8ef67e": "D",
+        "68fb4847": "D",
+        "ac3df64f": "C",
+        "b939a904": "B",
+        "5cc1eacc": "B"
+      },
+      "routedHarderForSubject": {
+        "math": true
+      }
+    },
+    {
       "id": "1789560230337-nv8dey",
       "completedAt": "2026-09-16T12:03:50.337Z",
       "composition": "custom",
@@ -3580,25 +3696,9 @@
       "lastAttemptTs": 1790151253342
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 113,
-      "total": 152,
+      "correct": 116,
+      "total": 156,
       "recent": [
-        {
-          "ts": 1790153462832,
-          "correct": true
-        },
-        {
-          "ts": 1790153469265,
-          "correct": true
-        },
-        {
-          "ts": 1790153475049,
-          "correct": true
-        },
-        {
-          "ts": 1790153479050,
-          "correct": true
-        },
         {
           "ts": 1790153530983,
           "correct": true
@@ -3630,30 +3730,30 @@
         {
           "ts": 1790155288531,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790155288531
-    },
-    "Nonlinear functions": {
-      "correct": 208,
-      "total": 346,
-      "recent": [
+        },
         {
-          "ts": 1790155293981,
+          "ts": 1790596862310,
           "correct": true
         },
         {
-          "ts": 1790155297298,
-          "correct": false
+          "ts": 1790596862311,
+          "correct": true
         },
         {
-          "ts": 1790155298198,
-          "correct": false
+          "ts": 1790596862312,
+          "correct": true
         },
         {
-          "ts": 1790155298915,
+          "ts": 1790596862314,
           "correct": false
-        },
+        }
+      ],
+      "lastAttemptTs": 1790596862314
+    },
+    "Nonlinear functions": {
+      "correct": 214,
+      "total": 354,
+      "recent": [
         {
           "ts": 1790155299932,
           "correct": true
@@ -3685,26 +3785,30 @@
         {
           "ts": 1790312042384,
           "correct": true
+        },
+        {
+          "ts": 1790596862310,
+          "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
+        },
+        {
+          "ts": 1790596862313,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790312042384
+      "lastAttemptTs": 1790596862313
     },
     "Equivalent expressions": {
-      "correct": 63,
-      "total": 88,
+      "correct": 66,
+      "total": 91,
       "recent": [
-        {
-          "ts": 1790153440315,
-          "correct": true
-        },
-        {
-          "ts": 1790153447983,
-          "correct": true
-        },
-        {
-          "ts": 1790153496448,
-          "correct": false
-        },
         {
           "ts": 1790153497698,
           "correct": true
@@ -3740,26 +3844,26 @@
         {
           "ts": 1790312152896,
           "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
+        },
+        {
+          "ts": 1790596862314,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790312152896
+      "lastAttemptTs": 1790596862314
     },
     "Linear equations in two variables": {
-      "correct": 115,
-      "total": 187,
+      "correct": 118,
+      "total": 190,
       "recent": [
-        {
-          "ts": 1790581195055,
-          "correct": true
-        },
-        {
-          "ts": 1790581256772,
-          "correct": true
-        },
-        {
-          "ts": 1790581313022,
-          "correct": true
-        },
         {
           "ts": 1790581378606,
           "correct": true
@@ -3795,26 +3899,26 @@
         {
           "ts": 1790582306471,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790582306471
-    },
-    "Systems of two linear equations in two variables": {
-      "correct": 96,
-      "total": 156,
-      "recent": [
+        },
         {
-          "ts": 1790234446807,
+          "ts": 1790596862310,
           "correct": true
         },
         {
-          "ts": 1790580135390,
-          "correct": false
+          "ts": 1790596862312,
+          "correct": true
         },
         {
-          "ts": 1790580136557,
-          "correct": false
-        },
+          "ts": 1790596862313,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790596862313
+    },
+    "Systems of two linear equations in two variables": {
+      "correct": 98,
+      "total": 159,
+      "recent": [
         {
           "ts": 1790580138207,
           "correct": true
@@ -3850,26 +3954,26 @@
         {
           "ts": 1790582070102,
           "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": false
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
+        },
+        {
+          "ts": 1790596862314,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790582070102
+      "lastAttemptTs": 1790596862314
     },
     "Linear functions": {
-      "correct": 137,
-      "total": 204,
+      "correct": 141,
+      "total": 208,
       "recent": [
-        {
-          "ts": 1790581880667,
-          "correct": true
-        },
-        {
-          "ts": 1790581935918,
-          "correct": true
-        },
-        {
-          "ts": 1790581998450,
-          "correct": true
-        },
         {
           "ts": 1790582078735,
           "correct": true
@@ -3905,22 +4009,26 @@
         {
           "ts": 1790582225121,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790582225121
-    },
-    "Linear inequalities in one or two variables": {
-      "correct": 61,
-      "total": 130,
-      "recent": [
+        },
         {
-          "ts": 1790581234005,
+          "ts": 1790596862311,
           "correct": true
         },
         {
-          "ts": 1790581770450,
-          "correct": false
+          "ts": 1790596862312,
+          "correct": true
         },
+        {
+          "ts": 1790596862314,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790596862314
+    },
+    "Linear inequalities in one or two variables": {
+      "correct": 63,
+      "total": 132,
+      "recent": [
         {
           "ts": 1790581773934,
           "correct": true
@@ -3960,22 +4068,22 @@
         {
           "ts": 1790582269837,
           "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
+        },
+        {
+          "ts": 1790596862314,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790582269837
+      "lastAttemptTs": 1790596862314
     },
     "Linear equations in one variable": {
-      "correct": 86,
-      "total": 118,
+      "correct": 89,
+      "total": 121,
       "recent": [
-        {
-          "ts": 1790581422072,
-          "correct": true
-        },
-        {
-          "ts": 1790582038935,
-          "correct": true
-        },
         {
           "ts": 1790582146603,
           "correct": true
@@ -4015,22 +4123,22 @@
         {
           "ts": 1790582313721,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790582313721
-    },
-    "Percentages": {
-      "correct": 21,
-      "total": 46,
-      "recent": [
+        },
         {
-          "ts": 1790584396091,
+          "ts": 1790596862312,
           "correct": true
         },
         {
-          "ts": 1790586576976,
-          "correct": false
-        },
+          "ts": 1790596862313,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790596862313
+    },
+    "Percentages": {
+      "correct": 23,
+      "total": 48,
+      "recent": [
         {
           "ts": 1790586577910,
           "correct": false
@@ -4070,22 +4178,22 @@
         {
           "ts": 1790586984888,
           "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": true
+        },
+        {
+          "ts": 1790596862313,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586984888
+      "lastAttemptTs": 1790596862313
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 15,
-      "total": 33,
+      "correct": 17,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1790228437733,
-          "correct": false
-        },
-        {
-          "ts": 1790228439533,
-          "correct": false
-        },
         {
           "ts": 1790228440600,
           "correct": true
@@ -4125,18 +4233,22 @@
         {
           "ts": 1790586997422,
           "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": true
+        },
+        {
+          "ts": 1790596862314,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790586997422
+      "lastAttemptTs": 1790596862314
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 14,
-      "total": 31,
+      "correct": 15,
+      "total": 32,
       "recent": [
-        {
-          "ts": 1790584345857,
-          "correct": false
-        },
         {
           "ts": 1790584347024,
           "correct": false
@@ -4180,18 +4292,18 @@
         {
           "ts": 1790587006972,
           "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790587006972
+      "lastAttemptTs": 1790596862312
     },
     "Probability and conditional probability": {
       "correct": 12,
-      "total": 20,
+      "total": 21,
       "recent": [
-        {
-          "ts": 1790143828959,
-          "correct": false
-        },
         {
           "ts": 1790143830076,
           "correct": true
@@ -4235,22 +4347,18 @@
         {
           "ts": 1790587012339,
           "correct": true
+        },
+        {
+          "ts": 1790596862313,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790587012339
+      "lastAttemptTs": 1790596862313
     },
     "Lines, angles, and triangles": {
-      "correct": 16,
-      "total": 34,
+      "correct": 17,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1790584461141,
-          "correct": false
-        },
-        {
-          "ts": 1790584462174,
-          "correct": false
-        },
         {
           "ts": 1790584463257,
           "correct": true
@@ -4290,22 +4398,22 @@
         {
           "ts": 1790587099575,
           "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": false
+        },
+        {
+          "ts": 1790596862313,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790587099575
+      "lastAttemptTs": 1790596862313
     },
     "Right triangles and trigonometry": {
-      "correct": 16,
-      "total": 25,
+      "correct": 18,
+      "total": 27,
       "recent": [
-        {
-          "ts": 1790584377907,
-          "correct": false
-        },
-        {
-          "ts": 1790584378840,
-          "correct": false
-        },
         {
           "ts": 1790584379790,
           "correct": true
@@ -4345,22 +4453,22 @@
         {
           "ts": 1790587109174,
           "correct": true
+        },
+        {
+          "ts": 1790596862311,
+          "correct": true
+        },
+        {
+          "ts": 1790596862313,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790587109174
+      "lastAttemptTs": 1790596862313
     },
     "Area and volume": {
-      "correct": 18,
-      "total": 28,
+      "correct": 20,
+      "total": 30,
       "recent": [
-        {
-          "ts": 1790155378251,
-          "correct": true
-        },
-        {
-          "ts": 1790160052869,
-          "correct": true
-        },
         {
           "ts": 1790584386424,
           "correct": true
@@ -4400,13 +4508,21 @@
         {
           "ts": 1790587117641,
           "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
+        },
+        {
+          "ts": 1790596862313,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790587117641
+      "lastAttemptTs": 1790596862313
     },
     "Circles": {
-      "correct": 6,
-      "total": 10,
+      "correct": 7,
+      "total": 11,
       "recent": [
         {
           "ts": 1789560230339,
@@ -4447,13 +4563,17 @@
         {
           "ts": 1790587093524,
           "correct": true
+        },
+        {
+          "ts": 1790596862312,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790587093524
+      "lastAttemptTs": 1790596862312
     },
     "Two-variable data: Models and scatterplots": {
       "correct": 1,
-      "total": 2,
+      "total": 3,
       "recent": [
         {
           "ts": 1790587018823,
@@ -4462,9 +4582,13 @@
         {
           "ts": 1790587019839,
           "correct": true
+        },
+        {
+          "ts": 1790596862314,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790587019839
+      "lastAttemptTs": 1790596862314
     },
     "Inference from sample statistics and margin of error": {
       "correct": 1,
@@ -5119,7 +5243,7 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 8200981,
+      "totalMs": 8324800,
       "viewMs": {
         "profile": 141832,
         "lab": 200159,
@@ -5130,12 +5254,12 @@
         "review": 5004,
         "notes": 10008,
         "browse": 2334261,
-        "mock": 1445990
+        "mock": 1569809
       },
       "categoryMs": {
-        "Algebra": 500602,
-        "Advanced Math": 524494,
-        "Problem-Solving and Data Analysis": 762821,
+        "Algebra": 530663,
+        "Advanced Math": 579639,
+        "Problem-Solving and Data Analysis": 796424,
         "Geometry and Trigonometry": 606137
       }
     }
@@ -14170,5 +14294,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790596719772
+  "clientUpdatedAt": 1790596862610
 }
