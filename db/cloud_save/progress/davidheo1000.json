@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T12:01:04.299Z",
+  "exportedAt": "2026-09-28T12:04:04.674Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -433,7 +433,7 @@
     "9873a516": "done",
     "3541335e": "done",
     "c3c9b8bc": "done",
-    "10df349c": "review",
+    "10df349c": "done",
     "db8d42ba": "done",
     "46f90b4a": "done",
     "635e58a2": "done",
@@ -542,7 +542,7 @@
     "317d165b": "done",
     "2a093c45": "done",
     "9d146dca": "done",
-    "a4a86ebb": "review",
+    "a4a86ebb": "done",
     "05cec180": "done",
     "b91b2899": "done",
     "f5f840a0": "done",
@@ -1370,7 +1370,12 @@
     "c0c20ca3": "done",
     "d10fc56f": "done",
     "7da609a8": "done",
-    "24c73d92": "done"
+    "24c73d92": "done",
+    "e8971daa": "done",
+    "43e876eb": "done",
+    "5c415b89": "done",
+    "7eb3fa96": "done",
+    "dc8ef67e": "done"
   },
   "tags": {},
   "notes": {
@@ -2763,7 +2768,12 @@
     "c0c20ca3": "2026-09-28T11:25:29.999Z",
     "d10fc56f": "2026-09-28T11:26:03.582Z",
     "7da609a8": "2026-09-28T11:26:22.035Z",
-    "24c73d92": "2026-09-28T11:26:38.228Z"
+    "24c73d92": "2026-09-28T11:26:38.228Z",
+    "e8971daa": "2026-09-28T12:03:09.448Z",
+    "43e876eb": "2026-09-28T12:03:14.754Z",
+    "5c415b89": "2026-09-28T12:03:19.121Z",
+    "7eb3fa96": "2026-09-28T12:03:26.431Z",
+    "dc8ef67e": "2026-09-28T12:04:03.799Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3752,12 +3762,8 @@
     },
     "Nonlinear functions": {
       "correct": 214,
-      "total": 354,
+      "total": 355,
       "recent": [
-        {
-          "ts": 1790155299932,
-          "correct": true
-        },
         {
           "ts": 1790155303649,
           "correct": false
@@ -3801,9 +3807,13 @@
         {
           "ts": 1790596862313,
           "correct": false
+        },
+        {
+          "ts": 1790596903993,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790596862313
+      "lastAttemptTs": 1790596903993
     },
     "Equivalent expressions": {
       "correct": 66,
@@ -4246,13 +4256,9 @@
       "lastAttemptTs": 1790596862314
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 15,
-      "total": 32,
+      "correct": 16,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1790584347024,
-          "correct": false
-        },
         {
           "ts": 1790584347940,
           "correct": true
@@ -4296,9 +4302,13 @@
         {
           "ts": 1790596862312,
           "correct": true
+        },
+        {
+          "ts": 1790596966811,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862312
+      "lastAttemptTs": 1790596966811
     },
     "Probability and conditional probability": {
       "correct": 12,
@@ -4356,17 +4366,9 @@
       "lastAttemptTs": 1790596862313
     },
     "Lines, angles, and triangles": {
-      "correct": 17,
-      "total": 36,
+      "correct": 19,
+      "total": 38,
       "recent": [
-        {
-          "ts": 1790584463257,
-          "correct": true
-        },
-        {
-          "ts": 1790586709366,
-          "correct": false
-        },
         {
           "ts": 1790586710281,
           "correct": false
@@ -4406,9 +4408,17 @@
         {
           "ts": 1790596862313,
           "correct": true
+        },
+        {
+          "ts": 1790596891526,
+          "correct": true
+        },
+        {
+          "ts": 1790597005518,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862313
+      "lastAttemptTs": 1790597005518
     },
     "Right triangles and trigonometry": {
       "correct": 18,
@@ -4572,8 +4582,8 @@
       "lastAttemptTs": 1790596862312
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 1,
-      "total": 3,
+      "correct": 2,
+      "total": 7,
       "recent": [
         {
           "ts": 1790587018823,
@@ -4586,9 +4596,25 @@
         {
           "ts": 1790596862314,
           "correct": false
+        },
+        {
+          "ts": 1790597022147,
+          "correct": false
+        },
+        {
+          "ts": 1790597036452,
+          "correct": false
+        },
+        {
+          "ts": 1790597038214,
+          "correct": false
+        },
+        {
+          "ts": 1790597040406,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862314
+      "lastAttemptTs": 1790597040406
     },
     "Inference from sample statistics and margin of error": {
       "correct": 1,
@@ -4732,26 +4758,6 @@
       "count": 2,
       "lastTs": 1790166307237
     },
-    "d40f805f": {
-      "count": 1,
-      "lastTs": 1790217283479
-    },
-    "0334ee02": {
-      "count": 1,
-      "lastTs": 1790217367901
-    },
-    "3cc991d1": {
-      "count": 1,
-      "lastTs": 1790218071556
-    },
-    "49dc0f69": {
-      "count": 1,
-      "lastTs": 1790218841265
-    },
-    "b799405e": {
-      "count": 1,
-      "lastTs": 1790218902964
-    },
     "c5380c0c": {
       "count": 1,
       "lastTs": 1790228260901
@@ -4871,6 +4877,46 @@
     "de51231b": {
       "count": 1,
       "lastTs": 1790594593631
+    },
+    "dbb64b2b": {
+      "count": 1,
+      "lastTs": 1790596869535
+    },
+    "7eb3fa96": {
+      "count": 2,
+      "lastTs": 1790597001471
+    },
+    "78eae128": {
+      "count": 1,
+      "lastTs": 1790596901100
+    },
+    "e8971daa": {
+      "count": 1,
+      "lastTs": 1790596964291
+    },
+    "dc8ef67e": {
+      "count": 1,
+      "lastTs": 1790597016591
+    },
+    "d40f805f": {
+      "count": 1,
+      "lastTs": 1790217283479
+    },
+    "0334ee02": {
+      "count": 1,
+      "lastTs": 1790217367901
+    },
+    "3cc991d1": {
+      "count": 1,
+      "lastTs": 1790218071556
+    },
+    "49dc0f69": {
+      "count": 1,
+      "lastTs": 1790218841265
+    },
+    "b799405e": {
+      "count": 1,
+      "lastTs": 1790218902964
     },
     "377a6aa4": {
       "count": 1,
@@ -5243,7 +5289,7 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 8324800,
+      "totalMs": 8483647,
       "viewMs": {
         "profile": 141832,
         "lab": 200159,
@@ -5254,7 +5300,7 @@
         "review": 5004,
         "notes": 10008,
         "browse": 2334261,
-        "mock": 1569809
+        "mock": 1728656
       },
       "categoryMs": {
         "Algebra": 530663,
@@ -7177,6 +7223,10 @@
       {
         "ts": 1789974404664,
         "ms": 501
+      },
+      {
+        "ts": 1790596903993,
+        "ms": 2892
       }
     ],
     "8fed560d": [
@@ -14292,7 +14342,41 @@
         "ts": 1790594797711,
         "ms": 751
       }
+    ],
+    "7eb3fa96": [
+      {
+        "ts": 1790596891526,
+        "ms": 3454
+      },
+      {
+        "ts": 1790597005518,
+        "ms": 769
+      }
+    ],
+    "e8971daa": [
+      {
+        "ts": 1790596966811,
+        "ms": 2519
+      }
+    ],
+    "dc8ef67e": [
+      {
+        "ts": 1790597022147,
+        "ms": 5555
+      },
+      {
+        "ts": 1790597036452,
+        "ms": 871
+      },
+      {
+        "ts": 1790597038214,
+        "ms": 1150
+      },
+      {
+        "ts": 1790597040407,
+        "ms": 1482
+      }
     ]
   },
-  "clientUpdatedAt": 1790596862610
+  "clientUpdatedAt": 1790597039826
 }
