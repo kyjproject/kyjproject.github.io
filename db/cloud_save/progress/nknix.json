@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T11:14:49.449Z",
+  "exportedAt": "2026-09-28T11:18:21.316Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -533,11 +533,12 @@
     "6ef1d0a7": "done",
     "a053d0b8": "review",
     "0a6b66b3": "review",
-    "1ae47e86": "review",
     "318da9d3": "review",
     "fd7c6d0d": "review",
     "3167db00": "review",
-    "8ee78de3": "review"
+    "8ee78de3": "review",
+    "4c109ce5": "review",
+    "1ae47e86": "review"
   },
   "tags": {},
   "notes": {},
@@ -4452,19 +4453,19 @@
       }
     },
     "2026-09-28": {
-      "totalMs": 2073120,
+      "totalMs": 2283121,
       "viewMs": {
-        "mock": 1730003,
+        "mock": 1940004,
         "leaderboard": 338129,
         "review": 4988
       },
       "categoryMs": {
-        "Vocab": 220005,
-        "Inferences": 120004,
-        "Grammar": 69998,
-        "Transitions": 210000,
-        "Notes": 179994,
-        "Functions": 215001,
+        "Vocab": 225008,
+        "Inferences": 225000,
+        "Grammar": 75000,
+        "Transitions": 255002,
+        "Notes": 224993,
+        "Functions": 220000,
         "Cross-Text": 84996,
         "Main Idea": 210004,
         "Quantitative Evidence": 184995,
@@ -5770,5 +5771,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790594086480
+  "clientUpdatedAt": 1790594296477
 }
