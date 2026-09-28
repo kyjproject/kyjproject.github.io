@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T00:54:00.947Z",
+  "exportedAt": "2026-09-28T00:57:03.059Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -88,7 +88,11 @@
     "c89da8bc": "done",
     "6c807e83": "done",
     "4c27795c": "done",
-    "267f8986": "done"
+    "267f8986": "done",
+    "2a57b2a8": "done",
+    "d54126ab": "done",
+    "c1f1a631": "done",
+    "d184752f": "done"
   },
   "tags": {},
   "notes": {},
@@ -179,7 +183,11 @@
     "c89da8bc": "2026-09-26T07:51:52.081Z",
     "6c807e83": "2026-09-28T00:46:51.113Z",
     "4c27795c": "2026-09-28T00:46:53.214Z",
-    "267f8986": "2026-09-28T00:46:56.733Z"
+    "267f8986": "2026-09-28T00:46:56.733Z",
+    "2a57b2a8": "2026-09-28T00:54:38.384Z",
+    "d54126ab": "2026-09-28T00:54:39.869Z",
+    "c1f1a631": "2026-09-28T00:54:41.964Z",
+    "d184752f": "2026-09-28T00:56:22.125Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -598,6 +606,29 @@
       "lastAttemptTs": 1790556350307
     },
     "Command of Evidence (Textual)": {
+      "correct": 5,
+      "total": 6,
+      "recent": [
+        {
+          "ts": 1790254891526,
+          "correct": true
+        },
+        {
+          "ts": 1790254891528,
+          "correct": true
+        },
+        {
+          "ts": 1790556846616,
+          "correct": false
+        },
+        {
+          "ts": 1790556848090,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790556848090
+    },
+    "Inferences": {
       "correct": 4,
       "total": 4,
       "recent": [
@@ -608,24 +639,13 @@
         {
           "ts": 1790254891528,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790254891528
-    },
-    "Inferences": {
-      "correct": 3,
-      "total": 3,
-      "recent": [
-        {
-          "ts": 1790254891526,
-          "correct": true
         },
         {
-          "ts": 1790254891528,
+          "ts": 1790556979960,
           "correct": true
         }
       ],
-      "lastAttemptTs": 1790254891528
+      "lastAttemptTs": 1790556979960
     },
     "Boundaries": {
       "correct": 2,
@@ -906,18 +926,20 @@
       "categoryMs": {}
     },
     "2026-09-28": {
-      "totalMs": 884258,
+      "totalMs": 1064259,
       "viewMs": {
         "mock": 5002,
-        "practice": 879256
+        "practice": 1059257
       },
       "categoryMs": {
         "Vocab": 144252,
         "Functions": 95000,
         "Cross-Text": 154998,
-        "Main Idea": 115004,
+        "Main Idea": 120005,
         "Quantitative Evidence": 194997,
-        "Textual Evidence": 120001
+        "Textual Evidence": 159999,
+        "Inferences": 95002,
+        "Transitions": 40000
       }
     }
   },
@@ -999,7 +1021,23 @@
         "ts": 1790556718096,
         "ms": 11112
       }
+    ],
+    "2a57b2a8": [
+      {
+        "ts": 1790556846616,
+        "ms": 126256
+      },
+      {
+        "ts": 1790556848090,
+        "ms": 755
+      }
+    ],
+    "d184752f": [
+      {
+        "ts": 1790556979960,
+        "ms": 110115
+      }
     ]
   },
-  "clientUpdatedAt": 1790556838498
+  "clientUpdatedAt": 1790557018507
 }
