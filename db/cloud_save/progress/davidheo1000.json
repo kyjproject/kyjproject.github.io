@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T08:19:27.731Z",
+  "exportedAt": "2026-09-29T08:26:06.267Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -5388,15 +5388,20 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 1337562,
+      "totalMs": 1572501,
       "viewMs": {
-        "leaderboard": 61751,
+        "leaderboard": 141781,
         "math": 95035,
         "browse": 1120749,
         "review": 30024,
-        "analysis": 30003
+        "analysis": 30003,
+        "mock": 154909
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Algebra": 15012,
+        "Advanced Math": 70052,
+        "Problem-Solving and Data Analysis": 44837
+      }
     }
   },
   "answerTimeLog": {
@@ -14777,5 +14782,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790669964086
+  "clientUpdatedAt": 1790670364093
 }
