@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T08:00:10.116Z",
+  "exportedAt": "2026-09-29T08:02:31.236Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1385,7 +1385,7 @@
     "36e0f3e2": "done",
     "b93101bf": "done",
     "2879d763": "done",
-    "7405d67a": "review",
+    "7405d67a": "done",
     "346bc3a5": "done",
     "4f7c4558": "done",
     "bff3cf74": "done",
@@ -1407,7 +1407,12 @@
     "0d0e04ec": "done",
     "e93dd6f3": "done",
     "51bd4147": "done",
-    "4dc1b152": "done"
+    "4dc1b152": "done",
+    "0447b140": "done",
+    "30b2a7b8": "done",
+    "ad201599": "done",
+    "5eeb0eb1": "done",
+    "c4ff1125": "done"
   },
   "tags": {},
   "notes": {
@@ -2836,7 +2841,13 @@
     "0d0e04ec": "2026-09-29T07:58:24.854Z",
     "e93dd6f3": "2026-09-29T07:58:54.053Z",
     "51bd4147": "2026-09-29T07:59:03.904Z",
-    "4dc1b152": "2026-09-29T07:59:30.403Z"
+    "4dc1b152": "2026-09-29T07:59:30.403Z",
+    "0447b140": "2026-09-29T08:00:19.775Z",
+    "30b2a7b8": "2026-09-29T08:00:51.609Z",
+    "ad201599": "2026-09-29T08:01:04.360Z",
+    "5eeb0eb1": "2026-09-29T08:01:16.661Z",
+    "c4ff1125": "2026-09-29T08:02:22.925Z",
+    "7405d67a": "2026-09-29T08:02:32.942Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3305,29 +3316,9 @@
       "lastAttemptTs": 1790160058185
     },
     "Boundaries": {
-      "correct": 63,
-      "total": 124,
+      "correct": 67,
+      "total": 129,
       "recent": [
-        {
-          "ts": 1790668376922,
-          "correct": false
-        },
-        {
-          "ts": 1790668377922,
-          "correct": true
-        },
-        {
-          "ts": 1790668386488,
-          "correct": true
-        },
-        {
-          "ts": 1790668419405,
-          "correct": false
-        },
-        {
-          "ts": 1790668420355,
-          "correct": false
-        },
         {
           "ts": 1790668421455,
           "correct": true
@@ -3355,9 +3346,29 @@
         {
           "ts": 1790668769319,
           "correct": true
+        },
+        {
+          "ts": 1790668818942,
+          "correct": true
+        },
+        {
+          "ts": 1790668850843,
+          "correct": true
+        },
+        {
+          "ts": 1790668869978,
+          "correct": false
+        },
+        {
+          "ts": 1790668875760,
+          "correct": true
+        },
+        {
+          "ts": 1790668941992,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790668769319
+      "lastAttemptTs": 1790668941992
     },
     "Central Ideas and Details": {
       "correct": 38,
@@ -3415,13 +3426,9 @@
       "lastAttemptTs": 1790150751648
     },
     "Form, Structure, and Sense": {
-      "correct": 53,
-      "total": 81,
+      "correct": 54,
+      "total": 82,
       "recent": [
-        {
-          "ts": 1790668461021,
-          "correct": true
-        },
         {
           "ts": 1790668475238,
           "correct": false
@@ -3465,9 +3472,13 @@
         {
           "ts": 1790668743154,
           "correct": true
+        },
+        {
+          "ts": 1790668863276,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790668743154
+      "lastAttemptTs": 1790668863276
     },
     "Command of Evidence": {
       "correct": 1,
@@ -5377,11 +5388,12 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 1157495,
+      "totalMs": 1297551,
       "viewMs": {
         "leaderboard": 56747,
         "math": 95035,
-        "browse": 1005713
+        "browse": 1120749,
+        "review": 25020
       },
       "categoryMs": {}
     }
@@ -14728,7 +14740,41 @@
         "ts": 1790668769319,
         "ms": 24782
       }
+    ],
+    "0447b140": [
+      {
+        "ts": 1790668818942,
+        "ms": 44655
+      }
+    ],
+    "30b2a7b8": [
+      {
+        "ts": 1790668850843,
+        "ms": 30250
+      }
+    ],
+    "ad201599": [
+      {
+        "ts": 1790668863276,
+        "ms": 10366
+      }
+    ],
+    "5eeb0eb1": [
+      {
+        "ts": 1790668869979,
+        "ms": 4252
+      },
+      {
+        "ts": 1790668875760,
+        "ms": 4934
+      }
+    ],
+    "c4ff1125": [
+      {
+        "ts": 1790668941992,
+        "ms": 63797
+      }
     ]
   },
-  "clientUpdatedAt": 1790668809965
+  "clientUpdatedAt": 1790668946875
 }
