@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-28T15:27:37.305Z",
+  "exportedAt": "2026-09-29T12:04:59.580Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -107,7 +107,7 @@
     "50cd2366": "done",
     "3ee345a1": "done",
     "e5b53db0": "done",
-    "4443355f": "review",
+    "4443355f": "done",
     "dc1b988f": "done",
     "1ba110f2": "done",
     "1b30fd79": "done",
@@ -4735,6 +4735,20 @@
         "Geometry and Trigonometry": 304980,
         "Problem-Solving and Data Analysis": 545914
       }
+    },
+    "2026-09-29": {
+      "totalMs": 89361,
+      "viewMs": {
+        "review": 29316,
+        "profile": 5003,
+        "leaderboard": 30023,
+        "practice": 25019
+      },
+      "categoryMs": {
+        "Textual Evidence": 10007,
+        "Grammar": 10009,
+        "Inferences": 5003
+      }
     }
   },
   "answerTimeLog": {
@@ -6183,5 +6197,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790609256486
+  "clientUpdatedAt": 1790683496584
 }
