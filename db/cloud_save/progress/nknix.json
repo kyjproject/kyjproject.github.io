@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T12:20:21.984Z",
+  "exportedAt": "2026-09-29T12:23:16.757Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -434,7 +434,7 @@
     "deb55365": "done",
     "fd02bdb9": "done",
     "30b2a7b8": "done",
-    "9579edb4": "review",
+    "9579edb4": "done",
     "f2e39001": "done",
     "123cf5db": "done",
     "3fcc2cee": "done",
@@ -3127,13 +3127,9 @@
       "lastAttemptTs": 1790683824096
     },
     "Transitions": {
-      "correct": 63,
-      "total": 82,
+      "correct": 64,
+      "total": 83,
       "recent": [
-        {
-          "ts": 1790485268308,
-          "correct": true
-        },
         {
           "ts": 1790485268309,
           "correct": true
@@ -3177,9 +3173,13 @@
         {
           "ts": 1790684322777,
           "correct": true
+        },
+        {
+          "ts": 1790684478449,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790684322777
+      "lastAttemptTs": 1790684478449
     },
     "Rhetorical Synthesis": {
       "correct": 41,
@@ -4741,18 +4741,18 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 1005066,
+      "totalMs": 1070117,
       "viewMs": {
-        "review": 199447,
+        "review": 204451,
         "profile": 5003,
         "leaderboard": 30023,
-        "practice": 770593
+        "practice": 830640
       },
       "categoryMs": {
         "Textual Evidence": 115088,
         "Grammar": 35028,
         "Inferences": 475365,
-        "Transitions": 140108
+        "Transitions": 200155
       }
     }
   },
@@ -6133,6 +6133,10 @@
       {
         "ts": 1790594508156,
         "ms": 579
+      },
+      {
+        "ts": 1790684478449,
+        "ms": 30649
       }
     ],
     "318da9d3": [
@@ -6250,5 +6254,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790684417294
+  "clientUpdatedAt": 1790684593094
 }
