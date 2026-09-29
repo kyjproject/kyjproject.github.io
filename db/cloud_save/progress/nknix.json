@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T13:44:29.642Z",
+  "exportedAt": "2026-09-29T13:47:29.570Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -595,14 +595,14 @@
     "18f15be4": "done",
     "11db42e0": "done",
     "b93101bf": "done",
-    "b23f1ade": "review",
-    "a1f5732a": "review",
-    "68ef9df3": "review",
     "9363c6bb": "review",
     "afc8b561": "review",
     "542fe6df": "review",
     "a0d54459": "review",
-    "69405b6e": "review"
+    "69405b6e": "review",
+    "b23f1ade": "review",
+    "a1f5732a": "review",
+    "68ef9df3": "review"
   },
   "tags": {},
   "notes": {},
@@ -5013,9 +5013,9 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 3084402,
+      "totalMs": 3251970,
       "viewMs": {
-        "mock": 1770250,
+        "mock": 1937818,
         "profile": 64588,
         "review": 214209,
         "practice": 1045606,
@@ -5025,9 +5025,9 @@
       },
       "categoryMs": {
         "Textual Evidence": 220094,
-        "Inferences": 635386,
-        "Transitions": 480154,
-        "Grammar": 180028,
+        "Inferences": 715390,
+        "Transitions": 552715,
+        "Grammar": 195031,
         "Vocab": 214990,
         "Notes": 225010,
         "Functions": 199996,
@@ -6541,5 +6541,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790689466034
+  "clientUpdatedAt": 1790689646041
 }
