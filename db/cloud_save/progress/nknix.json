@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T13:50:28.783Z",
+  "exportedAt": "2026-09-29T13:53:29.179Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -600,9 +600,10 @@
     "a0d54459": "done",
     "69405b6e": "done",
     "b23f1ade": "done",
-    "a1f5732a": "review",
-    "68ef9df3": "review",
-    "afc8b561": "review"
+    "a1f5732a": "done",
+    "68ef9df3": "done",
+    "afc8b561": "review",
+    "992e6994": "review"
   },
   "tags": {},
   "notes": {},
@@ -1231,7 +1232,9 @@
     "a053d0b8": "2026-09-29T12:36:11.905Z",
     "a0d54459": "2026-09-29T13:50:03.833Z",
     "b23f1ade": "2026-09-29T13:50:13.976Z",
-    "69405b6e": "2026-09-29T13:50:19.825Z"
+    "69405b6e": "2026-09-29T13:50:19.825Z",
+    "68ef9df3": "2026-09-29T13:50:52.812Z",
+    "a1f5732a": "2026-09-29T13:51:00.449Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2647,13 +2650,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 77,
-      "total": 115,
+      "correct": 78,
+      "total": 116,
       "recent": [
-        {
-          "ts": 1790485268299,
-          "correct": true
-        },
         {
           "ts": 1790485268303,
           "correct": false
@@ -2697,9 +2696,13 @@
         {
           "ts": 1790608003445,
           "correct": true
+        },
+        {
+          "ts": 1790689863486,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790608003445
+      "lastAttemptTs": 1790689863486
     },
     "Text Structure and Purpose": {
       "correct": 32,
@@ -3142,17 +3145,9 @@
       "lastAttemptTs": 1790683824096
     },
     "Transitions": {
-      "correct": 65,
-      "total": 85,
+      "correct": 67,
+      "total": 87,
       "recent": [
-        {
-          "ts": 1790594500959,
-          "correct": true
-        },
-        {
-          "ts": 1790594506660,
-          "correct": false
-        },
         {
           "ts": 1790594508156,
           "correct": true
@@ -3192,9 +3187,17 @@
         {
           "ts": 1790689826509,
           "correct": true
+        },
+        {
+          "ts": 1790689851669,
+          "correct": true
+        },
+        {
+          "ts": 1790689859731,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790689826509
+      "lastAttemptTs": 1790689859731
     },
     "Rhetorical Synthesis": {
       "correct": 41,
@@ -5016,12 +5019,12 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 3385652,
+      "totalMs": 3565650,
       "viewMs": {
-        "mock": 2039385,
+        "mock": 2174374,
         "profile": 66699,
-        "review": 219215,
-        "practice": 1070604,
+        "review": 224225,
+        "practice": 1110603,
         "leaderboard": 120021,
         "analysis": 45006,
         "lab": 9993
@@ -5029,9 +5032,9 @@
       "categoryMs": {
         "Textual Evidence": 220094,
         "Inferences": 715390,
-        "Transitions": 577717,
-        "Grammar": 205034,
-        "Vocab": 236206,
+        "Transitions": 612718,
+        "Grammar": 320033,
+        "Vocab": 246201,
         "Notes": 265007,
         "Functions": 209997,
         "Cross-Text": 120006,
@@ -6570,7 +6573,25 @@
         "ts": 1790689826510,
         "ms": 636
       }
+    ],
+    "68ef9df3": [
+      {
+        "ts": 1790689851669,
+        "ms": 4273
+      }
+    ],
+    "a1f5732a": [
+      {
+        "ts": 1790689859731,
+        "ms": 3166
+      }
+    ],
+    "542fe6df": [
+      {
+        "ts": 1790689863487,
+        "ms": 2329
+      }
     ]
   },
-  "clientUpdatedAt": 1790689826039
+  "clientUpdatedAt": 1790690006037
 }
