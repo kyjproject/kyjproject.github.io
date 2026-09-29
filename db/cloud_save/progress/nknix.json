@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T12:07:56.945Z",
+  "exportedAt": "2026-09-29T12:10:57.393Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -540,10 +540,10 @@
     "4c109ce5": "review",
     "1ae47e86": "done",
     "3167db00": "done",
-    "e9a4666c": "review",
+    "e9a4666c": "done",
     "d902a695": "done",
-    "d54126ab": "review",
-    "dd56f034": "review",
+    "d54126ab": "done",
+    "dd56f034": "done",
     "5c37d685": "review",
     "c087f68d": "review",
     "0106a3a1": "done",
@@ -1212,7 +1212,10 @@
     "f7e843d4": "2026-09-28T13:40:10.770Z",
     "18f15be4": "2026-09-28T13:40:13.943Z",
     "11db42e0": "2026-09-28T13:40:29.718Z",
-    "b93101bf": "2026-09-28T13:40:36.298Z"
+    "b93101bf": "2026-09-28T13:40:36.298Z",
+    "d54126ab": "2026-09-29T12:08:17.820Z",
+    "dd56f034": "2026-09-29T12:10:06.314Z",
+    "e9a4666c": "2026-09-29T12:10:25.743Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2848,13 +2851,9 @@
       "lastAttemptTs": 1790607985568
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 25,
-      "total": 38,
+      "correct": 26,
+      "total": 39,
       "recent": [
-        {
-          "ts": 1790262534073,
-          "correct": true
-        },
         {
           "ts": 1790262534077,
           "correct": false
@@ -2898,18 +2897,18 @@
         {
           "ts": 1790607985568,
           "correct": false
+        },
+        {
+          "ts": 1790683689369,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790607985568
+      "lastAttemptTs": 1790683689369
     },
     "Command of Evidence (Textual)": {
-      "correct": 26,
-      "total": 36,
+      "correct": 27,
+      "total": 37,
       "recent": [
-        {
-          "ts": 1790427281565,
-          "correct": false
-        },
         {
           "ts": 1790427284667,
           "correct": true
@@ -2953,9 +2952,13 @@
         {
           "ts": 1790607985568,
           "correct": false
+        },
+        {
+          "ts": 1790683789717,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790607985568
+      "lastAttemptTs": 1790683789717
     },
     "Inferences": {
       "correct": 30,
@@ -3068,13 +3071,9 @@
       "lastAttemptTs": 1790600964988
     },
     "Form, Structure, and Sense": {
-      "correct": 30,
-      "total": 39,
+      "correct": 31,
+      "total": 40,
       "recent": [
-        {
-          "ts": 1790262534074,
-          "correct": true
-        },
         {
           "ts": 1790262534078,
           "correct": true
@@ -3118,9 +3117,13 @@
         {
           "ts": 1790600964989,
           "correct": true
+        },
+        {
+          "ts": 1790683824096,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790600964989
+      "lastAttemptTs": 1790683824096
     },
     "Transitions": {
       "correct": 62,
@@ -4737,17 +4740,17 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 269501,
+      "totalMs": 449638,
       "viewMs": {
-        "review": 174429,
+        "review": 199447,
         "profile": 5003,
         "leaderboard": 30023,
-        "practice": 60046
+        "practice": 215165
       },
       "categoryMs": {
-        "Textual Evidence": 10007,
-        "Grammar": 10009,
-        "Inferences": 35026
+        "Textual Evidence": 115088,
+        "Grammar": 35028,
+        "Inferences": 60045
       }
     }
   },
@@ -6108,6 +6111,10 @@
       {
         "ts": 1790596507698,
         "ms": 23043
+      },
+      {
+        "ts": 1790683689369,
+        "ms": 240410
       }
     ],
     "dd56f034": [
@@ -6122,6 +6129,10 @@
       {
         "ts": 1790596521597,
         "ms": 792
+      },
+      {
+        "ts": 1790683789717,
+        "ms": 317255
       }
     ],
     "3167db00": [
@@ -6148,6 +6159,10 @@
       {
         "ts": 1790596577394,
         "ms": 746
+      },
+      {
+        "ts": 1790683824096,
+        "ms": 340728
       }
     ],
     "c087f68d": [
@@ -6197,5 +6212,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790683676724
+  "clientUpdatedAt": 1790683856863
 }
