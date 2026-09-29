@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T09:03:32.657Z",
+  "exportedAt": "2026-09-29T09:06:38.304Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1417,7 +1417,11 @@
     "3152fbb0": "done",
     "2d3abce3": "done",
     "ddb5e6b5": "done",
-    "7a8c1e9c": "done"
+    "7a8c1e9c": "done",
+    "95649ca9": "done",
+    "3043adaf": "done",
+    "dec9ed59": "done",
+    "741374a0": "done"
   },
   "tags": {},
   "notes": {
@@ -2857,7 +2861,11 @@
     "3152fbb0": "2026-09-29T09:01:50.965Z",
     "2d3abce3": "2026-09-29T09:02:23.998Z",
     "ddb5e6b5": "2026-09-29T09:02:31.201Z",
-    "7a8c1e9c": "2026-09-29T09:03:11.399Z"
+    "7a8c1e9c": "2026-09-29T09:03:11.399Z",
+    "95649ca9": "2026-09-29T09:04:34.731Z",
+    "3043adaf": "2026-09-29T09:04:47.881Z",
+    "dec9ed59": "2026-09-29T09:04:53.481Z",
+    "741374a0": "2026-09-29T09:05:14.231Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3326,37 +3334,9 @@
       "lastAttemptTs": 1790160058185
     },
     "Boundaries": {
-      "correct": 70,
-      "total": 133,
+      "correct": 73,
+      "total": 140,
       "recent": [
-        {
-          "ts": 1790668701871,
-          "correct": false
-        },
-        {
-          "ts": 1790668703837,
-          "correct": true
-        },
-        {
-          "ts": 1790668769319,
-          "correct": true
-        },
-        {
-          "ts": 1790668818942,
-          "correct": true
-        },
-        {
-          "ts": 1790668850843,
-          "correct": true
-        },
-        {
-          "ts": 1790668869978,
-          "correct": false
-        },
-        {
-          "ts": 1790668875760,
-          "correct": true
-        },
         {
           "ts": 1790668941992,
           "correct": true
@@ -3376,9 +3356,37 @@
         {
           "ts": 1790672550531,
           "correct": true
+        },
+        {
+          "ts": 1790672673683,
+          "correct": true
+        },
+        {
+          "ts": 1790672685948,
+          "correct": false
+        },
+        {
+          "ts": 1790672686915,
+          "correct": true
+        },
+        {
+          "ts": 1790672708931,
+          "correct": false
+        },
+        {
+          "ts": 1790672710365,
+          "correct": false
+        },
+        {
+          "ts": 1790672711764,
+          "correct": false
+        },
+        {
+          "ts": 1790672712715,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790672550531
+      "lastAttemptTs": 1790672712715
     },
     "Central Ideas and Details": {
       "correct": 38,
@@ -3436,13 +3444,9 @@
       "lastAttemptTs": 1790150751648
     },
     "Form, Structure, and Sense": {
-      "correct": 56,
-      "total": 85,
+      "correct": 57,
+      "total": 86,
       "recent": [
-        {
-          "ts": 1790668523790,
-          "correct": true
-        },
         {
           "ts": 1790668646453,
           "correct": true
@@ -3486,9 +3490,13 @@
         {
           "ts": 1790672588748,
           "correct": true
+        },
+        {
+          "ts": 1790672692864,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790672588748
+      "lastAttemptTs": 1790672692864
     },
     "Command of Evidence": {
       "correct": 1,
@@ -4975,8 +4983,8 @@
       "lastTs": 1790672447181
     },
     "95649ca9": {
-      "count": 2,
-      "lastTs": 1790672600181
+      "count": 3,
+      "lastTs": 1790672653797
     },
     "3043adaf": {
       "count": 1,
@@ -5410,15 +5418,15 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 2584671,
+      "totalMs": 2769819,
       "viewMs": {
         "leaderboard": 151788,
         "math": 350170,
-        "browse": 1305893,
+        "browse": 1456013,
         "review": 30024,
-        "analysis": 30003,
+        "analysis": 60027,
         "mock": 566725,
-        "profile": 145064,
+        "profile": 150068,
         "practice": 5004
       },
       "categoryMs": {
@@ -14843,7 +14851,47 @@
         "ts": 1790672588748,
         "ms": 3334
       }
+    ],
+    "95649ca9": [
+      {
+        "ts": 1790672673683,
+        "ms": 81551
+      }
+    ],
+    "3043adaf": [
+      {
+        "ts": 1790672685948,
+        "ms": 86750
+      },
+      {
+        "ts": 1790672686915,
+        "ms": 468
+      }
+    ],
+    "dec9ed59": [
+      {
+        "ts": 1790672692864,
+        "ms": 4166
+      }
+    ],
+    "741374a0": [
+      {
+        "ts": 1790672708931,
+        "ms": 15083
+      },
+      {
+        "ts": 1790672710365,
+        "ms": 934
+      },
+      {
+        "ts": 1790672711764,
+        "ms": 867
+      },
+      {
+        "ts": 1790672712715,
+        "ms": 398
+      }
     ]
   },
-  "clientUpdatedAt": 1790672610813
+  "clientUpdatedAt": 1790672795961
 }
