@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T12:13:56.665Z",
+  "exportedAt": "2026-09-29T12:17:04.583Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -2961,21 +2961,9 @@
       "lastAttemptTs": 1790683789717
     },
     "Inferences": {
-      "correct": 30,
-      "total": 56,
+      "correct": 31,
+      "total": 59,
       "recent": [
-        {
-          "ts": 1790428317221,
-          "correct": false
-        },
-        {
-          "ts": 1790428318538,
-          "correct": true
-        },
-        {
-          "ts": 1790485268301,
-          "correct": true
-        },
         {
           "ts": 1790485268305,
           "correct": true
@@ -3011,9 +2999,21 @@
         {
           "ts": 1790600964988,
           "correct": false
+        },
+        {
+          "ts": 1790684070461,
+          "correct": false
+        },
+        {
+          "ts": 1790684192486,
+          "correct": false
+        },
+        {
+          "ts": 1790684193834,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790600964988
+      "lastAttemptTs": 1790684193834
     },
     "Boundaries": {
       "correct": 41,
@@ -4740,17 +4740,17 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 624773,
+      "totalMs": 814920,
       "viewMs": {
         "review": 199447,
         "profile": 5003,
         "leaderboard": 30023,
-        "practice": 390300
+        "practice": 580447
       },
       "categoryMs": {
         "Textual Evidence": 115088,
         "Grammar": 35028,
-        "Inferences": 235180
+        "Inferences": 425327
       }
     }
   },
@@ -6067,6 +6067,14 @@
       {
         "ts": 1790594474693,
         "ms": 6617
+      },
+      {
+        "ts": 1790684192487,
+        "ms": 677732
+      },
+      {
+        "ts": 1790684193834,
+        "ms": 518
       }
     ],
     "8ee78de3": [
@@ -6175,6 +6183,10 @@
       {
         "ts": 1790596604562,
         "ms": 8726
+      },
+      {
+        "ts": 1790684070461,
+        "ms": 564909
       }
     ],
     "2321f18a": [
@@ -6212,5 +6224,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790684031997
+  "clientUpdatedAt": 1790684222145
 }
