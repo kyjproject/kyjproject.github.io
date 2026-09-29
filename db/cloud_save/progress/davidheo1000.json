@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T07:41:01.669Z",
+  "exportedAt": "2026-09-29T07:44:01.667Z",
   "progress": {
     "16915678": "done",
     "31926070": "done",
@@ -1375,7 +1375,8 @@
     "43e876eb": "done",
     "5c415b89": "done",
     "7eb3fa96": "done",
-    "dc8ef67e": "done"
+    "dc8ef67e": "done",
+    "4fe1258f": "done"
   },
   "tags": {},
   "notes": {
@@ -2773,7 +2774,8 @@
     "43e876eb": "2026-09-28T12:03:14.754Z",
     "5c415b89": "2026-09-28T12:03:19.121Z",
     "7eb3fa96": "2026-09-28T12:03:26.431Z",
-    "dc8ef67e": "2026-09-28T12:04:03.799Z"
+    "dc8ef67e": "2026-09-28T12:04:03.799Z",
+    "4fe1258f": "2026-09-29T07:43:46.230Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -3242,25 +3244,9 @@
       "lastAttemptTs": 1790160058185
     },
     "Boundaries": {
-      "correct": 46,
-      "total": 94,
+      "correct": 47,
+      "total": 98,
       "recent": [
-        {
-          "ts": 1787294212770,
-          "correct": false
-        },
-        {
-          "ts": 1787294216306,
-          "correct": true
-        },
-        {
-          "ts": 1787354371944,
-          "correct": false
-        },
-        {
-          "ts": 1787354373076,
-          "correct": true
-        },
         {
           "ts": 1789560791548,
           "correct": false
@@ -3292,9 +3278,25 @@
         {
           "ts": 1790151300243,
           "correct": true
+        },
+        {
+          "ts": 1790667815411,
+          "correct": false
+        },
+        {
+          "ts": 1790667816778,
+          "correct": false
+        },
+        {
+          "ts": 1790667817728,
+          "correct": false
+        },
+        {
+          "ts": 1790667818744,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790151300243
+      "lastAttemptTs": 1790667818744
     },
     "Central Ideas and Details": {
       "correct": 38,
@@ -4758,10 +4760,6 @@
       "count": 2,
       "lastTs": 1790166307237
     },
-    "c5380c0c": {
-      "count": 1,
-      "lastTs": 1790228260901
-    },
     "78cad658": {
       "count": 1,
       "lastTs": 1790234020147
@@ -4897,6 +4895,14 @@
     "dc8ef67e": {
       "count": 1,
       "lastTs": 1790597016591
+    },
+    "4fe1258f": {
+      "count": 1,
+      "lastTs": 1790667795094
+    },
+    "c5380c0c": {
+      "count": 1,
+      "lastTs": 1790228260901
     },
     "d40f805f": {
       "count": 1,
@@ -5310,10 +5316,11 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 151782,
+      "totalMs": 236825,
       "viewMs": {
         "leaderboard": 56747,
-        "math": 95035
+        "math": 95035,
+        "browse": 85043
       },
       "categoryMs": {}
     }
@@ -14384,7 +14391,25 @@
         "ts": 1790597040407,
         "ms": 1482
       }
+    ],
+    "4fe1258f": [
+      {
+        "ts": 1790667815411,
+        "ms": 20316
+      },
+      {
+        "ts": 1790667816778,
+        "ms": 784
+      },
+      {
+        "ts": 1790667817728,
+        "ms": 401
+      },
+      {
+        "ts": 1790667818744,
+        "ms": 401
+      }
     ]
   },
-  "clientUpdatedAt": 1790667659729
+  "clientUpdatedAt": 1790667840167
 }
