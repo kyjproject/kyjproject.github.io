@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T12:23:16.757Z",
+  "exportedAt": "2026-09-29T12:24:10.678Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -532,20 +532,20 @@
     "0eaed60b": "done",
     "7f4b32e1": "done",
     "6ef1d0a7": "done",
-    "a053d0b8": "review",
+    "a053d0b8": "done",
     "0a6b66b3": "done",
     "318da9d3": "done",
     "fd7c6d0d": "done",
     "8ee78de3": "done",
-    "4c109ce5": "review",
+    "4c109ce5": "done",
     "1ae47e86": "done",
     "3167db00": "done",
     "e9a4666c": "done",
     "d902a695": "done",
     "d54126ab": "done",
     "dd56f034": "done",
-    "5c37d685": "review",
-    "c087f68d": "review",
+    "5c37d685": "done",
+    "c087f68d": "done",
     "0106a3a1": "done",
     "2321f18a": "done",
     "77b4f5c9": "done",
@@ -1216,7 +1216,11 @@
     "d54126ab": "2026-09-29T12:08:17.820Z",
     "dd56f034": "2026-09-29T12:10:06.314Z",
     "e9a4666c": "2026-09-29T12:10:25.743Z",
-    "8ee78de3": "2026-09-29T12:17:51.814Z"
+    "8ee78de3": "2026-09-29T12:17:51.814Z",
+    "c087f68d": "2026-09-29T12:23:57.463Z",
+    "5c37d685": "2026-09-29T12:23:58.863Z",
+    "4c109ce5": "2026-09-29T12:23:59.864Z",
+    "a053d0b8": "2026-09-29T12:24:02.048Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4741,17 +4745,17 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 1070117,
+      "totalMs": 1124908,
       "viewMs": {
-        "review": 204451,
+        "review": 214209,
         "profile": 5003,
         "leaderboard": 30023,
-        "practice": 830640
+        "practice": 875673
       },
       "categoryMs": {
         "Textual Evidence": 115088,
         "Grammar": 35028,
-        "Inferences": 475365,
+        "Inferences": 510391,
         "Transitions": 200155
       }
     }
@@ -6254,5 +6258,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790684593094
+  "clientUpdatedAt": 1790684647996
 }
