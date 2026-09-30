@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-30T10:06:09.039Z",
+  "exportedAt": "2026-09-30T11:07:30.923Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1502,7 +1502,9 @@
     "eec9d2dc": "done",
     "ee884080": "done",
     "aaf7481c": "done",
-    "532c012b": "done"
+    "532c012b": "done",
+    "40a475f8": "done",
+    "b01d87be": "done"
   },
   "tags": {},
   "notes": {
@@ -3027,7 +3029,9 @@
     "eec9d2dc": "2026-09-30T10:00:42.252Z",
     "ee884080": "2026-09-30T10:00:56.586Z",
     "aaf7481c": "2026-09-30T10:01:07.451Z",
-    "532c012b": "2026-09-30T10:01:16.852Z"
+    "532c012b": "2026-09-30T10:01:16.852Z",
+    "40a475f8": "2026-09-30T11:06:54.391Z",
+    "b01d87be": "2026-09-30T11:07:09.806Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -4620,17 +4624,9 @@
       "lastAttemptTs": 1790596862313
     },
     "Lines, angles, and triangles": {
-      "correct": 38,
-      "total": 60,
+      "correct": 39,
+      "total": 62,
       "recent": [
-        {
-          "ts": 1790761984199,
-          "correct": true
-        },
-        {
-          "ts": 1790761992832,
-          "correct": true
-        },
         {
           "ts": 1790761997398,
           "correct": false
@@ -4670,9 +4666,17 @@
         {
           "ts": 1790762410537,
           "correct": true
+        },
+        {
+          "ts": 1790766412071,
+          "correct": false
+        },
+        {
+          "ts": 1790766413238,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790762410537
+      "lastAttemptTs": 1790766413238
     },
     "Right triangles and trigonometry": {
       "correct": 27,
@@ -4730,13 +4734,9 @@
       "lastAttemptTs": 1790762454585
     },
     "Area and volume": {
-      "correct": 39,
-      "total": 57,
+      "correct": 40,
+      "total": 58,
       "recent": [
-        {
-          "ts": 1790762131843,
-          "correct": true
-        },
         {
           "ts": 1790762191758,
           "correct": true
@@ -4780,9 +4780,13 @@
         {
           "ts": 1790762474984,
           "correct": true
+        },
+        {
+          "ts": 1790766429188,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790762474984
+      "lastAttemptTs": 1790766429188
     },
     "Circles": {
       "correct": 8,
@@ -5048,18 +5052,6 @@
       "count": 2,
       "lastTs": 1790597001471
     },
-    "e8971daa": {
-      "count": 1,
-      "lastTs": 1790596964291
-    },
-    "dc8ef67e": {
-      "count": 1,
-      "lastTs": 1790597016591
-    },
-    "4fe1258f": {
-      "count": 1,
-      "lastTs": 1790667795094
-    },
     "16ff7151": {
       "count": 2,
       "lastTs": 1790671323415
@@ -5155,6 +5147,30 @@
     "532c012b": {
       "count": 1,
       "lastTs": 1790762468371
+    },
+    "40a475f8": {
+      "count": 1,
+      "lastTs": 1790766403423
+    },
+    "b01d87be": {
+      "count": 1,
+      "lastTs": 1790766425906
+    },
+    "6baaa5b3": {
+      "count": 1,
+      "lastTs": 1790766430589
+    },
+    "e8971daa": {
+      "count": 1,
+      "lastTs": 1790596964291
+    },
+    "dc8ef67e": {
+      "count": 1,
+      "lastTs": 1790597016591
+    },
+    "4fe1258f": {
+      "count": 1,
+      "lastTs": 1790667795094
     },
     "dbb64b2b": {
       "count": 1,
@@ -5683,12 +5699,13 @@
       }
     },
     "2026-09-30": {
-      "totalMs": 930717,
+      "totalMs": 1128930,
       "viewMs": {
-        "profile": 50081,
+        "profile": 133230,
         "test": 10005,
-        "math": 865628,
-        "mock": 5003
+        "math": 920670,
+        "mock": 5003,
+        "leaderboard": 60022
       },
       "categoryMs": {}
     }
@@ -15801,7 +15818,23 @@
         "ts": 1790762474984,
         "ms": 434
       }
+    ],
+    "40a475f8": [
+      {
+        "ts": 1790766412071,
+        "ms": 8643
+      },
+      {
+        "ts": 1790766413238,
+        "ms": 717
+      }
+    ],
+    "b01d87be": [
+      {
+        "ts": 1790766429188,
+        "ms": 3280
+      }
     ]
   },
-  "clientUpdatedAt": 1790762763958
+  "clientUpdatedAt": 1790766450191
 }
