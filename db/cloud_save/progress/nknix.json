@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-30T15:52:29.061Z",
+  "exportedAt": "2026-09-30T16:03:01.389Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -595,8 +595,8 @@
     "18f15be4": "done",
     "11db42e0": "done",
     "b93101bf": "done",
-    "9363c6bb": "review",
-    "542fe6df": "review",
+    "9363c6bb": "done",
+    "542fe6df": "done",
     "a0d54459": "done",
     "69405b6e": "done",
     "b23f1ade": "done",
@@ -605,8 +605,8 @@
     "afc8b561": "done",
     "992e6994": "done",
     "f852bcbd": "done",
-    "a2941bd8": "review",
-    "829d8db0": "review",
+    "a2941bd8": "done",
+    "829d8db0": "done",
     "d812bcc5": "review",
     "92328e3b": "done",
     "fd88c8b1": "review",
@@ -1368,7 +1368,10 @@
     "140d2d15": "2026-09-29T15:06:28.957Z",
     "f2af8e90": "2026-09-29T15:06:31.157Z",
     "f852bcbd": "2026-09-30T15:51:26.522Z",
-    "992e6994": "2026-09-30T15:51:40.852Z"
+    "992e6994": "2026-09-30T15:51:40.852Z",
+    "9363c6bb": "2026-09-30T15:56:59.684Z",
+    "a2941bd8": "2026-09-30T15:58:16.128Z",
+    "542fe6df": "2026-09-30T16:00:09.855Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2967,29 +2970,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 86,
-      "total": 129,
+      "correct": 91,
+      "total": 136,
       "recent": [
-        {
-          "ts": 1790691907039,
-          "correct": true
-        },
-        {
-          "ts": 1790691912355,
-          "correct": false
-        },
-        {
-          "ts": 1790691919287,
-          "correct": true
-        },
-        {
-          "ts": 1790691928169,
-          "correct": false
-        },
-        {
-          "ts": 1790693900699,
-          "correct": true
-        },
         {
           "ts": 1790693900700,
           "correct": true
@@ -3009,9 +2992,37 @@
         {
           "ts": 1790693900708,
           "correct": true
+        },
+        {
+          "ts": 1790783961891,
+          "correct": true
+        },
+        {
+          "ts": 1790783975523,
+          "correct": true
+        },
+        {
+          "ts": 1790783976789,
+          "correct": false
+        },
+        {
+          "ts": 1790783987140,
+          "correct": true
+        },
+        {
+          "ts": 1790784004071,
+          "correct": false
+        },
+        {
+          "ts": 1790784009237,
+          "correct": true
+        },
+        {
+          "ts": 1790784025303,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900708
+      "lastAttemptTs": 1790784025303
     },
     "Text Structure and Purpose": {
       "correct": 36,
@@ -3120,8 +3131,8 @@
       "lastAttemptTs": 1790693900709
     },
     "Central Ideas and Details": {
-      "correct": 50,
-      "total": 67,
+      "correct": 51,
+      "total": 70,
       "recent": [
         {
           "ts": 1790485268300,
@@ -3158,9 +3169,21 @@
         {
           "ts": 1790693900710,
           "correct": true
+        },
+        {
+          "ts": 1790783769057,
+          "correct": false
+        },
+        {
+          "ts": 1790783770669,
+          "correct": false
+        },
+        {
+          "ts": 1790783775403,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900710
+      "lastAttemptTs": 1790783775403
     },
     "Command of Evidence (Quantitative)": {
       "correct": 29,
@@ -3261,8 +3284,8 @@
       "lastAttemptTs": 1790693900710
     },
     "Inferences": {
-      "correct": 35,
-      "total": 65,
+      "correct": 36,
+      "total": 67,
       "recent": [
         {
           "ts": 1790596604562,
@@ -3303,9 +3326,17 @@
         {
           "ts": 1790693900710,
           "correct": false
+        },
+        {
+          "ts": 1790783597131,
+          "correct": false
+        },
+        {
+          "ts": 1790783600681,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900710
+      "lastAttemptTs": 1790783600681
     },
     "Boundaries": {
       "correct": 46,
@@ -3414,8 +3445,8 @@
       "lastAttemptTs": 1790783498737
     },
     "Transitions": {
-      "correct": 75,
-      "total": 98,
+      "correct": 77,
+      "total": 100,
       "recent": [
         {
           "ts": 1790689859731,
@@ -3448,9 +3479,17 @@
         {
           "ts": 1790693900712,
           "correct": true
+        },
+        {
+          "ts": 1790783807717,
+          "correct": true
+        },
+        {
+          "ts": 1790783865364,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900712
+      "lastAttemptTs": 1790783865364
     },
     "Rhetorical Synthesis": {
       "correct": 48,
@@ -5127,9 +5166,9 @@
       }
     },
     "2026-09-30": {
-      "totalMs": 250180,
+      "totalMs": 585442,
       "viewMs": {
-        "practice": 230165,
+        "practice": 565427,
         "leaderboard": 10008,
         "review": 5003,
         "test": 5004
@@ -5138,7 +5177,22 @@
         "Algebra": 80062,
         "Quantitative Evidence": 20016,
         "Grammar": 60046,
-        "Inferences": 45035
+        "Inferences": 100079,
+        "Main Idea": 60046,
+        "Transitions": 145114,
+        "Vocab": 75058
+      }
+    },
+    "2026-10-01": {
+      "totalMs": 170112,
+      "viewMs": {
+        "practice": 35027,
+        "profile": 45035,
+        "review": 60047,
+        "leaderboard": 30003
+      },
+      "categoryMs": {
+        "Vocab": 30024
       }
     }
   },
@@ -6675,6 +6729,10 @@
       {
         "ts": 1790691885645,
         "ms": 2056853
+      },
+      {
+        "ts": 1790783807718,
+        "ms": 28916
       }
     ],
     "68ef9df3": [
@@ -6691,8 +6749,24 @@
     ],
     "542fe6df": [
       {
-        "ts": 1790689863487,
-        "ms": 2329
+        "ts": 1790783975523,
+        "ms": 7516
+      },
+      {
+        "ts": 1790783976789,
+        "ms": 600
+      },
+      {
+        "ts": 1790783987140,
+        "ms": 1318
+      },
+      {
+        "ts": 1790784004072,
+        "ms": 733
+      },
+      {
+        "ts": 1790784009238,
+        "ms": 1168
       }
     ],
     "fd88c8b1": [
@@ -6747,6 +6821,10 @@
       {
         "ts": 1790691892755,
         "ms": 580
+      },
+      {
+        "ts": 1790783865364,
+        "ms": 30449
       }
     ],
     "92328e3b": [
@@ -6763,6 +6841,10 @@
       {
         "ts": 1790691912355,
         "ms": 2186
+      },
+      {
+        "ts": 1790783961891,
+        "ms": 38764
       }
     ],
     "829d8db0": [
@@ -6773,6 +6855,10 @@
       {
         "ts": 1790691928169,
         "ms": 4107
+      },
+      {
+        "ts": 1790784025303,
+        "ms": 14915
       }
     ],
     "bd12c0bd": [
@@ -6808,7 +6894,31 @@
         "ts": 1790694268520,
         "ms": 33516
       }
+    ],
+    "af9b0a70": [
+      {
+        "ts": 1790783597132,
+        "ms": 95646
+      },
+      {
+        "ts": 1790783600681,
+        "ms": 1801
+      }
+    ],
+    "b8abc32e": [
+      {
+        "ts": 1790783769057,
+        "ms": 163859
+      },
+      {
+        "ts": 1790783770670,
+        "ms": 534
+      },
+      {
+        "ts": 1790783775403,
+        "ms": 1551
+      }
     ]
   },
-  "clientUpdatedAt": 1790783546429
+  "clientUpdatedAt": 1790784176633
 }
