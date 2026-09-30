@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-30T11:07:30.923Z",
+  "exportedAt": "2026-09-30T11:10:31.047Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1504,7 +1504,21 @@
     "aaf7481c": "done",
     "532c012b": "done",
     "40a475f8": "done",
-    "b01d87be": "done"
+    "b01d87be": "done",
+    "6baaa5b3": "done",
+    "260c2ab4": "done",
+    "3ae04874": "done",
+    "729a31a8": "done",
+    "8773f193": "done",
+    "e01724ba": "done",
+    "070522bf": "done",
+    "ff99159e": "done",
+    "8875a21b": "done",
+    "08049d70": "done",
+    "c3ee52e5": "done",
+    "8588cf5e": "done",
+    "bbfa4707": "done",
+    "68ce71ce": "done"
   },
   "tags": {},
   "notes": {
@@ -3031,7 +3045,21 @@
     "aaf7481c": "2026-09-30T10:01:07.451Z",
     "532c012b": "2026-09-30T10:01:16.852Z",
     "40a475f8": "2026-09-30T11:06:54.391Z",
-    "b01d87be": "2026-09-30T11:07:09.806Z"
+    "b01d87be": "2026-09-30T11:07:09.806Z",
+    "6baaa5b3": "2026-09-30T11:07:42.272Z",
+    "260c2ab4": "2026-09-30T11:08:01.321Z",
+    "3ae04874": "2026-09-30T11:08:33.787Z",
+    "729a31a8": "2026-09-30T11:08:43.874Z",
+    "8773f193": "2026-09-30T11:08:54.403Z",
+    "e01724ba": "2026-09-30T11:09:03.587Z",
+    "070522bf": "2026-09-30T11:09:24.602Z",
+    "ff99159e": "2026-09-30T11:09:34.853Z",
+    "8875a21b": "2026-09-30T11:09:43.885Z",
+    "08049d70": "2026-09-30T11:09:51.405Z",
+    "c3ee52e5": "2026-09-30T11:09:57.752Z",
+    "8588cf5e": "2026-09-30T11:10:08.851Z",
+    "bbfa4707": "2026-09-30T11:10:17.784Z",
+    "68ce71ce": "2026-09-30T11:10:25.918Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -4459,17 +4487,9 @@
       "lastAttemptTs": 1790596862313
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 17,
-      "total": 35,
+      "correct": 19,
+      "total": 37,
       "recent": [
-        {
-          "ts": 1790228440600,
-          "correct": true
-        },
-        {
-          "ts": 1790228479284,
-          "correct": true
-        },
         {
           "ts": 1790584337124,
           "correct": true
@@ -4509,9 +4529,17 @@
         {
           "ts": 1790596862314,
           "correct": true
+        },
+        {
+          "ts": 1790766617234,
+          "correct": true
+        },
+        {
+          "ts": 1790766630218,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862314
+      "lastAttemptTs": 1790766630218
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 16,
@@ -4569,17 +4597,9 @@
       "lastAttemptTs": 1790596966811
     },
     "Probability and conditional probability": {
-      "correct": 12,
-      "total": 21,
+      "correct": 13,
+      "total": 23,
       "recent": [
-        {
-          "ts": 1790143830076,
-          "correct": true
-        },
-        {
-          "ts": 1790155357250,
-          "correct": true
-        },
         {
           "ts": 1790580617879,
           "correct": false
@@ -4619,30 +4639,22 @@
         {
           "ts": 1790596862313,
           "correct": false
+        },
+        {
+          "ts": 1790766622401,
+          "correct": false
+        },
+        {
+          "ts": 1790766624234,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862313
+      "lastAttemptTs": 1790766624234
     },
     "Lines, angles, and triangles": {
-      "correct": 39,
-      "total": 62,
+      "correct": 43,
+      "total": 66,
       "recent": [
-        {
-          "ts": 1790761997398,
-          "correct": false
-        },
-        {
-          "ts": 1790762040863,
-          "correct": false
-        },
-        {
-          "ts": 1790762041679,
-          "correct": true
-        },
-        {
-          "ts": 1790762062546,
-          "correct": true
-        },
         {
           "ts": 1790762080911,
           "correct": true
@@ -4674,18 +4686,30 @@
         {
           "ts": 1790766413238,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790766413238
-    },
-    "Right triangles and trigonometry": {
-      "correct": 27,
-      "total": 36,
-      "recent": [
+        },
         {
-          "ts": 1790587109174,
+          "ts": 1790766460821,
           "correct": true
         },
+        {
+          "ts": 1790766532737,
+          "correct": true
+        },
+        {
+          "ts": 1790766540937,
+          "correct": true
+        },
+        {
+          "ts": 1790766590319,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790766590319
+    },
+    "Right triangles and trigonometry": {
+      "correct": 28,
+      "total": 37,
+      "recent": [
         {
           "ts": 1790596862311,
           "correct": true
@@ -4729,50 +4753,18 @@
         {
           "ts": 1790762454585,
           "correct": true
+        },
+        {
+          "ts": 1790766511771,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790762454585
+      "lastAttemptTs": 1790766511771
     },
     "Area and volume": {
-      "correct": 40,
-      "total": 58,
+      "correct": 46,
+      "total": 67,
       "recent": [
-        {
-          "ts": 1790762191758,
-          "correct": true
-        },
-        {
-          "ts": 1790762259824,
-          "correct": false
-        },
-        {
-          "ts": 1790762382037,
-          "correct": true
-        },
-        {
-          "ts": 1790762394573,
-          "correct": true
-        },
-        {
-          "ts": 1790762402669,
-          "correct": true
-        },
-        {
-          "ts": 1790762435402,
-          "correct": true
-        },
-        {
-          "ts": 1790762441702,
-          "correct": true
-        },
-        {
-          "ts": 1790762466770,
-          "correct": true
-        },
-        {
-          "ts": 1790762473051,
-          "correct": false
-        },
         {
           "ts": 1790762474084,
           "correct": false
@@ -4784,18 +4776,50 @@
         {
           "ts": 1790766429188,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790766429188
-    },
-    "Circles": {
-      "correct": 8,
-      "total": 12,
-      "recent": [
+        },
         {
-          "ts": 1789560230339,
+          "ts": 1790766480206,
           "correct": true
         },
+        {
+          "ts": 1790766562985,
+          "correct": true
+        },
+        {
+          "ts": 1790766568952,
+          "correct": false
+        },
+        {
+          "ts": 1790766569736,
+          "correct": false
+        },
+        {
+          "ts": 1790766570768,
+          "correct": false
+        },
+        {
+          "ts": 1790766572535,
+          "correct": true
+        },
+        {
+          "ts": 1790766583086,
+          "correct": true
+        },
+        {
+          "ts": 1790766597053,
+          "correct": true
+        },
+        {
+          "ts": 1790766608352,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790766608352
+    },
+    "Circles": {
+      "correct": 9,
+      "total": 13,
+      "recent": [
         {
           "ts": 1789801305738,
           "correct": false
@@ -4839,9 +4863,13 @@
         {
           "ts": 1790761939515,
           "correct": true
+        },
+        {
+          "ts": 1790766523203,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790761939515
+      "lastAttemptTs": 1790766523203
     },
     "Two-variable data: Models and scatterplots": {
       "correct": 2,
@@ -5064,61 +5092,13 @@
       "count": 3,
       "lastTs": 1790672653797
     },
-    "3043adaf": {
-      "count": 1,
-      "lastTs": 1790672599197
-    },
-    "cf7c358c": {
-      "count": 1,
-      "lastTs": 1790675532710
-    },
-    "c709441f": {
-      "count": 1,
-      "lastTs": 1790675639574
-    },
-    "4ca5ab4d": {
-      "count": 1,
-      "lastTs": 1790675735322
-    },
     "8e3878fd": {
       "count": 2,
       "lastTs": 1790761567191
     },
-    "dd899ebf": {
-      "count": 1,
-      "lastTs": 1790761570925
-    },
-    "b517b769": {
-      "count": 1,
-      "lastTs": 1790761646440
-    },
-    "82cf5449": {
-      "count": 1,
-      "lastTs": 1790761682957
-    },
     "2d61bf02": {
       "count": 2,
       "lastTs": 1790761733975
-    },
-    "4ee3fb4a": {
-      "count": 1,
-      "lastTs": 1790761743006
-    },
-    "4a5341e5": {
-      "count": 1,
-      "lastTs": 1790761748871
-    },
-    "07b04f80": {
-      "count": 1,
-      "lastTs": 1790762268023
-    },
-    "7921cbe8": {
-      "count": 1,
-      "lastTs": 1790762310408
-    },
-    "850fa30c": {
-      "count": 1,
-      "lastTs": 1790762330325
     },
     "fd6f7271": {
       "count": 1,
@@ -5159,6 +5139,106 @@
     "6baaa5b3": {
       "count": 1,
       "lastTs": 1790766430589
+    },
+    "260c2ab4": {
+      "count": 1,
+      "lastTs": 1790766464854
+    },
+    "729a31a8": {
+      "count": 1,
+      "lastTs": 1790766517969
+    },
+    "8773f193": {
+      "count": 1,
+      "lastTs": 1790766524687
+    },
+    "e01724ba": {
+      "count": 1,
+      "lastTs": 1790766535320
+    },
+    "070522bf": {
+      "count": 1,
+      "lastTs": 1790766546086
+    },
+    "ff99159e": {
+      "count": 1,
+      "lastTs": 1790766565834
+    },
+    "8875a21b": {
+      "count": 1,
+      "lastTs": 1790766575802
+    },
+    "08049d70": {
+      "count": 1,
+      "lastTs": 1790766586752
+    },
+    "c3ee52e5": {
+      "count": 1,
+      "lastTs": 1790766592285
+    },
+    "8588cf5e": {
+      "count": 1,
+      "lastTs": 1790766598520
+    },
+    "bbfa4707": {
+      "count": 1,
+      "lastTs": 1790766610283
+    },
+    "68ce71ce": {
+      "count": 1,
+      "lastTs": 1790766618884
+    },
+    "5216125e": {
+      "count": 1,
+      "lastTs": 1790766627316
+    },
+    "3043adaf": {
+      "count": 1,
+      "lastTs": 1790672599197
+    },
+    "cf7c358c": {
+      "count": 1,
+      "lastTs": 1790675532710
+    },
+    "c709441f": {
+      "count": 1,
+      "lastTs": 1790675639574
+    },
+    "4ca5ab4d": {
+      "count": 1,
+      "lastTs": 1790675735322
+    },
+    "dd899ebf": {
+      "count": 1,
+      "lastTs": 1790761570925
+    },
+    "b517b769": {
+      "count": 1,
+      "lastTs": 1790761646440
+    },
+    "82cf5449": {
+      "count": 1,
+      "lastTs": 1790761682957
+    },
+    "4ee3fb4a": {
+      "count": 1,
+      "lastTs": 1790761743006
+    },
+    "4a5341e5": {
+      "count": 1,
+      "lastTs": 1790761748871
+    },
+    "07b04f80": {
+      "count": 1,
+      "lastTs": 1790762268023
+    },
+    "7921cbe8": {
+      "count": 1,
+      "lastTs": 1790762310408
+    },
+    "850fa30c": {
+      "count": 1,
+      "lastTs": 1790762330325
     },
     "e8971daa": {
       "count": 1,
@@ -5699,11 +5779,11 @@
       }
     },
     "2026-09-30": {
-      "totalMs": 1128930,
+      "totalMs": 1309071,
       "viewMs": {
         "profile": 133230,
         "test": 10005,
-        "math": 920670,
+        "math": 1100811,
         "mock": 5003,
         "leaderboard": 60022
       },
@@ -15834,7 +15914,113 @@
         "ts": 1790766429188,
         "ms": 3280
       }
+    ],
+    "6baaa5b3": [
+      {
+        "ts": 1790766460821,
+        "ms": 30231
+      }
+    ],
+    "260c2ab4": [
+      {
+        "ts": 1790766480206,
+        "ms": 15352
+      }
+    ],
+    "3ae04874": [
+      {
+        "ts": 1790766511771,
+        "ms": 29167
+      }
+    ],
+    "729a31a8": [
+      {
+        "ts": 1790766523203,
+        "ms": 5233
+      }
+    ],
+    "8773f193": [
+      {
+        "ts": 1790766532737,
+        "ms": 8050
+      }
+    ],
+    "e01724ba": [
+      {
+        "ts": 1790766540937,
+        "ms": 5616
+      }
+    ],
+    "070522bf": [
+      {
+        "ts": 1790766562985,
+        "ms": 16898
+      }
+    ],
+    "ff99159e": [
+      {
+        "ts": 1790766568952,
+        "ms": 3117
+      },
+      {
+        "ts": 1790766569736,
+        "ms": 352
+      },
+      {
+        "ts": 1790766570768,
+        "ms": 566
+      },
+      {
+        "ts": 1790766572535,
+        "ms": 867
+      }
+    ],
+    "8875a21b": [
+      {
+        "ts": 1790766583086,
+        "ms": 7282
+      }
+    ],
+    "08049d70": [
+      {
+        "ts": 1790766590319,
+        "ms": 3567
+      }
+    ],
+    "c3ee52e5": [
+      {
+        "ts": 1790766597053,
+        "ms": 4768
+      }
+    ],
+    "8588cf5e": [
+      {
+        "ts": 1790766608352,
+        "ms": 9831
+      }
+    ],
+    "bbfa4707": [
+      {
+        "ts": 1790766617234,
+        "ms": 6950
+      }
+    ],
+    "68ce71ce": [
+      {
+        "ts": 1790766622401,
+        "ms": 3516
+      },
+      {
+        "ts": 1790766624234,
+        "ms": 1301
+      }
+    ],
+    "5216125e": [
+      {
+        "ts": 1790766630218,
+        "ms": 2901
+      }
     ]
   },
-  "clientUpdatedAt": 1790766450191
+  "clientUpdatedAt": 1790766630332
 }
