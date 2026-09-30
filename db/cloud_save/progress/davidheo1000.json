@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-30T09:54:55.258Z",
+  "exportedAt": "2026-09-30T09:57:54.284Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1484,7 +1484,14 @@
     "c655ab2f": "done",
     "1d04566c": "done",
     "2384a4cb": "done",
-    "6e2abed7": "done"
+    "6e2abed7": "done",
+    "65c8a78d": "done",
+    "e5ede4b8": "done",
+    "03bd81f1": "done",
+    "027efe3c": "done",
+    "e95ae88a": "done",
+    "19471dcf": "done",
+    "091c69dd": "done"
   },
   "tags": {},
   "notes": {
@@ -2991,7 +2998,14 @@
     "c655ab2f": "2026-09-30T09:54:23.380Z",
     "1d04566c": "2026-09-30T09:54:31.012Z",
     "2384a4cb": "2026-09-30T09:54:41.846Z",
-    "6e2abed7": "2026-09-30T09:54:50.312Z"
+    "6e2abed7": "2026-09-30T09:54:50.312Z",
+    "65c8a78d": "2026-09-30T09:55:15.545Z",
+    "e5ede4b8": "2026-09-30T09:55:32.795Z",
+    "03bd81f1": "2026-09-30T09:55:57.877Z",
+    "027efe3c": "2026-09-30T09:56:06.595Z",
+    "e95ae88a": "2026-09-30T09:56:32.577Z",
+    "19471dcf": "2026-09-30T09:56:45.375Z",
+    "091c69dd": "2026-09-30T09:57:42.023Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -4584,17 +4598,9 @@
       "lastAttemptTs": 1790596862313
     },
     "Lines, angles, and triangles": {
-      "correct": 35,
-      "total": 57,
+      "correct": 37,
+      "total": 59,
       "recent": [
-        {
-          "ts": 1790761901084,
-          "correct": true
-        },
-        {
-          "ts": 1790761913802,
-          "correct": true
-        },
         {
           "ts": 1790761929232,
           "correct": true
@@ -4634,18 +4640,22 @@
         {
           "ts": 1790762089196,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790762089196
-    },
-    "Right triangles and trigonometry": {
-      "correct": 23,
-      "total": 32,
-      "recent": [
+        },
         {
-          "ts": 1790586719281,
+          "ts": 1790762156460,
           "correct": true
         },
+        {
+          "ts": 1790762165726,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790762165726
+    },
+    "Right triangles and trigonometry": {
+      "correct": 24,
+      "total": 33,
+      "recent": [
         {
           "ts": 1790586931080,
           "correct": true
@@ -4689,30 +4699,18 @@
         {
           "ts": 1790762069863,
           "correct": true
+        },
+        {
+          "ts": 1790762204377,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790762069863
+      "lastAttemptTs": 1790762204377
     },
     "Area and volume": {
-      "correct": 29,
-      "total": 44,
+      "correct": 32,
+      "total": 48,
       "recent": [
-        {
-          "ts": 1790761671407,
-          "correct": false
-        },
-        {
-          "ts": 1790761672243,
-          "correct": true
-        },
-        {
-          "ts": 1790761722240,
-          "correct": false
-        },
-        {
-          "ts": 1790761723990,
-          "correct": true
-        },
         {
           "ts": 1790761799025,
           "correct": true
@@ -4744,9 +4742,25 @@
         {
           "ts": 1790762027546,
           "correct": true
+        },
+        {
+          "ts": 1790762114995,
+          "correct": true
+        },
+        {
+          "ts": 1790762131843,
+          "correct": true
+        },
+        {
+          "ts": 1790762191758,
+          "correct": true
+        },
+        {
+          "ts": 1790762259824,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790762027546
+      "lastAttemptTs": 1790762259824
     },
     "Circles": {
       "correct": 8,
@@ -4996,10 +5010,6 @@
       "count": 2,
       "lastTs": 1790581077935
     },
-    "c066203a": {
-      "count": 1,
-      "lastTs": 1790581409155
-    },
     "c10968c1": {
       "count": 2,
       "lastTs": 1790583665596
@@ -5119,6 +5129,14 @@
     "4a5341e5": {
       "count": 1,
       "lastTs": 1790761748871
+    },
+    "07b04f80": {
+      "count": 1,
+      "lastTs": 1790762268023
+    },
+    "c066203a": {
+      "count": 1,
+      "lastTs": 1790581409155
     },
     "52d63c4b": {
       "count": 1,
@@ -5607,11 +5625,11 @@
       }
     },
     "2026-09-30": {
-      "totalMs": 505344,
+      "totalMs": 685482,
       "viewMs": {
         "profile": 5000,
         "test": 5000,
-        "math": 495344
+        "math": 675482
       },
       "categoryMs": {}
     }
@@ -15608,7 +15626,49 @@
         "ts": 1790762089196,
         "ms": 552
       }
+    ],
+    "65c8a78d": [
+      {
+        "ts": 1790762114995,
+        "ms": 23616
+      }
+    ],
+    "e5ede4b8": [
+      {
+        "ts": 1790762131844,
+        "ms": 15081
+      }
+    ],
+    "03bd81f1": [
+      {
+        "ts": 1790762156460,
+        "ms": 37432
+      }
+    ],
+    "027efe3c": [
+      {
+        "ts": 1790762165726,
+        "ms": 6998
+      }
+    ],
+    "e95ae88a": [
+      {
+        "ts": 1790762191758,
+        "ms": 24196
+      }
+    ],
+    "19471dcf": [
+      {
+        "ts": 1790762204377,
+        "ms": 10899
+      }
+    ],
+    "091c69dd": [
+      {
+        "ts": 1790762259824,
+        "ms": 50949
+      }
     ]
   },
-  "clientUpdatedAt": 1790762091875
+  "clientUpdatedAt": 1790762272012
 }
