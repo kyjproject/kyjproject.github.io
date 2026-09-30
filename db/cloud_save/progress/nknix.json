@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-29T15:39:47.032Z",
+  "exportedAt": "2026-09-30T15:49:29.516Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -5086,16 +5086,16 @@
       }
     },
     "2026-09-29": {
-      "totalMs": 7951510,
+      "totalMs": 8061569,
       "viewMs": {
         "review": 249222,
-        "profile": 71706,
-        "leaderboard": 230136,
+        "profile": 76706,
+        "leaderboard": 290183,
         "practice": 1220634,
         "mock": 6265224,
         "analysis": 45006,
         "lab": 9993,
-        "home": 450208,
+        "home": 495220,
         "test": 10000,
         "math": 139975
       },
@@ -5114,6 +5114,15 @@
         "Advanced Math": 524663,
         "Algebra": 531166,
         "Geometry and Trigonometry": 309107
+      }
+    },
+    "2026-09-30": {
+      "totalMs": 105068,
+      "viewMs": {
+        "practice": 105068
+      },
+      "categoryMs": {
+        "Algebra": 80062
       }
     }
   },
@@ -6777,5 +6786,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790696382117
+  "clientUpdatedAt": 1790783366289
 }
