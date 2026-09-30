@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-30T15:49:29.516Z",
+  "exportedAt": "2026-09-30T15:52:29.061Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -603,8 +603,8 @@
     "a1f5732a": "done",
     "68ef9df3": "done",
     "afc8b561": "done",
-    "992e6994": "review",
-    "f852bcbd": "review",
+    "992e6994": "done",
+    "f852bcbd": "done",
     "a2941bd8": "review",
     "829d8db0": "review",
     "d812bcc5": "review",
@@ -1366,7 +1366,9 @@
     "e5e5f6f6": "2026-09-29T15:06:26.499Z",
     "cedea32c": "2026-09-29T15:06:27.911Z",
     "140d2d15": "2026-09-29T15:06:28.957Z",
-    "f2af8e90": "2026-09-29T15:06:31.157Z"
+    "f2af8e90": "2026-09-29T15:06:31.157Z",
+    "f852bcbd": "2026-09-30T15:51:26.522Z",
+    "992e6994": "2026-09-30T15:51:40.852Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3357,8 +3359,8 @@
       "lastAttemptTs": 1790693900711
     },
     "Form, Structure, and Sense": {
-      "correct": 35,
-      "total": 49,
+      "correct": 37,
+      "total": 51,
       "recent": [
         {
           "ts": 1790600964988,
@@ -3399,9 +3401,17 @@
         {
           "ts": 1790693900711,
           "correct": false
+        },
+        {
+          "ts": 1790783485539,
+          "correct": true
+        },
+        {
+          "ts": 1790783498737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900711
+      "lastAttemptTs": 1790783498737
     },
     "Transitions": {
       "correct": 75,
@@ -5117,12 +5127,18 @@
       }
     },
     "2026-09-30": {
-      "totalMs": 105068,
+      "totalMs": 250180,
       "viewMs": {
-        "practice": 105068
+        "practice": 230165,
+        "leaderboard": 10008,
+        "review": 5003,
+        "test": 5004
       },
       "categoryMs": {
-        "Algebra": 80062
+        "Algebra": 80062,
+        "Quantitative Evidence": 20016,
+        "Grammar": 60046,
+        "Inferences": 45035
       }
     }
   },
@@ -6697,6 +6713,10 @@
       {
         "ts": 1790691841295,
         "ms": 1200
+      },
+      {
+        "ts": 1790783485539,
+        "ms": 41299
       }
     ],
     "992e6994": [
@@ -6707,6 +6727,10 @@
       {
         "ts": 1790691855390,
         "ms": 965
+      },
+      {
+        "ts": 1790783498737,
+        "ms": 11415
       }
     ],
     "afc8b561": [
@@ -6786,5 +6810,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790783366289
+  "clientUpdatedAt": 1790783546429
 }
