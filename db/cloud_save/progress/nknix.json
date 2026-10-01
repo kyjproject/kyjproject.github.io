@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-01T12:20:10.752Z",
+  "exportedAt": "2026-10-01T13:06:29.712Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -607,20 +607,20 @@
     "f852bcbd": "done",
     "a2941bd8": "done",
     "829d8db0": "done",
-    "d812bcc5": "review",
+    "d812bcc5": "done",
     "92328e3b": "done",
-    "fd88c8b1": "review",
+    "fd88c8b1": "done",
     "84877fd5": "done",
     "f2af8e90": "done",
-    "ac3df64f": "review",
-    "95b69a20": "review",
+    "ac3df64f": "done",
+    "95b69a20": "done",
     "85cf3e80": "done",
     "c7f7ccdd": "done",
     "8ac533d5": "done",
     "ccdcbf84": "done",
     "bd12c0bd": "done",
     "c3d0a7fb": "done",
-    "3ae42a32": "review",
+    "3ae42a32": "done",
     "e4db4454": "done",
     "6801d39d": "done",
     "387e1ecb": "done",
@@ -657,14 +657,14 @@
     "7ec676d1": "done",
     "8dd4b0d5": "done",
     "aefb6235": "done",
-    "b8abc32e": "review",
+    "b8abc32e": "done",
     "d2316673": "done",
     "497015e1": "done",
     "b55e0957": "done",
     "6daa3ef5": "done",
     "75b8b0d2": "done",
     "d18c204c": "done",
-    "af9b0a70": "review",
+    "af9b0a70": "done",
     "22022bf7": "done",
     "ab9fed42": "done",
     "857346cd": "done",
@@ -1371,7 +1371,12 @@
     "992e6994": "2026-09-30T15:51:40.852Z",
     "9363c6bb": "2026-09-30T15:56:59.684Z",
     "a2941bd8": "2026-09-30T15:58:16.128Z",
-    "542fe6df": "2026-09-30T16:00:09.855Z"
+    "542fe6df": "2026-09-30T16:00:09.855Z",
+    "fd88c8b1": "2026-10-01T13:03:48.922Z",
+    "af9b0a70": "2026-10-01T13:03:51.652Z",
+    "b8abc32e": "2026-10-01T13:03:53.152Z",
+    "3ae42a32": "2026-10-01T13:04:03.500Z",
+    "95b69a20": "2026-10-01T13:04:05.483Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3959,13 +3964,9 @@
       "lastAttemptTs": 1790693900716
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 9,
-      "total": 12,
+      "correct": 10,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1789476362273,
-          "correct": true
-        },
         {
           "ts": 1789649457802,
           "correct": false
@@ -4009,9 +4010,13 @@
         {
           "ts": 1790693900714,
           "correct": true
+        },
+        {
+          "ts": 1790857279102,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900714
+      "lastAttemptTs": 1790857279102
     },
     "Lines, angles, and triangles": {
       "correct": 11,
@@ -5184,19 +5189,21 @@
       }
     },
     "2026-10-01": {
-      "totalMs": 365109,
+      "totalMs": 600145,
       "viewMs": {
-        "practice": 85072,
-        "profile": 45035,
-        "review": 65048,
-        "leaderboard": 164950,
-        "lab": 5004
+        "practice": 95079,
+        "profile": 70454,
+        "review": 145098,
+        "leaderboard": 204965,
+        "lab": 5004,
+        "test": 5002,
+        "mock": 74543
       },
       "categoryMs": {
         "Vocab": 35032,
-        "Quantitative Evidence": 20000,
+        "Quantitative Evidence": 25003,
         "Inferences": 10011,
-        "Main Idea": 10019
+        "Main Idea": 15023
       }
     }
   },
@@ -6922,7 +6929,13 @@
         "ts": 1790783775403,
         "ms": 1551
       }
+    ],
+    "ac3df64f": [
+      {
+        "ts": 1790857279102,
+        "ms": 11415
+      }
     ]
   },
-  "clientUpdatedAt": 1790857207323
+  "clientUpdatedAt": 1790859987007
 }
