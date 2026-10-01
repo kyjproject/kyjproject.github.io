@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-01T07:33:38.402Z",
+  "exportedAt": "2026-10-01T07:42:29.961Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1540,7 +1540,16 @@
     "362aaa23": "done",
     "426d1e38": "done",
     "8c3dbdc3": "done",
-    "bec79537": "done"
+    "bec79537": "done",
+    "e1c12384": "done",
+    "ddb43390": "done",
+    "0449a9d0": "done",
+    "ce544c96": "done",
+    "b2b843b0": "done",
+    "5bfefc23": "done",
+    "9073e2c4": "done",
+    "95333d9b": "done",
+    "fff446be": "done"
   },
   "tags": {},
   "notes": {
@@ -3103,7 +3112,16 @@
     "362aaa23": "2026-10-01T07:31:42.967Z",
     "426d1e38": "2026-10-01T07:31:54.284Z",
     "8c3dbdc3": "2026-10-01T07:32:02.517Z",
-    "bec79537": "2026-10-01T07:32:46.284Z"
+    "bec79537": "2026-10-01T07:32:46.284Z",
+    "e1c12384": "2026-10-01T07:40:55.143Z",
+    "ddb43390": "2026-10-01T07:41:02.376Z",
+    "0449a9d0": "2026-10-01T07:41:09.475Z",
+    "ce544c96": "2026-10-01T07:41:18.942Z",
+    "b2b843b0": "2026-10-01T07:41:33.242Z",
+    "5bfefc23": "2026-10-01T07:41:39.958Z",
+    "9073e2c4": "2026-10-01T07:41:54.543Z",
+    "95333d9b": "2026-10-01T07:42:18.792Z",
+    "fff446be": "2026-10-01T07:42:24.464Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -4476,13 +4494,9 @@
       "lastAttemptTs": 1790596862313
     },
     "Percentages": {
-      "correct": 27,
-      "total": 52,
+      "correct": 28,
+      "total": 53,
       "recent": [
-        {
-          "ts": 1790586824429,
-          "correct": false
-        },
         {
           "ts": 1790586827612,
           "correct": true
@@ -4526,18 +4540,18 @@
         {
           "ts": 1790839869167,
           "correct": true
+        },
+        {
+          "ts": 1790840498959,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790839869167
+      "lastAttemptTs": 1790840498959
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 22,
-      "total": 40,
+      "correct": 23,
+      "total": 41,
       "recent": [
-        {
-          "ts": 1790586647253,
-          "correct": true
-        },
         {
           "ts": 1790586866112,
           "correct": true
@@ -4581,9 +4595,13 @@
         {
           "ts": 1790839888567,
           "correct": true
+        },
+        {
+          "ts": 1790840538092,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790839888567
+      "lastAttemptTs": 1790840538092
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 24,
@@ -4641,13 +4659,9 @@
       "lastAttemptTs": 1790839965834
     },
     "Probability and conditional probability": {
-      "correct": 15,
-      "total": 25,
+      "correct": 16,
+      "total": 26,
       "recent": [
-        {
-          "ts": 1790580620295,
-          "correct": true
-        },
         {
           "ts": 1790584360424,
           "correct": true
@@ -4691,9 +4705,13 @@
         {
           "ts": 1790839921836,
           "correct": true
+        },
+        {
+          "ts": 1790840453592,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790839921836
+      "lastAttemptTs": 1790840453592
     },
     "Lines, angles, and triangles": {
       "correct": 43,
@@ -4916,37 +4934,9 @@
       "lastAttemptTs": 1790766523203
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 6,
-      "total": 12,
+      "correct": 11,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1790587018823,
-          "correct": false
-        },
-        {
-          "ts": 1790587019839,
-          "correct": true
-        },
-        {
-          "ts": 1790596862314,
-          "correct": false
-        },
-        {
-          "ts": 1790597022147,
-          "correct": false
-        },
-        {
-          "ts": 1790597036452,
-          "correct": false
-        },
-        {
-          "ts": 1790597038214,
-          "correct": false
-        },
-        {
-          "ts": 1790597040406,
-          "correct": true
-        },
         {
           "ts": 1790766646451,
           "correct": true
@@ -4966,9 +4956,37 @@
         {
           "ts": 1790839913818,
           "correct": true
+        },
+        {
+          "ts": 1790840461724,
+          "correct": true
+        },
+        {
+          "ts": 1790840468442,
+          "correct": true
+        },
+        {
+          "ts": 1790840477108,
+          "correct": true
+        },
+        {
+          "ts": 1790840491525,
+          "correct": true
+        },
+        {
+          "ts": 1790840507760,
+          "correct": false
+        },
+        {
+          "ts": 1790840509275,
+          "correct": false
+        },
+        {
+          "ts": 1790840510442,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790839913818
+      "lastAttemptTs": 1790840510442
     },
     "Inference from sample statistics and margin of error": {
       "correct": 1,
@@ -5168,42 +5186,6 @@
       "count": 2,
       "lastTs": 1790761733975
     },
-    "8875a21b": {
-      "count": 1,
-      "lastTs": 1790766575802
-    },
-    "08049d70": {
-      "count": 1,
-      "lastTs": 1790766586752
-    },
-    "c3ee52e5": {
-      "count": 1,
-      "lastTs": 1790766592285
-    },
-    "8588cf5e": {
-      "count": 1,
-      "lastTs": 1790766598520
-    },
-    "bbfa4707": {
-      "count": 1,
-      "lastTs": 1790766610283
-    },
-    "68ce71ce": {
-      "count": 1,
-      "lastTs": 1790766618884
-    },
-    "5216125e": {
-      "count": 1,
-      "lastTs": 1790766627316
-    },
-    "cf40e194": {
-      "count": 1,
-      "lastTs": 1790766632599
-    },
-    "a6541d64": {
-      "count": 1,
-      "lastTs": 1790766643852
-    },
     "869b99d4": {
       "count": 1,
       "lastTs": 1790766650202
@@ -5255,6 +5237,78 @@
     "bec79537": {
       "count": 2,
       "lastTs": 1790839936784
+    },
+    "e1c12384": {
+      "count": 1,
+      "lastTs": 1790840447410
+    },
+    "ddb43390": {
+      "count": 1,
+      "lastTs": 1790840455957
+    },
+    "0449a9d0": {
+      "count": 1,
+      "lastTs": 1790840464040
+    },
+    "ce544c96": {
+      "count": 1,
+      "lastTs": 1790840470558
+    },
+    "b2b843b0": {
+      "count": 1,
+      "lastTs": 1790840479975
+    },
+    "5bfefc23": {
+      "count": 1,
+      "lastTs": 1790840494241
+    },
+    "9073e2c4": {
+      "count": 3,
+      "lastTs": 1790840512075
+    },
+    "95333d9b": {
+      "count": 2,
+      "lastTs": 1790840533147
+    },
+    "fff446be": {
+      "count": 1,
+      "lastTs": 1790840539741
+    },
+    "8875a21b": {
+      "count": 1,
+      "lastTs": 1790766575802
+    },
+    "08049d70": {
+      "count": 1,
+      "lastTs": 1790766586752
+    },
+    "c3ee52e5": {
+      "count": 1,
+      "lastTs": 1790766592285
+    },
+    "8588cf5e": {
+      "count": 1,
+      "lastTs": 1790766598520
+    },
+    "bbfa4707": {
+      "count": 1,
+      "lastTs": 1790766610283
+    },
+    "68ce71ce": {
+      "count": 1,
+      "lastTs": 1790766618884
+    },
+    "5216125e": {
+      "count": 1,
+      "lastTs": 1790766627316
+    },
+    "cf40e194": {
+      "count": 1,
+      "lastTs": 1790766632599
+    },
+    "a6541d64": {
+      "count": 1,
+      "lastTs": 1790766643852
     },
     "fd6f7271": {
       "count": 1,
@@ -5918,12 +5972,12 @@
       "categoryMs": {}
     },
     "2026-10-01": {
-      "totalMs": 440152,
+      "totalMs": 615093,
       "viewMs": {
-        "profile": 24989,
+        "profile": 34996,
         "lab": 10001,
         "leaderboard": 50026,
-        "math": 355136
+        "math": 520070
       },
       "categoryMs": {}
     }
@@ -16308,7 +16362,63 @@
         "ts": 1790839965834,
         "ms": 701
       }
+    ],
+    "e1c12384": [
+      {
+        "ts": 1790840453593,
+        "ms": 6175
+      }
+    ],
+    "ddb43390": [
+      {
+        "ts": 1790840461724,
+        "ms": 5765
+      }
+    ],
+    "0449a9d0": [
+      {
+        "ts": 1790840468442,
+        "ms": 4401
+      }
+    ],
+    "ce544c96": [
+      {
+        "ts": 1790840477108,
+        "ms": 6549
+      }
+    ],
+    "b2b843b0": [
+      {
+        "ts": 1790840491525,
+        "ms": 11549
+      }
+    ],
+    "5bfefc23": [
+      {
+        "ts": 1790840498959,
+        "ms": 4718
+      }
+    ],
+    "9073e2c4": [
+      {
+        "ts": 1790840507760,
+        "ms": 4851
+      },
+      {
+        "ts": 1790840509275,
+        "ms": 1000
+      },
+      {
+        "ts": 1790840510442,
+        "ms": 567
+      }
+    ],
+    "95333d9b": [
+      {
+        "ts": 1790840538092,
+        "ms": 32784
+      }
     ]
   },
-  "clientUpdatedAt": 1790840015178
+  "clientUpdatedAt": 1790840547810
 }
