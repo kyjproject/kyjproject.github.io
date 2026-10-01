@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-01T09:40:38.076Z",
+  "exportedAt": "2026-10-01T09:43:18.597Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1718,7 +1718,11 @@
     "41b0fa3d": "done",
     "221df55b": "done",
     "98d85e86": "done",
-    "4d0bec51": "done"
+    "4d0bec51": "done",
+    "ba00aba9": "done",
+    "7ecb3059": "done",
+    "1c15c90f": "done",
+    "427423db": "done"
   },
   "tags": {},
   "notes": {
@@ -3459,7 +3463,11 @@
     "41b0fa3d": "2026-10-01T09:39:06.540Z",
     "221df55b": "2026-10-01T09:39:15.857Z",
     "98d85e86": "2026-10-01T09:39:42.559Z",
-    "4d0bec51": "2026-10-01T09:40:30.643Z"
+    "4d0bec51": "2026-10-01T09:40:30.643Z",
+    "ba00aba9": "2026-10-01T09:40:48.327Z",
+    "7ecb3059": "2026-10-01T09:41:40.677Z",
+    "1c15c90f": "2026-10-01T09:41:54.612Z",
+    "427423db": "2026-10-01T09:42:04.382Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -5052,25 +5060,9 @@
       "lastAttemptTs": 1790844228053
     },
     "Lines, angles, and triangles": {
-      "correct": 49,
-      "total": 78,
+      "correct": 52,
+      "total": 82,
       "recent": [
-        {
-          "ts": 1790844345852,
-          "correct": true
-        },
-        {
-          "ts": 1790844411102,
-          "correct": false
-        },
-        {
-          "ts": 1790844411686,
-          "correct": false
-        },
-        {
-          "ts": 1790844412569,
-          "correct": true
-        },
         {
           "ts": 1790844464885,
           "correct": true
@@ -5102,9 +5094,25 @@
         {
           "ts": 1790847629594,
           "correct": true
+        },
+        {
+          "ts": 1790847647442,
+          "correct": true
+        },
+        {
+          "ts": 1790847696962,
+          "correct": true
+        },
+        {
+          "ts": 1790847721312,
+          "correct": false
+        },
+        {
+          "ts": 1790847722742,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790847629594
+      "lastAttemptTs": 1790847722742
     },
     "Right triangles and trigonometry": {
       "correct": 33,
@@ -5162,13 +5170,9 @@
       "lastAttemptTs": 1790847474956
     },
     "Area and volume": {
-      "correct": 59,
-      "total": 92,
+      "correct": 60,
+      "total": 93,
       "recent": [
-        {
-          "ts": 1790847401886,
-          "correct": true
-        },
         {
           "ts": 1790847430487,
           "correct": true
@@ -5212,9 +5216,13 @@
         {
           "ts": 1790847570779,
           "correct": true
+        },
+        {
+          "ts": 1790847713079,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790847570779
+      "lastAttemptTs": 1790847713079
     },
     "Circles": {
       "correct": 14,
@@ -5612,18 +5620,6 @@
       "count": 2,
       "lastTs": 1790847359158
     },
-    "8e79ef1c": {
-      "count": 1,
-      "lastTs": 1790847347903
-    },
-    "9019ad99": {
-      "count": 1,
-      "lastTs": 1790847391270
-    },
-    "0e8cf28f": {
-      "count": 1,
-      "lastTs": 1790847422260
-    },
     "dbe723cd": {
       "count": 1,
       "lastTs": 1790847432805
@@ -5651,6 +5647,30 @@
     "4d0bec51": {
       "count": 1,
       "lastTs": 1790847618197
+    },
+    "7ecb3059": {
+      "count": 1,
+      "lastTs": 1790847649443
+    },
+    "1c15c90f": {
+      "count": 1,
+      "lastTs": 1790847703611
+    },
+    "14b418db": {
+      "count": 1,
+      "lastTs": 1790847794734
+    },
+    "8e79ef1c": {
+      "count": 1,
+      "lastTs": 1790847347903
+    },
+    "9019ad99": {
+      "count": 1,
+      "lastTs": 1790847391270
+    },
+    "0e8cf28f": {
+      "count": 1,
+      "lastTs": 1790847422260
     },
     "6f1fa020": {
       "count": 1,
@@ -6674,12 +6694,12 @@
       "categoryMs": {}
     },
     "2026-10-01": {
-      "totalMs": 3658816,
+      "totalMs": 3819135,
       "viewMs": {
         "profile": 255336,
         "lab": 10001,
         "leaderboard": 300282,
-        "math": 2151024,
+        "math": 2311343,
         "test": 5009,
         "browse": 911306,
         "mock": 20847,
@@ -18631,7 +18651,35 @@
         "ts": 1790847629594,
         "ms": 11396
       }
+    ],
+    "ba00aba9": [
+      {
+        "ts": 1790847647442,
+        "ms": 15731
+      }
+    ],
+    "7ecb3059": [
+      {
+        "ts": 1790847696962,
+        "ms": 47518
+      }
+    ],
+    "1c15c90f": [
+      {
+        "ts": 1790847713079,
+        "ms": 9467
+      }
+    ],
+    "427423db": [
+      {
+        "ts": 1790847721312,
+        "ms": 5649
+      },
+      {
+        "ts": 1790847722743,
+        "ms": 803
+      }
     ]
   },
-  "clientUpdatedAt": 1790847634399
+  "clientUpdatedAt": 1790847794718
 }
