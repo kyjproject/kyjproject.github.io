@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-01T09:28:18.195Z",
+  "exportedAt": "2026-10-01T09:31:19.603Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1702,7 +1702,8 @@
     "e48e163e": "done",
     "fc895aa3": "done",
     "72ba319f": "done",
-    "fe4e10cc": "done"
+    "fe4e10cc": "done",
+    "f9c5558d": "done"
   },
   "tags": {},
   "notes": {
@@ -3427,7 +3428,8 @@
     "e48e163e": "2026-10-01T09:20:39.619Z",
     "fc895aa3": "2026-10-01T09:20:51.303Z",
     "72ba319f": "2026-10-01T09:20:59.536Z",
-    "fe4e10cc": "2026-10-01T09:21:12.720Z"
+    "fe4e10cc": "2026-10-01T09:21:12.720Z",
+    "f9c5558d": "2026-10-01T09:30:56.200Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -5130,13 +5132,9 @@
       "lastAttemptTs": 1790844589071
     },
     "Area and volume": {
-      "correct": 51,
-      "total": 76,
+      "correct": 52,
+      "total": 77,
       "recent": [
-        {
-          "ts": 1790766583086,
-          "correct": true
-        },
         {
           "ts": 1790766597053,
           "correct": true
@@ -5180,9 +5178,13 @@
         {
           "ts": 1790844598840,
           "correct": true
+        },
+        {
+          "ts": 1790847054662,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790844598840
+      "lastAttemptTs": 1790847054662
     },
     "Circles": {
       "correct": 11,
@@ -5564,14 +5566,6 @@
       "count": 2,
       "lastTs": 1790846123692
     },
-    "72b7feaa": {
-      "count": 1,
-      "lastTs": 1790846331466
-    },
-    "af557364": {
-      "count": 1,
-      "lastTs": 1790846335400
-    },
     "4e93a070": {
       "count": 1,
       "lastTs": 1790846341233
@@ -5619,6 +5613,22 @@
     "fe4e10cc": {
       "count": 1,
       "lastTs": 1790846463592
+    },
+    "f9c5558d": {
+      "count": 2,
+      "lastTs": 1790847047551
+    },
+    "f92d252b": {
+      "count": 1,
+      "lastTs": 1790847056996
+    },
+    "72b7feaa": {
+      "count": 1,
+      "lastTs": 1790846331466
+    },
+    "af557364": {
+      "count": 1,
+      "lastTs": 1790846335400
     },
     "b7353205": {
       "count": 1,
@@ -6586,16 +6596,20 @@
       "categoryMs": {}
     },
     "2026-10-01": {
-      "totalMs": 3067013,
+      "totalMs": 3198062,
       "viewMs": {
-        "profile": 240318,
+        "profile": 250326,
         "lab": 10001,
-        "leaderboard": 250188,
-        "math": 1650191,
+        "leaderboard": 300282,
+        "math": 1700291,
         "test": 5009,
-        "browse": 911306
+        "browse": 911306,
+        "mock": 20847
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Algebra": 5010,
+        "Advanced Math": 5010
+      }
     }
   },
   "answerTimeLog": {
@@ -18386,7 +18400,13 @@
         "ts": 1790846471970,
         "ms": 10100
       }
+    ],
+    "f9c5558d": [
+      {
+        "ts": 1790847054662,
+        "ms": 12310
+      }
     ]
   },
-  "clientUpdatedAt": 1790846894845
+  "clientUpdatedAt": 1790847075894
 }
