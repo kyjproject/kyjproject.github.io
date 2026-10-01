@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-01T13:43:24.307Z",
+  "exportedAt": "2026-10-01T13:46:24.055Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -672,14 +672,14 @@
     "cedea32c": "done",
     "140d2d15": "done",
     "aeba7f69": "review",
-    "6abb55e7": "review",
-    "5c234ce6": "review",
-    "629a4d69": "review",
+    "6abb55e7": "done",
+    "5c234ce6": "done",
+    "629a4d69": "done",
     "a8c35eaf": "review",
     "cc00a8cf": "review",
-    "fdf8e5b3": "review",
-    "c7d61039": "review",
-    "b5874ed0": "review"
+    "fdf8e5b3": "done",
+    "c7d61039": "done",
+    "b5874ed0": "done"
   },
   "tags": {},
   "notes": {},
@@ -1385,7 +1385,13 @@
     "af9b0a70": "2026-10-01T13:03:51.652Z",
     "b8abc32e": "2026-10-01T13:03:53.152Z",
     "3ae42a32": "2026-10-01T13:04:03.500Z",
-    "95b69a20": "2026-10-01T13:04:05.483Z"
+    "95b69a20": "2026-10-01T13:04:05.483Z",
+    "c7d61039": "2026-10-01T13:43:53.884Z",
+    "fdf8e5b3": "2026-10-01T13:44:07.098Z",
+    "b5874ed0": "2026-10-01T13:44:38.552Z",
+    "5c234ce6": "2026-10-01T13:44:44.126Z",
+    "6abb55e7": "2026-10-01T13:44:48.724Z",
+    "629a4d69": "2026-10-01T13:45:02.253Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2984,21 +2990,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 91,
-      "total": 136,
+      "correct": 93,
+      "total": 139,
       "recent": [
-        {
-          "ts": 1790693900700,
-          "correct": true
-        },
-        {
-          "ts": 1790693900705,
-          "correct": true
-        },
-        {
-          "ts": 1790693900706,
-          "correct": false
-        },
         {
           "ts": 1790693900707,
           "correct": false
@@ -3034,18 +3028,26 @@
         {
           "ts": 1790784025303,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790784025303
-    },
-    "Text Structure and Purpose": {
-      "correct": 36,
-      "total": 56,
-      "recent": [
+        },
         {
-          "ts": 1790485268304,
+          "ts": 1790862291492,
           "correct": false
         },
+        {
+          "ts": 1790862293738,
+          "correct": true
+        },
+        {
+          "ts": 1790862300717,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790862300717
+    },
+    "Text Structure and Purpose": {
+      "correct": 37,
+      "total": 58,
+      "recent": [
         {
           "ts": 1790594463086,
           "correct": true
@@ -3085,18 +3087,22 @@
         {
           "ts": 1790693900709,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790693900709
-    },
-    "Cross-Text Connections": {
-      "correct": 15,
-      "total": 26,
-      "recent": [
+        },
         {
-          "ts": 1790427484713,
+          "ts": 1790862261215,
           "correct": false
         },
+        {
+          "ts": 1790862262951,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790862262951
+    },
+    "Cross-Text Connections": {
+      "correct": 16,
+      "total": 27,
+      "recent": [
         {
           "ts": 1790427492572,
           "correct": false
@@ -3140,9 +3146,13 @@
         {
           "ts": 1790693900709,
           "correct": true
+        },
+        {
+          "ts": 1790862245757,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900709
+      "lastAttemptTs": 1790862245757
     },
     "Central Ideas and Details": {
       "correct": 51,
@@ -3200,8 +3210,8 @@
       "lastAttemptTs": 1790783775403
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 29,
-      "total": 44,
+      "correct": 30,
+      "total": 45,
       "recent": [
         {
           "ts": 1790596507698,
@@ -3242,9 +3252,13 @@
         {
           "ts": 1790693900710,
           "correct": false
+        },
+        {
+          "ts": 1790862231830,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900710
+      "lastAttemptTs": 1790862231830
     },
     "Command of Evidence (Textual)": {
       "correct": 31,
@@ -3404,21 +3418,9 @@
       "lastAttemptTs": 1790693900711
     },
     "Form, Structure, and Sense": {
-      "correct": 37,
-      "total": 51,
+      "correct": 39,
+      "total": 54,
       "recent": [
-        {
-          "ts": 1790600964988,
-          "correct": true
-        },
-        {
-          "ts": 1790600964989,
-          "correct": true
-        },
-        {
-          "ts": 1790683824096,
-          "correct": true
-        },
         {
           "ts": 1790691837175,
           "correct": false
@@ -3454,13 +3456,25 @@
         {
           "ts": 1790783498737,
           "correct": true
+        },
+        {
+          "ts": 1790862269133,
+          "correct": false
+        },
+        {
+          "ts": 1790862271907,
+          "correct": true
+        },
+        {
+          "ts": 1790862277383,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790783498737
+      "lastAttemptTs": 1790862277383
     },
     "Transitions": {
-      "correct": 77,
-      "total": 100,
+      "correct": 78,
+      "total": 101,
       "recent": [
         {
           "ts": 1790689859731,
@@ -3501,13 +3515,17 @@
         {
           "ts": 1790783865364,
           "correct": true
+        },
+        {
+          "ts": 1790862287555,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790783865364
+      "lastAttemptTs": 1790862287555
     },
     "Rhetorical Synthesis": {
-      "correct": 48,
-      "total": 49,
+      "correct": 49,
+      "total": 50,
       "recent": [
         {
           "ts": 1790594495573,
@@ -3540,9 +3558,13 @@
         {
           "ts": 1790693900712,
           "correct": true
+        },
+        {
+          "ts": 1790862283155,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790693900712
+      "lastAttemptTs": 1790862283155
     },
     "Systems of two linear equations in two variables": {
       "correct": 24,
@@ -5180,27 +5202,27 @@
       }
     },
     "2026-10-01": {
-      "totalMs": 2725153,
+      "totalMs": 2905152,
       "viewMs": {
         "leaderboard": 335047,
-        "practice": 95079,
-        "profile": 135456,
-        "review": 145098,
+        "practice": 160085,
+        "profile": 140480,
+        "review": 165071,
         "lab": 5004,
         "test": 5002,
-        "mock": 2009542,
+        "mock": 2099538,
         "home": 80013
       },
       "categoryMs": {
-        "Vocab": 345028,
+        "Vocab": 375028,
         "Quantitative Evidence": 145011,
         "Inferences": 195019,
         "Main Idea": 150022,
-        "Grammar": 239991,
-        "Transitions": 204997,
-        "Notes": 85005,
-        "Functions": 264999,
-        "Cross-Text": 175002,
+        "Grammar": 254994,
+        "Transitions": 210003,
+        "Notes": 90002,
+        "Functions": 279988,
+        "Cross-Text": 185012,
         "Textual Evidence": 179988
       }
     },
@@ -6951,7 +6973,73 @@
         "ts": 1790857279102,
         "ms": 11415
       }
+    ],
+    "c7d61039": [
+      {
+        "ts": 1790862231831,
+        "ms": 7712
+      }
+    ],
+    "fdf8e5b3": [
+      {
+        "ts": 1790862245757,
+        "ms": 6006
+      }
+    ],
+    "cc00a8cf": [
+      {
+        "ts": 1790862261215,
+        "ms": 12595
+      },
+      {
+        "ts": 1790862262952,
+        "ms": 688
+      }
+    ],
+    "aeba7f69": [
+      {
+        "ts": 1790862269133,
+        "ms": 3481
+      },
+      {
+        "ts": 1790862271908,
+        "ms": 854
+      }
+    ],
+    "b5874ed0": [
+      {
+        "ts": 1790862277384,
+        "ms": 2796
+      }
+    ],
+    "5c234ce6": [
+      {
+        "ts": 1790862283155,
+        "ms": 3397
+      }
+    ],
+    "6abb55e7": [
+      {
+        "ts": 1790862287555,
+        "ms": 2005
+      }
+    ],
+    "a8c35eaf": [
+      {
+        "ts": 1790862291492,
+        "ms": 1920
+      },
+      {
+        "ts": 1790862293738,
+        "ms": 1009
+      }
+    ],
+    "629a4d69": [
+      {
+        "ts": 1790862300717,
+        "ms": 2700
+      }
     ]
   },
-  "clientUpdatedAt": 1790862200814
+  "clientUpdatedAt": 1790862380819
 }
