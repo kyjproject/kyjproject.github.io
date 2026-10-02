@@ -924,16 +924,8 @@
     },
     "Boundaries": {
       "correct": 152,
-      "total": 220,
+      "total": 222,
       "recent": [
-        {
-          "ts": 1790940700127,
-          "correct": false
-        },
-        {
-          "ts": 1790940705022,
-          "correct": true
-        },
         {
           "ts": 1790941475202,
           "correct": false
@@ -973,9 +965,17 @@
         {
           "ts": 1790941909675,
           "correct": true
+        },
+        {
+          "ts": 1790941958697,
+          "correct": false
+        },
+        {
+          "ts": 1790941960182,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790941909675
+      "lastAttemptTs": 1790941960182
     },
     "Form, Structure, and Sense": {
       "correct": 115,
@@ -1335,11 +1335,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 8234643,
+      "totalMs": 8254659,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 1623644,
+        "review": 1643660,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -2547,6 +2547,14 @@
       {
         "ts": 1790927188845,
         "ms": 1518
+      },
+      {
+        "ts": 1790941958697,
+        "ms": 45824
+      },
+      {
+        "ts": 1790941960182,
+        "ms": 262
       }
     ],
     "9ab4d6ff": [
