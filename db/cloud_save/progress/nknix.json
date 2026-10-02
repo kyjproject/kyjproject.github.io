@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:46:09.741Z",
+  "exportedAt": "2026-10-02T13:02:43.580Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -767,7 +767,11 @@
     "f77b1151": "done",
     "638832ee": "done",
     "012136ca": "done",
-    "ac73d6d9": "review"
+    "ac73d6d9": "review",
+    "c96a90a2": "done",
+    "db8d42ba": "done",
+    "aea3b524": "done",
+    "6f43ec88": "done"
   },
   "tags": {},
   "notes": {},
@@ -1573,7 +1577,11 @@
     "a7340a4c": "2026-10-02T12:41:35.794Z",
     "f77b1151": "2026-10-02T12:41:53.776Z",
     "638832ee": "2026-10-02T12:43:03.871Z",
-    "012136ca": "2026-10-02T12:43:31.252Z"
+    "012136ca": "2026-10-02T12:43:31.252Z",
+    "c96a90a2": "2026-10-02T12:46:32.457Z",
+    "db8d42ba": "2026-10-02T12:46:47.822Z",
+    "aea3b524": "2026-10-02T12:48:18.417Z",
+    "6f43ec88": "2026-10-02T13:02:42.447Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4043,13 +4051,9 @@
       "lastAttemptTs": 1790945142611
     },
     "Nonlinear functions": {
-      "correct": 60,
-      "total": 72,
+      "correct": 61,
+      "total": 73,
       "recent": [
-        {
-          "ts": 1790693900713,
-          "correct": true
-        },
         {
           "ts": 1790693900714,
           "correct": true
@@ -4093,9 +4097,13 @@
         {
           "ts": 1790944046828,
           "correct": true
+        },
+        {
+          "ts": 1790945296902,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944046828
+      "lastAttemptTs": 1790945296902
     },
     "Equivalent expressions": {
       "correct": 27,
@@ -4318,13 +4326,9 @@
       "lastAttemptTs": 1790945009518
     },
     "Linear functions": {
-      "correct": 27,
-      "total": 32,
+      "correct": 28,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1790485268315,
-          "correct": true
-        },
         {
           "ts": 1790485268316,
           "correct": true
@@ -4368,9 +4372,13 @@
         {
           "ts": 1790944046828,
           "correct": true
+        },
+        {
+          "ts": 1790945190490,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944046828
+      "lastAttemptTs": 1790945190490
     },
     "Right triangles and trigonometry": {
       "correct": 12,
@@ -4809,8 +4817,8 @@
       "lastAttemptTs": 1790944046828
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 2,
-      "total": 2,
+      "correct": 4,
+      "total": 5,
       "recent": [
         {
           "ts": 1790485268312,
@@ -4819,9 +4827,21 @@
         {
           "ts": 1790600964990,
           "correct": true
+        },
+        {
+          "ts": 1790946101916,
+          "correct": false
+        },
+        {
+          "ts": 1790946103632,
+          "correct": true
+        },
+        {
+          "ts": 1790946160379,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790600964990
+      "lastAttemptTs": 1790946160379
     },
     "Circles": {
       "correct": 2,
@@ -5692,15 +5712,16 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 1801620,
+      "totalMs": 2156558,
       "viewMs": {
         "profile": 29966,
         "review": 105898,
-        "practice": 1170910,
+        "practice": 1301011,
         "leaderboard": 4482,
-        "test": 395289,
+        "test": 400293,
         "propose": 5005,
-        "analysis": 90070
+        "analysis": 90070,
+        "math": 219833
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
@@ -5710,8 +5731,8 @@
         "Inferences": 35028,
         "Transitions": 15011,
         "Vocab": 455355,
-        "Algebra": 325255,
-        "Advanced Math": 170119,
+        "Algebra": 365286,
+        "Advanced Math": 260189,
         "Problem-Solving and Data Analysis": 15012
       }
     }
@@ -7796,7 +7817,35 @@
         "ts": 1790945142611,
         "ms": 368
       }
+    ],
+    "c96a90a2": [
+      {
+        "ts": 1790945190490,
+        "ms": 31163
+      }
+    ],
+    "aea3b524": [
+      {
+        "ts": 1790945296903,
+        "ms": 90960
+      }
+    ],
+    "5192a9a8": [
+      {
+        "ts": 1790946101916,
+        "ms": 52177
+      },
+      {
+        "ts": 1790946103632,
+        "ms": 484
+      }
+    ],
+    "6f43ec88": [
+      {
+        "ts": 1790946160379,
+        "ms": 29464
+      }
     ]
   },
-  "clientUpdatedAt": 1790945167743
+  "clientUpdatedAt": 1790946160054
 }
