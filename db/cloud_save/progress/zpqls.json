@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:21:56.438Z",
+  "exportedAt": "2026-10-02T11:25:05.262Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -497,7 +497,8 @@
     "230386ad": "2026-10-02T11:19:57.343Z",
     "a778e64f": "2026-10-02T11:20:19.460Z",
     "d902a695": "2026-10-02T11:20:38.043Z",
-    "05be3983": "2026-10-02T11:21:00.493Z"
+    "05be3983": "2026-10-02T11:21:00.493Z",
+    "be7e3f1e": "2026-10-02T11:24:37.913Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -605,6 +606,26 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
+    },
+    "6240744b": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-10-03T11:23:23.412Z",
+      "last_review": "2026-10-02T11:23:23.412Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
+    },
+    "1c2fc2d3": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:24:21.514Z",
+      "last_review": "2026-10-02T11:24:21.514Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -690,13 +711,9 @@
       "lastAttemptTs": 1790939907653
     },
     "Boundaries": {
-      "correct": 140,
-      "total": 201,
+      "correct": 141,
+      "total": 202,
       "recent": [
-        {
-          "ts": 1790935699368,
-          "correct": true
-        },
         {
           "ts": 1790935738660,
           "correct": true
@@ -740,30 +757,18 @@
         {
           "ts": 1790940017811,
           "correct": true
+        },
+        {
+          "ts": 1790940258952,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790940017811
+      "lastAttemptTs": 1790940258952
     },
     "Form, Structure, and Sense": {
-      "correct": 105,
-      "total": 164,
+      "correct": 106,
+      "total": 168,
       "recent": [
-        {
-          "ts": 1790935717156,
-          "correct": true
-        },
-        {
-          "ts": 1790935722656,
-          "correct": true
-        },
-        {
-          "ts": 1790935909042,
-          "correct": true
-        },
-        {
-          "ts": 1790936486667,
-          "correct": true
-        },
         {
           "ts": 1790936517971,
           "correct": true
@@ -795,9 +800,25 @@
         {
           "ts": 1790940059510,
           "correct": true
+        },
+        {
+          "ts": 1790940191065,
+          "correct": false
+        },
+        {
+          "ts": 1790940197780,
+          "correct": false
+        },
+        {
+          "ts": 1790940199566,
+          "correct": false
+        },
+        {
+          "ts": 1790940200669,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790940059510
+      "lastAttemptTs": 1790940200669
     },
     "Cross-Text Connections": {
       "correct": 1,
@@ -1102,11 +1123,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 7214543,
+      "totalMs": 7364663,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 603544,
+        "review": 753664,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -1444,12 +1465,24 @@
     ],
     "6240744b": [
       {
-        "ts": 1790770985840,
-        "ms": 24553
-      },
-      {
         "ts": 1790770994930,
         "ms": 726
+      },
+      {
+        "ts": 1790940191065,
+        "ms": 129185
+      },
+      {
+        "ts": 1790940197781,
+        "ms": 5135
+      },
+      {
+        "ts": 1790940199566,
+        "ms": 1038
+      },
+      {
+        "ts": 1790940200669,
+        "ms": 192
       }
     ],
     "b4774c86": [
@@ -1488,6 +1521,10 @@
       {
         "ts": 1790771118316,
         "ms": 661
+      },
+      {
+        "ts": 1790940258952,
+        "ms": 55537
       }
     ],
     "26287f55": [
@@ -3337,5 +3374,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790940115783
+  "clientUpdatedAt": 1790940301580
 }
