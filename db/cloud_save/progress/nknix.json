@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:43:09.647Z",
+  "exportedAt": "2026-10-02T12:46:09.741Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -765,7 +765,9 @@
     "771b3e53": "done",
     "a7340a4c": "done",
     "f77b1151": "done",
-    "638832ee": "done"
+    "638832ee": "done",
+    "012136ca": "done",
+    "ac73d6d9": "review"
   },
   "tags": {},
   "notes": {},
@@ -1570,7 +1572,8 @@
     "771b3e53": "2026-10-02T12:40:03.184Z",
     "a7340a4c": "2026-10-02T12:41:35.794Z",
     "f77b1151": "2026-10-02T12:41:53.776Z",
-    "638832ee": "2026-10-02T12:43:03.871Z"
+    "638832ee": "2026-10-02T12:43:03.871Z",
+    "012136ca": "2026-10-02T12:43:31.252Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3985,21 +3988,9 @@
       "lastAttemptTs": 1790868313015
     },
     "Systems of two linear equations in two variables": {
-      "correct": 27,
-      "total": 29,
+      "correct": 28,
+      "total": 32,
       "recent": [
-        {
-          "ts": 1790425301931,
-          "correct": true
-        },
-        {
-          "ts": 1790485268312,
-          "correct": true
-        },
-        {
-          "ts": 1790485268315,
-          "correct": true
-        },
         {
           "ts": 1790514721880,
           "correct": true
@@ -4035,9 +4026,21 @@
         {
           "ts": 1790944046828,
           "correct": true
+        },
+        {
+          "ts": 1790945137494,
+          "correct": false
+        },
+        {
+          "ts": 1790945141627,
+          "correct": false
+        },
+        {
+          "ts": 1790945142611,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944046828
+      "lastAttemptTs": 1790945142611
     },
     "Nonlinear functions": {
       "correct": 60,
@@ -4260,13 +4263,9 @@
       "lastAttemptTs": 1790944046828
     },
     "Linear equations in two variables": {
-      "correct": 18,
-      "total": 19,
+      "correct": 19,
+      "total": 20,
       "recent": [
-        {
-          "ts": 1790262534082,
-          "correct": true
-        },
         {
           "ts": 1790425599132,
           "correct": true
@@ -4310,9 +4309,13 @@
         {
           "ts": 1790944046828,
           "correct": true
+        },
+        {
+          "ts": 1790945009518,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944046828
+      "lastAttemptTs": 1790945009518
     },
     "Linear functions": {
       "correct": 27,
@@ -5689,11 +5692,11 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 1621479,
+      "totalMs": 1801620,
       "viewMs": {
         "profile": 29966,
         "review": 105898,
-        "practice": 990769,
+        "practice": 1170910,
         "leaderboard": 4482,
         "test": 395289,
         "propose": 5005,
@@ -5707,7 +5710,7 @@
         "Inferences": 35028,
         "Transitions": 15011,
         "Vocab": 455355,
-        "Algebra": 150117,
+        "Algebra": 325255,
         "Advanced Math": 170119,
         "Problem-Solving and Data Analysis": 15012
       }
@@ -7773,7 +7776,27 @@
         "ts": 1790944968722,
         "ms": 11216
       }
+    ],
+    "012136ca": [
+      {
+        "ts": 1790945009518,
+        "ms": 13945
+      }
+    ],
+    "ac73d6d9": [
+      {
+        "ts": 1790945137494,
+        "ms": 124624
+      },
+      {
+        "ts": 1790945141627,
+        "ms": 1335
+      },
+      {
+        "ts": 1790945142611,
+        "ms": 368
+      }
     ]
   },
-  "clientUpdatedAt": 1790944987604
+  "clientUpdatedAt": 1790945167743
 }
