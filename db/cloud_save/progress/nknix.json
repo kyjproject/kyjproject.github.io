@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T06:03:08.922Z",
+  "exportedAt": "2026-10-02T06:05:26.702Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -678,16 +678,16 @@
     "6abb55e7": "done",
     "5c234ce6": "done",
     "629a4d69": "done",
-    "a8c35eaf": "review",
+    "a8c35eaf": "done",
     "cc00a8cf": "done",
     "fdf8e5b3": "done",
     "c7d61039": "done",
     "b5874ed0": "done",
     "296f8a05": "done",
     "bff1d6df": "done",
-    "2b5fd1f4": "review",
-    "76d87f54": "review",
-    "372b3cc3": "review",
+    "2b5fd1f4": "done",
+    "76d87f54": "done",
+    "372b3cc3": "done",
     "939f1fe8": "done",
     "fda65f0a": "done",
     "19f553cc": "done",
@@ -696,8 +696,8 @@
     "c83508f3": "done",
     "8a193615": "done",
     "94da9acc": "done",
-    "a6a6d037": "review",
-    "3f215d34": "review",
+    "a6a6d037": "done",
+    "3f215d34": "done",
     "455fd7e9": "done",
     "220e72c1": "done",
     "db4aea78": "done",
@@ -726,7 +726,7 @@
     "3ded822c": "done",
     "f2e0c354": "done",
     "af0e160f": "done",
-    "a9aa25f9": "review",
+    "a9aa25f9": "done",
     "b5c5b387": "done",
     "8b52201d": "done",
     "c3c2ac5d": "done",
@@ -1526,7 +1526,13 @@
     "cc00a8cf": "2026-10-02T06:02:10.194Z",
     "bff1d6df": "2026-10-02T06:02:23.742Z",
     "296f8a05": "2026-10-02T06:02:25.710Z",
-    "aeba7f69": "2026-10-02T06:03:08.188Z"
+    "aeba7f69": "2026-10-02T06:03:08.188Z",
+    "a9aa25f9": "2026-10-02T06:03:27.123Z",
+    "a6a6d037": "2026-10-02T06:03:43.904Z",
+    "2b5fd1f4": "2026-10-02T06:03:56.370Z",
+    "a8c35eaf": "2026-10-02T06:04:10.169Z",
+    "76d87f54": "2026-10-02T06:04:24.603Z",
+    "372b3cc3": "2026-10-02T06:04:43.284Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5619,17 +5625,20 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 150057,
+      "totalMs": 286118,
       "viewMs": {
         "profile": 4946,
-        "review": 45036,
-        "practice": 100075
+        "review": 81020,
+        "practice": 200152
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
         "Cross-Text": 15013,
         "Functions": 15011,
-        "Grammar": 55042
+        "Grammar": 55042,
+        "Inferences": 35028,
+        "Transitions": 15011,
+        "Vocab": 45035
       }
     }
   },
@@ -7559,5 +7568,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790920986107
+  "clientUpdatedAt": 1790921126216
 }
