@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:28:09.532Z",
+  "exportedAt": "2026-10-02T12:31:10.060Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -14,7 +14,7 @@
     "64506024": "done",
     "72301503": "done",
     "76465540": "done",
-    "87832416": "done",
+    "87832416": "review",
     "99022257": "done",
     "741374a0": "done",
     "6f03007c": "done",
@@ -134,7 +134,7 @@
     "c3ef9de3": "done",
     "9f04b826": "done",
     "d1f9725e": "done",
-    "7ce3feba": "done",
+    "7ce3feba": "review",
     "ad1fc529": "done",
     "ac55b33a": "done",
     "c9ecaf7d": "done",
@@ -160,9 +160,9 @@
     "9fa95c2c": "done",
     "6b16c91b": "done",
     "4b2c5fbe": "done",
-    "b0e12b3a": "done",
+    "b0e12b3a": "review",
     "51be7407": "done",
-    "994aa0df": "done",
+    "994aa0df": "review",
     "427f0eea": "done",
     "fe6b22a2": "done",
     "1ad71c23": "done",
@@ -173,7 +173,7 @@
     "f37f0c11": "done",
     "abecc2e2": "done",
     "b5465fdf": "done",
-    "d0a51d4e": "done",
+    "d0a51d4e": "review",
     "b563f866": "done",
     "a1a0066e": "done",
     "f033a241": "done",
@@ -251,7 +251,7 @@
     "57949c2b": "done",
     "4287e4c4": "done",
     "a86d0230": "done",
-    "26ac2597": "done",
+    "26ac2597": "review",
     "4f6504f2": "done",
     "2f887164": "done",
     "8a4a2079": "done",
@@ -309,7 +309,7 @@
     "ff6dbb27": "done",
     "4c6cff04": "done",
     "2ee50bdd": "done",
-    "e8e987a7": "done",
+    "e8e987a7": "review",
     "d3fe0b12": "done",
     "c7e43751": "done",
     "bea987a6": "done",
@@ -394,7 +394,7 @@
     "0fe917af": "done",
     "fbb64b41": "done",
     "2d19a1cb": "done",
-    "b99e3267": "done",
+    "b99e3267": "review",
     "77b9ccd9": "done",
     "396cc35d": "done",
     "25f5e913": "done",
@@ -431,9 +431,9 @@
     "112891d9": "done",
     "96b7fb54": "done",
     "6be089ec": "done",
-    "f279c98c": "done",
-    "f0e70c0c": "done",
-    "ec66fe4d": "done",
+    "f279c98c": "review",
+    "f0e70c0c": "review",
+    "ec66fe4d": "review",
     "deb55365": "done",
     "fd02bdb9": "done",
     "30b2a7b8": "done",
@@ -599,7 +599,7 @@
     "11db42e0": "done",
     "b93101bf": "done",
     "9363c6bb": "done",
-    "542fe6df": "done",
+    "542fe6df": "review",
     "a0d54459": "done",
     "69405b6e": "done",
     "b23f1ade": "done",
@@ -609,8 +609,8 @@
     "992e6994": "done",
     "f852bcbd": "done",
     "a2941bd8": "done",
-    "829d8db0": "done",
-    "d812bcc5": "done",
+    "829d8db0": "review",
+    "d812bcc5": "review",
     "92328e3b": "done",
     "fd88c8b1": "done",
     "84877fd5": "done",
@@ -686,8 +686,8 @@
     "296f8a05": "done",
     "bff1d6df": "done",
     "2b5fd1f4": "done",
-    "76d87f54": "done",
-    "372b3cc3": "done",
+    "76d87f54": "review",
+    "372b3cc3": "review",
     "939f1fe8": "done",
     "fda65f0a": "done",
     "19f553cc": "done",
@@ -3362,17 +3362,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 99,
-      "total": 151,
+      "correct": 101,
+      "total": 153,
       "recent": [
-        {
-          "ts": 1790784025303,
-          "correct": true
-        },
-        {
-          "ts": 1790862291492,
-          "correct": false
-        },
         {
           "ts": 1790862293738,
           "correct": true
@@ -3412,9 +3404,17 @@
         {
           "ts": 1790868313006,
           "correct": false
+        },
+        {
+          "ts": 1790944169040,
+          "correct": true
+        },
+        {
+          "ts": 1790944255784,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790868313006
+      "lastAttemptTs": 1790944255784
     },
     "Text Structure and Purpose": {
       "correct": 41,
@@ -4819,8 +4819,6 @@
     }
   },
   "progressFocus": [
-    "Easy",
-    "Medium",
     "Hard"
   ],
   "trendExcluded": [],
@@ -5673,14 +5671,15 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 720776,
+      "totalMs": 900917,
       "viewMs": {
-        "profile": 14953,
-        "review": 95890,
-        "practice": 205157,
+        "profile": 19958,
+        "review": 105898,
+        "practice": 325250,
         "leaderboard": 4482,
         "test": 395289,
-        "propose": 5005
+        "propose": 5005,
+        "analysis": 45035
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
@@ -5689,7 +5688,7 @@
         "Grammar": 55042,
         "Inferences": 35028,
         "Transitions": 15011,
-        "Vocab": 45035,
+        "Vocab": 160125,
         "Algebra": 150117,
         "Advanced Math": 170119,
         "Problem-Solving and Data Analysis": 15012
@@ -6963,6 +6962,10 @@
       {
         "ts": 1790479725827,
         "ms": 596
+      },
+      {
+        "ts": 1790944169040,
+        "ms": 31913
       }
     ],
     "f2e39001": [
@@ -7483,6 +7486,10 @@
       {
         "ts": 1790862293738,
         "ms": 1009
+      },
+      {
+        "ts": 1790944255784,
+        "ms": 85062
       }
     ],
     "629a4d69": [
@@ -7622,5 +7629,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790944086900
+  "clientUpdatedAt": 1790944267040
 }
