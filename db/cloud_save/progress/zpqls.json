@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:55:00.117Z",
+  "exportedAt": "2026-10-02T10:57:53.563Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -257,7 +257,8 @@
     "f318b9c5": "done",
     "0ef1c197": "done",
     "6651abfd": "done",
-    "6b04681b": "review"
+    "6b04681b": "review",
+    "96437b86": "review"
   },
   "tags": {},
   "notes": {},
@@ -470,7 +471,8 @@
     "f4e370fb": "2026-10-02T10:42:32.220Z",
     "f318b9c5": "2026-10-02T10:43:53.038Z",
     "0ef1c197": "2026-10-02T10:45:49.488Z",
-    "6651abfd": "2026-10-02T10:48:51.210Z"
+    "6651abfd": "2026-10-02T10:48:51.210Z",
+    "96437b86": "2026-10-02T10:55:20.368Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -875,6 +877,10 @@
     "19ef53c5": {
       "count": 1,
       "lastTs": 1790934396681
+    },
+    "2d1e5eff": {
+      "count": 3,
+      "lastTs": 1790938563452
     }
   },
   "blueprints": [],
@@ -905,22 +911,23 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 5857322,
+      "totalMs": 5992429,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 1238052,
+        "practice": 1258065,
         "mock": 5005,
         "analysis": 5004,
-        "notes": 5003
+        "notes": 5003,
+        "math": 115094
       },
       "categoryMs": {
         "Cross-Text": 40033,
         "Main Idea": 240194,
-        "Vocab": 130143,
+        "Vocab": 135145,
         "Functions": 183529,
         "Grammar": 15011,
         "Inferences": 55045,
@@ -3045,5 +3052,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790938494548
+  "clientUpdatedAt": 1790938669690
 }
