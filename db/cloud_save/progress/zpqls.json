@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:13:02.670Z",
+  "exportedAt": "2026-10-02T11:16:01.017Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -14,7 +14,7 @@
     "a0120582": "done",
     "d2b5e069": "done",
     "bf1fe112": "done",
-    "7f8cec1c": "review",
+    "7f8cec1c": "done",
     "14ea5897": "done",
     "a28d9514": "review",
     "5e6596a9": "done",
@@ -490,7 +490,8 @@
     "fe81a236": "2026-10-02T11:05:46.576Z",
     "54bf74ea": "2026-10-02T11:06:02.531Z",
     "8217606b": "2026-10-02T11:06:26.191Z",
-    "a51ff0d6": "2026-10-02T11:09:15.627Z"
+    "a51ff0d6": "2026-10-02T11:09:15.627Z",
+    "7f8cec1c": "2026-10-02T11:14:03.446Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -498,7 +499,18 @@
     "name": "Kevin Kim",
     "leaderboardOptOut": false
   },
-  "fsrsCards": {},
+  "fsrsCards": {
+    "7f8cec1c": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-10-05T11:14:11.831Z",
+      "last_review": "2026-10-02T11:14:11.831Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    }
+  },
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
@@ -547,8 +559,8 @@
       "lastAttemptTs": 1790937552589
     },
     "Command of Evidence (Textual)": {
-      "correct": 4,
-      "total": 5,
+      "correct": 5,
+      "total": 6,
       "recent": [
         {
           "ts": 1790670702358,
@@ -569,9 +581,13 @@
         {
           "ts": 1790937831149,
           "correct": true
+        },
+        {
+          "ts": 1790939640437,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790937831149
+      "lastAttemptTs": 1790939640437
     },
     "Boundaries": {
       "correct": 136,
@@ -986,11 +1002,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 6711060,
+      "totalMs": 6869271,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 100061,
+        "review": 258272,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -3179,7 +3195,13 @@
         "ts": 1790939341830,
         "ms": 154061
       }
+    ],
+    "7f8cec1c": [
+      {
+        "ts": 1790939640437,
+        "ms": 177088
+      }
     ]
   },
-  "clientUpdatedAt": 1790939580645
+  "clientUpdatedAt": 1790939760494
 }
