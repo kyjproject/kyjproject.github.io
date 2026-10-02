@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:04:06.562Z",
+  "exportedAt": "2026-10-02T11:07:31.712Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -263,7 +263,10 @@
     "2d1e5eff": "done",
     "005e9982": "done",
     "65244c8d": "done",
-    "5822c232": "done"
+    "5822c232": "done",
+    "fe81a236": "done",
+    "54bf74ea": "done",
+    "8217606b": "done"
   },
   "tags": {},
   "notes": {},
@@ -482,7 +485,10 @@
     "2d1e5eff": "2026-10-02T10:59:57.588Z",
     "005e9982": "2026-10-02T11:00:11.338Z",
     "65244c8d": "2026-10-02T11:03:09.307Z",
-    "5822c232": "2026-10-02T11:04:03.440Z"
+    "5822c232": "2026-10-02T11:04:03.440Z",
+    "fe81a236": "2026-10-02T11:05:46.576Z",
+    "54bf74ea": "2026-10-02T11:06:02.531Z",
+    "8217606b": "2026-10-02T11:06:26.191Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -833,8 +839,8 @@
       "lastAttemptTs": 1790938129616
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1790938795561,
@@ -847,20 +853,32 @@
         {
           "ts": 1790938987495,
           "correct": true
+        },
+        {
+          "ts": 1790939184381,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790938987495
+      "lastAttemptTs": 1790939184381
     },
     "Nonlinear functions": {
-      "correct": 1,
-      "total": 1,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1790938809955,
           "correct": true
+        },
+        {
+          "ts": 1790939144772,
+          "correct": true
+        },
+        {
+          "ts": 1790939161055,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790938809955
+      "lastAttemptTs": 1790939161055
     },
     "Equivalent expressions": {
       "correct": 1,
@@ -962,7 +980,7 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 6251030,
+      "totalMs": 6415461,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
@@ -973,7 +991,7 @@
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003,
-        "math": 373695
+        "math": 538126
       },
       "categoryMs": {
         "Cross-Text": 40033,
@@ -3131,7 +3149,25 @@
         "ts": 1790939041255,
         "ms": 50876
       }
+    ],
+    "fe81a236": [
+      {
+        "ts": 1790939144772,
+        "ms": 100564
+      }
+    ],
+    "54bf74ea": [
+      {
+        "ts": 1790939161055,
+        "ms": 13409
+      }
+    ],
+    "8217606b": [
+      {
+        "ts": 1790939184381,
+        "ms": 20240
+      }
     ]
   },
-  "clientUpdatedAt": 1790939045074
+  "clientUpdatedAt": 1790939247597
 }
