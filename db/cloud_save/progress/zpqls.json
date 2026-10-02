@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:16:01.017Z",
+  "exportedAt": "2026-10-02T11:19:04.279Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -509,6 +509,36 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
+    },
+    "a28d9514": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-10-05T11:18:29.675Z",
+      "last_review": "2026-10-02T11:18:29.675Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "6b04681b": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-10-05T11:18:37.825Z",
+      "last_review": "2026-10-02T11:18:37.825Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "accc2b85": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-10-05T11:18:52.225Z",
+      "last_review": "2026-10-02T11:18:52.225Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
     }
   },
   "mockHistory": [],
@@ -559,8 +589,8 @@
       "lastAttemptTs": 1790937552589
     },
     "Command of Evidence (Textual)": {
-      "correct": 5,
-      "total": 6,
+      "correct": 6,
+      "total": 7,
       "recent": [
         {
           "ts": 1790670702358,
@@ -585,18 +615,18 @@
         {
           "ts": 1790939640437,
           "correct": true
+        },
+        {
+          "ts": 1790939907653,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790939640437
+      "lastAttemptTs": 1790939907653
     },
     "Boundaries": {
-      "correct": 136,
-      "total": 197,
+      "correct": 137,
+      "total": 198,
       "recent": [
-        {
-          "ts": 1790934721622,
-          "correct": true
-        },
         {
           "ts": 1790935580918,
           "correct": true
@@ -640,9 +670,13 @@
         {
           "ts": 1790936591551,
           "correct": true
+        },
+        {
+          "ts": 1790939930212,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790936591551
+      "lastAttemptTs": 1790939930212
     },
     "Form, Structure, and Sense": {
       "correct": 102,
@@ -1002,11 +1036,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 6869271,
+      "totalMs": 7039402,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 258272,
+        "review": 428403,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -1120,6 +1154,10 @@
       {
         "ts": 1790727120501,
         "ms": 156
+      },
+      {
+        "ts": 1790939930212,
+        "ms": 12384
       }
     ],
     "df8ef92f": [
@@ -3201,7 +3239,13 @@
         "ts": 1790939640437,
         "ms": 177088
       }
+    ],
+    "a28d9514": [
+      {
+        "ts": 1790939907653,
+        "ms": 255820
+      }
     ]
   },
-  "clientUpdatedAt": 1790939760494
+  "clientUpdatedAt": 1790939940642
 }
