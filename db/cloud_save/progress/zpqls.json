@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:24:49.473Z",
+  "exportedAt": "2026-10-02T10:27:50.403Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -241,7 +241,10 @@
     "2649ccb7": "done",
     "f6da3294": "done",
     "ed838f20": "done",
-    "bfc41dd2": "done"
+    "bfc41dd2": "done",
+    "bbb19fd8": "done",
+    "8a5a4162": "done",
+    "599c3dd8": "done"
   },
   "tags": {},
   "notes": {},
@@ -442,7 +445,10 @@
     "2649ccb7": "2026-10-02T10:21:58.779Z",
     "f6da3294": "2026-10-02T10:22:30.498Z",
     "ed838f20": "2026-10-02T10:22:53.146Z",
-    "bfc41dd2": "2026-10-02T10:23:12.900Z"
+    "bfc41dd2": "2026-10-02T10:23:12.900Z",
+    "bbb19fd8": "2026-10-02T10:25:02.182Z",
+    "8a5a4162": "2026-10-02T10:25:11.131Z",
+    "599c3dd8": "2026-10-02T10:27:29.584Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -561,17 +567,9 @@
       "lastAttemptTs": 1790936591551
     },
     "Form, Structure, and Sense": {
-      "correct": 99,
-      "total": 158,
+      "correct": 101,
+      "total": 160,
       "recent": [
-        {
-          "ts": 1790934974464,
-          "correct": true
-        },
-        {
-          "ts": 1790935004861,
-          "correct": true
-        },
         {
           "ts": 1790935018420,
           "correct": true
@@ -611,9 +609,28 @@
         {
           "ts": 1790936571706,
           "correct": true
+        },
+        {
+          "ts": 1790936700486,
+          "correct": true
+        },
+        {
+          "ts": 1790936710088,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790936571706
+      "lastAttemptTs": 1790936710088
+    },
+    "Cross-Text Connections": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790936846179,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790936846179
     }
   },
   "progressFocus": [
@@ -700,19 +717,22 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 4525660,
+      "totalMs": 4694331,
       "viewMs": {
-        "browse": 4301132,
+        "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 5004,
+        "practice": 75061,
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003
       },
-      "categoryMs": {}
+      "categoryMs": {
+        "Cross-Text": 40033,
+        "Main Idea": 20016
+      }
     }
   },
   "answerTimeLog": {
@@ -2645,7 +2665,25 @@
         "ts": 1790936591551,
         "ms": 17488
       }
+    ],
+    "bbb19fd8": [
+      {
+        "ts": 1790936700486,
+        "ms": 105587
+      }
+    ],
+    "8a5a4162": [
+      {
+        "ts": 1790936710088,
+        "ms": 6441
+      }
+    ],
+    "599c3dd8": [
+      {
+        "ts": 1790936846179,
+        "ms": 36705
+      }
     ]
   },
-  "clientUpdatedAt": 1790936687642
+  "clientUpdatedAt": 1790936868156
 }
