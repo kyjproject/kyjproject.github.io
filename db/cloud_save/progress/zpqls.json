@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:27:50.403Z",
+  "exportedAt": "2026-10-02T10:30:50.639Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -244,7 +244,8 @@
     "bfc41dd2": "done",
     "bbb19fd8": "done",
     "8a5a4162": "done",
-    "599c3dd8": "done"
+    "599c3dd8": "done",
+    "94d9329f": "review"
   },
   "tags": {},
   "notes": {},
@@ -631,6 +632,47 @@
         }
       ],
       "lastAttemptTs": 1790936846179
+    },
+    "Central Ideas and Details": {
+      "correct": 1,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1790936906104,
+          "correct": false
+        },
+        {
+          "ts": 1790936907426,
+          "correct": false
+        },
+        {
+          "ts": 1790936908652,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790936908652
+    },
+    "Words in Context": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790936924328,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790936924328
+    },
+    "Text Structure and Purpose": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790937043223,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790937043223
     }
   },
   "progressFocus": [
@@ -717,21 +759,24 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 4694331,
+      "totalMs": 4822110,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 75061,
+        "practice": 202840,
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003
       },
       "categoryMs": {
         "Cross-Text": 40033,
-        "Main Idea": 20016
+        "Main Idea": 60048,
+        "Vocab": 15012,
+        "Functions": 67732,
+        "Grammar": 5003
       }
     }
   },
@@ -2683,7 +2728,33 @@
         "ts": 1790936846179,
         "ms": 36705
       }
+    ],
+    "94d9329f": [
+      {
+        "ts": 1790936906104,
+        "ms": 55670
+      },
+      {
+        "ts": 1790936907426,
+        "ms": 310
+      },
+      {
+        "ts": 1790936908652,
+        "ms": 235
+      }
+    ],
+    "4756ade0": [
+      {
+        "ts": 1790936924328,
+        "ms": 11694
+      }
+    ],
+    "4cebc520": [
+      {
+        "ts": 1790937043223,
+        "ms": 117371
+      }
     ]
   },
-  "clientUpdatedAt": 1790936868156
+  "clientUpdatedAt": 1790937047516
 }
