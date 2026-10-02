@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T13:46:37.489Z",
+  "exportedAt": "2026-10-02T13:49:37.449Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -282,7 +282,9 @@
     "163dedcf": "done",
     "1dc74ae7": "done",
     "4550a349": "done",
-    "15d6b319": "done"
+    "15d6b319": "done",
+    "1b68b809": "done",
+    "ce7ee632": "done"
   },
   "tags": {},
   "notes": {},
@@ -557,7 +559,9 @@
     "163dedcf": "2026-10-02T12:34:45.651Z",
     "1dc74ae7": "2026-10-02T12:36:43.317Z",
     "4550a349": "2026-10-02T12:37:44.032Z",
-    "15d6b319": "2026-10-02T12:39:45.701Z"
+    "15d6b319": "2026-10-02T12:39:45.701Z",
+    "1b68b809": "2026-10-02T13:46:49.446Z",
+    "ce7ee632": "2026-10-02T13:49:14.681Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1253,8 +1257,8 @@
       "lastAttemptTs": 1790944852198
     },
     "Text Structure and Purpose": {
-      "correct": 3,
-      "total": 5,
+      "correct": 4,
+      "total": 6,
       "recent": [
         {
           "ts": 1790937043223,
@@ -1275,9 +1279,13 @@
         {
           "ts": 1790942530951,
           "correct": true
+        },
+        {
+          "ts": 1790948808083,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790942530951
+      "lastAttemptTs": 1790948808083
     },
     "Inferences": {
       "correct": 1,
@@ -1318,8 +1326,8 @@
       "lastAttemptTs": 1790944179505
     },
     "Transitions": {
-      "correct": 5,
-      "total": 7,
+      "correct": 6,
+      "total": 8,
       "recent": [
         {
           "ts": 1790937748462,
@@ -1348,9 +1356,13 @@
         {
           "ts": 1790944784201,
           "correct": true
+        },
+        {
+          "ts": 1790948953287,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944784201
+      "lastAttemptTs": 1790948953287
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 4,
@@ -1506,14 +1518,14 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 10260630,
+      "totalMs": 10317646,
       "viewMs": {
         "browse": 5318032,
         "profile": 70141,
         "review": 1783152,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 2233118,
+        "practice": 2290134,
         "mock": 5005,
         "analysis": 20016,
         "notes": 5003,
@@ -1523,13 +1535,13 @@
         "Cross-Text": 100082,
         "Main Idea": 365268,
         "Vocab": 218547,
-        "Functions": 400203,
+        "Functions": 415193,
         "Grammar": 120061,
         "Inferences": 55045,
         "Textual Evidence": 285256,
         "Quantitative Evidence": 125102,
         "Notes": 188836,
-        "Transitions": 319678
+        "Transitions": 361704
       }
     }
   },
@@ -4047,7 +4059,19 @@
         "ts": 1790944784202,
         "ms": 119318
       }
+    ],
+    "1b68b809": [
+      {
+        "ts": 1790948808083,
+        "ms": 3912847
+      }
+    ],
+    "ce7ee632": [
+      {
+        "ts": 1790948953287,
+        "ms": 142892
+      }
     ]
   },
-  "clientUpdatedAt": 1790948793940
+  "clientUpdatedAt": 1790948973975
 }
