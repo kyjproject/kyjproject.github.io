@@ -1,0 +1,493 @@
+{
+  "app": "sat-qbank-progress",
+  "version": 9,
+  "exportedAt": "2026-10-02T02:23:55.153Z",
+  "progress": {
+    "dd880033": "review"
+  },
+  "tags": {},
+  "notes": {},
+  "mathOverrides": {},
+  "completionLog": {},
+  "bonusXp": 0,
+  "dailyGoal": 10,
+  "profile": {
+    "name": "Jimin",
+    "leaderboardOptOut": false
+  },
+  "fsrsCards": {},
+  "mockHistory": [],
+  "testHistory": [
+    {
+      "id": "1790822639349-w1l0bm",
+      "completedAt": "2026-10-01T02:43:59.349Z",
+      "questionIds": [
+        "c33339b0",
+        "dd880033",
+        "9843892f",
+        "36de4720",
+        "a6dc0fde",
+        "3a7aa34d",
+        "c05a6f72",
+        "2733f318",
+        "9df126c4",
+        "f4d12865"
+      ],
+      "answers": {
+        "c33339b0": "D",
+        "dd880033": "D",
+        "36de4720": "D",
+        "a6dc0fde": "D",
+        "c05a6f72": "A",
+        "2733f318": "C",
+        "9df126c4": "D",
+        "f4d12865": "A"
+      }
+    },
+    {
+      "id": "1790822138182-lketv7",
+      "completedAt": "2026-10-01T02:35:38.182Z",
+      "questionIds": [
+        "37036956",
+        "1a850131",
+        "3586b08b",
+        "408d3547",
+        "183fe2a0",
+        "8a3fa8c4",
+        "58c789fd",
+        "5883daba",
+        "9c086e5a",
+        "200192c0"
+      ],
+      "answers": {
+        "37036956": "D",
+        "1a850131": "A",
+        "3586b08b": "C",
+        "408d3547": "D",
+        "183fe2a0": "A",
+        "5883daba": "D",
+        "9c086e5a": "D",
+        "200192c0": "C"
+      }
+    }
+  ],
+  "rwOverrides": {},
+  "skillStats": {
+    "Linear equations in two variables": {
+      "correct": 2,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1790405449852,
+          "correct": false
+        },
+        {
+          "ts": 1790575137771,
+          "correct": true
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Systems of two linear equations in two variables": {
+      "correct": 1,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1790575167831,
+          "correct": false
+        },
+        {
+          "ts": 1790575168877,
+          "correct": true
+        },
+        {
+          "ts": 1790822138182,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1790822138182
+    },
+    "Linear functions": {
+      "correct": 4,
+      "total": 9,
+      "recent": [
+        {
+          "ts": 1790575190928,
+          "correct": false
+        },
+        {
+          "ts": 1790575194039,
+          "correct": false
+        },
+        {
+          "ts": 1790575195311,
+          "correct": false
+        },
+        {
+          "ts": 1790575196646,
+          "correct": true
+        },
+        {
+          "ts": 1790575223952,
+          "correct": false
+        },
+        {
+          "ts": 1790575226870,
+          "correct": false
+        },
+        {
+          "ts": 1790575228286,
+          "correct": true
+        },
+        {
+          "ts": 1790822138182,
+          "correct": true
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Linear equations in one variable": {
+      "correct": 3,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1790575254127,
+          "correct": true
+        },
+        {
+          "ts": 1790822138182,
+          "correct": true
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Nonlinear equations in one variable and systems of equations in two variables": {
+      "correct": 3,
+      "total": 5,
+      "recent": [
+        {
+          "ts": 1790575270918,
+          "correct": true
+        },
+        {
+          "ts": 1790575284968,
+          "correct": false
+        },
+        {
+          "ts": 1790575286517,
+          "correct": true
+        },
+        {
+          "ts": 1790822138182,
+          "correct": false
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Nonlinear functions": {
+      "correct": 8,
+      "total": 13,
+      "recent": [
+        {
+          "ts": 1790583300440,
+          "correct": false
+        },
+        {
+          "ts": 1790583306855,
+          "correct": true
+        },
+        {
+          "ts": 1790583344460,
+          "correct": false
+        },
+        {
+          "ts": 1790583350678,
+          "correct": true
+        },
+        {
+          "ts": 1790583415189,
+          "correct": true
+        },
+        {
+          "ts": 1790583542035,
+          "correct": false
+        },
+        {
+          "ts": 1790583546416,
+          "correct": true
+        },
+        {
+          "ts": 1790583890629,
+          "correct": false
+        },
+        {
+          "ts": 1790583893697,
+          "correct": true
+        },
+        {
+          "ts": 1790822138182,
+          "correct": false
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Percentages": {
+      "correct": 0,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1790822138182,
+          "correct": false
+        },
+        {
+          "ts": 1790822639349,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Linear inequalities in one or two variables": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1790822138182,
+          "correct": true
+        },
+        {
+          "ts": 1790822639349,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790822639349
+    },
+    "Equivalent expressions": {
+      "correct": 0,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790822138182,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1790822138182
+    }
+  },
+  "progressFocus": [
+    "Easy",
+    "Medium",
+    "Hard"
+  ],
+  "trendExcluded": [],
+  "recentVisits": {},
+  "blueprints": [],
+  "timeStats": {
+    "2026-09-26": {
+      "totalMs": 85025,
+      "viewMs": {
+        "home": 5002,
+        "browse": 10012,
+        "practice": 70011
+      },
+      "categoryMs": {
+        "Algebra": 50009
+      }
+    },
+    "2026-09-28": {
+      "totalMs": 1075875,
+      "viewMs": {
+        "practice": 1075875
+      },
+      "categoryMs": {
+        "Algebra": 185000,
+        "Advanced Math": 636326
+      }
+    },
+    "2026-09-30": {
+      "totalMs": 455,
+      "viewMs": {
+        "practice": 455
+      },
+      "categoryMs": {}
+    },
+    "2026-10-01": {
+      "totalMs": 960953,
+      "viewMs": {
+        "practice": 10000,
+        "test": 950953
+      },
+      "categoryMs": {
+        "Functions": 5000,
+        "Algebra": 396860,
+        "Problem-Solving and Data Analysis": 107078,
+        "Advanced Math": 321990
+      }
+    },
+    "2026-10-02": {
+      "totalMs": 125901,
+      "viewMs": {
+        "test": 50890,
+        "profile": 75011
+      },
+      "categoryMs": {
+        "Inferences": 5003,
+        "Advanced Math": 45887
+      }
+    }
+  },
+  "answerTimeLog": {
+    "71dc13cb": [
+      {
+        "ts": 1790405449852,
+        "ms": 10070
+      }
+    ],
+    "38f53fa4": [
+      {
+        "ts": 1790575137772,
+        "ms": 59103
+      }
+    ],
+    "d79caaad": [
+      {
+        "ts": 1790575167831,
+        "ms": 27383
+      },
+      {
+        "ts": 1790575168877,
+        "ms": 430
+      }
+    ],
+    "9873a516": [
+      {
+        "ts": 1790575190928,
+        "ms": 19549
+      },
+      {
+        "ts": 1790575194039,
+        "ms": 721
+      },
+      {
+        "ts": 1790575195311,
+        "ms": 739
+      },
+      {
+        "ts": 1790575196646,
+        "ms": 560
+      }
+    ],
+    "0334ee02": [
+      {
+        "ts": 1790575223952,
+        "ms": 38119
+      },
+      {
+        "ts": 1790575226870,
+        "ms": 594
+      },
+      {
+        "ts": 1790575228286,
+        "ms": 776
+      }
+    ],
+    "f2d396f3": [
+      {
+        "ts": 1790575254127,
+        "ms": 4346
+      }
+    ],
+    "e935f479": [
+      {
+        "ts": 1790575270918,
+        "ms": 7120
+      }
+    ],
+    "cb03e399": [
+      {
+        "ts": 1790575284968,
+        "ms": 13027
+      },
+      {
+        "ts": 1790575286518,
+        "ms": 1010
+      }
+    ],
+    "4f5ff634": [
+      {
+        "ts": 1790583271919,
+        "ms": 23539
+      }
+    ],
+    "ed5b7c61": [
+      {
+        "ts": 1790583300440,
+        "ms": 25666
+      },
+      {
+        "ts": 1790583306855,
+        "ms": 3798
+      }
+    ],
+    "e9fc3093": [
+      {
+        "ts": 1790583344460,
+        "ms": 31755
+      },
+      {
+        "ts": 1790583350678,
+        "ms": 2020
+      }
+    ],
+    "b8886c77": [
+      {
+        "ts": 1790583415189,
+        "ms": 29523
+      }
+    ],
+    "b782b8f9": [
+      {
+        "ts": 1790583542035,
+        "ms": 123756
+      },
+      {
+        "ts": 1790583546416,
+        "ms": 967
+      }
+    ],
+    "32dc74a4": [
+      {
+        "ts": 1790583890629,
+        "ms": 340405
+      },
+      {
+        "ts": 1790583893697,
+        "ms": 1228
+      }
+    ]
+  },
+  "clientUpdatedAt": 1790907832074
+}
