@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T15:59:21.879Z",
+  "exportedAt": "2026-10-02T22:32:25.189Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -3264,7 +3264,7 @@
   ],
   "timeStats": {
     "2026-10-02": {
-      "totalMs": 1636945,
+      "totalMs": 1671973,
       "viewMs": {
         "home": 135220,
         "math": 80358,
@@ -3272,7 +3272,7 @@
         "browse": 35075,
         "mock": 10021,
         "practice": 45030,
-        "test": 1251080
+        "test": 1286108
       },
       "categoryMs": {
         "Grammar": 90072,
@@ -3575,6 +3575,13 @@
         "mock": 5006
       },
       "categoryMs": {}
+    },
+    "2026-10-03": {
+      "totalMs": 9992,
+      "viewMs": {
+        "test": 9992
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -3701,5 +3708,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790956760761
+  "clientUpdatedAt": 1790980340960
 }
