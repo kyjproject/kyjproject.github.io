@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:49:21.656Z",
+  "exportedAt": "2026-10-02T11:52:25.036Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -113,12 +113,12 @@
     "836e370c": "done",
     "2a3fd2d7": "done",
     "247a2b79": "done",
-    "f852bcbd": "review",
+    "f852bcbd": "done",
     "36e0f3e2": "done",
     "b93101bf": "done",
     "2879d763": "done",
     "7405d67a": "review",
-    "346bc3a5": "review",
+    "346bc3a5": "done",
     "4f7c4558": "done",
     "bff3cf74": "done",
     "1020223f": "done",
@@ -508,7 +508,9 @@
     "3c924a72": "2026-10-02T11:45:07.575Z",
     "a86d0230": "2026-10-02T11:47:22.556Z",
     "fdb98f0e": "2026-10-02T11:47:48.948Z",
-    "8f2d7e11": "2026-10-02T11:48:01.399Z"
+    "8f2d7e11": "2026-10-02T11:48:01.399Z",
+    "f852bcbd": "2026-10-02T11:50:26.069Z",
+    "346bc3a5": "2026-10-02T11:51:51.803Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -796,6 +798,46 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "06fea80f": {
+      "state": "review",
+      "stability": 3.173,
+      "difficulty": 5.282434422319005,
+      "due": "2026-10-05T11:49:47.984Z",
+      "last_review": "2026-10-02T11:49:47.984Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 3
+    },
+    "f852bcbd": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:50:27.036Z",
+      "last_review": "2026-10-02T11:50:27.036Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "7405d67a": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-10-03T11:51:09.135Z",
+      "last_review": "2026-10-02T11:51:09.135Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
+    },
+    "346bc3a5": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:51:52.870Z",
+      "last_review": "2026-10-02T11:51:52.870Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -881,13 +923,9 @@
       "lastAttemptTs": 1790939907653
     },
     "Boundaries": {
-      "correct": 151,
-      "total": 219,
+      "correct": 152,
+      "total": 220,
       "recent": [
-        {
-          "ts": 1790940436670,
-          "correct": true
-        },
         {
           "ts": 1790940700127,
           "correct": false
@@ -931,34 +969,18 @@
         {
           "ts": 1790941708324,
           "correct": true
+        },
+        {
+          "ts": 1790941909675,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790941708324
+      "lastAttemptTs": 1790941909675
     },
     "Form, Structure, and Sense": {
-      "correct": 112,
-      "total": 178,
+      "correct": 115,
+      "total": 183,
       "recent": [
-        {
-          "ts": 1790940199566,
-          "correct": false
-        },
-        {
-          "ts": 1790940200669,
-          "correct": true
-        },
-        {
-          "ts": 1790940326684,
-          "correct": true
-        },
-        {
-          "ts": 1790940339733,
-          "correct": false
-        },
-        {
-          "ts": 1790940351485,
-          "correct": false
-        },
         {
           "ts": 1790940353033,
           "correct": false
@@ -986,9 +1008,29 @@
         {
           "ts": 1790941641179,
           "correct": true
+        },
+        {
+          "ts": 1790941786628,
+          "correct": true
+        },
+        {
+          "ts": 1790941823972,
+          "correct": true
+        },
+        {
+          "ts": 1790941861988,
+          "correct": false
+        },
+        {
+          "ts": 1790941863135,
+          "correct": false
+        },
+        {
+          "ts": 1790941866616,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790941641179
+      "lastAttemptTs": 1790941866616
     },
     "Cross-Text Connections": {
       "correct": 1,
@@ -1293,11 +1335,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 8070158,
+      "totalMs": 8234643,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 1459159,
+        "review": 1623644,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -2309,6 +2351,10 @@
       {
         "ts": 1790848660856,
         "ms": 145
+      },
+      {
+        "ts": 1790941786628,
+        "ms": 76058
       }
     ],
     "f3a157b1": [
@@ -2401,6 +2447,10 @@
       {
         "ts": 1790856554208,
         "ms": 868
+      },
+      {
+        "ts": 1790941823972,
+        "ms": 35984
       }
     ],
     "36e0f3e2": [
@@ -2423,20 +2473,24 @@
     ],
     "7405d67a": [
       {
-        "ts": 1790856617097,
-        "ms": 27875
-      },
-      {
-        "ts": 1790856621127,
-        "ms": 1654
-      },
-      {
         "ts": 1790856621910,
         "ms": 137
       },
       {
         "ts": 1790856622914,
         "ms": 224
+      },
+      {
+        "ts": 1790941861988,
+        "ms": 34950
+      },
+      {
+        "ts": 1790941863135,
+        "ms": 199
+      },
+      {
+        "ts": 1790941866616,
+        "ms": 980
       }
     ],
     "346bc3a5": [
@@ -2455,6 +2509,10 @@
       {
         "ts": 1790857392237,
         "ms": 320
+      },
+      {
+        "ts": 1790941909675,
+        "ms": 40537
       }
     ],
     "4f7c4558": [
@@ -3628,5 +3686,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790941758716
+  "clientUpdatedAt": 1790941940370
 }
