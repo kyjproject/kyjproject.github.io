@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:28:27.415Z",
+  "exportedAt": "2026-10-02T12:31:30.167Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -273,7 +273,11 @@
     "050d4a12": "done",
     "d54126ab": "done",
     "84b290f2": "done",
-    "bbd93b0f": "done"
+    "bbd93b0f": "done",
+    "bfbada16": "done",
+    "8a79d04f": "done",
+    "95db4b9e": "done",
+    "2d19a1cb": "done"
   },
   "tags": {},
   "notes": {},
@@ -539,7 +543,11 @@
     "050d4a12": "2026-10-02T12:09:35.511Z",
     "d54126ab": "2026-10-02T12:09:44.579Z",
     "84b290f2": "2026-10-02T12:15:31.000Z",
-    "bbd93b0f": "2026-10-02T12:16:22.833Z"
+    "bbd93b0f": "2026-10-02T12:16:22.833Z",
+    "bfbada16": "2026-10-02T12:28:32.383Z",
+    "8a79d04f": "2026-10-02T12:29:20.599Z",
+    "95db4b9e": "2026-10-02T12:29:40.801Z",
+    "2d19a1cb": "2026-10-02T12:30:08.969Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1145,8 +1153,8 @@
       "lastAttemptTs": 1790936846179
     },
     "Central Ideas and Details": {
-      "correct": 2,
-      "total": 6,
+      "correct": 3,
+      "total": 7,
       "recent": [
         {
           "ts": 1790936906104,
@@ -1171,13 +1179,17 @@
         {
           "ts": 1790937310660,
           "correct": true
+        },
+        {
+          "ts": 1790944111011,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790937310660
+      "lastAttemptTs": 1790944111011
     },
     "Words in Context": {
-      "correct": 3,
-      "total": 7,
+      "correct": 4,
+      "total": 8,
       "recent": [
         {
           "ts": 1790936924328,
@@ -1206,9 +1218,13 @@
         {
           "ts": 1790938369675,
           "correct": true
+        },
+        {
+          "ts": 1790944207689,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790938369675
+      "lastAttemptTs": 1790944207689
     },
     "Text Structure and Purpose": {
       "correct": 3,
@@ -1249,8 +1265,8 @@
       "lastAttemptTs": 1790937110306
     },
     "Rhetorical Synthesis": {
-      "correct": 2,
-      "total": 3,
+      "correct": 4,
+      "total": 5,
       "recent": [
         {
           "ts": 1790937591864,
@@ -1263,9 +1279,17 @@
         {
           "ts": 1790937726520,
           "correct": true
+        },
+        {
+          "ts": 1790944159244,
+          "correct": true
+        },
+        {
+          "ts": 1790944179505,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790937726520
+      "lastAttemptTs": 1790944179505
     },
     "Transitions": {
       "correct": 3,
@@ -1448,14 +1472,14 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 9555730,
+      "totalMs": 9650313,
       "viewMs": {
         "browse": 5318032,
         "profile": 70141,
         "review": 1783152,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 1528218,
+        "practice": 1622801,
         "mock": 5005,
         "analysis": 20016,
         "notes": 5003,
@@ -1463,15 +1487,15 @@
       },
       "categoryMs": {
         "Cross-Text": 40033,
-        "Main Idea": 360263,
-        "Vocab": 135145,
+        "Main Idea": 365268,
+        "Vocab": 165169,
         "Functions": 198542,
         "Grammar": 115057,
         "Inferences": 55045,
         "Textual Evidence": 175155,
         "Quantitative Evidence": 125102,
-        "Notes": 139291,
-        "Transitions": 129545
+        "Notes": 188836,
+        "Transitions": 139554
       }
     }
   },
@@ -3919,7 +3943,31 @@
         "ts": 1790943885186,
         "ms": 386
       }
+    ],
+    "bfbada16": [
+      {
+        "ts": 1790944111011,
+        "ms": 197606
+      }
+    ],
+    "8a79d04f": [
+      {
+        "ts": 1790944159245,
+        "ms": 46125
+      }
+    ],
+    "95db4b9e": [
+      {
+        "ts": 1790944179505,
+        "ms": 18021
+      }
+    ],
+    "2d19a1cb": [
+      {
+        "ts": 1790944207689,
+        "ms": 25789
+      }
     ]
   },
-  "clientUpdatedAt": 1790944104512
+  "clientUpdatedAt": 1790944280146
 }
