@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T08:35:29.063Z",
+  "exportedAt": "2026-10-02T08:46:55.391Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1776,7 +1776,11 @@
     "8426d0ec": "done",
     "f006b049": "done",
     "52f5fe7b": "done",
-    "8dd9d75e": "done"
+    "8dd9d75e": "done",
+    "a22f737f": "done",
+    "ce1b1751": "done",
+    "a188f764": "done",
+    "291206f8": "done"
   },
   "tags": {},
   "notes": {
@@ -3575,7 +3579,11 @@
     "8426d0ec": "2026-10-02T08:23:20.154Z",
     "f006b049": "2026-10-02T08:23:37.921Z",
     "52f5fe7b": "2026-10-02T08:23:58.739Z",
-    "8dd9d75e": "2026-10-02T08:25:15.103Z"
+    "8dd9d75e": "2026-10-02T08:25:15.103Z",
+    "a22f737f": "2026-10-02T08:38:00.168Z",
+    "ce1b1751": "2026-10-02T08:38:15.385Z",
+    "a188f764": "2026-10-02T08:38:58.933Z",
+    "291206f8": "2026-10-02T08:44:59.899Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -5058,13 +5066,9 @@
       "lastAttemptTs": 1790929513654
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 43,
-      "total": 68,
+      "correct": 44,
+      "total": 69,
       "recent": [
-        {
-          "ts": 1790843961903,
-          "correct": false
-        },
         {
           "ts": 1790843962586,
           "correct": true
@@ -5108,9 +5112,13 @@
         {
           "ts": 1790929388057,
           "correct": true
+        },
+        {
+          "ts": 1790930338119,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790929388057
+      "lastAttemptTs": 1790930338119
     },
     "Probability and conditional probability": {
       "correct": 20,
@@ -5388,17 +5396,9 @@
       "lastAttemptTs": 1790926458879
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 26,
-      "total": 39,
+      "correct": 28,
+      "total": 41,
       "recent": [
-        {
-          "ts": 1790844201286,
-          "correct": true
-        },
-        {
-          "ts": 1790844209503,
-          "correct": true
-        },
         {
           "ts": 1790844267602,
           "correct": true
@@ -5438,13 +5438,21 @@
         {
           "ts": 1790929416971,
           "correct": true
+        },
+        {
+          "ts": 1790930293484,
+          "correct": true
+        },
+        {
+          "ts": 1790930697399,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790929416971
+      "lastAttemptTs": 1790930697399
     },
     "Inference from sample statistics and margin of error": {
-      "correct": 6,
-      "total": 10,
+      "correct": 7,
+      "total": 11,
       "recent": [
         {
           "ts": 1790587047206,
@@ -5485,9 +5493,13 @@
         {
           "ts": 1790926603506,
           "correct": true
+        },
+        {
+          "ts": 1790930279317,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790926603506
+      "lastAttemptTs": 1790930279317
     },
     "Evaluating statistical claims: Observational studies and experiments": {
       "correct": 1,
@@ -6891,11 +6903,11 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 1015972,
+      "totalMs": 1271068,
       "viewMs": {
         "browse": 35006,
         "leaderboard": 30020,
-        "math": 950946
+        "math": 1206042
       },
       "categoryMs": {}
     }
@@ -19348,7 +19360,31 @@
         "ts": 1790929513654,
         "ms": 34284
       }
+    ],
+    "a22f737f": [
+      {
+        "ts": 1790930279317,
+        "ms": 156092
+      }
+    ],
+    "ce1b1751": [
+      {
+        "ts": 1790930293484,
+        "ms": 11831
+      }
+    ],
+    "a188f764": [
+      {
+        "ts": 1790930338119,
+        "ms": 42184
+      }
+    ],
+    "291206f8": [
+      {
+        "ts": 1790930697399,
+        "ms": 63365
+      }
     ]
   },
-  "clientUpdatedAt": 1790930127071
+  "clientUpdatedAt": 1790930811746
 }
