@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:46:32.768Z",
+  "exportedAt": "2026-10-02T11:49:21.656Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -81,7 +81,7 @@
     "1b496066": "done",
     "5df45c4a": "done",
     "da3a871d": "done",
-    "a86d0230": "review",
+    "a86d0230": "done",
     "3b9318f2": "done",
     "79cfe2cc": "done",
     "e50ab447": "done",
@@ -90,12 +90,12 @@
     "3839f96c": "done",
     "4800f3d3": "done",
     "095c1bb2": "done",
-    "fdb98f0e": "review",
+    "fdb98f0e": "done",
     "c1ddb039": "done",
     "aa21be9a": "done",
     "a5f7262f": "done",
     "a38e3b40": "done",
-    "8f2d7e11": "review",
+    "8f2d7e11": "done",
     "be5d95f7": "done",
     "22022bf7": "done",
     "d4d1e6db": "done",
@@ -505,7 +505,10 @@
     "c5db164e": "2026-10-02T11:31:47.452Z",
     "80b2b9da": "2026-10-02T11:44:38.312Z",
     "1b2094b5": "2026-10-02T11:44:56.159Z",
-    "3c924a72": "2026-10-02T11:45:07.575Z"
+    "3c924a72": "2026-10-02T11:45:07.575Z",
+    "a86d0230": "2026-10-02T11:47:22.556Z",
+    "fdb98f0e": "2026-10-02T11:47:48.948Z",
+    "8f2d7e11": "2026-10-02T11:48:01.399Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -743,6 +746,56 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 3
+    },
+    "a86d0230": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:47:23.641Z",
+      "last_review": "2026-10-02T11:47:23.641Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "d5e08dce": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:47:32.027Z",
+      "last_review": "2026-10-02T11:47:32.027Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "fdb98f0e": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:47:49.864Z",
+      "last_review": "2026-10-02T11:47:49.864Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "8f2d7e11": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:48:02.766Z",
+      "last_review": "2026-10-02T11:48:02.766Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "7dbcbcde": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-10-18T11:48:30.567Z",
+      "last_review": "2026-10-02T11:48:30.567Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -828,29 +881,9 @@
       "lastAttemptTs": 1790939907653
     },
     "Boundaries": {
-      "correct": 147,
-      "total": 214,
+      "correct": 151,
+      "total": 219,
       "recent": [
-        {
-          "ts": 1790940310618,
-          "correct": true
-        },
-        {
-          "ts": 1790940371673,
-          "correct": true
-        },
-        {
-          "ts": 1790940427304,
-          "correct": false
-        },
-        {
-          "ts": 1790940433561,
-          "correct": false
-        },
-        {
-          "ts": 1790940434871,
-          "correct": false
-        },
         {
           "ts": 1790940436670,
           "correct": true
@@ -878,18 +911,34 @@
         {
           "ts": 1790941527697,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790941527697
-    },
-    "Form, Structure, and Sense": {
-      "correct": 111,
-      "total": 177,
-      "recent": [
+        },
         {
-          "ts": 1790940197780,
+          "ts": 1790941649889,
+          "correct": true
+        },
+        {
+          "ts": 1790941662954,
           "correct": false
         },
+        {
+          "ts": 1790941665866,
+          "correct": true
+        },
+        {
+          "ts": 1790941680379,
+          "correct": true
+        },
+        {
+          "ts": 1790941708324,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790941708324
+    },
+    "Form, Structure, and Sense": {
+      "correct": 112,
+      "total": 178,
+      "recent": [
         {
           "ts": 1790940199566,
           "correct": false
@@ -933,9 +982,13 @@
         {
           "ts": 1790941505287,
           "correct": true
+        },
+        {
+          "ts": 1790941641179,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790941505287
+      "lastAttemptTs": 1790941641179
     },
     "Cross-Text Connections": {
       "correct": 1,
@@ -1240,11 +1293,11 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 7915473,
+      "totalMs": 8070158,
       "viewMs": {
         "browse": 4426606,
         "profile": 70141,
-        "review": 1304474,
+        "review": 1459159,
         "leaderboard": 139463,
         "home": 30025,
         "practice": 1258065,
@@ -2032,6 +2085,10 @@
       {
         "ts": 1790780682955,
         "ms": 440
+      },
+      {
+        "ts": 1790941641179,
+        "ms": 110367
       }
     ],
     "3b9318f2": [
@@ -2064,6 +2121,10 @@
       {
         "ts": 1790782360353,
         "ms": 372
+      },
+      {
+        "ts": 1790941649889,
+        "ms": 6245
       }
     ],
     "306ada66": [
@@ -2102,6 +2163,14 @@
       {
         "ts": 1790785248965,
         "ms": 176
+      },
+      {
+        "ts": 1790941662954,
+        "ms": 10926
+      },
+      {
+        "ts": 1790941665866,
+        "ms": 518
       }
     ],
     "c1ddb039": [
@@ -2148,6 +2217,10 @@
       {
         "ts": 1790843611487,
         "ms": 235
+      },
+      {
+        "ts": 1790941680379,
+        "ms": 10513
       }
     ],
     "be5d95f7": [
@@ -2194,6 +2267,10 @@
       {
         "ts": 1790845359963,
         "ms": 195
+      },
+      {
+        "ts": 1790941708325,
+        "ms": 25556
       }
     ],
     "2680b96d": [
@@ -3551,5 +3628,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790941586550
+  "clientUpdatedAt": 1790941758716
 }
