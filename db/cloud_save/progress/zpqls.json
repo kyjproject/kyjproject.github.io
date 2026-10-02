@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T08:34:01.619Z",
+  "exportedAt": "2026-10-02T08:36:44.846Z",
   "progress": {
     "39430569": "done",
     "84225518": "done",
@@ -164,7 +164,9 @@
     "42548ee2": "done",
     "09a01d77": "done",
     "bcaf68f5": "done",
-    "9ee338ef": "done"
+    "9ee338ef": "done",
+    "b23f1ade": "done",
+    "5219fa75": "done"
   },
   "tags": {},
   "notes": {},
@@ -294,7 +296,9 @@
     "42548ee2": "2026-10-02T08:31:13.261Z",
     "09a01d77": "2026-10-02T08:31:28.810Z",
     "bcaf68f5": "2026-10-02T08:32:36.343Z",
-    "9ee338ef": "2026-10-02T08:33:00.842Z"
+    "9ee338ef": "2026-10-02T08:33:00.842Z",
+    "b23f1ade": "2026-10-02T08:34:21.811Z",
+    "5219fa75": "2026-10-02T08:35:16.792Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -358,21 +362,9 @@
       "lastAttemptTs": 1790725247819
     },
     "Boundaries": {
-      "correct": 95,
-      "total": 143,
+      "correct": 97,
+      "total": 146,
       "recent": [
-        {
-          "ts": 1790929368465,
-          "correct": true
-        },
-        {
-          "ts": 1790929386983,
-          "correct": true
-        },
-        {
-          "ts": 1790929397538,
-          "correct": true
-        },
         {
           "ts": 1790929541581,
           "correct": false
@@ -408,9 +400,21 @@
         {
           "ts": 1790929979584,
           "correct": true
+        },
+        {
+          "ts": 1790930057998,
+          "correct": false
+        },
+        {
+          "ts": 1790930060382,
+          "correct": true
+        },
+        {
+          "ts": 1790930115128,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790929979584
+      "lastAttemptTs": 1790930115128
     },
     "Form, Structure, and Sense": {
       "correct": 61,
@@ -540,9 +544,9 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 1760153,
+      "totalMs": 1860232,
       "viewMs": {
-        "browse": 1625693,
+        "browse": 1725772,
         "profile": 25016,
         "review": 5004,
         "leaderboard": 74415,
@@ -1911,7 +1915,23 @@
         "ts": 1790929979584,
         "ms": 22092
       }
+    ],
+    "b23f1ade": [
+      {
+        "ts": 1790930057998,
+        "ms": 75555
+      },
+      {
+        "ts": 1790930060382,
+        "ms": 537
+      }
+    ],
+    "5219fa75": [
+      {
+        "ts": 1790930115128,
+        "ms": 48180
+      }
     ]
   },
-  "clientUpdatedAt": 1790930037069
+  "clientUpdatedAt": 1790930201862
 }
