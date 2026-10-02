@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T08:12:49.146Z",
+  "exportedAt": "2026-10-02T08:15:48.566Z",
   "progress": {
     "39430569": "done",
     "84225518": "done",
@@ -136,7 +136,13 @@
     "7a8c1e9c": "review",
     "6b4c8b42": "done",
     "c6dd0280": "done",
-    "7cb7eb7a": "review"
+    "7cb7eb7a": "review",
+    "ca1a3a5d": "review",
+    "0d0e04ec": "done",
+    "e93dd6f3": "done",
+    "51bd4147": "done",
+    "4dc1b152": "done",
+    "0447b140": "done"
   },
   "tags": {},
   "notes": {},
@@ -239,7 +245,13 @@
     "2d3abce3": "2026-10-02T08:03:35.028Z",
     "ddb5e6b5": "2026-10-02T08:06:07.131Z",
     "6b4c8b42": "2026-10-02T08:11:45.448Z",
-    "c6dd0280": "2026-10-02T08:12:02.082Z"
+    "c6dd0280": "2026-10-02T08:12:02.082Z",
+    "ca1a3a5d": "2026-10-02T08:14:45.051Z",
+    "0d0e04ec": "2026-10-02T08:14:55.265Z",
+    "e93dd6f3": "2026-10-02T08:14:59.415Z",
+    "51bd4147": "2026-10-02T08:15:04.456Z",
+    "4dc1b152": "2026-10-02T08:15:19.815Z",
+    "0447b140": "2026-10-02T08:15:36.783Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -303,21 +315,9 @@
       "lastAttemptTs": 1790725247819
     },
     "Boundaries": {
-      "correct": 78,
-      "total": 123,
+      "correct": 81,
+      "total": 126,
       "recent": [
-        {
-          "ts": 1790927521584,
-          "correct": false
-        },
-        {
-          "ts": 1790927524745,
-          "correct": false
-        },
-        {
-          "ts": 1790927528300,
-          "correct": true
-        },
         {
           "ts": 1790927568763,
           "correct": true
@@ -353,30 +353,26 @@
         {
           "ts": 1790928720675,
           "correct": true
+        },
+        {
+          "ts": 1790928893490,
+          "correct": true
+        },
+        {
+          "ts": 1790928918905,
+          "correct": true
+        },
+        {
+          "ts": 1790928935371,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790928720675
+      "lastAttemptTs": 1790928935371
     },
     "Form, Structure, and Sense": {
-      "correct": 50,
-      "total": 95,
+      "correct": 53,
+      "total": 99,
       "recent": [
-        {
-          "ts": 1790927842996,
-          "correct": false
-        },
-        {
-          "ts": 1790927844214,
-          "correct": true
-        },
-        {
-          "ts": 1790928067435,
-          "correct": true
-        },
-        {
-          "ts": 1790928208856,
-          "correct": false
-        },
         {
           "ts": 1790928210306,
           "correct": false
@@ -408,9 +404,25 @@
         {
           "ts": 1790928763300,
           "correct": true
+        },
+        {
+          "ts": 1790928816503,
+          "correct": false
+        },
+        {
+          "ts": 1790928818452,
+          "correct": true
+        },
+        {
+          "ts": 1790928898811,
+          "correct": true
+        },
+        {
+          "ts": 1790928903652,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790928763300
+      "lastAttemptTs": 1790928903652
     }
   },
   "progressFocus": [
@@ -485,9 +497,9 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 975893,
+      "totalMs": 1135954,
       "viewMs": {
-        "browse": 841433,
+        "browse": 1001494,
         "profile": 25016,
         "review": 5004,
         "leaderboard": 74415,
@@ -1664,7 +1676,47 @@
         "ts": 1790928763300,
         "ms": 1052
       }
+    ],
+    "ca1a3a5d": [
+      {
+        "ts": 1790928816503,
+        "ms": 47754
+      },
+      {
+        "ts": 1790928818452,
+        "ms": 270
+      }
+    ],
+    "0d0e04ec": [
+      {
+        "ts": 1790928893490,
+        "ms": 6257
+      }
+    ],
+    "e93dd6f3": [
+      {
+        "ts": 1790928898811,
+        "ms": 2711
+      }
+    ],
+    "51bd4147": [
+      {
+        "ts": 1790928903652,
+        "ms": 3053
+      }
+    ],
+    "4dc1b152": [
+      {
+        "ts": 1790928918905,
+        "ms": 13489
+      }
+    ],
+    "0447b140": [
+      {
+        "ts": 1790928935371,
+        "ms": 14156
+      }
     ]
   },
-  "clientUpdatedAt": 1790928766029
+  "clientUpdatedAt": 1790928946930
 }
