@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T11:58:12.645Z",
+  "exportedAt": "2026-10-02T12:01:20.023Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -5298,24 +5298,8 @@
     },
     "Right triangles and trigonometry": {
       "correct": 34,
-      "total": 51,
+      "total": 55,
       "recent": [
-        {
-          "ts": 1790844587237,
-          "correct": false
-        },
-        {
-          "ts": 1790844588291,
-          "correct": false
-        },
-        {
-          "ts": 1790844589071,
-          "correct": true
-        },
-        {
-          "ts": 1790847330868,
-          "correct": false
-        },
         {
           "ts": 1790847331801,
           "correct": false
@@ -5347,18 +5331,30 @@
         {
           "ts": 1790926482274,
           "correct": true
+        },
+        {
+          "ts": 1790942310641,
+          "correct": false
+        },
+        {
+          "ts": 1790942459151,
+          "correct": false
+        },
+        {
+          "ts": 1790942475317,
+          "correct": false
+        },
+        {
+          "ts": 1790942478401,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790926482274
+      "lastAttemptTs": 1790942478401
     },
     "Area and volume": {
       "correct": 64,
-      "total": 109,
+      "total": 110,
       "recent": [
-        {
-          "ts": 1790926267223,
-          "correct": true
-        },
         {
           "ts": 1790926486726,
           "correct": false
@@ -5402,9 +5398,13 @@
         {
           "ts": 1790926512223,
           "correct": false
+        },
+        {
+          "ts": 1790942476934,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790926512223
+      "lastAttemptTs": 1790942476934
     },
     "Circles": {
       "correct": 17,
@@ -5739,8 +5739,8 @@
       "lastTs": 1790667559960
     },
     "3f2b93ef": {
-      "count": 3,
-      "lastTs": 1790925218453
+      "count": 5,
+      "lastTs": 1790942298092
     },
     "7eb3fa96": {
       "count": 2,
@@ -6973,11 +6973,11 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 2413211,
+      "totalMs": 2538333,
       "viewMs": {
         "browse": 35006,
         "leaderboard": 126502,
-        "math": 2081729,
+        "math": 2206851,
         "profile": 35020,
         "analysis": 134954
       },
@@ -19670,7 +19670,37 @@
         "ts": 1790932223717,
         "ms": 55473
       }
+    ],
+    "3f2b93ef": [
+      {
+        "ts": 1790942310641,
+        "ms": 14365
+      }
+    ],
+    "381eefb8": [
+      {
+        "ts": 1790942459151,
+        "ms": 12779
+      }
+    ],
+    "08cbd418": [
+      {
+        "ts": 1790942475317,
+        "ms": 7063
+      }
+    ],
+    "9eeacc73": [
+      {
+        "ts": 1790942476934,
+        "ms": 11049
+      }
+    ],
+    "d8a0b327": [
+      {
+        "ts": 1790942478402,
+        "ms": 15200
+      }
     ]
   },
-  "clientUpdatedAt": 1790942288792
+  "clientUpdatedAt": 1790942479097
 }
