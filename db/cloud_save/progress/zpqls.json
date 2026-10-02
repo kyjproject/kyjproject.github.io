@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:51:50.446Z",
+  "exportedAt": "2026-10-02T10:55:00.117Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -706,8 +706,8 @@
       "lastAttemptTs": 1790937310660
     },
     "Words in Context": {
-      "correct": 2,
-      "total": 4,
+      "correct": 3,
+      "total": 7,
       "recent": [
         {
           "ts": 1790936924328,
@@ -724,9 +724,21 @@
         {
           "ts": 1790937332665,
           "correct": true
+        },
+        {
+          "ts": 1790938367218,
+          "correct": false
+        },
+        {
+          "ts": 1790938368233,
+          "correct": false
+        },
+        {
+          "ts": 1790938369675,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790937332665
+      "lastAttemptTs": 1790938369675
     },
     "Text Structure and Purpose": {
       "correct": 2,
@@ -893,14 +905,14 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 5782251,
+      "totalMs": 5857322,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 1162981,
+        "practice": 1238052,
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003
@@ -908,7 +920,7 @@
       "categoryMs": {
         "Cross-Text": 40033,
         "Main Idea": 240194,
-        "Vocab": 55072,
+        "Vocab": 130143,
         "Functions": 183529,
         "Grammar": 15011,
         "Inferences": 55045,
@@ -3017,7 +3029,21 @@
         "ts": 1790938281391,
         "ms": 182
       }
+    ],
+    "96437b86": [
+      {
+        "ts": 1790938367218,
+        "ms": 76562
+      },
+      {
+        "ts": 1790938368233,
+        "ms": 201
+      },
+      {
+        "ts": 1790938369675,
+        "ms": 194
+      }
     ]
   },
-  "clientUpdatedAt": 1790938305432
+  "clientUpdatedAt": 1790938494548
 }
