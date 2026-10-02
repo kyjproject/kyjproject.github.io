@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:10:27.631Z",
+  "exportedAt": "2026-10-02T12:13:27.730Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -270,7 +270,8 @@
     "a51ff0d6": "done",
     "e55ded58": "done",
     "f1be8b46": "done",
-    "050d4a12": "done"
+    "050d4a12": "done",
+    "d54126ab": "done"
   },
   "tags": {},
   "notes": {},
@@ -909,13 +910,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 6,
-      "total": 12,
+      "correct": 7,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1790670456929,
-          "correct": true
-        },
         {
           "ts": 1790671295847,
           "correct": true
@@ -959,9 +956,13 @@
         {
           "ts": 1790942810331,
           "correct": false
+        },
+        {
+          "ts": 1790943162856,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790942810331
+      "lastAttemptTs": 1790943162856
     },
     "Command of Evidence (Textual)": {
       "correct": 8,
@@ -1401,6 +1402,10 @@
     "e55ded58": {
       "count": 1,
       "lastTs": 1790942646092
+    },
+    "84b290f2": {
+      "count": 1,
+      "lastTs": 1790943175580
     }
   },
   "blueprints": [],
@@ -1431,9 +1436,9 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 8848296,
+      "totalMs": 9028442,
       "viewMs": {
-        "browse": 4745678,
+        "browse": 4925824,
         "profile": 70141,
         "review": 1783152,
         "leaderboard": 139463,
@@ -3866,7 +3871,13 @@
         "ts": 1790942968133,
         "ms": 221
       }
+    ],
+    "d54126ab": [
+      {
+        "ts": 1790943162856,
+        "ms": 185341
+      }
     ]
   },
-  "clientUpdatedAt": 1790943023601
+  "clientUpdatedAt": 1790943203744
 }
