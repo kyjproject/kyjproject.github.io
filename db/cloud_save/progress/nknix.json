@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:34:09.879Z",
+  "exportedAt": "2026-10-02T12:37:10.878Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -14,7 +14,7 @@
     "64506024": "done",
     "72301503": "done",
     "76465540": "done",
-    "87832416": "review",
+    "87832416": "done",
     "99022257": "done",
     "741374a0": "done",
     "6f03007c": "done",
@@ -160,9 +160,9 @@
     "9fa95c2c": "done",
     "6b16c91b": "done",
     "4b2c5fbe": "done",
-    "b0e12b3a": "review",
+    "b0e12b3a": "done",
     "51be7407": "done",
-    "994aa0df": "review",
+    "994aa0df": "done",
     "427f0eea": "done",
     "fe6b22a2": "done",
     "1ad71c23": "done",
@@ -394,7 +394,7 @@
     "0fe917af": "done",
     "fbb64b41": "done",
     "2d19a1cb": "done",
-    "b99e3267": "review",
+    "b99e3267": "done",
     "77b9ccd9": "done",
     "396cc35d": "done",
     "25f5e913": "done",
@@ -431,9 +431,9 @@
     "112891d9": "done",
     "96b7fb54": "done",
     "6be089ec": "done",
-    "f279c98c": "review",
+    "f279c98c": "done",
     "f0e70c0c": "done",
-    "ec66fe4d": "review",
+    "ec66fe4d": "done",
     "deb55365": "done",
     "fd02bdb9": "done",
     "30b2a7b8": "done",
@@ -3362,37 +3362,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Words in Context": {
-      "correct": 111,
-      "total": 166,
+      "correct": 117,
+      "total": 173,
       "recent": [
-        {
-          "ts": 1790944304964,
-          "correct": false
-        },
-        {
-          "ts": 1790944308215,
-          "correct": false
-        },
-        {
-          "ts": 1790944309597,
-          "correct": true
-        },
-        {
-          "ts": 1790944329780,
-          "correct": true
-        },
-        {
-          "ts": 1790944340512,
-          "correct": true
-        },
-        {
-          "ts": 1790944360728,
-          "correct": true
-        },
-        {
-          "ts": 1790944393926,
-          "correct": false
-        },
         {
           "ts": 1790944396258,
           "correct": true
@@ -3412,9 +3384,37 @@
         {
           "ts": 1790944436922,
           "correct": true
+        },
+        {
+          "ts": 1790944452772,
+          "correct": true
+        },
+        {
+          "ts": 1790944466620,
+          "correct": true
+        },
+        {
+          "ts": 1790944480903,
+          "correct": true
+        },
+        {
+          "ts": 1790944516301,
+          "correct": true
+        },
+        {
+          "ts": 1790944542950,
+          "correct": false
+        },
+        {
+          "ts": 1790944545966,
+          "correct": true
+        },
+        {
+          "ts": 1790944558532,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944436922
+      "lastAttemptTs": 1790944558532
     },
     "Text Structure and Purpose": {
       "correct": 41,
@@ -5671,15 +5671,15 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 1081057,
+      "totalMs": 1261198,
       "viewMs": {
-        "profile": 19958,
+        "profile": 29966,
         "review": 105898,
-        "practice": 505390,
+        "practice": 650503,
         "leaderboard": 4482,
         "test": 395289,
         "propose": 5005,
-        "analysis": 45035
+        "analysis": 70055
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
@@ -5688,7 +5688,7 @@
         "Grammar": 55042,
         "Inferences": 35028,
         "Transitions": 15011,
-        "Vocab": 340265,
+        "Vocab": 455355,
         "Algebra": 150117,
         "Advanced Math": 170119,
         "Problem-Solving and Data Analysis": 15012
@@ -5722,6 +5722,10 @@
       {
         "ts": 1790006334105,
         "ms": 3921
+      },
+      {
+        "ts": 1790944558532,
+        "ms": 4649
       }
     ],
     "99022257": [
@@ -5922,10 +5926,6 @@
     ],
     "b0e12b3a": [
       {
-        "ts": 1790008494091,
-        "ms": 13730
-      },
-      {
         "ts": 1790008496441,
         "ms": 1299
       },
@@ -5940,12 +5940,24 @@
       {
         "ts": 1790068687761,
         "ms": 7547
+      },
+      {
+        "ts": 1790944480903,
+        "ms": 12683
       }
     ],
     "994aa0df": [
       {
         "ts": 1789999507297,
         "ms": 42417
+      },
+      {
+        "ts": 1790944542951,
+        "ms": 24817
+      },
+      {
+        "ts": 1790944545966,
+        "ms": 702
       }
     ],
     "d0a51d4e": [
@@ -6782,6 +6794,10 @@
       {
         "ts": 1790428540384,
         "ms": 1654
+      },
+      {
+        "ts": 1790944452773,
+        "ms": 8882
       }
     ],
     "8cfad1fb": [
@@ -6884,6 +6900,10 @@
       {
         "ts": 1790477682381,
         "ms": 731
+      },
+      {
+        "ts": 1790944466620,
+        "ms": 7249
       }
     ],
     "f279c98c": [
@@ -6898,6 +6918,10 @@
       {
         "ts": 1790477689480,
         "ms": 668
+      },
+      {
+        "ts": 1790944516301,
+        "ms": 13866
       }
     ],
     "d8e0ab29": [
@@ -7665,5 +7689,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790944447182
+  "clientUpdatedAt": 1790944627322
 }
