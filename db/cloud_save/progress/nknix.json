@@ -1,14 +1,14 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T06:00:09.524Z",
+  "exportedAt": "2026-10-02T06:03:08.922Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
     "35256536": "done",
     "40614504": "done",
     "50821477": "done",
-    "52930290": "review",
+    "52930290": "done",
     "56845779": "done",
     "60199720": "done",
     "64506024": "done",
@@ -674,25 +674,25 @@
     "e5e5f6f6": "done",
     "cedea32c": "done",
     "140d2d15": "done",
-    "aeba7f69": "review",
+    "aeba7f69": "done",
     "6abb55e7": "done",
     "5c234ce6": "done",
     "629a4d69": "done",
     "a8c35eaf": "review",
-    "cc00a8cf": "review",
+    "cc00a8cf": "done",
     "fdf8e5b3": "done",
     "c7d61039": "done",
     "b5874ed0": "done",
-    "296f8a05": "review",
-    "bff1d6df": "review",
+    "296f8a05": "done",
+    "bff1d6df": "done",
     "2b5fd1f4": "review",
     "76d87f54": "review",
     "372b3cc3": "review",
     "939f1fe8": "done",
-    "fda65f0a": "review",
+    "fda65f0a": "done",
     "19f553cc": "done",
     "e4c9f55e": "done",
-    "8e316e56": "review",
+    "8e316e56": "done",
     "c83508f3": "done",
     "8a193615": "done",
     "94da9acc": "done",
@@ -794,6 +794,7 @@
     "35256536": "2026-09-21T15:57:15.551Z",
     "40614504": "2026-09-26T13:06:58.206Z",
     "50821477": "2026-09-28T13:36:41.707Z",
+    "52930290": "2026-10-02T06:02:56.791Z",
     "56845779": "2026-09-26T12:33:57.710Z",
     "60199720": "2026-10-01T15:26:09.915Z",
     "64506024": "2026-09-24T15:11:04.398Z",
@@ -1519,7 +1520,13 @@
     "4c3211c7": "2026-10-01T15:27:29.742Z",
     "c014a78c": "2026-10-01T15:27:32.866Z",
     "e96be0f7": "2026-10-01T15:27:34.659Z",
-    "96437b86": "2026-10-01T15:27:36.925Z"
+    "96437b86": "2026-10-01T15:27:36.925Z",
+    "8e316e56": "2026-10-02T06:01:52.295Z",
+    "fda65f0a": "2026-10-02T06:01:55.729Z",
+    "cc00a8cf": "2026-10-02T06:02:10.194Z",
+    "bff1d6df": "2026-10-02T06:02:23.742Z",
+    "296f8a05": "2026-10-02T06:02:25.710Z",
+    "aeba7f69": "2026-10-02T06:03:08.188Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4672,13 +4679,9 @@
       "lastAttemptTs": 1790868313017
     },
     "Percentages": {
-      "correct": 16,
-      "total": 16,
+      "correct": 17,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1790091085238,
-          "correct": true
-        },
         {
           "ts": 1790257539702,
           "correct": true
@@ -4722,9 +4725,13 @@
         {
           "ts": 1790868313017,
           "correct": true
+        },
+        {
+          "ts": 1790920820884,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790868313017
+      "lastAttemptTs": 1790920820884
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 2,
@@ -5609,6 +5616,20 @@
         "Advanced Math": 352175,
         "Algebra": 475004,
         "Geometry and Trigonometry": 350006
+      }
+    },
+    "2026-10-02": {
+      "totalMs": 150057,
+      "viewMs": {
+        "profile": 4946,
+        "review": 45036,
+        "practice": 100075
+      },
+      "categoryMs": {
+        "Quantitative Evidence": 15009,
+        "Cross-Text": 15013,
+        "Functions": 15011,
+        "Grammar": 55042
       }
     }
   },
@@ -7530,7 +7551,13 @@
         "ts": 1790864922822,
         "ms": 604
       }
+    ],
+    "3f215d34": [
+      {
+        "ts": 1790920820884,
+        "ms": 4217
+      }
     ]
   },
-  "clientUpdatedAt": 1790920805974
+  "clientUpdatedAt": 1790920986107
 }
