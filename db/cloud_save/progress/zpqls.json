@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:33:51.195Z",
+  "exportedAt": "2026-10-02T10:36:50.069Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -245,7 +245,9 @@
     "bbb19fd8": "done",
     "8a5a4162": "done",
     "599c3dd8": "done",
-    "94d9329f": "review"
+    "94d9329f": "review",
+    "5cebee9e": "review",
+    "5c9c3bca": "review"
   },
   "tags": {},
   "notes": {},
@@ -634,8 +636,8 @@
       "lastAttemptTs": 1790936846179
     },
     "Central Ideas and Details": {
-      "correct": 1,
-      "total": 3,
+      "correct": 2,
+      "total": 6,
       "recent": [
         {
           "ts": 1790936906104,
@@ -648,20 +650,44 @@
         {
           "ts": 1790936908652,
           "correct": true
+        },
+        {
+          "ts": 1790937283179,
+          "correct": false
+        },
+        {
+          "ts": 1790937308880,
+          "correct": false
+        },
+        {
+          "ts": 1790937310660,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790936908652
+      "lastAttemptTs": 1790937310660
     },
     "Words in Context": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 4,
       "recent": [
         {
           "ts": 1790936924328,
           "correct": true
+        },
+        {
+          "ts": 1790937329762,
+          "correct": false
+        },
+        {
+          "ts": 1790937331520,
+          "correct": false
+        },
+        {
+          "ts": 1790937332665,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790936924328
+      "lastAttemptTs": 1790937332665
     },
     "Text Structure and Purpose": {
       "correct": 1,
@@ -770,25 +796,26 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 4977236,
+      "totalMs": 5157426,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 357966,
+        "practice": 538156,
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003
       },
       "categoryMs": {
         "Cross-Text": 40033,
-        "Main Idea": 155124,
-        "Vocab": 15012,
+        "Main Idea": 240194,
+        "Vocab": 40063,
         "Functions": 67732,
         "Grammar": 10008,
-        "Inferences": 55045
+        "Inferences": 55045,
+        "Textual Evidence": 70069
       }
     }
   },
@@ -2772,7 +2799,35 @@
         "ts": 1790937110306,
         "ms": 57187
       }
+    ],
+    "5cebee9e": [
+      {
+        "ts": 1790937283180,
+        "ms": 170775
+      },
+      {
+        "ts": 1790937308880,
+        "ms": 23827
+      },
+      {
+        "ts": 1790937310660,
+        "ms": 289
+      }
+    ],
+    "5c9c3bca": [
+      {
+        "ts": 1790937329762,
+        "ms": 14856
+      },
+      {
+        "ts": 1790937331520,
+        "ms": 293
+      },
+      {
+        "ts": 1790937332665,
+        "ms": 170
+      }
     ]
   },
-  "clientUpdatedAt": 1790937227660
+  "clientUpdatedAt": 1790937407850
 }
