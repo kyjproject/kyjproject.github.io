@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T13:02:43.580Z",
+  "exportedAt": "2026-10-02T13:05:44.037Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -771,7 +771,9 @@
     "c96a90a2": "done",
     "db8d42ba": "done",
     "aea3b524": "done",
-    "6f43ec88": "done"
+    "6f43ec88": "done",
+    "8fed560d": "done",
+    "e8a6c1fc": "done"
   },
   "tags": {},
   "notes": {},
@@ -1581,7 +1583,9 @@
     "c96a90a2": "2026-10-02T12:46:32.457Z",
     "db8d42ba": "2026-10-02T12:46:47.822Z",
     "aea3b524": "2026-10-02T12:48:18.417Z",
-    "6f43ec88": "2026-10-02T13:02:42.447Z"
+    "6f43ec88": "2026-10-02T13:02:42.447Z",
+    "8fed560d": "2026-10-02T13:04:55.154Z",
+    "e8a6c1fc": "2026-10-02T13:05:32.086Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4817,8 +4821,8 @@
       "lastAttemptTs": 1790944046828
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 4,
-      "total": 5,
+      "correct": 5,
+      "total": 6,
       "recent": [
         {
           "ts": 1790485268312,
@@ -4839,13 +4843,17 @@
         {
           "ts": 1790946160379,
           "correct": true
+        },
+        {
+          "ts": 1790946293538,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790946160379
+      "lastAttemptTs": 1790946293538
     },
     "Circles": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1790485268314,
@@ -4854,9 +4862,13 @@
         {
           "ts": 1790600964992,
           "correct": true
+        },
+        {
+          "ts": 1790946330235,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790600964992
+      "lastAttemptTs": 1790946330235
     }
   },
   "progressFocus": [
@@ -5712,7 +5724,7 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 2156558,
+      "totalMs": 2246572,
       "viewMs": {
         "profile": 29966,
         "review": 105898,
@@ -5721,7 +5733,7 @@
         "test": 400293,
         "propose": 5005,
         "analysis": 90070,
-        "math": 219833
+        "math": 309847
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
@@ -7845,7 +7857,19 @@
         "ts": 1790946160379,
         "ms": 29464
       }
+    ],
+    "8fed560d": [
+      {
+        "ts": 1790946293538,
+        "ms": 130259
+      }
+    ],
+    "e8a6c1fc": [
+      {
+        "ts": 1790946330235,
+        "ms": 23210
+      }
     ]
   },
-  "clientUpdatedAt": 1790946160054
+  "clientUpdatedAt": 1790946342722
 }
