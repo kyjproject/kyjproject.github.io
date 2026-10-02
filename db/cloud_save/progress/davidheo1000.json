@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T08:46:55.391Z",
+  "exportedAt": "2026-10-02T08:52:56.803Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1780,7 +1780,14 @@
     "a22f737f": "done",
     "ce1b1751": "done",
     "a188f764": "done",
-    "291206f8": "done"
+    "291206f8": "done",
+    "40c8528e": "done",
+    "30422e61": "done",
+    "b6843bc7": "done",
+    "bc79626c": "done",
+    "1e7832f1": "done",
+    "664315f9": "done",
+    "b160d8c8": "done"
   },
   "tags": {},
   "notes": {
@@ -3583,7 +3590,14 @@
     "a22f737f": "2026-10-02T08:38:00.168Z",
     "ce1b1751": "2026-10-02T08:38:15.385Z",
     "a188f764": "2026-10-02T08:38:58.933Z",
-    "291206f8": "2026-10-02T08:44:59.899Z"
+    "291206f8": "2026-10-02T08:44:59.899Z",
+    "40c8528e": "2026-10-02T08:47:03.480Z",
+    "30422e61": "2026-10-02T08:48:48.364Z",
+    "b6843bc7": "2026-10-02T08:50:30.896Z",
+    "bc79626c": "2026-10-02T08:51:17.330Z",
+    "1e7832f1": "2026-10-02T08:51:22.213Z",
+    "664315f9": "2026-10-02T08:52:29.861Z",
+    "b160d8c8": "2026-10-02T08:52:51.712Z"
   },
   "bonusXp": 0,
   "dailyGoal": 30,
@@ -5011,17 +5025,9 @@
       "lastAttemptTs": 1790929437655
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 50,
-      "total": 80,
+      "correct": 51,
+      "total": 82,
       "recent": [
-        {
-          "ts": 1790844117719,
-          "correct": true
-        },
-        {
-          "ts": 1790844136503,
-          "correct": true
-        },
         {
           "ts": 1790844188903,
           "correct": false
@@ -5061,9 +5067,17 @@
         {
           "ts": 1790929513654,
           "correct": true
+        },
+        {
+          "ts": 1790931029747,
+          "correct": true
+        },
+        {
+          "ts": 1790931148762,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790929513654
+      "lastAttemptTs": 1790931148762
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 44,
@@ -5121,13 +5135,9 @@
       "lastAttemptTs": 1790930338119
     },
     "Probability and conditional probability": {
-      "correct": 20,
-      "total": 34,
+      "correct": 21,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1790766624234,
-          "correct": true
-        },
         {
           "ts": 1790839846433,
           "correct": true
@@ -5171,9 +5181,13 @@
         {
           "ts": 1790844228053,
           "correct": true
+        },
+        {
+          "ts": 1790930822581,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790844228053
+      "lastAttemptTs": 1790930822581
     },
     "Lines, angles, and triangles": {
       "correct": 55,
@@ -5396,29 +5410,9 @@
       "lastAttemptTs": 1790926458879
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 28,
-      "total": 41,
+      "correct": 31,
+      "total": 46,
       "recent": [
-        {
-          "ts": 1790844267602,
-          "correct": true
-        },
-        {
-          "ts": 1790926558257,
-          "correct": false
-        },
-        {
-          "ts": 1790926560207,
-          "correct": true
-        },
-        {
-          "ts": 1790926595358,
-          "correct": false
-        },
-        {
-          "ts": 1790926596457,
-          "correct": true
-        },
         {
           "ts": 1790926739610,
           "correct": false
@@ -5446,13 +5440,33 @@
         {
           "ts": 1790930697399,
           "correct": true
+        },
+        {
+          "ts": 1790930926714,
+          "correct": true
+        },
+        {
+          "ts": 1790931070197,
+          "correct": true
+        },
+        {
+          "ts": 1790931164679,
+          "correct": false
+        },
+        {
+          "ts": 1790931166645,
+          "correct": false
+        },
+        {
+          "ts": 1790931168211,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790930697399
+      "lastAttemptTs": 1790931168211
     },
     "Inference from sample statistics and margin of error": {
-      "correct": 7,
-      "total": 11,
+      "correct": 8,
+      "total": 12,
       "recent": [
         {
           "ts": 1790587047206,
@@ -5497,9 +5511,13 @@
         {
           "ts": 1790930279317,
           "correct": true
+        },
+        {
+          "ts": 1790931080662,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790930279317
+      "lastAttemptTs": 1790931080662
     },
     "Evaluating statistical claims: Observational studies and experiments": {
       "correct": 1,
@@ -6903,11 +6921,11 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 1271068,
+      "totalMs": 1616337,
       "viewMs": {
         "browse": 35006,
         "leaderboard": 30020,
-        "math": 1206042
+        "math": 1551311
       },
       "categoryMs": {}
     }
@@ -19384,7 +19402,57 @@
         "ts": 1790930697399,
         "ms": 63365
       }
+    ],
+    "40c8528e": [
+      {
+        "ts": 1790930822581,
+        "ms": 111183
+      }
+    ],
+    "30422e61": [
+      {
+        "ts": 1790930926714,
+        "ms": 102383
+      }
+    ],
+    "b6843bc7": [
+      {
+        "ts": 1790931029747,
+        "ms": 89865
+      }
+    ],
+    "bc79626c": [
+      {
+        "ts": 1790931070197,
+        "ms": 37417
+      }
+    ],
+    "1e7832f1": [
+      {
+        "ts": 1790931080662,
+        "ms": 2599
+      }
+    ],
+    "664315f9": [
+      {
+        "ts": 1790931148762,
+        "ms": 65966
+      }
+    ],
+    "b160d8c8": [
+      {
+        "ts": 1790931164679,
+        "ms": 10600
+      },
+      {
+        "ts": 1790931166645,
+        "ms": 1168
+      },
+      {
+        "ts": 1790931168212,
+        "ms": 1034
+      }
     ]
   },
-  "clientUpdatedAt": 1790930811746
+  "clientUpdatedAt": 1790931172026
 }
