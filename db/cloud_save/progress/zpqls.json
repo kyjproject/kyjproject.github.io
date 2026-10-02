@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T08:30:41.923Z",
+  "exportedAt": "2026-10-02T08:34:01.619Z",
   "progress": {
     "39430569": "done",
     "84225518": "done",
@@ -159,7 +159,12 @@
     "2b71ef47": "review",
     "09489e80": "done",
     "9360277c": "done",
-    "cf86d6fd": "done"
+    "cf86d6fd": "done",
+    "fe8fcf34": "done",
+    "42548ee2": "done",
+    "09a01d77": "done",
+    "bcaf68f5": "done",
+    "9ee338ef": "done"
   },
   "tags": {},
   "notes": {},
@@ -284,7 +289,12 @@
     "741374a0": "2026-10-02T08:23:18.446Z",
     "09489e80": "2026-10-02T08:27:51.627Z",
     "9360277c": "2026-10-02T08:28:22.813Z",
-    "cf86d6fd": "2026-10-02T08:28:47.494Z"
+    "cf86d6fd": "2026-10-02T08:28:47.494Z",
+    "fe8fcf34": "2026-10-02T08:31:08.244Z",
+    "42548ee2": "2026-10-02T08:31:13.261Z",
+    "09a01d77": "2026-10-02T08:31:28.810Z",
+    "bcaf68f5": "2026-10-02T08:32:36.343Z",
+    "9ee338ef": "2026-10-02T08:33:00.842Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -348,25 +358,9 @@
       "lastAttemptTs": 1790725247819
     },
     "Boundaries": {
-      "correct": 91,
-      "total": 139,
+      "correct": 95,
+      "total": 143,
       "recent": [
-        {
-          "ts": 1790929116838,
-          "correct": true
-        },
-        {
-          "ts": 1790929141251,
-          "correct": true
-        },
-        {
-          "ts": 1790929174882,
-          "correct": true
-        },
-        {
-          "ts": 1790929360744,
-          "correct": true
-        },
         {
           "ts": 1790929368465,
           "correct": true
@@ -398,18 +392,30 @@
         {
           "ts": 1790929701435,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790929701435
-    },
-    "Form, Structure, and Sense": {
-      "correct": 60,
-      "total": 108,
-      "recent": [
+        },
         {
-          "ts": 1790928818452,
+          "ts": 1790929866468,
           "correct": true
         },
+        {
+          "ts": 1790929887593,
+          "correct": true
+        },
+        {
+          "ts": 1790929955033,
+          "correct": true
+        },
+        {
+          "ts": 1790929979584,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790929979584
+    },
+    "Form, Structure, and Sense": {
+      "correct": 61,
+      "total": 109,
+      "recent": [
         {
           "ts": 1790928898811,
           "correct": true
@@ -453,9 +459,13 @@
         {
           "ts": 1790929725013,
           "correct": true
+        },
+        {
+          "ts": 1790929871996,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790929725013
+      "lastAttemptTs": 1790929871996
     }
   },
   "progressFocus": [
@@ -530,9 +540,9 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 1670539,
+      "totalMs": 1760153,
       "viewMs": {
-        "browse": 1536079,
+        "browse": 1625693,
         "profile": 25016,
         "review": 5004,
         "leaderboard": 74415,
@@ -1871,7 +1881,37 @@
         "ts": 1790929725013,
         "ms": 21136
       }
+    ],
+    "fe8fcf34": [
+      {
+        "ts": 1790929866468,
+        "ms": 137989
+      }
+    ],
+    "42548ee2": [
+      {
+        "ts": 1790929871996,
+        "ms": 2869
+      }
+    ],
+    "09a01d77": [
+      {
+        "ts": 1790929887593,
+        "ms": 13033
+      }
+    ],
+    "bcaf68f5": [
+      {
+        "ts": 1790929955033,
+        "ms": 65174
+      }
+    ],
+    "9ee338ef": [
+      {
+        "ts": 1790929979584,
+        "ms": 22092
+      }
     ]
   },
-  "clientUpdatedAt": 1790929837267
+  "clientUpdatedAt": 1790930037069
 }
