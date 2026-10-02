@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T12:04:29.288Z",
+  "exportedAt": "2026-10-02T12:07:27.574Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -267,7 +267,9 @@
     "fe81a236": "done",
     "54bf74ea": "done",
     "8217606b": "done",
-    "a51ff0d6": "done"
+    "a51ff0d6": "done",
+    "e55ded58": "done",
+    "f1be8b46": "done"
   },
   "tags": {},
   "notes": {},
@@ -527,7 +529,9 @@
     "7405d67a": "2026-10-02T12:03:13.597Z",
     "3233279a": "2026-10-02T12:03:24.003Z",
     "a7340a4c": "2026-10-02T12:03:27.818Z",
-    "7cb7eb7a": "2026-10-02T12:03:50.029Z"
+    "7cb7eb7a": "2026-10-02T12:03:50.029Z",
+    "e55ded58": "2026-10-02T12:05:01.926Z",
+    "f1be8b46": "2026-10-02T12:07:06.298Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -903,7 +907,7 @@
   "skillStats": {
     "Command of Evidence (Quantitative)": {
       "correct": 6,
-      "total": 9,
+      "total": 12,
       "recent": [
         {
           "ts": 1790670456929,
@@ -940,13 +944,25 @@
         {
           "ts": 1790937552589,
           "correct": true
+        },
+        {
+          "ts": 1790942807757,
+          "correct": false
+        },
+        {
+          "ts": 1790942809411,
+          "correct": false
+        },
+        {
+          "ts": 1790942810331,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1790937552589
+      "lastAttemptTs": 1790942810331
     },
     "Command of Evidence (Textual)": {
-      "correct": 6,
-      "total": 7,
+      "correct": 7,
+      "total": 8,
       "recent": [
         {
           "ts": 1790670702358,
@@ -975,9 +991,13 @@
         {
           "ts": 1790939907653,
           "correct": true
+        },
+        {
+          "ts": 1790942698215,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790939907653
+      "lastAttemptTs": 1790942698215
     },
     "Boundaries": {
       "correct": 160,
@@ -1400,9 +1420,9 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 8554244,
+      "totalMs": 8709122,
       "viewMs": {
-        "browse": 4451626,
+        "browse": 4606504,
         "profile": 70141,
         "review": 1783152,
         "leaderboard": 139463,
@@ -3805,7 +3825,27 @@
         "ts": 1790939907653,
         "ms": 255820
       }
+    ],
+    "e55ded58": [
+      {
+        "ts": 1790942698215,
+        "ms": 52122
+      }
+    ],
+    "f1be8b46": [
+      {
+        "ts": 1790942807757,
+        "ms": 104780
+      },
+      {
+        "ts": 1790942809411,
+        "ms": 134
+      },
+      {
+        "ts": 1790942810331,
+        "ms": 171
+      }
     ]
   },
-  "clientUpdatedAt": 1790942665960
+  "clientUpdatedAt": 1790942846471
 }
