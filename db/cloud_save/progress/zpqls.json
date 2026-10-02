@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T10:30:50.639Z",
+  "exportedAt": "2026-10-02T10:33:51.195Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -673,6 +673,17 @@
         }
       ],
       "lastAttemptTs": 1790937043223
+    },
+    "Inferences": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1790937110306,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1790937110306
     }
   },
   "progressFocus": [
@@ -759,24 +770,25 @@
       "categoryMs": {}
     },
     "2026-10-02": {
-      "totalMs": 4822110,
+      "totalMs": 4977236,
       "viewMs": {
         "browse": 4399746,
         "profile": 30020,
         "review": 5004,
         "leaderboard": 139463,
         "home": 30025,
-        "practice": 202840,
+        "practice": 357966,
         "mock": 5005,
         "analysis": 5004,
         "notes": 5003
       },
       "categoryMs": {
         "Cross-Text": 40033,
-        "Main Idea": 60048,
+        "Main Idea": 155124,
         "Vocab": 15012,
         "Functions": 67732,
-        "Grammar": 5003
+        "Grammar": 10008,
+        "Inferences": 55045
       }
     }
   },
@@ -2754,7 +2766,13 @@
         "ts": 1790937043223,
         "ms": 117371
       }
+    ],
+    "1617d00c": [
+      {
+        "ts": 1790937110306,
+        "ms": 57187
+      }
     ]
   },
-  "clientUpdatedAt": 1790937047516
+  "clientUpdatedAt": 1790937227660
 }
