@@ -1,8 +1,11 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-03T04:46:13.381Z",
-  "progress": {},
+  "exportedAt": "2026-10-03T04:47:13.674Z",
+  "progress": {
+    "e582b600": "review",
+    "71dc13cb": "review"
+  },
   "tags": {},
   "notes": {},
   "mathOverrides": {},
@@ -17,28 +20,105 @@
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
-  "skillStats": {},
+  "skillStats": {
+    "Words in Context": {
+      "correct": 1,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789458796093,
+          "correct": false
+        },
+        {
+          "ts": 1789458797439,
+          "correct": false
+        },
+        {
+          "ts": 1789458799089,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789458799089
+    }
+  },
   "progressFocus": [
     "Easy",
     "Medium",
     "Hard"
   ],
   "trendExcluded": [],
-  "recentVisits": {},
+  "recentVisits": {
+    "5c38a6d5": {
+      "count": 1,
+      "lastTs": 1791002387606
+    }
+  },
   "blueprints": [],
   "timeStats": {
-    "2026-10-03": {
-      "totalMs": 165001,
+    "2026-09-14": {
+      "totalMs": 36922,
       "viewMs": {
-        "home": 15004,
-        "browse": 4998,
-        "practice": 4998,
-        "profile": 10001,
-        "mock": 130000
+        "home": 5001,
+        "mock": 27612,
+        "test": 4309
+      },
+      "categoryMs": {}
+    },
+    "2026-09-15": {
+      "totalMs": 994547,
+      "viewMs": {
+        "mock": 624214,
+        "practice": 370333
+      },
+      "categoryMs": {
+        "Advanced Math": 265199,
+        "Algebra": 177019,
+        "Geometry and Trigonometry": 145113,
+        "Problem-Solving and Data Analysis": 25019,
+        "Vocab": 285211
+      }
+    },
+    "2026-09-25": {
+      "totalMs": 85066,
+      "viewMs": {
+        "practice": 65060,
+        "leaderboard": 4995,
+        "review": 5003,
+        "mock": 5005,
+        "test": 5003
+      },
+      "categoryMs": {}
+    },
+    "2026-10-03": {
+      "totalMs": 325097,
+      "viewMs": {
+        "test": 10005,
+        "mock": 130000,
+        "practice": 5001,
+        "home": 19894,
+        "browse": 35028,
+        "profile": 35027,
+        "notes": 5004,
+        "review": 210139
       },
       "categoryMs": {}
     }
   },
-  "answerTimeLog": {},
-  "clientUpdatedAt": 1791002771284
+  "answerTimeLog": {
+    "6291ba81": [
+      {
+        "ts": 1789458796093,
+        "ms": 103218
+      },
+      {
+        "ts": 1789458797439,
+        "ms": 515
+      },
+      {
+        "ts": 1789458799089,
+        "ms": 481
+      }
+    ]
+  },
+  "clientUpdatedAt": 1791002828955
 }
