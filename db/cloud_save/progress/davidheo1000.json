@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-06T09:23:01.364Z",
+  "exportedAt": "2026-10-06T12:34:50.439Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -5826,18 +5826,6 @@
       "count": 2,
       "lastTs": 1790860178040
     },
-    "457cd6d8": {
-      "count": 1,
-      "lastTs": 1790926534856
-    },
-    "fed2d1b1": {
-      "count": 1,
-      "lastTs": 1790928728425
-    },
-    "8bea8625": {
-      "count": 1,
-      "lastTs": 1790928756009
-    },
     "624c15c1": {
       "count": 1,
       "lastTs": 1790929385504
@@ -5857,6 +5845,30 @@
     "accc2b85": {
       "count": 2,
       "lastTs": 1791199260331
+    },
+    "4e564c4f": {
+      "count": 1,
+      "lastTs": 1791289834515
+    },
+    "14bec4c8": {
+      "count": 1,
+      "lastTs": 1791289860116
+    },
+    "410d7d28": {
+      "count": 1,
+      "lastTs": 1791290047154
+    },
+    "457cd6d8": {
+      "count": 1,
+      "lastTs": 1790926534856
+    },
+    "fed2d1b1": {
+      "count": 1,
+      "lastTs": 1790928728425
+    },
+    "8bea8625": {
+      "count": 1,
+      "lastTs": 1790928756009
     },
     "dbe21855": {
       "count": 1,
@@ -6718,10 +6730,13 @@
   "blueprints": [],
   "timeStats": {
     "2026-10-06": {
-      "totalMs": 30027,
+      "totalMs": 285828,
       "viewMs": {
         "profile": 25002,
-        "lab": 5025
+        "lab": 5025,
+        "leaderboard": 95154,
+        "browse": 150627,
+        "home": 10020
       },
       "categoryMs": {}
     },
@@ -19751,5 +19766,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1791278577506
+  "clientUpdatedAt": 1791290086938
 }
