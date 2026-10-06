@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T22:32:25.189Z",
+  "exportedAt": "2026-10-06T10:48:44.789Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -340,7 +340,7 @@
     "9171f2b5": "review",
     "ae1e4d1d": "done",
     "c2e17200": "done",
-    "b97fa5dd": "review",
+    "b97fa5dd": "done",
     "5ad0b3b6": "done",
     "e752ee68": "review",
     "71e0dd93": "review",
@@ -378,7 +378,7 @@
     "83e4ea9a": "done",
     "fda65f0a": "review",
     "bfbada16": "done",
-    "18d2dfab": "done",
+    "18d2dfab": "review",
     "f37f0c11": "review",
     "87fb4223": "done",
     "3508affd": "review",
@@ -410,7 +410,7 @@
     "f7376391": "done",
     "6c807e83": "done",
     "8dd4b0d5": "done",
-    "e5f76480": "done",
+    "e5f76480": "review",
     "4183cbda": "done",
     "e56aedd2": "done",
     "f8eacedb": "done",
@@ -3029,9 +3029,29 @@
       "count": 4,
       "lastTs": 1790142464974
     },
+    "fe6b22a2": {
+      "count": 1,
+      "lastTs": 1790072435756
+    },
+    "db4aea78": {
+      "count": 1,
+      "lastTs": 1790072458412
+    },
     "ef160f02": {
       "count": 2,
       "lastTs": 1790142443710
+    },
+    "f85886ff": {
+      "count": 1,
+      "lastTs": 1790072569585
+    },
+    "79eb41b9": {
+      "count": 1,
+      "lastTs": 1790072586421
+    },
+    "9d146dca": {
+      "count": 1,
+      "lastTs": 1790072618290
     },
     "ddcbf768": {
       "count": 1,
@@ -3065,6 +3085,14 @@
       "count": 1,
       "lastTs": 1790142348029
     },
+    "427f0eea": {
+      "count": 1,
+      "lastTs": 1790072420232
+    },
+    "455fd7e9": {
+      "count": 1,
+      "lastTs": 1790072246052
+    },
     "c9d2651d": {
       "count": 1,
       "lastTs": 1790918451359
@@ -3084,34 +3112,6 @@
     "004680af": {
       "count": 1,
       "lastTs": 1790956649062
-    },
-    "79eb41b9": {
-      "count": 1,
-      "lastTs": 1790072586421
-    },
-    "9d146dca": {
-      "count": 1,
-      "lastTs": 1790072618290
-    },
-    "fe6b22a2": {
-      "count": 1,
-      "lastTs": 1790072435756
-    },
-    "db4aea78": {
-      "count": 1,
-      "lastTs": 1790072458412
-    },
-    "f85886ff": {
-      "count": 1,
-      "lastTs": 1790072569585
-    },
-    "427f0eea": {
-      "count": 1,
-      "lastTs": 1790072420232
-    },
-    "455fd7e9": {
-      "count": 1,
-      "lastTs": 1790072246052
     }
   },
   "blueprints": [
@@ -3263,29 +3263,6 @@
     }
   ],
   "timeStats": {
-    "2026-10-02": {
-      "totalMs": 1671973,
-      "viewMs": {
-        "home": 135220,
-        "math": 80358,
-        "leaderboard": 80161,
-        "browse": 35075,
-        "mock": 10021,
-        "practice": 45030,
-        "test": 1286108
-      },
-      "categoryMs": {
-        "Grammar": 90072,
-        "Inferences": 35029,
-        "Quantitative Evidence": 160128,
-        "Notes": 95075,
-        "Main Idea": 190152,
-        "Functions": 175137,
-        "Transitions": 90066,
-        "Textual Evidence": 95092,
-        "Cross-Text": 95075
-      }
-    },
     "2026-09-17": {
       "totalMs": 211498,
       "viewMs": {
@@ -3576,6 +3553,47 @@
       },
       "categoryMs": {}
     },
+    "2026-10-05": {
+      "totalMs": 10006,
+      "viewMs": {
+        "home": 10006
+      },
+      "categoryMs": {}
+    },
+    "2026-10-06": {
+      "totalMs": 145138,
+      "viewMs": {
+        "lab": 110096,
+        "mock": 5004,
+        "test": 10006,
+        "browse": 10030,
+        "home": 10002
+      },
+      "categoryMs": {}
+    },
+    "2026-10-02": {
+      "totalMs": 1671973,
+      "viewMs": {
+        "home": 135220,
+        "math": 80358,
+        "leaderboard": 80161,
+        "browse": 35075,
+        "mock": 10021,
+        "practice": 45030,
+        "test": 1286108
+      },
+      "categoryMs": {
+        "Grammar": 90072,
+        "Inferences": 35029,
+        "Quantitative Evidence": 160128,
+        "Notes": 95075,
+        "Main Idea": 190152,
+        "Functions": 175137,
+        "Transitions": 90066,
+        "Textual Evidence": 95092,
+        "Cross-Text": 95075
+      }
+    },
     "2026-10-03": {
       "totalMs": 9992,
       "viewMs": {
@@ -3708,5 +3726,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790980340960
+  "clientUpdatedAt": 1791283721718
 }
