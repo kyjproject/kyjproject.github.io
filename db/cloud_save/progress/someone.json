@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-09-15T12:24:03.763Z",
+  "exportedAt": "2026-10-06T11:10:31.313Z",
   "progress": {},
   "tags": {},
   "notes": {},
@@ -10,13 +10,200 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "someone"
+    "name": "sat400",
+    "leaderboardOptOut": false
   },
   "fsrsCards": {},
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
-  "skillStats": {},
+  "skillStats": {
+    "Words in Context": {
+      "correct": 1,
+      "total": 4,
+      "recent": [
+        {
+          "ts": 1789475609379,
+          "correct": false
+        },
+        {
+          "ts": 1789475609380,
+          "correct": true
+        },
+        {
+          "ts": 1789475609380,
+          "correct": false
+        },
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Text Structure and Purpose": {
+      "correct": 0,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        },
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Cross-Text Connections": {
+      "correct": 0,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Central Ideas and Details": {
+      "correct": 0,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        },
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Command of Evidence (Quantitative)": {
+      "correct": 0,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        },
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Command of Evidence (Textual)": {
+      "correct": 0,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Inferences": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789475609380
+    },
+    "Boundaries": {
+      "correct": 0,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789475609380,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609381
+    },
+    "Form, Structure, and Sense": {
+      "correct": 2,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789475609381,
+          "correct": true
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1789475609381
+    },
+    "Transitions": {
+      "correct": 1,
+      "total": 5,
+      "recent": [
+        {
+          "ts": 1789475609381,
+          "correct": true
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609381
+    },
+    "Rhetorical Synthesis": {
+      "correct": 0,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609381,
+          "correct": false
+        },
+        {
+          "ts": 1789475609382,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1789475609382
+    }
+  },
   "progressFocus": [
     "Easy",
     "Medium",
@@ -27,16 +214,36 @@
   "blueprints": [],
   "timeStats": {
     "2026-09-15": {
-      "totalMs": 403009,
+      "totalMs": 1474738,
       "viewMs": {
-        "home": 32049,
-        "profile": 45002,
+        "home": 47433,
+        "profile": 278454,
         "blueprints": 15000,
-        "practice": 5000,
-        "propose": 29991,
+        "practice": 15000,
+        "propose": 44996,
         "browse": 5001,
-        "test": 5003,
-        "leaderboard": 265963
+        "test": 25006,
+        "leaderboard": 433484,
+        "analysis": 29989,
+        "review": 10004,
+        "mock": 565361,
+        "notes": 5010
+      },
+      "categoryMs": {
+        "Vocab": 85336,
+        "Functions": 4992,
+        "Main Idea": 4997,
+        "Quantitative Evidence": 9999,
+        "Grammar": 35000,
+        "Transitions": 15003,
+        "Notes": 15007,
+        "Advanced Math": 89996
+      }
+    },
+    "2026-10-06": {
+      "totalMs": 70000,
+      "viewMs": {
+        "leaderboard": 70000
       },
       "categoryMs": {}
     }
