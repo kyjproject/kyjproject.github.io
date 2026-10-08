@@ -1,20 +1,20 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-08T12:34:39.885Z",
+  "exportedAt": "2026-10-08T12:37:39.556Z",
   "progress": {
     "a56a50e6": "done",
     "4e564c4f": "review",
-    "14bec4c8": "done",
-    "04b15c4f": "done",
-    "f87d07d3": "done",
+    "14bec4c8": "review",
+    "f87d07d3": "review",
     "410d7d28": "review",
     "e5e5f6f6": "review",
     "9363c6bb": "review",
     "9dcc184d": "review",
     "33a93756": "done",
     "cd1a97d2": "done",
-    "8f3ad8e1": "done"
+    "8f3ad8e1": "done",
+    "04b15c4f": "done"
   },
   "tags": {},
   "notes": {},
@@ -42,33 +42,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Transitions": {
-      "correct": 15,
-      "total": 30,
+      "correct": 18,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1791375906838,
-          "correct": true
-        },
-        {
-          "ts": 1791376281540,
-          "correct": false
-        },
-        {
-          "ts": 1791458179046,
-          "correct": false
-        },
-        {
-          "ts": 1791458180531,
-          "correct": true
-        },
-        {
-          "ts": 1791458269827,
-          "correct": true
-        },
-        {
-          "ts": 1791460899446,
-          "correct": true
-        },
         {
           "ts": 1791461405077,
           "correct": true
@@ -92,9 +68,33 @@
         {
           "ts": 1791462668394,
           "correct": true
+        },
+        {
+          "ts": 1791462894366,
+          "correct": false
+        },
+        {
+          "ts": 1791462902656,
+          "correct": false
+        },
+        {
+          "ts": 1791462904535,
+          "correct": true
+        },
+        {
+          "ts": 1791462943911,
+          "correct": true
+        },
+        {
+          "ts": 1791462982183,
+          "correct": false
+        },
+        {
+          "ts": 1791462993272,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1791462668394
+      "lastAttemptTs": 1791462993272
     }
   },
   "progressFocus": [
@@ -155,11 +155,11 @@
       "categoryMs": {}
     },
     "2026-10-08": {
-      "totalMs": 1699827,
+      "totalMs": 1869827,
       "viewMs": {
         "profile": 9997,
         "leaderboard": 125000,
-        "browse": 1564830
+        "browse": 1734830
       },
       "categoryMs": {}
     }
@@ -209,12 +209,28 @@
       {
         "ts": 1791289869825,
         "ms": 676
+      },
+      {
+        "ts": 1791462894366,
+        "ms": 222434
+      },
+      {
+        "ts": 1791462902657,
+        "ms": 1101
+      },
+      {
+        "ts": 1791462904535,
+        "ms": 785
       }
     ],
     "04b15c4f": [
       {
         "ts": 1791289949222,
         "ms": 51651
+      },
+      {
+        "ts": 1791462943911,
+        "ms": 16379
       }
     ],
     "f87d07d3": [
@@ -225,6 +241,14 @@
       {
         "ts": 1791289977567,
         "ms": 654
+      },
+      {
+        "ts": 1791462982183,
+        "ms": 34016
+      },
+      {
+        "ts": 1791462993272,
+        "ms": 673
       }
     ],
     "410d7d28": [
@@ -310,5 +334,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1791462875070
+  "clientUpdatedAt": 1791463055067
 }
