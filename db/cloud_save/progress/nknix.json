@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-02T13:05:44.037Z",
+  "exportedAt": "2026-10-11T12:16:23.620Z",
   "progress": {
     "10691563": "done",
     "31926070": "done",
@@ -5724,7 +5724,7 @@
       }
     },
     "2026-10-02": {
-      "totalMs": 2246572,
+      "totalMs": 2286603,
       "viewMs": {
         "profile": 29966,
         "review": 105898,
@@ -5733,7 +5733,7 @@
         "test": 400293,
         "propose": 5005,
         "analysis": 90070,
-        "math": 309847
+        "math": 349878
       },
       "categoryMs": {
         "Quantitative Evidence": 15009,
@@ -5747,6 +5747,23 @@
         "Advanced Math": 260189,
         "Problem-Solving and Data Analysis": 15012
       }
+    },
+    "2026-10-05": {
+      "totalMs": 209967,
+      "viewMs": {
+        "leaderboard": 189952,
+        "review": 15011,
+        "test": 5004
+      },
+      "categoryMs": {}
+    },
+    "2026-10-11": {
+      "totalMs": 20002,
+      "viewMs": {
+        "profile": 5000,
+        "mock": 15002
+      },
+      "categoryMs": {}
     }
   },
   "answerTimeLog": {
@@ -7871,5 +7888,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1790946342722
+  "clientUpdatedAt": 1791720979484
 }
