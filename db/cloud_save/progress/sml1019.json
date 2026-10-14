@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-14T07:58:50.151Z",
+  "exportedAt": "2026-10-14T08:01:51.332Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -875,13 +875,15 @@
       "categoryMs": {}
     },
     "2026-10-14": {
-      "totalMs": 216436,
+      "totalMs": 347424,
       "viewMs": {
         "practice": 99280,
-        "mock": 117156
+        "mock": 248144
       },
       "categoryMs": {
-        "Advanced Math": 49995
+        "Advanced Math": 130754,
+        "Algebra": 30232,
+        "Geometry and Trigonometry": 19997
       }
     }
   },
@@ -919,5 +921,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1791964727015
+  "clientUpdatedAt": 1791964907014
 }
