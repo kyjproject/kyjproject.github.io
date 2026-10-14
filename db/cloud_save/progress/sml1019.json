@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-14T09:20:03.569Z",
+  "exportedAt": "2026-10-14T09:22:50.163Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -389,8 +389,8 @@
       "lastAttemptTs": 1791966624681
     },
     "Nonlinear functions": {
-      "correct": 14,
-      "total": 27,
+      "correct": 15,
+      "total": 28,
       "recent": [
         {
           "ts": 1790063995467,
@@ -435,9 +435,13 @@
         {
           "ts": 1791966624681,
           "correct": false
+        },
+        {
+          "ts": 1791969691689,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1791966624681
+      "lastAttemptTs": 1791969691689
     },
     "Systems of two linear equations in two variables": {
       "correct": 6,
@@ -877,8 +881,8 @@
   "trendExcluded": [],
   "recentVisits": {
     "2733f318": {
-      "count": 1,
-      "lastTs": 1790156481309
+      "count": 2,
+      "lastTs": 1791969702767
     },
     "1c7b6b0a": {
       "count": 1,
@@ -899,6 +903,10 @@
     "d40f805f": {
       "count": 1,
       "lastTs": 1791967108726
+    },
+    "fb559c97": {
+      "count": 1,
+      "lastTs": 1791969676905
     }
   },
   "blueprints": [],
@@ -1026,10 +1034,10 @@
       "categoryMs": {}
     },
     "2026-10-14": {
-      "totalMs": 1633180,
+      "totalMs": 1755869,
       "viewMs": {
         "practice": 99280,
-        "mock": 1533900
+        "mock": 1656589
       },
       "categoryMs": {
         "Advanced Math": 522887,
@@ -1071,7 +1079,13 @@
         "ts": 1791369720499,
         "ms": 3521
       }
+    ],
+    "fb559c97": [
+      {
+        "ts": 1791969691690,
+        "ms": 14783
+      }
     ]
   },
-  "clientUpdatedAt": 1791969600800
+  "clientUpdatedAt": 1791969767010
 }
