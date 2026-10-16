@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-16T13:08:23.269Z",
+  "exportedAt": "2026-10-16T13:11:23.411Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -514,7 +514,7 @@
     },
     "Systems of two linear equations in two variables": {
       "correct": 6,
-      "total": 8,
+      "total": 9,
       "recent": [
         {
           "ts": 1789976216619,
@@ -543,13 +543,17 @@
         {
           "ts": 1792156066741,
           "correct": false
+        },
+        {
+          "ts": 1792156211328,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1792156066741
+      "lastAttemptTs": 1792156211328
     },
     "Right triangles and trigonometry": {
-      "correct": 3,
-      "total": 6,
+      "correct": 4,
+      "total": 7,
       "recent": [
         {
           "ts": 1789976216619,
@@ -574,9 +578,13 @@
         {
           "ts": 1792156066741,
           "correct": false
+        },
+        {
+          "ts": 1792156203569,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792156066741
+      "lastAttemptTs": 1792156203569
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 5,
@@ -1059,6 +1067,18 @@
     "3541335e": {
       "count": 1,
       "lastTs": 1792156088071
+    },
+    "de6d51e1": {
+      "count": 1,
+      "lastTs": 1792156200486
+    },
+    "ea0720d1": {
+      "count": 1,
+      "lastTs": 1792156207630
+    },
+    "14e393be": {
+      "count": 1,
+      "lastTs": 1792156280177
     }
   },
   "blueprints": [],
@@ -1210,10 +1230,10 @@
       }
     },
     "2026-10-16": {
-      "totalMs": 755640,
+      "totalMs": 865643,
       "viewMs": {
         "practice": 5002,
-        "mock": 750638
+        "mock": 860641
       },
       "categoryMs": {
         "Algebra": 258455,
@@ -1295,7 +1315,19 @@
         "ts": 1792156089268,
         "ms": 1196
       }
+    ],
+    "de6d51e1": [
+      {
+        "ts": 1792156203569,
+        "ms": 3083
+      }
+    ],
+    "ea0720d1": [
+      {
+        "ts": 1792156211328,
+        "ms": 3697
+      }
     ]
   },
-  "clientUpdatedAt": 1792156100859
+  "clientUpdatedAt": 1792156280858
 }
