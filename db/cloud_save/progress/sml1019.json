@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-16T13:36:15.862Z",
+  "exportedAt": "2026-10-16T13:39:22.694Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -53,7 +53,8 @@
     "8d9266b6": "review",
     "d9e83476": "review",
     "a4a86ebb": "done",
-    "ea0720d1": "review"
+    "ea0720d1": "review",
+    "3541335e": "review"
   },
   "tags": {},
   "notes": {},
@@ -716,8 +717,8 @@
       "lastAttemptTs": 1792156066741
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 6,
-      "total": 6,
+      "correct": 7,
+      "total": 8,
       "recent": [
         {
           "ts": 1789976216619,
@@ -742,9 +743,17 @@
         {
           "ts": 1792156066741,
           "correct": true
+        },
+        {
+          "ts": 1792157916035,
+          "correct": false
+        },
+        {
+          "ts": 1792157918890,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792156066741
+      "lastAttemptTs": 1792157918890
     },
     "Linear equations in one variable": {
       "correct": 5,
@@ -848,13 +857,9 @@
       "lastAttemptTs": 1792156066741
     },
     "Linear functions": {
-      "correct": 11,
-      "total": 14,
+      "correct": 12,
+      "total": 18,
       "recent": [
-        {
-          "ts": 1789976216620,
-          "correct": false
-        },
         {
           "ts": 1790063995468,
           "correct": true
@@ -886,9 +891,25 @@
         {
           "ts": 1792156089268,
           "correct": true
+        },
+        {
+          "ts": 1792157935528,
+          "correct": false
+        },
+        {
+          "ts": 1792157936740,
+          "correct": false
+        },
+        {
+          "ts": 1792157937661,
+          "correct": false
+        },
+        {
+          "ts": 1792157939211,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792156089268
+      "lastAttemptTs": 1792157939211
     },
     "Equivalent expressions": {
       "correct": 4,
@@ -1065,8 +1086,8 @@
       "lastTs": 1791970184554
     },
     "3541335e": {
-      "count": 1,
-      "lastTs": 1792156088071
+      "count": 2,
+      "lastTs": 1792157925812
     },
     "de6d51e1": {
       "count": 1,
@@ -1079,6 +1100,10 @@
     "14e393be": {
       "count": 1,
       "lastTs": 1792156280177
+    },
+    "cd9fa443": {
+      "count": 1,
+      "lastTs": 1792157907645
     }
   },
   "blueprints": [],
@@ -1230,10 +1255,10 @@
       }
     },
     "2026-10-16": {
-      "totalMs": 990646,
+      "totalMs": 1041444,
       "viewMs": {
         "practice": 5002,
-        "mock": 975653,
+        "mock": 1026451,
         "profile": 4999,
         "test": 4992
       },
@@ -1316,6 +1341,22 @@
       {
         "ts": 1792156089268,
         "ms": 1196
+      },
+      {
+        "ts": 1792157935528,
+        "ms": 9715
+      },
+      {
+        "ts": 1792157936740,
+        "ms": 200
+      },
+      {
+        "ts": 1792157937661,
+        "ms": 138
+      },
+      {
+        "ts": 1792157939211,
+        "ms": 834
       }
     ],
     "de6d51e1": [
@@ -1329,7 +1370,17 @@
         "ts": 1792156211328,
         "ms": 3697
       }
+    ],
+    "cd9fa443": [
+      {
+        "ts": 1792157916035,
+        "ms": 8389
+      },
+      {
+        "ts": 1792157918891,
+        "ms": 631
+      }
     ]
   },
-  "clientUpdatedAt": 1792157772855
+  "clientUpdatedAt": 1792157958674
 }
