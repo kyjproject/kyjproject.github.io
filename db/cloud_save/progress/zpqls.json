@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:51:06.507Z",
+  "exportedAt": "2026-10-17T14:54:06.063Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -1091,21 +1091,9 @@
       "lastAttemptTs": 1790943162856
     },
     "Command of Evidence (Textual)": {
-      "correct": 12,
-      "total": 19,
+      "correct": 13,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1790942698215,
-          "correct": true
-        },
-        {
-          "ts": 1790942966617,
-          "correct": false
-        },
-        {
-          "ts": 1790942968133,
-          "correct": true
-        },
         {
           "ts": 1790943327586,
           "correct": false
@@ -1141,9 +1129,21 @@
         {
           "ts": 1790944599899,
           "correct": true
+        },
+        {
+          "ts": 1792248801182,
+          "correct": false
+        },
+        {
+          "ts": 1792248803332,
+          "correct": false
+        },
+        {
+          "ts": 1792248805265,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944599899
+      "lastAttemptTs": 1792248805265
     },
     "Boundaries": {
       "correct": 165,
@@ -1608,6 +1608,10 @@
     "84b290f2": {
       "count": 1,
       "lastTs": 1790943175580
+    },
+    "ed043939": {
+      "count": 1,
+      "lastTs": 1792248751765
     }
   },
   "blueprints": [],
@@ -1665,14 +1669,14 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 1002873,
+      "totalMs": 1113652,
       "viewMs": {
         "practice": 507087,
         "profile": 40026,
         "review": 385704,
         "leaderboard": 45036,
         "math": 5004,
-        "browse": 5005,
+        "browse": 115784,
         "blueprints": 15011
       },
       "categoryMs": {
@@ -4221,16 +4225,24 @@
     ],
     "ed043939": [
       {
-        "ts": 1790943881975,
-        "ms": 497876
-      },
-      {
         "ts": 1790943883374,
         "ms": 392
       },
       {
         "ts": 1790943885186,
         "ms": 386
+      },
+      {
+        "ts": 1792248801182,
+        "ms": 49416
+      },
+      {
+        "ts": 1792248803332,
+        "ms": 1184
+      },
+      {
+        "ts": 1792248805265,
+        "ms": 1081
       }
     ],
     "bfbada16": [
@@ -4302,5 +4314,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792248665878
+  "clientUpdatedAt": 1792248841003
 }
