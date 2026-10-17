@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:57:06.195Z",
+  "exportedAt": "2026-10-17T15:00:19.954Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -285,7 +285,8 @@
     "15d6b319": "done",
     "1b68b809": "done",
     "ce7ee632": "done",
-    "3b1e4cc1": "done"
+    "3b1e4cc1": "done",
+    "1726d646": "done"
   },
   "tags": {},
   "notes": {},
@@ -573,7 +574,8 @@
     "94d9329f": "2026-10-17T14:46:36.933Z",
     "5c9c3bca": "2026-10-17T14:47:31.450Z",
     "22f1e238": "2026-10-17T14:49:09.399Z",
-    "3b1e4cc1": "2026-10-17T14:55:02.731Z"
+    "3b1e4cc1": "2026-10-17T14:55:02.731Z",
+    "1726d646": "2026-10-17T14:59:34.395Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1093,21 +1095,9 @@
       "lastAttemptTs": 1790943162856
     },
     "Command of Evidence (Textual)": {
-      "correct": 14,
-      "total": 23,
+      "correct": 15,
+      "total": 26,
       "recent": [
-        {
-          "ts": 1790943328799,
-          "correct": true
-        },
-        {
-          "ts": 1790943381089,
-          "correct": true
-        },
-        {
-          "ts": 1790943881975,
-          "correct": false
-        },
         {
           "ts": 1790943883374,
           "correct": false
@@ -1143,9 +1133,21 @@
         {
           "ts": 1792248900065,
           "correct": true
+        },
+        {
+          "ts": 1792249158979,
+          "correct": false
+        },
+        {
+          "ts": 1792249161163,
+          "correct": false
+        },
+        {
+          "ts": 1792249172312,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792248900065
+      "lastAttemptTs": 1792249172312
     },
     "Boundaries": {
       "correct": 165,
@@ -1671,14 +1673,14 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 1283710,
+      "totalMs": 1467198,
       "viewMs": {
         "practice": 507087,
         "profile": 40026,
         "review": 385704,
         "leaderboard": 45036,
         "math": 5004,
-        "browse": 285842,
+        "browse": 469330,
         "blueprints": 15011
       },
       "categoryMs": {
@@ -4320,7 +4322,21 @@
         "ts": 1792248900065,
         "ms": 88100
       }
+    ],
+    "1726d646": [
+      {
+        "ts": 1792249158979,
+        "ms": 255231
+      },
+      {
+        "ts": 1792249161163,
+        "ms": 697
+      },
+      {
+        "ts": 1792249172312,
+        "ms": 9033
+      }
     ]
   },
-  "clientUpdatedAt": 1792249021339
+  "clientUpdatedAt": 1792249219247
 }
