@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:30:06.159Z",
+  "exportedAt": "2026-10-17T14:33:06.013Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -186,7 +186,7 @@
     "178c8b8e": "done",
     "09333379": "done",
     "c709441f": "done",
-    "8bd8f58c": "review",
+    "8bd8f58c": "done",
     "601810db": "done",
     "992e6994": "done",
     "1483cd89": "done",
@@ -563,7 +563,8 @@
     "1b68b809": "2026-10-02T13:46:49.446Z",
     "ce7ee632": "2026-10-02T13:49:14.681Z",
     "2b71ef47": "2026-10-17T14:23:46.062Z",
-    "fd02bdb9": "2026-10-17T14:27:04.337Z"
+    "fd02bdb9": "2026-10-17T14:27:04.337Z",
+    "8bd8f58c": "2026-10-17T14:32:19.107Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -961,6 +962,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "8bd8f58c": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-02T14:32:20.306Z",
+      "last_review": "2026-10-17T14:32:20.306Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -1133,13 +1144,9 @@
       "lastAttemptTs": 1792247222555
     },
     "Form, Structure, and Sense": {
-      "correct": 123,
-      "total": 199,
+      "correct": 124,
+      "total": 200,
       "recent": [
-        {
-          "ts": 1790942491230,
-          "correct": false
-        },
         {
           "ts": 1790942493049,
           "correct": true
@@ -1183,9 +1190,13 @@
         {
           "ts": 1792246995524,
           "correct": true
+        },
+        {
+          "ts": 1792247537575,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792246995524
+      "lastAttemptTs": 1792247537575
     },
     "Cross-Text Connections": {
       "correct": 2,
@@ -1577,11 +1588,11 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 235869,
+      "totalMs": 313307,
       "viewMs": {
         "practice": 25005,
         "profile": 10002,
-        "review": 155826,
+        "review": 233264,
         "leaderboard": 45036
       },
       "categoryMs": {}
@@ -3326,6 +3337,10 @@
       {
         "ts": 1790933375491,
         "ms": 104
+      },
+      {
+        "ts": 1792247537575,
+        "ms": 312467
       }
     ],
     "601810db": [
@@ -4135,5 +4150,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792247399350
+  "clientUpdatedAt": 1792247576626
 }
