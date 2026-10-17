@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T15:03:06.817Z",
+  "exportedAt": "2026-10-17T15:06:07.379Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -286,7 +286,9 @@
     "1b68b809": "done",
     "ce7ee632": "done",
     "3b1e4cc1": "done",
-    "1726d646": "done"
+    "1726d646": "done",
+    "ed043939": "done",
+    "b97fa5dd": "done"
   },
   "tags": {},
   "notes": {},
@@ -575,7 +577,9 @@
     "5c9c3bca": "2026-10-17T14:47:31.450Z",
     "22f1e238": "2026-10-17T14:49:09.399Z",
     "3b1e4cc1": "2026-10-17T14:55:02.731Z",
-    "1726d646": "2026-10-17T14:59:34.395Z"
+    "1726d646": "2026-10-17T14:59:34.395Z",
+    "ed043939": "2026-10-17T15:03:50.764Z",
+    "b97fa5dd": "2026-10-17T15:05:05.696Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1040,17 +1044,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 7,
-      "total": 13,
+      "correct": 8,
+      "total": 15,
       "recent": [
-        {
-          "ts": 1790671295847,
-          "correct": true
-        },
-        {
-          "ts": 1790671342097,
-          "correct": false
-        },
         {
           "ts": 1790671398548,
           "correct": false
@@ -1090,9 +1086,17 @@
         {
           "ts": 1790943162856,
           "correct": true
+        },
+        {
+          "ts": 1792249487648,
+          "correct": false
+        },
+        {
+          "ts": 1792249503213,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790943162856
+      "lastAttemptTs": 1792249503213
     },
     "Command of Evidence (Textual)": {
       "correct": 15,
@@ -1614,8 +1618,8 @@
       "lastTs": 1790943175580
     },
     "ed043939": {
-      "count": 1,
-      "lastTs": 1792248751765
+      "count": 3,
+      "lastTs": 1792249425695
     }
   },
   "blueprints": [],
@@ -1673,14 +1677,14 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 1602305,
+      "totalMs": 1764511,
       "viewMs": {
         "practice": 507087,
         "profile": 40026,
         "review": 385704,
         "leaderboard": 45036,
         "math": 5004,
-        "browse": 604437,
+        "browse": 766643,
         "blueprints": 15011
       },
       "categoryMs": {
@@ -4336,7 +4340,17 @@
         "ts": 1792249172312,
         "ms": 9033
       }
+    ],
+    "b97fa5dd": [
+      {
+        "ts": 1792249487648,
+        "ms": 312303
+      },
+      {
+        "ts": 1792249503213,
+        "ms": 7815
+      }
     ]
   },
-  "clientUpdatedAt": 1792249384379
+  "clientUpdatedAt": 1792249565558
 }
