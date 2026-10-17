@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:33:06.013Z",
+  "exportedAt": "2026-10-17T14:36:06.074Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -192,7 +192,7 @@
     "1483cd89": "done",
     "1e1286b0": "done",
     "4ca5ab4d": "done",
-    "4efacd65": "review",
+    "4efacd65": "done",
     "21922a16": "done",
     "130a364f": "done",
     "75a57c2f": "done",
@@ -202,7 +202,7 @@
     "9b49630d": "done",
     "b305e581": "done",
     "a3f9a509": "done",
-    "71f78cd0": "review",
+    "71f78cd0": "done",
     "ca2c9bdc": "done",
     "7e98d472": "done",
     "6203926e": "done",
@@ -564,7 +564,9 @@
     "ce7ee632": "2026-10-02T13:49:14.681Z",
     "2b71ef47": "2026-10-17T14:23:46.062Z",
     "fd02bdb9": "2026-10-17T14:27:04.337Z",
-    "8bd8f58c": "2026-10-17T14:32:19.107Z"
+    "8bd8f58c": "2026-10-17T14:32:19.107Z",
+    "4efacd65": "2026-10-17T14:35:24.822Z",
+    "71f78cd0": "2026-10-17T14:35:41.175Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -972,6 +974,26 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "4efacd65": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-02T14:35:25.905Z",
+      "last_review": "2026-10-17T14:35:25.905Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "71f78cd0": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-02T14:35:41.940Z",
+      "last_review": "2026-10-17T14:35:41.940Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -1089,13 +1111,9 @@
       "lastAttemptTs": 1790944599899
     },
     "Boundaries": {
-      "correct": 162,
-      "total": 235,
+      "correct": 163,
+      "total": 236,
       "recent": [
-        {
-          "ts": 1790942037607,
-          "correct": false
-        },
         {
           "ts": 1790942038490,
           "correct": true
@@ -1139,26 +1157,18 @@
         {
           "ts": 1792247222555,
           "correct": true
+        },
+        {
+          "ts": 1792247739573,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792247222555
+      "lastAttemptTs": 1792247739573
     },
     "Form, Structure, and Sense": {
-      "correct": 124,
-      "total": 200,
+      "correct": 125,
+      "total": 203,
       "recent": [
-        {
-          "ts": 1790942493049,
-          "correct": true
-        },
-        {
-          "ts": 1790942550305,
-          "correct": true
-        },
-        {
-          "ts": 1790942588470,
-          "correct": true
-        },
         {
           "ts": 1790942592849,
           "correct": true
@@ -1194,9 +1204,21 @@
         {
           "ts": 1792247537575,
           "correct": true
+        },
+        {
+          "ts": 1792247669373,
+          "correct": false
+        },
+        {
+          "ts": 1792247671690,
+          "correct": false
+        },
+        {
+          "ts": 1792247673557,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792247537575
+      "lastAttemptTs": 1792247673557
     },
     "Cross-Text Connections": {
       "correct": 2,
@@ -1588,11 +1610,11 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 313307,
+      "totalMs": 412949,
       "viewMs": {
         "practice": 25005,
         "profile": 10002,
-        "review": 233264,
+        "review": 332906,
         "leaderboard": 45036
       },
       "categoryMs": {}
@@ -3383,16 +3405,24 @@
     ],
     "4efacd65": [
       {
-        "ts": 1790933553067,
-        "ms": 45577
-      },
-      {
         "ts": 1790933554196,
         "ms": 207
       },
       {
         "ts": 1790933556249,
         "ms": 509
+      },
+      {
+        "ts": 1792247669373,
+        "ms": 129064
+      },
+      {
+        "ts": 1792247671691,
+        "ms": 1135
+      },
+      {
+        "ts": 1792247673557,
+        "ms": 700
       }
     ],
     "21922a16": [
@@ -3477,6 +3507,10 @@
       {
         "ts": 1790933892920,
         "ms": 211
+      },
+      {
+        "ts": 1792247739573,
+        "ms": 13667
       }
     ],
     "ca2c9bdc": [
@@ -4150,5 +4184,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792247576626
+  "clientUpdatedAt": 1792247761876
 }
