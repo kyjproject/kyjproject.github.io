@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-14T09:17:38.320Z",
+  "exportedAt": "2026-10-17T02:21:44.488Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2854,8 +2854,8 @@
       "lastTs": 1787297697502
     },
     "a0120582": {
-      "count": 20,
-      "lastTs": 1789893831148
+      "count": 21,
+      "lastTs": 1792203530432
     },
     "9171f2b5": {
       "count": 2,
@@ -3029,29 +3029,9 @@
       "count": 4,
       "lastTs": 1790142464974
     },
-    "fe6b22a2": {
-      "count": 1,
-      "lastTs": 1790072435756
-    },
-    "db4aea78": {
-      "count": 1,
-      "lastTs": 1790072458412
-    },
     "ef160f02": {
       "count": 2,
       "lastTs": 1790142443710
-    },
-    "f85886ff": {
-      "count": 1,
-      "lastTs": 1790072569585
-    },
-    "79eb41b9": {
-      "count": 1,
-      "lastTs": 1790072586421
-    },
-    "9d146dca": {
-      "count": 1,
-      "lastTs": 1790072618290
     },
     "ddcbf768": {
       "count": 1,
@@ -3085,14 +3065,6 @@
       "count": 1,
       "lastTs": 1790142348029
     },
-    "427f0eea": {
-      "count": 1,
-      "lastTs": 1790072420232
-    },
-    "455fd7e9": {
-      "count": 1,
-      "lastTs": 1790072246052
-    },
     "c9d2651d": {
       "count": 1,
       "lastTs": 1790918451359
@@ -3112,6 +3084,34 @@
     "004680af": {
       "count": 1,
       "lastTs": 1790956649062
+    },
+    "fe6b22a2": {
+      "count": 1,
+      "lastTs": 1790072435756
+    },
+    "db4aea78": {
+      "count": 1,
+      "lastTs": 1790072458412
+    },
+    "f85886ff": {
+      "count": 1,
+      "lastTs": 1790072569585
+    },
+    "79eb41b9": {
+      "count": 1,
+      "lastTs": 1790072586421
+    },
+    "9d146dca": {
+      "count": 1,
+      "lastTs": 1790072618290
+    },
+    "427f0eea": {
+      "count": 1,
+      "lastTs": 1790072420232
+    },
+    "455fd7e9": {
+      "count": 1,
+      "lastTs": 1790072246052
     }
   },
   "blueprints": [
@@ -3635,10 +3635,20 @@
       "categoryMs": {}
     },
     "2026-10-14": {
-      "totalMs": 140505,
+      "totalMs": 161280,
       "viewMs": {
         "leaderboard": 10003,
-        "competition": 130502
+        "competition": 151277
+      },
+      "categoryMs": {}
+    },
+    "2026-10-17": {
+      "totalMs": 25042,
+      "viewMs": {
+        "home": 5012,
+        "browse": 5001,
+        "mock": 5005,
+        "leaderboard": 10024
       },
       "categoryMs": {}
     }
@@ -3767,5 +3777,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1791969454614
+  "clientUpdatedAt": 1792203701407
 }
