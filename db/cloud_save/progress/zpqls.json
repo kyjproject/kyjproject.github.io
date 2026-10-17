@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:45:06.470Z",
+  "exportedAt": "2026-10-17T14:48:07.586Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -247,9 +247,9 @@
     "bbb19fd8": "done",
     "8a5a4162": "done",
     "599c3dd8": "done",
-    "94d9329f": "review",
+    "94d9329f": "done",
     "5cebee9e": "done",
-    "5c9c3bca": "review",
+    "5c9c3bca": "done",
     "119c4069": "done",
     "2fa507b2": "done",
     "dde323c1": "done",
@@ -568,7 +568,9 @@
     "4efacd65": "2026-10-17T14:35:24.822Z",
     "71f78cd0": "2026-10-17T14:35:41.175Z",
     "d0884ae5": "2026-10-17T14:36:55.642Z",
-    "5cebee9e": "2026-10-17T14:45:01.833Z"
+    "5cebee9e": "2026-10-17T14:45:01.833Z",
+    "94d9329f": "2026-10-17T14:46:36.933Z",
+    "5c9c3bca": "2026-10-17T14:47:31.450Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1248,8 +1250,8 @@
       "lastAttemptTs": 1790944662002
     },
     "Central Ideas and Details": {
-      "correct": 4,
-      "total": 10,
+      "correct": 5,
+      "total": 11,
       "recent": [
         {
           "ts": 1790936906104,
@@ -1290,18 +1292,18 @@
         {
           "ts": 1792248252485,
           "correct": true
+        },
+        {
+          "ts": 1792248395036,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792248252485
+      "lastAttemptTs": 1792248395036
     },
     "Words in Context": {
-      "correct": 6,
-      "total": 11,
+      "correct": 7,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1790936924328,
-          "correct": true
-        },
         {
           "ts": 1790937329762,
           "correct": false
@@ -1341,9 +1343,17 @@
         {
           "ts": 1790944852198,
           "correct": true
+        },
+        {
+          "ts": 1792248445716,
+          "correct": false
+        },
+        {
+          "ts": 1792248447517,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790944852198
+      "lastAttemptTs": 1792248447517
     },
     "Text Structure and Purpose": {
       "correct": 4,
@@ -1634,16 +1644,17 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 724104,
+      "totalMs": 876943,
       "viewMs": {
-        "practice": 293370,
+        "practice": 446209,
         "profile": 10002,
         "review": 375696,
         "leaderboard": 45036
       },
       "categoryMs": {
         "Grammar": 153010,
-        "Main Idea": 115355
+        "Main Idea": 185313,
+        "Vocab": 82881
       }
     }
   },
@@ -3892,6 +3903,10 @@
       {
         "ts": 1790936908652,
         "ms": 235
+      },
+      {
+        "ts": 1792248395037,
+        "ms": 92268
       }
     ],
     "4756ade0": [
@@ -3946,6 +3961,14 @@
       {
         "ts": 1790937332665,
         "ms": 170
+      },
+      {
+        "ts": 1792248445716,
+        "ms": 48015
+      },
+      {
+        "ts": 1792248447517,
+        "ms": 967
       }
     ],
     "119c4069": [
@@ -4251,5 +4274,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792248303926
+  "clientUpdatedAt": 1792248482914
 }
