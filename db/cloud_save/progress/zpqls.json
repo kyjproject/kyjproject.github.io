@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-17T14:24:05.814Z",
+  "exportedAt": "2026-10-17T14:27:05.729Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -177,7 +177,7 @@
     "1007161b": "done",
     "5f38d8f4": "done",
     "d173443c": "done",
-    "fd02bdb9": "review",
+    "fd02bdb9": "done",
     "af0e160f": "done",
     "8e27d086": "done",
     "b578ab3b": "done",
@@ -562,7 +562,8 @@
     "15d6b319": "2026-10-02T12:39:45.701Z",
     "1b68b809": "2026-10-02T13:46:49.446Z",
     "ce7ee632": "2026-10-02T13:49:14.681Z",
-    "2b71ef47": "2026-10-17T14:23:46.062Z"
+    "2b71ef47": "2026-10-17T14:23:46.062Z",
+    "fd02bdb9": "2026-10-17T14:27:04.337Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -950,6 +951,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "fd02bdb9": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-02T14:27:05.106Z",
+      "last_review": "2026-10-17T14:27:05.106Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -1067,13 +1078,9 @@
       "lastAttemptTs": 1790944599899
     },
     "Boundaries": {
-      "correct": 161,
-      "total": 234,
+      "correct": 162,
+      "total": 235,
       "recent": [
-        {
-          "ts": 1790942010306,
-          "correct": true
-        },
         {
           "ts": 1790942037607,
           "correct": false
@@ -1117,9 +1124,13 @@
         {
           "ts": 1792247021282,
           "correct": true
+        },
+        {
+          "ts": 1792247222555,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792247021282
+      "lastAttemptTs": 1792247222555
     },
     "Form, Structure, and Sense": {
       "correct": 123,
@@ -1566,11 +1577,11 @@
       }
     },
     "2026-10-17": {
-      "totalMs": 175103,
+      "totalMs": 230866,
       "viewMs": {
         "practice": 25005,
         "profile": 10002,
-        "review": 95060,
+        "review": 150823,
         "leaderboard": 45036
       },
       "categoryMs": {}
@@ -3245,6 +3256,10 @@
       {
         "ts": 1790931351243,
         "ms": 1356
+      },
+      {
+        "ts": 1792247222556,
+        "ms": 194523
       }
     ],
     "af0e160f": [
@@ -4120,5 +4135,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792247043236
+  "clientUpdatedAt": 1792247224014
 }
