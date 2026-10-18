@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-18T11:39:24.583Z",
+  "exportedAt": "2026-10-18T11:42:24.338Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -308,7 +308,9 @@
     "263c330a": "review",
     "bff52e96": "done",
     "be184fba": "done",
-    "5f5deac5": "done"
+    "5f5deac5": "done",
+    "2cd8bd76": "done",
+    "90856dbc": "done"
   },
   "tags": {},
   "notes": {},
@@ -615,7 +617,9 @@
     "0eeef1e7": "2026-10-18T11:17:16.816Z",
     "bff52e96": "2026-10-18T11:24:08.570Z",
     "be184fba": "2026-10-18T11:28:25.556Z",
-    "5f5deac5": "2026-10-18T11:34:36.467Z"
+    "5f5deac5": "2026-10-18T11:34:36.467Z",
+    "2cd8bd76": "2026-10-18T11:41:18.804Z",
+    "90856dbc": "2026-10-18T11:42:01.855Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1100,13 +1104,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 17,
-      "total": 30,
+      "correct": 18,
+      "total": 31,
       "recent": [
-        {
-          "ts": 1792321226390,
-          "correct": true
-        },
         {
           "ts": 1792321317859,
           "correct": true
@@ -1150,18 +1150,18 @@
         {
           "ts": 1792323207782,
           "correct": true
+        },
+        {
+          "ts": 1792323674519,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792323207782
+      "lastAttemptTs": 1792323674519
     },
     "Command of Evidence (Textual)": {
-      "correct": 26,
-      "total": 51,
+      "correct": 27,
+      "total": 52,
       "recent": [
-        {
-          "ts": 1792321785829,
-          "correct": false
-        },
         {
           "ts": 1792321788679,
           "correct": false
@@ -1205,9 +1205,13 @@
         {
           "ts": 1792322646052,
           "correct": true
+        },
+        {
+          "ts": 1792323720537,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792322646052
+      "lastAttemptTs": 1792323720537
     },
     "Boundaries": {
       "correct": 165,
@@ -1692,6 +1696,14 @@
     "263c330a": {
       "count": 1,
       "lastTs": 1792322284865
+    },
+    "3a3281a9": {
+      "count": 1,
+      "lastTs": 1792323586568
+    },
+    "2cd8bd76": {
+      "count": 1,
+      "lastTs": 1792323593701
     }
   },
   "blueprints": [],
@@ -1766,9 +1778,9 @@
       }
     },
     "2026-10-18": {
-      "totalMs": 2643203,
+      "totalMs": 2803451,
       "viewMs": {
-        "browse": 2483238,
+        "browse": 2643486,
         "profile": 59943,
         "review": 100022
       },
@@ -4631,7 +4643,19 @@
         "ts": 1792323207782,
         "ms": 1700
       }
+    ],
+    "2cd8bd76": [
+      {
+        "ts": 1792323674519,
+        "ms": 80818
+      }
+    ],
+    "90856dbc": [
+      {
+        "ts": 1792323720537,
+        "ms": 40885
+      }
     ]
   },
-  "clientUpdatedAt": 1792323561628
+  "clientUpdatedAt": 1792323741130
 }
