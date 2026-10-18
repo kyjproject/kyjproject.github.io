@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-18T11:26:38.822Z",
+  "exportedAt": "2026-10-18T11:29:51.977Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -306,7 +306,8 @@
     "3ef2af4f": "review",
     "0eeef1e7": "done",
     "263c330a": "review",
-    "bff52e96": "done"
+    "bff52e96": "done",
+    "be184fba": "done"
   },
   "tags": {},
   "notes": {},
@@ -611,7 +612,8 @@
     "4aa75b60": "2026-10-18T11:01:59.643Z",
     "da9ad052": "2026-10-18T11:02:18.060Z",
     "0eeef1e7": "2026-10-18T11:17:16.816Z",
-    "bff52e96": "2026-10-18T11:24:08.570Z"
+    "bff52e96": "2026-10-18T11:24:08.570Z",
+    "be184fba": "2026-10-18T11:28:25.556Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1096,21 +1098,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 15,
-      "total": 25,
+      "correct": 16,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1792249487648,
-          "correct": false
-        },
-        {
-          "ts": 1792249503213,
-          "correct": true
-        },
-        {
-          "ts": 1792319930823,
-          "correct": true
-        },
         {
           "ts": 1792320573195,
           "correct": false
@@ -1146,9 +1136,21 @@
         {
           "ts": 1792322232516,
           "correct": true
+        },
+        {
+          "ts": 1792322892472,
+          "correct": false
+        },
+        {
+          "ts": 1792322894672,
+          "correct": false
+        },
+        {
+          "ts": 1792322899905,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792322232516
+      "lastAttemptTs": 1792322899905
     },
     "Command of Evidence (Textual)": {
       "correct": 26,
@@ -1762,9 +1764,9 @@
       }
     },
     "2026-10-18": {
-      "totalMs": 2226454,
+      "totalMs": 2342052,
       "viewMs": {
-        "browse": 2066489,
+        "browse": 2182087,
         "profile": 59943,
         "review": 100022
       },
@@ -4603,7 +4605,21 @@
         "ts": 1792322646052,
         "ms": 566
       }
+    ],
+    "be184fba": [
+      {
+        "ts": 1792322892472,
+        "ms": 242803
+      },
+      {
+        "ts": 1792322894672,
+        "ms": 1484
+      },
+      {
+        "ts": 1792322899905,
+        "ms": 3917
+      }
     ]
   },
-  "clientUpdatedAt": 1792322797956
+  "clientUpdatedAt": 1792322977449
 }
