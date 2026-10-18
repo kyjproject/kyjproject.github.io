@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-18T12:05:43.065Z",
+  "exportedAt": "2026-10-18T12:08:43.724Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -313,7 +313,8 @@
     "90856dbc": "done",
     "ae51efb8": "done",
     "3a3281a9": "done",
-    "453fdf25": "done"
+    "453fdf25": "done",
+    "c4bc50cd": "done"
   },
   "tags": {},
   "notes": {},
@@ -625,7 +626,8 @@
     "90856dbc": "2026-10-18T11:42:01.855Z",
     "ae51efb8": "2026-10-18T11:44:05.122Z",
     "3a3281a9": "2026-10-18T11:46:23.684Z",
-    "453fdf25": "2026-10-18T12:01:28.268Z"
+    "453fdf25": "2026-10-18T12:01:28.268Z",
+    "c4bc50cd": "2026-10-18T12:05:51.772Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1111,20 +1113,8 @@
   "skillStats": {
     "Command of Evidence (Quantitative)": {
       "correct": 20,
-      "total": 35,
+      "total": 38,
       "recent": [
-        {
-          "ts": 1792321514160,
-          "correct": true
-        },
-        {
-          "ts": 1792322232516,
-          "correct": true
-        },
-        {
-          "ts": 1792322892472,
-          "correct": false
-        },
         {
           "ts": 1792322894672,
           "correct": false
@@ -1160,18 +1150,26 @@
         {
           "ts": 1792325108487,
           "correct": true
+        },
+        {
+          "ts": 1792325217655,
+          "correct": false
+        },
+        {
+          "ts": 1792325222853,
+          "correct": false
+        },
+        {
+          "ts": 1792325242721,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1792325108487
+      "lastAttemptTs": 1792325242721
     },
     "Command of Evidence (Textual)": {
       "correct": 29,
-      "total": 56,
+      "total": 57,
       "recent": [
-        {
-          "ts": 1792322033348,
-          "correct": false
-        },
         {
           "ts": 1792322034833,
           "correct": true
@@ -1215,9 +1213,13 @@
         {
           "ts": 1792324821983,
           "correct": true
+        },
+        {
+          "ts": 1792325320895,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1792324821983
+      "lastAttemptTs": 1792325320895
     },
     "Boundaries": {
       "correct": 165,
@@ -1714,6 +1716,10 @@
     "453fdf25": {
       "count": 1,
       "lastTs": 1792324760498
+    },
+    "a0f3b38c": {
+      "count": 1,
+      "lastTs": 1792325254088
     }
   },
   "blueprints": [],
@@ -1788,9 +1794,9 @@
       }
     },
     "2026-10-18": {
-      "totalMs": 3321059,
+      "totalMs": 3495344,
       "viewMs": {
-        "browse": 3161094,
+        "browse": 3335379,
         "profile": 59943,
         "review": 100022
       },
@@ -4705,7 +4711,27 @@
         "ts": 1792325108487,
         "ms": 750
       }
+    ],
+    "fd88c8b1": [
+      {
+        "ts": 1792325217655,
+        "ms": 65101
+      },
+      {
+        "ts": 1792325222853,
+        "ms": 3297
+      },
+      {
+        "ts": 1792325242721,
+        "ms": 5034
+      }
+    ],
+    "a0f3b38c": [
+      {
+        "ts": 1792325320895,
+        "ms": 66807
+      }
     ]
   },
-  "clientUpdatedAt": 1792325141247
+  "clientUpdatedAt": 1792325321408
 }
