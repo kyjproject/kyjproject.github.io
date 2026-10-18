@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-18T11:42:24.338Z",
+  "exportedAt": "2026-10-18T11:45:24.934Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -310,7 +310,8 @@
     "be184fba": "done",
     "5f5deac5": "done",
     "2cd8bd76": "done",
-    "90856dbc": "done"
+    "90856dbc": "done",
+    "ae51efb8": "done"
   },
   "tags": {},
   "notes": {},
@@ -619,7 +620,8 @@
     "be184fba": "2026-10-18T11:28:25.556Z",
     "5f5deac5": "2026-10-18T11:34:36.467Z",
     "2cd8bd76": "2026-10-18T11:41:18.804Z",
-    "90856dbc": "2026-10-18T11:42:01.855Z"
+    "90856dbc": "2026-10-18T11:42:01.855Z",
+    "ae51efb8": "2026-10-18T11:44:05.122Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1159,17 +1161,9 @@
       "lastAttemptTs": 1792323674519
     },
     "Command of Evidence (Textual)": {
-      "correct": 27,
-      "total": 52,
+      "correct": 28,
+      "total": 54,
       "recent": [
-        {
-          "ts": 1792321788679,
-          "correct": false
-        },
-        {
-          "ts": 1792321796217,
-          "correct": true
-        },
         {
           "ts": 1792322030132,
           "correct": false
@@ -1209,9 +1203,17 @@
         {
           "ts": 1792323720537,
           "correct": true
+        },
+        {
+          "ts": 1792323786938,
+          "correct": false
+        },
+        {
+          "ts": 1792323792337,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792323720537
+      "lastAttemptTs": 1792323792337
     },
     "Boundaries": {
       "correct": 165,
@@ -1698,8 +1700,8 @@
       "lastTs": 1792322284865
     },
     "3a3281a9": {
-      "count": 1,
-      "lastTs": 1792323586568
+      "count": 2,
+      "lastTs": 1792323852920
     },
     "2cd8bd76": {
       "count": 1,
@@ -1778,9 +1780,9 @@
       }
     },
     "2026-10-18": {
-      "totalMs": 2803451,
+      "totalMs": 2962489,
       "viewMs": {
-        "browse": 2643486,
+        "browse": 2802524,
         "profile": 59943,
         "review": 100022
       },
@@ -4655,7 +4657,17 @@
         "ts": 1792323720537,
         "ms": 40885
       }
+    ],
+    "ae51efb8": [
+      {
+        "ts": 1792323786938,
+        "ms": 64067
+      },
+      {
+        "ts": 1792323792337,
+        "ms": 4247
+      }
     ]
   },
-  "clientUpdatedAt": 1792323741130
+  "clientUpdatedAt": 1792323924730
 }
