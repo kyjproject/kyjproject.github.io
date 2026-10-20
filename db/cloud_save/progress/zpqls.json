@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-19T15:22:07.657Z",
+  "exportedAt": "2026-10-20T00:08:34.315Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -324,7 +324,11 @@
     "26a81ff6": "done",
     "80aab1bd": "done",
     "82148e88": "done",
-    "f3c0e374": "done"
+    "f3c0e374": "done",
+    "7a7ba10d": "done",
+    "9818337a": "done",
+    "5bf7d464": "done",
+    "654e54b2": "done"
   },
   "tags": {},
   "notes": {},
@@ -647,7 +651,11 @@
     "26a81ff6": "2026-10-19T04:30:20.820Z",
     "80aab1bd": "2026-10-19T04:30:31.887Z",
     "82148e88": "2026-10-19T15:07:02.478Z",
-    "f3c0e374": "2026-10-19T15:21:49.915Z"
+    "f3c0e374": "2026-10-19T15:21:49.915Z",
+    "7a7ba10d": "2026-10-19T15:22:34.737Z",
+    "9818337a": "2026-10-19T15:22:56.592Z",
+    "5bf7d464": "2026-10-19T15:23:03.603Z",
+    "654e54b2": "2026-10-19T15:23:19.280Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1542,17 +1550,9 @@
       "lastAttemptTs": 1790944179505
     },
     "Transitions": {
-      "correct": 7,
-      "total": 9,
+      "correct": 11,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1790937748462,
-          "correct": false
-        },
-        {
-          "ts": 1790937750594,
-          "correct": true
-        },
         {
           "ts": 1790937940313,
           "correct": false
@@ -1580,9 +1580,29 @@
         {
           "ts": 1792423308498,
           "correct": true
+        },
+        {
+          "ts": 1792423351697,
+          "correct": true
+        },
+        {
+          "ts": 1792423374164,
+          "correct": false
+        },
+        {
+          "ts": 1792423375326,
+          "correct": true
+        },
+        {
+          "ts": 1792423382745,
+          "correct": true
+        },
+        {
+          "ts": 1792423398415,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792423308498
+      "lastAttemptTs": 1792423398415
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 4,
@@ -1851,9 +1871,9 @@
       "categoryMs": {}
     },
     "2026-10-19": {
-      "totalMs": 385431,
+      "totalMs": 540518,
       "viewMs": {
-        "browse": 385431
+        "browse": 540518
       },
       "categoryMs": {}
     }
@@ -4838,7 +4858,35 @@
         "ts": 1792423308498,
         "ms": 125435
       }
+    ],
+    "7a7ba10d": [
+      {
+        "ts": 1792423351697,
+        "ms": 40866
+      }
+    ],
+    "9818337a": [
+      {
+        "ts": 1792423374164,
+        "ms": 17099
+      },
+      {
+        "ts": 1792423375326,
+        "ms": 233
+      }
+    ],
+    "5bf7d464": [
+      {
+        "ts": 1792423382745,
+        "ms": 5022
+      }
+    ],
+    "654e54b2": [
+      {
+        "ts": 1792423398415,
+        "ms": 13712
+      }
     ]
   },
-  "clientUpdatedAt": 1792423325200
+  "clientUpdatedAt": 1792454911176
 }
