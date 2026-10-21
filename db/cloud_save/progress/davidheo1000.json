@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-21T11:13:41.279Z",
+  "exportedAt": "2026-10-21T11:16:42.027Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -4692,13 +4692,9 @@
       "lastAttemptTs": 1792581155436
     },
     "Equivalent expressions": {
-      "correct": 66,
-      "total": 91,
+      "correct": 67,
+      "total": 92,
       "recent": [
-        {
-          "ts": 1790153497698,
-          "correct": true
-        },
         {
           "ts": 1790153506966,
           "correct": true
@@ -4742,9 +4738,13 @@
         {
           "ts": 1790596862314,
           "correct": true
+        },
+        {
+          "ts": 1792581282920,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596862314
+      "lastAttemptTs": 1792581282920
     },
     "Linear equations in two variables": {
       "correct": 119,
@@ -7049,14 +7049,14 @@
       "categoryMs": {}
     },
     "2026-10-21": {
-      "totalMs": 695511,
+      "totalMs": 875652,
       "viewMs": {
         "test": 5000,
-        "practice": 690511
+        "practice": 870652
       },
       "categoryMs": {
         "Algebra": 240178,
-        "Advanced Math": 435333
+        "Advanced Math": 615474
       }
     }
   },
@@ -8687,6 +8687,10 @@
       {
         "ts": 1789816325010,
         "ms": 467
+      },
+      {
+        "ts": 1792581282920,
+        "ms": 125583
       }
     ],
     "73f95aef": [
@@ -19862,5 +19866,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792581218561
+  "clientUpdatedAt": 1792581398702
 }
