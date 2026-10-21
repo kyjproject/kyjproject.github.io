@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-21T10:29:47.936Z",
+  "exportedAt": "2026-10-21T10:54:21.182Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -396,7 +396,9 @@
     "2aa0bdaf": "done",
     "121aae1f": "done",
     "16b5d47b": "done",
-    "8d1ffc78": "done"
+    "8d1ffc78": "done",
+    "aca97591": "done",
+    "3b4eff82": "done"
   },
   "tags": {},
   "notes": {},
@@ -788,7 +790,9 @@
     "2aa0bdaf": "2026-10-21T08:19:42.450Z",
     "121aae1f": "2026-10-21T10:23:56.163Z",
     "16b5d47b": "2026-10-21T10:25:15.043Z",
-    "8d1ffc78": "2026-10-21T10:25:42.845Z"
+    "8d1ffc78": "2026-10-21T10:25:42.845Z",
+    "aca97591": "2026-10-21T10:53:27.420Z",
+    "3b4eff82": "2026-10-21T10:53:36.385Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1438,21 +1442,9 @@
       "lastAttemptTs": 1792578234546
     },
     "Form, Structure, and Sense": {
-      "correct": 155,
-      "total": 248,
+      "correct": 158,
+      "total": 251,
       "recent": [
-        {
-          "ts": 1792509121197,
-          "correct": true
-        },
-        {
-          "ts": 1792509205432,
-          "correct": false
-        },
-        {
-          "ts": 1792509213103,
-          "correct": true
-        },
         {
           "ts": 1792554928140,
           "correct": false
@@ -1488,9 +1480,21 @@
         {
           "ts": 1792578341794,
           "correct": true
+        },
+        {
+          "ts": 1792580006320,
+          "correct": true
+        },
+        {
+          "ts": 1792580014972,
+          "correct": true
+        },
+        {
+          "ts": 1792580019903,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792578341794
+      "lastAttemptTs": 1792580019903
     },
     "Cross-Text Connections": {
       "correct": 11,
@@ -2126,9 +2130,9 @@
       "categoryMs": {}
     },
     "2026-10-21": {
-      "totalMs": 1431020,
+      "totalMs": 1507124,
       "viewMs": {
-        "browse": 1431020
+        "browse": 1507124
       },
       "categoryMs": {}
     }
@@ -2164,6 +2168,12 @@
       {
         "ts": 1790933418140,
         "ms": 15736
+      }
+    ],
+    "61598256": [
+      {
+        "ts": 1792580019903,
+        "ms": 2601
       }
     ],
     "64595457": [
@@ -5715,7 +5725,19 @@
         "ts": 1792578341794,
         "ms": 25450
       }
+    ],
+    "aca97591": [
+      {
+        "ts": 1792580006320,
+        "ms": 1662510
+      }
+    ],
+    "3b4eff82": [
+      {
+        "ts": 1792580014972,
+        "ms": 6453
+      }
     ]
   },
-  "clientUpdatedAt": 1792578585658
+  "clientUpdatedAt": 1792580056752
 }
