@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-21T11:10:41.737Z",
+  "exportedAt": "2026-10-21T11:13:41.279Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -4637,21 +4637,9 @@
       "lastAttemptTs": 1792580877975
     },
     "Nonlinear functions": {
-      "correct": 216,
-      "total": 357,
+      "correct": 218,
+      "total": 360,
       "recent": [
-        {
-          "ts": 1790155306966,
-          "correct": true
-        },
-        {
-          "ts": 1790155310999,
-          "correct": false
-        },
-        {
-          "ts": 1790155311833,
-          "correct": false
-        },
         {
           "ts": 1790155312499,
           "correct": true
@@ -4687,9 +4675,21 @@
         {
           "ts": 1792581006686,
           "correct": true
+        },
+        {
+          "ts": 1792581115502,
+          "correct": true
+        },
+        {
+          "ts": 1792581154553,
+          "correct": false
+        },
+        {
+          "ts": 1792581155436,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792581006686
+      "lastAttemptTs": 1792581155436
     },
     "Equivalent expressions": {
       "correct": 66,
@@ -7049,14 +7049,14 @@
       "categoryMs": {}
     },
     "2026-10-21": {
-      "totalMs": 525378,
+      "totalMs": 695511,
       "viewMs": {
         "test": 5000,
-        "practice": 520378
+        "practice": 690511
       },
       "categoryMs": {
         "Algebra": 240178,
-        "Advanced Math": 265200
+        "Advanced Math": 435333
       }
     }
   },
@@ -8801,6 +8801,10 @@
       {
         "ts": 1789817486247,
         "ms": 19916
+      },
+      {
+        "ts": 1792581115503,
+        "ms": 99832
       }
     ],
     "7b54c7af": [
@@ -8825,6 +8829,14 @@
       {
         "ts": 1789817506831,
         "ms": 2050
+      },
+      {
+        "ts": 1792581154553,
+        "ms": 24833
+      },
+      {
+        "ts": 1792581155436,
+        "ms": 384
       }
     ],
     "1ba110f2": [
@@ -19850,5 +19862,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792581038420
+  "clientUpdatedAt": 1792581218561
 }
