@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-21T11:07:41.320Z",
+  "exportedAt": "2026-10-21T11:10:41.737Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -4582,13 +4582,9 @@
       "lastAttemptTs": 1790151253342
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 117,
-      "total": 157,
+      "correct": 118,
+      "total": 158,
       "recent": [
-        {
-          "ts": 1790153585116,
-          "correct": true
-        },
         {
           "ts": 1790153588182,
           "correct": false
@@ -4632,22 +4628,18 @@
         {
           "ts": 1792580832608,
           "correct": true
+        },
+        {
+          "ts": 1792580877975,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792580832608
+      "lastAttemptTs": 1792580877975
     },
     "Nonlinear functions": {
-      "correct": 214,
-      "total": 355,
+      "correct": 216,
+      "total": 357,
       "recent": [
-        {
-          "ts": 1790155303649,
-          "correct": false
-        },
-        {
-          "ts": 1790155304499,
-          "correct": true
-        },
         {
           "ts": 1790155306966,
           "correct": true
@@ -4687,9 +4679,17 @@
         {
           "ts": 1790596903993,
           "correct": false
+        },
+        {
+          "ts": 1792580911219,
+          "correct": true
+        },
+        {
+          "ts": 1792581006686,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790596903993
+      "lastAttemptTs": 1792581006686
     },
     "Equivalent expressions": {
       "correct": 66,
@@ -7049,14 +7049,14 @@
       "categoryMs": {}
     },
     "2026-10-21": {
-      "totalMs": 345243,
+      "totalMs": 525378,
       "viewMs": {
         "test": 5000,
-        "practice": 340243
+        "practice": 520378
       },
       "categoryMs": {
         "Algebra": 240178,
-        "Advanced Math": 85065
+        "Advanced Math": 265200
       }
     }
   },
@@ -10327,6 +10327,10 @@
       {
         "ts": 1790103031700,
         "ms": 16064
+      },
+      {
+        "ts": 1792580877975,
+        "ms": 27238
       }
     ],
     "219a57aa": [
@@ -10461,6 +10465,10 @@
       {
         "ts": 1790103434456,
         "ms": 517
+      },
+      {
+        "ts": 1792581006686,
+        "ms": 86533
       }
     ],
     "c14d9ecc": [
@@ -11967,6 +11975,10 @@
       {
         "ts": 1790153611366,
         "ms": 600
+      },
+      {
+        "ts": 1792580911219,
+        "ms": 30527
       }
     ],
     "df0ef976": [
@@ -19838,5 +19850,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792580858285
+  "clientUpdatedAt": 1792581038420
 }
