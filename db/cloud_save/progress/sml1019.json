@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-21T08:31:02.527Z",
+  "exportedAt": "2026-10-21T08:33:26.141Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -55,7 +55,8 @@
     "a4a86ebb": "done",
     "ea0720d1": "review",
     "3541335e": "review",
-    "6b969570": "review"
+    "6b969570": "review",
+    "dabcd1a8": "review"
   },
   "tags": {},
   "notes": {},
@@ -1275,12 +1276,13 @@
       }
     },
     "2026-10-21": {
-      "totalMs": 135343,
+      "totalMs": 245170,
       "viewMs": {
-        "mock": 135343
+        "mock": 245170
       },
       "categoryMs": {
-        "Algebra": 10153
+        "Algebra": 36286,
+        "Advanced Math": 83694
       }
     }
   },
@@ -1396,5 +1398,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792571459617
+  "clientUpdatedAt": 1792571603159
 }
