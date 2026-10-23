@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T13:37:40.460Z",
+  "exportedAt": "2026-10-23T13:40:40.701Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -482,7 +482,18 @@
     "9a5e205b": "done",
     "e3b5bb66": "done",
     "23659e76": "review",
-    "d2fbb566": "done"
+    "d2fbb566": "done",
+    "dabcd1a8": "done",
+    "12511afa": "done",
+    "d824ccc7": "done",
+    "c3018583": "done",
+    "71dfd66d": "done",
+    "c3f59ee7": "done",
+    "9751dd5e": "done",
+    "32f0047f": "done",
+    "695e5620": "done",
+    "14cd4e9b": "done",
+    "5a0d5e4b": "done"
   },
   "tags": {},
   "notes": {},
@@ -958,7 +969,18 @@
     "14348c71": "2026-10-23T13:29:39.661Z",
     "9a5e205b": "2026-10-23T13:30:41.949Z",
     "e3b5bb66": "2026-10-23T13:32:25.984Z",
-    "d2fbb566": "2026-10-23T13:36:22.736Z"
+    "d2fbb566": "2026-10-23T13:36:22.736Z",
+    "dabcd1a8": "2026-10-23T13:38:00.039Z",
+    "12511afa": "2026-10-23T13:38:07.668Z",
+    "d824ccc7": "2026-10-23T13:38:21.635Z",
+    "c3018583": "2026-10-23T13:38:43.872Z",
+    "71dfd66d": "2026-10-23T13:39:13.474Z",
+    "c3f59ee7": "2026-10-23T13:39:29.737Z",
+    "9751dd5e": "2026-10-23T13:39:36.373Z",
+    "32f0047f": "2026-10-23T13:39:47.507Z",
+    "695e5620": "2026-10-23T13:39:53.990Z",
+    "14cd4e9b": "2026-10-23T13:40:07.255Z",
+    "5a0d5e4b": "2026-10-23T13:40:29.871Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2073,29 +2095,9 @@
       "lastAttemptTs": 1792760933674
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 18,
-      "total": 18,
+      "correct": 23,
+      "total": 23,
       "recent": [
-        {
-          "ts": 1792753530231,
-          "correct": true
-        },
-        {
-          "ts": 1792755356204,
-          "correct": true
-        },
-        {
-          "ts": 1792755368742,
-          "correct": true
-        },
-        {
-          "ts": 1792755479743,
-          "correct": true
-        },
-        {
-          "ts": 1792755509435,
-          "correct": true
-        },
         {
           "ts": 1792755575535,
           "correct": true
@@ -2123,34 +2125,34 @@
         {
           "ts": 1792759262869,
           "correct": true
+        },
+        {
+          "ts": 1792762686785,
+          "correct": true
+        },
+        {
+          "ts": 1792762700727,
+          "correct": true
+        },
+        {
+          "ts": 1792762766141,
+          "correct": true
+        },
+        {
+          "ts": 1792762775478,
+          "correct": true
+        },
+        {
+          "ts": 1792762806075,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792759262869
+      "lastAttemptTs": 1792762806075
     },
     "Nonlinear functions": {
-      "correct": 27,
-      "total": 38,
+      "correct": 32,
+      "total": 43,
       "recent": [
-        {
-          "ts": 1792757797839,
-          "correct": false
-        },
-        {
-          "ts": 1792757799406,
-          "correct": true
-        },
-        {
-          "ts": 1792758050384,
-          "correct": true
-        },
-        {
-          "ts": 1792758076937,
-          "correct": true
-        },
-        {
-          "ts": 1792758103960,
-          "correct": false
-        },
         {
           "ts": 1792758162991,
           "correct": true
@@ -2178,18 +2180,34 @@
         {
           "ts": 1792759379277,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1792759379277
-    },
-    "Equivalent expressions": {
-      "correct": 13,
-      "total": 17,
-      "recent": [
+        },
         {
-          "ts": 1792755455244,
+          "ts": 1792762677858,
           "correct": true
         },
+        {
+          "ts": 1792762721507,
+          "correct": true
+        },
+        {
+          "ts": 1792762752358,
+          "correct": true
+        },
+        {
+          "ts": 1792762786007,
+          "correct": true
+        },
+        {
+          "ts": 1792762831693,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792762831693
+    },
+    "Equivalent expressions": {
+      "correct": 14,
+      "total": 18,
+      "recent": [
         {
           "ts": 1792755541343,
           "correct": true
@@ -2233,9 +2251,13 @@
         {
           "ts": 1792759405261,
           "correct": true
+        },
+        {
+          "ts": 1792762792725,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792759405261
+      "lastAttemptTs": 1792762792725
     },
     "Circles": {
       "correct": 2,
@@ -2618,12 +2640,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 6496540,
+      "totalMs": 6667988,
       "viewMs": {
         "profile": 90041,
         "review": 125093,
         "browse": 1170305,
-        "math": 3489826,
+        "math": 3661274,
         "leaderboard": 115093,
         "mock": 1506182
       },
@@ -6865,7 +6887,73 @@
         "ts": 1792762578057,
         "ms": 100487
       }
+    ],
+    "dabcd1a8": [
+      {
+        "ts": 1792762677858,
+        "ms": 3270662
+      }
+    ],
+    "12511afa": [
+      {
+        "ts": 1792762686785,
+        "ms": 5898
+      }
+    ],
+    "d824ccc7": [
+      {
+        "ts": 1792762700727,
+        "ms": 11770
+      }
+    ],
+    "c3018583": [
+      {
+        "ts": 1792762721507,
+        "ms": 17814
+      }
+    ],
+    "71dfd66d": [
+      {
+        "ts": 1792762752358,
+        "ms": 27054
+      }
+    ],
+    "c3f59ee7": [
+      {
+        "ts": 1792762766141,
+        "ms": 11550
+      }
+    ],
+    "9751dd5e": [
+      {
+        "ts": 1792762775478,
+        "ms": 4452
+      }
+    ],
+    "32f0047f": [
+      {
+        "ts": 1792762786007,
+        "ms": 8399
+      }
+    ],
+    "695e5620": [
+      {
+        "ts": 1792762792725,
+        "ms": 3852
+      }
+    ],
+    "14cd4e9b": [
+      {
+        "ts": 1792762806075,
+        "ms": 10700
+      }
+    ],
+    "5a0d5e4b": [
+      {
+        "ts": 1792762831693,
+        "ms": 22704
+      }
     ]
   },
-  "clientUpdatedAt": 1792762657196
+  "clientUpdatedAt": 1792762837457
 }
