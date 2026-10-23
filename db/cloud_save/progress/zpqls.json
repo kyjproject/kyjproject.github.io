@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T13:16:41.535Z",
+  "exportedAt": "2026-10-23T13:19:40.734Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -470,7 +470,8 @@
     "ba5a8050": "done",
     "e2abeaa7": "done",
     "506336f9": "done",
-    "76b72e04": "done"
+    "76b72e04": "done",
+    "d7b39ff4": "done"
   },
   "tags": {},
   "notes": {},
@@ -936,7 +937,8 @@
     "ba5a8050": "2026-10-23T12:41:21.409Z",
     "e2abeaa7": "2026-10-23T12:42:53.592Z",
     "506336f9": "2026-10-23T12:43:00.558Z",
-    "76b72e04": "2026-10-23T12:43:26.410Z"
+    "76b72e04": "2026-10-23T12:43:26.410Z",
+    "d7b39ff4": "2026-10-23T13:19:26.907Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1777,13 +1779,9 @@
       "lastAttemptTs": 1792760933673
     },
     "Central Ideas and Details": {
-      "correct": 12,
-      "total": 27,
+      "correct": 13,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1792554296797,
-          "correct": false
-        },
         {
           "ts": 1792554300597,
           "correct": false
@@ -1827,9 +1825,13 @@
         {
           "ts": 1792760933673,
           "correct": false
+        },
+        {
+          "ts": 1792761564574,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792760933673
+      "lastAttemptTs": 1792761564574
     },
     "Words in Context": {
       "correct": 10,
@@ -2474,6 +2476,10 @@
     "92328e3b": {
       "count": 2,
       "lastTs": 1792760961703
+    },
+    "d7b39ff4": {
+      "count": 1,
+      "lastTs": 1792761510138
     }
   },
   "blueprints": [],
@@ -2580,14 +2586,14 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 5557641,
+      "totalMs": 5637689,
       "viewMs": {
         "profile": 90041,
         "review": 125093,
-        "browse": 276444,
+        "browse": 351505,
         "math": 3449775,
         "leaderboard": 115093,
-        "mock": 1501195
+        "mock": 1506182
       },
       "categoryMs": {
         "Vocab": 238345,
@@ -6727,7 +6733,13 @@
         "ts": 1792759405261,
         "ms": 23568
       }
+    ],
+    "d7b39ff4": [
+      {
+        "ts": 1792761564574,
+        "ms": 54436
+      }
     ]
   },
-  "clientUpdatedAt": 1792761337983
+  "clientUpdatedAt": 1792761575967
 }
