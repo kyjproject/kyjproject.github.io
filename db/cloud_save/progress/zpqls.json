@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T10:30:40.296Z",
+  "exportedAt": "2026-10-23T10:33:42.745Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -302,7 +302,7 @@
     "3009048e": "done",
     "4aa75b60": "done",
     "da9ad052": "done",
-    "d6623ffe": "review",
+    "d6623ffe": "done",
     "b51b6e4e": "review",
     "3ef2af4f": "review",
     "0eeef1e7": "done",
@@ -813,7 +813,8 @@
     "2349e3bd": "2026-10-21T15:06:37.512Z",
     "9778a9e0": "2026-10-21T15:07:25.680Z",
     "9d06cae5": "2026-10-21T15:26:32.523Z",
-    "7cc58494": "2026-10-21T15:26:43.272Z"
+    "7cc58494": "2026-10-21T15:26:43.272Z",
+    "d6623ffe": "2026-10-23T10:31:08.583Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1291,6 +1292,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "d6623ffe": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-08T10:31:11.033Z",
+      "last_review": "2026-10-23T10:31:11.033Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [],
@@ -1298,13 +1309,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 34,
-      "total": 55,
+      "correct": 35,
+      "total": 56,
       "recent": [
-        {
-          "ts": 1792591231822,
-          "correct": false
-        },
         {
           "ts": 1792591708783,
           "correct": true
@@ -1348,9 +1355,13 @@
         {
           "ts": 1792596401733,
           "correct": true
+        },
+        {
+          "ts": 1792751466749,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792596401733
+      "lastAttemptTs": 1792751466749
     },
     "Command of Evidence (Textual)": {
       "correct": 35,
@@ -2168,6 +2179,14 @@
         "browse": 3179762,
         "propose": 5004,
         "profile": 18946
+      },
+      "categoryMs": {}
+    },
+    "2026-10-23": {
+      "totalMs": 135069,
+      "viewMs": {
+        "profile": 14980,
+        "review": 120089
       },
       "categoryMs": {}
     }
@@ -4961,6 +4980,10 @@
       {
         "ts": 1792321514160,
         "ms": 932
+      },
+      {
+        "ts": 1792751466750,
+        "ms": 11030
       }
     ],
     "b51b6e4e": [
@@ -5872,5 +5895,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1792751436983
+  "clientUpdatedAt": 1792751621593
 }
