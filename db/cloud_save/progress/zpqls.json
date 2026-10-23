@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T11:01:01.125Z",
+  "exportedAt": "2026-10-23T11:03:58.507Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -410,7 +410,10 @@
     "9778a9e0": "done",
     "9d06cae5": "done",
     "7cc58494": "done",
-    "0e4cd7da": "done"
+    "0e4cd7da": "done",
+    "4443355f": "done",
+    "427f0eea": "done",
+    "a1397504": "done"
   },
   "tags": {},
   "notes": {},
@@ -816,7 +819,10 @@
     "9d06cae5": "2026-10-21T15:26:32.523Z",
     "7cc58494": "2026-10-21T15:26:43.272Z",
     "d6623ffe": "2026-10-23T10:31:08.583Z",
-    "0e4cd7da": "2026-10-23T10:40:06.980Z"
+    "0e4cd7da": "2026-10-23T10:40:06.980Z",
+    "4443355f": "2026-10-23T11:01:45.172Z",
+    "427f0eea": "2026-10-23T11:03:38.522Z",
+    "a1397504": "2026-10-23T11:03:55.696Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1879,8 +1885,8 @@
       "lastAttemptTs": 1792752005880
     },
     "Nonlinear functions": {
-      "correct": 3,
-      "total": 4,
+      "correct": 4,
+      "total": 5,
       "recent": [
         {
           "ts": 1790938809955,
@@ -1897,20 +1903,40 @@
         {
           "ts": 1790939341830,
           "correct": false
+        },
+        {
+          "ts": 1792753417329,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790939341830
+      "lastAttemptTs": 1792753417329
     },
     "Equivalent expressions": {
-      "correct": 1,
-      "total": 1,
+      "correct": 3,
+      "total": 5,
       "recent": [
         {
           "ts": 1790939041255,
           "correct": true
+        },
+        {
+          "ts": 1792753286819,
+          "correct": false
+        },
+        {
+          "ts": 1792753294093,
+          "correct": false
+        },
+        {
+          "ts": 1792753301460,
+          "correct": true
+        },
+        {
+          "ts": 1792753434313,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790939041255
+      "lastAttemptTs": 1792753434313
     }
   },
   "progressFocus": [
@@ -2197,12 +2223,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 301354,
+      "totalMs": 386368,
       "viewMs": {
         "profile": 14980,
         "review": 125093,
         "browse": 5005,
-        "math": 156276
+        "math": 241290
       },
       "categoryMs": {}
     }
@@ -5919,7 +5945,33 @@
         "ts": 1792752005880,
         "ms": 21049
       }
+    ],
+    "4443355f": [
+      {
+        "ts": 1792753286819,
+        "ms": 1277802
+      },
+      {
+        "ts": 1792753294093,
+        "ms": 4784
+      },
+      {
+        "ts": 1792753301460,
+        "ms": 6465
+      }
+    ],
+    "427f0eea": [
+      {
+        "ts": 1792753417329,
+        "ms": 111306
+      }
+    ],
+    "a1397504": [
+      {
+        "ts": 1792753434313,
+        "ms": 15089
+      }
     ]
   },
-  "clientUpdatedAt": 1792753256372
+  "clientUpdatedAt": 1792753437967
 }
