@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T12:35:00.883Z",
+  "exportedAt": "2026-10-23T12:39:37.611Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -462,7 +462,9 @@
     "feea2bbd": "done",
     "4bed3f66": "done",
     "e11a5b89": "done",
-    "fd88c8b1": "done"
+    "fd88c8b1": "done",
+    "e13b7650": "review",
+    "6b969570": "done"
   },
   "tags": {},
   "notes": {},
@@ -920,7 +922,9 @@
     "feea2bbd": "2026-10-23T12:23:58.200Z",
     "4bed3f66": "2026-10-23T12:24:03.934Z",
     "e11a5b89": "2026-10-23T12:24:14.735Z",
-    "fd88c8b1": "2026-10-23T12:26:47.720Z"
+    "fd88c8b1": "2026-10-23T12:26:47.720Z",
+    "e13b7650": "2026-10-23T12:35:03.235Z",
+    "6b969570": "2026-10-23T12:39:30.988Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1952,13 +1956,9 @@
       "lastAttemptTs": 1792423398415
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 16,
-      "total": 16,
+      "correct": 17,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1792751978144,
-          "correct": true
-        },
         {
           "ts": 1792752005880,
           "correct": true
@@ -2002,9 +2002,13 @@
         {
           "ts": 1792758253253,
           "correct": true
+        },
+        {
+          "ts": 1792759169832,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792758253253
+      "lastAttemptTs": 1792759169832
     },
     "Nonlinear functions": {
       "correct": 24,
@@ -2367,6 +2371,10 @@
     "8e3878fd": {
       "count": 1,
       "lastTs": 1792758151983
+    },
+    "6b969570": {
+      "count": 1,
+      "lastTs": 1792759164918
     }
   },
   "blueprints": [],
@@ -2473,12 +2481,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 3723098,
+      "totalMs": 3839439,
       "viewMs": {
         "profile": 29992,
         "review": 125093,
-        "browse": 175115,
-        "math": 3277805,
+        "browse": 276444,
+        "math": 3292817,
         "leaderboard": 115093
       },
       "categoryMs": {}
@@ -6566,7 +6574,13 @@
         "ts": 1792758819243,
         "ms": 7217
       }
+    ],
+    "6b969570": [
+      {
+        "ts": 1792759169832,
+        "ms": 913515
+      }
     ]
   },
-  "clientUpdatedAt": 1792758898473
+  "clientUpdatedAt": 1792759176679
 }
