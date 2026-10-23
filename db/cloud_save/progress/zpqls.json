@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T11:19:48.604Z",
+  "exportedAt": "2026-10-23T11:22:49.312Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -416,7 +416,9 @@
     "a1397504": "done",
     "536832c0": "done",
     "e8a6c1fc": "done",
-    "9f2728be": "done"
+    "9f2728be": "done",
+    "a0d55a7e": "done",
+    "669f307b": "done"
   },
   "tags": {},
   "notes": {},
@@ -828,7 +830,9 @@
     "a1397504": "2026-10-23T11:03:55.696Z",
     "536832c0": "2026-10-23T11:05:32.059Z",
     "e8a6c1fc": "2026-10-23T11:06:12.807Z",
-    "9f2728be": "2026-10-23T11:06:50.815Z"
+    "9f2728be": "2026-10-23T11:06:50.815Z",
+    "a0d55a7e": "2026-10-23T11:20:37.065Z",
+    "669f307b": "2026-10-23T11:22:34.715Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1962,6 +1966,28 @@
         }
       ],
       "lastAttemptTs": 1792753609580
+    },
+    "Lines, angles, and triangles": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1792754434623,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792754434623
+    },
+    "Right triangles and trigonometry": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1792754552390,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792754552390
     }
   },
   "progressFocus": [
@@ -2252,12 +2278,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 901951,
+      "totalMs": 1022048,
       "viewMs": {
         "profile": 14980,
         "review": 125093,
         "browse": 5005,
-        "math": 756873
+        "math": 876970
       },
       "categoryMs": {}
     }
@@ -6018,7 +6044,19 @@
         "ts": 1792753609580,
         "ms": 35488
       }
+    ],
+    "a0d55a7e": [
+      {
+        "ts": 1792754434623,
+        "ms": 822757
+      }
+    ],
+    "669f307b": [
+      {
+        "ts": 1792754552390,
+        "ms": 114439
+      }
     ]
   },
-  "clientUpdatedAt": 1792754386660
+  "clientUpdatedAt": 1792754564779
 }
