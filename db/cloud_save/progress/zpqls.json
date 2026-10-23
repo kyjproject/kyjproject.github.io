@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T13:22:40.558Z",
+  "exportedAt": "2026-10-23T13:25:40.917Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -473,7 +473,9 @@
     "76b72e04": "done",
     "d7b39ff4": "done",
     "835583c7": "review",
-    "87f45e64": "done"
+    "87f45e64": "done",
+    "533d6d0e": "done",
+    "b7c5b4e4": "done"
   },
   "tags": {},
   "notes": {},
@@ -941,7 +943,9 @@
     "506336f9": "2026-10-23T12:43:00.558Z",
     "76b72e04": "2026-10-23T12:43:26.410Z",
     "d7b39ff4": "2026-10-23T13:19:26.907Z",
-    "87f45e64": "2026-10-23T13:22:35.907Z"
+    "87f45e64": "2026-10-23T13:22:35.907Z",
+    "533d6d0e": "2026-10-23T13:23:23.857Z",
+    "b7c5b4e4": "2026-10-23T13:23:58.309Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1782,21 +1786,9 @@
       "lastAttemptTs": 1792760933673
     },
     "Central Ideas and Details": {
-      "correct": 15,
-      "total": 33,
+      "correct": 17,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1792554466596,
-          "correct": true
-        },
-        {
-          "ts": 1792554783064,
-          "correct": false
-        },
-        {
-          "ts": 1792554785113,
-          "correct": false
-        },
         {
           "ts": 1792554786429,
           "correct": true
@@ -1832,9 +1824,21 @@
         {
           "ts": 1792761753109,
           "correct": true
+        },
+        {
+          "ts": 1792761800941,
+          "correct": false
+        },
+        {
+          "ts": 1792761802408,
+          "correct": true
+        },
+        {
+          "ts": 1792761836342,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792761753109
+      "lastAttemptTs": 1792761836342
     },
     "Words in Context": {
       "correct": 10,
@@ -2589,11 +2593,11 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 5737746,
+      "totalMs": 5852821,
       "viewMs": {
         "profile": 90041,
         "review": 125093,
-        "browse": 451562,
+        "browse": 566637,
         "math": 3449775,
         "leaderboard": 115093,
         "mock": 1506182
@@ -6766,7 +6770,23 @@
         "ts": 1792761753109,
         "ms": 130753
       }
+    ],
+    "533d6d0e": [
+      {
+        "ts": 1792761800941,
+        "ms": 44100
+      },
+      {
+        "ts": 1792761802408,
+        "ms": 700
+      }
+    ],
+    "b7c5b4e4": [
+      {
+        "ts": 1792761836342,
+        "ms": 31285
+      }
     ]
   },
-  "clientUpdatedAt": 1792761757692
+  "clientUpdatedAt": 1792761939669
 }
