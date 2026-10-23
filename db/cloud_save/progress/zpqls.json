@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T11:03:58.507Z",
+  "exportedAt": "2026-10-23T11:06:59.188Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -413,7 +413,10 @@
     "0e4cd7da": "done",
     "4443355f": "done",
     "427f0eea": "done",
-    "a1397504": "done"
+    "a1397504": "done",
+    "536832c0": "done",
+    "e8a6c1fc": "done",
+    "9f2728be": "done"
   },
   "tags": {},
   "notes": {},
@@ -822,7 +825,10 @@
     "0e4cd7da": "2026-10-23T10:40:06.980Z",
     "4443355f": "2026-10-23T11:01:45.172Z",
     "427f0eea": "2026-10-23T11:03:38.522Z",
-    "a1397504": "2026-10-23T11:03:55.696Z"
+    "a1397504": "2026-10-23T11:03:55.696Z",
+    "536832c0": "2026-10-23T11:05:32.059Z",
+    "e8a6c1fc": "2026-10-23T11:06:12.807Z",
+    "9f2728be": "2026-10-23T11:06:50.815Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1854,8 +1860,8 @@
       "lastAttemptTs": 1792423398415
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 6,
-      "total": 6,
+      "correct": 7,
+      "total": 7,
       "recent": [
         {
           "ts": 1790938795561,
@@ -1880,9 +1886,13 @@
         {
           "ts": 1792752005880,
           "correct": true
+        },
+        {
+          "ts": 1792753530231,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792752005880
+      "lastAttemptTs": 1792753530231
     },
     "Nonlinear functions": {
       "correct": 4,
@@ -1937,6 +1947,21 @@
         }
       ],
       "lastAttemptTs": 1792753434313
+    },
+    "Circles": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1792753571513,
+          "correct": true
+        },
+        {
+          "ts": 1792753609580,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792753609580
     }
   },
   "progressFocus": [
@@ -2117,6 +2142,10 @@
     "0e4cd7da": {
       "count": 1,
       "lastTs": 1792751984830
+    },
+    "e8a6c1fc": {
+      "count": 1,
+      "lastTs": 1792753547357
     }
   },
   "blueprints": [],
@@ -2223,12 +2252,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 386368,
+      "totalMs": 521539,
       "viewMs": {
         "profile": 14980,
         "review": 125093,
         "browse": 5005,
-        "math": 241290
+        "math": 376461
       },
       "categoryMs": {}
     }
@@ -5971,7 +6000,25 @@
         "ts": 1792753434313,
         "ms": 15089
       }
+    ],
+    "536832c0": [
+      {
+        "ts": 1792753530231,
+        "ms": 92835
+      }
+    ],
+    "e8a6c1fc": [
+      {
+        "ts": 1792753571513,
+        "ms": 24155
+      }
+    ],
+    "9f2728be": [
+      {
+        "ts": 1792753609580,
+        "ms": 35488
+      }
     ]
   },
-  "clientUpdatedAt": 1792753437967
+  "clientUpdatedAt": 1792753614787
 }
