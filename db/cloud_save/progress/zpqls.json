@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-23T11:28:57.368Z",
+  "exportedAt": "2026-10-23T11:31:58.165Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -420,7 +420,9 @@
     "a0d55a7e": "done",
     "669f307b": "done",
     "20c18190": "done",
-    "6692f86d": "done"
+    "6692f86d": "done",
+    "aabd482e": "done",
+    "5a4c2576": "done"
   },
   "tags": {},
   "notes": {},
@@ -836,7 +838,9 @@
     "a0d55a7e": "2026-10-23T11:20:37.065Z",
     "669f307b": "2026-10-23T11:22:34.715Z",
     "20c18190": "2026-10-23T11:25:40.824Z",
-    "6692f86d": "2026-10-23T11:26:36.806Z"
+    "6692f86d": "2026-10-23T11:26:36.806Z",
+    "aabd482e": "2026-10-23T11:30:06.416Z",
+    "5a4c2576": "2026-10-23T11:31:36.939Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1972,15 +1976,19 @@
       "lastAttemptTs": 1792753609580
     },
     "Lines, angles, and triangles": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1792754434623,
           "correct": true
+        },
+        {
+          "ts": 1792755003257,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792754434623
+      "lastAttemptTs": 1792755003257
     },
     "Right triangles and trigonometry": {
       "correct": 2,
@@ -1998,15 +2006,19 @@
       "lastAttemptTs": 1792754738842
     },
     "Area and volume": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1792754795175,
           "correct": true
+        },
+        {
+          "ts": 1792755095068,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792754795175
+      "lastAttemptTs": 1792755095068
     }
   },
   "progressFocus": [
@@ -2191,6 +2203,10 @@
     "e8a6c1fc": {
       "count": 1,
       "lastTs": 1792753547357
+    },
+    "32dc74a4": {
+      "count": 1,
+      "lastTs": 1792755110439
     }
   },
   "blueprints": [],
@@ -2297,12 +2313,12 @@
       "categoryMs": {}
     },
     "2026-10-23": {
-      "totalMs": 1244263,
+      "totalMs": 1419538,
       "viewMs": {
         "profile": 14980,
         "review": 125093,
         "browse": 5005,
-        "math": 1099185
+        "math": 1274460
       },
       "categoryMs": {}
     }
@@ -6087,7 +6103,19 @@
         "ts": 1792754795175,
         "ms": 53135
       }
+    ],
+    "aabd482e": [
+      {
+        "ts": 1792755003257,
+        "ms": 204568
+      }
+    ],
+    "5a4c2576": [
+      {
+        "ts": 1792755095068,
+        "ms": 87236
+      }
     ]
   },
-  "clientUpdatedAt": 1792754935009
+  "clientUpdatedAt": 1792755115250
 }
