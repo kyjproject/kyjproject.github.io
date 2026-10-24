@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-24T07:53:27.837Z",
+  "exportedAt": "2026-10-24T07:56:30.779Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -519,7 +519,8 @@
     "c1f1a631": "done",
     "68bef552": "done",
     "2d77d2b7": "done",
-    "f37f0c11": "done"
+    "f37f0c11": "done",
+    "e7b2ca56": "done"
   },
   "tags": {},
   "notes": {},
@@ -1031,7 +1032,8 @@
     "c1f1a631": "2026-10-24T07:41:34.498Z",
     "68bef552": "2026-10-24T07:43:56.882Z",
     "2d77d2b7": "2026-10-24T07:45:04.532Z",
-    "f37f0c11": "2026-10-24T07:46:13.399Z"
+    "f37f0c11": "2026-10-24T07:46:13.399Z",
+    "e7b2ca56": "2026-10-24T07:54:49.265Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1872,17 +1874,9 @@
       "lastAttemptTs": 1792760933673
     },
     "Central Ideas and Details": {
-      "correct": 40,
-      "total": 75,
+      "correct": 41,
+      "total": 77,
       "recent": [
-        {
-          "ts": 1792822427635,
-          "correct": true
-        },
-        {
-          "ts": 1792822477295,
-          "correct": true
-        },
         {
           "ts": 1792822564347,
           "correct": false
@@ -1922,9 +1916,17 @@
         {
           "ts": 1792827961738,
           "correct": true
+        },
+        {
+          "ts": 1792828454374,
+          "correct": false
+        },
+        {
+          "ts": 1792828455285,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792827961738
+      "lastAttemptTs": 1792828455285
     },
     "Words in Context": {
       "correct": 10,
@@ -2585,6 +2587,10 @@
     "dabcd1a8": {
       "count": 1,
       "lastTs": 1792762621419
+    },
+    "260f8d93": {
+      "count": 1,
+      "lastTs": 1792828515897
     }
   },
   "blueprints": [],
@@ -2714,11 +2720,11 @@
       }
     },
     "2026-10-24": {
-      "totalMs": 2456019,
+      "totalMs": 2578615,
       "viewMs": {
         "math": 35670,
         "practice": 4916,
-        "browse": 2410473,
+        "browse": 2533069,
         "blueprints": 4960
       },
       "categoryMs": {}
@@ -7226,7 +7232,17 @@
         "ts": 1792827961738,
         "ms": 38
       }
+    ],
+    "e7b2ca56": [
+      {
+        "ts": 1792828454374,
+        "ms": 479642
+      },
+      {
+        "ts": 1792828455285,
+        "ms": 233
+      }
     ]
   },
-  "clientUpdatedAt": 1792828405082
+  "clientUpdatedAt": 1792828587246
 }
