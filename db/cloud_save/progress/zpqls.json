@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-24T07:56:30.779Z",
+  "exportedAt": "2026-10-24T07:59:27.549Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -520,7 +520,8 @@
     "68bef552": "done",
     "2d77d2b7": "done",
     "f37f0c11": "done",
-    "e7b2ca56": "done"
+    "e7b2ca56": "done",
+    "260f8d93": "done"
   },
   "tags": {},
   "notes": {},
@@ -1033,7 +1034,8 @@
     "68bef552": "2026-10-24T07:43:56.882Z",
     "2d77d2b7": "2026-10-24T07:45:04.532Z",
     "f37f0c11": "2026-10-24T07:46:13.399Z",
-    "e7b2ca56": "2026-10-24T07:54:49.265Z"
+    "e7b2ca56": "2026-10-24T07:54:49.265Z",
+    "260f8d93": "2026-10-24T07:59:24.900Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1874,29 +1876,9 @@
       "lastAttemptTs": 1792760933673
     },
     "Central Ideas and Details": {
-      "correct": 41,
-      "total": 77,
+      "correct": 42,
+      "total": 82,
       "recent": [
-        {
-          "ts": 1792822564347,
-          "correct": false
-        },
-        {
-          "ts": 1792822591943,
-          "correct": false
-        },
-        {
-          "ts": 1792822593091,
-          "correct": true
-        },
-        {
-          "ts": 1792822683923,
-          "correct": true
-        },
-        {
-          "ts": 1792827692431,
-          "correct": true
-        },
         {
           "ts": 1792827835145,
           "correct": true
@@ -1924,9 +1906,29 @@
         {
           "ts": 1792828455285,
           "correct": true
+        },
+        {
+          "ts": 1792828601270,
+          "correct": false
+        },
+        {
+          "ts": 1792828622630,
+          "correct": false
+        },
+        {
+          "ts": 1792828624329,
+          "correct": false
+        },
+        {
+          "ts": 1792828626367,
+          "correct": false
+        },
+        {
+          "ts": 1792828628638,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792828455285
+      "lastAttemptTs": 1792828628638
     },
     "Words in Context": {
       "correct": 10,
@@ -2720,11 +2722,11 @@
       }
     },
     "2026-10-24": {
-      "totalMs": 2578615,
+      "totalMs": 2682352,
       "viewMs": {
         "math": 35670,
         "practice": 4916,
-        "browse": 2533069,
+        "browse": 2636806,
         "blueprints": 4960
       },
       "categoryMs": {}
@@ -7242,7 +7244,29 @@
         "ts": 1792828455285,
         "ms": 233
       }
+    ],
+    "260f8d93": [
+      {
+        "ts": 1792828601270,
+        "ms": 111289
+      },
+      {
+        "ts": 1792828622630,
+        "ms": 20182
+      },
+      {
+        "ts": 1792828624329,
+        "ms": 198
+      },
+      {
+        "ts": 1792828626367,
+        "ms": 903
+      },
+      {
+        "ts": 1792828628638,
+        "ms": 422
+      }
     ]
   },
-  "clientUpdatedAt": 1792828587246
+  "clientUpdatedAt": 1792828765920
 }
