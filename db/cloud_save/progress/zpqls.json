@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-24T06:14:34.607Z",
+  "exportedAt": "2026-10-24T06:17:37.038Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -513,7 +513,8 @@
     "f7e843d4": "done",
     "c7e43751": "review",
     "bf43e45f": "done",
-    "497015e1": "done"
+    "497015e1": "done",
+    "57fb41c0": "done"
   },
   "tags": {},
   "notes": {},
@@ -1020,7 +1021,8 @@
     "f7e843d4": "2026-10-24T05:56:54.808Z",
     "c7e43751": "2026-10-24T06:09:12.838Z",
     "bf43e45f": "2026-10-24T06:12:14.760Z",
-    "497015e1": "2026-10-24T06:13:49.402Z"
+    "497015e1": "2026-10-24T06:13:49.402Z",
+    "57fb41c0": "2026-10-24T06:14:38.168Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -1861,25 +1863,9 @@
       "lastAttemptTs": 1792760933673
     },
     "Central Ideas and Details": {
-      "correct": 33,
-      "total": 64,
+      "correct": 35,
+      "total": 68,
       "recent": [
-        {
-          "ts": 1792820707915,
-          "correct": true
-        },
-        {
-          "ts": 1792820921787,
-          "correct": true
-        },
-        {
-          "ts": 1792821040701,
-          "correct": true
-        },
-        {
-          "ts": 1792821215937,
-          "correct": true
-        },
         {
           "ts": 1792821413315,
           "correct": true
@@ -1911,9 +1897,25 @@
         {
           "ts": 1792822427635,
           "correct": true
+        },
+        {
+          "ts": 1792822477295,
+          "correct": true
+        },
+        {
+          "ts": 1792822564347,
+          "correct": false
+        },
+        {
+          "ts": 1792822591943,
+          "correct": false
+        },
+        {
+          "ts": 1792822593091,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792822427635
+      "lastAttemptTs": 1792822593091
     },
     "Words in Context": {
       "correct": 10,
@@ -2703,11 +2705,11 @@
       }
     },
     "2026-10-24": {
-      "totalMs": 1892197,
+      "totalMs": 2017243,
       "viewMs": {
         "math": 35670,
         "practice": 4916,
-        "browse": 1846651,
+        "browse": 1971697,
         "blueprints": 4960
       },
       "categoryMs": {}
@@ -7159,7 +7161,27 @@
         "ts": 1792822427635,
         "ms": 91942
       }
+    ],
+    "57fb41c0": [
+      {
+        "ts": 1792822477295,
+        "ms": 46328
+      }
+    ],
+    "aa460243": [
+      {
+        "ts": 1792822564347,
+        "ms": 85395
+      },
+      {
+        "ts": 1792822591943,
+        "ms": 26656
+      },
+      {
+        "ts": 1792822593091,
+        "ms": 370
+      }
     ]
   },
-  "clientUpdatedAt": 1792822472870
+  "clientUpdatedAt": 1792822653632
 }
