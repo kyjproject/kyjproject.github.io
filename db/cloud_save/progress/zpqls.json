@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-24T08:23:08.836Z",
+  "exportedAt": "2026-10-24T08:26:08.202Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -552,7 +552,18 @@
     "4f9898f3": "done",
     "77d30f46": "done",
     "18836de2": "done",
-    "8a3fa8c4": "done"
+    "8a3fa8c4": "done",
+    "f392eb64": "done",
+    "bace9af4": "done",
+    "5a018bb6": "done",
+    "bdbbe702": "done",
+    "44f0984a": "done",
+    "fb559c97": "done",
+    "cbfcd000": "done",
+    "a1bb87b1": "done",
+    "72fa8b3e": "done",
+    "3e4e9da8": "done",
+    "74e3e032": "done"
   },
   "tags": {},
   "notes": {},
@@ -1097,7 +1108,18 @@
     "4f9898f3": "2026-10-24T08:12:34.319Z",
     "77d30f46": "2026-10-24T08:12:42.469Z",
     "18836de2": "2026-10-24T08:13:19.193Z",
-    "8a3fa8c4": "2026-10-24T08:13:48.470Z"
+    "8a3fa8c4": "2026-10-24T08:13:48.470Z",
+    "f392eb64": "2026-10-24T08:23:11.944Z",
+    "bace9af4": "2026-10-24T08:23:39.860Z",
+    "5a018bb6": "2026-10-24T08:23:45.542Z",
+    "bdbbe702": "2026-10-24T08:23:51.826Z",
+    "44f0984a": "2026-10-24T08:24:01.893Z",
+    "fb559c97": "2026-10-24T08:24:10.427Z",
+    "cbfcd000": "2026-10-24T08:24:19.527Z",
+    "a1bb87b1": "2026-10-24T08:24:25.527Z",
+    "72fa8b3e": "2026-10-24T08:24:30.709Z",
+    "3e4e9da8": "2026-10-24T08:24:38.860Z",
+    "74e3e032": "2026-10-24T08:24:53.360Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2212,25 +2234,9 @@
       "lastAttemptTs": 1792760933674
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 29,
-      "total": 29,
+      "correct": 32,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1792759262869,
-          "correct": true
-        },
-        {
-          "ts": 1792762686785,
-          "correct": true
-        },
-        {
-          "ts": 1792762700727,
-          "correct": true
-        },
-        {
-          "ts": 1792762766141,
-          "correct": true
-        },
         {
           "ts": 1792762775478,
           "correct": true
@@ -2262,30 +2268,30 @@
         {
           "ts": 1792829546002,
           "correct": true
+        },
+        {
+          "ts": 1792830190827,
+          "correct": true
+        },
+        {
+          "ts": 1792830224737,
+          "correct": true
+        },
+        {
+          "ts": 1792830238079,
+          "correct": false
+        },
+        {
+          "ts": 1792830241077,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792829546002
+      "lastAttemptTs": 1792830241077
     },
     "Nonlinear functions": {
-      "correct": 58,
-      "total": 70,
+      "correct": 62,
+      "total": 74,
       "recent": [
-        {
-          "ts": 1792829389395,
-          "correct": true
-        },
-        {
-          "ts": 1792829462034,
-          "correct": true
-        },
-        {
-          "ts": 1792829467302,
-          "correct": true
-        },
-        {
-          "ts": 1792829472909,
-          "correct": true
-        },
         {
           "ts": 1792829500075,
           "correct": true
@@ -2317,34 +2323,30 @@
         {
           "ts": 1792829626993,
           "correct": true
+        },
+        {
+          "ts": 1792830230944,
+          "correct": true
+        },
+        {
+          "ts": 1792830248983,
+          "correct": true
+        },
+        {
+          "ts": 1792830257861,
+          "correct": true
+        },
+        {
+          "ts": 1792830292020,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792829626993
+      "lastAttemptTs": 1792830292020
     },
     "Equivalent expressions": {
-      "correct": 23,
-      "total": 28,
+      "correct": 27,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1792759405261,
-          "correct": true
-        },
-        {
-          "ts": 1792762792725,
-          "correct": true
-        },
-        {
-          "ts": 1792762900252,
-          "correct": true
-        },
-        {
-          "ts": 1792762998609,
-          "correct": true
-        },
-        {
-          "ts": 1792829272680,
-          "correct": true
-        },
         {
           "ts": 1792829322354,
           "correct": true
@@ -2372,9 +2374,29 @@
         {
           "ts": 1792829561306,
           "correct": true
+        },
+        {
+          "ts": 1792830215015,
+          "correct": false
+        },
+        {
+          "ts": 1792830218910,
+          "correct": true
+        },
+        {
+          "ts": 1792830264427,
+          "correct": true
+        },
+        {
+          "ts": 1792830269884,
+          "correct": true
+        },
+        {
+          "ts": 1792830278016,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792829561306
+      "lastAttemptTs": 1792830278016
     },
     "Circles": {
       "correct": 2,
@@ -2792,9 +2814,9 @@
       }
     },
     "2026-10-24": {
-      "totalMs": 3191492,
+      "totalMs": 3364677,
       "viewMs": {
-        "math": 388676,
+        "math": 561861,
         "practice": 4916,
         "browse": 2792940,
         "blueprints": 4960
@@ -7534,7 +7556,81 @@
         "ts": 1792829626993,
         "ms": 26980
       }
+    ],
+    "f392eb64": [
+      {
+        "ts": 1792830190827,
+        "ms": 561422
+      }
+    ],
+    "bace9af4": [
+      {
+        "ts": 1792830215015,
+        "ms": 22083
+      },
+      {
+        "ts": 1792830218910,
+        "ms": 1234
+      }
+    ],
+    "5a018bb6": [
+      {
+        "ts": 1792830224737,
+        "ms": 4091
+      }
+    ],
+    "bdbbe702": [
+      {
+        "ts": 1792830230944,
+        "ms": 4616
+      }
+    ],
+    "44f0984a": [
+      {
+        "ts": 1792830238079,
+        "ms": 5535
+      },
+      {
+        "ts": 1792830241077,
+        "ms": 202
+      }
+    ],
+    "fb559c97": [
+      {
+        "ts": 1792830248983,
+        "ms": 6289
+      }
+    ],
+    "cbfcd000": [
+      {
+        "ts": 1792830257861,
+        "ms": 6117
+      }
+    ],
+    "a1bb87b1": [
+      {
+        "ts": 1792830264427,
+        "ms": 4083
+      }
+    ],
+    "72fa8b3e": [
+      {
+        "ts": 1792830269884,
+        "ms": 3040
+      }
+    ],
+    "3e4e9da8": [
+      {
+        "ts": 1792830278016,
+        "ms": 6438
+      }
+    ],
+    "74e3e032": [
+      {
+        "ts": 1792830292020,
+        "ms": 11442
+      }
     ]
   },
-  "clientUpdatedAt": 1792830185720
+  "clientUpdatedAt": 1792830365951
 }
