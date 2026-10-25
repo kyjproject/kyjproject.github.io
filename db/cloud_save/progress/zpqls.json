@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-25T16:40:13.564Z",
+  "exportedAt": "2026-10-25T16:43:13.520Z",
   "progress": {
     "16915678": "done",
     "32445083": "done",
@@ -751,7 +751,12 @@
     "410c3c0e": "done",
     "52d63c4b": "done",
     "0d1a1f0c": "done",
-    "b70a0e72": "done"
+    "b70a0e72": "done",
+    "58d1b8bf": "done",
+    "bee774f4": "done",
+    "eefbcc02": "done",
+    "fadca26a": "done",
+    "edd4942f": "done"
   },
   "tags": {},
   "notes": {},
@@ -1492,7 +1497,12 @@
     "410c3c0e": "2026-10-25T16:38:11.731Z",
     "52d63c4b": "2026-10-25T16:38:17.649Z",
     "0d1a1f0c": "2026-10-25T16:38:24.767Z",
-    "b70a0e72": "2026-10-25T16:39:22.536Z"
+    "b70a0e72": "2026-10-25T16:39:22.536Z",
+    "58d1b8bf": "2026-10-25T16:40:27.953Z",
+    "bee774f4": "2026-10-25T16:40:33.203Z",
+    "eefbcc02": "2026-10-25T16:40:41.353Z",
+    "fadca26a": "2026-10-25T16:41:05.954Z",
+    "edd4942f": "2026-10-25T16:41:09.887Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3032,13 +3042,9 @@
       "lastAttemptTs": 1792946361391
     },
     "Linear equations in one variable": {
-      "correct": 29,
-      "total": 38,
+      "correct": 30,
+      "total": 39,
       "recent": [
-        {
-          "ts": 1792941039089,
-          "correct": true
-        },
         {
           "ts": 1792941265107,
           "correct": true
@@ -3082,26 +3088,18 @@
         {
           "ts": 1792946178259,
           "correct": true
+        },
+        {
+          "ts": 1792946469126,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946178259
+      "lastAttemptTs": 1792946469126
     },
     "Linear functions": {
-      "correct": 41,
-      "total": 44,
+      "correct": 44,
+      "total": 47,
       "recent": [
-        {
-          "ts": 1792943136962,
-          "correct": true
-        },
-        {
-          "ts": 1792943144023,
-          "correct": true
-        },
-        {
-          "ts": 1792943153813,
-          "correct": true
-        },
         {
           "ts": 1792943211724,
           "correct": true
@@ -3137,18 +3135,26 @@
         {
           "ts": 1792946290796,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1792946290796
-    },
-    "Linear inequalities in one or two variables": {
-      "correct": 11,
-      "total": 16,
-      "recent": [
+        },
         {
-          "ts": 1792931860890,
+          "ts": 1792946426289,
           "correct": true
         },
+        {
+          "ts": 1792946439645,
+          "correct": true
+        },
+        {
+          "ts": 1792946465060,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792946465060
+    },
+    "Linear inequalities in one or two variables": {
+      "correct": 12,
+      "total": 17,
+      "recent": [
         {
           "ts": 1792932051218,
           "correct": true
@@ -3192,9 +3198,13 @@
         {
           "ts": 1792946263192,
           "correct": true
+        },
+        {
+          "ts": 1792946432240,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946263192
+      "lastAttemptTs": 1792946432240
     }
   },
   "progressFocus": [
@@ -3623,9 +3633,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 770655,
+      "totalMs": 940789,
       "viewMs": {
-        "math": 770655
+        "math": 940789
       },
       "categoryMs": {}
     }
@@ -9702,7 +9712,37 @@
         "ts": 1792946361391,
         "ms": 55872
       }
+    ],
+    "58d1b8bf": [
+      {
+        "ts": 1792946426289,
+        "ms": 61668
+      }
+    ],
+    "bee774f4": [
+      {
+        "ts": 1792946432240,
+        "ms": 3336
+      }
+    ],
+    "eefbcc02": [
+      {
+        "ts": 1792946439645,
+        "ms": 5458
+      }
+    ],
+    "fadca26a": [
+      {
+        "ts": 1792946465060,
+        "ms": 22739
+      }
+    ],
+    "edd4942f": [
+      {
+        "ts": 1792946469126,
+        "ms": 2488
+      }
     ]
   },
-  "clientUpdatedAt": 1792946410740
+  "clientUpdatedAt": 1792946590884
 }
