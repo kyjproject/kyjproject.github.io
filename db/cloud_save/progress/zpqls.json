@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-25T16:28:14.042Z",
+  "exportedAt": "2026-10-25T16:31:13.356Z",
   "progress": {
     "16915678": "done",
     "32445083": "done",
@@ -730,7 +730,12 @@
     "a4a5e4ad": "done",
     "ea278c09": "done",
     "0ed7f9ed": "done",
-    "4eb9696e": "done"
+    "4eb9696e": "done",
+    "ea07c5fa": "done",
+    "e9e0893d": "done",
+    "56b227af": "done",
+    "b84c49da": "done",
+    "2c082034": "done"
   },
   "tags": {},
   "notes": {},
@@ -1450,7 +1455,12 @@
     "a4a5e4ad": "2026-10-25T15:54:06.633Z",
     "ea278c09": "2026-10-25T15:55:02.232Z",
     "0ed7f9ed": "2026-10-25T15:55:07.997Z",
-    "4eb9696e": "2026-10-25T15:55:48.381Z"
+    "4eb9696e": "2026-10-25T15:55:48.381Z",
+    "ea07c5fa": "2026-10-25T16:29:03.778Z",
+    "e9e0893d": "2026-10-25T16:29:53.044Z",
+    "56b227af": "2026-10-25T16:30:51.760Z",
+    "b84c49da": "2026-10-25T16:31:01.927Z",
+    "2c082034": "2026-10-25T16:31:12.427Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2880,17 +2890,9 @@
       "lastAttemptTs": 1792755095068
     },
     "Systems of two linear equations in two variables": {
-      "correct": 15,
-      "total": 15,
+      "correct": 17,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1792924803534,
-          "correct": true
-        },
-        {
-          "ts": 1792931893295,
-          "correct": true
-        },
         {
           "ts": 1792931931576,
           "correct": true
@@ -2930,18 +2932,22 @@
         {
           "ts": 1792943700576,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1792943700576
-    },
-    "Linear equations in two variables": {
-      "correct": 22,
-      "total": 29,
-      "recent": [
+        },
         {
-          "ts": 1792932155304,
+          "ts": 1792945742786,
           "correct": true
         },
+        {
+          "ts": 1792945861094,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792945861094
+    },
+    "Linear equations in two variables": {
+      "correct": 23,
+      "total": 30,
+      "recent": [
         {
           "ts": 1792939181885,
           "correct": false
@@ -2985,9 +2991,13 @@
         {
           "ts": 1792943643018,
           "correct": true
+        },
+        {
+          "ts": 1792945850160,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792943643018
+      "lastAttemptTs": 1792945850160
     },
     "Linear equations in one variable": {
       "correct": 27,
@@ -3045,17 +3055,9 @@
       "lastAttemptTs": 1792943736248
     },
     "Linear functions": {
-      "correct": 34,
-      "total": 36,
+      "correct": 36,
+      "total": 38,
       "recent": [
-        {
-          "ts": 1792941565156,
-          "correct": true
-        },
-        {
-          "ts": 1792941584320,
-          "correct": true
-        },
         {
           "ts": 1792941847231,
           "correct": false
@@ -3095,9 +3097,17 @@
         {
           "ts": 1792943211724,
           "correct": true
+        },
+        {
+          "ts": 1792945791516,
+          "correct": true
+        },
+        {
+          "ts": 1792945871518,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792943211725
+      "lastAttemptTs": 1792945871518
     },
     "Linear inequalities in one or two variables": {
       "correct": 9,
@@ -3577,9 +3587,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 55038,
+      "totalMs": 230198,
       "viewMs": {
-        "math": 55038
+        "math": 230198
       },
       "categoryMs": {}
     }
@@ -9518,7 +9528,37 @@
         "ts": 1792943736248,
         "ms": 27300
       }
+    ],
+    "ea07c5fa": [
+      {
+        "ts": 1792945742786,
+        "ms": 1993587
+      }
+    ],
+    "e9e0893d": [
+      {
+        "ts": 1792945791516,
+        "ms": 46400
+      }
+    ],
+    "56b227af": [
+      {
+        "ts": 1792945850160,
+        "ms": 56366
+      }
+    ],
+    "b84c49da": [
+      {
+        "ts": 1792945861094,
+        "ms": 8082
+      }
+    ],
+    "2c082034": [
+      {
+        "ts": 1792945871518,
+        "ms": 8574
+      }
     ]
   },
-  "clientUpdatedAt": 1792945690120
+  "clientUpdatedAt": 1792945870284
 }
