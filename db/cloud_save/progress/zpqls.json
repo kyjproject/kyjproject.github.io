@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-25T11:44:46.702Z",
+  "exportedAt": "2026-10-25T11:47:45.957Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -659,7 +659,10 @@
     "e9a4666c": "done",
     "1e27b2b3": "done",
     "5eaafb74": "review",
-    "d52ab835": "review"
+    "d52ab835": "review",
+    "30c71ab8": "done",
+    "3b3445ed": "review",
+    "9fa95c2c": "review"
   },
   "tags": {},
   "notes": {},
@@ -1310,7 +1313,8 @@
     "4819feaf": "2026-10-25T11:43:02.073Z",
     "e9a4666c": "2026-10-25T11:43:12.738Z",
     "1e27b2b3": "2026-10-25T11:43:16.339Z",
-    "d52ab835": "2026-10-25T11:44:39.890Z"
+    "d52ab835": "2026-10-25T11:44:39.890Z",
+    "30c71ab8": "2026-10-25T11:44:57.390Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2331,8 +2335,8 @@
       "lastAttemptTs": 1792928560378
     },
     "Text Structure and Purpose": {
-      "correct": 7,
-      "total": 10,
+      "correct": 8,
+      "total": 13,
       "recent": [
         {
           "ts": 1790937043223,
@@ -2369,9 +2373,21 @@
         {
           "ts": 1792928560378,
           "correct": false
+        },
+        {
+          "ts": 1792928744261,
+          "correct": false
+        },
+        {
+          "ts": 1792928746059,
+          "correct": false
+        },
+        {
+          "ts": 1792928749061,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792928560378
+      "lastAttemptTs": 1792928749061
     },
     "Inferences": {
       "correct": 5,
@@ -2448,29 +2464,9 @@
       "lastAttemptTs": 1792928560380
     },
     "Transitions": {
-      "correct": 14,
-      "total": 29,
+      "correct": 16,
+      "total": 34,
       "recent": [
-        {
-          "ts": 1792423375326,
-          "correct": true
-        },
-        {
-          "ts": 1792423382745,
-          "correct": true
-        },
-        {
-          "ts": 1792423398415,
-          "correct": true
-        },
-        {
-          "ts": 1792760933674,
-          "correct": false
-        },
-        {
-          "ts": 1792928560380,
-          "correct": false
-        },
         {
           "ts": 1792928599325,
           "correct": false
@@ -2498,9 +2494,29 @@
         {
           "ts": 1792928632142,
           "correct": true
+        },
+        {
+          "ts": 1792928696314,
+          "correct": true
+        },
+        {
+          "ts": 1792928714642,
+          "correct": false
+        },
+        {
+          "ts": 1792928716003,
+          "correct": false
+        },
+        {
+          "ts": 1792928717482,
+          "correct": false
+        },
+        {
+          "ts": 1792928718609,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792928632142
+      "lastAttemptTs": 1792928718609
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 45,
@@ -2930,18 +2946,6 @@
       "count": 5,
       "lastTs": 1790727006608
     },
-    "7f8cec1c": {
-      "count": 1,
-      "lastTs": 1790725657417
-    },
-    "5e6596a9": {
-      "count": 1,
-      "lastTs": 1790727009742
-    },
-    "accc2b85": {
-      "count": 1,
-      "lastTs": 1790727035473
-    },
     "82aaffb8": {
       "count": 1,
       "lastTs": 1790770942869
@@ -3161,6 +3165,30 @@
     "4819feaf": {
       "count": 1,
       "lastTs": 1792928573154
+    },
+    "3b3445ed": {
+      "count": 1,
+      "lastTs": 1792928738257
+    },
+    "9fa95c2c": {
+      "count": 1,
+      "lastTs": 1792928742073
+    },
+    "afcbe3da": {
+      "count": 1,
+      "lastTs": 1792928752991
+    },
+    "7f8cec1c": {
+      "count": 1,
+      "lastTs": 1790725657417
+    },
+    "5e6596a9": {
+      "count": 1,
+      "lastTs": 1790727009742
+    },
+    "accc2b85": {
+      "count": 1,
+      "lastTs": 1790727035473
     }
   },
   "blueprints": [],
@@ -3300,12 +3328,12 @@
       "categoryMs": {}
     },
     "2026-10-25": {
-      "totalMs": 2719261,
+      "totalMs": 2879391,
       "viewMs": {
         "math": 872204,
         "profile": 15012,
         "browse": 577767,
-        "mock": 1254278
+        "mock": 1414408
       },
       "categoryMs": {
         "Vocab": 132269,
@@ -8745,7 +8773,45 @@
         "ts": 1792928632142,
         "ms": 187
       }
+    ],
+    "30c71ab8": [
+      {
+        "ts": 1792928696314,
+        "ms": 14506
+      }
+    ],
+    "3b3445ed": [
+      {
+        "ts": 1792928714642,
+        "ms": 16401
+      },
+      {
+        "ts": 1792928716003,
+        "ms": 211
+      },
+      {
+        "ts": 1792928717482,
+        "ms": 308
+      },
+      {
+        "ts": 1792928718609,
+        "ms": 352
+      }
+    ],
+    "9fa95c2c": [
+      {
+        "ts": 1792928744261,
+        "ms": 2187
+      },
+      {
+        "ts": 1792928746059,
+        "ms": 369
+      },
+      {
+        "ts": 1792928749061,
+        "ms": 1004
+      }
     ]
   },
-  "clientUpdatedAt": 1792928682935
+  "clientUpdatedAt": 1792928863080
 }
