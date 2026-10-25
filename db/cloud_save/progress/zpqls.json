@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-25T16:43:13.520Z",
+  "exportedAt": "2026-10-25T16:46:13.148Z",
   "progress": {
     "16915678": "done",
     "32445083": "done",
@@ -756,7 +756,20 @@
     "bee774f4": "done",
     "eefbcc02": "done",
     "fadca26a": "done",
-    "edd4942f": "done"
+    "edd4942f": "done",
+    "9c899c55": "done",
+    "f2c128d8": "done",
+    "675f2d28": "done",
+    "b3f00f4b": "done",
+    "a2a256c4": "done",
+    "7bb1beef": "done",
+    "e9e6b891": "done",
+    "247a6ed7": "done",
+    "0f93d317": "done",
+    "e7fef945": "done",
+    "89a62ded": "done",
+    "95e7152d": "done",
+    "7f234c59": "done"
   },
   "tags": {},
   "notes": {},
@@ -1502,7 +1515,20 @@
     "bee774f4": "2026-10-25T16:40:33.203Z",
     "eefbcc02": "2026-10-25T16:40:41.353Z",
     "fadca26a": "2026-10-25T16:41:05.954Z",
-    "edd4942f": "2026-10-25T16:41:09.887Z"
+    "edd4942f": "2026-10-25T16:41:09.887Z",
+    "9c899c55": "2026-10-25T16:43:52.438Z",
+    "f2c128d8": "2026-10-25T16:44:10.102Z",
+    "675f2d28": "2026-10-25T16:44:16.436Z",
+    "b3f00f4b": "2026-10-25T16:45:17.338Z",
+    "a2a256c4": "2026-10-25T16:45:22.504Z",
+    "7bb1beef": "2026-10-25T16:45:31.454Z",
+    "e9e6b891": "2026-10-25T16:45:37.087Z",
+    "247a6ed7": "2026-10-25T16:45:42.088Z",
+    "0f93d317": "2026-10-25T16:45:45.838Z",
+    "e7fef945": "2026-10-25T16:45:55.971Z",
+    "89a62ded": "2026-10-25T16:46:02.387Z",
+    "95e7152d": "2026-10-25T16:46:07.654Z",
+    "7f234c59": "2026-10-25T16:46:12.404Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2932,13 +2958,9 @@
       "lastAttemptTs": 1792755095068
     },
     "Systems of two linear equations in two variables": {
-      "correct": 18,
-      "total": 18,
+      "correct": 19,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1792932030156,
-          "correct": true
-        },
         {
           "ts": 1792932128721,
           "correct": true
@@ -2982,34 +3004,18 @@
         {
           "ts": 1792946304009,
           "correct": true
+        },
+        {
+          "ts": 1792946736271,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946304009
+      "lastAttemptTs": 1792946736271
     },
     "Linear equations in two variables": {
-      "correct": 28,
-      "total": 35,
+      "correct": 33,
+      "total": 40,
       "recent": [
-        {
-          "ts": 1792943163896,
-          "correct": true
-        },
-        {
-          "ts": 1792943219540,
-          "correct": true
-        },
-        {
-          "ts": 1792943638086,
-          "correct": false
-        },
-        {
-          "ts": 1792943640094,
-          "correct": false
-        },
-        {
-          "ts": 1792943641667,
-          "correct": false
-        },
         {
           "ts": 1792943643018,
           "correct": true
@@ -3037,34 +3043,34 @@
         {
           "ts": 1792946361391,
           "correct": true
+        },
+        {
+          "ts": 1792946630711,
+          "correct": true
+        },
+        {
+          "ts": 1792946648130,
+          "correct": true
+        },
+        {
+          "ts": 1792946715623,
+          "correct": true
+        },
+        {
+          "ts": 1792946730539,
+          "correct": true
+        },
+        {
+          "ts": 1792946755171,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946361391
+      "lastAttemptTs": 1792946755171
     },
     "Linear equations in one variable": {
-      "correct": 30,
-      "total": 39,
+      "correct": 34,
+      "total": 44,
       "recent": [
-        {
-          "ts": 1792941265107,
-          "correct": true
-        },
-        {
-          "ts": 1792941538534,
-          "correct": true
-        },
-        {
-          "ts": 1792941543366,
-          "correct": true
-        },
-        {
-          "ts": 1792941593551,
-          "correct": true
-        },
-        {
-          "ts": 1792941865127,
-          "correct": true
-        },
         {
           "ts": 1792941927836,
           "correct": true
@@ -3092,18 +3098,34 @@
         {
           "ts": 1792946469126,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1792946469126
-    },
-    "Linear functions": {
-      "correct": 44,
-      "total": 47,
-      "recent": [
+        },
         {
-          "ts": 1792943211724,
+          "ts": 1792946654779,
+          "correct": false
+        },
+        {
+          "ts": 1792946655683,
           "correct": true
         },
+        {
+          "ts": 1792946721738,
+          "correct": true
+        },
+        {
+          "ts": 1792946761622,
+          "correct": true
+        },
+        {
+          "ts": 1792946766851,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792946766851
+    },
+    "Linear functions": {
+      "correct": 45,
+      "total": 48,
+      "recent": [
         {
           "ts": 1792945791516,
           "correct": true
@@ -3147,22 +3169,18 @@
         {
           "ts": 1792946465060,
           "correct": true
+        },
+        {
+          "ts": 1792946771597,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946465060
+      "lastAttemptTs": 1792946771597
     },
     "Linear inequalities in one or two variables": {
-      "correct": 12,
-      "total": 17,
+      "correct": 14,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1792932051218,
-          "correct": true
-        },
-        {
-          "ts": 1792932185460,
-          "correct": false
-        },
         {
           "ts": 1792932188659,
           "correct": true
@@ -3202,9 +3220,17 @@
         {
           "ts": 1792946432240,
           "correct": true
+        },
+        {
+          "ts": 1792946741221,
+          "correct": true
+        },
+        {
+          "ts": 1792946745028,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792946432240
+      "lastAttemptTs": 1792946745028
     }
   },
   "progressFocus": [
@@ -3221,14 +3247,6 @@
     "a0120582": {
       "count": 5,
       "lastTs": 1790727006608
-    },
-    "e97999ac": {
-      "count": 1,
-      "lastTs": 1790776599265
-    },
-    "a38e3b40": {
-      "count": 1,
-      "lastTs": 1790843512567
     },
     "6b4c8b42": {
       "count": 1,
@@ -3454,6 +3472,22 @@
       "count": 1,
       "lastTs": 1792945637330
     },
+    "cec9c34f": {
+      "count": 1,
+      "lastTs": 1792946690619
+    },
+    "b3f00f4b": {
+      "count": 1,
+      "lastTs": 1792946697454
+    },
+    "e97999ac": {
+      "count": 1,
+      "lastTs": 1790776599265
+    },
+    "a38e3b40": {
+      "count": 1,
+      "lastTs": 1790843512567
+    },
     "98baf1ee": {
       "count": 1,
       "lastTs": 1790774317434
@@ -3633,9 +3667,12 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 940789,
+      "totalMs": 1120933,
       "viewMs": {
-        "math": 940789
+        "math": 1090908,
+        "profile": 5005,
+        "leaderboard": 20016,
+        "browse": 5004
       },
       "categoryMs": {}
     }
@@ -9742,7 +9779,89 @@
         "ts": 1792946469126,
         "ms": 2488
       }
+    ],
+    "9c899c55": [
+      {
+        "ts": 1792946630711,
+        "ms": 160107
+      }
+    ],
+    "f2c128d8": [
+      {
+        "ts": 1792946648130,
+        "ms": 14793
+      }
+    ],
+    "675f2d28": [
+      {
+        "ts": 1792946654779,
+        "ms": 3974
+      },
+      {
+        "ts": 1792946655683,
+        "ms": 181
+      }
+    ],
+    "b3f00f4b": [
+      {
+        "ts": 1792946715623,
+        "ms": 58397
+      }
+    ],
+    "a2a256c4": [
+      {
+        "ts": 1792946721738,
+        "ms": 3665
+      }
+    ],
+    "7bb1beef": [
+      {
+        "ts": 1792946730539,
+        "ms": 7368
+      }
+    ],
+    "e9e6b891": [
+      {
+        "ts": 1792946736271,
+        "ms": 3983
+      }
+    ],
+    "247a6ed7": [
+      {
+        "ts": 1792946741221,
+        "ms": 3266
+      }
+    ],
+    "0f93d317": [
+      {
+        "ts": 1792946745028,
+        "ms": 2307
+      }
+    ],
+    "e7fef945": [
+      {
+        "ts": 1792946755171,
+        "ms": 8566
+      }
+    ],
+    "89a62ded": [
+      {
+        "ts": 1792946761622,
+        "ms": 4751
+      }
+    ],
+    "95e7152d": [
+      {
+        "ts": 1792946766851,
+        "ms": 3730
+      }
+    ],
+    "7f234c59": [
+      {
+        "ts": 1792946771597,
+        "ms": 3059
+      }
     ]
   },
-  "clientUpdatedAt": 1792946590884
+  "clientUpdatedAt": 1792946771028
 }
