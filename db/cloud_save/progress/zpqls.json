@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-25T09:50:56.417Z",
+  "exportedAt": "2026-10-25T09:54:09.557Z",
   "progress": {
     "32445083": "done",
     "39430569": "done",
@@ -577,7 +577,16 @@
     "80803aed": "done",
     "9903ff5b": "done",
     "9c086e5a": "done",
-    "4782fd69": "done"
+    "4782fd69": "done",
+    "9c7ef949": "done",
+    "02929ad6": "done",
+    "e798aedd": "done",
+    "376d4f16": "done",
+    "4f5ff634": "done",
+    "fbcace7b": "done",
+    "f4006172": "done",
+    "7cfe6c55": "done",
+    "9b0ca0dc": "done"
   },
   "tags": {},
   "notes": {},
@@ -1147,7 +1156,16 @@
     "80803aed": "2026-10-24T08:43:09.696Z",
     "9903ff5b": "2026-10-24T08:43:53.439Z",
     "9c086e5a": "2026-10-24T08:44:17.675Z",
-    "4782fd69": "2026-10-24T08:44:40.875Z"
+    "4782fd69": "2026-10-24T08:44:40.875Z",
+    "9c7ef949": "2026-10-25T09:52:08.722Z",
+    "02929ad6": "2026-10-25T09:52:14.739Z",
+    "e798aedd": "2026-10-25T09:52:25.306Z",
+    "376d4f16": "2026-10-25T09:52:30.123Z",
+    "4f5ff634": "2026-10-25T09:52:34.639Z",
+    "fbcace7b": "2026-10-25T09:52:45.107Z",
+    "f4006172": "2026-10-25T09:52:49.840Z",
+    "7cfe6c55": "2026-10-25T09:52:58.240Z",
+    "9b0ca0dc": "2026-10-25T09:53:20.807Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2262,25 +2280,9 @@
       "lastAttemptTs": 1792760933674
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 34,
-      "total": 36,
+      "correct": 38,
+      "total": 40,
       "recent": [
-        {
-          "ts": 1792829289782,
-          "correct": true
-        },
-        {
-          "ts": 1792829345971,
-          "correct": true
-        },
-        {
-          "ts": 1792829456579,
-          "correct": true
-        },
-        {
-          "ts": 1792829484991,
-          "correct": true
-        },
         {
           "ts": 1792829546002,
           "correct": true
@@ -2312,22 +2314,30 @@
         {
           "ts": 1792830674531,
           "correct": true
+        },
+        {
+          "ts": 1792921927302,
+          "correct": true
+        },
+        {
+          "ts": 1792921933956,
+          "correct": true
+        },
+        {
+          "ts": 1792921944370,
+          "correct": true
+        },
+        {
+          "ts": 1792921949364,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792830674531
+      "lastAttemptTs": 1792921949364
     },
     "Nonlinear functions": {
-      "correct": 70,
-      "total": 84,
+      "correct": 72,
+      "total": 86,
       "recent": [
-        {
-          "ts": 1792830257861,
-          "correct": true
-        },
-        {
-          "ts": 1792830292020,
-          "correct": true
-        },
         {
           "ts": 1792830380012,
           "correct": true
@@ -2367,34 +2377,22 @@
         {
           "ts": 1792831478125,
           "correct": true
+        },
+        {
+          "ts": 1792921953377,
+          "correct": true
+        },
+        {
+          "ts": 1792921968395,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792831478125
+      "lastAttemptTs": 1792921968395
     },
     "Equivalent expressions": {
-      "correct": 31,
-      "total": 38,
+      "correct": 34,
+      "total": 43,
       "recent": [
-        {
-          "ts": 1792829553529,
-          "correct": true
-        },
-        {
-          "ts": 1792829561306,
-          "correct": true
-        },
-        {
-          "ts": 1792830215015,
-          "correct": false
-        },
-        {
-          "ts": 1792830218910,
-          "correct": true
-        },
-        {
-          "ts": 1792830264427,
-          "correct": true
-        },
         {
           "ts": 1792830269884,
           "correct": true
@@ -2422,9 +2420,29 @@
         {
           "ts": 1792830659671,
           "correct": true
+        },
+        {
+          "ts": 1792921963524,
+          "correct": false
+        },
+        {
+          "ts": 1792921964406,
+          "correct": true
+        },
+        {
+          "ts": 1792921977224,
+          "correct": true
+        },
+        {
+          "ts": 1792921992574,
+          "correct": false
+        },
+        {
+          "ts": 1792921999941,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792830659671
+      "lastAttemptTs": 1792921999941
     },
     "Circles": {
       "correct": 2,
@@ -2721,6 +2739,10 @@
     "80803aed": {
       "count": 1,
       "lastTs": 1792830839567
+    },
+    "9c7ef949": {
+      "count": 1,
+      "lastTs": 1792921921888
     }
   },
   "blueprints": [],
@@ -2856,6 +2878,13 @@
         "practice": 4916,
         "browse": 2792940,
         "blueprints": 4960
+      },
+      "categoryMs": {}
+    },
+    "2026-10-25": {
+      "totalMs": 83501,
+      "viewMs": {
+        "math": 83501
       },
       "categoryMs": {}
     }
@@ -7766,7 +7795,69 @@
         "ts": 1792831478125,
         "ms": 10504
       }
+    ],
+    "9c7ef949": [
+      {
+        "ts": 1792921927302,
+        "ms": 91249154
+      }
+    ],
+    "02929ad6": [
+      {
+        "ts": 1792921933956,
+        "ms": 4466
+      }
+    ],
+    "e798aedd": [
+      {
+        "ts": 1792921944370,
+        "ms": 8829
+      }
+    ],
+    "376d4f16": [
+      {
+        "ts": 1792921949364,
+        "ms": 2956
+      }
+    ],
+    "4f5ff634": [
+      {
+        "ts": 1792921953377,
+        "ms": 2370
+      }
+    ],
+    "fbcace7b": [
+      {
+        "ts": 1792921963524,
+        "ms": 8016
+      },
+      {
+        "ts": 1792921964406,
+        "ms": 183
+      }
+    ],
+    "f4006172": [
+      {
+        "ts": 1792921968395,
+        "ms": 2587
+      }
+    ],
+    "7cfe6c55": [
+      {
+        "ts": 1792921977224,
+        "ms": 6231
+      }
+    ],
+    "9b0ca0dc": [
+      {
+        "ts": 1792921992574,
+        "ms": 12582
+      },
+      {
+        "ts": 1792921999941,
+        "ms": 6050
+      }
     ]
   },
-  "clientUpdatedAt": 1792921852791
+  "clientUpdatedAt": 1792922036274
 }
