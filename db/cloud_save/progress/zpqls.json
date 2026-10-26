@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-26T03:04:08.983Z",
+  "exportedAt": "2026-10-26T03:08:18.016Z",
   "progress": {
     "16915678": "done",
     "32445083": "done",
@@ -822,7 +822,8 @@
     "d9029f13": "done",
     "dd899ebf": "done",
     "174464f1": "done",
-    "b517b769": "done"
+    "b517b769": "done",
+    "82cf5449": "done"
   },
   "tags": {},
   "notes": {},
@@ -1634,7 +1635,8 @@
     "d9029f13": "2026-10-26T03:02:46.413Z",
     "dd899ebf": "2026-10-26T03:03:11.902Z",
     "174464f1": "2026-10-26T03:03:18.532Z",
-    "b517b769": "2026-10-26T03:03:44.134Z"
+    "b517b769": "2026-10-26T03:03:44.134Z",
+    "82cf5449": "2026-10-26T03:06:14.956Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3053,8 +3055,8 @@
       "lastAttemptTs": 1792754738842
     },
     "Area and volume": {
-      "correct": 4,
-      "total": 4,
+      "correct": 5,
+      "total": 5,
       "recent": [
         {
           "ts": 1792754795175,
@@ -3071,9 +3073,13 @@
         {
           "ts": 1792983822180,
           "correct": true
+        },
+        {
+          "ts": 1792983972741,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792983822180
+      "lastAttemptTs": 1792983972741
     },
     "Systems of two linear equations in two variables": {
       "correct": 24,
@@ -3793,9 +3799,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 1982229,
+      "totalMs": 2126656,
       "viewMs": {
-        "math": 1952204,
+        "math": 2096631,
         "profile": 5005,
         "leaderboard": 20016,
         "browse": 5004
@@ -10323,7 +10329,13 @@
         "ts": 1792983822180,
         "ms": 22797
       }
+    ],
+    "82cf5449": [
+      {
+        "ts": 1792983972741,
+        "ms": 147860
+      }
     ]
   },
-  "clientUpdatedAt": 1792983847957
+  "clientUpdatedAt": 1792984095211
 }
