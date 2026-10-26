@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-26T03:47:26.597Z",
+  "exportedAt": "2026-10-26T03:51:39.548Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -887,7 +887,14 @@
     "bbfa4707": "done",
     "68ce71ce": "done",
     "729a31a8": "done",
-    "5216125e": "done"
+    "5216125e": "done",
+    "cf40e194": "done",
+    "a6541d64": "done",
+    "869b99d4": "done",
+    "2e491241": "done",
+    "bd287a21": "done",
+    "3349bc95": "done",
+    "309344bd": "done"
   },
   "tags": {},
   "notes": {},
@@ -1764,7 +1771,14 @@
     "bbfa4707": "2026-10-26T03:46:36.502Z",
     "68ce71ce": "2026-10-26T03:47:00.769Z",
     "729a31a8": "2026-10-26T03:47:12.353Z",
-    "5216125e": "2026-10-26T03:47:19.503Z"
+    "5216125e": "2026-10-26T03:47:19.503Z",
+    "cf40e194": "2026-10-26T03:47:28.686Z",
+    "a6541d64": "2026-10-26T03:47:35.803Z",
+    "869b99d4": "2026-10-26T03:47:49.019Z",
+    "2e491241": "2026-10-26T03:48:31.320Z",
+    "bd287a21": "2026-10-26T03:48:37.655Z",
+    "3349bc95": "2026-10-26T03:49:09.673Z",
+    "309344bd": "2026-10-26T03:49:18.771Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3597,8 +3611,8 @@
       "lastAttemptTs": 1792983285313
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1792986395486,
@@ -3607,9 +3621,13 @@
         {
           "ts": 1792986438686,
           "correct": true
+        },
+        {
+          "ts": 1792986697417,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792986438686
+      "lastAttemptTs": 1792986697417
     },
     "Probability and conditional probability": {
       "correct": 1,
@@ -3621,6 +3639,59 @@
         }
       ],
       "lastAttemptTs": 1792986418536
+    },
+    "One-variable data: Distributions and measures of center and spread": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1792986446600,
+          "correct": true
+        },
+        {
+          "ts": 1792986468108,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792986468108
+    },
+    "Two-variable data: Models and scatterplots": {
+      "correct": 3,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1792986453474,
+          "correct": true
+        },
+        {
+          "ts": 1792986456624,
+          "correct": true
+        },
+        {
+          "ts": 1792986547553,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792986547553
+    },
+    "Percentages": {
+      "correct": 3,
+      "total": 3,
+      "recent": [
+        {
+          "ts": 1792986510080,
+          "correct": true
+        },
+        {
+          "ts": 1792986516175,
+          "correct": true
+        },
+        {
+          "ts": 1792986557142,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1792986557142
     }
   },
   "progressFocus": [
@@ -4081,9 +4152,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 3224716,
+      "totalMs": 3300038,
       "viewMs": {
-        "math": 3194691,
+        "math": 3270013,
         "profile": 5005,
         "leaderboard": 20016,
         "browse": 5004
@@ -11009,7 +11080,59 @@
         "ts": 1792986438686,
         "ms": 16934
       }
+    ],
+    "cf40e194": [
+      {
+        "ts": 1792986446600,
+        "ms": 6097
+      }
+    ],
+    "a6541d64": [
+      {
+        "ts": 1792986453474,
+        "ms": 3837
+      },
+      {
+        "ts": 1792986456624,
+        "ms": 1837
+      }
+    ],
+    "869b99d4": [
+      {
+        "ts": 1792986468108,
+        "ms": 10222
+      }
+    ],
+    "2e491241": [
+      {
+        "ts": 1792986510080,
+        "ms": 39875
+      }
+    ],
+    "bd287a21": [
+      {
+        "ts": 1792986516176,
+        "ms": 4139
+      }
+    ],
+    "3349bc95": [
+      {
+        "ts": 1792986547553,
+        "ms": 28349
+      }
+    ],
+    "309344bd": [
+      {
+        "ts": 1792986557142,
+        "ms": 6072
+      }
+    ],
+    "e25aee5f": [
+      {
+        "ts": 1792986697417,
+        "ms": 137412
+      }
     ]
   },
-  "clientUpdatedAt": 1792986444447
+  "clientUpdatedAt": 1792986697296
 }
