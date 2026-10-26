@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-26T04:10:03.509Z",
+  "exportedAt": "2026-10-26T04:13:02.821Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -950,7 +950,15 @@
     "88689c52": "done",
     "9a8df0e2": "done",
     "7f6c266c": "done",
-    "28c1d699": "done"
+    "28c1d699": "done",
+    "57045eee": "done",
+    "433a6af1": "done",
+    "dc150731": "done",
+    "ff02ccf9": "done",
+    "af24ba65": "done",
+    "de1add26": "done",
+    "162af826": "done",
+    "cd9e9a28": "done"
   },
   "tags": {},
   "notes": {},
@@ -1890,7 +1898,15 @@
     "88689c52": "2026-10-26T04:05:35.654Z",
     "9a8df0e2": "2026-10-26T04:05:50.270Z",
     "7f6c266c": "2026-10-26T04:08:35.938Z",
-    "28c1d699": "2026-10-26T04:09:01.087Z"
+    "28c1d699": "2026-10-26T04:09:01.087Z",
+    "57045eee": "2026-10-26T04:10:06.637Z",
+    "433a6af1": "2026-10-26T04:10:19.370Z",
+    "dc150731": "2026-10-26T04:11:30.020Z",
+    "ff02ccf9": "2026-10-26T04:11:40.820Z",
+    "af24ba65": "2026-10-26T04:11:48.287Z",
+    "de1add26": "2026-10-26T04:12:03.587Z",
+    "162af826": "2026-10-26T04:12:12.354Z",
+    "cd9e9a28": "2026-10-26T04:12:45.237Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3723,25 +3739,9 @@
       "lastAttemptTs": 1792983285313
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 15,
-      "total": 17,
+      "correct": 19,
+      "total": 21,
       "recent": [
-        {
-          "ts": 1792987120940,
-          "correct": true
-        },
-        {
-          "ts": 1792987141461,
-          "correct": true
-        },
-        {
-          "ts": 1792987195706,
-          "correct": true
-        },
-        {
-          "ts": 1792987206846,
-          "correct": true
-        },
         {
           "ts": 1792987271787,
           "correct": true
@@ -3773,13 +3773,29 @@
         {
           "ts": 1792987739191,
           "correct": false
+        },
+        {
+          "ts": 1792987816605,
+          "correct": true
+        },
+        {
+          "ts": 1792987888800,
+          "correct": true
+        },
+        {
+          "ts": 1792987922769,
+          "correct": true
+        },
+        {
+          "ts": 1792987931448,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792987739191
+      "lastAttemptTs": 1792987931448
     },
     "Probability and conditional probability": {
-      "correct": 7,
-      "total": 9,
+      "correct": 9,
+      "total": 11,
       "recent": [
         {
           "ts": 1792986418536,
@@ -3816,9 +3832,17 @@
         {
           "ts": 1792987375460,
           "correct": true
+        },
+        {
+          "ts": 1792987899098,
+          "correct": true
+        },
+        {
+          "ts": 1792987963455,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792987375460
+      "lastAttemptTs": 1792987963455
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 15,
@@ -3876,13 +3900,9 @@
       "lastAttemptTs": 1792987509254
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 13,
-      "total": 14,
+      "correct": 14,
+      "total": 15,
       "recent": [
-        {
-          "ts": 1792986547553,
-          "correct": true
-        },
         {
           "ts": 1792986953255,
           "correct": true
@@ -3926,18 +3946,18 @@
         {
           "ts": 1792987547372,
           "correct": false
+        },
+        {
+          "ts": 1792987805066,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792987547372
+      "lastAttemptTs": 1792987805066
     },
     "Percentages": {
-      "correct": 12,
-      "total": 13,
+      "correct": 13,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1792986516175,
-          "correct": true
-        },
         {
           "ts": 1792986557142,
           "correct": true
@@ -3981,9 +4001,13 @@
         {
           "ts": 1792987455959,
           "correct": true
+        },
+        {
+          "ts": 1792987906654,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792987455959
+      "lastAttemptTs": 1792987906654
     },
     "Inference from sample statistics and margin of error": {
       "correct": 2,
@@ -4483,9 +4507,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 4140217,
+      "totalMs": 4265708,
       "viewMs": {
-        "math": 4110192,
+        "math": 4235683,
         "profile": 5005,
         "leaderboard": 20016,
         "browse": 5004
@@ -11833,7 +11857,55 @@
         "ts": 1792987739191,
         "ms": 16787
       }
+    ],
+    "57045eee": [
+      {
+        "ts": 1792987805066,
+        "ms": 62861
+      }
+    ],
+    "433a6af1": [
+      {
+        "ts": 1792987816605,
+        "ms": 9066
+      }
+    ],
+    "dc150731": [
+      {
+        "ts": 1792987888800,
+        "ms": 68613
+      }
+    ],
+    "ff02ccf9": [
+      {
+        "ts": 1792987899098,
+        "ms": 7576
+      }
+    ],
+    "af24ba65": [
+      {
+        "ts": 1792987906654,
+        "ms": 4700
+      }
+    ],
+    "de1add26": [
+      {
+        "ts": 1792987922769,
+        "ms": 12081
+      }
+    ],
+    "162af826": [
+      {
+        "ts": 1792987931448,
+        "ms": 7027
+      }
+    ],
+    "cd9e9a28": [
+      {
+        "ts": 1792987963456,
+        "ms": 30134
+      }
     ]
   },
-  "clientUpdatedAt": 1792987800561
+  "clientUpdatedAt": 1792987981538
 }
