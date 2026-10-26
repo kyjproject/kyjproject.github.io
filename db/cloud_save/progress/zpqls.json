@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-26T03:51:39.548Z",
+  "exportedAt": "2026-10-26T03:54:34.633Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -894,7 +894,13 @@
     "2e491241": "done",
     "bd287a21": "done",
     "3349bc95": "done",
-    "309344bd": "done"
+    "309344bd": "done",
+    "e25aee5f": "done",
+    "57dfc866": "done",
+    "319d549a": "done",
+    "642a02cc": "done",
+    "f664bd69": "done",
+    "3fb7ca66": "done"
   },
   "tags": {},
   "notes": {},
@@ -1778,7 +1784,13 @@
     "2e491241": "2026-10-26T03:48:31.320Z",
     "bd287a21": "2026-10-26T03:48:37.655Z",
     "3349bc95": "2026-10-26T03:49:09.673Z",
-    "309344bd": "2026-10-26T03:49:18.771Z"
+    "309344bd": "2026-10-26T03:49:18.771Z",
+    "e25aee5f": "2026-10-26T03:53:06.741Z",
+    "57dfc866": "2026-10-26T03:53:29.086Z",
+    "319d549a": "2026-10-26T03:54:10.152Z",
+    "642a02cc": "2026-10-26T03:54:16.019Z",
+    "f664bd69": "2026-10-26T03:54:23.652Z",
+    "3fb7ca66": "2026-10-26T03:54:32.019Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3611,8 +3623,8 @@
       "lastAttemptTs": 1792983285313
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1792986395486,
@@ -3625,24 +3637,32 @@
         {
           "ts": 1792986697417,
           "correct": true
+        },
+        {
+          "ts": 1792986871055,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792986697417
+      "lastAttemptTs": 1792986871055
     },
     "Probability and conditional probability": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1792986418536,
           "correct": true
+        },
+        {
+          "ts": 1792986848894,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792986418536
+      "lastAttemptTs": 1792986848894
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 2,
-      "total": 2,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1792986446600,
@@ -3651,9 +3671,17 @@
         {
           "ts": 1792986468108,
           "correct": true
+        },
+        {
+          "ts": 1792986807809,
+          "correct": true
+        },
+        {
+          "ts": 1792986855038,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792986468108
+      "lastAttemptTs": 1792986855038
     },
     "Two-variable data: Models and scatterplots": {
       "correct": 3,
@@ -3675,8 +3703,8 @@
       "lastAttemptTs": 1792986547553
     },
     "Percentages": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1792986510080,
@@ -3689,9 +3717,13 @@
         {
           "ts": 1792986557142,
           "correct": true
+        },
+        {
+          "ts": 1792986862788,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792986557142
+      "lastAttemptTs": 1792986862788
     }
   },
   "progressFocus": [
@@ -4152,9 +4184,9 @@
       }
     },
     "2026-10-26": {
-      "totalMs": 3300038,
+      "totalMs": 3390110,
       "viewMs": {
-        "math": 3270013,
+        "math": 3360085,
         "profile": 5005,
         "leaderboard": 20016,
         "browse": 5004
@@ -11132,7 +11164,37 @@
         "ts": 1792986697417,
         "ms": 137412
       }
+    ],
+    "57dfc866": [
+      {
+        "ts": 1792986807809,
+        "ms": 19885
+      }
+    ],
+    "319d549a": [
+      {
+        "ts": 1792986848894,
+        "ms": 38655
+      }
+    ],
+    "642a02cc": [
+      {
+        "ts": 1792986855038,
+        "ms": 3901
+      }
+    ],
+    "f664bd69": [
+      {
+        "ts": 1792986862788,
+        "ms": 5752
+      }
+    ],
+    "3fb7ca66": [
+      {
+        "ts": 1792986871055,
+        "ms": 5786
+      }
     ]
   },
-  "clientUpdatedAt": 1792986697296
+  "clientUpdatedAt": 1792986873046
 }
