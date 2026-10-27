@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T12:51:18.004Z",
+  "exportedAt": "2026-10-27T12:54:18.518Z",
   "progress": {
     "16915678": "done",
     "26267909": "done",
@@ -1036,7 +1036,9 @@
     "5b3e644c": "done",
     "b5c05ec8": "done",
     "8ee78de3": "done",
-    "42ffc043": "done"
+    "42ffc043": "done",
+    "31e7d539": "done",
+    "d3d6290e": "done"
   },
   "tags": {},
   "notes": {},
@@ -2061,7 +2063,9 @@
     "5b3e644c": "2026-10-27T12:42:52.531Z",
     "b5c05ec8": "2026-10-27T12:44:35.475Z",
     "8ee78de3": "2026-10-27T12:46:36.264Z",
-    "42ffc043": "2026-10-27T12:47:46.819Z"
+    "42ffc043": "2026-10-27T12:47:46.819Z",
+    "31e7d539": "2026-10-27T12:51:48.066Z",
+    "d3d6290e": "2026-10-27T12:53:28.473Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3137,25 +3141,9 @@
       "lastAttemptTs": 1792928749061
     },
     "Inferences": {
-      "correct": 12,
-      "total": 17,
+      "correct": 14,
+      "total": 21,
       "recent": [
-        {
-          "ts": 1793103601587,
-          "correct": true
-        },
-        {
-          "ts": 1793103869666,
-          "correct": true
-        },
-        {
-          "ts": 1793104063065,
-          "correct": true
-        },
-        {
-          "ts": 1793104969817,
-          "correct": false
-        },
         {
           "ts": 1793104970606,
           "correct": true
@@ -3187,9 +3175,25 @@
         {
           "ts": 1793105265165,
           "correct": true
+        },
+        {
+          "ts": 1793105506286,
+          "correct": true
+        },
+        {
+          "ts": 1793105568439,
+          "correct": false
+        },
+        {
+          "ts": 1793105591952,
+          "correct": false
+        },
+        {
+          "ts": 1793105593377,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793105265165
+      "lastAttemptTs": 1793105593377
     },
     "Rhetorical Synthesis": {
       "correct": 22,
@@ -4752,10 +4756,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 4024485,
+      "totalMs": 4163753,
       "viewMs": {
         "math": 713,
-        "browse": 4008759,
+        "browse": 4148027,
         "leaderboard": 15013
       },
       "categoryMs": {}
@@ -12769,7 +12773,27 @@
         "ts": 1793105265165,
         "ms": 1529
       }
+    ],
+    "31e7d539": [
+      {
+        "ts": 1793105506286,
+        "ms": 238625
+      }
+    ],
+    "d3d6290e": [
+      {
+        "ts": 1793105568439,
+        "ms": 59273
+      },
+      {
+        "ts": 1793105591952,
+        "ms": 22585
+      },
+      {
+        "ts": 1793105593377,
+        "ms": 710
+      }
     ]
   },
-  "clientUpdatedAt": 1793105474974
+  "clientUpdatedAt": 1793105657591
 }
