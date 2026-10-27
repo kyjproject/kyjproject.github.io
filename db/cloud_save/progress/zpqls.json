@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T13:56:24.779Z",
+  "exportedAt": "2026-10-27T15:10:38.179Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1097,7 +1097,8 @@
     "6afef2f0": "done",
     "4b940410": "done",
     "57a235c7": "done",
-    "26b716e8": "done"
+    "26b716e8": "done",
+    "fcc7687a": "done"
   },
   "tags": {},
   "notes": {},
@@ -2183,7 +2184,8 @@
     "6afef2f0": "2026-10-27T13:53:03.369Z",
     "4b940410": "2026-10-27T13:53:36.069Z",
     "57a235c7": "2026-10-27T13:54:19.803Z",
-    "26b716e8": "2026-10-27T13:54:59.140Z"
+    "26b716e8": "2026-10-27T13:54:59.140Z",
+    "fcc7687a": "2026-10-27T15:10:21.902Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3094,13 +3096,9 @@
       "lastAttemptTs": 1793099726251
     },
     "Central Ideas and Details": {
-      "correct": 46,
-      "total": 87,
+      "correct": 47,
+      "total": 88,
       "recent": [
-        {
-          "ts": 1792827960527,
-          "correct": false
-        },
         {
           "ts": 1792827961738,
           "correct": true
@@ -3144,9 +3142,13 @@
         {
           "ts": 1792928560379,
           "correct": true
+        },
+        {
+          "ts": 1793113816551,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792928560379
+      "lastAttemptTs": 1793113816551
     },
     "Words in Context": {
       "correct": 12,
@@ -4417,10 +4419,6 @@
       "count": 2,
       "lastTs": 1792423298165
     },
-    "c9a3f3be": {
-      "count": 1,
-      "lastTs": 1792507862430
-    },
     "fcec7e76": {
       "count": 1,
       "lastTs": 1792508034862
@@ -4616,6 +4614,14 @@
     "073bd5b1": {
       "count": 1,
       "lastTs": 1793106910495
+    },
+    "fcc7687a": {
+      "count": 1,
+      "lastTs": 1793113670719
+    },
+    "c9a3f3be": {
+      "count": 1,
+      "lastTs": 1792507862430
     },
     "4e772803": {
       "count": 1,
@@ -4882,10 +4888,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 5712640,
+      "totalMs": 5857613,
       "viewMs": {
         "math": 713,
-        "browse": 5696914,
+        "browse": 5841887,
         "leaderboard": 15013
       },
       "categoryMs": {}
@@ -13371,7 +13377,13 @@
         "ts": 1793109297682,
         "ms": 107
       }
+    ],
+    "fcc7687a": [
+      {
+        "ts": 1793113816551,
+        "ms": 285050802
+      }
     ]
   },
-  "clientUpdatedAt": 1793109377191
+  "clientUpdatedAt": 1793113834861
 }
