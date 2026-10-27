@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T11:07:47.266Z",
+  "exportedAt": "2026-10-27T11:10:47.254Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1007,7 +1007,9 @@
     "f36559aa": "done",
     "fc5d8203": "done",
     "e419fb0d": "done",
-    "b96328a5": "done"
+    "b96328a5": "done",
+    "0b95e434": "done",
+    "95e9a9c1": "done"
   },
   "tags": {},
   "notes": {},
@@ -2003,7 +2005,9 @@
     "f36559aa": "2026-10-27T10:56:32.490Z",
     "fc5d8203": "2026-10-27T11:00:40.679Z",
     "e419fb0d": "2026-10-27T11:02:21.075Z",
-    "b96328a5": "2026-10-27T11:06:11.816Z"
+    "b96328a5": "2026-10-27T11:06:11.816Z",
+    "0b95e434": "2026-10-27T11:08:03.561Z",
+    "95e9a9c1": "2026-10-27T11:09:38.542Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2859,21 +2863,9 @@
       "lastAttemptTs": 1792928595575
     },
     "Cross-Text Connections": {
-      "correct": 16,
-      "total": 28,
+      "correct": 19,
+      "total": 31,
       "recent": [
-        {
-          "ts": 1792507946699,
-          "correct": false
-        },
-        {
-          "ts": 1792507949813,
-          "correct": false
-        },
-        {
-          "ts": 1792507951530,
-          "correct": true
-        },
         {
           "ts": 1792760933673,
           "correct": true
@@ -2909,9 +2901,21 @@
         {
           "ts": 1793099169333,
           "correct": true
+        },
+        {
+          "ts": 1793099281767,
+          "correct": true
+        },
+        {
+          "ts": 1793099377335,
+          "correct": true
+        },
+        {
+          "ts": 1793099444948,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793099169333
+      "lastAttemptTs": 1793099444948
     },
     "Central Ideas and Details": {
       "correct": 46,
@@ -4646,10 +4650,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 1923846,
+      "totalMs": 2053966,
       "viewMs": {
         "math": 713,
-        "browse": 1923133
+        "browse": 2053253
       },
       "categoryMs": {}
     }
@@ -12424,7 +12428,25 @@
         "ts": 1793099169333,
         "ms": 227409
       }
+    ],
+    "0b95e434": [
+      {
+        "ts": 1793099281767,
+        "ms": 108531
+      }
+    ],
+    "95e9a9c1": [
+      {
+        "ts": 1793099377335,
+        "ms": 92826
+      }
+    ],
+    "ba5d2c22": [
+      {
+        "ts": 1793099444948,
+        "ms": 65139
+      }
     ]
   },
-  "clientUpdatedAt": 1793099264918
+  "clientUpdatedAt": 1793099445004
 }
