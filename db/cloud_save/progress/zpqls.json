@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T15:22:42.940Z",
+  "exportedAt": "2026-10-27T15:25:43.588Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1101,7 +1101,9 @@
     "fcc7687a": "done",
     "3d7ee626": "done",
     "eb5814a5": "done",
-    "a61a35f5": "done"
+    "a61a35f5": "done",
+    "4e66210f": "done",
+    "5c38a6d5": "done"
   },
   "tags": {},
   "notes": {},
@@ -2191,7 +2193,9 @@
     "fcc7687a": "2026-10-27T15:10:21.902Z",
     "3d7ee626": "2026-10-27T15:13:54.876Z",
     "eb5814a5": "2026-10-27T15:18:43.492Z",
-    "a61a35f5": "2026-10-27T15:21:14.843Z"
+    "a61a35f5": "2026-10-27T15:21:14.843Z",
+    "4e66210f": "2026-10-27T15:24:07.849Z",
+    "5c38a6d5": "2026-10-27T15:24:41.580Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3102,21 +3106,9 @@
       "lastAttemptTs": 1793099726251
     },
     "Central Ideas and Details": {
-      "correct": 50,
-      "total": 96,
+      "correct": 51,
+      "total": 99,
       "recent": [
-        {
-          "ts": 1792829238662,
-          "correct": false
-        },
-        {
-          "ts": 1792829240550,
-          "correct": true
-        },
-        {
-          "ts": 1792928560379,
-          "correct": true
-        },
         {
           "ts": 1793113816551,
           "correct": true
@@ -3152,22 +3144,26 @@
         {
           "ts": 1793114468232,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793114468232
-    },
-    "Words in Context": {
-      "correct": 12,
-      "total": 24,
-      "recent": [
+        },
         {
-          "ts": 1790938368233,
+          "ts": 1793114615752,
           "correct": false
         },
         {
-          "ts": 1790938369675,
-          "correct": true
+          "ts": 1793114618870,
+          "correct": false
         },
+        {
+          "ts": 1793114619719,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793114619719
+    },
+    "Words in Context": {
+      "correct": 14,
+      "total": 26,
+      "recent": [
         {
           "ts": 1790944207689,
           "correct": true
@@ -3207,9 +3203,17 @@
         {
           "ts": 1792928560378,
           "correct": false
+        },
+        {
+          "ts": 1793114676094,
+          "correct": true
+        },
+        {
+          "ts": 1793114695247,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792928560378
+      "lastAttemptTs": 1793114695247
     },
     "Text Structure and Purpose": {
       "correct": 8,
@@ -4425,10 +4429,6 @@
       "count": 2,
       "lastTs": 1792423298165
     },
-    "fcec7e76": {
-      "count": 1,
-      "lastTs": 1792508034862
-    },
     "5684e9ad": {
       "count": 1,
       "lastTs": 1792508682479
@@ -4624,6 +4624,14 @@
     "fcc7687a": {
       "count": 1,
       "lastTs": 1793113670719
+    },
+    "5c38a6d5": {
+      "count": 1,
+      "lastTs": 1793114668632
+    },
+    "fcec7e76": {
+      "count": 1,
+      "lastTs": 1792508034862
     },
     "c9a3f3be": {
       "count": 1,
@@ -4894,10 +4902,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 6376785,
+      "totalMs": 6522900,
       "viewMs": {
         "math": 713,
-        "browse": 6361059,
+        "browse": 6507174,
         "leaderboard": 15013
       },
       "categoryMs": {}
@@ -13427,7 +13435,31 @@
         "ts": 1793114468232,
         "ms": 3523
       }
+    ],
+    "4e66210f": [
+      {
+        "ts": 1793114615752,
+        "ms": 139509
+      },
+      {
+        "ts": 1793114618870,
+        "ms": 2167
+      },
+      {
+        "ts": 1793114619719,
+        "ms": 77
+      }
+    ],
+    "5c38a6d5": [
+      {
+        "ts": 1793114676094,
+        "ms": 7461
+      },
+      {
+        "ts": 1793114695247,
+        "ms": 4984
+      }
     ]
   },
-  "clientUpdatedAt": 1793114559767
+  "clientUpdatedAt": 1793114740892
 }
