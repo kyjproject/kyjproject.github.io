@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T10:46:27.090Z",
+  "exportedAt": "2026-10-27T10:49:26.949Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1000,7 +1000,9 @@
     "9ba747e1": "done",
     "a01cc156": "done",
     "b74860b2": "done",
-    "7c196241": "done"
+    "7c196241": "done",
+    "94da9acc": "done",
+    "6a94c678": "done"
   },
   "tags": {},
   "notes": {},
@@ -1989,7 +1991,9 @@
     "9ba747e1": "2026-10-27T10:17:07.324Z",
     "a01cc156": "2026-10-27T10:21:37.205Z",
     "b74860b2": "2026-10-27T10:38:30.946Z",
-    "7c196241": "2026-10-27T10:41:25.976Z"
+    "7c196241": "2026-10-27T10:41:25.976Z",
+    "94da9acc": "2026-10-27T10:47:23.660Z",
+    "6a94c678": "2026-10-27T10:48:54.667Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2625,13 +2629,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 42,
-      "total": 67,
+      "correct": 43,
+      "total": 68,
       "recent": [
-        {
-          "ts": 1792596391539,
-          "correct": true
-        },
         {
           "ts": 1792596401733,
           "correct": true
@@ -2675,18 +2675,18 @@
         {
           "ts": 1793097848998,
           "correct": true
+        },
+        {
+          "ts": 1793098132944,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793097848998
+      "lastAttemptTs": 1793098132944
     },
     "Command of Evidence (Textual)": {
-      "correct": 54,
-      "total": 92,
+      "correct": 55,
+      "total": 93,
       "recent": [
-        {
-          "ts": 1792926926483,
-          "correct": true
-        },
         {
           "ts": 1792928560379,
           "correct": true
@@ -2730,9 +2730,13 @@
         {
           "ts": 1793097681566,
           "correct": true
+        },
+        {
+          "ts": 1793098041787,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793097681566
+      "lastAttemptTs": 1793098041787
     },
     "Boundaries": {
       "correct": 181,
@@ -4620,10 +4624,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 1154365,
+      "totalMs": 1256492,
       "viewMs": {
         "math": 713,
-        "browse": 1153652
+        "browse": 1255779
       },
       "categoryMs": {}
     }
@@ -12336,7 +12340,19 @@
         "ts": 1793097681566,
         "ms": 288
       }
+    ],
+    "94da9acc": [
+      {
+        "ts": 1793098041787,
+        "ms": 174285
+      }
+    ],
+    "6a94c678": [
+      {
+        "ts": 1793098132944,
+        "ms": 87381
+      }
     ]
   },
-  "clientUpdatedAt": 1793097984199
+  "clientUpdatedAt": 1793098163207
 }
