@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T10:58:27.116Z",
+  "exportedAt": "2026-10-27T11:01:39.144Z",
   "progress": {
     "16915678": "done",
     "26452262": "done",
@@ -1004,7 +1004,8 @@
     "94da9acc": "done",
     "6a94c678": "done",
     "1b422cf9": "done",
-    "f36559aa": "done"
+    "f36559aa": "done",
+    "fc5d8203": "done"
   },
   "tags": {},
   "notes": {},
@@ -1997,7 +1998,8 @@
     "94da9acc": "2026-10-27T10:47:23.660Z",
     "6a94c678": "2026-10-27T10:48:54.667Z",
     "1b422cf9": "2026-10-27T10:52:18.147Z",
-    "f36559aa": "2026-10-27T10:56:32.490Z"
+    "f36559aa": "2026-10-27T10:56:32.490Z",
+    "fc5d8203": "2026-10-27T11:00:40.679Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2853,17 +2855,9 @@
       "lastAttemptTs": 1792928595575
     },
     "Cross-Text Connections": {
-      "correct": 13,
-      "total": 21,
+      "correct": 14,
+      "total": 23,
       "recent": [
-        {
-          "ts": 1792507597931,
-          "correct": false
-        },
-        {
-          "ts": 1792507603732,
-          "correct": false
-        },
         {
           "ts": 1792507606462,
           "correct": true
@@ -2903,9 +2897,17 @@
         {
           "ts": 1792928560379,
           "correct": true
+        },
+        {
+          "ts": 1793098836225,
+          "correct": false
+        },
+        {
+          "ts": 1793098837821,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792928560379
+      "lastAttemptTs": 1793098837821
     },
     "Central Ideas and Details": {
       "correct": 46,
@@ -4183,18 +4185,6 @@
       "count": 2,
       "lastTs": 1792323852920
     },
-    "453fdf25": {
-      "count": 1,
-      "lastTs": 1792324760498
-    },
-    "a0f3b38c": {
-      "count": 1,
-      "lastTs": 1792325254088
-    },
-    "3858f84c": {
-      "count": 1,
-      "lastTs": 1792325907297
-    },
     "fd88c8b1": {
       "count": 5,
       "lastTs": 1792758403602
@@ -4352,8 +4342,8 @@
       "lastTs": 1792945637330
     },
     "cec9c34f": {
-      "count": 1,
-      "lastTs": 1792946690619
+      "count": 3,
+      "lastTs": 1793098776239
     },
     "b3f00f4b": {
       "count": 1,
@@ -4394,6 +4384,30 @@
     "c83508f3": {
       "count": 1,
       "lastTs": 1793055577862
+    },
+    "e038ac56": {
+      "count": 1,
+      "lastTs": 1793098758707
+    },
+    "f36559aa": {
+      "count": 1,
+      "lastTs": 1793098766691
+    },
+    "fc5d8203": {
+      "count": 1,
+      "lastTs": 1793098783654
+    },
+    "453fdf25": {
+      "count": 1,
+      "lastTs": 1792324760498
+    },
+    "a0f3b38c": {
+      "count": 1,
+      "lastTs": 1792325254088
+    },
+    "3858f84c": {
+      "count": 1,
+      "lastTs": 1792325907297
     },
     "2cd8bd76": {
       "count": 1,
@@ -4628,10 +4642,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 1583177,
+      "totalMs": 1691327,
       "viewMs": {
         "math": 713,
-        "browse": 1582464
+        "browse": 1690614
       },
       "categoryMs": {}
     }
@@ -12372,7 +12386,17 @@
         "ts": 1793098590701,
         "ms": 251320
       }
+    ],
+    "fc5d8203": [
+      {
+        "ts": 1793098836225,
+        "ms": 52570
+      },
+      {
+        "ts": 1793098837821,
+        "ms": 600
+      }
     ]
   },
-  "clientUpdatedAt": 1793098697500
+  "clientUpdatedAt": 1793098896611
 }
