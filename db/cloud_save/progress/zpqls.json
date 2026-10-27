@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T12:45:12.268Z",
+  "exportedAt": "2026-10-27T12:48:19.120Z",
   "progress": {
     "16915678": "done",
     "26267909": "done",
@@ -1034,7 +1034,9 @@
     "a28ad182": "done",
     "4dc3479b": "done",
     "5b3e644c": "done",
-    "b5c05ec8": "done"
+    "b5c05ec8": "done",
+    "8ee78de3": "done",
+    "42ffc043": "done"
   },
   "tags": {},
   "notes": {},
@@ -2057,7 +2059,9 @@
     "a28ad182": "2026-10-27T12:20:05.695Z",
     "4dc3479b": "2026-10-27T12:27:45.137Z",
     "5b3e644c": "2026-10-27T12:42:52.531Z",
-    "b5c05ec8": "2026-10-27T12:44:35.475Z"
+    "b5c05ec8": "2026-10-27T12:44:35.475Z",
+    "8ee78de3": "2026-10-27T12:46:36.264Z",
+    "42ffc043": "2026-10-27T12:47:46.819Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3133,21 +3137,9 @@
       "lastAttemptTs": 1792928749061
     },
     "Inferences": {
-      "correct": 10,
-      "total": 13,
+      "correct": 12,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1790937110306,
-          "correct": true
-        },
-        {
-          "ts": 1792760933673,
-          "correct": true
-        },
-        {
-          "ts": 1792928560379,
-          "correct": true
-        },
         {
           "ts": 1793103601587,
           "correct": true
@@ -3179,9 +3171,25 @@
         {
           "ts": 1793105073221,
           "correct": true
+        },
+        {
+          "ts": 1793105182780,
+          "correct": false
+        },
+        {
+          "ts": 1793105194386,
+          "correct": true
+        },
+        {
+          "ts": 1793105262625,
+          "correct": false
+        },
+        {
+          "ts": 1793105265165,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793105073221
+      "lastAttemptTs": 1793105265165
     },
     "Rhetorical Synthesis": {
       "correct": 22,
@@ -4744,10 +4752,10 @@
       "categoryMs": {}
     },
     "2026-10-27": {
-      "totalMs": 3913956,
+      "totalMs": 4024485,
       "viewMs": {
         "math": 713,
-        "browse": 3898230,
+        "browse": 4008759,
         "leaderboard": 15013
       },
       "categoryMs": {}
@@ -12741,7 +12749,27 @@
         "ts": 1793105073221,
         "ms": 15992
       }
+    ],
+    "8ee78de3": [
+      {
+        "ts": 1793105182780,
+        "ms": 106269
+      },
+      {
+        "ts": 1793105194386,
+        "ms": 10625
+      }
+    ],
+    "42ffc043": [
+      {
+        "ts": 1793105262625,
+        "ms": 65426
+      },
+      {
+        "ts": 1793105265165,
+        "ms": 1529
+      }
     ]
   },
-  "clientUpdatedAt": 1793105109088
+  "clientUpdatedAt": 1793105292842
 }
