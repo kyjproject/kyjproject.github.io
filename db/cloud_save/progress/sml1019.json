@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-27T10:51:28.652Z",
+  "exportedAt": "2026-10-27T10:54:28.824Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -1244,15 +1244,19 @@
       "lastAttemptTs": 1792575201001
     },
     "Words in Context": {
-      "correct": 0,
-      "total": 1,
+      "correct": 1,
+      "total": 2,
       "recent": [
         {
           "ts": 1792061209345,
           "correct": false
+        },
+        {
+          "ts": 1793098445420,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792061209345
+      "lastAttemptTs": 1793098445420
     }
   },
   "progressFocus": [
@@ -1526,16 +1530,16 @@
       }
     },
     "2026-10-27": {
-      "totalMs": 1069742,
+      "totalMs": 1177567,
       "viewMs": {
         "mock": 800165,
         "test": 95016,
-        "practice": 174561
+        "practice": 282386
       },
       "categoryMs": {
         "Algebra": 35003,
         "Advanced Math": 356056,
-        "Vocab": 174561
+        "Vocab": 282386
       }
     }
   },
@@ -1659,7 +1663,13 @@
         "ts": 1793011182266,
         "ms": 644
       }
+    ],
+    "318da9d3": [
+      {
+        "ts": 1793098445420,
+        "ms": 530373
+      }
     ]
   },
-  "clientUpdatedAt": 1793098286227
+  "clientUpdatedAt": 1793098466225
 }
