@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T10:44:40.158Z",
+  "exportedAt": "2026-10-28T10:47:41.347Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1117,7 +1117,9 @@
     "45abd366": "done",
     "72bf9318": "done",
     "408d3547": "done",
-    "f0b332e0": "done"
+    "f0b332e0": "done",
+    "1c7b6b0a": "done",
+    "b63f5259": "done"
   },
   "tags": {},
   "notes": {},
@@ -2223,7 +2225,9 @@
     "45abd366": "2026-10-28T10:42:09.189Z",
     "72bf9318": "2026-10-28T10:42:20.786Z",
     "408d3547": "2026-10-28T10:42:38.413Z",
-    "f0b332e0": "2026-10-28T10:43:10.511Z"
+    "f0b332e0": "2026-10-28T10:43:10.511Z",
+    "1c7b6b0a": "2026-10-28T10:47:09.627Z",
+    "b63f5259": "2026-10-28T10:47:16.244Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3464,17 +3468,9 @@
       "lastAttemptTs": 1792928718609
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 49,
-      "total": 52,
+      "correct": 51,
+      "total": 54,
       "recent": [
-        {
-          "ts": 1792924150050,
-          "correct": true
-        },
-        {
-          "ts": 1792924200871,
-          "correct": true
-        },
         {
           "ts": 1792924224519,
           "correct": true
@@ -3514,9 +3510,17 @@
         {
           "ts": 1793184156993,
           "correct": true
+        },
+        {
+          "ts": 1793184427662,
+          "correct": true
+        },
+        {
+          "ts": 1793184435124,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793184156993
+      "lastAttemptTs": 1793184435124
     },
     "Nonlinear functions": {
       "correct": 82,
@@ -4951,10 +4955,10 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 463087,
+      "totalMs": 568189,
       "viewMs": {
         "browse": 137496,
-        "math": 325591
+        "math": 430693
       },
       "categoryMs": {}
     }
@@ -13615,7 +13619,19 @@
         "ts": 1793184189461,
         "ms": 30267
       }
+    ],
+    "1c7b6b0a": [
+      {
+        "ts": 1793184427662,
+        "ms": 236274
+      }
+    ],
+    "b63f5259": [
+      {
+        "ts": 1793184435124,
+        "ms": 4598
+      }
     ]
   },
-  "clientUpdatedAt": 1793184276411
+  "clientUpdatedAt": 1793184456585
 }
