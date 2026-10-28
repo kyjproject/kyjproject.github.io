@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T12:06:32.214Z",
+  "exportedAt": "2026-10-28T12:11:58.251Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1158,7 +1158,9 @@
     "206ecbfd": "done",
     "6736cf78": "done",
     "6d871dd5": "done",
-    "ae533b64": "done"
+    "ae533b64": "done",
+    "3acc2d54": "done",
+    "f176ef9e": "done"
   },
   "tags": {},
   "notes": {},
@@ -2304,7 +2306,8 @@
     "6736cf78": "2026-10-28T12:00:40.472Z",
     "6d871dd5": "2026-10-28T12:03:17.543Z",
     "ae533b64": "2026-10-28T12:04:02.956Z",
-    "3acc2d54": "2026-10-28T12:05:33.090Z"
+    "3acc2d54": "2026-10-28T12:05:33.090Z",
+    "f176ef9e": "2026-10-28T12:11:57.971Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -2995,25 +2998,9 @@
       "lastAttemptTs": 1793098331925
     },
     "Command of Evidence (Textual)": {
-      "correct": 79,
-      "total": 125,
+      "correct": 81,
+      "total": 129,
       "recent": [
-        {
-          "ts": 1793102160578,
-          "correct": true
-        },
-        {
-          "ts": 1793102650487,
-          "correct": true
-        },
-        {
-          "ts": 1793102887981,
-          "correct": true
-        },
-        {
-          "ts": 1793102892014,
-          "correct": false
-        },
         {
           "ts": 1793102893364,
           "correct": true
@@ -3045,9 +3032,25 @@
         {
           "ts": 1793189041479,
           "correct": true
+        },
+        {
+          "ts": 1793189226572,
+          "correct": true
+        },
+        {
+          "ts": 1793189259341,
+          "correct": false
+        },
+        {
+          "ts": 1793189284256,
+          "correct": false
+        },
+        {
+          "ts": 1793189285855,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793189041479
+      "lastAttemptTs": 1793189285855
     },
     "Boundaries": {
       "correct": 202,
@@ -5040,9 +5043,9 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 3123309,
+      "totalMs": 3228316,
       "viewMs": {
-        "browse": 2045186,
+        "browse": 2150193,
         "math": 1078123
       },
       "categoryMs": {}
@@ -14028,7 +14031,27 @@
         "ts": 1793189041480,
         "ms": 43190
       }
+    ],
+    "3acc2d54": [
+      {
+        "ts": 1793189226572,
+        "ms": 182918
+      }
+    ],
+    "f176ef9e": [
+      {
+        "ts": 1793189259341,
+        "ms": 24324
+      },
+      {
+        "ts": 1793189284256,
+        "ms": 23682
+      },
+      {
+        "ts": 1793189285855,
+        "ms": 166
+      }
     ]
   },
-  "clientUpdatedAt": 1793189191491
+  "clientUpdatedAt": 1793189515547
 }
