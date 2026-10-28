@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T09:56:06.049Z",
+  "exportedAt": "2026-10-28T09:59:13.884Z",
   "progress": {
     "31926070": "review",
     "37036956": "review",
@@ -1244,8 +1244,8 @@
       "lastAttemptTs": 1792575201001
     },
     "Words in Context": {
-      "correct": 2,
-      "total": 4,
+      "correct": 4,
+      "total": 6,
       "recent": [
         {
           "ts": 1792061209345,
@@ -1262,9 +1262,17 @@
         {
           "ts": 1793098481880,
           "correct": true
+        },
+        {
+          "ts": 1793181434674,
+          "correct": true
+        },
+        {
+          "ts": 1793181447596,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793098481880
+      "lastAttemptTs": 1793181447596
     }
   },
   "progressFocus": [
@@ -1552,16 +1560,16 @@
       }
     },
     "2026-10-28": {
-      "totalMs": 475278,
+      "totalMs": 538276,
       "viewMs": {
         "mock": 410619,
-        "practice": 64659
+        "practice": 127657
       },
       "categoryMs": {
         "Advanced Math": 71071,
         "Algebra": 226426,
         "Geometry and Trigonometry": 95005,
-        "Vocab": 34656
+        "Vocab": 97654
       }
     }
   },
@@ -1701,7 +1709,19 @@
         "ts": 1793098481880,
         "ms": 578
       }
+    ],
+    "4de321d6": [
+      {
+        "ts": 1793181434674,
+        "ms": 1761855
+      }
+    ],
+    "cb771ec1": [
+      {
+        "ts": 1793181447597,
+        "ms": 8860
+      }
     ]
   },
-  "clientUpdatedAt": 1793181363311
+  "clientUpdatedAt": 1793181553038
 }
