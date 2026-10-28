@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T11:29:43.240Z",
+  "exportedAt": "2026-10-28T11:32:42.935Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1142,7 +1142,8 @@
     "d3888864": "done",
     "7348aee6": "done",
     "21f19050": "done",
-    "f60a20af": "done"
+    "f60a20af": "done",
+    "bcb73490": "done"
   },
   "tags": {},
   "notes": {},
@@ -2273,7 +2274,8 @@
     "d3888864": "2026-10-28T11:18:01.923Z",
     "7348aee6": "2026-10-28T11:27:19.912Z",
     "21f19050": "2026-10-28T11:28:30.846Z",
-    "f60a20af": "2026-10-28T11:29:12.876Z"
+    "f60a20af": "2026-10-28T11:29:12.876Z",
+    "bcb73490": "2026-10-28T11:31:24.275Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3404,21 +3406,9 @@
       "lastAttemptTs": 1793106907126
     },
     "Rhetorical Synthesis": {
-      "correct": 26,
-      "total": 45,
+      "correct": 27,
+      "total": 48,
       "recent": [
-        {
-          "ts": 1792552091453,
-          "correct": true
-        },
-        {
-          "ts": 1792553686334,
-          "correct": true
-        },
-        {
-          "ts": 1792760933674,
-          "correct": true
-        },
         {
           "ts": 1792928560380,
           "correct": true
@@ -3454,9 +3444,21 @@
         {
           "ts": 1793186949441,
           "correct": true
+        },
+        {
+          "ts": 1793187072641,
+          "correct": false
+        },
+        {
+          "ts": 1793187074509,
+          "correct": false
+        },
+        {
+          "ts": 1793187075376,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793186949441
+      "lastAttemptTs": 1793187075376
     },
     "Transitions": {
       "correct": 16,
@@ -5009,9 +5011,9 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 1439434,
+      "totalMs": 1562336,
       "viewMs": {
-        "browse": 361311,
+        "browse": 484213,
         "math": 1078123
       },
       "categoryMs": {}
@@ -13849,7 +13851,21 @@
         "ts": 1793186949442,
         "ms": 2517
       }
+    ],
+    "bcb73490": [
+      {
+        "ts": 1793187072641,
+        "ms": 118161
+      },
+      {
+        "ts": 1793187074509,
+        "ms": 550
+      },
+      {
+        "ts": 1793187075376,
+        "ms": 185
+      }
     ]
   },
-  "clientUpdatedAt": 1793186983048
+  "clientUpdatedAt": 1793187159184
 }
