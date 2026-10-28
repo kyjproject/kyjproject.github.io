@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T12:19:45.611Z",
+  "exportedAt": "2026-10-28T12:22:45.941Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1162,7 +1162,9 @@
     "3acc2d54": "done",
     "f176ef9e": "done",
     "60fbd7fe": "done",
-    "480a02dd": "done"
+    "480a02dd": "done",
+    "b864fb8e": "done",
+    "ca62f45d": "done"
   },
   "tags": {},
   "notes": {},
@@ -2311,7 +2313,9 @@
     "3acc2d54": "2026-10-28T12:05:33.090Z",
     "f176ef9e": "2026-10-28T12:11:57.971Z",
     "60fbd7fe": "2026-10-28T12:12:55.258Z",
-    "480a02dd": "2026-10-28T12:14:01.440Z"
+    "480a02dd": "2026-10-28T12:14:01.440Z",
+    "b864fb8e": "2026-10-28T12:20:20.742Z",
+    "ca62f45d": "2026-10-28T12:22:39.880Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3002,21 +3006,9 @@
       "lastAttemptTs": 1793098331925
     },
     "Command of Evidence (Textual)": {
-      "correct": 83,
-      "total": 131,
+      "correct": 85,
+      "total": 134,
       "recent": [
-        {
-          "ts": 1793103045349,
-          "correct": true
-        },
-        {
-          "ts": 1793103094551,
-          "correct": true
-        },
-        {
-          "ts": 1793188689927,
-          "correct": true
-        },
         {
           "ts": 1793188839044,
           "correct": true
@@ -3052,9 +3044,21 @@
         {
           "ts": 1793189639177,
           "correct": true
+        },
+        {
+          "ts": 1793190018476,
+          "correct": true
+        },
+        {
+          "ts": 1793190155117,
+          "correct": false
+        },
+        {
+          "ts": 1793190158057,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793189639177
+      "lastAttemptTs": 1793190158057
     },
     "Boundaries": {
       "correct": 202,
@@ -5047,9 +5051,9 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 3371834,
+      "totalMs": 3476770,
       "viewMs": {
-        "browse": 2293711,
+        "browse": 2398647,
         "math": 1078123
       },
       "categoryMs": {}
@@ -14067,7 +14071,23 @@
         "ts": 1793189639177,
         "ms": 62990
       }
+    ],
+    "b864fb8e": [
+      {
+        "ts": 1793190018477,
+        "ms": 375840
+      }
+    ],
+    "ca62f45d": [
+      {
+        "ts": 1793190155117,
+        "ms": 133673
+      },
+      {
+        "ts": 1793190158057,
+        "ms": 451
+      }
     ]
   },
-  "clientUpdatedAt": 1793189982302
+  "clientUpdatedAt": 1793190160646
 }
