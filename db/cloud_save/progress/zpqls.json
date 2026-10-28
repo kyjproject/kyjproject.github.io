@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T11:45:32.206Z",
+  "exportedAt": "2026-10-28T11:48:32.081Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1149,7 +1149,8 @@
     "1f851ceb": "done",
     "7dfc7064": "done",
     "3011fe39": "done",
-    "afc8b561": "done"
+    "afc8b561": "done",
+    "bc6c4fd8": "done"
   },
   "tags": {},
   "notes": {},
@@ -2287,7 +2288,8 @@
     "1f851ceb": "2026-10-28T11:36:08.298Z",
     "7dfc7064": "2026-10-28T11:38:09.898Z",
     "3011fe39": "2026-10-28T11:39:11.298Z",
-    "afc8b561": "2026-10-28T11:43:39.805Z"
+    "afc8b561": "2026-10-28T11:43:39.805Z",
+    "bc6c4fd8": "2026-10-28T11:45:57.653Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3418,29 +3420,9 @@
       "lastAttemptTs": 1793106907126
     },
     "Rhetorical Synthesis": {
-      "correct": 33,
-      "total": 61,
+      "correct": 35,
+      "total": 66,
       "recent": [
-        {
-          "ts": 1793187197926,
-          "correct": false
-        },
-        {
-          "ts": 1793187206515,
-          "correct": false
-        },
-        {
-          "ts": 1793187214445,
-          "correct": true
-        },
-        {
-          "ts": 1793187335791,
-          "correct": true
-        },
-        {
-          "ts": 1793187364545,
-          "correct": true
-        },
         {
           "ts": 1793187486843,
           "correct": false
@@ -3468,9 +3450,29 @@
         {
           "ts": 1793187929140,
           "correct": false
+        },
+        {
+          "ts": 1793187942949,
+          "correct": true
+        },
+        {
+          "ts": 1793188050644,
+          "correct": false
+        },
+        {
+          "ts": 1793188052050,
+          "correct": false
+        },
+        {
+          "ts": 1793188053725,
+          "correct": false
+        },
+        {
+          "ts": 1793188054681,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793187929140
+      "lastAttemptTs": 1793188054681
     },
     "Transitions": {
       "correct": 16,
@@ -5023,9 +5025,9 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 2109689,
+      "totalMs": 2279960,
       "viewMs": {
-        "browse": 1031566,
+        "browse": 1201837,
         "math": 1078123
       },
       "categoryMs": {}
@@ -13942,8 +13944,30 @@
       {
         "ts": 1793187929140,
         "ms": 108220
+      },
+      {
+        "ts": 1793187942949,
+        "ms": 12632
+      }
+    ],
+    "52e1ba18": [
+      {
+        "ts": 1793188050644,
+        "ms": 92008
+      },
+      {
+        "ts": 1793188052050,
+        "ms": 312
+      },
+      {
+        "ts": 1793188053725,
+        "ms": 727
+      },
+      {
+        "ts": 1793188054681,
+        "ms": 174
       }
     ]
   },
-  "clientUpdatedAt": 1793187931554
+  "clientUpdatedAt": 1793188111924
 }
