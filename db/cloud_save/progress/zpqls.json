@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T11:38:42.681Z",
+  "exportedAt": "2026-10-28T11:42:32.060Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1147,7 +1147,8 @@
     "f812bbff": "done",
     "e261a81f": "done",
     "1f851ceb": "done",
-    "7dfc7064": "done"
+    "7dfc7064": "done",
+    "3011fe39": "done"
   },
   "tags": {},
   "notes": {},
@@ -2283,7 +2284,8 @@
     "f812bbff": "2026-10-28T11:34:45.645Z",
     "e261a81f": "2026-10-28T11:35:38.693Z",
     "1f851ceb": "2026-10-28T11:36:08.298Z",
-    "7dfc7064": "2026-10-28T11:38:09.898Z"
+    "7dfc7064": "2026-10-28T11:38:09.898Z",
+    "3011fe39": "2026-10-28T11:39:11.298Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3414,25 +3416,9 @@
       "lastAttemptTs": 1793106907126
     },
     "Rhetorical Synthesis": {
-      "correct": 31,
-      "total": 56,
+      "correct": 33,
+      "total": 60,
       "recent": [
-        {
-          "ts": 1793186949441,
-          "correct": true
-        },
-        {
-          "ts": 1793187072641,
-          "correct": false
-        },
-        {
-          "ts": 1793187074509,
-          "correct": false
-        },
-        {
-          "ts": 1793187075376,
-          "correct": true
-        },
         {
           "ts": 1793187192246,
           "correct": false
@@ -3464,9 +3450,25 @@
         {
           "ts": 1793187488089,
           "correct": true
+        },
+        {
+          "ts": 1793187549829,
+          "correct": true
+        },
+        {
+          "ts": 1793187638525,
+          "correct": false
+        },
+        {
+          "ts": 1793187642025,
+          "correct": false
+        },
+        {
+          "ts": 1793187643447,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793187488089
+      "lastAttemptTs": 1793187643447
     },
     "Transitions": {
       "correct": 16,
@@ -5019,9 +5021,9 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 1832538,
+      "totalMs": 1954907,
       "viewMs": {
-        "browse": 754415,
+        "browse": 876784,
         "math": 1078123
       },
       "categoryMs": {}
@@ -13913,7 +13915,27 @@
         "ts": 1793187488090,
         "ms": 213
       }
+    ],
+    "3011fe39": [
+      {
+        "ts": 1793187549829,
+        "ms": 58995
+      }
+    ],
+    "afc8b561": [
+      {
+        "ts": 1793187638525,
+        "ms": 86490
+      },
+      {
+        "ts": 1793187642025,
+        "ms": 1558
+      },
+      {
+        "ts": 1793187643447,
+        "ms": 328
+      }
     ]
   },
-  "clientUpdatedAt": 1793187522353
+  "clientUpdatedAt": 1793187749381
 }
