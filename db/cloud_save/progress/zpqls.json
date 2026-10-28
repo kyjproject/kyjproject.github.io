@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-28T10:38:40.226Z",
+  "exportedAt": "2026-10-28T10:41:40.362Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1108,7 +1108,12 @@
     "123cf5db": "review",
     "5fcb69f9": "done",
     "72ae84d8": "done",
-    "362db9f6": "done"
+    "362db9f6": "done",
+    "696e199b": "done",
+    "c9f2f07d": "done",
+    "6fbfbe0d": "done",
+    "5bfaf155": "done",
+    "67373f12": "done"
   },
   "tags": {},
   "notes": {},
@@ -2205,7 +2210,12 @@
     "123cf5db": "2026-10-27T15:42:58.479Z",
     "5fcb69f9": "2026-10-28T10:36:01.732Z",
     "72ae84d8": "2026-10-28T10:37:35.568Z",
-    "362db9f6": "2026-10-28T10:38:26.899Z"
+    "362db9f6": "2026-10-28T10:38:26.899Z",
+    "696e199b": "2026-10-28T10:39:31.136Z",
+    "c9f2f07d": "2026-10-28T10:40:34.537Z",
+    "6fbfbe0d": "2026-10-28T10:40:44.835Z",
+    "5bfaf155": "2026-10-28T10:40:54.852Z",
+    "67373f12": "2026-10-28T10:41:39.654Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3446,21 +3456,9 @@
       "lastAttemptTs": 1792928718609
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 45,
-      "total": 47,
+      "correct": 48,
+      "total": 50,
       "recent": [
-        {
-          "ts": 1792830674531,
-          "correct": true
-        },
-        {
-          "ts": 1792921927302,
-          "correct": true
-        },
-        {
-          "ts": 1792921933956,
-          "correct": true
-        },
         {
           "ts": 1792921944370,
           "correct": true
@@ -3496,22 +3494,26 @@
         {
           "ts": 1792924292437,
           "correct": true
+        },
+        {
+          "ts": 1793183969590,
+          "correct": true
+        },
+        {
+          "ts": 1793184043996,
+          "correct": true
+        },
+        {
+          "ts": 1793184053286,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792924292437
+      "lastAttemptTs": 1793184053286
     },
     "Nonlinear functions": {
-      "correct": 78,
-      "total": 92,
+      "correct": 80,
+      "total": 94,
       "recent": [
-        {
-          "ts": 1792831431329,
-          "correct": true
-        },
-        {
-          "ts": 1792831456256,
-          "correct": true
-        },
         {
           "ts": 1792831466809,
           "correct": false
@@ -3551,9 +3553,17 @@
         {
           "ts": 1792924269007,
           "correct": true
+        },
+        {
+          "ts": 1793184028498,
+          "correct": true
+        },
+        {
+          "ts": 1793184097658,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1792924269007
+      "lastAttemptTs": 1793184097658
     },
     "Equivalent expressions": {
       "correct": 38,
@@ -4439,10 +4449,6 @@
       "count": 2,
       "lastTs": 1792423298165
     },
-    "b346d913": {
-      "count": 1,
-      "lastTs": 1792510007585
-    },
     "0a017199": {
       "count": 1,
       "lastTs": 1792553921781
@@ -4638,6 +4644,14 @@
     "72ae84d8": {
       "count": 1,
       "lastTs": 1793183775865
+    },
+    "696e199b": {
+      "count": 1,
+      "lastTs": 1793183921821
+    },
+    "b346d913": {
+      "count": 1,
+      "lastTs": 1792510007585
     },
     "5684e9ad": {
       "count": 1,
@@ -4929,10 +4943,10 @@
       "categoryMs": {}
     },
     "2026-10-28": {
-      "totalMs": 142500,
+      "totalMs": 282886,
       "viewMs": {
         "browse": 137496,
-        "math": 5004
+        "math": 145390
       },
       "categoryMs": {}
     }
@@ -13535,7 +13549,37 @@
         "ts": 1793183905057,
         "ms": 48724
       }
+    ],
+    "696e199b": [
+      {
+        "ts": 1793183969590,
+        "ms": 47763
+      }
+    ],
+    "c9f2f07d": [
+      {
+        "ts": 1793184028498,
+        "ms": 56523
+      }
+    ],
+    "6fbfbe0d": [
+      {
+        "ts": 1793184043996,
+        "ms": 8640
+      }
+    ],
+    "5bfaf155": [
+      {
+        "ts": 1793184053286,
+        "ms": 7765
+      }
+    ],
+    "67373f12": [
+      {
+        "ts": 1793184097658,
+        "ms": 42153
+      }
     ]
   },
-  "clientUpdatedAt": 1793183919811
+  "clientUpdatedAt": 1793184096210
 }
