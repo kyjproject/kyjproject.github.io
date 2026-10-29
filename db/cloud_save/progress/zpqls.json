@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T10:51:44.201Z",
+  "exportedAt": "2026-10-29T10:54:44.224Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1435,7 +1435,8 @@
     "274d8844": "done",
     "4f3ce312": "done",
     "001228f7": "done",
-    "a7212549": "review"
+    "a7212549": "review",
+    "de17a78b": "done"
   },
   "tags": {},
   "notes": {},
@@ -2852,7 +2853,8 @@
     "a3df6d00": "2026-10-29T10:16:29.711Z",
     "274d8844": "2026-10-29T10:17:08.799Z",
     "4f3ce312": "2026-10-29T10:20:14.581Z",
-    "001228f7": "2026-10-29T10:20:30.994Z"
+    "001228f7": "2026-10-29T10:20:30.994Z",
+    "de17a78b": "2026-10-29T10:53:34.556Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4038,13 +4040,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 142,
-      "total": 228,
+      "correct": 143,
+      "total": 229,
       "recent": [
-        {
-          "ts": 1793268864039,
-          "correct": true
-        },
         {
           "ts": 1793268908202,
           "correct": true
@@ -4088,9 +4086,13 @@
         {
           "ts": 1793269272181,
           "correct": true
+        },
+        {
+          "ts": 1793271212676,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793269272181
+      "lastAttemptTs": 1793271212676
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 79,
@@ -5696,9 +5698,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 9278349,
+      "totalMs": 9386858,
       "viewMs": {
-        "browse": 6943964,
+        "browse": 7052473,
         "mock": 50038,
         "math": 2176436,
         "profile": 62875,
@@ -16787,7 +16789,13 @@
         "ts": 1793269272181,
         "ms": 183
       }
+    ],
+    "de17a78b": [
+      {
+        "ts": 1793271212676,
+        "ms": 1937715
+      }
     ]
   },
-  "clientUpdatedAt": 1793271102746
+  "clientUpdatedAt": 1793271276042
 }
