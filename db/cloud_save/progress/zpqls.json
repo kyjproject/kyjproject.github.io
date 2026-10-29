@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T12:04:07.127Z",
+  "exportedAt": "2026-10-29T12:07:07.193Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1454,7 +1454,8 @@
     "c8f23a34": "done",
     "edabd538": "done",
     "6c39d701": "done",
-    "563db219": "done"
+    "563db219": "done",
+    "8c6982c3": "done"
   },
   "tags": {},
   "notes": {},
@@ -2890,7 +2891,8 @@
     "c8f23a34": "2026-10-29T11:59:09.228Z",
     "edabd538": "2026-10-29T11:59:39.254Z",
     "6c39d701": "2026-10-29T12:00:18.839Z",
-    "563db219": "2026-10-29T12:01:56.577Z"
+    "563db219": "2026-10-29T12:01:56.577Z",
+    "8c6982c3": "2026-10-29T12:04:30.398Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4649,13 +4651,9 @@
       "lastAttemptTs": 1793255760914
     },
     "Linear functions": {
-      "correct": 65,
-      "total": 72,
+      "correct": 66,
+      "total": 73,
       "recent": [
-        {
-          "ts": 1792947303486,
-          "correct": true
-        },
         {
           "ts": 1792947341052,
           "correct": true
@@ -4699,9 +4697,13 @@
         {
           "ts": 1793255782169,
           "correct": true
+        },
+        {
+          "ts": 1793275468908,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793255782169
+      "lastAttemptTs": 1793275468908
     },
     "Linear inequalities in one or two variables": {
       "correct": 19,
@@ -5742,11 +5744,11 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 10561864,
+      "totalMs": 10591921,
       "viewMs": {
         "browse": 8177411,
         "mock": 50038,
-        "math": 2226504,
+        "math": 2256561,
         "profile": 62875,
         "practice": 5003,
         "leaderboard": 35028,
@@ -17015,7 +17017,13 @@
         "ts": 1793275315210,
         "ms": 94
       }
+    ],
+    "8c6982c3": [
+      {
+        "ts": 1793275468908,
+        "ms": 69761
+      }
     ]
   },
-  "clientUpdatedAt": 1793275442129
+  "clientUpdatedAt": 1793275619925
 }
