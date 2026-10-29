@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T03:13:46.057Z",
+  "exportedAt": "2026-10-29T03:16:47.339Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1242,7 +1242,12 @@
     "fe5eca98": "done",
     "c7528626": "done",
     "28a0ca32": "done",
-    "f20cc110": "done"
+    "f20cc110": "done",
+    "7248d5be": "done",
+    "581be4a1": "done",
+    "baa012ad": "done",
+    "e7696b61": "done",
+    "3a7aa34d": "done"
   },
   "tags": {},
   "notes": {},
@@ -2471,7 +2476,12 @@
     "fe5eca98": "2026-10-29T03:10:53.395Z",
     "c7528626": "2026-10-29T03:11:04.597Z",
     "28a0ca32": "2026-10-29T03:11:16.327Z",
-    "f20cc110": "2026-10-29T03:11:29.010Z"
+    "f20cc110": "2026-10-29T03:11:29.010Z",
+    "7248d5be": "2026-10-29T03:13:52.308Z",
+    "581be4a1": "2026-10-29T03:14:03.475Z",
+    "baa012ad": "2026-10-29T03:14:28.144Z",
+    "e7696b61": "2026-10-29T03:15:26.524Z",
+    "3a7aa34d": "2026-10-29T03:16:12.225Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3712,13 +3722,9 @@
       "lastAttemptTs": 1792928718609
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 71,
-      "total": 78,
+      "correct": 72,
+      "total": 79,
       "recent": [
-        {
-          "ts": 1793241496599,
-          "correct": true
-        },
         {
           "ts": 1793241525774,
           "correct": true
@@ -3762,26 +3768,18 @@
         {
           "ts": 1793243482344,
           "correct": false
+        },
+        {
+          "ts": 1793243667142,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793243482344
+      "lastAttemptTs": 1793243667142
     },
     "Nonlinear functions": {
-      "correct": 122,
-      "total": 142,
+      "correct": 124,
+      "total": 145,
       "recent": [
-        {
-          "ts": 1793242390426,
-          "correct": true
-        },
-        {
-          "ts": 1793242397382,
-          "correct": true
-        },
-        {
-          "ts": 1793243328168,
-          "correct": true
-        },
         {
           "ts": 1793243360561,
           "correct": true
@@ -3817,22 +3815,26 @@
         {
           "ts": 1793243451887,
           "correct": true
+        },
+        {
+          "ts": 1793243628961,
+          "correct": true
+        },
+        {
+          "ts": 1793243709045,
+          "correct": false
+        },
+        {
+          "ts": 1793243723376,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793243451887
+      "lastAttemptTs": 1793243723376
     },
     "Equivalent expressions": {
-      "correct": 45,
-      "total": 55,
+      "correct": 47,
+      "total": 57,
       "recent": [
-        {
-          "ts": 1792924167267,
-          "correct": true
-        },
-        {
-          "ts": 1792924207135,
-          "correct": true
-        },
         {
           "ts": 1792924216190,
           "correct": true
@@ -3872,9 +3874,17 @@
         {
           "ts": 1793243438226,
           "correct": true
+        },
+        {
+          "ts": 1793243642291,
+          "correct": true
+        },
+        {
+          "ts": 1793243770582,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793243438226
+      "lastAttemptTs": 1793243770582
     },
     "Circles": {
       "correct": 4,
@@ -5235,11 +5245,11 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 2741253,
+      "totalMs": 2846351,
       "viewMs": {
         "browse": 1398413,
         "mock": 40031,
-        "math": 1302809
+        "math": 1407907
       },
       "categoryMs": {}
     }
@@ -14816,7 +14826,41 @@
         "ts": 1793243482344,
         "ms": 5117
       }
+    ],
+    "7248d5be": [
+      {
+        "ts": 1793243628962,
+        "ms": 139035
+      }
+    ],
+    "581be4a1": [
+      {
+        "ts": 1793243642291,
+        "ms": 8776
+      }
+    ],
+    "baa012ad": [
+      {
+        "ts": 1793243667142,
+        "ms": 22828
+      }
+    ],
+    "e7696b61": [
+      {
+        "ts": 1793243709045,
+        "ms": 39438
+      },
+      {
+        "ts": 1793243723376,
+        "ms": 8906
+      }
+    ],
+    "3a7aa34d": [
+      {
+        "ts": 1793243770583,
+        "ms": 43025
+      }
     ]
   },
-  "clientUpdatedAt": 1793243622582
+  "clientUpdatedAt": 1793243804283
 }
