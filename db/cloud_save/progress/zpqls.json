@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T03:53:42.557Z",
+  "exportedAt": "2026-10-29T03:56:42.938Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1268,7 +1268,8 @@
     "4e564c4f": "review",
     "14bec4c8": "review",
     "04b15c4f": "done",
-    "f87d07d3": "done"
+    "f87d07d3": "done",
+    "410d7d28": "done"
   },
   "tags": {},
   "notes": {},
@@ -2521,7 +2522,8 @@
     "28a57ae5": "2026-10-29T03:27:45.188Z",
     "a56a50e6": "2026-10-29T03:44:18.056Z",
     "04b15c4f": "2026-10-29T03:51:23.915Z",
-    "f87d07d3": "2026-10-29T03:53:41.541Z"
+    "f87d07d3": "2026-10-29T03:53:41.541Z",
+    "410d7d28": "2026-10-29T03:56:07.810Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3707,21 +3709,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 20,
-      "total": 48,
+      "correct": 21,
+      "total": 51,
       "recent": [
-        {
-          "ts": 1793245130920,
-          "correct": false
-        },
-        {
-          "ts": 1793245531865,
-          "correct": false
-        },
-        {
-          "ts": 1793245537718,
-          "correct": false
-        },
         {
           "ts": 1793245539381,
           "correct": false
@@ -3757,9 +3747,21 @@
         {
           "ts": 1793245909100,
           "correct": true
+        },
+        {
+          "ts": 1793246079134,
+          "correct": false
+        },
+        {
+          "ts": 1793246081985,
+          "correct": false
+        },
+        {
+          "ts": 1793246107667,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793245909100
+      "lastAttemptTs": 1793246107667
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 74,
@@ -5297,9 +5299,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 3406676,
+      "totalMs": 3521901,
       "viewMs": {
-        "browse": 1680656,
+        "browse": 1795881,
         "mock": 40031,
         "math": 1685989
       },
@@ -15078,7 +15080,21 @@
         "ts": 1793245909100,
         "ms": 240
       }
+    ],
+    "410d7d28": [
+      {
+        "ts": 1793246079134,
+        "ms": 56327
+      },
+      {
+        "ts": 1793246081985,
+        "ms": 285
+      },
+      {
+        "ts": 1793246107667,
+        "ms": 4531
+      }
     ]
   },
-  "clientUpdatedAt": 1793246019823
+  "clientUpdatedAt": 1793246197665
 }
