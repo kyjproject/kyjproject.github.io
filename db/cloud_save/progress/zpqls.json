@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T02:10:22.709Z",
+  "exportedAt": "2026-10-29T02:13:22.357Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1182,7 +1182,11 @@
     "81e5993c": "done",
     "c4bcb292": "done",
     "0b05d2d6": "done",
-    "e6201ac0": "done"
+    "e6201ac0": "done",
+    "b7353205": "done",
+    "0063f37a": "done",
+    "e8a33878": "done",
+    "17bc6f47": "done"
   },
   "tags": {},
   "notes": {},
@@ -2351,7 +2355,11 @@
     "81e5993c": "2026-10-29T02:07:43.208Z",
     "c4bcb292": "2026-10-29T02:09:24.129Z",
     "0b05d2d6": "2026-10-29T02:09:46.150Z",
-    "e6201ac0": "2026-10-29T02:10:12.202Z"
+    "e6201ac0": "2026-10-29T02:10:12.202Z",
+    "b7353205": "2026-10-29T02:10:25.663Z",
+    "0063f37a": "2026-10-29T02:10:30.364Z",
+    "e8a33878": "2026-10-29T02:10:40.563Z",
+    "17bc6f47": "2026-10-29T02:11:04.431Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3097,17 +3105,9 @@
       "lastAttemptTs": 1793230143564
     },
     "Boundaries": {
-      "correct": 205,
-      "total": 289,
+      "correct": 207,
+      "total": 291,
       "recent": [
-        {
-          "ts": 1793108988651,
-          "correct": true
-        },
-        {
-          "ts": 1793109064784,
-          "correct": false
-        },
         {
           "ts": 1793109065930,
           "correct": false
@@ -3147,22 +3147,22 @@
         {
           "ts": 1793239811155,
           "correct": true
+        },
+        {
+          "ts": 1793239824394,
+          "correct": true
+        },
+        {
+          "ts": 1793239872651,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793239811155
+      "lastAttemptTs": 1793239872651
     },
     "Form, Structure, and Sense": {
-      "correct": 195,
-      "total": 300,
+      "correct": 197,
+      "total": 302,
       "recent": [
-        {
-          "ts": 1793109128842,
-          "correct": true
-        },
-        {
-          "ts": 1793109178426,
-          "correct": true
-        },
         {
           "ts": 1793109182639,
           "correct": true
@@ -3202,9 +3202,17 @@
         {
           "ts": 1793239661108,
           "correct": true
+        },
+        {
+          "ts": 1793239829647,
+          "correct": true
+        },
+        {
+          "ts": 1793239839650,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793239661108
+      "lastAttemptTs": 1793239839650
     },
     "Cross-Text Connections": {
       "correct": 20,
@@ -5107,9 +5115,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 891787,
+      "totalMs": 996182,
       "viewMs": {
-        "browse": 891787
+        "browse": 996182
       },
       "categoryMs": {}
     }
@@ -14298,7 +14306,31 @@
         "ts": 1793239811155,
         "ms": 23291
       }
+    ],
+    "b7353205": [
+      {
+        "ts": 1793239824394,
+        "ms": 10431
+      }
+    ],
+    "0063f37a": [
+      {
+        "ts": 1793239829647,
+        "ms": 2316
+      }
+    ],
+    "e8a33878": [
+      {
+        "ts": 1793239839650,
+        "ms": 8468
+      }
+    ],
+    "17bc6f47": [
+      {
+        "ts": 1793239872651,
+        "ms": 30934
+      }
     ]
   },
-  "clientUpdatedAt": 1793239821152
+  "clientUpdatedAt": 1793239997557
 }
