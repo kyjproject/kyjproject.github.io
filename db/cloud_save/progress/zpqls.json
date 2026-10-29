@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T09:51:21.570Z",
+  "exportedAt": "2026-10-29T09:54:20.305Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1417,7 +1417,9 @@
     "b563f866": "done",
     "5e3e20f9": "review",
     "0cd1bc7a": "done",
-    "38f92f17": "done"
+    "38f92f17": "done",
+    "a4fa26dc": "done",
+    "bffa7aea": "done"
   },
   "tags": {},
   "notes": {},
@@ -2817,7 +2819,9 @@
     "69281ab2": "2026-10-29T09:38:57.266Z",
     "b563f866": "2026-10-29T09:39:34.265Z",
     "0cd1bc7a": "2026-10-29T09:42:01.742Z",
-    "38f92f17": "2026-10-29T09:50:35.036Z"
+    "38f92f17": "2026-10-29T09:50:35.036Z",
+    "a4fa26dc": "2026-10-29T09:52:14.451Z",
+    "bffa7aea": "2026-10-29T09:53:47.652Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4003,21 +4007,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 124,
-      "total": 202,
+      "correct": 126,
+      "total": 205,
       "recent": [
-        {
-          "ts": 1793266677423,
-          "correct": true
-        },
-        {
-          "ts": 1793266735134,
-          "correct": true
-        },
-        {
-          "ts": 1793266765888,
-          "correct": false
-        },
         {
           "ts": 1793266773326,
           "correct": true
@@ -4053,9 +4045,21 @@
         {
           "ts": 1793267433844,
           "correct": true
+        },
+        {
+          "ts": 1793267533578,
+          "correct": true
+        },
+        {
+          "ts": 1793267625171,
+          "correct": false
+        },
+        {
+          "ts": 1793267626316,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793267433844
+      "lastAttemptTs": 1793267626316
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 79,
@@ -5641,9 +5645,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 8202808,
+      "totalMs": 8382971,
       "viewMs": {
-        "browse": 5868423,
+        "browse": 6048586,
         "mock": 50038,
         "math": 2176436,
         "profile": 62875,
@@ -16592,7 +16596,23 @@
         "ts": 1793267433844,
         "ms": 101
       }
+    ],
+    "a4fa26dc": [
+      {
+        "ts": 1793267533578,
+        "ms": 96842
+      }
+    ],
+    "bffa7aea": [
+      {
+        "ts": 1793267625171,
+        "ms": 89936
+      },
+      {
+        "ts": 1793267626316,
+        "ms": 177
+      }
     ]
   },
-  "clientUpdatedAt": 1793267480060
+  "clientUpdatedAt": 1793267660222
 }
