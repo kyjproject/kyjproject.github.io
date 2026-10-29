@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T08:34:48.608Z",
+  "exportedAt": "2026-10-29T08:37:49.161Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -1226,14 +1226,15 @@
       }
     },
     "2026-10-29": {
-      "totalMs": 270010,
+      "totalMs": 392554,
       "viewMs": {
         "practice": 240001,
         "test": 20003,
-        "mock": 10006
+        "mock": 132550
       },
       "categoryMs": {
-        "Algebra": 195000
+        "Algebra": 195000,
+        "Vocab": 55000
       }
     }
   },
@@ -1371,5 +1372,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793262885542
+  "clientUpdatedAt": 1793263065531
 }
