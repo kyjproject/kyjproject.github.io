@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T09:12:56.030Z",
+  "exportedAt": "2026-10-29T09:15:56.812Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1402,7 +1402,8 @@
     "96b7fb54": "done",
     "54feada5": "done",
     "2868e197": "done",
-    "0c84bc04": "done"
+    "0c84bc04": "done",
+    "22c8ce86": "done"
   },
   "tags": {},
   "notes": {},
@@ -2788,7 +2789,8 @@
     "96b7fb54": "2026-10-29T09:10:57.506Z",
     "54feada5": "2026-10-29T09:11:43.775Z",
     "2868e197": "2026-10-29T09:12:01.129Z",
-    "0c84bc04": "2026-10-29T09:12:25.507Z"
+    "0c84bc04": "2026-10-29T09:12:25.507Z",
+    "22c8ce86": "2026-10-29T09:13:09.124Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3974,17 +3976,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 109,
-      "total": 174,
+      "correct": 110,
+      "total": 176,
       "recent": [
-        {
-          "ts": 1793264788398,
-          "correct": false
-        },
-        {
-          "ts": 1793264789459,
-          "correct": false
-        },
         {
           "ts": 1793264809141,
           "correct": false
@@ -4024,9 +4018,17 @@
         {
           "ts": 1793265143947,
           "correct": true
+        },
+        {
+          "ts": 1793265185645,
+          "correct": false
+        },
+        {
+          "ts": 1793265187511,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793265143947
+      "lastAttemptTs": 1793265187511
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 79,
@@ -5612,9 +5614,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 7536907,
+      "totalMs": 7588787,
       "viewMs": {
-        "browse": 5202522,
+        "browse": 5254402,
         "mock": 50038,
         "math": 2176436,
         "profile": 62875,
@@ -16421,7 +16423,17 @@
         "ts": 1793265143947,
         "ms": 21573
       }
+    ],
+    "22c8ce86": [
+      {
+        "ts": 1793265185645,
+        "ms": 39370
+      },
+      {
+        "ts": 1793265187512,
+        "ms": 300
+      }
     ]
   },
-  "clientUpdatedAt": 1793265173086
+  "clientUpdatedAt": 1793265353122
 }
