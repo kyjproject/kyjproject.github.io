@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T06:14:44.798Z",
+  "exportedAt": "2026-10-29T06:17:43.152Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1327,7 +1327,8 @@
     "e2976a3f": "done",
     "02dd0029": "review",
     "4e693aea": "done",
-    "7e64f358": "done"
+    "7e64f358": "done",
+    "45f91dff": "done"
   },
   "tags": {},
   "notes": {},
@@ -2638,7 +2639,8 @@
     "e2976a3f": "2026-10-29T05:35:37.766Z",
     "02dd0029": "2026-10-29T05:36:18.511Z",
     "4e693aea": "2026-10-29T05:36:49.992Z",
-    "7e64f358": "2026-10-29T05:38:43.026Z"
+    "7e64f358": "2026-10-29T05:38:43.026Z",
+    "45f91dff": "2026-10-29T06:17:14.641Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3824,13 +3826,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 81,
-      "total": 129,
+      "correct": 82,
+      "total": 130,
       "recent": [
-        {
-          "ts": 1793252065163,
-          "correct": true
-        },
         {
           "ts": 1793252095864,
           "correct": true
@@ -3874,9 +3872,13 @@
         {
           "ts": 1793252321612,
           "correct": true
+        },
+        {
+          "ts": 1793254633228,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793252321612
+      "lastAttemptTs": 1793254633228
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 74,
@@ -4900,10 +4902,6 @@
       "count": 2,
       "lastTs": 1792831397256
     },
-    "4819feaf": {
-      "count": 1,
-      "lastTs": 1792928573154
-    },
     "3b3445ed": {
       "count": 1,
       "lastTs": 1792928738257
@@ -5071,6 +5069,14 @@
     "8f3149a5": {
       "count": 1,
       "lastTs": 1793250814092
+    },
+    "45f91dff": {
+      "count": 1,
+      "lastTs": 1793254605505
+    },
+    "4819feaf": {
+      "count": 1,
+      "lastTs": 1792928573154
     },
     "80803aed": {
       "count": 1,
@@ -5434,9 +5440,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 5536637,
+      "totalMs": 5609740,
       "viewMs": {
-        "browse": 3810617,
+        "browse": 3883720,
         "mock": 40031,
         "math": 1685989
       },
@@ -15657,7 +15663,13 @@
         "ts": 1793252321612,
         "ms": 110854
       }
+    ],
+    "45f91dff": [
+      {
+        "ts": 1793254633228,
+        "ms": 2308852
+      }
     ]
   },
-  "clientUpdatedAt": 1793254480890
+  "clientUpdatedAt": 1793254659419
 }
