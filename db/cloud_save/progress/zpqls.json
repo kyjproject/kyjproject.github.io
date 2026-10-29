@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T11:15:14.796Z",
+  "exportedAt": "2026-10-29T11:18:14.027Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1441,7 +1441,10 @@
     "a053d0b8": "done",
     "2138137b": "done",
     "2b5fd1f4": "done",
-    "cd1a97d2": "done"
+    "cd1a97d2": "done",
+    "8f3ad8e1": "done",
+    "f3aa5f58": "done",
+    "57949c2b": "done"
   },
   "tags": {},
   "notes": {},
@@ -2864,7 +2867,10 @@
     "a053d0b8": "2026-10-29T10:56:33.060Z",
     "2138137b": "2026-10-29T10:57:20.845Z",
     "2b5fd1f4": "2026-10-29T10:57:44.593Z",
-    "cd1a97d2": "2026-10-29T11:03:45.234Z"
+    "cd1a97d2": "2026-10-29T11:03:45.234Z",
+    "8f3ad8e1": "2026-10-29T11:16:47.775Z",
+    "f3aa5f58": "2026-10-29T11:17:36.845Z",
+    "57949c2b": "2026-10-29T11:17:57.644Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4050,25 +4056,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 148,
-      "total": 241,
+      "correct": 151,
+      "total": 245,
       "recent": [
-        {
-          "ts": 1793271337496,
-          "correct": false
-        },
-        {
-          "ts": 1793271338347,
-          "correct": false
-        },
-        {
-          "ts": 1793271339626,
-          "correct": false
-        },
-        {
-          "ts": 1793271354310,
-          "correct": true
-        },
         {
           "ts": 1793271391451,
           "correct": true
@@ -4100,9 +4090,25 @@
         {
           "ts": 1793271493496,
           "correct": true
+        },
+        {
+          "ts": 1793272606250,
+          "correct": true
+        },
+        {
+          "ts": 1793272654016,
+          "correct": false
+        },
+        {
+          "ts": 1793272655794,
+          "correct": true
+        },
+        {
+          "ts": 1793272675257,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793271493496
+      "lastAttemptTs": 1793272675257
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 79,
@@ -5708,9 +5714,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 9715382,
+      "totalMs": 9824672,
       "viewMs": {
-        "browse": 7380997,
+        "browse": 7490287,
         "mock": 50038,
         "math": 2176436,
         "profile": 62875,
@@ -16863,7 +16869,29 @@
         "ts": 1793271493496,
         "ms": 302
       }
+    ],
+    "8f3ad8e1": [
+      {
+        "ts": 1793272606251,
+        "ms": 780201
+      }
+    ],
+    "f3aa5f58": [
+      {
+        "ts": 1793272654016,
+        "ms": 45376
+      },
+      {
+        "ts": 1793272655794,
+        "ms": 516
+      }
+    ],
+    "57949c2b": [
+      {
+        "ts": 1793272675257,
+        "ms": 17147
+      }
     ]
   },
-  "clientUpdatedAt": 1793272511089
+  "clientUpdatedAt": 1793272689572
 }
