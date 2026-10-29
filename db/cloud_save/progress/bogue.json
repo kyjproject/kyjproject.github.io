@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T09:34:47.998Z",
+  "exportedAt": "2026-10-29T09:37:48.629Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -94,11 +94,17 @@
     "c1f1a631": "done",
     "d184752f": "done",
     "6a94c678": "review",
-    "11795d4d": "review"
+    "11795d4d": "review",
+    "dc8ef67e": "review"
   },
   "tags": {},
   "notes": {},
-  "mathOverrides": {},
+  "mathOverrides": {
+    "1793266510734-70ulsv": {
+      "m1": 22,
+      "m2": 21
+    }
+  },
   "completionLog": {
     "64595457": "2026-09-24T13:20:50.702Z",
     "72301503": "2026-09-26T07:51:25.998Z",
@@ -199,6 +205,129 @@
   },
   "fsrsCards": {},
   "mockHistory": [
+    {
+      "id": "1793266510734-70ulsv",
+      "completedAt": "2026-10-29T09:35:10.734Z",
+      "composition": "custom",
+      "sections": [
+        {
+          "subject": "rw",
+          "module": 2,
+          "ids": [
+            "e2399eb4",
+            "6989e0f9",
+            "5c9c3bca",
+            "deb55365",
+            "19e19d21",
+            "d3fe0b12",
+            "306f6d2a",
+            "c3ef9de3",
+            "58b90851",
+            "4d671b68",
+            "d40c682b",
+            "11c970bc",
+            "5f411925",
+            "d4155c79",
+            "d23f1a15",
+            "03d9c538",
+            "5f38d8f4",
+            "98baf1ee",
+            "ad201599",
+            "c72d5a53",
+            "de17a78b",
+            "46d91c77",
+            "867ceff8",
+            "9363c6bb",
+            "b591e1a7",
+            "a3a158db",
+            "b346d913"
+          ]
+        },
+        {
+          "subject": "math",
+          "module": 2,
+          "ids": [
+            "25ed5921",
+            "9b6c20fe",
+            "8a89ef72",
+            "219a57aa",
+            "3a519c76",
+            "ec3981ea",
+            "012489f9",
+            "d9799723",
+            "67ee23b4",
+            "0eaed60b",
+            "c6ad6232",
+            "443794ac",
+            "385cd016",
+            "132aefb3",
+            "e40b7bdc",
+            "9dc82916",
+            "c5526332",
+            "9609a243",
+            "317d165b",
+            "dc8ef67e",
+            "edf2d791",
+            "81aa6aa9"
+          ]
+        }
+      ],
+      "answers": {
+        "e2399eb4": "C",
+        "6989e0f9": "A",
+        "5c9c3bca": "D",
+        "deb55365": "C",
+        "19e19d21": "D",
+        "d3fe0b12": "A",
+        "b346d913": "C",
+        "a3a158db": "D",
+        "b591e1a7": "A",
+        "9363c6bb": "D",
+        "867ceff8": "D",
+        "46d91c77": "C",
+        "de17a78b": "D",
+        "c72d5a53": "A",
+        "ad201599": "B",
+        "98baf1ee": "C",
+        "5f38d8f4": "D",
+        "306f6d2a": "B",
+        "c3ef9de3": "A",
+        "58b90851": "A",
+        "4d671b68": "A",
+        "d40c682b": "A",
+        "11c970bc": "B",
+        "5f411925": "D",
+        "d4155c79": "B",
+        "d23f1a15": "A",
+        "03d9c538": "C",
+        "25ed5921": "C",
+        "9b6c20fe": "D",
+        "8a89ef72": "C",
+        "219a57aa": "D",
+        "3a519c76": "A",
+        "ec3981ea": "D",
+        "012489f9": "D",
+        "d9799723": "D",
+        "67ee23b4": "C",
+        "0eaed60b": "D",
+        "c6ad6232": "B",
+        "443794ac": "D",
+        "385cd016": "D",
+        "132aefb3": "B",
+        "e40b7bdc": "C",
+        "9dc82916": "A",
+        "c5526332": "D",
+        "9609a243": "D",
+        "317d165b": "B",
+        "dc8ef67e": "D",
+        "edf2d791": "C",
+        "81aa6aa9": "B"
+      },
+      "routedHarderForSubject": {
+        "rw": true,
+        "math": true
+      }
+    },
     {
       "id": "1790592345148-75ntic",
       "completedAt": "2026-09-28T10:45:45.148Z",
@@ -534,17 +663,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Rhetorical Synthesis": {
-      "correct": 21,
-      "total": 25,
+      "correct": 24,
+      "total": 28,
       "recent": [
-        {
-          "ts": 1787230919228,
-          "correct": true
-        },
-        {
-          "ts": 1787230962107,
-          "correct": true
-        },
         {
           "ts": 1787230990440,
           "correct": false
@@ -584,18 +705,22 @@
         {
           "ts": 1790592345152,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1790592345152
-    },
-    "Words in Context": {
-      "correct": 20,
-      "total": 21,
-      "recent": [
+        },
         {
-          "ts": 1788934144947,
+          "ts": 1793266510738,
           "correct": true
         },
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Words in Context": {
+      "correct": 25,
+      "total": 26,
+      "recent": [
         {
           "ts": 1790254891525,
           "correct": true
@@ -639,13 +764,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510736,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510736
     },
     "Central Ideas and Details": {
-      "correct": 15,
-      "total": 17,
+      "correct": 17,
+      "total": 19,
       "recent": [
         {
           "ts": 1788934519852,
@@ -682,13 +811,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510737
     },
     "Command of Evidence (Quantitative)": {
-      "correct": 11,
-      "total": 15,
+      "correct": 13,
+      "total": 17,
       "recent": [
         {
           "ts": 1788934730056,
@@ -733,13 +866,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510737
     },
     "Text Structure and Purpose": {
-      "correct": 10,
-      "total": 10,
+      "correct": 12,
+      "total": 12,
       "recent": [
         {
           "ts": 1790254891526,
@@ -760,13 +897,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510737
     },
     "Cross-Text Connections": {
-      "correct": 4,
-      "total": 6,
+      "correct": 5,
+      "total": 7,
       "recent": [
         {
           "ts": 1790254891526,
@@ -791,13 +932,17 @@
         {
           "ts": 1790592345151,
           "correct": false
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510737
     },
     "Command of Evidence (Textual)": {
-      "correct": 9,
-      "total": 10,
+      "correct": 11,
+      "total": 12,
       "recent": [
         {
           "ts": 1790254891526,
@@ -822,13 +967,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510737
     },
     "Inferences": {
-      "correct": 8,
-      "total": 8,
+      "correct": 10,
+      "total": 10,
       "recent": [
         {
           "ts": 1790254891526,
@@ -849,13 +998,21 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510737,
+          "correct": true
+        },
+        {
+          "ts": 1793266510738,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510738
     },
     "Boundaries": {
-      "correct": 6,
-      "total": 6,
+      "correct": 8,
+      "total": 8,
       "recent": [
         {
           "ts": 1790254891526,
@@ -868,13 +1025,17 @@
         {
           "ts": 1790592345151,
           "correct": true
+        },
+        {
+          "ts": 1793266510738,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345151
+      "lastAttemptTs": 1793266510738
     },
     "Form, Structure, and Sense": {
-      "correct": 5,
-      "total": 6,
+      "correct": 7,
+      "total": 8,
       "recent": [
         {
           "ts": 1790254891526,
@@ -891,13 +1052,17 @@
         {
           "ts": 1790592345152,
           "correct": true
+        },
+        {
+          "ts": 1793266510738,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345152
+      "lastAttemptTs": 1793266510738
     },
     "Transitions": {
-      "correct": 16,
-      "total": 20,
+      "correct": 20,
+      "total": 24,
       "recent": [
         {
           "ts": 1790254891526,
@@ -942,13 +1107,17 @@
         {
           "ts": 1790592345152,
           "correct": true
+        },
+        {
+          "ts": 1793266510738,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1790592345152
+      "lastAttemptTs": 1793266510738
     },
     "Linear equations in two variables": {
-      "correct": 1,
-      "total": 2,
+      "correct": 2,
+      "total": 3,
       "recent": [
         {
           "ts": 1793262817023,
@@ -957,9 +1126,199 @@
         {
           "ts": 1793262822077,
           "correct": true
+        },
+        {
+          "ts": 1793266510740,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793262822077
+      "lastAttemptTs": 1793266510740
+    },
+    "Linear equations in one variable": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        },
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Linear functions": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        },
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Nonlinear functions": {
+      "correct": 4,
+      "total": 4,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        },
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Equivalent expressions": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Systems of two linear equations in two variables": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        },
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Area and volume": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Nonlinear equations in one variable and systems of equations in two variables": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Right triangles and trigonometry": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Linear inequalities in one or two variables": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Ratios, rates, proportional relationships, and units": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510739,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510739
+    },
+    "Percentages": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Probability and conditional probability": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
+    },
+    "Two-variable data: Models and scatterplots": {
+      "correct": 1,
+      "total": 5,
+      "recent": [
+        {
+          "ts": 1793266510740,
+          "correct": false
+        },
+        {
+          "ts": 1793266544352,
+          "correct": false
+        },
+        {
+          "ts": 1793266549014,
+          "correct": false
+        },
+        {
+          "ts": 1793266551379,
+          "correct": false
+        },
+        {
+          "ts": 1793266553767,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266553767
+    },
+    "Lines, angles, and triangles": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1793266510740,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793266510740
     }
   },
   "progressFocus": [
@@ -1124,6 +1483,10 @@
     "91b4ab70": {
       "count": 1,
       "lastTs": 1790409080545
+    },
+    "dc8ef67e": {
+      "count": 1,
+      "lastTs": 1793266538235
     }
   },
   "blueprints": [],
@@ -1226,11 +1589,11 @@
       }
     },
     "2026-10-29": {
-      "totalMs": 2413015,
+      "totalMs": 2583033,
       "viewMs": {
         "practice": 240001,
         "test": 20003,
-        "mock": 2153011
+        "mock": 2323029
       },
       "categoryMs": {
         "Algebra": 375005,
@@ -1244,7 +1607,7 @@
         "Main Idea": 109792,
         "Quantitative Evidence": 206246,
         "Textual Evidence": 92392,
-        "Advanced Math": 246731,
+        "Advanced Math": 261746,
         "Geometry and Trigonometry": 25000,
         "Problem-Solving and Data Analysis": 115002
       }
@@ -1382,7 +1745,25 @@
         "ts": 1793262822077,
         "ms": 711
       }
+    ],
+    "dc8ef67e": [
+      {
+        "ts": 1793266544352,
+        "ms": 6116
+      },
+      {
+        "ts": 1793266549014,
+        "ms": 2914
+      },
+      {
+        "ts": 1793266551379,
+        "ms": 1088
+      },
+      {
+        "ts": 1793266553767,
+        "ms": 1180
+      }
     ]
   },
-  "clientUpdatedAt": 1793266485527
+  "clientUpdatedAt": 1793266665526
 }
