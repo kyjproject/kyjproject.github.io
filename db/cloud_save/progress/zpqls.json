@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T04:55:58.234Z",
+  "exportedAt": "2026-10-29T05:00:21.228Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1282,7 +1282,9 @@
     "db10f44a": "done",
     "bf829d75": "done",
     "2335f29b": "done",
-    "94a65e4d": "done"
+    "94a65e4d": "done",
+    "3dc26dc1": "done",
+    "32d4b9ec": "done"
   },
   "tags": {},
   "notes": {},
@@ -2548,7 +2550,9 @@
     "db10f44a": "2026-10-29T04:48:34.552Z",
     "bf829d75": "2026-10-29T04:53:13.342Z",
     "2335f29b": "2026-10-29T04:54:32.742Z",
-    "94a65e4d": "2026-10-29T04:55:05.540Z"
+    "94a65e4d": "2026-10-29T04:55:05.540Z",
+    "3dc26dc1": "2026-10-29T04:56:33.793Z",
+    "32d4b9ec": "2026-10-29T04:56:54.541Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3734,17 +3738,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 34,
-      "total": 69,
+      "correct": 36,
+      "total": 71,
       "recent": [
-        {
-          "ts": 1793246967149,
-          "correct": false
-        },
-        {
-          "ts": 1793246970471,
-          "correct": false
-        },
         {
           "ts": 1793246973104,
           "correct": true
@@ -3784,9 +3780,17 @@
         {
           "ts": 1793249704334,
           "correct": true
+        },
+        {
+          "ts": 1793249791730,
+          "correct": true
+        },
+        {
+          "ts": 1793249813064,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793249704334
+      "lastAttemptTs": 1793249813064
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 74,
@@ -5332,9 +5336,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 4150556,
+      "totalMs": 4192345,
       "viewMs": {
-        "browse": 2424536,
+        "browse": 2466325,
         "mock": 40031,
         "math": 1685989
       },
@@ -15225,7 +15229,19 @@
         "ts": 1793249704335,
         "ms": 30596
       }
+    ],
+    "3dc26dc1": [
+      {
+        "ts": 1793249791730,
+        "ms": 85248
+      }
+    ],
+    "32d4b9ec": [
+      {
+        "ts": 1793249813064,
+        "ms": 17066
+      }
     ]
   },
-  "clientUpdatedAt": 1793249758152
+  "clientUpdatedAt": 1793250017068
 }
