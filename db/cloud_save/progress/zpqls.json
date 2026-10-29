@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T03:10:24.496Z",
+  "exportedAt": "2026-10-29T03:13:46.057Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1237,7 +1237,12 @@
     "a2a2a711": "done",
     "7ed068cf": "done",
     "8a89ef72": "done",
-    "c54102e2": "done"
+    "c54102e2": "done",
+    "01264050": "done",
+    "fe5eca98": "done",
+    "c7528626": "done",
+    "28a0ca32": "done",
+    "f20cc110": "done"
   },
   "tags": {},
   "notes": {},
@@ -2461,7 +2466,12 @@
     "a2a2a711": "2026-10-29T03:09:36.208Z",
     "7ed068cf": "2026-10-29T03:09:46.095Z",
     "8a89ef72": "2026-10-29T03:10:01.644Z",
-    "c54102e2": "2026-10-29T03:10:23.179Z"
+    "c54102e2": "2026-10-29T03:10:23.179Z",
+    "01264050": "2026-10-29T03:10:39.226Z",
+    "fe5eca98": "2026-10-29T03:10:53.395Z",
+    "c7528626": "2026-10-29T03:11:04.597Z",
+    "28a0ca32": "2026-10-29T03:11:16.327Z",
+    "f20cc110": "2026-10-29T03:11:29.010Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3702,25 +3712,9 @@
       "lastAttemptTs": 1792928718609
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 69,
-      "total": 74,
+      "correct": 71,
+      "total": 78,
       "recent": [
-        {
-          "ts": 1793241054750,
-          "correct": true
-        },
-        {
-          "ts": 1793241104128,
-          "correct": true
-        },
-        {
-          "ts": 1793241139868,
-          "correct": true
-        },
-        {
-          "ts": 1793241171737,
-          "correct": true
-        },
         {
           "ts": 1793241496599,
           "correct": true
@@ -3752,26 +3746,30 @@
         {
           "ts": 1793242546169,
           "correct": true
+        },
+        {
+          "ts": 1793243463350,
+          "correct": true
+        },
+        {
+          "ts": 1793243473962,
+          "correct": false
+        },
+        {
+          "ts": 1793243475619,
+          "correct": true
+        },
+        {
+          "ts": 1793243482344,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793242546169
+      "lastAttemptTs": 1793243482344
     },
     "Nonlinear functions": {
-      "correct": 120,
-      "total": 139,
+      "correct": 122,
+      "total": 142,
       "recent": [
-        {
-          "ts": 1793242262544,
-          "correct": true
-        },
-        {
-          "ts": 1793242329273,
-          "correct": true
-        },
-        {
-          "ts": 1793242347583,
-          "correct": true
-        },
         {
           "ts": 1793242390426,
           "correct": true
@@ -3807,18 +3805,26 @@
         {
           "ts": 1793243422195,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793243422195
-    },
-    "Equivalent expressions": {
-      "correct": 44,
-      "total": 54,
-      "recent": [
+        },
         {
-          "ts": 1792921999941,
+          "ts": 1793243449766,
           "correct": true
         },
+        {
+          "ts": 1793243451020,
+          "correct": false
+        },
+        {
+          "ts": 1793243451887,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793243451887
+    },
+    "Equivalent expressions": {
+      "correct": 45,
+      "total": 55,
+      "recent": [
         {
           "ts": 1792924167267,
           "correct": true
@@ -3862,9 +3868,13 @@
         {
           "ts": 1793241548754,
           "correct": true
+        },
+        {
+          "ts": 1793243438226,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793241548754
+      "lastAttemptTs": 1793243438226
     },
     "Circles": {
       "correct": 4,
@@ -5225,11 +5235,11 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 2656175,
+      "totalMs": 2741253,
       "viewMs": {
         "browse": 1398413,
         "mock": 40031,
-        "math": 1217731
+        "math": 1302809
       },
       "categoryMs": {}
     }
@@ -14764,7 +14774,49 @@
         "ts": 1793243422196,
         "ms": 177
       }
+    ],
+    "01264050": [
+      {
+        "ts": 1793243438226,
+        "ms": 14164
+      }
+    ],
+    "fe5eca98": [
+      {
+        "ts": 1793243449766,
+        "ms": 9621
+      },
+      {
+        "ts": 1793243451020,
+        "ms": 208
+      },
+      {
+        "ts": 1793243451887,
+        "ms": 152
+      }
+    ],
+    "c7528626": [
+      {
+        "ts": 1793243463351,
+        "ms": 7139
+      }
+    ],
+    "28a0ca32": [
+      {
+        "ts": 1793243473962,
+        "ms": 8567
+      },
+      {
+        "ts": 1793243475619,
+        "ms": 976
+      }
+    ],
+    "f20cc110": [
+      {
+        "ts": 1793243482344,
+        "ms": 5117
+      }
     ]
   },
-  "clientUpdatedAt": 1793243420283
+  "clientUpdatedAt": 1793243622582
 }
