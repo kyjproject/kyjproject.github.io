@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T09:03:56.755Z",
+  "exportedAt": "2026-10-29T09:06:55.445Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1393,7 +1393,9 @@
     "492af9c4": "done",
     "e214479d": "done",
     "a6b35cb9": "done",
-    "369ac3ca": "done"
+    "369ac3ca": "done",
+    "6d524bf4": "done",
+    "b69d7b08": "done"
   },
   "tags": {},
   "notes": {},
@@ -2770,7 +2772,9 @@
     "492af9c4": "2026-10-29T09:01:45.955Z",
     "e214479d": "2026-10-29T09:02:11.006Z",
     "a6b35cb9": "2026-10-29T09:02:51.412Z",
-    "369ac3ca": "2026-10-29T09:03:50.841Z"
+    "369ac3ca": "2026-10-29T09:03:50.841Z",
+    "6d524bf4": "2026-10-29T09:05:29.957Z",
+    "b69d7b08": "2026-10-29T09:06:02.641Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3956,37 +3960,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 100,
-      "total": 159,
+      "correct": 103,
+      "total": 166,
       "recent": [
-        {
-          "ts": 1793264231152,
-          "correct": false
-        },
-        {
-          "ts": 1793264232186,
-          "correct": true
-        },
-        {
-          "ts": 1793264302021,
-          "correct": false
-        },
-        {
-          "ts": 1793264303056,
-          "correct": false
-        },
-        {
-          "ts": 1793264312305,
-          "correct": true
-        },
-        {
-          "ts": 1793264448334,
-          "correct": true
-        },
-        {
-          "ts": 1793264500211,
-          "correct": false
-        },
         {
           "ts": 1793264502259,
           "correct": false
@@ -4006,9 +3982,37 @@
         {
           "ts": 1793264628582,
           "correct": true
+        },
+        {
+          "ts": 1793264728267,
+          "correct": true
+        },
+        {
+          "ts": 1793264752443,
+          "correct": false
+        },
+        {
+          "ts": 1793264761106,
+          "correct": true
+        },
+        {
+          "ts": 1793264788398,
+          "correct": false
+        },
+        {
+          "ts": 1793264789459,
+          "correct": false
+        },
+        {
+          "ts": 1793264809141,
+          "correct": false
+        },
+        {
+          "ts": 1793264810352,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793264628582
+      "lastAttemptTs": 1793264810352
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 79,
@@ -5594,9 +5598,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 7202673,
+      "totalMs": 7307708,
       "viewMs": {
-        "browse": 4868288,
+        "browse": 4973323,
         "mock": 50038,
         "math": 2176436,
         "profile": 62875,
@@ -16325,7 +16329,41 @@
         "ts": 1793264628582,
         "ms": 55843
       }
+    ],
+    "6d524bf4": [
+      {
+        "ts": 1793264728267,
+        "ms": 96163
+      }
+    ],
+    "b69d7b08": [
+      {
+        "ts": 1793264752443,
+        "ms": 21671
+      },
+      {
+        "ts": 1793264761106,
+        "ms": 3644
+      }
+    ],
+    "43ca2315": [
+      {
+        "ts": 1793264788398,
+        "ms": 24993
+      },
+      {
+        "ts": 1793264789459,
+        "ms": 320
+      },
+      {
+        "ts": 1793264809141,
+        "ms": 18285
+      },
+      {
+        "ts": 1793264810352,
+        "ms": 246
+      }
     ]
   },
-  "clientUpdatedAt": 1793264636488
+  "clientUpdatedAt": 1793264810664
 }
