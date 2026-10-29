@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-29T05:15:20.914Z",
+  "exportedAt": "2026-10-29T05:18:20.929Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1303,7 +1303,8 @@
     "d098f23e": "done",
     "8f3149a5": "done",
     "1f3c0891": "done",
-    "8871e6eb": "done"
+    "8871e6eb": "done",
+    "2c6199c5": "done"
   },
   "tags": {},
   "notes": {},
@@ -2590,7 +2591,8 @@
     "d098f23e": "2026-10-29T05:11:17.555Z",
     "8f3149a5": "2026-10-29T05:14:18.151Z",
     "1f3c0891": "2026-10-29T05:14:53.127Z",
-    "8871e6eb": "2026-10-29T05:15:07.727Z"
+    "8871e6eb": "2026-10-29T05:15:07.727Z",
+    "2c6199c5": "2026-10-29T05:16:25.879Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3776,17 +3778,9 @@
       "lastAttemptTs": 1793188560502
     },
     "Transitions": {
-      "correct": 55,
-      "total": 94,
+      "correct": 56,
+      "total": 96,
       "recent": [
-        {
-          "ts": 1793250431892,
-          "correct": false
-        },
-        {
-          "ts": 1793250433956,
-          "correct": true
-        },
         {
           "ts": 1793250450290,
           "correct": true
@@ -3826,9 +3820,17 @@
         {
           "ts": 1793250906477,
           "correct": true
+        },
+        {
+          "ts": 1793250975047,
+          "correct": false
+        },
+        {
+          "ts": 1793250984096,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793250906477
+      "lastAttemptTs": 1793250984096
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 74,
@@ -5386,9 +5388,9 @@
       "categoryMs": {}
     },
     "2026-10-29": {
-      "totalMs": 4804273,
+      "totalMs": 4916866,
       "viewMs": {
-        "browse": 3078253,
+        "browse": 3190846,
         "mock": 40031,
         "math": 1685989
       },
@@ -15421,7 +15423,17 @@
         "ts": 1793250906477,
         "ms": 12453
       }
+    ],
+    "2c6199c5": [
+      {
+        "ts": 1793250975048,
+        "ms": 66257
+      },
+      {
+        "ts": 1793250984097,
+        "ms": 8237
+      }
     ]
   },
-  "clientUpdatedAt": 1793250918582
+  "clientUpdatedAt": 1793251097536
 }
