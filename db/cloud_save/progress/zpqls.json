@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T07:53:16.198Z",
+  "exportedAt": "2026-10-30T07:56:16.282Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1643,7 +1643,8 @@
     "5bac62e5": "review",
     "5bb02134": "done",
     "4f52704c": "review",
-    "d09d33ca": "review"
+    "d09d33ca": "review",
+    "e67a5268": "done"
   },
   "tags": {},
   "notes": {},
@@ -3269,7 +3270,8 @@
     "46df5814": "2026-10-30T07:43:17.759Z",
     "e2f7ccb7": "2026-10-30T07:45:26.112Z",
     "5bac62e5": "2026-10-30T07:48:46.513Z",
-    "5bb02134": "2026-10-30T07:49:05.596Z"
+    "5bb02134": "2026-10-30T07:49:05.596Z",
+    "e67a5268": "2026-10-30T07:54:56.133Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4309,13 +4311,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 123,
-      "total": 223,
+      "correct": 124,
+      "total": 224,
       "recent": [
-        {
-          "ts": 1793346503601,
-          "correct": false
-        },
         {
           "ts": 1793346504504,
           "correct": false
@@ -4359,9 +4357,13 @@
         {
           "ts": 1793346698989,
           "correct": true
+        },
+        {
+          "ts": 1793346894820,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793346698989
+      "lastAttemptTs": 1793346894820
     },
     "Words in Context": {
       "correct": 67,
@@ -5708,10 +5710,6 @@
       "count": 2,
       "lastTs": 1793269001526
     },
-    "9c159f61": {
-      "count": 1,
-      "lastTs": 1793289150468
-    },
     "867ceff8": {
       "count": 1,
       "lastTs": 1793289276321
@@ -5843,6 +5841,14 @@
     "cbf71488": {
       "count": 1,
       "lastTs": 1793345741522
+    },
+    "e67a5268": {
+      "count": 1,
+      "lastTs": 1793346853983
+    },
+    "9c159f61": {
+      "count": 1,
+      "lastTs": 1793289150468
     },
     "8c6982c3": {
       "count": 1,
@@ -6409,9 +6415,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 12212276,
+      "totalMs": 12295977,
       "viewMs": {
-        "browse": 9637242,
+        "browse": 9720943,
         "mock": 2329135,
         "profile": 80782,
         "lab": 65042,
@@ -19120,7 +19126,13 @@
         "ts": 1793346698989,
         "ms": 606
       }
+    ],
+    "e67a5268": [
+      {
+        "ts": 1793346894820,
+        "ms": 40836
+      }
     ]
   },
-  "clientUpdatedAt": 1793346790197
+  "clientUpdatedAt": 1793346975465
 }
