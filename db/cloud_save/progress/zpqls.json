@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T07:50:16.044Z",
+  "exportedAt": "2026-10-30T07:53:16.198Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1641,7 +1641,9 @@
     "46df5814": "done",
     "e2f7ccb7": "done",
     "5bac62e5": "review",
-    "5bb02134": "done"
+    "5bb02134": "done",
+    "4f52704c": "review",
+    "d09d33ca": "review"
   },
   "tags": {},
   "notes": {},
@@ -4307,29 +4309,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 121,
-      "total": 218,
+      "correct": 123,
+      "total": 223,
       "recent": [
-        {
-          "ts": 1793345937411,
-          "correct": false
-        },
-        {
-          "ts": 1793345938879,
-          "correct": true
-        },
-        {
-          "ts": 1793346196429,
-          "correct": true
-        },
-        {
-          "ts": 1793346324667,
-          "correct": true
-        },
-        {
-          "ts": 1793346502267,
-          "correct": false
-        },
         {
           "ts": 1793346503601,
           "correct": false
@@ -4357,9 +4339,29 @@
         {
           "ts": 1793346597115,
           "correct": false
+        },
+        {
+          "ts": 1793346618598,
+          "correct": true
+        },
+        {
+          "ts": 1793346685650,
+          "correct": false
+        },
+        {
+          "ts": 1793346695382,
+          "correct": false
+        },
+        {
+          "ts": 1793346696759,
+          "correct": false
+        },
+        {
+          "ts": 1793346698989,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793346597115
+      "lastAttemptTs": 1793346698989
     },
     "Words in Context": {
       "correct": 67,
@@ -5835,8 +5837,8 @@
       "lastTs": 1793344786010
     },
     "d09d33ca": {
-      "count": 1,
-      "lastTs": 1793345740339
+      "count": 2,
+      "lastTs": 1793346621631
     },
     "cbf71488": {
       "count": 1,
@@ -6407,9 +6409,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 12065006,
+      "totalMs": 12212276,
       "viewMs": {
-        "browse": 9489972,
+        "browse": 9637242,
         "mock": 2329135,
         "profile": 80782,
         "lab": 65042,
@@ -19095,8 +19097,30 @@
       {
         "ts": 1793346597115,
         "ms": 152
+      },
+      {
+        "ts": 1793346618598,
+        "ms": 20401
+      }
+    ],
+    "d09d33ca": [
+      {
+        "ts": 1793346685650,
+        "ms": 952595
+      },
+      {
+        "ts": 1793346695382,
+        "ms": 8651
+      },
+      {
+        "ts": 1793346696759,
+        "ms": 94
+      },
+      {
+        "ts": 1793346698989,
+        "ms": 606
       }
     ]
   },
-  "clientUpdatedAt": 1793346612251
+  "clientUpdatedAt": 1793346790197
 }
