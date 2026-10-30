@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T04:58:51.758Z",
+  "exportedAt": "2026-10-30T05:07:08.899Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1582,7 +1582,8 @@
     "883e22fb": "done",
     "1adb7166": "done",
     "695c3f5f": "done",
-    "dd581cac": "done"
+    "dd581cac": "done",
+    "183bd6b1": "done"
   },
   "tags": {},
   "notes": {},
@@ -3150,7 +3151,8 @@
     "883e22fb": "2026-10-30T04:51:43.160Z",
     "1adb7166": "2026-10-30T04:56:27.502Z",
     "695c3f5f": "2026-10-30T04:58:05.002Z",
-    "dd581cac": "2026-10-30T04:58:35.570Z"
+    "dd581cac": "2026-10-30T04:58:35.570Z",
+    "183bd6b1": "2026-10-30T04:59:04.887Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4190,21 +4192,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 64,
-      "total": 121,
+      "correct": 65,
+      "total": 124,
       "recent": [
-        {
-          "ts": 1793335382866,
-          "correct": false
-        },
-        {
-          "ts": 1793335384038,
-          "correct": true
-        },
-        {
-          "ts": 1793335390083,
-          "correct": true
-        },
         {
           "ts": 1793335443988,
           "correct": true
@@ -4240,9 +4230,21 @@
         {
           "ts": 1793336314338,
           "correct": true
+        },
+        {
+          "ts": 1793336338199,
+          "correct": false
+        },
+        {
+          "ts": 1793336341521,
+          "correct": false
+        },
+        {
+          "ts": 1793336344070,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793336314338
+      "lastAttemptTs": 1793336344070
     },
     "Words in Context": {
       "correct": 67,
@@ -6254,9 +6256,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 6964894,
+      "totalMs": 6984910,
       "viewMs": {
-        "browse": 4434861,
+        "browse": 4454877,
         "mock": 2329135,
         "profile": 65801,
         "lab": 65042,
@@ -18435,7 +18437,21 @@
         "ts": 1793336314338,
         "ms": 28269
       }
+    ],
+    "183bd6b1": [
+      {
+        "ts": 1793336338199,
+        "ms": 21746
+      },
+      {
+        "ts": 1793336341521,
+        "ms": 2418
+      },
+      {
+        "ts": 1793336344070,
+        "ms": 1083
+      }
     ]
   },
-  "clientUpdatedAt": 1793336327792
+  "clientUpdatedAt": 1793336825943
 }
