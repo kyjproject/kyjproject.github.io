@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T06:11:10.841Z",
+  "exportedAt": "2026-10-30T06:14:11.476Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1606,7 +1606,9 @@
     "f48d9861": "done",
     "1f246569": "done",
     "798a9aa8": "done",
-    "a901c1d5": "done"
+    "a901c1d5": "done",
+    "6bef385a": "done",
+    "4dbbf00a": "done"
   },
   "tags": {},
   "notes": {},
@@ -3198,7 +3200,9 @@
     "f48d9861": "2026-10-30T06:05:34.866Z",
     "1f246569": "2026-10-30T06:06:08.328Z",
     "798a9aa8": "2026-10-30T06:07:27.213Z",
-    "a901c1d5": "2026-10-30T06:08:31.411Z"
+    "a901c1d5": "2026-10-30T06:08:31.411Z",
+    "6bef385a": "2026-10-30T06:11:26.667Z",
+    "4dbbf00a": "2026-10-30T06:12:44.518Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4238,13 +4242,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 89,
-      "total": 159,
+      "correct": 90,
+      "total": 160,
       "recent": [
-        {
-          "ts": 1793340283603,
-          "correct": true
-        },
         {
           "ts": 1793340332482,
           "correct": true
@@ -4288,9 +4288,13 @@
         {
           "ts": 1793340613257,
           "correct": true
+        },
+        {
+          "ts": 1793340734550,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793340613257
+      "lastAttemptTs": 1793340734550
     },
     "Words in Context": {
       "correct": 67,
@@ -6318,9 +6322,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 8995347,
+      "totalMs": 9119178,
       "viewMs": {
-        "browse": 6435294,
+        "browse": 6559125,
         "mock": 2329135,
         "profile": 65801,
         "lab": 65042,
@@ -18701,7 +18705,13 @@
         "ts": 1793340613257,
         "ms": 3157
       }
+    ],
+    "4dbbf00a": [
+      {
+        "ts": 1793340734550,
+        "ms": 46467
+      }
     ]
   },
-  "clientUpdatedAt": 1793340668188
+  "clientUpdatedAt": 1793340847934
 }
