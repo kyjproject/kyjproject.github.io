@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T04:36:02.870Z",
+  "exportedAt": "2026-10-30T04:40:11.046Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -4169,25 +4169,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 52,
-      "total": 101,
+      "correct": 53,
+      "total": 105,
       "recent": [
-        {
-          "ts": 1793114029490,
-          "correct": false
-        },
-        {
-          "ts": 1793114032425,
-          "correct": true
-        },
-        {
-          "ts": 1793114235458,
-          "correct": false
-        },
-        {
-          "ts": 1793114242379,
-          "correct": false
-        },
         {
           "ts": 1793114243683,
           "correct": true
@@ -4219,9 +4203,25 @@
         {
           "ts": 1793291806713,
           "correct": true
+        },
+        {
+          "ts": 1793335068466,
+          "correct": false
+        },
+        {
+          "ts": 1793335069691,
+          "correct": false
+        },
+        {
+          "ts": 1793335071231,
+          "correct": false
+        },
+        {
+          "ts": 1793335073073,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793291806713
+      "lastAttemptTs": 1793335073073
     },
     "Words in Context": {
       "correct": 67,
@@ -5701,8 +5701,8 @@
       "lastTs": 1793333651341
     },
     "4cfd4ab2": {
-      "count": 1,
-      "lastTs": 1793334534779
+      "count": 2,
+      "lastTs": 1793335032938
     },
     "9e0f5f44": {
       "count": 1,
@@ -6229,11 +6229,11 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 6312324,
+      "totalMs": 6381995,
       "viewMs": {
-        "browse": 3788195,
+        "browse": 3853245,
         "mock": 2329135,
-        "profile": 59897,
+        "profile": 64518,
         "lab": 65042,
         "math": 25019,
         "leaderboard": 45036
@@ -18308,7 +18308,25 @@
         "ts": 1793333647158,
         "ms": 8131
       }
+    ],
+    "4cfd4ab2": [
+      {
+        "ts": 1793335068466,
+        "ms": 533687
+      },
+      {
+        "ts": 1793335069691,
+        "ms": 234
+      },
+      {
+        "ts": 1793335071231,
+        "ms": 276
+      },
+      {
+        "ts": 1793335073073,
+        "ms": 967
+      }
     ]
   },
-  "clientUpdatedAt": 1793334960109
+  "clientUpdatedAt": 1793335207972
 }
