@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T04:43:10.891Z",
+  "exportedAt": "2026-10-30T04:49:52.189Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1574,7 +1574,9 @@
     "73935d4f": "done",
     "4cfd4ab2": "review",
     "0ee9dd5d": "done",
-    "9ec5bbff": "done"
+    "9ec5bbff": "done",
+    "c5043ec4": "done",
+    "ac40b6ba": "done"
   },
   "tags": {},
   "notes": {},
@@ -3134,7 +3136,9 @@
     "ffc88014": "2026-10-30T04:15:04.378Z",
     "73935d4f": "2026-10-30T04:15:06.395Z",
     "0ee9dd5d": "2026-10-30T04:40:59.014Z",
-    "9ec5bbff": "2026-10-30T04:42:07.099Z"
+    "9ec5bbff": "2026-10-30T04:42:07.099Z",
+    "c5043ec4": "2026-10-30T04:43:23.434Z",
+    "ac40b6ba": "2026-10-30T04:44:05.901Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4174,13 +4178,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 57,
-      "total": 112,
+      "correct": 58,
+      "total": 113,
       "recent": [
-        {
-          "ts": 1793291806713,
-          "correct": true
-        },
         {
           "ts": 1793335068466,
           "correct": false
@@ -4224,9 +4224,13 @@
         {
           "ts": 1793335390083,
           "correct": true
+        },
+        {
+          "ts": 1793335443988,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793335390083
+      "lastAttemptTs": 1793335443988
     },
     "Words in Context": {
       "correct": 67,
@@ -6234,9 +6238,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 6556436,
+      "totalMs": 6609660,
       "viewMs": {
-        "browse": 4027686,
+        "browse": 4080910,
         "mock": 2329135,
         "profile": 64518,
         "lab": 65042,
@@ -18365,7 +18369,13 @@
         "ts": 1793335390083,
         "ms": 2517
       }
+    ],
+    "ac40b6ba": [
+      {
+        "ts": 1793335443988,
+        "ms": 39788
+      }
     ]
   },
-  "clientUpdatedAt": 1793335388212
+  "clientUpdatedAt": 1793335788966
 }
