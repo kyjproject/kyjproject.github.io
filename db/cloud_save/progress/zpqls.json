@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T00:29:30.509Z",
+  "exportedAt": "2026-10-30T00:32:30.633Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1488,7 +1488,9 @@
     "726e8de8": "done",
     "678404ae": "done",
     "693e6701": "done",
-    "9d6fd619": "done"
+    "9d6fd619": "done",
+    "40ce2011": "done",
+    "dd53fb5c": "done"
   },
   "tags": {},
   "notes": {},
@@ -2958,7 +2960,9 @@
     "2946a833": "2026-10-30T00:28:23.552Z",
     "726e8de8": "2026-10-30T00:28:29.798Z",
     "693e6701": "2026-10-30T00:29:13.519Z",
-    "9d6fd619": "2026-10-30T00:29:18.064Z"
+    "9d6fd619": "2026-10-30T00:29:18.064Z",
+    "40ce2011": "2026-10-30T00:31:40.948Z",
+    "dd53fb5c": "2026-10-30T00:32:14.772Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -3774,13 +3778,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Boundaries": {
-      "correct": 222,
-      "total": 310,
+      "correct": 223,
+      "total": 311,
       "recent": [
-        {
-          "ts": 1793255135398,
-          "correct": false
-        },
         {
           "ts": 1793255136452,
           "correct": true
@@ -3824,18 +3824,18 @@
         {
           "ts": 1793320133312,
           "correct": true
+        },
+        {
+          "ts": 1793320333756,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793320133312
+      "lastAttemptTs": 1793320333756
     },
     "Form, Structure, and Sense": {
-      "correct": 209,
-      "total": 315,
+      "correct": 210,
+      "total": 316,
       "recent": [
-        {
-          "ts": 1793240164511,
-          "correct": true
-        },
         {
           "ts": 1793240549766,
           "correct": true
@@ -3879,9 +3879,13 @@
         {
           "ts": 1793320157070,
           "correct": true
+        },
+        {
+          "ts": 1793320299855,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793320157070
+      "lastAttemptTs": 1793320299855
     },
     "Cross-Text Connections": {
       "correct": 21,
@@ -5951,9 +5955,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 2257101,
+      "totalMs": 2392217,
       "viewMs": {
-        "browse": 1016415,
+        "browse": 1151531,
         "mock": 1120603,
         "profile": 55041,
         "lab": 65042
@@ -17496,7 +17500,19 @@
         "ts": 1793320157070,
         "ms": 2355
       }
+    ],
+    "40ce2011": [
+      {
+        "ts": 1793320299855,
+        "ms": 140968
+      }
+    ],
+    "dd53fb5c": [
+      {
+        "ts": 1793320333756,
+        "ms": 31690
+      }
     ]
   },
-  "clientUpdatedAt": 1793320167418
+  "clientUpdatedAt": 1793320348304
 }
