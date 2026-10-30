@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T05:19:59.712Z",
+  "exportedAt": "2026-10-30T05:22:59.389Z",
   "progress": {
     "15928122": "done",
     "16915678": "done",
@@ -1586,7 +1586,9 @@
     "183bd6b1": "done",
     "e48f2f19": "done",
     "b8ee13cc": "done",
-    "eb57012b": "done"
+    "eb57012b": "done",
+    "cc98ded7": "done",
+    "69405b6e": "done"
   },
   "tags": {},
   "notes": {},
@@ -3158,7 +3160,9 @@
     "183bd6b1": "2026-10-30T04:59:04.887Z",
     "e48f2f19": "2026-10-30T05:08:16.979Z",
     "b8ee13cc": "2026-10-30T05:15:15.742Z",
-    "eb57012b": "2026-10-30T05:16:26.092Z"
+    "eb57012b": "2026-10-30T05:16:26.092Z",
+    "cc98ded7": "2026-10-30T05:20:29.297Z",
+    "69405b6e": "2026-10-30T05:20:59.879Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4198,17 +4202,9 @@
       "lastAttemptTs": 1793291806713
     },
     "Central Ideas and Details": {
-      "correct": 68,
-      "total": 127,
+      "correct": 70,
+      "total": 129,
       "recent": [
-        {
-          "ts": 1793335839212,
-          "correct": true
-        },
-        {
-          "ts": 1793335898841,
-          "correct": false
-        },
         {
           "ts": 1793335901005,
           "correct": true
@@ -4248,9 +4244,17 @@
         {
           "ts": 1793337385276,
           "correct": true
+        },
+        {
+          "ts": 1793337627240,
+          "correct": true
+        },
+        {
+          "ts": 1793337658943,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793337385276
+      "lastAttemptTs": 1793337658943
     },
     "Words in Context": {
       "correct": 67,
@@ -6262,9 +6266,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 7176178,
+      "totalMs": 7316256,
       "viewMs": {
-        "browse": 4646145,
+        "browse": 4786223,
         "mock": 2329135,
         "profile": 65801,
         "lab": 65042,
@@ -18475,7 +18479,19 @@
         "ts": 1793337385276,
         "ms": 68802
       }
+    ],
+    "cc98ded7": [
+      {
+        "ts": 1793337627240,
+        "ms": 239931
+      }
+    ],
+    "69405b6e": [
+      {
+        "ts": 1793337658943,
+        "ms": 28414
+      }
     ]
   },
-  "clientUpdatedAt": 1793337595303
+  "clientUpdatedAt": 1793337775780
 }
