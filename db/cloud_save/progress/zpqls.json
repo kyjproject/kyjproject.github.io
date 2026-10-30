@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-30T12:44:46.374Z",
+  "exportedAt": "2026-10-30T12:47:46.639Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1673,7 +1673,8 @@
     "809a3da0": "done",
     "163548ba": "done",
     "df75f5e4": "done",
-    "b0015dd7": "done"
+    "b0015dd7": "done",
+    "f4ecd486": "done"
   },
   "tags": {},
   "notes": {},
@@ -3326,7 +3327,8 @@
     "809a3da0": "2026-10-30T12:41:05.206Z",
     "163548ba": "2026-10-30T12:43:31.877Z",
     "df75f5e4": "2026-10-30T12:43:46.827Z",
-    "b0015dd7": "2026-10-30T12:44:16.108Z"
+    "b0015dd7": "2026-10-30T12:44:16.108Z",
+    "f4ecd486": "2026-10-30T12:47:01.812Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4586,21 +4588,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Rhetorical Synthesis": {
-      "correct": 74,
-      "total": 113,
+      "correct": 75,
+      "total": 116,
       "recent": [
-        {
-          "ts": 1793349207671,
-          "correct": true
-        },
-        {
-          "ts": 1793349246672,
-          "correct": true
-        },
-        {
-          "ts": 1793349276873,
-          "correct": true
-        },
         {
           "ts": 1793349284455,
           "correct": true
@@ -4636,9 +4626,21 @@
         {
           "ts": 1793364254244,
           "correct": true
+        },
+        {
+          "ts": 1793364412312,
+          "correct": false
+        },
+        {
+          "ts": 1793364419145,
+          "correct": false
+        },
+        {
+          "ts": 1793364420210,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793364254244
+      "lastAttemptTs": 1793364420210
     },
     "Transitions": {
       "correct": 178,
@@ -6490,9 +6492,9 @@
       "categoryMs": {}
     },
     "2026-10-30": {
-      "totalMs": 13914585,
+      "totalMs": 14050299,
       "viewMs": {
-        "browse": 11334547,
+        "browse": 11470261,
         "mock": 2329135,
         "profile": 85786,
         "lab": 65042,
@@ -19417,7 +19419,21 @@
         "ts": 1793364254244,
         "ms": 26249
       }
+    ],
+    "f4ecd486": [
+      {
+        "ts": 1793364412312,
+        "ms": 154985
+      },
+      {
+        "ts": 1793364419145,
+        "ms": 5919
+      },
+      {
+        "ts": 1793364420210,
+        "ms": 249
+      }
     ]
   },
-  "clientUpdatedAt": 1793364284904
+  "clientUpdatedAt": 1793364465153
 }
