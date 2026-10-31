@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T07:09:26.083Z",
+  "exportedAt": "2026-10-31T07:12:25.306Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1683,7 +1683,8 @@
     "2e05d87a": "done",
     "9c2e2308": "done",
     "3fc42184": "done",
-    "ebbfbd5e": "done"
+    "ebbfbd5e": "done",
+    "b5cda95f": "done"
   },
   "tags": {},
   "notes": {},
@@ -3346,7 +3347,8 @@
     "2e05d87a": "2026-10-30T12:51:18.462Z",
     "9c2e2308": "2026-10-30T12:51:32.045Z",
     "3fc42184": "2026-10-30T12:54:50.114Z",
-    "ebbfbd5e": "2026-10-31T07:08:15.315Z"
+    "ebbfbd5e": "2026-10-31T07:08:15.315Z",
+    "b5cda95f": "2026-10-31T07:09:40.282Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4606,21 +4608,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Rhetorical Synthesis": {
-      "correct": 84,
-      "total": 126,
+      "correct": 85,
+      "total": 129,
       "recent": [
-        {
-          "ts": 1793364419145,
-          "correct": false
-        },
-        {
-          "ts": 1793364420210,
-          "correct": true
-        },
-        {
-          "ts": 1793364528168,
-          "correct": true
-        },
         {
           "ts": 1793364544967,
           "correct": true
@@ -4656,9 +4646,21 @@
         {
           "ts": 1793430494441,
           "correct": true
+        },
+        {
+          "ts": 1793430573609,
+          "correct": false
+        },
+        {
+          "ts": 1793430576104,
+          "correct": false
+        },
+        {
+          "ts": 1793430577618,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793430494441
+      "lastAttemptTs": 1793430577618
     },
     "Transitions": {
       "correct": 178,
@@ -6545,9 +6547,9 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 91553,
+      "totalMs": 111575,
       "viewMs": {
-        "browse": 91553
+        "browse": 111575
       },
       "categoryMs": {}
     }
@@ -19524,7 +19526,21 @@
         "ts": 1793430494441,
         "ms": 65603577
       }
+    ],
+    "b5cda95f": [
+      {
+        "ts": 1793430573609,
+        "ms": 76205
+      },
+      {
+        "ts": 1793430576104,
+        "ms": 1422
+      },
+      {
+        "ts": 1793430577618,
+        "ms": 244
+      }
     ]
   },
-  "clientUpdatedAt": 1793430562820
+  "clientUpdatedAt": 1793430740663
 }
