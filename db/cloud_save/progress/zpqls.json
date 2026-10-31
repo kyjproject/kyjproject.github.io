@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T13:54:30.392Z",
+  "exportedAt": "2026-10-31T13:57:30.113Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1774,7 +1774,8 @@
     "368d0222": "done",
     "9c1b0ab1": "done",
     "cf842c88": "done",
-    "ca2f0ad1": "done"
+    "ca2f0ad1": "done",
+    "ad04f716": "review"
   },
   "tags": {},
   "notes": {},
@@ -4787,21 +4788,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Rhetorical Synthesis": {
-      "correct": 176,
-      "total": 266,
+      "correct": 177,
+      "total": 269,
       "recent": [
-        {
-          "ts": 1793454570551,
-          "correct": false
-        },
-        {
-          "ts": 1793454580518,
-          "correct": true
-        },
-        {
-          "ts": 1793454620869,
-          "correct": true
-        },
         {
           "ts": 1793454634249,
           "correct": true
@@ -4837,9 +4826,21 @@
         {
           "ts": 1793454846012,
           "correct": true
+        },
+        {
+          "ts": 1793454881212,
+          "correct": false
+        },
+        {
+          "ts": 1793454895650,
+          "correct": false
+        },
+        {
+          "ts": 1793454897211,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793454846012
+      "lastAttemptTs": 1793454897211
     },
     "Transitions": {
       "correct": 178,
@@ -6762,9 +6763,9 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 4484414,
+      "totalMs": 4519448,
       "viewMs": {
-        "browse": 4282096,
+        "browse": 4317130,
         "profile": 187306,
         "leaderboard": 15012
       },
@@ -20485,7 +20486,21 @@
         "ts": 1793454846012,
         "ms": 11401
       }
+    ],
+    "ad04f716": [
+      {
+        "ts": 1793454881212,
+        "ms": 32099
+      },
+      {
+        "ts": 1793454895650,
+        "ms": 13592
+      },
+      {
+        "ts": 1793454897211,
+        "ms": 251
+      }
     ]
   },
-  "clientUpdatedAt": 1793454867096
+  "clientUpdatedAt": 1793455025632
 }
