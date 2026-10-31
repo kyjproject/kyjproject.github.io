@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T15:37:13.300Z",
+  "exportedAt": "2026-10-31T15:40:13.916Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1854,7 +1854,11 @@
     "542971a2": "done",
     "da1ebb54": "done",
     "9d146dca": "done",
-    "8e46ba71": "done"
+    "8e46ba71": "done",
+    "fead0fc7": "done",
+    "e1774551": "done",
+    "1caa83ee": "done",
+    "3ae42a32": "done"
   },
   "tags": {},
   "notes": {},
@@ -3685,7 +3689,11 @@
     "542971a2": "2026-10-31T15:21:37.118Z",
     "da1ebb54": "2026-10-31T15:21:48.152Z",
     "9d146dca": "2026-10-31T15:33:29.150Z",
-    "8e46ba71": "2026-10-31T15:35:34.084Z"
+    "8e46ba71": "2026-10-31T15:35:34.084Z",
+    "fead0fc7": "2026-10-31T15:37:19.232Z",
+    "e1774551": "2026-10-31T15:37:30.567Z",
+    "1caa83ee": "2026-10-31T15:37:38.067Z",
+    "3ae42a32": "2026-10-31T15:38:52.434Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5055,21 +5063,9 @@
       "lastAttemptTs": 1793291806715
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 84,
-      "total": 92,
+      "correct": 85,
+      "total": 95,
       "recent": [
-        {
-          "ts": 1793244336417,
-          "correct": true
-        },
-        {
-          "ts": 1793244363455,
-          "correct": true
-        },
-        {
-          "ts": 1793255243387,
-          "correct": true
-        },
         {
           "ts": 1793255271245,
           "correct": true
@@ -5105,22 +5101,26 @@
         {
           "ts": 1793460932183,
           "correct": true
+        },
+        {
+          "ts": 1793461046033,
+          "correct": false
+        },
+        {
+          "ts": 1793461047317,
+          "correct": false
+        },
+        {
+          "ts": 1793461049483,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793460932183
+      "lastAttemptTs": 1793461049483
     },
     "Nonlinear functions": {
-      "correct": 147,
-      "total": 169,
+      "correct": 149,
+      "total": 171,
       "recent": [
-        {
-          "ts": 1793244412205,
-          "correct": true
-        },
-        {
-          "ts": 1793244463040,
-          "correct": true
-        },
         {
           "ts": 1793255224931,
           "correct": true
@@ -5160,18 +5160,22 @@
         {
           "ts": 1793333625208,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793333625208
-    },
-    "Equivalent expressions": {
-      "correct": 57,
-      "total": 69,
-      "recent": [
+        },
         {
-          "ts": 1793243859231,
+          "ts": 1793461057233,
           "correct": true
         },
+        {
+          "ts": 1793461131317,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793461131317
+    },
+    "Equivalent expressions": {
+      "correct": 58,
+      "total": 70,
+      "recent": [
         {
           "ts": 1793244221930,
           "correct": true
@@ -5215,9 +5219,13 @@
         {
           "ts": 1793461017500,
           "correct": false
+        },
+        {
+          "ts": 1793461213719,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793461017500
+      "lastAttemptTs": 1793461213719
     },
     "Circles": {
       "correct": 5,
@@ -6156,10 +6164,6 @@
       "count": 2,
       "lastTs": 1793346621631
     },
-    "cbf71488": {
-      "count": 1,
-      "lastTs": 1793345741522
-    },
     "e67a5268": {
       "count": 1,
       "lastTs": 1793346853983
@@ -6259,6 +6263,14 @@
     "9d146dca": {
       "count": 1,
       "lastTs": 1793460194619
+    },
+    "3ae42a32": {
+      "count": 1,
+      "lastTs": 1793461114560
+    },
+    "cbf71488": {
+      "count": 1,
+      "lastTs": 1793345741522
     },
     "b2e55b8a": {
       "count": 1,
@@ -6952,12 +6964,12 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 7495310,
+      "totalMs": 7668490,
       "viewMs": {
         "browse": 5342995,
-        "profile": 292391,
+        "profile": 297395,
         "leaderboard": 45022,
-        "math": 1809898,
+        "math": 1978074,
         "review": 5004
       },
       "categoryMs": {}
@@ -21297,7 +21309,39 @@
         "ts": 1793461017500,
         "ms": 82580
       }
+    ],
+    "e1774551": [
+      {
+        "ts": 1793461046034,
+        "ms": 6042
+      },
+      {
+        "ts": 1793461047317,
+        "ms": 51
+      },
+      {
+        "ts": 1793461049483,
+        "ms": 1400
+      }
+    ],
+    "1caa83ee": [
+      {
+        "ts": 1793461057233,
+        "ms": 6048
+      }
+    ],
+    "3ae42a32": [
+      {
+        "ts": 1793461131317,
+        "ms": 72321
+      }
+    ],
+    "3138e379": [
+      {
+        "ts": 1793461213719,
+        "ms": 79699
+      }
     ]
   },
-  "clientUpdatedAt": 1793461028985
+  "clientUpdatedAt": 1793461209303
 }
