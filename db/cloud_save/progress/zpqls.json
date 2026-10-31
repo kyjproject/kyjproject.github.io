@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T14:15:30.456Z",
+  "exportedAt": "2026-10-31T14:18:30.867Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1781,7 +1781,9 @@
     "8f60b266": "done",
     "14f17bb9": "done",
     "a0903efe": "done",
-    "ee6a9be5": "done"
+    "ee6a9be5": "done",
+    "fe1ae990": "done",
+    "b5465fdf": "done"
   },
   "tags": {},
   "notes": {},
@@ -3540,7 +3542,9 @@
     "8f60b266": "2026-10-31T14:03:32.895Z",
     "14f17bb9": "2026-10-31T14:04:39.611Z",
     "a0903efe": "2026-10-31T14:07:09.660Z",
-    "ee6a9be5": "2026-10-31T14:10:24.358Z"
+    "ee6a9be5": "2026-10-31T14:10:24.358Z",
+    "fe1ae990": "2026-10-31T14:16:03.742Z",
+    "b5465fdf": "2026-10-31T14:16:17.792Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4800,17 +4804,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Rhetorical Synthesis": {
-      "correct": 183,
-      "total": 277,
+      "correct": 185,
+      "total": 279,
       "recent": [
-        {
-          "ts": 1793454846012,
-          "correct": true
-        },
-        {
-          "ts": 1793454881212,
-          "correct": false
-        },
         {
           "ts": 1793454895650,
           "correct": false
@@ -4850,9 +4846,17 @@
         {
           "ts": 1793455822347,
           "correct": true
+        },
+        {
+          "ts": 1793456161605,
+          "correct": true
+        },
+        {
+          "ts": 1793456176482,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793455822347
+      "lastAttemptTs": 1793456176482
     },
     "Transitions": {
       "correct": 178,
@@ -6775,9 +6779,9 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 4827504,
+      "totalMs": 4865187,
       "viewMs": {
-        "browse": 4625186,
+        "browse": 4662869,
         "profile": 187306,
         "leaderboard": 15012
       },
@@ -20556,7 +20560,19 @@
         "ts": 1793455822347,
         "ms": 191921
       }
+    ],
+    "fe1ae990": [
+      {
+        "ts": 1793456161605,
+        "ms": 336480
+      }
+    ],
+    "b5465fdf": [
+      {
+        "ts": 1793456176482,
+        "ms": 11874
+      }
     ]
   },
-  "clientUpdatedAt": 1793456114968
+  "clientUpdatedAt": 1793456305853
 }
