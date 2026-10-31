@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T15:34:13.851Z",
+  "exportedAt": "2026-10-31T15:37:13.300Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1853,7 +1853,8 @@
     "c8de424b": "done",
     "542971a2": "done",
     "da1ebb54": "done",
-    "9d146dca": "done"
+    "9d146dca": "done",
+    "8e46ba71": "done"
   },
   "tags": {},
   "notes": {},
@@ -3683,7 +3684,8 @@
     "c8de424b": "2026-10-31T15:21:15.132Z",
     "542971a2": "2026-10-31T15:21:37.118Z",
     "da1ebb54": "2026-10-31T15:21:48.152Z",
-    "9d146dca": "2026-10-31T15:33:29.150Z"
+    "9d146dca": "2026-10-31T15:33:29.150Z",
+    "8e46ba71": "2026-10-31T15:35:34.084Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5053,13 +5055,9 @@
       "lastAttemptTs": 1793291806715
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 83,
-      "total": 91,
+      "correct": 84,
+      "total": 92,
       "recent": [
-        {
-          "ts": 1793243667142,
-          "correct": true
-        },
         {
           "ts": 1793244336417,
           "correct": true
@@ -5103,9 +5101,13 @@
         {
           "ts": 1793460159954,
           "correct": true
+        },
+        {
+          "ts": 1793460932183,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793460159954
+      "lastAttemptTs": 1793460932183
     },
     "Nonlinear functions": {
       "correct": 147,
@@ -5164,12 +5166,8 @@
     },
     "Equivalent expressions": {
       "correct": 57,
-      "total": 68,
+      "total": 69,
       "recent": [
-        {
-          "ts": 1793243770582,
-          "correct": true
-        },
         {
           "ts": 1793243859231,
           "correct": true
@@ -5213,9 +5211,13 @@
         {
           "ts": 1793460807698,
           "correct": true
+        },
+        {
+          "ts": 1793461017500,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793460807698
+      "lastAttemptTs": 1793461017500
     },
     "Circles": {
       "correct": 5,
@@ -6950,12 +6952,12 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 7340045,
+      "totalMs": 7495310,
       "viewMs": {
         "browse": 5342995,
         "profile": 292391,
         "leaderboard": 45022,
-        "math": 1654633,
+        "math": 1809898,
         "review": 5004
       },
       "categoryMs": {}
@@ -21283,7 +21285,19 @@
         "ts": 1793460106839,
         "ms": 8170
       }
+    ],
+    "8e46ba71": [
+      {
+        "ts": 1793460932183,
+        "ms": 121715
+      }
+    ],
+    "fead0fc7": [
+      {
+        "ts": 1793461017500,
+        "ms": 82580
+      }
     ]
   },
-  "clientUpdatedAt": 1793460853699
+  "clientUpdatedAt": 1793461028985
 }
