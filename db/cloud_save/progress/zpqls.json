@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-10-31T13:39:14.866Z",
+  "exportedAt": "2026-10-31T13:42:13.221Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1760,7 +1760,9 @@
     "aadcdfa3": "done",
     "5ed1ed84": "done",
     "be506f8b": "done",
-    "99c3a1db": "done"
+    "99c3a1db": "done",
+    "9fd09ac0": "done",
+    "2232c35d": "done"
   },
   "tags": {},
   "notes": {},
@@ -3499,7 +3501,9 @@
     "aadcdfa3": "2026-10-31T09:22:18.974Z",
     "5ed1ed84": "2026-10-31T09:23:04.071Z",
     "be506f8b": "2026-10-31T09:23:19.604Z",
-    "99c3a1db": "2026-10-31T09:23:53.507Z"
+    "99c3a1db": "2026-10-31T09:23:53.507Z",
+    "9fd09ac0": "2026-10-31T13:40:27.291Z",
+    "2232c35d": "2026-10-31T13:41:09.783Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4759,21 +4763,9 @@
       "lastAttemptTs": 1793291806714
     },
     "Rhetorical Synthesis": {
-      "correct": 162,
-      "total": 247,
+      "correct": 164,
+      "total": 250,
       "recent": [
-        {
-          "ts": 1793438020942,
-          "correct": true
-        },
-        {
-          "ts": 1793438034792,
-          "correct": true
-        },
-        {
-          "ts": 1793438436291,
-          "correct": true
-        },
         {
           "ts": 1793438458995,
           "correct": true
@@ -4809,9 +4801,21 @@
         {
           "ts": 1793438623409,
           "correct": true
+        },
+        {
+          "ts": 1793453991619,
+          "correct": false
+        },
+        {
+          "ts": 1793453992995,
+          "correct": true
+        },
+        {
+          "ts": 1793454068032,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793438623409
+      "lastAttemptTs": 1793454068032
     },
     "Transitions": {
       "correct": 178,
@@ -6071,8 +6075,8 @@
       "lastTs": 1793438631687
     },
     "9fd09ac0": {
-      "count": 1,
-      "lastTs": 1793453953831
+      "count": 2,
+      "lastTs": 1793453957998
     },
     "1078a3a4": {
       "count": 1,
@@ -6734,9 +6738,9 @@
       }
     },
     "2026-10-31": {
-      "totalMs": 3949028,
+      "totalMs": 4129164,
       "viewMs": {
-        "browse": 3746710,
+        "browse": 3926846,
         "profile": 187306,
         "leaderboard": 15012
       },
@@ -20353,7 +20357,23 @@
         "ts": 1793438623409,
         "ms": 3832
       }
+    ],
+    "9fd09ac0": [
+      {
+        "ts": 1793453991619,
+        "ms": 15362878
+      },
+      {
+        "ts": 1793453992995,
+        "ms": 213
+      }
+    ],
+    "2232c35d": [
+      {
+        "ts": 1793454068033,
+        "ms": 39762
+      }
     ]
   },
-  "clientUpdatedAt": 1793453950168
+  "clientUpdatedAt": 1793454130391
 }
