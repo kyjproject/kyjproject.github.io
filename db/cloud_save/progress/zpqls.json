@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T16:45:36.788Z",
+  "exportedAt": "2026-11-01T16:48:36.552Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2100,7 +2100,8 @@
     "9b5443f3": "done",
     "fdca5915": "done",
     "cefb2baa": "done",
-    "943bdd80": "review"
+    "943bdd80": "review",
+    "aa4d08d6": "done"
   },
   "tags": {},
   "notes": {},
@@ -4171,7 +4172,8 @@
     "4de321d6": "2026-11-01T15:25:38.338Z",
     "9b5443f3": "2026-11-01T15:26:36.724Z",
     "fdca5915": "2026-11-01T15:27:48.673Z",
-    "cefb2baa": "2026-11-01T16:08:00.838Z"
+    "cefb2baa": "2026-11-01T16:08:00.838Z",
+    "aa4d08d6": "2026-11-01T16:48:29.859Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4663,6 +4665,76 @@
   },
   "mockHistory": [
     {
+      "id": "1793551687007-0gbrwg",
+      "completedAt": "2026-11-01T16:48:07.007Z",
+      "composition": "custom",
+      "sections": [
+        {
+          "subject": "rw",
+          "module": 1,
+          "ids": [
+            "04db28aa",
+            "943bdd80",
+            "c71f112d",
+            "a8c35eaf",
+            "dbcaf826",
+            "b5c5b387",
+            "d6b84972",
+            "599c3dd8",
+            "d7b39ff4",
+            "fc8a5930",
+            "6fa8303d",
+            "cdd766df",
+            "da9ad052",
+            "0d564c7f",
+            "c2a31848",
+            "60fbd7fe",
+            "b5c05ec8",
+            "aa4d08d6",
+            "61e6cf3b",
+            "5f38d8f4",
+            "42548ee2",
+            "ce7ee632",
+            "a053d0b8",
+            "2868e197",
+            "6be089ec",
+            "2e05d87a",
+            "cedea32c"
+          ]
+        }
+      ],
+      "answers": {
+        "04db28aa": "D",
+        "943bdd80": "A",
+        "c71f112d": "B",
+        "a8c35eaf": "C",
+        "dbcaf826": "C",
+        "b5c5b387": "D",
+        "d6b84972": "A",
+        "599c3dd8": "B",
+        "d7b39ff4": "D",
+        "fc8a5930": "C",
+        "6fa8303d": "C",
+        "cdd766df": "B",
+        "da9ad052": "D",
+        "61e6cf3b": "C",
+        "5f38d8f4": "D",
+        "42548ee2": "A",
+        "ce7ee632": "B",
+        "a053d0b8": "D",
+        "2868e197": "C",
+        "6be089ec": "C",
+        "2e05d87a": "A",
+        "cedea32c": "C",
+        "0d564c7f": "B",
+        "c2a31848": "B",
+        "60fbd7fe": "A",
+        "b5c05ec8": "B",
+        "aa4d08d6": "B"
+      },
+      "routedHarderForSubject": {}
+    },
+    {
       "id": "1793333625206-cmf0d2",
       "completedAt": "2026-10-30T04:13:45.206Z",
       "composition": "custom",
@@ -4936,13 +5008,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 54,
-      "total": 82,
+      "correct": 56,
+      "total": 84,
       "recent": [
-        {
-          "ts": 1793098331925,
-          "correct": true
-        },
         {
           "ts": 1793291806713,
           "correct": true
@@ -4986,22 +5054,18 @@
         {
           "ts": 1793331517555,
           "correct": true
+        },
+        {
+          "ts": 1793551687010,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793331517555
+      "lastAttemptTs": 1793551687010
     },
     "Command of Evidence (Textual)": {
-      "correct": 107,
-      "total": 172,
+      "correct": 110,
+      "total": 175,
       "recent": [
-        {
-          "ts": 1793534866654,
-          "correct": false
-        },
-        {
-          "ts": 1793534870963,
-          "correct": true
-        },
         {
           "ts": 1793535202474,
           "correct": false
@@ -5041,18 +5105,22 @@
         {
           "ts": 1793535650948,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793535650948
-    },
-    "Boundaries": {
-      "correct": 229,
-      "total": 318,
-      "recent": [
+        },
         {
-          "ts": 1793292056597,
+          "ts": 1793551687010,
           "correct": true
         },
+        {
+          "ts": 1793551699818,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793551699818
+    },
+    "Boundaries": {
+      "correct": 231,
+      "total": 320,
+      "recent": [
         {
           "ts": 1793292074716,
           "correct": true
@@ -5096,18 +5164,18 @@
         {
           "ts": 1793320862843,
           "correct": true
+        },
+        {
+          "ts": 1793551687010,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793320862843
+      "lastAttemptTs": 1793551687010
     },
     "Form, Structure, and Sense": {
-      "correct": 224,
-      "total": 333,
+      "correct": 225,
+      "total": 334,
       "recent": [
-        {
-          "ts": 1793320697563,
-          "correct": true
-        },
         {
           "ts": 1793320716507,
           "correct": true
@@ -5151,18 +5219,18 @@
         {
           "ts": 1793320968310,
           "correct": true
+        },
+        {
+          "ts": 1793551687010,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793320968310
+      "lastAttemptTs": 1793551687010
     },
     "Cross-Text Connections": {
-      "correct": 21,
-      "total": 35,
+      "correct": 22,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1793098925509,
-          "correct": false
-        },
         {
           "ts": 1793098928842,
           "correct": false
@@ -5206,18 +5274,18 @@
         {
           "ts": 1793291806713,
           "correct": true
+        },
+        {
+          "ts": 1793551687009,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793291806713
+      "lastAttemptTs": 1793551687009
     },
     "Central Ideas and Details": {
-      "correct": 132,
-      "total": 245,
+      "correct": 136,
+      "total": 249,
       "recent": [
-        {
-          "ts": 1793532039831,
-          "correct": true
-        },
         {
           "ts": 1793532330716,
           "correct": false
@@ -5261,22 +5329,18 @@
         {
           "ts": 1793533274294,
           "correct": true
+        },
+        {
+          "ts": 1793551687009,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793533274294
+      "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 89,
-      "total": 134,
+      "correct": 90,
+      "total": 138,
       "recent": [
-        {
-          "ts": 1793546255987,
-          "correct": true
-        },
-        {
-          "ts": 1793546334789,
-          "correct": false
-        },
         {
           "ts": 1793546335690,
           "correct": false
@@ -5316,18 +5380,22 @@
         {
           "ts": 1793549279706,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793549279706
-    },
-    "Text Structure and Purpose": {
-      "correct": 14,
-      "total": 26,
-      "recent": [
+        },
         {
-          "ts": 1793230613267,
+          "ts": 1793551687008,
           "correct": false
         },
+        {
+          "ts": 1793551687009,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1793551687009
+    },
+    "Text Structure and Purpose": {
+      "correct": 17,
+      "total": 29,
+      "recent": [
         {
           "ts": 1793230614639,
           "correct": true
@@ -5371,22 +5439,18 @@
         {
           "ts": 1793291806713,
           "correct": true
+        },
+        {
+          "ts": 1793551687009,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793291806713
+      "lastAttemptTs": 1793551687009
     },
     "Inferences": {
-      "correct": 29,
-      "total": 44,
+      "correct": 31,
+      "total": 47,
       "recent": [
-        {
-          "ts": 1793106541412,
-          "correct": false
-        },
-        {
-          "ts": 1793106542781,
-          "correct": false
-        },
         {
           "ts": 1793106544380,
           "correct": true
@@ -5426,18 +5490,22 @@
         {
           "ts": 1793291806714,
           "correct": true
+        },
+        {
+          "ts": 1793551687010,
+          "correct": true
+        },
+        {
+          "ts": 1793551707944,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793291806714
+      "lastAttemptTs": 1793551707944
     },
     "Rhetorical Synthesis": {
-      "correct": 200,
-      "total": 308,
+      "correct": 202,
+      "total": 310,
       "recent": [
-        {
-          "ts": 1793457287605,
-          "correct": false
-        },
         {
           "ts": 1793457288348,
           "correct": false
@@ -5481,18 +5549,18 @@
         {
           "ts": 1793457648609,
           "correct": true
+        },
+        {
+          "ts": 1793551687011,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793457648609
+      "lastAttemptTs": 1793551687011
     },
     "Transitions": {
-      "correct": 178,
-      "total": 289,
+      "correct": 182,
+      "total": 293,
       "recent": [
-        {
-          "ts": 1793290132498,
-          "correct": true
-        },
         {
           "ts": 1793290156721,
           "correct": false
@@ -5536,9 +5604,13 @@
         {
           "ts": 1793291806715,
           "correct": false
+        },
+        {
+          "ts": 1793551687010,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793291806715
+      "lastAttemptTs": 1793551687010
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 88,
@@ -6706,18 +6778,6 @@
       "count": 3,
       "lastTs": 1793459754615
     },
-    "5987c039": {
-      "count": 1,
-      "lastTs": 1793492024156
-    },
-    "8422756b": {
-      "count": 1,
-      "lastTs": 1793492281790
-    },
-    "ddfd6303": {
-      "count": 1,
-      "lastTs": 1793492415790
-    },
     "3541335e": {
       "count": 2,
       "lastTs": 1793535696550
@@ -6785,6 +6845,30 @@
     "cefb2baa": {
       "count": 1,
       "lastTs": 1793549259156
+    },
+    "c2a31848": {
+      "count": 2,
+      "lastTs": 1793551696957
+    },
+    "aa4d08d6": {
+      "count": 1,
+      "lastTs": 1793551705272
+    },
+    "0d564c7f": {
+      "count": 1,
+      "lastTs": 1793551713956
+    },
+    "5987c039": {
+      "count": 1,
+      "lastTs": 1793492024156
+    },
+    "8422756b": {
+      "count": 1,
+      "lastTs": 1793492281790
+    },
+    "ddfd6303": {
+      "count": 1,
+      "lastTs": 1793492415790
     },
     "cde831b3": {
       "count": 1,
@@ -7113,10 +7197,6 @@
     "fc5d8203": {
       "count": 1,
       "lastTs": 1793098783654
-    },
-    "c2a31848": {
-      "count": 1,
-      "lastTs": 1793099872703
     },
     "f36559aa": {
       "count": 1,
@@ -7603,10 +7683,10 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 1397721,
+      "totalMs": 1555588,
       "viewMs": {
         "browse": 43097,
-        "mock": 1354624
+        "mock": 1512491
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -7618,7 +7698,7 @@
         "Transitions": 175621,
         "Notes": 60049,
         "Textual Evidence": 140114,
-        "Inferences": 45727
+        "Inferences": 173549
       }
     }
   },
@@ -15639,6 +15719,10 @@
       {
         "ts": 1793100071146,
         "ms": 212662
+      },
+      {
+        "ts": 1793551699818,
+        "ms": 2859
       }
     ],
     "8d0a6f85": [
@@ -23642,7 +23726,13 @@
         "ts": 1793549279706,
         "ms": 2408997
       }
+    ],
+    "aa4d08d6": [
+      {
+        "ts": 1793551707944,
+        "ms": 2669
+      }
     ]
   },
-  "clientUpdatedAt": 1793551533555
+  "clientUpdatedAt": 1793551712516
 }
