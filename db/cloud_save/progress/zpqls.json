@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T23:23:19.441Z",
+  "exportedAt": "2026-11-01T23:25:14.806Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2102,7 +2102,8 @@
     "cefb2baa": "done",
     "943bdd80": "review",
     "aa4d08d6": "done",
-    "0d564c7f": "done"
+    "0d564c7f": "done",
+    "04db28aa": "review"
   },
   "tags": {},
   "notes": {},
@@ -5340,25 +5341,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 91,
-      "total": 139,
+      "correct": 94,
+      "total": 143,
       "recent": [
-        {
-          "ts": 1793546337157,
-          "correct": false
-        },
-        {
-          "ts": 1793546338357,
-          "correct": true
-        },
-        {
-          "ts": 1793546408828,
-          "correct": true
-        },
-        {
-          "ts": 1793546543229,
-          "correct": true
-        },
         {
           "ts": 1793546721365,
           "correct": true
@@ -5390,9 +5375,25 @@
         {
           "ts": 1793551764000,
           "correct": true
+        },
+        {
+          "ts": 1793575403842,
+          "correct": true
+        },
+        {
+          "ts": 1793575418048,
+          "correct": false
+        },
+        {
+          "ts": 1793575452493,
+          "correct": true
+        },
+        {
+          "ts": 1793575455551,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793551764000
+      "lastAttemptTs": 1793575455551
     },
     "Text Structure and Purpose": {
       "correct": 17,
@@ -6857,8 +6858,8 @@
       "lastTs": 1793551723405
     },
     "04db28aa": {
-      "count": 1,
-      "lastTs": 1793551759890
+      "count": 2,
+      "lastTs": 1793575410108
     },
     "18d2dfab": {
       "count": 1,
@@ -7693,10 +7694,10 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 1600907,
+      "totalMs": 1638251,
       "viewMs": {
         "browse": 43097,
-        "mock": 1557810
+        "mock": 1595154
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -23757,8 +23758,26 @@
       {
         "ts": 1793551764000,
         "ms": 4109
+      },
+      {
+        "ts": 1793575403842,
+        "ms": 23638383
+      }
+    ],
+    "943bdd80": [
+      {
+        "ts": 1793575418048,
+        "ms": 9472
+      },
+      {
+        "ts": 1793575452493,
+        "ms": 333
+      },
+      {
+        "ts": 1793575455551,
+        "ms": 2242
       }
     ]
   },
-  "clientUpdatedAt": 1793575394928
+  "clientUpdatedAt": 1793575510865
 }
