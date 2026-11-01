@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T13:32:20.839Z",
+  "exportedAt": "2026-11-01T13:35:21.129Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1992,7 +1992,13 @@
     "7ecb3059": "done",
     "1c15c90f": "done",
     "427423db": "done",
-    "04bbbda6": "done"
+    "04bbbda6": "done",
+    "48b69ecb": "done",
+    "db81edbb": "done",
+    "43e876eb": "done",
+    "c19b1626": "done",
+    "338f0d42": "done",
+    "14b418db": "done"
   },
   "tags": {},
   "notes": {},
@@ -3956,7 +3962,13 @@
     "7ecb3059": "2026-11-01T13:24:01.575Z",
     "1c15c90f": "2026-11-01T13:24:57.208Z",
     "427423db": "2026-11-01T13:26:36.567Z",
-    "04bbbda6": "2026-11-01T13:27:35.413Z"
+    "04bbbda6": "2026-11-01T13:27:35.413Z",
+    "48b69ecb": "2026-11-01T13:32:22.155Z",
+    "db81edbb": "2026-11-01T13:33:05.289Z",
+    "43e876eb": "2026-11-01T13:33:44.889Z",
+    "c19b1626": "2026-11-01T13:33:52.622Z",
+    "338f0d42": "2026-11-01T13:34:50.105Z",
+    "14b418db": "2026-11-01T13:35:12.338Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5491,13 +5503,9 @@
       "lastAttemptTs": 1793461213719
     },
     "Circles": {
-      "correct": 11,
-      "total": 12,
+      "correct": 12,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1792753571513,
-          "correct": true
-        },
         {
           "ts": 1792753609580,
           "correct": true
@@ -5541,22 +5549,18 @@
         {
           "ts": 1793539184875,
           "correct": true
+        },
+        {
+          "ts": 1793540024126,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793539184875
+      "lastAttemptTs": 1793540024126
     },
     "Lines, angles, and triangles": {
-      "correct": 38,
-      "total": 42,
+      "correct": 40,
+      "total": 44,
       "recent": [
-        {
-          "ts": 1793537416769,
-          "correct": true
-        },
-        {
-          "ts": 1793537427476,
-          "correct": true
-        },
         {
           "ts": 1793537491810,
           "correct": true
@@ -5596,22 +5600,22 @@
         {
           "ts": 1793539940679,
           "correct": true
+        },
+        {
+          "ts": 1793540089020,
+          "correct": true
+        },
+        {
+          "ts": 1793540110785,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793539940679
+      "lastAttemptTs": 1793540110785
     },
     "Right triangles and trigonometry": {
-      "correct": 21,
-      "total": 27,
+      "correct": 23,
+      "total": 29,
       "recent": [
-        {
-          "ts": 1793333625208,
-          "correct": true
-        },
-        {
-          "ts": 1793537243494,
-          "correct": true
-        },
         {
           "ts": 1793537399167,
           "correct": true
@@ -5651,9 +5655,17 @@
         {
           "ts": 1793538952760,
           "correct": true
+        },
+        {
+          "ts": 1793539984408,
+          "correct": true
+        },
+        {
+          "ts": 1793540031629,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793538952760
+      "lastAttemptTs": 1793540031629
     },
     "Area and volume": {
       "correct": 45,
@@ -6479,10 +6491,6 @@
       "count": 3,
       "lastTs": 1793459754615
     },
-    "432f9706": {
-      "count": 1,
-      "lastTs": 1793460012348
-    },
     "9d146dca": {
       "count": 1,
       "lastTs": 1793460194619
@@ -6558,6 +6566,14 @@
     "ba00aba9": {
       "count": 1,
       "lastTs": 1793539202039
+    },
+    "db81edbb": {
+      "count": 2,
+      "lastTs": 1793539954938
+    },
+    "432f9706": {
+      "count": 1,
+      "lastTs": 1793460012348
     },
     "0dac9e81": {
       "count": 1,
@@ -7330,11 +7346,11 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 5896116,
+      "totalMs": 6063174,
       "viewMs": {
         "browse": 2512131,
-        "math": 3328949,
-        "profile": 25015,
+        "math": 3485998,
+        "profile": 35024,
         "leaderboard": 30021
       },
       "categoryMs": {}
@@ -22638,7 +22654,37 @@
         "ts": 1793539940679,
         "ms": 284431
       }
+    ],
+    "db81edbb": [
+      {
+        "ts": 1793539984408,
+        "ms": 41297
+      }
+    ],
+    "43e876eb": [
+      {
+        "ts": 1793540024126,
+        "ms": 36433
+      }
+    ],
+    "c19b1626": [
+      {
+        "ts": 1793540031629,
+        "ms": 5755
+      }
+    ],
+    "338f0d42": [
+      {
+        "ts": 1793540089020,
+        "ms": 55562
+      }
+    ],
+    "14b418db": [
+      {
+        "ts": 1793540110785,
+        "ms": 19750
+      }
     ]
   },
-  "clientUpdatedAt": 1793539938426
+  "clientUpdatedAt": 1793540118701
 }
