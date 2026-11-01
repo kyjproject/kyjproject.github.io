@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T14:15:03.485Z",
+  "exportedAt": "2026-11-01T14:18:01.802Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2062,7 +2062,13 @@
     "b65a5036": "done",
     "82555d76": "done",
     "4f783906": "done",
-    "213aaab1": "done"
+    "213aaab1": "done",
+    "d9dc059a": "done",
+    "3e19942b": "done",
+    "f9c3e6a3": "done",
+    "845c6478": "done",
+    "d1c59f81": "done",
+    "78cc3297": "done"
   },
   "tags": {},
   "notes": {},
@@ -4096,7 +4102,13 @@
     "b65a5036": "2026-11-01T14:12:31.332Z",
     "82555d76": "2026-11-01T14:13:05.084Z",
     "4f783906": "2026-11-01T14:13:59.100Z",
-    "213aaab1": "2026-11-01T14:14:14.347Z"
+    "213aaab1": "2026-11-01T14:14:14.347Z",
+    "d9dc059a": "2026-11-01T14:15:20.517Z",
+    "3e19942b": "2026-11-01T14:15:47.701Z",
+    "f9c3e6a3": "2026-11-01T14:16:57.634Z",
+    "845c6478": "2026-11-01T14:17:07.535Z",
+    "d1c59f81": "2026-11-01T14:17:23.432Z",
+    "78cc3297": "2026-11-01T14:17:40.367Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6126,21 +6138,9 @@
       "lastAttemptTs": 1793536765291
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 41,
-      "total": 47,
+      "correct": 43,
+      "total": 50,
       "recent": [
-        {
-          "ts": 1793541224925,
-          "correct": true
-        },
-        {
-          "ts": 1793541361554,
-          "correct": true
-        },
-        {
-          "ts": 1793541674399,
-          "correct": true
-        },
         {
           "ts": 1793542001053,
           "correct": true
@@ -6176,9 +6176,21 @@
         {
           "ts": 1793542452988,
           "correct": true
+        },
+        {
+          "ts": 1793542546737,
+          "correct": true
+        },
+        {
+          "ts": 1793542596006,
+          "correct": false
+        },
+        {
+          "ts": 1793542642538,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542452988
+      "lastAttemptTs": 1793542642538
     },
     "Probability and conditional probability": {
       "correct": 16,
@@ -6236,13 +6248,9 @@
       "lastAttemptTs": 1793542173414
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 30,
-      "total": 37,
+      "correct": 31,
+      "total": 38,
       "recent": [
-        {
-          "ts": 1792988237758,
-          "correct": true
-        },
         {
           "ts": 1792988325806,
           "correct": true
@@ -6286,18 +6294,18 @@
         {
           "ts": 1793542315155,
           "correct": true
+        },
+        {
+          "ts": 1793542658799,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542315155
+      "lastAttemptTs": 1793542658799
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 32,
-      "total": 38,
+      "correct": 33,
+      "total": 39,
       "recent": [
-        {
-          "ts": 1793541482373,
-          "correct": true
-        },
         {
           "ts": 1793541732216,
           "correct": true
@@ -6341,18 +6349,18 @@
         {
           "ts": 1793542437434,
           "correct": true
+        },
+        {
+          "ts": 1793542626318,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542437434
+      "lastAttemptTs": 1793542626318
     },
     "Percentages": {
-      "correct": 28,
-      "total": 32,
+      "correct": 29,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1793333625207,
-          "correct": true
-        },
         {
           "ts": 1793541011842,
           "correct": false
@@ -6396,9 +6404,13 @@
         {
           "ts": 1793542280097,
           "correct": true
+        },
+        {
+          "ts": 1793542519568,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542280097
+      "lastAttemptTs": 1793542519568
     },
     "Inference from sample statistics and margin of error": {
       "correct": 9,
@@ -7498,10 +7510,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 7688372,
+      "totalMs": 7837605,
       "viewMs": {
         "browse": 2512131,
-        "math": 5111196,
+        "math": 5260429,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -23276,7 +23288,43 @@
         "ts": 1793542452988,
         "ms": 13090
       }
+    ],
+    "d9dc059a": [
+      {
+        "ts": 1793542519569,
+        "ms": 64235
+      }
+    ],
+    "3e19942b": [
+      {
+        "ts": 1793542546737,
+        "ms": 25286
+      }
+    ],
+    "f9c3e6a3": [
+      {
+        "ts": 1793542596006,
+        "ms": 47422
+      }
+    ],
+    "845c6478": [
+      {
+        "ts": 1793542626318,
+        "ms": 7900
+      }
+    ],
+    "d1c59f81": [
+      {
+        "ts": 1793542642538,
+        "ms": 14236
+      }
+    ],
+    "78cc3297": [
+      {
+        "ts": 1793542658799,
+        "ms": 14557
+      }
     ]
   },
-  "clientUpdatedAt": 1793542500736
+  "clientUpdatedAt": 1793542676278
 }
