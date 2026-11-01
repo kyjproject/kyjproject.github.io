@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T15:14:24.665Z",
+  "exportedAt": "2026-11-01T15:17:24.770Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2089,7 +2089,8 @@
     "4bda3cab": "done",
     "40bd08d8": "done",
     "994aa0df": "done",
-    "46e9eb4d": "done"
+    "46e9eb4d": "done",
+    "27159e44": "done"
   },
   "tags": {},
   "notes": {},
@@ -4150,7 +4151,8 @@
     "4bda3cab": "2026-11-01T15:02:08.184Z",
     "40bd08d8": "2026-11-01T15:03:41.854Z",
     "994aa0df": "2026-11-01T15:06:02.957Z",
-    "46e9eb4d": "2026-11-01T15:10:17.545Z"
+    "46e9eb4d": "2026-11-01T15:10:17.545Z",
+    "27159e44": "2026-11-01T15:14:44.682Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5245,25 +5247,9 @@
       "lastAttemptTs": 1793533274294
     },
     "Words in Context": {
-      "correct": 78,
-      "total": 117,
+      "correct": 80,
+      "total": 121,
       "recent": [
-        {
-          "ts": 1793331177658,
-          "correct": true
-        },
-        {
-          "ts": 1793544473724,
-          "correct": true
-        },
-        {
-          "ts": 1793544612816,
-          "correct": true
-        },
-        {
-          "ts": 1793544650728,
-          "correct": true
-        },
         {
           "ts": 1793544852724,
           "correct": true
@@ -5295,9 +5281,25 @@
         {
           "ts": 1793545815546,
           "correct": true
+        },
+        {
+          "ts": 1793546073878,
+          "correct": false
+        },
+        {
+          "ts": 1793546075931,
+          "correct": false
+        },
+        {
+          "ts": 1793546083185,
+          "correct": true
+        },
+        {
+          "ts": 1793546141747,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793545815546
+      "lastAttemptTs": 1793546141747
     },
     "Text Structure and Purpose": {
       "correct": 14,
@@ -7564,9 +7566,9 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 8904697,
+      "totalMs": 8948728,
       "viewMs": {
-        "browse": 2956754,
+        "browse": 3000785,
         "math": 5877894,
         "profile": 40028,
         "leaderboard": 30021
@@ -23508,7 +23510,27 @@
         "ts": 1793545815546,
         "ms": 251759
       }
+    ],
+    "27159e44": [
+      {
+        "ts": 1793546073878,
+        "ms": 255062
+      },
+      {
+        "ts": 1793546075931,
+        "ms": 216
+      },
+      {
+        "ts": 1793546083185,
+        "ms": 6118
+      }
+    ],
+    "629a4d69": [
+      {
+        "ts": 1793546141748,
+        "ms": 56252
+      }
     ]
   },
-  "clientUpdatedAt": 1793546060476
+  "clientUpdatedAt": 1793546239837
 }
