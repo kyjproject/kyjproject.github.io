@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T14:06:02.127Z",
+  "exportedAt": "2026-11-01T14:09:01.149Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2037,7 +2037,18 @@
     "a188f764": "done",
     "22efbe91": "done",
     "291206f8": "done",
-    "40c8528e": "done"
+    "40c8528e": "done",
+    "30422e61": "done",
+    "b6843bc7": "done",
+    "1a850131": "done",
+    "bc79626c": "done",
+    "1e7832f1": "done",
+    "c7c7d2e2": "done",
+    "664315f9": "done",
+    "b160d8c8": "done",
+    "005878b3": "done",
+    "e639a4f6": "done",
+    "22458cc3": "done"
   },
   "tags": {},
   "notes": {},
@@ -4046,7 +4057,18 @@
     "a188f764": "2026-11-01T14:02:51.109Z",
     "22efbe91": "2026-11-01T14:03:04.811Z",
     "291206f8": "2026-11-01T14:04:37.180Z",
-    "40c8528e": "2026-11-01T14:05:59.430Z"
+    "40c8528e": "2026-11-01T14:05:59.430Z",
+    "30422e61": "2026-11-01T14:06:19.377Z",
+    "b6843bc7": "2026-11-01T14:06:41.961Z",
+    "1a850131": "2026-11-01T14:07:47.014Z",
+    "bc79626c": "2026-11-01T14:07:54.777Z",
+    "1e7832f1": "2026-11-01T14:08:03.946Z",
+    "c7c7d2e2": "2026-11-01T14:08:08.944Z",
+    "664315f9": "2026-11-01T14:08:18.369Z",
+    "b160d8c8": "2026-11-01T14:08:29.811Z",
+    "005878b3": "2026-11-01T14:08:39.444Z",
+    "e639a4f6": "2026-11-01T14:08:50.879Z",
+    "22458cc3": "2026-11-01T14:08:58.295Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6076,17 +6098,9 @@
       "lastAttemptTs": 1793536765291
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 33,
-      "total": 38,
+      "correct": 35,
+      "total": 40,
       "recent": [
-        {
-          "ts": 1792988156890,
-          "correct": true
-        },
-        {
-          "ts": 1792988216697,
-          "correct": true
-        },
         {
           "ts": 1792988222655,
           "correct": true
@@ -6126,9 +6140,17 @@
         {
           "ts": 1793541674399,
           "correct": true
+        },
+        {
+          "ts": 1793542001053,
+          "correct": true
+        },
+        {
+          "ts": 1793542097472,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541674399
+      "lastAttemptTs": 1793542097472
     },
     "Probability and conditional probability": {
       "correct": 15,
@@ -6186,17 +6208,9 @@
       "lastAttemptTs": 1793541957951
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 26,
-      "total": 32,
+      "correct": 28,
+      "total": 34,
       "recent": [
-        {
-          "ts": 1792988121524,
-          "correct": true
-        },
-        {
-          "ts": 1792988150761,
-          "correct": true
-        },
         {
           "ts": 1792988189077,
           "correct": true
@@ -6236,42 +6250,22 @@
         {
           "ts": 1793541770166,
           "correct": true
+        },
+        {
+          "ts": 1793542118285,
+          "correct": true
+        },
+        {
+          "ts": 1793542137395,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541770166
+      "lastAttemptTs": 1793542137395
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 27,
-      "total": 29,
+      "correct": 30,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1792988265363,
-          "correct": true
-        },
-        {
-          "ts": 1792988276745,
-          "correct": true
-        },
-        {
-          "ts": 1792988318977,
-          "correct": true
-        },
-        {
-          "ts": 1793541091702,
-          "correct": true
-        },
-        {
-          "ts": 1793541112352,
-          "correct": true
-        },
-        {
-          "ts": 1793541244835,
-          "correct": false
-        },
-        {
-          "ts": 1793541296480,
-          "correct": true
-        },
         {
           "ts": 1793541304921,
           "correct": true
@@ -6291,22 +6285,42 @@
         {
           "ts": 1793541875763,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793541875763
-    },
-    "Percentages": {
-      "correct": 25,
-      "total": 29,
-      "recent": [
+        },
         {
-          "ts": 1792988182903,
+          "ts": 1793541968943,
+          "correct": false
+        },
+        {
+          "ts": 1793541970066,
+          "correct": false
+        },
+        {
+          "ts": 1793541970864,
+          "correct": false
+        },
+        {
+          "ts": 1793541973943,
           "correct": true
         },
         {
-          "ts": 1792988244523,
+          "ts": 1793542072344,
           "correct": false
         },
+        {
+          "ts": 1793542073324,
+          "correct": true
+        },
+        {
+          "ts": 1793542108717,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1793542108717
+    },
+    "Percentages": {
+      "correct": 27,
+      "total": 31,
+      "recent": [
         {
           "ts": 1792988247647,
           "correct": true
@@ -6346,18 +6360,22 @@
         {
           "ts": 1793541783000,
           "correct": true
+        },
+        {
+          "ts": 1793542065747,
+          "correct": true
+        },
+        {
+          "ts": 1793542129987,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541783000
+      "lastAttemptTs": 1793542129987
     },
     "Inference from sample statistics and margin of error": {
-      "correct": 6,
-      "total": 12,
+      "correct": 7,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1792987287063,
-          "correct": false
-        },
         {
           "ts": 1792987287921,
           "correct": false
@@ -6401,9 +6419,13 @@
         {
           "ts": 1793541724250,
           "correct": true
+        },
+        {
+          "ts": 1793542082633,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541724250
+      "lastAttemptTs": 1793542082633
     }
   },
   "progressFocus": [
@@ -6581,14 +6603,6 @@
       "count": 3,
       "lastTs": 1793459754615
     },
-    "3ae42a32": {
-      "count": 1,
-      "lastTs": 1793461114560
-    },
-    "04857055": {
-      "count": 1,
-      "lastTs": 1793461468936
-    },
     "9760e424": {
       "count": 1,
       "lastTs": 1793461700170
@@ -6660,6 +6674,22 @@
     "80e0332a": {
       "count": 1,
       "lastTs": 1793540481804
+    },
+    "c7c7d2e2": {
+      "count": 1,
+      "lastTs": 1793542085131
+    },
+    "664315f9": {
+      "count": 1,
+      "lastTs": 1793542089864
+    },
+    "3ae42a32": {
+      "count": 1,
+      "lastTs": 1793461114560
+    },
+    "04857055": {
+      "count": 1,
+      "lastTs": 1793461468936
     },
     "9d146dca": {
       "count": 1,
@@ -7440,10 +7470,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 7246031,
+      "totalMs": 7420811,
       "viewMs": {
         "browse": 2512131,
-        "math": 4668855,
+        "math": 4843635,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -23050,7 +23080,83 @@
         "ts": 1793541957951,
         "ms": 79925
       }
+    ],
+    "30422e61": [
+      {
+        "ts": 1793541968943,
+        "ms": 8732
+      },
+      {
+        "ts": 1793541970066,
+        "ms": 323
+      },
+      {
+        "ts": 1793541970864,
+        "ms": 104
+      },
+      {
+        "ts": 1793541973943,
+        "ms": 1980
+      }
+    ],
+    "b6843bc7": [
+      {
+        "ts": 1793542001053,
+        "ms": 20675
+      }
+    ],
+    "1a850131": [
+      {
+        "ts": 1793542065747,
+        "ms": 62616
+      }
+    ],
+    "bc79626c": [
+      {
+        "ts": 1793542072344,
+        "ms": 4529
+      },
+      {
+        "ts": 1793542073324,
+        "ms": 163
+      }
+    ],
+    "1e7832f1": [
+      {
+        "ts": 1793542082633,
+        "ms": 6655
+      }
+    ],
+    "664315f9": [
+      {
+        "ts": 1793542097472,
+        "ms": 7608
+      }
+    ],
+    "b160d8c8": [
+      {
+        "ts": 1793542108717,
+        "ms": 8968
+      }
+    ],
+    "005878b3": [
+      {
+        "ts": 1793542118285,
+        "ms": 7390
+      }
+    ],
+    "e639a4f6": [
+      {
+        "ts": 1793542129987,
+        "ms": 8725
+      }
+    ],
+    "22458cc3": [
+      {
+        "ts": 1793542137395,
+        "ms": 5330
+      }
     ]
   },
-  "clientUpdatedAt": 1793541960373
+  "clientUpdatedAt": 1793542140537
 }
