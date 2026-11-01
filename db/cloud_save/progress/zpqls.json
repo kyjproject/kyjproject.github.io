@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T14:24:01.309Z",
+  "exportedAt": "2026-11-01T14:28:26.693Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2075,7 +2075,10 @@
     "66bd59b5": "done",
     "591db6cf": "done",
     "fdf7a80a": "done",
-    "ce901565": "done"
+    "ce901565": "done",
+    "79c54a4d": "done",
+    "a1c05998": "done",
+    "04943c5d": "done"
   },
   "tags": {},
   "notes": {},
@@ -4122,7 +4125,10 @@
     "66bd59b5": "2026-11-01T14:22:14.104Z",
     "591db6cf": "2026-11-01T14:22:19.055Z",
     "fdf7a80a": "2026-11-01T14:22:34.103Z",
-    "ce901565": "2026-11-01T14:22:49.652Z"
+    "ce901565": "2026-11-01T14:22:49.652Z",
+    "79c54a4d": "2026-11-01T14:24:50.472Z",
+    "a1c05998": "2026-11-01T14:25:23.405Z",
+    "04943c5d": "2026-11-01T14:26:23.339Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6152,13 +6158,9 @@
       "lastAttemptTs": 1793536765291
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 44,
-      "total": 52,
+      "correct": 45,
+      "total": 53,
       "recent": [
-        {
-          "ts": 1793542143722,
-          "correct": false
-        },
         {
           "ts": 1793542145178,
           "correct": true
@@ -6202,18 +6204,18 @@
         {
           "ts": 1793542968692,
           "correct": true
+        },
+        {
+          "ts": 1793543181939,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542968692
+      "lastAttemptTs": 1793543181939
     },
     "Probability and conditional probability": {
-      "correct": 18,
-      "total": 23,
+      "correct": 19,
+      "total": 24,
       "recent": [
-        {
-          "ts": 1792988030504,
-          "correct": true
-        },
         {
           "ts": 1792988106770,
           "correct": true
@@ -6257,9 +6259,13 @@
         {
           "ts": 1793542932861,
           "correct": true
+        },
+        {
+          "ts": 1793543089239,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542932861
+      "lastAttemptTs": 1793543089239
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 31,
@@ -6373,12 +6379,8 @@
     },
     "Percentages": {
       "correct": 30,
-      "total": 35,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1793541160929,
-          "correct": true
-        },
         {
           "ts": 1793541194626,
           "correct": true
@@ -6422,9 +6424,13 @@
         {
           "ts": 1793542953022,
           "correct": true
+        },
+        {
+          "ts": 1793543121708,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793542953022
+      "lastAttemptTs": 1793543121708
     },
     "Inference from sample statistics and margin of error": {
       "correct": 10,
@@ -7528,10 +7534,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 8067710,
+      "totalMs": 8165567,
       "viewMs": {
         "browse": 2512131,
-        "math": 5490534,
+        "math": 5588391,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -23384,7 +23390,25 @@
         "ts": 1793542968692,
         "ms": 13706
       }
+    ],
+    "79c54a4d": [
+      {
+        "ts": 1793543089239,
+        "ms": 118886
+      }
+    ],
+    "a1c05998": [
+      {
+        "ts": 1793543121708,
+        "ms": 29236
+      }
+    ],
+    "04943c5d": [
+      {
+        "ts": 1793543181939,
+        "ms": 57264
+      }
     ]
   },
-  "clientUpdatedAt": 1793543038081
+  "clientUpdatedAt": 1793543302660
 }
