@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T13:39:02.108Z",
+  "exportedAt": "2026-11-01T13:42:01.308Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2000,7 +2000,10 @@
     "338f0d42": "done",
     "14b418db": "done",
     "e5ba4117": "done",
-    "1f96ea4b": "done"
+    "1f96ea4b": "done",
+    "3b66e6a3": "done",
+    "7ea88342": "done",
+    "26c126bb": "done"
   },
   "tags": {},
   "notes": {},
@@ -3972,7 +3975,10 @@
     "338f0d42": "2026-11-01T13:34:50.105Z",
     "14b418db": "2026-11-01T13:35:12.338Z",
     "e5ba4117": "2026-11-01T13:35:27.771Z",
-    "1f96ea4b": "2026-11-01T13:37:52.055Z"
+    "1f96ea4b": "2026-11-01T13:37:52.055Z",
+    "3b66e6a3": "2026-11-01T13:40:22.021Z",
+    "7ea88342": "2026-11-01T13:40:45.617Z",
+    "26c126bb": "2026-11-01T13:41:19.271Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5507,13 +5513,9 @@
       "lastAttemptTs": 1793461213719
     },
     "Circles": {
-      "correct": 13,
-      "total": 14,
+      "correct": 14,
+      "total": 15,
       "recent": [
-        {
-          "ts": 1792984656776,
-          "correct": true
-        },
         {
           "ts": 1792986279670,
           "correct": true
@@ -5557,18 +5559,18 @@
         {
           "ts": 1793540269848,
           "correct": true
+        },
+        {
+          "ts": 1793540444742,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540269848
+      "lastAttemptTs": 1793540444742
     },
     "Lines, angles, and triangles": {
-      "correct": 40,
-      "total": 44,
+      "correct": 41,
+      "total": 45,
       "recent": [
-        {
-          "ts": 1793537491810,
-          "correct": true
-        },
         {
           "ts": 1793537504999,
           "correct": false
@@ -5612,9 +5614,13 @@
         {
           "ts": 1793540110785,
           "correct": true
+        },
+        {
+          "ts": 1793540478111,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540110785
+      "lastAttemptTs": 1793540478111
     },
     "Right triangles and trigonometry": {
       "correct": 23,
@@ -5672,13 +5678,9 @@
       "lastAttemptTs": 1793540031629
     },
     "Area and volume": {
-      "correct": 46,
-      "total": 49,
+      "correct": 47,
+      "total": 50,
       "recent": [
-        {
-          "ts": 1793538216988,
-          "correct": false
-        },
         {
           "ts": 1793538240929,
           "correct": true
@@ -5722,9 +5724,13 @@
         {
           "ts": 1793540126513,
           "correct": true
+        },
+        {
+          "ts": 1793540420161,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540126513
+      "lastAttemptTs": 1793540420161
     },
     "Systems of two linear equations in two variables": {
       "correct": 56,
@@ -6495,10 +6501,6 @@
       "count": 3,
       "lastTs": 1793459754615
     },
-    "9d146dca": {
-      "count": 1,
-      "lastTs": 1793460194619
-    },
     "3ae42a32": {
       "count": 1,
       "lastTs": 1793461114560
@@ -6574,6 +6576,14 @@
     "db81edbb": {
       "count": 2,
       "lastTs": 1793539954938
+    },
+    "80e0332a": {
+      "count": 1,
+      "lastTs": 1793540481804
+    },
+    "9d146dca": {
+      "count": 1,
+      "lastTs": 1793460194619
     },
     "432f9706": {
       "count": 1,
@@ -7350,10 +7360,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 6112761,
+      "totalMs": 6193196,
       "viewMs": {
         "browse": 2512131,
-        "math": 3535585,
+        "math": 3616020,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -22700,7 +22710,25 @@
         "ts": 1793540269848,
         "ms": 141128
       }
+    ],
+    "3b66e6a3": [
+      {
+        "ts": 1793540420161,
+        "ms": 146753
+      }
+    ],
+    "7ea88342": [
+      {
+        "ts": 1793540444742,
+        "ms": 21951
+      }
+    ],
+    "26c126bb": [
+      {
+        "ts": 1793540478111,
+        "ms": 31675
+      }
     ]
   },
-  "clientUpdatedAt": 1793540337945
+  "clientUpdatedAt": 1793540517258
 }
