@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T23:28:15.429Z",
+  "exportedAt": "2026-11-01T23:31:15.383Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2103,7 +2103,9 @@
     "943bdd80": "review",
     "aa4d08d6": "done",
     "0d564c7f": "done",
-    "04db28aa": "review"
+    "04db28aa": "review",
+    "c71f112d": "done",
+    "a8c35eaf": "review"
   },
   "tags": {},
   "notes": {},
@@ -4176,7 +4178,8 @@
     "fdca5915": "2026-11-01T15:27:48.673Z",
     "cefb2baa": "2026-11-01T16:08:00.838Z",
     "aa4d08d6": "2026-11-01T16:48:29.859Z",
-    "0d564c7f": "2026-11-01T16:48:39.661Z"
+    "0d564c7f": "2026-11-01T16:48:39.661Z",
+    "c71f112d": "2026-11-01T23:28:49.045Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5341,21 +5344,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 94,
-      "total": 143,
+      "correct": 97,
+      "total": 146,
       "recent": [
-        {
-          "ts": 1793546721365,
-          "correct": true
-        },
-        {
-          "ts": 1793546795417,
-          "correct": true
-        },
-        {
-          "ts": 1793546812343,
-          "correct": false
-        },
         {
           "ts": 1793546814663,
           "correct": true
@@ -5391,9 +5382,21 @@
         {
           "ts": 1793575455551,
           "correct": true
+        },
+        {
+          "ts": 1793575708653,
+          "correct": true
+        },
+        {
+          "ts": 1793575726432,
+          "correct": true
+        },
+        {
+          "ts": 1793575845000,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793575455551
+      "lastAttemptTs": 1793575845000
     },
     "Text Structure and Purpose": {
       "correct": 17,
@@ -7694,10 +7697,10 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 1735787,
+      "totalMs": 1813682,
       "viewMs": {
         "browse": 43097,
-        "mock": 1692690
+        "mock": 1770585
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -23776,8 +23779,24 @@
       {
         "ts": 1793575455551,
         "ms": 2242
+      },
+      {
+        "ts": 1793575708654,
+        "ms": 235544
+      }
+    ],
+    "c71f112d": [
+      {
+        "ts": 1793575726432,
+        "ms": 1851
+      }
+    ],
+    "a8c35eaf": [
+      {
+        "ts": 1793575845000,
+        "ms": 115071
       }
     ]
   },
-  "clientUpdatedAt": 1793575693694
+  "clientUpdatedAt": 1793575870037
 }
