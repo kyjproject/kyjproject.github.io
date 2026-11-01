@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T13:42:01.308Z",
+  "exportedAt": "2026-11-01T13:45:02.375Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2003,7 +2003,11 @@
     "1f96ea4b": "done",
     "3b66e6a3": "done",
     "7ea88342": "done",
-    "26c126bb": "done"
+    "26c126bb": "done",
+    "80e0332a": "done",
+    "9c3d5225": "done",
+    "b2eb22ba": "done",
+    "5c415b89": "done"
   },
   "tags": {},
   "notes": {},
@@ -3978,7 +3982,11 @@
     "1f96ea4b": "2026-11-01T13:37:52.055Z",
     "3b66e6a3": "2026-11-01T13:40:22.021Z",
     "7ea88342": "2026-11-01T13:40:45.617Z",
-    "26c126bb": "2026-11-01T13:41:19.271Z"
+    "26c126bb": "2026-11-01T13:41:19.271Z",
+    "80e0332a": "2026-11-01T13:42:05.471Z",
+    "9c3d5225": "2026-11-01T13:42:28.421Z",
+    "b2eb22ba": "2026-11-01T13:42:58.421Z",
+    "5c415b89": "2026-11-01T13:44:56.951Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5513,13 +5521,9 @@
       "lastAttemptTs": 1793461213719
     },
     "Circles": {
-      "correct": 14,
-      "total": 15,
+      "correct": 15,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1792986279670,
-          "correct": true
-        },
         {
           "ts": 1793333625208,
           "correct": true
@@ -5563,9 +5567,13 @@
         {
           "ts": 1793540444742,
           "correct": true
+        },
+        {
+          "ts": 1793540577229,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540444742
+      "lastAttemptTs": 1793540577229
     },
     "Lines, angles, and triangles": {
       "correct": 41,
@@ -5678,21 +5686,9 @@
       "lastAttemptTs": 1793540031629
     },
     "Area and volume": {
-      "correct": 47,
-      "total": 50,
+      "correct": 50,
+      "total": 53,
       "recent": [
-        {
-          "ts": 1793538240929,
-          "correct": true
-        },
-        {
-          "ts": 1793538942845,
-          "correct": true
-        },
-        {
-          "ts": 1793539008943,
-          "correct": true
-        },
         {
           "ts": 1793539016745,
           "correct": true
@@ -5728,9 +5724,21 @@
         {
           "ts": 1793540420161,
           "correct": true
+        },
+        {
+          "ts": 1793540523998,
+          "correct": true
+        },
+        {
+          "ts": 1793540546577,
+          "correct": true
+        },
+        {
+          "ts": 1793540696183,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540420161
+      "lastAttemptTs": 1793540696183
     },
     "Systems of two linear equations in two variables": {
       "correct": 56,
@@ -7360,10 +7368,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 6193196,
+      "totalMs": 6255391,
       "viewMs": {
         "browse": 2512131,
-        "math": 3616020,
+        "math": 3678215,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -22728,7 +22736,31 @@
         "ts": 1793540478111,
         "ms": 31675
       }
+    ],
+    "80e0332a": [
+      {
+        "ts": 1793540523998,
+        "ms": 43828
+      }
+    ],
+    "9c3d5225": [
+      {
+        "ts": 1793540546577,
+        "ms": 20258
+      }
+    ],
+    "b2eb22ba": [
+      {
+        "ts": 1793540577229,
+        "ms": 27710
+      }
+    ],
+    "5c415b89": [
+      {
+        "ts": 1793540696183,
+        "ms": 117046
+      }
     ]
   },
-  "clientUpdatedAt": 1793540517258
+  "clientUpdatedAt": 1793540701411
 }
