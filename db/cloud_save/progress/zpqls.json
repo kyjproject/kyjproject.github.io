@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T11:49:35.467Z",
+  "exportedAt": "2026-11-01T11:52:35.370Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1911,7 +1911,10 @@
     "cdd766df": "review",
     "4c18f6b4": "review",
     "ba29d116": "done",
-    "a2641e5f": "review"
+    "a2641e5f": "review",
+    "8a193615": "done",
+    "4eb8acac": "done",
+    "f0953df3": "done"
   },
   "tags": {},
   "notes": {},
@@ -3796,7 +3799,10 @@
     "ef160f02": "2026-11-01T00:20:40.136Z",
     "18d2dfab": "2026-11-01T11:20:43.850Z",
     "5544272f": "2026-11-01T11:28:32.726Z",
-    "ba29d116": "2026-11-01T11:41:15.873Z"
+    "ba29d116": "2026-11-01T11:41:15.873Z",
+    "8a193615": "2026-11-01T11:50:28.793Z",
+    "4eb8acac": "2026-11-01T11:51:52.525Z",
+    "f0953df3": "2026-11-01T11:52:16.062Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4616,21 +4622,9 @@
       "lastAttemptTs": 1793331517555
     },
     "Command of Evidence (Textual)": {
-      "correct": 96,
-      "total": 153,
+      "correct": 99,
+      "total": 156,
       "recent": [
-        {
-          "ts": 1793190915344,
-          "correct": false
-        },
-        {
-          "ts": 1793190924326,
-          "correct": true
-        },
-        {
-          "ts": 1793191082377,
-          "correct": false
-        },
         {
           "ts": 1793191093309,
           "correct": true
@@ -4666,9 +4660,21 @@
         {
           "ts": 1793533489340,
           "correct": true
+        },
+        {
+          "ts": 1793533826975,
+          "correct": true
+        },
+        {
+          "ts": 1793533910438,
+          "correct": true
+        },
+        {
+          "ts": 1793533934611,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793533489340
+      "lastAttemptTs": 1793533934611
     },
     "Boundaries": {
       "correct": 229,
@@ -7126,9 +7132,9 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 2109362,
+      "totalMs": 2289618,
       "viewMs": {
-        "browse": 1333089,
+        "browse": 1513345,
         "math": 751258,
         "profile": 25015
       },
@@ -21869,7 +21875,25 @@
         "ts": 1793533489340,
         "ms": 173
       }
+    ],
+    "8a193615": [
+      {
+        "ts": 1793533826975,
+        "ms": 164115
+      }
+    ],
+    "4eb8acac": [
+      {
+        "ts": 1793533910439,
+        "ms": 80194
+      }
+    ],
+    "f0953df3": [
+      {
+        "ts": 1793533934611,
+        "ms": 21135
+      }
     ]
   },
-  "clientUpdatedAt": 1793533770769
+  "clientUpdatedAt": 1793533951035
 }
