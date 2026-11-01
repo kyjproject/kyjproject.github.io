@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T13:48:01.707Z",
+  "exportedAt": "2026-11-01T13:51:01.012Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2009,7 +2009,10 @@
     "b2eb22ba": "done",
     "5c415b89": "done",
     "35d7123b": "done",
-    "6b8ba2e2": "done"
+    "6b8ba2e2": "done",
+    "dbe21855": "done",
+    "138dafe5": "done",
+    "457cd6d8": "done"
   },
   "tags": {},
   "notes": {},
@@ -3990,7 +3993,10 @@
     "b2eb22ba": "2026-11-01T13:42:58.421Z",
     "5c415b89": "2026-11-01T13:44:56.951Z",
     "35d7123b": "2026-11-01T13:45:08.087Z",
-    "6b8ba2e2": "2026-11-01T13:45:12.884Z"
+    "6b8ba2e2": "2026-11-01T13:45:12.884Z",
+    "dbe21855": "2026-11-01T13:48:52.490Z",
+    "138dafe5": "2026-11-01T13:49:31.907Z",
+    "457cd6d8": "2026-11-01T13:50:20.506Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5690,37 +5696,9 @@
       "lastAttemptTs": 1793540711683
     },
     "Area and volume": {
-      "correct": 50,
-      "total": 54,
+      "correct": 52,
+      "total": 61,
       "recent": [
-        {
-          "ts": 1793539031009,
-          "correct": true
-        },
-        {
-          "ts": 1793539092564,
-          "correct": true
-        },
-        {
-          "ts": 1793539156061,
-          "correct": true
-        },
-        {
-          "ts": 1793539496094,
-          "correct": true
-        },
-        {
-          "ts": 1793539619613,
-          "correct": false
-        },
-        {
-          "ts": 1793539654413,
-          "correct": true
-        },
-        {
-          "ts": 1793540126513,
-          "correct": true
-        },
         {
           "ts": 1793540420161,
           "correct": true
@@ -5740,9 +5718,37 @@
         {
           "ts": 1793540851461,
           "correct": false
+        },
+        {
+          "ts": 1793540892383,
+          "correct": false
+        },
+        {
+          "ts": 1793540893123,
+          "correct": false
+        },
+        {
+          "ts": 1793540893815,
+          "correct": true
+        },
+        {
+          "ts": 1793540896865,
+          "correct": false
+        },
+        {
+          "ts": 1793540941524,
+          "correct": false
+        },
+        {
+          "ts": 1793540964174,
+          "correct": false
+        },
+        {
+          "ts": 1793540965478,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793540851461
+      "lastAttemptTs": 1793540965478
     },
     "Systems of two linear equations in two variables": {
       "correct": 56,
@@ -6241,12 +6247,8 @@
     },
     "Percentages": {
       "correct": 19,
-      "total": 21,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1792987276687,
-          "correct": true
-        },
         {
           "ts": 1792987336292,
           "correct": true
@@ -6290,9 +6292,13 @@
         {
           "ts": 1793333625207,
           "correct": true
+        },
+        {
+          "ts": 1793541011842,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793333625207
+      "lastAttemptTs": 1793541011842
     },
     "Inference from sample statistics and margin of error": {
       "correct": 4,
@@ -7372,10 +7378,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 6298391,
+      "totalMs": 6461404,
       "viewMs": {
         "browse": 2512131,
-        "math": 3721215,
+        "math": 3884228,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -22781,8 +22787,44 @@
       {
         "ts": 1793540851461,
         "ms": 137876
+      },
+      {
+        "ts": 1793540892383,
+        "ms": 243
+      },
+      {
+        "ts": 1793540893123,
+        "ms": 99
+      },
+      {
+        "ts": 1793540893815,
+        "ms": 92
+      },
+      {
+        "ts": 1793540896865,
+        "ms": 192
+      }
+    ],
+    "138dafe5": [
+      {
+        "ts": 1793540941524,
+        "ms": 8180
+      },
+      {
+        "ts": 1793540964174,
+        "ms": 21800
+      },
+      {
+        "ts": 1793540965478,
+        "ms": 54
+      }
+    ],
+    "457cd6d8": [
+      {
+        "ts": 1793541011842,
+        "ms": 38652
       }
     ]
   },
-  "clientUpdatedAt": 1793540879614
+  "clientUpdatedAt": 1793541060729
 }
