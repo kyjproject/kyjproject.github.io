@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T15:01:48.052Z",
+  "exportedAt": "2026-11-01T15:05:25.073Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2085,7 +2085,9 @@
     "c2389544": "done",
     "129e7ae3": "done",
     "25e11067": "done",
-    "5ba04d8a": "done"
+    "5ba04d8a": "done",
+    "4bda3cab": "done",
+    "40bd08d8": "done"
   },
   "tags": {},
   "notes": {},
@@ -4142,7 +4144,9 @@
     "c2389544": "2026-11-01T14:51:00.325Z",
     "129e7ae3": "2026-11-01T14:55:12.403Z",
     "25e11067": "2026-11-01T14:55:29.681Z",
-    "5ba04d8a": "2026-11-01T14:58:45.048Z"
+    "5ba04d8a": "2026-11-01T14:58:45.048Z",
+    "4bda3cab": "2026-11-01T15:02:08.184Z",
+    "40bd08d8": "2026-11-01T15:03:41.854Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5237,17 +5241,9 @@
       "lastAttemptTs": 1793533274294
     },
     "Words in Context": {
-      "correct": 74,
-      "total": 113,
+      "correct": 76,
+      "total": 115,
       "recent": [
-        {
-          "ts": 1793331099591,
-          "correct": false
-        },
-        {
-          "ts": 1793331110954,
-          "correct": false
-        },
         {
           "ts": 1793331111854,
           "correct": false
@@ -5287,9 +5283,17 @@
         {
           "ts": 1793545122704,
           "correct": true
+        },
+        {
+          "ts": 1793545327217,
+          "correct": true
+        },
+        {
+          "ts": 1793545420683,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793545122704
+      "lastAttemptTs": 1793545420683
     },
     "Text Structure and Purpose": {
       "correct": 14,
@@ -7556,9 +7560,9 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 8645537,
+      "totalMs": 8694997,
       "viewMs": {
-        "browse": 2697594,
+        "browse": 2747054,
         "math": 5877894,
         "profile": 40028,
         "leaderboard": 30021
@@ -23476,7 +23480,19 @@
         "ts": 1793545122704,
         "ms": 192208
       }
+    ],
+    "4bda3cab": [
+      {
+        "ts": 1793545327217,
+        "ms": 200884
+      }
+    ],
+    "40bd08d8": [
+      {
+        "ts": 1793545420683,
+        "ms": 91313
+      }
     ]
   },
-  "clientUpdatedAt": 1793545302935
+  "clientUpdatedAt": 1793545521438
 }
