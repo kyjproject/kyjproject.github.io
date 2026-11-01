@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T12:49:45.383Z",
+  "exportedAt": "2026-11-01T12:52:45.198Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1953,7 +1953,16 @@
     "2321f18a": "done",
     "d9e83476": "done",
     "f4680374": "done",
-    "724c6ca2": "done"
+    "724c6ca2": "done",
+    "dbb97818": "done",
+    "de6d51e1": "done",
+    "b954d48e": "done",
+    "681fe1cf": "done",
+    "4ff588cd": "done",
+    "28c662a8": "done",
+    "19cc1d6d": "done",
+    "7eb3fa96": "done",
+    "4ee1c94d": "done"
   },
   "tags": {},
   "notes": {},
@@ -3878,7 +3887,16 @@
     "2321f18a": "2026-11-01T12:46:28.802Z",
     "d9e83476": "2026-11-01T12:46:39.869Z",
     "f4680374": "2026-11-01T12:47:25.521Z",
-    "724c6ca2": "2026-11-01T12:47:52.266Z"
+    "724c6ca2": "2026-11-01T12:47:52.266Z",
+    "dbb97818": "2026-11-01T12:49:51.119Z",
+    "de6d51e1": "2026-11-01T12:50:00.403Z",
+    "b954d48e": "2026-11-01T12:50:17.602Z",
+    "681fe1cf": "2026-11-01T12:50:29.235Z",
+    "4ff588cd": "2026-11-01T12:51:11.400Z",
+    "28c662a8": "2026-11-01T12:51:18.043Z",
+    "19cc1d6d": "2026-11-01T12:51:33.502Z",
+    "7eb3fa96": "2026-11-01T12:51:51.436Z",
+    "4ee1c94d": "2026-11-01T12:52:04.652Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5413,8 +5431,8 @@
       "lastAttemptTs": 1793461213719
     },
     "Circles": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 7,
       "recent": [
         {
           "ts": 1792753571513,
@@ -5435,34 +5453,22 @@
         {
           "ts": 1793333625208,
           "correct": true
+        },
+        {
+          "ts": 1793537470036,
+          "correct": true
+        },
+        {
+          "ts": 1793537476520,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793333625208
+      "lastAttemptTs": 1793537476520
     },
     "Lines, angles, and triangles": {
-      "correct": 28,
-      "total": 30,
+      "correct": 32,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1792984775494,
-          "correct": true
-        },
-        {
-          "ts": 1792984780658,
-          "correct": true
-        },
-        {
-          "ts": 1792985567115,
-          "correct": true
-        },
-        {
-          "ts": 1792985577279,
-          "correct": false
-        },
-        {
-          "ts": 1792985579378,
-          "correct": true
-        },
         {
           "ts": 1792985965874,
           "correct": true
@@ -5490,22 +5496,34 @@
         {
           "ts": 1793537198605,
           "correct": true
+        },
+        {
+          "ts": 1793537416769,
+          "correct": true
+        },
+        {
+          "ts": 1793537427476,
+          "correct": true
+        },
+        {
+          "ts": 1793537491810,
+          "correct": true
+        },
+        {
+          "ts": 1793537504999,
+          "correct": false
+        },
+        {
+          "ts": 1793537507123,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793537198605
+      "lastAttemptTs": 1793537507123
     },
     "Right triangles and trigonometry": {
-      "correct": 14,
-      "total": 17,
+      "correct": 16,
+      "total": 19,
       "recent": [
-        {
-          "ts": 1792984755913,
-          "correct": true
-        },
-        {
-          "ts": 1792984765402,
-          "correct": true
-        },
         {
           "ts": 1792985857734,
           "correct": true
@@ -5545,22 +5563,22 @@
         {
           "ts": 1793537243494,
           "correct": true
+        },
+        {
+          "ts": 1793537399167,
+          "correct": true
+        },
+        {
+          "ts": 1793537403878,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793537243494
+      "lastAttemptTs": 1793537403878
     },
     "Area and volume": {
-      "correct": 30,
-      "total": 31,
+      "correct": 32,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1792985980907,
-          "correct": true
-        },
-        {
-          "ts": 1792986007604,
-          "correct": true
-        },
         {
           "ts": 1792986020760,
           "correct": true
@@ -5600,9 +5618,17 @@
         {
           "ts": 1793537270940,
           "correct": true
+        },
+        {
+          "ts": 1793537389836,
+          "correct": true
+        },
+        {
+          "ts": 1793537523293,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793537270940
+      "lastAttemptTs": 1793537523293
     },
     "Systems of two linear equations in two variables": {
       "correct": 56,
@@ -7212,10 +7238,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 4560702,
+      "totalMs": 4737947,
       "viewMs": {
         "browse": 2512131,
-        "math": 1993535,
+        "math": 2170780,
         "profile": 25015,
         "leaderboard": 30021
       },
@@ -22256,7 +22282,69 @@
         "ts": 1793537270940,
         "ms": 24650
       }
+    ],
+    "dbb97818": [
+      {
+        "ts": 1793537389836,
+        "ms": 116647
+      }
+    ],
+    "de6d51e1": [
+      {
+        "ts": 1793537399167,
+        "ms": 6861
+      },
+      {
+        "ts": 1793537403878,
+        "ms": 2142
+      }
+    ],
+    "b954d48e": [
+      {
+        "ts": 1793537416769,
+        "ms": 11535
+      }
+    ],
+    "681fe1cf": [
+      {
+        "ts": 1793537427476,
+        "ms": 8556
+      }
+    ],
+    "4ff588cd": [
+      {
+        "ts": 1793537470036,
+        "ms": 39836
+      }
+    ],
+    "28c662a8": [
+      {
+        "ts": 1793537476520,
+        "ms": 4282
+      }
+    ],
+    "19cc1d6d": [
+      {
+        "ts": 1793537491810,
+        "ms": 12524
+      }
+    ],
+    "7eb3fa96": [
+      {
+        "ts": 1793537505000,
+        "ms": 10748
+      },
+      {
+        "ts": 1793537507123,
+        "ms": 991
+      }
+    ],
+    "4ee1c94d": [
+      {
+        "ts": 1793537523293,
+        "ms": 11123
+      }
     ]
   },
-  "clientUpdatedAt": 1793537384621
+  "clientUpdatedAt": 1793537564806
 }
