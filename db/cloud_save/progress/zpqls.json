@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T12:31:45.305Z",
+  "exportedAt": "2026-11-01T12:34:45.501Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1938,7 +1938,9 @@
     "593a32d0": "done",
     "6c845af8": "done",
     "183fe2a0": "done",
-    "4023b0c8": "done"
+    "4023b0c8": "done",
+    "3a519c76": "done",
+    "a2862133": "done"
   },
   "tags": {},
   "notes": {},
@@ -3848,7 +3850,9 @@
     "593a32d0": "2026-11-01T12:29:38.871Z",
     "6c845af8": "2026-11-01T12:30:08.989Z",
     "183fe2a0": "2026-11-01T12:30:48.558Z",
-    "4023b0c8": "2026-11-01T12:31:27.071Z"
+    "4023b0c8": "2026-11-01T12:31:27.071Z",
+    "3a519c76": "2026-11-01T12:31:51.157Z",
+    "a2862133": "2026-11-01T12:33:06.319Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5575,13 +5579,9 @@
       "lastAttemptTs": 1793333625208
     },
     "Systems of two linear equations in two variables": {
-      "correct": 55,
-      "total": 59,
+      "correct": 56,
+      "total": 60,
       "recent": [
-        {
-          "ts": 1793462136672,
-          "correct": true
-        },
         {
           "ts": 1793462225522,
           "correct": true
@@ -5625,9 +5625,13 @@
         {
           "ts": 1793536047607,
           "correct": true
+        },
+        {
+          "ts": 1793536309691,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793536047607
+      "lastAttemptTs": 1793536309691
     },
     "Linear equations in two variables": {
       "correct": 77,
@@ -5795,13 +5799,9 @@
       "lastAttemptTs": 1793536286074
     },
     "Linear inequalities in one or two variables": {
-      "correct": 36,
-      "total": 50,
+      "correct": 37,
+      "total": 51,
       "recent": [
-        {
-          "ts": 1793459985756,
-          "correct": true
-        },
         {
           "ts": 1793461644922,
           "correct": false
@@ -5845,9 +5845,13 @@
         {
           "ts": 1793536246772,
           "correct": true
+        },
+        {
+          "ts": 1793536385236,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793536246772
+      "lastAttemptTs": 1793536385236
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 29,
@@ -7182,10 +7186,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 3785518,
+      "totalMs": 3885465,
       "viewMs": {
         "browse": 2512131,
-        "math": 1218351,
+        "math": 1318298,
         "profile": 25015,
         "leaderboard": 30021
       },
@@ -22132,7 +22136,19 @@
         "ts": 1793536286074,
         "ms": 36549
       }
+    ],
+    "3a519c76": [
+      {
+        "ts": 1793536309691,
+        "ms": 21450
+      }
+    ],
+    "a2862133": [
+      {
+        "ts": 1793536385236,
+        "ms": 73360
+      }
     ]
   },
-  "clientUpdatedAt": 1793536302192
+  "clientUpdatedAt": 1793536484776
 }
