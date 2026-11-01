@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-01T14:03:01.202Z",
+  "exportedAt": "2026-11-01T14:06:02.127Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2034,7 +2034,10 @@
     "c7593483": "done",
     "a22f737f": "done",
     "ce1b1751": "done",
-    "a188f764": "done"
+    "a188f764": "done",
+    "22efbe91": "done",
+    "291206f8": "done",
+    "40c8528e": "done"
   },
   "tags": {},
   "notes": {},
@@ -4040,7 +4043,10 @@
     "c7593483": "2026-11-01T14:01:50.096Z",
     "a22f737f": "2026-11-01T14:02:05.777Z",
     "ce1b1751": "2026-11-01T14:02:14.645Z",
-    "a188f764": "2026-11-01T14:02:51.109Z"
+    "a188f764": "2026-11-01T14:02:51.109Z",
+    "22efbe91": "2026-11-01T14:03:04.811Z",
+    "291206f8": "2026-11-01T14:04:37.180Z",
+    "40c8528e": "2026-11-01T14:05:59.430Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6125,13 +6131,9 @@
       "lastAttemptTs": 1793541674399
     },
     "Probability and conditional probability": {
-      "correct": 14,
-      "total": 19,
+      "correct": 15,
+      "total": 20,
       "recent": [
-        {
-          "ts": 1792987373937,
-          "correct": false
-        },
         {
           "ts": 1792987375460,
           "correct": true
@@ -6175,9 +6177,13 @@
         {
           "ts": 1793541707895,
           "correct": true
+        },
+        {
+          "ts": 1793541957951,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541707895
+      "lastAttemptTs": 1793541957951
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 26,
@@ -6235,13 +6241,9 @@
       "lastAttemptTs": 1793541770166
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 26,
-      "total": 28,
+      "correct": 27,
+      "total": 29,
       "recent": [
-        {
-          "ts": 1792988258488,
-          "correct": true
-        },
         {
           "ts": 1792988265363,
           "correct": true
@@ -6285,18 +6287,18 @@
         {
           "ts": 1793541732216,
           "correct": true
+        },
+        {
+          "ts": 1793541875763,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541732216
+      "lastAttemptTs": 1793541875763
     },
     "Percentages": {
-      "correct": 24,
-      "total": 28,
+      "correct": 25,
+      "total": 29,
       "recent": [
-        {
-          "ts": 1792988169955,
-          "correct": true
-        },
         {
           "ts": 1792988182903,
           "correct": true
@@ -6340,9 +6342,13 @@
         {
           "ts": 1793541564945,
           "correct": false
+        },
+        {
+          "ts": 1793541783000,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793541564945
+      "lastAttemptTs": 1793541783000
     },
     "Inference from sample statistics and margin of error": {
       "correct": 6,
@@ -7434,10 +7440,10 @@
       "categoryMs": {}
     },
     "2026-11-01": {
-      "totalMs": 7085945,
+      "totalMs": 7246031,
       "viewMs": {
         "browse": 2512131,
-        "math": 4508769,
+        "math": 4668855,
         "profile": 35024,
         "leaderboard": 30021
       },
@@ -23026,7 +23032,25 @@
         "ts": 1793541770166,
         "ms": 34669
       }
+    ],
+    "22efbe91": [
+      {
+        "ts": 1793541783001,
+        "ms": 10705
+      }
+    ],
+    "291206f8": [
+      {
+        "ts": 1793541875763,
+        "ms": 89932
+      }
+    ],
+    "40c8528e": [
+      {
+        "ts": 1793541957951,
+        "ms": 79925
+      }
     ]
   },
-  "clientUpdatedAt": 1793541780628
+  "clientUpdatedAt": 1793541960373
 }
