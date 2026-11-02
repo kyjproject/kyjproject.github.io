@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T14:34:45.237Z",
+  "exportedAt": "2026-11-02T14:37:44.383Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2237,7 +2237,8 @@
     "014151d0": "done",
     "c7416710": "done",
     "8acb62c2": "done",
-    "0e008c2d": "done"
+    "0e008c2d": "done",
+    "788d91ea": "done"
   },
   "tags": {},
   "notes": {},
@@ -4439,7 +4440,8 @@
     "014151d0": "2026-11-02T14:20:03.817Z",
     "c7416710": "2026-11-02T14:25:18.341Z",
     "8acb62c2": "2026-11-02T14:30:09.250Z",
-    "0e008c2d": "2026-11-02T14:32:11.003Z"
+    "0e008c2d": "2026-11-02T14:32:11.003Z",
+    "788d91ea": "2026-11-02T14:36:52.146Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5274,17 +5276,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 89,
-      "total": 131,
+      "correct": 90,
+      "total": 133,
       "recent": [
-        {
-          "ts": 1793627519073,
-          "correct": true
-        },
-        {
-          "ts": 1793627648298,
-          "correct": false
-        },
         {
           "ts": 1793627669019,
           "correct": false
@@ -5324,9 +5318,17 @@
         {
           "ts": 1793629929291,
           "correct": true
+        },
+        {
+          "ts": 1793630158840,
+          "correct": false
+        },
+        {
+          "ts": 1793630178489,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793629929291
+      "lastAttemptTs": 1793630178489
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -7084,10 +7086,6 @@
       "count": 2,
       "lastTs": 1793623478229
     },
-    "32d61084": {
-      "count": 1,
-      "lastTs": 1793600514545
-    },
     "49e21edf": {
       "count": 1,
       "lastTs": 1793601313118
@@ -7123,6 +7121,14 @@
     "788d91ea": {
       "count": 1,
       "lastTs": 1793629934703
+    },
+    "c2e17200": {
+      "count": 1,
+      "lastTs": 1793630214379
+    },
+    "32d61084": {
+      "count": 1,
+      "lastTs": 1793600514545
     },
     "15c0ed26": {
       "count": 1,
@@ -8065,9 +8071,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 13312690,
+      "totalMs": 13484258,
       "viewMs": {
-        "browse": 8869462,
+        "browse": 9041030,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
@@ -25223,7 +25229,17 @@
         "ts": 1793629929291,
         "ms": 719408
       }
+    ],
+    "788d91ea": [
+      {
+        "ts": 1793630158840,
+        "ms": 224136
+      },
+      {
+        "ts": 1793630178489,
+        "ms": 245
+      }
     ]
   },
-  "clientUpdatedAt": 1793630082912
+  "clientUpdatedAt": 1793630263061
 }
