@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T00:39:14.075Z",
+  "exportedAt": "2026-11-02T00:42:13.293Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2113,7 +2113,9 @@
     "e8f27b8f": "done",
     "5b24b55d": "done",
     "82c00b89": "done",
-    "b1b1e956": "done"
+    "b1b1e956": "done",
+    "b51f185d": "review",
+    "c686802b": "done"
   },
   "tags": {},
   "notes": {},
@@ -4196,7 +4198,9 @@
     "e8f27b8f": "2026-11-02T00:34:20.248Z",
     "5b24b55d": "2026-11-02T00:35:52.047Z",
     "82c00b89": "2026-11-02T00:37:10.312Z",
-    "b1b1e956": "2026-11-02T00:37:28.777Z"
+    "b1b1e956": "2026-11-02T00:37:28.777Z",
+    "b51f185d": "2026-11-02T00:39:29.977Z",
+    "c686802b": "2026-11-02T00:41:23.412Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5361,13 +5365,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 107,
-      "total": 162,
+      "correct": 108,
+      "total": 163,
       "recent": [
-        {
-          "ts": 1793576922003,
-          "correct": true
-        },
         {
           "ts": 1793579567839,
           "correct": true
@@ -5411,9 +5411,13 @@
         {
           "ts": 1793579943500,
           "correct": true
+        },
+        {
+          "ts": 1793580081925,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793579943500
+      "lastAttemptTs": 1793580081925
     },
     "Text Structure and Purpose": {
       "correct": 17,
@@ -7726,9 +7730,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 2522528,
+      "totalMs": 2628534,
       "viewMs": {
-        "browse": 625265,
+        "browse": 731271,
         "mock": 1897263
       },
       "categoryMs": {
@@ -23907,7 +23911,13 @@
         "ts": 1793579943500,
         "ms": 5300
       }
+    ],
+    "c686802b": [
+      {
+        "ts": 1793580081925,
+        "ms": 110049
+      }
     ]
   },
-  "clientUpdatedAt": 1793579951908
+  "clientUpdatedAt": 1793580129793
 }
