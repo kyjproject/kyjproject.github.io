@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T12:45:42.507Z",
+  "exportedAt": "2026-11-02T12:48:42.403Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2219,7 +2219,8 @@
     "3167db00": "done",
     "6057efc0": "done",
     "e75682db": "done",
-    "5c9ca033": "done"
+    "5c9ca033": "done",
+    "e038ac56": "review"
   },
   "tags": {},
   "notes": {},
@@ -5241,29 +5242,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 69,
-      "total": 97,
+      "correct": 71,
+      "total": 102,
       "recent": [
-        {
-          "ts": 1793600913996,
-          "correct": true
-        },
-        {
-          "ts": 1793600949946,
-          "correct": true
-        },
-        {
-          "ts": 1793600993269,
-          "correct": true
-        },
-        {
-          "ts": 1793601319754,
-          "correct": true
-        },
-        {
-          "ts": 1793601383880,
-          "correct": true
-        },
         {
           "ts": 1793601463416,
           "correct": true
@@ -5291,9 +5272,29 @@
         {
           "ts": 1793623450241,
           "correct": true
+        },
+        {
+          "ts": 1793623580999,
+          "correct": false
+        },
+        {
+          "ts": 1793623594964,
+          "correct": false
+        },
+        {
+          "ts": 1793623627038,
+          "correct": false
+        },
+        {
+          "ts": 1793623628931,
+          "correct": true
+        },
+        {
+          "ts": 1793623639470,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793623450241
+      "lastAttemptTs": 1793623639470
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8008,9 +8009,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 9509634,
+      "totalMs": 9689781,
       "viewMs": {
-        "browse": 5066406,
+        "browse": 5246553,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
@@ -24994,7 +24995,29 @@
         "ts": 1793623450241,
         "ms": 15013
       }
+    ],
+    "e038ac56": [
+      {
+        "ts": 1793623580999,
+        "ms": 94270
+      },
+      {
+        "ts": 1793623594964,
+        "ms": 12550
+      },
+      {
+        "ts": 1793623627038,
+        "ms": 30791
+      },
+      {
+        "ts": 1793623628932,
+        "ms": 250
+      },
+      {
+        "ts": 1793623639470,
+        "ms": 3706
+      }
     ]
   },
-  "clientUpdatedAt": 1793623540120
+  "clientUpdatedAt": 1793623720268
 }
