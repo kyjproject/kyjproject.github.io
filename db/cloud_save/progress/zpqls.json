@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T14:18:30.451Z",
+  "exportedAt": "2026-11-02T14:21:30.947Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2233,7 +2233,8 @@
     "ae1e4d1d": "done",
     "5ad0b3b6": "done",
     "f7347d3a": "done",
-    "3508affd": "review"
+    "3508affd": "review",
+    "014151d0": "done"
   },
   "tags": {},
   "notes": {},
@@ -4431,7 +4432,8 @@
     "ae1e4d1d": "2026-11-02T13:46:52.257Z",
     "5ad0b3b6": "2026-11-02T13:47:54.573Z",
     "f7347d3a": "2026-11-02T13:52:49.952Z",
-    "3508affd": "2026-11-02T13:59:10.153Z"
+    "3508affd": "2026-11-02T13:59:10.153Z",
+    "014151d0": "2026-11-02T14:20:03.817Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5266,21 +5268,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 85,
-      "total": 124,
+      "correct": 86,
+      "total": 127,
       "recent": [
-        {
-          "ts": 1793625912480,
-          "correct": true
-        },
-        {
-          "ts": 1793626021711,
-          "correct": false
-        },
-        {
-          "ts": 1793626039224,
-          "correct": true
-        },
         {
           "ts": 1793626827745,
           "correct": true
@@ -5316,9 +5306,21 @@
         {
           "ts": 1793627703018,
           "correct": true
+        },
+        {
+          "ts": 1793629142131,
+          "correct": false
+        },
+        {
+          "ts": 1793629189790,
+          "correct": false
+        },
+        {
+          "ts": 1793629201104,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793627703018
+      "lastAttemptTs": 1793629201104
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -7072,10 +7074,6 @@
       "count": 2,
       "lastTs": 1793597087085
     },
-    "3ee345a1": {
-      "count": 1,
-      "lastTs": 1793599609004
-    },
     "e351a82d": {
       "count": 1,
       "lastTs": 1793599621347
@@ -7115,6 +7113,14 @@
     "92dd36f6": {
       "count": 1,
       "lastTs": 1793626643315
+    },
+    "0e008c2d": {
+      "count": 1,
+      "lastTs": 1793629209882
+    },
+    "3ee345a1": {
+      "count": 1,
+      "lastTs": 1793599609004
     },
     "1d6e96f3": {
       "count": 1,
@@ -8041,9 +8047,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 12614728,
+      "totalMs": 12789871,
       "viewMs": {
-        "browse": 8171500,
+        "browse": 8346643,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
@@ -25163,7 +25169,21 @@
         "ts": 1793627703018,
         "ms": 3400
       }
+    ],
+    "014151d0": [
+      {
+        "ts": 1793629142131,
+        "ms": 1187979
+      },
+      {
+        "ts": 1793629189790,
+        "ms": 46076
+      },
+      {
+        "ts": 1793629201104,
+        "ms": 9987
+      }
     ]
   },
-  "clientUpdatedAt": 1793629108502
+  "clientUpdatedAt": 1793629288652
 }
