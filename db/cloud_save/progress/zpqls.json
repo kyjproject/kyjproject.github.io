@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T05:30:22.207Z",
+  "exportedAt": "2026-11-02T05:33:21.588Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2186,7 +2186,8 @@
     "6ca52080": "done",
     "1b30fd79": "done",
     "41ab1df4": "done",
-    "7b54c7af": "done"
+    "7b54c7af": "done",
+    "2e655326": "done"
   },
   "tags": {},
   "notes": {},
@@ -4340,7 +4341,8 @@
     "6ca52080": "2026-11-02T05:23:16.946Z",
     "1b30fd79": "2026-11-02T05:28:45.631Z",
     "41ab1df4": "2026-11-02T05:29:36.700Z",
-    "7b54c7af": "2026-11-02T05:30:09.635Z"
+    "7b54c7af": "2026-11-02T05:30:09.635Z",
+    "2e655326": "2026-11-02T05:30:43.402Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5780,13 +5782,9 @@
       "lastAttemptTs": 1793551687010
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 92,
-      "total": 103,
+      "correct": 93,
+      "total": 104,
       "recent": [
-        {
-          "ts": 1793460932183,
-          "correct": true
-        },
         {
           "ts": 1793461046033,
           "correct": false
@@ -5830,9 +5828,13 @@
         {
           "ts": 1793585771645,
           "correct": true
+        },
+        {
+          "ts": 1793597442174,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793585771645
+      "lastAttemptTs": 1793597442174
     },
     "Nonlinear functions": {
       "correct": 162,
@@ -7910,13 +7912,13 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 6875262,
+      "totalMs": 7000451,
       "viewMs": {
         "browse": 3790572,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
-        "math": 1111823
+        "math": 1237012
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -24674,7 +24676,13 @@
         "ts": 1793597407638,
         "ms": 5274
       }
+    ],
+    "2e655326": [
+      {
+        "ts": 1793597442174,
+        "ms": 31620
+      }
     ]
   },
-  "clientUpdatedAt": 1793597418491
+  "clientUpdatedAt": 1793597598783
 }
