@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T00:30:13.902Z",
+  "exportedAt": "2026-11-02T00:33:13.358Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2107,7 +2107,8 @@
     "c71f112d": "done",
     "a8c35eaf": "review",
     "c2b1d787": "done",
-    "c870f3c0": "done"
+    "c870f3c0": "done",
+    "a7848a23": "done"
   },
   "tags": {},
   "notes": {},
@@ -4184,7 +4185,8 @@
     "c71f112d": "2026-11-01T23:28:49.045Z",
     "a8c35eaf": "2026-11-01T23:33:01.450Z",
     "c2b1d787": "2026-11-01T23:47:01.490Z",
-    "c870f3c0": "2026-11-01T23:48:43.658Z"
+    "c870f3c0": "2026-11-01T23:48:43.658Z",
+    "a7848a23": "2026-11-02T00:32:49.319Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5349,13 +5351,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 100,
-      "total": 151,
+      "correct": 101,
+      "total": 152,
       "recent": [
-        {
-          "ts": 1793575403842,
-          "correct": true
-        },
         {
           "ts": 1793575418048,
           "correct": false
@@ -5399,9 +5397,13 @@
         {
           "ts": 1793576922003,
           "correct": true
+        },
+        {
+          "ts": 1793579567839,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793576922003
+      "lastAttemptTs": 1793579567839
     },
     "Text Structure and Purpose": {
       "correct": 17,
@@ -6797,10 +6799,6 @@
       "count": 2,
       "lastTs": 1793538136286
     },
-    "f9c5558d": {
-      "count": 1,
-      "lastTs": 1793538116969
-    },
     "ba00aba9": {
       "count": 1,
       "lastTs": 1793539202039
@@ -6862,12 +6860,20 @@
       "lastTs": 1793575410108
     },
     "a7848a23": {
-      "count": 1,
-      "lastTs": 1793576029101
+      "count": 2,
+      "lastTs": 1793579557280
     },
     "6550292c": {
       "count": 1,
       "lastTs": 1793576033916
+    },
+    "32d61084": {
+      "count": 1,
+      "lastTs": 1793579416066
+    },
+    "f9c5558d": {
+      "count": 1,
+      "lastTs": 1793538116969
     },
     "a2641e5f": {
       "count": 1,
@@ -7710,9 +7716,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 2203011,
+      "totalMs": 2318012,
       "viewMs": {
-        "browse": 305748,
+        "browse": 420749,
         "mock": 1897263
       },
       "categoryMs": {
@@ -23833,7 +23839,13 @@
         "ts": 1793576922003,
         "ms": 99115
       }
+    ],
+    "a7848a23": [
+      {
+        "ts": 1793579567840,
+        "ms": 30285702
+      }
     ]
   },
-  "clientUpdatedAt": 1793579410084
+  "clientUpdatedAt": 1793579589544
 }
