@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T13:03:27.229Z",
+  "exportedAt": "2026-11-02T13:07:06.610Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2221,7 +2221,9 @@
     "e75682db": "done",
     "5c9ca033": "done",
     "e038ac56": "review",
-    "11c970bc": "done"
+    "11c970bc": "done",
+    "fb2bb280": "done",
+    "9f901f94": "done"
   },
   "tags": {},
   "notes": {},
@@ -4409,7 +4411,9 @@
     "6057efc0": "2026-11-02T12:43:24.228Z",
     "e75682db": "2026-11-02T12:43:53.878Z",
     "5c9ca033": "2026-11-02T12:44:11.311Z",
-    "11c970bc": "2026-11-02T12:50:40.736Z"
+    "11c970bc": "2026-11-02T12:50:40.736Z",
+    "fb2bb280": "2026-11-02T13:04:26.789Z",
+    "9f901f94": "2026-11-02T13:05:33.997Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5244,17 +5248,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 72,
-      "total": 104,
+      "correct": 74,
+      "total": 106,
       "recent": [
-        {
-          "ts": 1793623153484,
-          "correct": true
-        },
-        {
-          "ts": 1793623363979,
-          "correct": true
-        },
         {
           "ts": 1793623403107,
           "correct": true
@@ -5294,9 +5290,17 @@
         {
           "ts": 1793623826285,
           "correct": true
+        },
+        {
+          "ts": 1793624626228,
+          "correct": true
+        },
+        {
+          "ts": 1793624732614,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793623826285
+      "lastAttemptTs": 1793624732614
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8011,9 +8015,9 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 10214458,
+      "totalMs": 10362482,
       "viewMs": {
-        "browse": 5771230,
+        "browse": 5919254,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
@@ -25029,7 +25033,19 @@
         "ts": 1793623826285,
         "ms": 81585
       }
+    ],
+    "fb2bb280": [
+      {
+        "ts": 1793624626229,
+        "ms": 770409
+      }
+    ],
+    "9f901f94": [
+      {
+        "ts": 1793624732614,
+        "ms": 64917
+      }
     ]
   },
-  "clientUpdatedAt": 1793624605874
+  "clientUpdatedAt": 1793624824927
 }
