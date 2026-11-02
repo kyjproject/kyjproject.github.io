@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T06:06:22.535Z",
+  "exportedAt": "2026-11-02T06:09:22.387Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2204,7 +2204,9 @@
     "aefae524": "done",
     "46be0119": "done",
     "b136bc4f": "done",
-    "9f13fad1": "done"
+    "9f13fad1": "done",
+    "b2e26a55": "done",
+    "e351a82d": "done"
   },
   "tags": {},
   "notes": {},
@@ -4376,7 +4378,9 @@
     "aefae524": "2026-11-02T05:48:48.716Z",
     "46be0119": "2026-11-02T05:55:11.984Z",
     "b136bc4f": "2026-11-02T06:03:03.960Z",
-    "9f13fad1": "2026-11-02T06:03:52.353Z"
+    "9f13fad1": "2026-11-02T06:03:52.353Z",
+    "b2e26a55": "2026-11-02T06:06:22.547Z",
+    "e351a82d": "2026-11-02T06:08:58.753Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6751,17 +6755,9 @@
       "lastAttemptTs": 1793543121708
     },
     "Inference from sample statistics and margin of error": {
-      "correct": 10,
-      "total": 16,
+      "correct": 11,
+      "total": 18,
       "recent": [
-        {
-          "ts": 1792987524374,
-          "correct": false
-        },
-        {
-          "ts": 1792987530271,
-          "correct": true
-        },
         {
           "ts": 1792988129663,
           "correct": false
@@ -6801,9 +6797,17 @@
         {
           "ts": 1793542938213,
           "correct": true
+        },
+        {
+          "ts": 1793599653754,
+          "correct": false
+        },
+        {
+          "ts": 1793599696685,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793542938213
+      "lastAttemptTs": 1793599696685
     }
   },
   "progressFocus": [
@@ -6997,10 +7001,6 @@
       "count": 2,
       "lastTs": 1793551696957
     },
-    "0d564c7f": {
-      "count": 1,
-      "lastTs": 1793551713956
-    },
     "b5c05ec8": {
       "count": 2,
       "lastTs": 1793575993680
@@ -7012,14 +7012,6 @@
     "a7848a23": {
       "count": 2,
       "lastTs": 1793579557280
-    },
-    "6550292c": {
-      "count": 1,
-      "lastTs": 1793576033916
-    },
-    "32d61084": {
-      "count": 1,
-      "lastTs": 1793579416066
     },
     "79eb41b9": {
       "count": 2,
@@ -7060,6 +7052,30 @@
     "1d6e96f3": {
       "count": 1,
       "lastTs": 1793597004314
+    },
+    "3ee345a1": {
+      "count": 1,
+      "lastTs": 1793599609004
+    },
+    "e351a82d": {
+      "count": 1,
+      "lastTs": 1793599621347
+    },
+    "9eeacc73": {
+      "count": 1,
+      "lastTs": 1793599750886
+    },
+    "0d564c7f": {
+      "count": 1,
+      "lastTs": 1793551713956
+    },
+    "6550292c": {
+      "count": 1,
+      "lastTs": 1793576033916
+    },
+    "32d61084": {
+      "count": 1,
+      "lastTs": 1793579416066
     },
     "aa4d08d6": {
       "count": 1,
@@ -7946,13 +7962,13 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 8099640,
+      "totalMs": 8238804,
       "viewMs": {
-        "browse": 3790572,
+        "browse": 3795576,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
-        "math": 2336201
+        "math": 2470361
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -24840,7 +24856,17 @@
         "ts": 1793599579873,
         "ms": 337
       }
+    ],
+    "e351a82d": [
+      {
+        "ts": 1793599653754,
+        "ms": 32405
+      },
+      {
+        "ts": 1793599696685,
+        "ms": 35871
+      }
     ]
   },
-  "clientUpdatedAt": 1793599580604
+  "clientUpdatedAt": 1793599757328
 }
