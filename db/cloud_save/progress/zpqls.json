@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T06:03:22.529Z",
+  "exportedAt": "2026-11-02T06:06:22.535Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2203,7 +2203,8 @@
     "a4b12e2f": "done",
     "aefae524": "done",
     "46be0119": "done",
-    "b136bc4f": "done"
+    "b136bc4f": "done",
+    "9f13fad1": "done"
   },
   "tags": {},
   "notes": {},
@@ -4374,7 +4375,8 @@
     "a4b12e2f": "2026-11-02T05:48:08.486Z",
     "aefae524": "2026-11-02T05:48:48.716Z",
     "46be0119": "2026-11-02T05:55:11.984Z",
-    "b136bc4f": "2026-11-02T06:03:03.960Z"
+    "b136bc4f": "2026-11-02T06:03:03.960Z",
+    "9f13fad1": "2026-11-02T06:03:52.353Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5814,21 +5816,9 @@
       "lastAttemptTs": 1793551687010
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 99,
-      "total": 113,
+      "correct": 101,
+      "total": 116,
       "recent": [
-        {
-          "ts": 1793585770475,
-          "correct": false
-        },
-        {
-          "ts": 1793585771645,
-          "correct": true
-        },
-        {
-          "ts": 1793597442174,
-          "correct": true
-        },
         {
           "ts": 1793597622819,
           "correct": true
@@ -5864,9 +5854,21 @@
         {
           "ts": 1793598487146,
           "correct": true
+        },
+        {
+          "ts": 1793599431407,
+          "correct": true
+        },
+        {
+          "ts": 1793599578268,
+          "correct": false
+        },
+        {
+          "ts": 1793599579873,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793598487146
+      "lastAttemptTs": 1793599579873
     },
     "Nonlinear functions": {
       "correct": 170,
@@ -7944,13 +7946,13 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 7975493,
+      "totalMs": 8099640,
       "viewMs": {
         "browse": 3790572,
         "mock": 1897263,
         "leaderboard": 65599,
         "profile": 10005,
-        "math": 2212054
+        "math": 2336201
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -24822,7 +24824,23 @@
         "ts": 1793599381964,
         "ms": 253953
       }
+    ],
+    "9f13fad1": [
+      {
+        "ts": 1793599431407,
+        "ms": 46514
+      }
+    ],
+    "b2e26a55": [
+      {
+        "ts": 1793599578268,
+        "ms": 144653
+      },
+      {
+        "ts": 1793599579873,
+        "ms": 337
+      }
     ]
   },
-  "clientUpdatedAt": 1793599398173
+  "clientUpdatedAt": 1793599580604
 }
