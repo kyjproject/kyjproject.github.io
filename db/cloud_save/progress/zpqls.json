@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-02T01:59:28.904Z",
+  "exportedAt": "2026-11-02T02:05:24.519Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2126,7 +2126,8 @@
     "ae5d96c5": "done",
     "f106b81e": "done",
     "6f14f6ae": "done",
-    "c49dc6ac": "done"
+    "c49dc6ac": "done",
+    "79eb41b9": "review"
   },
   "tags": {},
   "notes": {},
@@ -5718,12 +5719,8 @@
     },
     "Nonlinear functions": {
       "correct": 156,
-      "total": 179,
+      "total": 180,
       "recent": [
-        {
-          "ts": 1793333625207,
-          "correct": true
-        },
         {
           "ts": 1793333625208,
           "correct": true
@@ -5767,9 +5764,13 @@
         {
           "ts": 1793543467063,
           "correct": true
+        },
+        {
+          "ts": 1793585051044,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793543467063
+      "lastAttemptTs": 1793585051044
     },
     "Equivalent expressions": {
       "correct": 58,
@@ -6676,8 +6677,8 @@
       "lastTs": 1793331458714
     },
     "2d1e5eff": {
-      "count": 6,
-      "lastTs": 1793492411390
+      "count": 7,
+      "lastTs": 1793584983039
     },
     "ed043939": {
       "count": 3,
@@ -6835,17 +6836,9 @@
       "count": 2,
       "lastTs": 1793538136286
     },
-    "ba00aba9": {
-      "count": 1,
-      "lastTs": 1793539202039
-    },
     "db81edbb": {
       "count": 2,
       "lastTs": 1793539954938
-    },
-    "80e0332a": {
-      "count": 1,
-      "lastTs": 1793540481804
     },
     "c7c7d2e2": {
       "count": 1,
@@ -6906,6 +6899,22 @@
     "32d61084": {
       "count": 1,
       "lastTs": 1793579416066
+    },
+    "79eb41b9": {
+      "count": 2,
+      "lastTs": 1793584993940
+    },
+    "f85886ff": {
+      "count": 1,
+      "lastTs": 1793585094573
+    },
+    "ba00aba9": {
+      "count": 1,
+      "lastTs": 1793539202039
+    },
+    "80e0332a": {
+      "count": 1,
+      "lastTs": 1793540481804
     },
     "f9c5558d": {
       "count": 1,
@@ -7752,10 +7761,13 @@
       "categoryMs": {}
     },
     "2026-11-02": {
-      "totalMs": 3413601,
+      "totalMs": 3659931,
       "viewMs": {
-        "browse": 1516338,
-        "mock": 1897263
+        "browse": 1566870,
+        "mock": 1897263,
+        "leaderboard": 50597,
+        "profile": 5004,
+        "math": 140197
       },
       "categoryMs": {
         "Vocab": 160805,
@@ -24035,7 +24047,13 @@
         "ts": 1793583204691,
         "ms": 30484
       }
+    ],
+    "79eb41b9": [
+      {
+        "ts": 1793585051044,
+        "ms": 61637
+      }
     ]
   },
-  "clientUpdatedAt": 1793584764413
+  "clientUpdatedAt": 1793585121471
 }
