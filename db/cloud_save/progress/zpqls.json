@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T05:58:22.310Z",
+  "exportedAt": "2026-11-03T06:01:21.556Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2335,7 +2335,9 @@
     "fd5dcf9c": "done",
     "2f9ce4d2": "done",
     "45e2e489": "done",
-    "07c808fe": "done"
+    "07c808fe": "done",
+    "734e6112": "done",
+    "70f512e7": "done"
   },
   "tags": {},
   "notes": {},
@@ -4632,7 +4634,9 @@
     "fd5dcf9c": "2026-11-03T05:46:25.793Z",
     "2f9ce4d2": "2026-11-03T05:48:32.878Z",
     "45e2e489": "2026-11-03T05:48:58.982Z",
-    "07c808fe": "2026-11-03T05:50:36.946Z"
+    "07c808fe": "2026-11-03T05:50:36.946Z",
+    "734e6112": "2026-11-03T05:58:40.353Z",
+    "70f512e7": "2026-11-03T05:59:48.254Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5467,21 +5471,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 117,
-      "total": 171,
+      "correct": 119,
+      "total": 174,
       "recent": [
-        {
-          "ts": 1793667371312,
-          "correct": true
-        },
-        {
-          "ts": 1793667441476,
-          "correct": true
-        },
-        {
-          "ts": 1793683043826,
-          "correct": true
-        },
         {
           "ts": 1793683114809,
           "correct": true
@@ -5517,9 +5509,21 @@
         {
           "ts": 1793685035190,
           "correct": true
+        },
+        {
+          "ts": 1793685519015,
+          "correct": true
+        },
+        {
+          "ts": 1793685577140,
+          "correct": false
+        },
+        {
+          "ts": 1793685586713,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793685035190
+      "lastAttemptTs": 1793685586713
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8324,9 +8328,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 5834486,
+      "totalMs": 5959545,
       "viewMs": {
-        "browse": 3922678,
+        "browse": 4047737,
         "profile": 15009,
         "leaderboard": 20016,
         "math": 1876783
@@ -26250,7 +26254,23 @@
         "ts": 1793685035190,
         "ms": 94895
       }
+    ],
+    "734e6112": [
+      {
+        "ts": 1793685519015,
+        "ms": 480648
+      }
+    ],
+    "70f512e7": [
+      {
+        "ts": 1793685577140,
+        "ms": 55054
+      },
+      {
+        "ts": 1793685586713,
+        "ms": 7226
+      }
     ]
   },
-  "clientUpdatedAt": 1793685497464
+  "clientUpdatedAt": 1793685681394
 }
