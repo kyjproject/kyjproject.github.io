@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T00:26:11.554Z",
+  "exportedAt": "2026-11-03T00:37:24.172Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2296,7 +2296,8 @@
     "3f0fd973": "done",
     "fd61f8ff": "done",
     "9b4ebe94": "done",
-    "c075f43e": "done"
+    "c075f43e": "done",
+    "9ceaa3a2": "done"
   },
   "tags": {},
   "notes": {},
@@ -4555,7 +4556,8 @@
     "3f0fd973": "2026-11-03T00:23:46.541Z",
     "fd61f8ff": "2026-11-03T00:24:04.240Z",
     "9b4ebe94": "2026-11-03T00:24:11.058Z",
-    "c075f43e": "2026-11-03T00:24:57.340Z"
+    "c075f43e": "2026-11-03T00:24:57.340Z",
+    "9ceaa3a2": "2026-11-03T00:27:02.053Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5390,13 +5392,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 103,
-      "total": 152,
+      "correct": 104,
+      "total": 153,
       "recent": [
-        {
-          "ts": 1793664453115,
-          "correct": true
-        },
         {
           "ts": 1793664496137,
           "correct": true
@@ -5440,9 +5438,13 @@
         {
           "ts": 1793665489063,
           "correct": true
+        },
+        {
+          "ts": 1793665620845,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793665489063
+      "lastAttemptTs": 1793665620845
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -7212,10 +7214,6 @@
       "count": 2,
       "lastTs": 1793630927598
     },
-    "2593586b": {
-      "count": 1,
-      "lastTs": 1793639639136
-    },
     "0ea2bc8b": {
       "count": 1,
       "lastTs": 1793639765598
@@ -7239,6 +7237,14 @@
     "919036b7": {
       "count": 1,
       "lastTs": 1793665388691
+    },
+    "25f5e913": {
+      "count": 2,
+      "lastTs": 1793665647406
+    },
+    "2593586b": {
+      "count": 1,
+      "lastTs": 1793639639136
     },
     "c2e17200": {
       "count": 1,
@@ -8235,9 +8241,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 2327907,
+      "totalMs": 2409389,
       "viewMs": {
-        "browse": 2292882,
+        "browse": 2374364,
         "profile": 15009,
         "leaderboard": 20016
       },
@@ -25862,7 +25868,13 @@
         "ts": 1793665489063,
         "ms": 373
       }
+    ],
+    "9ceaa3a2": [
+      {
+        "ts": 1793665620846,
+        "ms": 122338
+      }
     ]
   },
-  "clientUpdatedAt": 1793665568388
+  "clientUpdatedAt": 1793666241224
 }
