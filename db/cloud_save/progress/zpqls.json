@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T10:25:24.353Z",
+  "exportedAt": "2026-11-03T10:28:24.712Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2374,7 +2374,8 @@
     "b5c5b387": "done",
     "f318de52": "done",
     "f3a51fa6": "done",
-    "5cf1663b": "done"
+    "5cf1663b": "done",
+    "5405400f": "done"
   },
   "tags": {},
   "notes": {},
@@ -4708,7 +4709,8 @@
     "b5c5b387": "2026-11-03T09:52:09.546Z",
     "f318de52": "2026-11-03T09:53:52.500Z",
     "f3a51fa6": "2026-11-03T09:55:28.717Z",
-    "5cf1663b": "2026-11-03T10:22:22.391Z"
+    "5cf1663b": "2026-11-03T10:22:22.391Z",
+    "5405400f": "2026-11-03T10:27:20.534Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5928,21 +5930,9 @@
       "lastAttemptTs": 1793694340346
     },
     "Text Structure and Purpose": {
-      "correct": 98,
-      "total": 153,
+      "correct": 99,
+      "total": 156,
       "recent": [
-        {
-          "ts": 1793698321889,
-          "correct": true
-        },
-        {
-          "ts": 1793698389462,
-          "correct": true
-        },
-        {
-          "ts": 1793699348482,
-          "correct": true
-        },
         {
           "ts": 1793699465704,
           "correct": false
@@ -5978,9 +5968,21 @@
         {
           "ts": 1793701340275,
           "correct": true
+        },
+        {
+          "ts": 1793701627768,
+          "correct": false
+        },
+        {
+          "ts": 1793701633268,
+          "correct": false
+        },
+        {
+          "ts": 1793701639272,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793701340275
+      "lastAttemptTs": 1793701639272
     },
     "Inferences": {
       "correct": 33,
@@ -8436,9 +8438,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 10756000,
+      "totalMs": 10904089,
       "viewMs": {
-        "browse": 8834193,
+        "browse": 8982282,
         "profile": 25008,
         "leaderboard": 20016,
         "math": 1876783
@@ -26686,7 +26688,21 @@
         "ts": 1793701340275,
         "ms": 7450
       }
+    ],
+    "5405400f": [
+      {
+        "ts": 1793701627768,
+        "ms": 284306
+      },
+      {
+        "ts": 1793701633268,
+        "ms": 174
+      },
+      {
+        "ts": 1793701639273,
+        "ms": 262
+      }
     ]
   },
-  "clientUpdatedAt": 1793701524005
+  "clientUpdatedAt": 1793701702596
 }
