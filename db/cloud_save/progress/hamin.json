@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T07:18:56.648Z",
+  "exportedAt": "2026-11-03T07:21:56.730Z",
   "progress": {
     "18008817": "done",
     "25384355": "done",
@@ -4342,6 +4342,264 @@
         "timerStrict": true
       },
       "code": "TWXYNY"
+    },
+    {
+      "id": "bp_mw0cx8onovml3",
+      "name": "hard",
+      "view": "mock",
+      "createdAt": "2026-11-03T07:19:11.159Z",
+      "customModules": [
+        "rwM1",
+        "rwM2"
+      ],
+      "module2Pool": "harder",
+      "module2PoolMath": "harder",
+      "passThreshold": 0.6,
+      "statuses": [
+        "incomplete"
+      ],
+      "blueprint": [
+        {
+          "category": "Vocab",
+          "skill": "Words in Context",
+          "m1": 4,
+          "m2": 4
+        },
+        {
+          "category": "Functions",
+          "skill": "Text Structure and Purpose",
+          "m1": 3,
+          "m2": 2
+        },
+        {
+          "category": "Cross-Text",
+          "skill": "Cross-Text Connections",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Main Idea",
+          "skill": "Central Ideas and Details",
+          "m1": 4,
+          "m2": 2
+        },
+        {
+          "category": "Quantitative Evidence",
+          "skill": "Command of Evidence (Quantitative)",
+          "m1": 2,
+          "m2": 2
+        },
+        {
+          "category": "Textual Evidence",
+          "skill": "Command of Evidence (Textual)",
+          "m1": 2,
+          "m2": 2
+        },
+        {
+          "category": "Inferences",
+          "skill": "Inferences",
+          "m1": 2,
+          "m2": 2
+        },
+        {
+          "category": "Grammar",
+          "skill": "Boundaries",
+          "m1": 1,
+          "m2": 3
+        },
+        {
+          "category": "Grammar",
+          "skill": "Form, Structure, and Sense",
+          "m1": 0,
+          "m2": 2
+        },
+        {
+          "category": "Transitions",
+          "skill": "Transitions",
+          "m1": 5,
+          "m2": 4
+        },
+        {
+          "category": "Notes",
+          "skill": "Rhetorical Synthesis",
+          "m1": 3,
+          "m2": 3
+        }
+      ],
+      "mathBlueprint": [
+        {
+          "category": "Algebra",
+          "skill": "Linear equations in two variables",
+          "m1": 2,
+          "m2": 1
+        },
+        {
+          "category": "Algebra",
+          "skill": "Systems of two linear equations in two variables",
+          "m1": 1,
+          "m2": 2
+        },
+        {
+          "category": "Algebra",
+          "skill": "Linear functions",
+          "m1": 2,
+          "m2": 2
+        },
+        {
+          "category": "Algebra",
+          "skill": "Linear inequalities in one or two variables",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Algebra",
+          "skill": "Linear equations in one variable",
+          "m1": 1,
+          "m2": 2
+        },
+        {
+          "category": "Advanced Math",
+          "skill": "Nonlinear equations in one variable and systems of equations in two variables",
+          "m1": 3,
+          "m2": 1
+        },
+        {
+          "category": "Advanced Math",
+          "skill": "Nonlinear functions",
+          "m1": 4,
+          "m2": 4
+        },
+        {
+          "category": "Advanced Math",
+          "skill": "Equivalent expressions",
+          "m1": 1,
+          "m2": 2
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Percentages",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Ratios, rates, proportional relationships, and units",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "One-variable data: Distributions and measures of center and spread",
+          "m1": 1,
+          "m2": 0
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Probability and conditional probability",
+          "m1": 0,
+          "m2": 1
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Two-variable data: Models and scatterplots",
+          "m1": 0,
+          "m2": 1
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Inference from sample statistics and margin of error",
+          "m1": 0,
+          "m2": 0
+        },
+        {
+          "category": "Problem-Solving and Data Analysis",
+          "skill": "Evaluating statistical claims: Observational studies and experiments",
+          "m1": 0,
+          "m2": 0
+        },
+        {
+          "category": "Geometry and Trigonometry",
+          "skill": "Circles",
+          "m1": 1,
+          "m2": 0
+        },
+        {
+          "category": "Geometry and Trigonometry",
+          "skill": "Lines, angles, and triangles",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Geometry and Trigonometry",
+          "skill": "Right triangles and trigonometry",
+          "m1": 1,
+          "m2": 1
+        },
+        {
+          "category": "Geometry and Trigonometry",
+          "skill": "Area and volume",
+          "m1": 1,
+          "m2": 1
+        }
+      ],
+      "weightConfig": {
+        "m1": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 10,
+            "Medium": 55,
+            "Hard": 35
+          }
+        },
+        "m2harder": {
+          "preset": "custom",
+          "custom": {
+            "Easy": 0,
+            "Medium": 35,
+            "Hard": 65
+          }
+        },
+        "m2easier": {
+          "preset": "easier",
+          "custom": {
+            "Easy": 50,
+            "Medium": 40,
+            "Hard": 10
+          }
+        },
+        "mathM1": {
+          "preset": "balanced",
+          "custom": {
+            "Easy": 25,
+            "Medium": 50,
+            "Hard": 25
+          }
+        },
+        "mathM2harder": {
+          "preset": "harder",
+          "custom": {
+            "Easy": 10,
+            "Medium": 35,
+            "Hard": 55
+          }
+        },
+        "mathM2easier": {
+          "preset": "easier",
+          "custom": {
+            "Easy": 50,
+            "Medium": 40,
+            "Hard": 10
+          }
+        }
+      },
+      "showSkillMix": false,
+      "showSkillMixMath": false,
+      "useBluebook": true,
+      "qtimer": {
+        "timed": false,
+        "timerSeconds": 60,
+        "timerStrict": true
+      }
     }
   ],
   "timeStats": {
@@ -4649,12 +4907,13 @@
       "categoryMs": {}
     },
     "2026-11-03": {
-      "totalMs": 190472,
+      "totalMs": 327391,
       "viewMs": {
-        "profile": 10040,
+        "profile": 20040,
         "competition": 5001,
         "leaderboard": 34676,
-        "mock": 140755
+        "mock": 257673,
+        "notes": 10001
       },
       "categoryMs": {}
     }
@@ -5583,5 +5842,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793690333219
+  "clientUpdatedAt": 1793690513220
 }
