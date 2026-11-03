@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T08:29:19.531Z",
+  "exportedAt": "2026-11-03T08:32:19.253Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2355,7 +2355,9 @@
     "380dee07": "done",
     "50698bf8": "done",
     "e816527e": "done",
-    "1d6e96f3": "done"
+    "1d6e96f3": "done",
+    "5b71d7b1": "done",
+    "a0d54459": "done"
   },
   "tags": {},
   "notes": {},
@@ -4670,7 +4672,9 @@
     "380dee07": "2026-11-03T07:44:04.088Z",
     "50698bf8": "2026-11-03T07:47:01.034Z",
     "e816527e": "2026-11-03T07:49:25.219Z",
-    "1d6e96f3": "2026-11-03T08:24:54.078Z"
+    "1d6e96f3": "2026-11-03T08:24:54.078Z",
+    "5b71d7b1": "2026-11-03T08:30:03.351Z",
+    "a0d54459": "2026-11-03T08:31:47.765Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5890,13 +5894,9 @@
       "lastAttemptTs": 1793694340346
     },
     "Text Structure and Purpose": {
-      "correct": 79,
-      "total": 130,
+      "correct": 80,
+      "total": 131,
       "recent": [
-        {
-          "ts": 1793691029560,
-          "correct": false
-        },
         {
           "ts": 1793691030972,
           "correct": true
@@ -5940,9 +5940,13 @@
         {
           "ts": 1793694537687,
           "correct": true
+        },
+        {
+          "ts": 1793694705784,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793694537687
+      "lastAttemptTs": 1793694705784
     },
     "Inferences": {
       "correct": 33,
@@ -8390,9 +8394,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 8755879,
+      "totalMs": 8922985,
       "viewMs": {
-        "browse": 6834072,
+        "browse": 7001178,
         "profile": 25008,
         "leaderboard": 20016,
         "math": 1876783
@@ -26512,7 +26516,13 @@
         "ts": 1793694537687,
         "ms": 686
       }
+    ],
+    "a0d54459": [
+      {
+        "ts": 1793694705784,
+        "ms": 100337
+      }
     ]
   },
-  "clientUpdatedAt": 1793694556199
+  "clientUpdatedAt": 1793694735489
 }
