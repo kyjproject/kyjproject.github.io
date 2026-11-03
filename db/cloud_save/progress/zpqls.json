@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T05:43:26.616Z",
+  "exportedAt": "2026-11-03T05:46:35.154Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2329,7 +2329,10 @@
     "36ca6037": "done",
     "e8a8e9b9": "done",
     "0ef2e2cb": "done",
-    "3fc4753f": "done"
+    "3fc4753f": "done",
+    "c7d61039": "done",
+    "4b302743": "done",
+    "fd5dcf9c": "done"
   },
   "tags": {},
   "notes": {},
@@ -4620,7 +4623,10 @@
     "36ca6037": "2026-11-03T01:34:16.376Z",
     "e8a8e9b9": "2026-11-03T05:17:25.340Z",
     "0ef2e2cb": "2026-11-03T05:18:36.039Z",
-    "3fc4753f": "2026-11-03T05:42:47.774Z"
+    "3fc4753f": "2026-11-03T05:42:47.774Z",
+    "c7d61039": "2026-11-03T05:45:17.959Z",
+    "4b302743": "2026-11-03T05:45:51.096Z",
+    "fd5dcf9c": "2026-11-03T05:46:25.793Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5455,21 +5461,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 111,
-      "total": 165,
+      "correct": 114,
+      "total": 168,
       "recent": [
-        {
-          "ts": 1793666315204,
-          "correct": true
-        },
-        {
-          "ts": 1793666689138,
-          "correct": false
-        },
-        {
-          "ts": 1793666724518,
-          "correct": false
-        },
         {
           "ts": 1793666746384,
           "correct": false
@@ -5505,9 +5499,21 @@
         {
           "ts": 1793684565497,
           "correct": true
+        },
+        {
+          "ts": 1793684716219,
+          "correct": true
+        },
+        {
+          "ts": 1793684749411,
+          "correct": true
+        },
+        {
+          "ts": 1793684777619,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793684565497
+      "lastAttemptTs": 1793684777619
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8312,9 +8318,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 5257400,
+      "totalMs": 5410542,
       "viewMs": {
-        "browse": 3345592,
+        "browse": 3498734,
         "profile": 15009,
         "leaderboard": 20016,
         "math": 1876783
@@ -26202,7 +26208,25 @@
         "ts": 1793684565498,
         "ms": 34892
       }
+    ],
+    "c7d61039": [
+      {
+        "ts": 1793684716219,
+        "ms": 147258
+      }
+    ],
+    "4b302743": [
+      {
+        "ts": 1793684749411,
+        "ms": 30232
+      }
+    ],
+    "fd5dcf9c": [
+      {
+        "ts": 1793684777619,
+        "ms": 25593
+      }
     ]
   },
-  "clientUpdatedAt": 1793684603338
+  "clientUpdatedAt": 1793684792276
 }
