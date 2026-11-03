@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T06:04:23.029Z",
+  "exportedAt": "2026-11-03T06:07:22.577Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2338,7 +2338,8 @@
     "45e2e489": "done",
     "07c808fe": "done",
     "734e6112": "done",
-    "70f512e7": "done"
+    "70f512e7": "done",
+    "cba8812e": "done"
   },
   "tags": {},
   "notes": {},
@@ -4638,7 +4639,8 @@
     "45e2e489": "2026-11-03T05:48:58.982Z",
     "07c808fe": "2026-11-03T05:50:36.946Z",
     "734e6112": "2026-11-03T05:58:40.353Z",
-    "70f512e7": "2026-11-03T05:59:48.254Z"
+    "70f512e7": "2026-11-03T05:59:48.254Z",
+    "cba8812e": "2026-11-03T06:06:43.043Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5858,25 +5860,9 @@
       "lastAttemptTs": 1793596995500
     },
     "Text Structure and Purpose": {
-      "correct": 62,
-      "total": 99,
+      "correct": 63,
+      "total": 103,
       "recent": [
-        {
-          "ts": 1793640205735,
-          "correct": true
-        },
-        {
-          "ts": 1793640247048,
-          "correct": false
-        },
-        {
-          "ts": 1793640248097,
-          "correct": false
-        },
-        {
-          "ts": 1793640248901,
-          "correct": false
-        },
         {
           "ts": 1793640251032,
           "correct": true
@@ -5908,9 +5894,25 @@
         {
           "ts": 1793640396652,
           "correct": true
+        },
+        {
+          "ts": 1793685906720,
+          "correct": false
+        },
+        {
+          "ts": 1793685933391,
+          "correct": false
+        },
+        {
+          "ts": 1793685934722,
+          "correct": false
+        },
+        {
+          "ts": 1793685935787,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793640396652
+      "lastAttemptTs": 1793685935787
     },
     "Inferences": {
       "correct": 33,
@@ -8338,9 +8340,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 6134318,
+      "totalMs": 6274848,
       "viewMs": {
-        "browse": 4222510,
+        "browse": 4363040,
         "profile": 15009,
         "leaderboard": 20016,
         "math": 1876783
@@ -26286,7 +26288,25 @@
         "ts": 1793685586713,
         "ms": 7226
       }
+    ],
+    "cba8812e": [
+      {
+        "ts": 1793685906720,
+        "ms": 74208
+      },
+      {
+        "ts": 1793685933391,
+        "ms": 25538
+      },
+      {
+        "ts": 1793685934722,
+        "ms": 320
+      },
+      {
+        "ts": 1793685935787,
+        "ms": 261
+      }
     ]
   },
-  "clientUpdatedAt": 1793685861676
+  "clientUpdatedAt": 1793686041442
 }
