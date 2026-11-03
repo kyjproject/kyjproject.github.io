@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T01:02:18.730Z",
+  "exportedAt": "2026-11-03T01:05:18.801Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2308,7 +2308,8 @@
     "37cf569f": "done",
     "3de3402c": "done",
     "5e98384e": "done",
-    "94dc4ce8": "done"
+    "94dc4ce8": "done",
+    "c56a9f57": "done"
   },
   "tags": {},
   "notes": {},
@@ -4578,7 +4579,8 @@
     "37cf569f": "2026-11-03T01:00:17.657Z",
     "3de3402c": "2026-11-03T01:01:09.743Z",
     "5e98384e": "2026-11-03T01:01:46.361Z",
-    "94dc4ce8": "2026-11-03T01:02:06.995Z"
+    "94dc4ce8": "2026-11-03T01:02:06.995Z",
+    "c56a9f57": "2026-11-03T01:03:56.403Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6019,12 +6021,8 @@
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
       "correct": 105,
-      "total": 120,
+      "total": 121,
       "recent": [
-        {
-          "ts": 1793598428066,
-          "correct": false
-        },
         {
           "ts": 1793598429137,
           "correct": false
@@ -6068,18 +6066,18 @@
         {
           "ts": 1793667725736,
           "correct": true
+        },
+        {
+          "ts": 1793667860710,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793667725736
+      "lastAttemptTs": 1793667860710
     },
     "Nonlinear functions": {
-      "correct": 174,
-      "total": 205,
+      "correct": 175,
+      "total": 206,
       "recent": [
-        {
-          "ts": 1793597941861,
-          "correct": true
-        },
         {
           "ts": 1793598026071,
           "correct": true
@@ -6123,9 +6121,13 @@
         {
           "ts": 1793667705450,
           "correct": true
+        },
+        {
+          "ts": 1793667834990,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793667705450
+      "lastAttemptTs": 1793667834990
     },
     "Equivalent expressions": {
       "correct": 60,
@@ -8266,12 +8268,12 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 3258517,
+      "totalMs": 3391363,
       "viewMs": {
         "browse": 2941500,
         "profile": 15009,
         "leaderboard": 20016,
-        "math": 281992
+        "math": 414838
       },
       "categoryMs": {}
     }
@@ -25990,7 +25992,19 @@
         "ts": 1793667725736,
         "ms": 17834
       }
+    ],
+    "c56a9f57": [
+      {
+        "ts": 1793667834990,
+        "ms": 107050
+      }
+    ],
+    "14787dca": [
+      {
+        "ts": 1793667860710,
+        "ms": 23405
+      }
     ]
   },
-  "clientUpdatedAt": 1793667738305
+  "clientUpdatedAt": 1793667916955
 }
