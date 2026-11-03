@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T12:19:15.642Z",
+  "exportedAt": "2026-11-03T12:22:15.802Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2416,7 +2416,8 @@
     "308abfd7": "done",
     "7cd65b89": "done",
     "40e3aa38": "done",
-    "362e987f": "done"
+    "362e987f": "done",
+    "033e2be3": "done"
   },
   "tags": {},
   "notes": {},
@@ -4791,7 +4792,8 @@
     "308abfd7": "2026-11-03T11:58:48.701Z",
     "7cd65b89": "2026-11-03T12:13:56.609Z",
     "40e3aa38": "2026-11-03T12:15:19.732Z",
-    "362e987f": "2026-11-03T12:18:37.906Z"
+    "362e987f": "2026-11-03T12:18:37.906Z",
+    "033e2be3": "2026-11-03T12:20:57.374Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6286,13 +6288,9 @@
       "lastAttemptTs": 1793669654976
     },
     "Nonlinear functions": {
-      "correct": 186,
-      "total": 221,
+      "correct": 187,
+      "total": 222,
       "recent": [
-        {
-          "ts": 1793668262894,
-          "correct": true
-        },
         {
           "ts": 1793668318283,
           "correct": false
@@ -6336,9 +6334,13 @@
         {
           "ts": 1793669641592,
           "correct": true
+        },
+        {
+          "ts": 1793708455857,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793669641592
+      "lastAttemptTs": 1793708455857
     },
     "Equivalent expressions": {
       "correct": 62,
@@ -7472,6 +7474,10 @@
       "count": 2,
       "lastTs": 1793707022866
     },
+    "033e2be3": {
+      "count": 1,
+      "lastTs": 1793708386459
+    },
     "40e3aa38": {
       "count": 1,
       "lastTs": 1793708052763
@@ -8543,12 +8549,12 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 13732122,
+      "totalMs": 13912440,
       "viewMs": {
-        "browse": 11810315,
+        "browse": 11835379,
         "profile": 25008,
         "leaderboard": 20016,
-        "math": 1876783
+        "math": 2032037
       },
       "categoryMs": {}
     }
@@ -27237,7 +27243,13 @@
         "ts": 1793708308697,
         "ms": 8325
       }
+    ],
+    "033e2be3": [
+      {
+        "ts": 1793708455857,
+        "ms": 38811451
+      }
     ]
   },
-  "clientUpdatedAt": 1793708352517
+  "clientUpdatedAt": 1793708532834
 }
