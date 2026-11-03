@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T12:38:13.826Z",
+  "exportedAt": "2026-11-03T12:41:14.527Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2426,7 +2426,8 @@
     "9609a243": "done",
     "0876dbef": "done",
     "a3f57d54": "done",
-    "c5526332": "done"
+    "c5526332": "done",
+    "4a2f9ba8": "done"
   },
   "tags": {},
   "notes": {},
@@ -4811,7 +4812,8 @@
     "9609a243": "2026-11-03T12:34:29.353Z",
     "0876dbef": "2026-11-03T12:35:23.124Z",
     "a3f57d54": "2026-11-03T12:36:30.421Z",
-    "c5526332": "2026-11-03T12:37:31.100Z"
+    "c5526332": "2026-11-03T12:37:31.100Z",
+    "4a2f9ba8": "2026-11-03T12:38:57.435Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6636,17 +6638,9 @@
       "lastAttemptTs": 1793540965478
     },
     "Systems of two linear equations in two variables": {
-      "correct": 60,
-      "total": 64,
+      "correct": 61,
+      "total": 66,
       "recent": [
-        {
-          "ts": 1793462358832,
-          "correct": true
-        },
-        {
-          "ts": 1793492200012,
-          "correct": true
-        },
         {
           "ts": 1793492369983,
           "correct": true
@@ -6686,9 +6680,17 @@
         {
           "ts": 1793709319810,
           "correct": true
+        },
+        {
+          "ts": 1793709504953,
+          "correct": false
+        },
+        {
+          "ts": 1793709534949,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793709319810
+      "lastAttemptTs": 1793709534949
     },
     "Linear equations in two variables": {
       "correct": 80,
@@ -8571,12 +8573,12 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 14504805,
+      "totalMs": 14675066,
       "viewMs": {
         "browse": 11835379,
         "profile": 25008,
         "leaderboard": 20016,
-        "math": 2624402
+        "math": 2794663
       },
       "categoryMs": {}
     }
@@ -27337,7 +27339,17 @@
         "ts": 1793709448762,
         "ms": 3314
       }
+    ],
+    "4a2f9ba8": [
+      {
+        "ts": 1793709504953,
+        "ms": 52764
+      },
+      {
+        "ts": 1793709534949,
+        "ms": 29313
+      }
     ]
   },
-  "clientUpdatedAt": 1793709489340
+  "clientUpdatedAt": 1793709669671
 }
