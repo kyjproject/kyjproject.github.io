@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T11:01:27.085Z",
+  "exportedAt": "2026-11-03T11:04:25.266Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -5906,25 +5906,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 173,
-      "total": 256,
+      "correct": 174,
+      "total": 260,
       "recent": [
-        {
-          "ts": 1793596765083,
-          "correct": true
-        },
-        {
-          "ts": 1793596790866,
-          "correct": false
-        },
-        {
-          "ts": 1793596797050,
-          "correct": false
-        },
-        {
-          "ts": 1793596798742,
-          "correct": true
-        },
         {
           "ts": 1793596855149,
           "correct": true
@@ -5956,9 +5940,25 @@
         {
           "ts": 1793694340346,
           "correct": true
+        },
+        {
+          "ts": 1793703851206,
+          "correct": false
+        },
+        {
+          "ts": 1793703852105,
+          "correct": false
+        },
+        {
+          "ts": 1793703855152,
+          "correct": false
+        },
+        {
+          "ts": 1793703856320,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793694340346
+      "lastAttemptTs": 1793703856320
     },
     "Text Structure and Purpose": {
       "correct": 114,
@@ -8481,9 +8481,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 11969084,
+      "totalMs": 11994048,
       "viewMs": {
-        "browse": 10047277,
+        "browse": 10072241,
         "profile": 25008,
         "leaderboard": 20016,
         "math": 1876783
@@ -26889,7 +26889,25 @@
         "ts": 1793703653366,
         "ms": 18557
       }
+    ],
+    "ff19c9d6": [
+      {
+        "ts": 1793703851206,
+        "ms": 9490947
+      },
+      {
+        "ts": 1793703852105,
+        "ms": 143
+      },
+      {
+        "ts": 1793703855152,
+        "ms": 233
+      },
+      {
+        "ts": 1793703856320,
+        "ms": 168
+      }
     ]
   },
-  "clientUpdatedAt": 1793703682473
+  "clientUpdatedAt": 1793703861393
 }
