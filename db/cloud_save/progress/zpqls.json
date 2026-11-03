@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T11:58:00.956Z",
+  "exportedAt": "2026-11-03T12:06:28.966Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2411,7 +2411,9 @@
     "d3cb31fe": "done",
     "87d5618f": "done",
     "c3c2ac5d": "done",
-    "6d458a07": "done"
+    "6d458a07": "done",
+    "2856a1f7": "done",
+    "308abfd7": "done"
   },
   "tags": {},
   "notes": {},
@@ -4781,7 +4783,9 @@
     "d3cb31fe": "2026-11-03T11:51:24.494Z",
     "87d5618f": "2026-11-03T11:54:11.815Z",
     "c3c2ac5d": "2026-11-03T11:56:34.400Z",
-    "6d458a07": "2026-11-03T11:56:37.730Z"
+    "6d458a07": "2026-11-03T11:56:37.730Z",
+    "2856a1f7": "2026-11-03T11:58:29.732Z",
+    "308abfd7": "2026-11-03T11:58:48.701Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5946,13 +5950,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 197,
-      "total": 305,
+      "correct": 198,
+      "total": 306,
       "recent": [
-        {
-          "ts": 1793705315619,
-          "correct": true
-        },
         {
           "ts": 1793705342700,
           "correct": true
@@ -5996,9 +5996,13 @@
         {
           "ts": 1793707048099,
           "correct": true
+        },
+        {
+          "ts": 1793707127112,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793707048099
+      "lastAttemptTs": 1793707127112
     },
     "Text Structure and Purpose": {
       "correct": 114,
@@ -8529,9 +8533,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 13205859,
+      "totalMs": 13241859,
       "viewMs": {
-        "browse": 11284052,
+        "browse": 11320052,
         "profile": 25008,
         "leaderboard": 20016,
         "math": 1876783
@@ -27175,7 +27179,13 @@
         "ts": 1793707048099,
         "ms": 807
       }
+    ],
+    "308abfd7": [
+      {
+        "ts": 1793707127112,
+        "ms": 16427
+      }
     ]
   },
-  "clientUpdatedAt": 1793707076360
+  "clientUpdatedAt": 1793707584108
 }
