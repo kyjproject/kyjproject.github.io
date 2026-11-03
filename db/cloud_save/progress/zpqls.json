@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T00:15:25.418Z",
+  "exportedAt": "2026-11-03T00:22:37.542Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2289,7 +2289,9 @@
     "aeba704b": "done",
     "8e3309b5": "done",
     "e7b08326": "done",
-    "b802f640": "done"
+    "b802f640": "done",
+    "19f88f7b": "done",
+    "fb75c2e6": "done"
   },
   "tags": {},
   "notes": {},
@@ -4541,7 +4543,9 @@
     "aeba704b": "2026-11-02T17:26:38.576Z",
     "8e3309b5": "2026-11-02T23:58:28.238Z",
     "e7b08326": "2026-11-03T00:08:17.877Z",
-    "b802f640": "2026-11-03T00:08:29.576Z"
+    "b802f640": "2026-11-03T00:08:29.576Z",
+    "19f88f7b": "2026-11-03T00:15:32.829Z",
+    "fb75c2e6": "2026-11-03T00:15:52.686Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5376,17 +5380,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 96,
-      "total": 143,
+      "correct": 98,
+      "total": 145,
       "recent": [
-        {
-          "ts": 1793630158840,
-          "correct": false
-        },
-        {
-          "ts": 1793630178489,
-          "correct": true
-        },
         {
           "ts": 1793630295513,
           "correct": false
@@ -5426,9 +5422,17 @@
         {
           "ts": 1793664508350,
           "correct": true
+        },
+        {
+          "ts": 1793664929666,
+          "correct": true
+        },
+        {
+          "ts": 1793664951596,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793664508350
+      "lastAttemptTs": 1793664951596
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8217,9 +8221,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 2132908,
+      "totalMs": 2172922,
       "viewMs": {
-        "browse": 2122903,
+        "browse": 2162917,
         "profile": 10005
       },
       "categoryMs": {}
@@ -25793,7 +25797,19 @@
         "ts": 1793664508350,
         "ms": 9136
       }
+    ],
+    "19f88f7b": [
+      {
+        "ts": 1793664929667,
+        "ms": 418833
+      }
+    ],
+    "fb75c2e6": [
+      {
+        "ts": 1793664951596,
+        "ms": 17100
+      }
     ]
   },
-  "clientUpdatedAt": 1793664921306
+  "clientUpdatedAt": 1793665354239
 }
