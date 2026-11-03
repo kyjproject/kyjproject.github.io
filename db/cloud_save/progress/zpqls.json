@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T00:44:14.055Z",
+  "exportedAt": "2026-11-03T00:47:13.472Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2298,7 +2298,8 @@
     "9b4ebe94": "done",
     "c075f43e": "done",
     "9ceaa3a2": "done",
-    "25f5e913": "done"
+    "25f5e913": "done",
+    "ce9b3b84": "review"
   },
   "tags": {},
   "notes": {},
@@ -5394,29 +5395,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 105,
-      "total": 154,
+      "correct": 106,
+      "total": 159,
       "recent": [
-        {
-          "ts": 1793664508350,
-          "correct": true
-        },
-        {
-          "ts": 1793664929666,
-          "correct": true
-        },
-        {
-          "ts": 1793664951596,
-          "correct": true
-        },
-        {
-          "ts": 1793665401963,
-          "correct": false
-        },
-        {
-          "ts": 1793665404408,
-          "correct": true
-        },
         {
           "ts": 1793665425232,
           "correct": true
@@ -5444,9 +5425,29 @@
         {
           "ts": 1793666315204,
           "correct": true
+        },
+        {
+          "ts": 1793666689138,
+          "correct": false
+        },
+        {
+          "ts": 1793666724518,
+          "correct": false
+        },
+        {
+          "ts": 1793666746384,
+          "correct": false
+        },
+        {
+          "ts": 1793666756088,
+          "correct": false
+        },
+        {
+          "ts": 1793666787049,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793666315204
+      "lastAttemptTs": 1793666787049
     },
     "Command of Evidence (Textual)": {
       "correct": 110,
@@ -8243,9 +8244,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 2540881,
+      "totalMs": 2721020,
       "viewMs": {
-        "browse": 2505856,
+        "browse": 2685995,
         "profile": 15009,
         "leaderboard": 20016
       },
@@ -25882,7 +25883,29 @@
         "ts": 1793666315205,
         "ms": 669696
       }
+    ],
+    "ce9b3b84": [
+      {
+        "ts": 1793666689139,
+        "ms": 371341
+      },
+      {
+        "ts": 1793666724518,
+        "ms": 34153
+      },
+      {
+        "ts": 1793666746384,
+        "ms": 20587
+      },
+      {
+        "ts": 1793666756088,
+        "ms": 7690
+      },
+      {
+        "ts": 1793666787049,
+        "ms": 10905
+      }
     ]
   },
-  "clientUpdatedAt": 1793666650133
+  "clientUpdatedAt": 1793666830374
 }
