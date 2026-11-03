@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T06:33:55.735Z",
+  "exportedAt": "2026-11-03T06:36:56.712Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2344,7 +2344,9 @@
     "2f887164": "done",
     "d1f9725e": "done",
     "35bc6898": "done",
-    "fd7c6d0d": "done"
+    "fd7c6d0d": "done",
+    "11d064fe": "done",
+    "44bce45e": "done"
   },
   "tags": {},
   "notes": {},
@@ -4650,7 +4652,9 @@
     "2f887164": "2026-11-03T06:11:41.931Z",
     "d1f9725e": "2026-11-03T06:16:19.850Z",
     "35bc6898": "2026-11-03T06:18:48.380Z",
-    "fd7c6d0d": "2026-11-03T06:21:13.035Z"
+    "fd7c6d0d": "2026-11-03T06:21:13.035Z",
+    "11d064fe": "2026-11-03T06:34:32.572Z",
+    "44bce45e": "2026-11-03T06:36:02.107Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5870,21 +5874,9 @@
       "lastAttemptTs": 1793596995500
     },
     "Text Structure and Purpose": {
-      "correct": 68,
-      "total": 111,
+      "correct": 71,
+      "total": 114,
       "recent": [
-        {
-          "ts": 1793685906720,
-          "correct": false
-        },
-        {
-          "ts": 1793685933391,
-          "correct": false
-        },
-        {
-          "ts": 1793685934722,
-          "correct": false
-        },
         {
           "ts": 1793685935787,
           "correct": true
@@ -5920,9 +5912,21 @@
         {
           "ts": 1793686870740,
           "correct": true
+        },
+        {
+          "ts": 1793687670652,
+          "correct": true
+        },
+        {
+          "ts": 1793687760908,
+          "correct": true
+        },
+        {
+          "ts": 1793687767228,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793686870740
+      "lastAttemptTs": 1793687767228
     },
     "Inferences": {
       "correct": 33,
@@ -8354,9 +8358,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 7042776,
+      "totalMs": 7190833,
       "viewMs": {
-        "browse": 5130968,
+        "browse": 5279025,
         "profile": 15009,
         "leaderboard": 20016,
         "math": 1876783
@@ -26362,7 +26366,23 @@
         "ts": 1793686870740,
         "ms": 141122
       }
+    ],
+    "11d064fe": [
+      {
+        "ts": 1793687670652,
+        "ms": 938202
+      }
+    ],
+    "44bce45e": [
+      {
+        "ts": 1793687760908,
+        "ms": 87368
+      },
+      {
+        "ts": 1793687767228,
+        "ms": 1839
+      }
     ]
   },
-  "clientUpdatedAt": 1793687632487
+  "clientUpdatedAt": 1793687814990
 }
