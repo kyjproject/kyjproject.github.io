@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T12:41:14.527Z",
+  "exportedAt": "2026-11-03T12:44:13.427Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2427,7 +2427,8 @@
     "0876dbef": "done",
     "a3f57d54": "done",
     "c5526332": "done",
-    "4a2f9ba8": "done"
+    "4a2f9ba8": "done",
+    "252d6b8a": "done"
   },
   "tags": {},
   "notes": {},
@@ -4813,7 +4814,8 @@
     "0876dbef": "2026-11-03T12:35:23.124Z",
     "a3f57d54": "2026-11-03T12:36:30.421Z",
     "c5526332": "2026-11-03T12:37:31.100Z",
-    "4a2f9ba8": "2026-11-03T12:38:57.435Z"
+    "4a2f9ba8": "2026-11-03T12:38:57.435Z",
+    "252d6b8a": "2026-11-03T12:43:31.226Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6693,21 +6695,9 @@
       "lastAttemptTs": 1793709534949
     },
     "Linear equations in two variables": {
-      "correct": 80,
-      "total": 102,
+      "correct": 81,
+      "total": 105,
       "recent": [
-        {
-          "ts": 1793492418413,
-          "correct": false
-        },
-        {
-          "ts": 1793492420281,
-          "correct": false
-        },
-        {
-          "ts": 1793492421700,
-          "correct": true
-        },
         {
           "ts": 1793492428075,
           "correct": true
@@ -6743,9 +6733,21 @@
         {
           "ts": 1793708585322,
           "correct": true
+        },
+        {
+          "ts": 1793709793881,
+          "correct": false
+        },
+        {
+          "ts": 1793709799296,
+          "correct": false
+        },
+        {
+          "ts": 1793709800150,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793708585322
+      "lastAttemptTs": 1793709800150
     },
     "Linear equations in one variable": {
       "correct": 63,
@@ -8573,12 +8575,12 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 14675066,
+      "totalMs": 14831573,
       "viewMs": {
         "browse": 11835379,
         "profile": 25008,
         "leaderboard": 20016,
-        "math": 2794663
+        "math": 2951170
       },
       "categoryMs": {}
     }
@@ -27349,7 +27351,21 @@
         "ts": 1793709534949,
         "ms": 29313
       }
+    ],
+    "252d6b8a": [
+      {
+        "ts": 1793709793881,
+        "ms": 255494
+      },
+      {
+        "ts": 1793709799296,
+        "ms": 4567
+      },
+      {
+        "ts": 1793709800150,
+        "ms": 131
+      }
     ]
   },
-  "clientUpdatedAt": 1793709669671
+  "clientUpdatedAt": 1793709849925
 }
