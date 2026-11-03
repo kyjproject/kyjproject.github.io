@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-03T06:36:56.712Z",
+  "exportedAt": "2026-11-03T06:39:56.198Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2346,7 +2346,8 @@
     "35bc6898": "done",
     "fd7c6d0d": "done",
     "11d064fe": "done",
-    "44bce45e": "done"
+    "44bce45e": "done",
+    "950d740f": "review"
   },
   "tags": {},
   "notes": {},
@@ -5875,20 +5876,8 @@
     },
     "Text Structure and Purpose": {
       "correct": 71,
-      "total": 114,
+      "total": 117,
       "recent": [
-        {
-          "ts": 1793685935787,
-          "correct": true
-        },
-        {
-          "ts": 1793686159109,
-          "correct": true
-        },
-        {
-          "ts": 1793686412779,
-          "correct": false
-        },
         {
           "ts": 1793686423623,
           "correct": false
@@ -5924,9 +5913,21 @@
         {
           "ts": 1793687767228,
           "correct": true
+        },
+        {
+          "ts": 1793687923147,
+          "correct": false
+        },
+        {
+          "ts": 1793687925172,
+          "correct": false
+        },
+        {
+          "ts": 1793687930390,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793687767228
+      "lastAttemptTs": 1793687930390
     },
     "Inferences": {
       "correct": 33,
@@ -8358,9 +8359,9 @@
       }
     },
     "2026-11-03": {
-      "totalMs": 7190833,
+      "totalMs": 7291644,
       "viewMs": {
-        "browse": 5279025,
+        "browse": 5379836,
         "profile": 15009,
         "leaderboard": 20016,
         "math": 1876783
@@ -26382,7 +26383,21 @@
         "ts": 1793687767228,
         "ms": 1839
       }
+    ],
+    "950d740f": [
+      {
+        "ts": 1793687923147,
+        "ms": 142171
+      },
+      {
+        "ts": 1793687925172,
+        "ms": 317
+      },
+      {
+        "ts": 1793687930390,
+        "ms": 4239
+      }
     ]
   },
-  "clientUpdatedAt": 1793687814990
+  "clientUpdatedAt": 1793687994828
 }
