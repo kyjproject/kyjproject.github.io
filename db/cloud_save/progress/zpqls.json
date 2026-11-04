@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-04T05:07:19.419Z",
+  "exportedAt": "2026-11-04T05:10:19.881Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2450,7 +2450,9 @@
     "9c97cc5d": "done",
     "92328e3b": "done",
     "e3d3d5f1": "review",
-    "b3492de4": "done"
+    "b3492de4": "done",
+    "bfad2097": "done",
+    "e08dee38": "done"
   },
   "tags": {},
   "notes": {},
@@ -4857,7 +4859,9 @@
     "26ac2597": "2026-11-04T04:33:04.675Z",
     "9c97cc5d": "2026-11-04T04:53:08.728Z",
     "92328e3b": "2026-11-04T04:59:52.653Z",
-    "b3492de4": "2026-11-04T05:05:10.043Z"
+    "b3492de4": "2026-11-04T05:05:10.043Z",
+    "bfad2097": "2026-11-04T05:07:48.484Z",
+    "e08dee38": "2026-11-04T05:08:56.746Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6022,17 +6026,9 @@
       "lastAttemptTs": 1793551687009
     },
     "Words in Context": {
-      "correct": 218,
-      "total": 347,
+      "correct": 220,
+      "total": 349,
       "recent": [
-        {
-          "ts": 1793766965266,
-          "correct": true
-        },
-        {
-          "ts": 1793767987973,
-          "correct": true
-        },
         {
           "ts": 1793768382060,
           "correct": false
@@ -6072,9 +6068,17 @@
         {
           "ts": 1793768641156,
           "correct": true
+        },
+        {
+          "ts": 1793768866613,
+          "correct": true
+        },
+        {
+          "ts": 1793768919738,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793768641156
+      "lastAttemptTs": 1793768919738
     },
     "Text Structure and Purpose": {
       "correct": 114,
@@ -7538,6 +7542,10 @@
       "count": 2,
       "lastTs": 1793707022866
     },
+    "e08dee38": {
+      "count": 1,
+      "lastTs": 1793768885879
+    },
     "bfad2097": {
       "count": 1,
       "lastTs": 1793768729941
@@ -8647,9 +8655,9 @@
       "categoryMs": {}
     },
     "2026-11-04": {
-      "totalMs": 1417107,
+      "totalMs": 1514239,
       "viewMs": {
-        "browse": 1207238,
+        "browse": 1304370,
         "profile": 4986,
         "leaderboard": 10009,
         "math": 194874
@@ -27657,7 +27665,19 @@
         "ts": 1793768641156,
         "ms": 4980
       }
+    ],
+    "bfad2097": [
+      {
+        "ts": 1793768866613,
+        "ms": 155841
+      }
+    ],
+    "e08dee38": [
+      {
+        "ts": 1793768919738,
+        "ms": 33858
+      }
     ]
   },
-  "clientUpdatedAt": 1793768837194
+  "clientUpdatedAt": 1793769019336
 }
