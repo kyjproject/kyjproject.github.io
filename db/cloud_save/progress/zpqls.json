@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-04T12:39:15.998Z",
+  "exportedAt": "2026-11-04T12:53:38.240Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2141,7 +2141,7 @@
     "98a35f81": "done",
     "d5b08036": "done",
     "95954b57": "done",
-    "eec1aa3e": "review",
+    "eec1aa3e": "done",
     "2d8f1f6a": "done",
     "962eb92e": "done",
     "db116075": "done",
@@ -4937,7 +4937,8 @@
     "90e0e65b": "2026-11-04T09:15:41.937Z",
     "c087f68d": "2026-11-04T09:43:37.294Z",
     "da17503b": "2026-11-04T11:15:48.151Z",
-    "79eb41b9": "2026-11-04T12:38:41.099Z"
+    "79eb41b9": "2026-11-04T12:38:41.099Z",
+    "eec1aa3e": "2026-11-04T12:39:51.634Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5432,6 +5433,16 @@
       "difficulty": 3.2245015893713678,
       "due": "2026-11-20T12:38:42.632Z",
       "last_review": "2026-11-04T12:38:42.632Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "eec1aa3e": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-20T12:39:54.569Z",
+      "last_review": "2026-11-04T12:39:54.569Z",
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
@@ -6442,13 +6453,9 @@
       "lastAttemptTs": 1793669654976
     },
     "Nonlinear functions": {
-      "correct": 188,
-      "total": 223,
+      "correct": 189,
+      "total": 224,
       "recent": [
-        {
-          "ts": 1793668331946,
-          "correct": false
-        },
         {
           "ts": 1793668335613,
           "correct": false
@@ -6492,9 +6499,13 @@
         {
           "ts": 1793795918766,
           "correct": true
+        },
+        {
+          "ts": 1793795989851,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793795918766
+      "lastAttemptTs": 1793795989851
     },
     "Equivalent expressions": {
       "correct": 62,
@@ -8749,14 +8760,14 @@
       "categoryMs": {}
     },
     "2026-11-04": {
-      "totalMs": 5652920,
+      "totalMs": 5697954,
       "viewMs": {
         "browse": 5239959,
         "profile": 27378,
         "leaderboard": 24999,
         "math": 194874,
         "propose": 5000,
-        "review": 160710
+        "review": 205744
       },
       "categoryMs": {}
     }
@@ -25158,6 +25169,10 @@
       {
         "ts": 1793585646322,
         "ms": 49338
+      },
+      {
+        "ts": 1793795989851,
+        "ms": 67213
       }
     ],
     "2d8f1f6a": [
@@ -28107,5 +28122,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793795953163
+  "clientUpdatedAt": 1793796815313
 }
