@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-04T14:47:52.204Z",
+  "exportedAt": "2026-11-04T14:50:51.438Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2226,11 +2226,11 @@
     "6057efc0": "done",
     "e75682db": "done",
     "5c9ca033": "done",
-    "e038ac56": "review",
+    "e038ac56": "done",
     "11c970bc": "done",
     "fb2bb280": "done",
     "9f901f94": "done",
-    "cc4badba": "review",
+    "cc4badba": "done",
     "0b28cf7c": "review",
     "a2441389": "done",
     "5b968af0": "review",
@@ -4942,7 +4942,8 @@
     "b51b6e4e": "2026-11-04T14:30:42.331Z",
     "2e057093": "2026-11-04T14:36:41.300Z",
     "263c330a": "2026-11-04T14:40:01.403Z",
-    "c83508f3": "2026-11-04T14:44:13.723Z"
+    "c83508f3": "2026-11-04T14:44:13.723Z",
+    "e038ac56": "2026-11-04T14:48:23.734Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5510,6 +5511,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "e038ac56": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-20T14:49:12.840Z",
+      "last_review": "2026-11-04T14:49:12.840Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [
@@ -5857,17 +5868,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 138,
-      "total": 196,
+      "correct": 140,
+      "total": 198,
       "recent": [
-        {
-          "ts": 1793779637063,
-          "correct": true
-        },
-        {
-          "ts": 1793779644187,
-          "correct": true
-        },
         {
           "ts": 1793779726714,
           "correct": true
@@ -5907,9 +5910,17 @@
         {
           "ts": 1793803451581,
           "correct": true
+        },
+        {
+          "ts": 1793803700438,
+          "correct": true
+        },
+        {
+          "ts": 1793803764653,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793803451581
+      "lastAttemptTs": 1793803764653
     },
     "Command of Evidence (Textual)": {
       "correct": 117,
@@ -8824,14 +8835,14 @@
       "categoryMs": {}
     },
     "2026-11-04": {
-      "totalMs": 6867326,
+      "totalMs": 6962417,
       "viewMs": {
         "browse": 5239959,
         "profile": 37387,
         "leaderboard": 24999,
         "math": 194874,
         "propose": 5000,
-        "review": 1345091,
+        "review": 1440182,
         "practice": 20016
       },
       "categoryMs": {
@@ -25911,10 +25922,6 @@
     ],
     "e038ac56": [
       {
-        "ts": 1793623580999,
-        "ms": 94270
-      },
-      {
         "ts": 1793623594964,
         "ms": 12550
       },
@@ -25929,6 +25936,10 @@
       {
         "ts": 1793623639470,
         "ms": 3706
+      },
+      {
+        "ts": 1793803700438,
+        "ms": 490817
       }
     ],
     "11c970bc": [
@@ -25965,6 +25976,10 @@
       {
         "ts": 1793625167607,
         "ms": 187
+      },
+      {
+        "ts": 1793803764653,
+        "ms": 11800
       }
     ],
     "0b28cf7c": [
@@ -28222,5 +28237,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793803670103
+  "clientUpdatedAt": 1793803845883
 }
