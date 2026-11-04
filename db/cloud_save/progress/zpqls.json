@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-04T08:56:03.686Z",
+  "exportedAt": "2026-11-04T08:59:36.294Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2480,7 +2480,8 @@
     "d23f1a15": "done",
     "d18c204c": "done",
     "5c37d685": "done",
-    "358eef09": "done"
+    "358eef09": "done",
+    "c34ae829": "review"
   },
   "tags": {},
   "notes": {},
@@ -6193,20 +6194,8 @@
     },
     "Inferences": {
       "correct": 42,
-      "total": 64,
+      "total": 67,
       "recent": [
-        {
-          "ts": 1793781477118,
-          "correct": true
-        },
-        {
-          "ts": 1793781498098,
-          "correct": true
-        },
-        {
-          "ts": 1793781596043,
-          "correct": true
-        },
         {
           "ts": 1793781802436,
           "correct": true
@@ -6242,9 +6231,21 @@
         {
           "ts": 1793782393561,
           "correct": true
+        },
+        {
+          "ts": 1793782649801,
+          "correct": false
+        },
+        {
+          "ts": 1793782651598,
+          "correct": false
+        },
+        {
+          "ts": 1793782653242,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793782393561
+      "lastAttemptTs": 1793782653242
     },
     "Rhetorical Synthesis": {
       "correct": 202,
@@ -8719,9 +8720,9 @@
       "categoryMs": {}
     },
     "2026-11-04": {
-      "totalMs": 4351483,
+      "totalMs": 4473513,
       "viewMs": {
-        "browse": 4111614,
+        "browse": 4233644,
         "profile": 19996,
         "leaderboard": 24999,
         "math": 194874
@@ -27961,7 +27962,21 @@
         "ts": 1793782393561,
         "ms": 67777
       }
+    ],
+    "c34ae829": [
+      {
+        "ts": 1793782649801,
+        "ms": 253551
+      },
+      {
+        "ts": 1793782651599,
+        "ms": 993
+      },
+      {
+        "ts": 1793782653242,
+        "ms": 171
+      }
     ]
   },
-  "clientUpdatedAt": 1793782560599
+  "clientUpdatedAt": 1793782772918
 }
