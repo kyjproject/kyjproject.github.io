@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-04T14:35:50.710Z",
+  "exportedAt": "2026-11-04T14:38:53.424Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -437,7 +437,7 @@
     "aca97591": "done",
     "3b4eff82": "done",
     "f069ac6f": "done",
-    "2e057093": "review",
+    "2e057093": "done",
     "b355bef7": "done",
     "1404e2a3": "done",
     "6760c788": "done",
@@ -4939,7 +4939,8 @@
     "da17503b": "2026-11-04T11:15:48.151Z",
     "79eb41b9": "2026-11-04T12:38:41.099Z",
     "eec1aa3e": "2026-11-04T12:39:51.634Z",
-    "b51b6e4e": "2026-11-04T14:30:42.331Z"
+    "b51b6e4e": "2026-11-04T14:30:42.331Z",
+    "2e057093": "2026-11-04T14:36:41.300Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5467,6 +5468,16 @@
       "reps": 1,
       "lapses": 1,
       "lastIntervalDays": 1
+    },
+    "263c330a": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-11-20T14:36:40.491Z",
+      "last_review": "2026-11-04T14:36:40.491Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [
@@ -5869,17 +5880,9 @@
       "lastAttemptTs": 1793780792136
     },
     "Command of Evidence (Textual)": {
-      "correct": 114,
-      "total": 186,
+      "correct": 115,
+      "total": 188,
       "recent": [
-        {
-          "ts": 1793551699818,
-          "correct": true
-        },
-        {
-          "ts": 1793800010057,
-          "correct": false
-        },
         {
           "ts": 1793800224090,
           "correct": false
@@ -5919,9 +5922,17 @@
         {
           "ts": 1793802773559,
           "correct": false
+        },
+        {
+          "ts": 1793802993541,
+          "correct": true
+        },
+        {
+          "ts": 1793803129804,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1793802773559
+      "lastAttemptTs": 1793803129804
     },
     "Boundaries": {
       "correct": 231,
@@ -8781,14 +8792,14 @@
       "categoryMs": {}
     },
     "2026-11-04": {
-      "totalMs": 6188475,
+      "totalMs": 6368620,
       "viewMs": {
         "browse": 5239959,
         "profile": 27378,
         "leaderboard": 24999,
         "math": 194874,
         "propose": 5000,
-        "review": 696265
+        "review": 876410
       },
       "categoryMs": {}
     }
@@ -11966,6 +11977,10 @@
       {
         "ts": 1793802773560,
         "ms": 5964
+      },
+      {
+        "ts": 1793802993541,
+        "ms": 214324
       }
     ],
     "bff52e96": [
@@ -12748,6 +12763,10 @@
       {
         "ts": 1792593948144,
         "ms": 631
+      },
+      {
+        "ts": 1793803129805,
+        "ms": 129303
       }
     ],
     "b355bef7": [
@@ -28155,5 +28174,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793802949228
+  "clientUpdatedAt": 1793803129373
 }
