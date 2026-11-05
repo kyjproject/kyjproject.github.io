@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-05T05:12:17.379Z",
+  "exportedAt": "2026-11-05T05:17:37.147Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2494,7 +2494,8 @@
     "deb55365": "done",
     "8b52201d": "review",
     "fc4f0f7e": "done",
-    "780331f8": "done"
+    "780331f8": "done",
+    "8094a5a8": "done"
   },
   "tags": {},
   "notes": {},
@@ -4951,7 +4952,8 @@
     "deb55365": "2026-11-05T02:48:42.969Z",
     "fc4f0f7e": "2026-11-05T03:00:26.659Z",
     "4f52704c": "2026-11-05T03:47:58.170Z",
-    "780331f8": "2026-11-05T04:21:06.448Z"
+    "780331f8": "2026-11-05T04:21:06.448Z",
+    "8094a5a8": "2026-11-05T05:13:16.608Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6206,21 +6208,9 @@
       "lastAttemptTs": 1793850965445
     },
     "Words in Context": {
-      "correct": 228,
-      "total": 366,
+      "correct": 229,
+      "total": 369,
       "recent": [
-        {
-          "ts": 1793769225204,
-          "correct": false
-        },
-        {
-          "ts": 1793769229061,
-          "correct": true
-        },
-        {
-          "ts": 1793840864820,
-          "correct": false
-        },
         {
           "ts": 1793840866036,
           "correct": true
@@ -6256,9 +6246,21 @@
         {
           "ts": 1793847913432,
           "correct": true
+        },
+        {
+          "ts": 1793855590317,
+          "correct": false
+        },
+        {
+          "ts": 1793855591467,
+          "correct": false
+        },
+        {
+          "ts": 1793855592729,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793847913432
+      "lastAttemptTs": 1793855592729
     },
     "Text Structure and Purpose": {
       "correct": 116,
@@ -8859,10 +8861,11 @@
       }
     },
     "2026-11-05": {
-      "totalMs": 1404021,
+      "totalMs": 1452846,
       "viewMs": {
         "review": 5001,
-        "browse": 1399020
+        "browse": 1442840,
+        "math": 5005
       },
       "categoryMs": {}
     }
@@ -28351,7 +28354,21 @@
         "ts": 1793852463679,
         "ms": 2402
       }
+    ],
+    "8094a5a8": [
+      {
+        "ts": 1793855590317,
+        "ms": 436866
+      },
+      {
+        "ts": 1793855591467,
+        "ms": 143
+      },
+      {
+        "ts": 1793855592729,
+        "ms": 104
+      }
     ]
   },
-  "clientUpdatedAt": 1793855533168
+  "clientUpdatedAt": 1793855852835
 }
