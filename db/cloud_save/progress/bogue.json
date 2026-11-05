@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-05T13:16:39.861Z",
+  "exportedAt": "2026-11-05T13:19:38.030Z",
   "progress": {
     "64595457": "done",
     "72301503": "done",
@@ -1946,20 +1946,21 @@
       }
     },
     "2026-11-05": {
-      "totalMs": 1128937,
+      "totalMs": 1294107,
       "viewMs": {
-        "mock": 1128937
+        "mock": 1294107
       },
       "categoryMs": {
         "Vocab": 130152,
-        "Functions": 103475,
+        "Functions": 108476,
         "Notes": 65178,
         "Transitions": 174617,
         "Grammar": 118888,
         "Inferences": 118027,
         "Textual Evidence": 158796,
         "Quantitative Evidence": 64792,
-        "Main Idea": 65001
+        "Main Idea": 134999,
+        "Cross-Text": 90171
       }
     }
   },
@@ -2121,5 +2122,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793884599511
+  "clientUpdatedAt": 1793884774510
 }
