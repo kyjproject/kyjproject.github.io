@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-05T05:44:38.763Z",
+  "exportedAt": "2026-11-05T05:47:36.036Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2512,7 +2512,9 @@
     "e901bf6d": "done",
     "21f787ad": "done",
     "2994adbe": "done",
-    "c3d0a7fb": "done"
+    "c3d0a7fb": "done",
+    "675148a3": "done",
+    "deb47fce": "done"
   },
   "tags": {},
   "notes": {},
@@ -4987,7 +4989,9 @@
     "e901bf6d": "2026-11-05T05:34:08.931Z",
     "21f787ad": "2026-11-05T05:38:43.753Z",
     "2994adbe": "2026-11-05T05:39:22.654Z",
-    "c3d0a7fb": "2026-11-05T05:39:55.957Z"
+    "c3d0a7fb": "2026-11-05T05:39:55.957Z",
+    "675148a3": "2026-11-05T05:44:57.174Z",
+    "deb47fce": "2026-11-05T05:45:41.041Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6847,17 +6851,9 @@
       "lastAttemptTs": 1793540711683
     },
     "Area and volume": {
-      "correct": 66,
-      "total": 78,
+      "correct": 68,
+      "total": 80,
       "recent": [
-        {
-          "ts": 1793856162902,
-          "correct": true
-        },
-        {
-          "ts": 1793856224923,
-          "correct": true
-        },
         {
           "ts": 1793856248701,
           "correct": true
@@ -6897,9 +6893,17 @@
         {
           "ts": 1793857194677,
           "correct": true
+        },
+        {
+          "ts": 1793857493980,
+          "correct": true
+        },
+        {
+          "ts": 1793857539369,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793857194677
+      "lastAttemptTs": 1793857539369
     },
     "Systems of two linear equations in two variables": {
       "correct": 63,
@@ -8895,11 +8899,11 @@
       }
     },
     "2026-11-05": {
-      "totalMs": 2712853,
+      "totalMs": 2877987,
       "viewMs": {
         "review": 5001,
         "browse": 1442840,
-        "math": 1265012
+        "math": 1430146
       },
       "categoryMs": {}
     }
@@ -28504,7 +28508,19 @@
         "ts": 1793857194677,
         "ms": 30736
       }
+    ],
+    "675148a3": [
+      {
+        "ts": 1793857493980,
+        "ms": 296820
+      }
+    ],
+    "deb47fce": [
+      {
+        "ts": 1793857539369,
+        "ms": 40593
+      }
     ]
   },
-  "clientUpdatedAt": 1793857474173
+  "clientUpdatedAt": 1793857654319
 }
