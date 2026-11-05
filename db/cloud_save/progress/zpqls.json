@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-05T05:47:36.036Z",
+  "exportedAt": "2026-11-05T05:50:36.494Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2514,7 +2514,9 @@
     "2994adbe": "done",
     "c3d0a7fb": "done",
     "675148a3": "done",
-    "deb47fce": "done"
+    "deb47fce": "done",
+    "220e72c1": "done",
+    "8235af09": "done"
   },
   "tags": {},
   "notes": {},
@@ -4991,7 +4993,9 @@
     "2994adbe": "2026-11-05T05:39:22.654Z",
     "c3d0a7fb": "2026-11-05T05:39:55.957Z",
     "675148a3": "2026-11-05T05:44:57.174Z",
-    "deb47fce": "2026-11-05T05:45:41.041Z"
+    "deb47fce": "2026-11-05T05:45:41.041Z",
+    "220e72c1": "2026-11-05T05:49:05.017Z",
+    "8235af09": "2026-11-05T05:50:19.315Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6851,17 +6855,9 @@
       "lastAttemptTs": 1793540711683
     },
     "Area and volume": {
-      "correct": 68,
-      "total": 80,
+      "correct": 70,
+      "total": 82,
       "recent": [
-        {
-          "ts": 1793856248701,
-          "correct": true
-        },
-        {
-          "ts": 1793856323658,
-          "correct": true
-        },
         {
           "ts": 1793856404041,
           "correct": true
@@ -6901,9 +6897,17 @@
         {
           "ts": 1793857539369,
           "correct": true
+        },
+        {
+          "ts": 1793857743183,
+          "correct": true
+        },
+        {
+          "ts": 1793857816869,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793857539369
+      "lastAttemptTs": 1793857816869
     },
     "Systems of two linear equations in two variables": {
       "correct": 63,
@@ -8899,11 +8903,11 @@
       }
     },
     "2026-11-05": {
-      "totalMs": 2877987,
+      "totalMs": 3058103,
       "viewMs": {
         "review": 5001,
         "browse": 1442840,
-        "math": 1430146
+        "math": 1610262
       },
       "categoryMs": {}
     }
@@ -28520,7 +28524,19 @@
         "ts": 1793857539369,
         "ms": 40593
       }
+    ],
+    "220e72c1": [
+      {
+        "ts": 1793857743183,
+        "ms": 201173
+      }
+    ],
+    "8235af09": [
+      {
+        "ts": 1793857816869,
+        "ms": 70734
+      }
     ]
   },
-  "clientUpdatedAt": 1793857654319
+  "clientUpdatedAt": 1793857834435
 }
