@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-05T03:46:45.209Z",
+  "exportedAt": "2026-11-05T03:49:47.208Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1659,7 +1659,7 @@
     "e2f7ccb7": "done",
     "5bac62e5": "review",
     "5bb02134": "done",
-    "4f52704c": "review",
+    "4f52704c": "done",
     "d09d33ca": "review",
     "e67a5268": "done",
     "b3c62fd2": "review",
@@ -4948,7 +4948,8 @@
     "c83508f3": "2026-11-04T14:44:13.723Z",
     "e038ac56": "2026-11-04T14:48:23.734Z",
     "deb55365": "2026-11-05T02:48:42.969Z",
-    "fc4f0f7e": "2026-11-05T03:00:26.659Z"
+    "fc4f0f7e": "2026-11-05T03:00:26.659Z",
+    "4f52704c": "2026-11-05T03:47:58.170Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6148,13 +6149,9 @@
       "lastAttemptTs": 1793708308697
     },
     "Central Ideas and Details": {
-      "correct": 136,
-      "total": 249,
+      "correct": 137,
+      "total": 250,
       "recent": [
-        {
-          "ts": 1793532330716,
-          "correct": false
-        },
         {
           "ts": 1793532331515,
           "correct": false
@@ -6198,9 +6195,13 @@
         {
           "ts": 1793551687009,
           "correct": true
+        },
+        {
+          "ts": 1793850475961,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793551687009
+      "lastAttemptTs": 1793850475961
     },
     "Words in Context": {
       "correct": 228,
@@ -8856,10 +8857,10 @@
       }
     },
     "2026-11-05": {
-      "totalMs": 954136,
+      "totalMs": 1030830,
       "viewMs": {
         "review": 5001,
-        "browse": 949135
+        "browse": 1025829
       },
       "categoryMs": {}
     }
@@ -21747,6 +21748,10 @@
       {
         "ts": 1793346618598,
         "ms": 20401
+      },
+      {
+        "ts": 1793850475961,
+        "ms": 1256
       }
     ],
     "d09d33ca": [
@@ -28310,5 +28315,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1793850401919
+  "clientUpdatedAt": 1793850582650
 }
