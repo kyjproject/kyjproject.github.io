@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-08T12:08:40.533Z",
+  "exportedAt": "2026-11-08T12:11:42.971Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -3720,9 +3720,10 @@
       "categoryMs": {}
     },
     "2026-11-08": {
-      "totalMs": 24999,
+      "totalMs": 80040,
       "viewMs": {
-        "practice": 24999
+        "practice": 29999,
+        "leaderboard": 50041
       },
       "categoryMs": {}
     }
@@ -3851,5 +3852,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794139716632
+  "clientUpdatedAt": 1794139900165
 }
