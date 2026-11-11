@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T14:00:01.211Z",
+  "exportedAt": "2026-11-11T14:02:48.347Z",
   "progress": {},
   "tags": {},
   "notes": {},
@@ -91,7 +91,7 @@
   "skillStats": {
     "Linear equations in two variables": {
       "correct": 7,
-      "total": 10,
+      "total": 11,
       "recent": [
         {
           "ts": 1794399335422,
@@ -128,13 +128,17 @@
         {
           "ts": 1794405573420,
           "correct": true
+        },
+        {
+          "ts": 1794405645952,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1794405573420
+      "lastAttemptTs": 1794405645952
     },
     "Systems of two linear equations in two variables": {
-      "correct": 6,
-      "total": 8,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1794399377287,
@@ -159,9 +163,17 @@
         {
           "ts": 1794403960590,
           "correct": true
+        },
+        {
+          "ts": 1794405746593,
+          "correct": false
+        },
+        {
+          "ts": 1794405749393,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794403960590
+      "lastAttemptTs": 1794405749393
     },
     "Linear functions": {
       "correct": 10,
@@ -635,31 +647,35 @@
       "lastTs": 1794403769531
     },
     "6ee5222e": {
-      "count": 1,
-      "lastTs": 1794405471480
+      "count": 2,
+      "lastTs": 1794405640399
     },
     "ace7d6eb": {
       "count": 2,
       "lastTs": 1794405590652
+    },
+    "b0e72232": {
+      "count": 1,
+      "lastTs": 1794405651248
     }
   },
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 5148700,
+      "totalMs": 5308989,
       "viewMs": {
-        "home": 70085,
+        "home": 80104,
         "browse": 95164,
         "practice": 3140050,
         "test": 1017136,
-        "mock": 15030,
+        "mock": 25032,
         "profile": 280300,
         "analysis": 65114,
         "review": 55104,
         "leaderboard": 115156,
         "lab": 20040,
         "propose": 55084,
-        "math": 220437
+        "math": 360705
       },
       "categoryMs": {
         "Algebra": 1192941,
@@ -1218,6 +1234,20 @@
       {
         "ts": 1794405548185,
         "ms": 76693
+      },
+      {
+        "ts": 1794405645952,
+        "ms": 5550
+      }
+    ],
+    "b0e72232": [
+      {
+        "ts": 1794405746593,
+        "ms": 95344
+      },
+      {
+        "ts": 1794405749393,
+        "ms": 1916
       }
     ]
   }
