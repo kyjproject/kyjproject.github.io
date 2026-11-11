@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:45:52.880Z",
+  "exportedAt": "2026-11-11T13:48:52.804Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -467,8 +467,8 @@
       "lastAttemptTs": 1794404738576
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794401283433,
@@ -477,9 +477,17 @@
         {
           "ts": 1794402611552,
           "correct": true
+        },
+        {
+          "ts": 1794404915634,
+          "correct": false
+        },
+        {
+          "ts": 1794404917784,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402611552
+      "lastAttemptTs": 1794404917784
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 2,
@@ -588,11 +596,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 4540958,
+      "totalMs": 4694927,
       "viewMs": {
         "home": 70085,
         "browse": 90154,
-        "practice": 2687621,
+        "practice": 2841590,
         "test": 1012125,
         "mock": 15030,
         "profile": 280300,
@@ -606,7 +614,7 @@
       "categoryMs": {
         "Algebra": 1192941,
         "Advanced Math": 1583049,
-        "Problem-Solving and Data Analysis": 377631,
+        "Problem-Solving and Data Analysis": 531600,
         "Geometry and Trigonometry": 200404
       }
     }
@@ -1095,7 +1103,17 @@
         "ts": 1794404738576,
         "ms": 502
       }
+    ],
+    "34f7cb5d": [
+      {
+        "ts": 1794404915634,
+        "ms": 136927
+      },
+      {
+        "ts": 1794404917784,
+        "ms": 601
+      }
     ]
   },
-  "clientUpdatedAt": 1794404750627
+  "clientUpdatedAt": 1794404931470
 }
