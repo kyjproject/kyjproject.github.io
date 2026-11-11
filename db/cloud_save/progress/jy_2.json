@@ -1,10 +1,8 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:58:38.919Z",
-  "progress": {
-    "ace7d6eb": "done"
-  },
+  "exportedAt": "2026-11-11T14:00:01.211Z",
+  "progress": {},
   "tags": {},
   "notes": {},
   "mathOverrides": {},
@@ -92,8 +90,8 @@
   "rwOverrides": {},
   "skillStats": {
     "Linear equations in two variables": {
-      "correct": 5,
-      "total": 8,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1794399335422,
@@ -122,9 +120,17 @@
         {
           "ts": 1794403949871,
           "correct": true
+        },
+        {
+          "ts": 1794405548185,
+          "correct": true
+        },
+        {
+          "ts": 1794405573420,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794403949871
+      "lastAttemptTs": 1794405573420
     },
     "Systems of two linear equations in two variables": {
       "correct": 6,
@@ -631,12 +637,16 @@
     "6ee5222e": {
       "count": 1,
       "lastTs": 1794405471480
+    },
+    "ace7d6eb": {
+      "count": 2,
+      "lastTs": 1794405590652
     }
   },
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 5068538,
+      "totalMs": 5148700,
       "viewMs": {
         "home": 70085,
         "browse": 95164,
@@ -649,7 +659,7 @@
         "leaderboard": 115156,
         "lab": 20040,
         "propose": 55084,
-        "math": 140275
+        "math": 220437
       },
       "categoryMs": {
         "Algebra": 1192941,
@@ -888,6 +898,10 @@
       {
         "ts": 1794401739413,
         "ms": 13241
+      },
+      {
+        "ts": 1794405573420,
+        "ms": 3699
       }
     ],
     "a7db23d5": [
@@ -1199,7 +1213,12 @@
         "ts": 1794405426536,
         "ms": 3452
       }
+    ],
+    "6ee5222e": [
+      {
+        "ts": 1794405548185,
+        "ms": 76693
+      }
     ]
-  },
-  "clientUpdatedAt": 1794405517643
+  }
 }
