@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T02:09:55.540Z",
+  "exportedAt": "2026-11-11T02:12:54.749Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2858,8 +2858,8 @@
       "lastTs": 1787297697502
     },
     "a0120582": {
-      "count": 27,
-      "lastTs": 1794361941995
+      "count": 28,
+      "lastTs": 1794363142423
     },
     "9171f2b5": {
       "count": 2,
@@ -2981,10 +2981,6 @@
       "count": 3,
       "lastTs": 1789809613678
     },
-    "42c3e1dd": {
-      "count": 1,
-      "lastTs": 1790072996668
-    },
     "e7696b61": {
       "count": 4,
       "lastTs": 1790097270142
@@ -3088,6 +3084,14 @@
     "543fb2f5": {
       "count": 2,
       "lastTs": 1794362174837
+    },
+    "d54126ab": {
+      "count": 1,
+      "lastTs": 1794363146585
+    },
+    "42c3e1dd": {
+      "count": 1,
+      "lastTs": 1790072996668
     },
     "a6b0b2d1": {
       "count": 1,
@@ -3748,13 +3752,15 @@
       "categoryMs": {}
     },
     "2026-11-11": {
-      "totalMs": 410020,
+      "totalMs": 504804,
       "viewMs": {
-        "browse": 325006,
-        "home": 20000,
+        "browse": 384783,
+        "home": 35000,
         "mock": 10014,
-        "profile": 10000,
-        "leaderboard": 45000
+        "profile": 15001,
+        "leaderboard": 45000,
+        "review": 10000,
+        "propose": 5006
       },
       "categoryMs": {}
     }
@@ -3905,5 +3911,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794362995040
+  "clientUpdatedAt": 1794363171233
 }
