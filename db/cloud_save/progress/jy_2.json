@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:09:11.557Z",
+  "exportedAt": "2026-11-11T13:11:48.627Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -236,8 +236,8 @@
       "lastAttemptTs": 1794402526236
     },
     "Equivalent expressions": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1794400889688,
@@ -246,13 +246,17 @@
         {
           "ts": 1794401084508,
           "correct": true
+        },
+        {
+          "ts": 1794402585664,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401084508
+      "lastAttemptTs": 1794402585664
     },
     "Percentages": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1794401108164,
@@ -261,57 +265,77 @@
         {
           "ts": 1794401205328,
           "correct": true
+        },
+        {
+          "ts": 1794402597098,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401205328
+      "lastAttemptTs": 1794402597098
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1794401283433,
           "correct": true
+        },
+        {
+          "ts": 1794402611552,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401283433
+      "lastAttemptTs": 1794402611552
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1794401301519,
           "correct": true
+        },
+        {
+          "ts": 1794402639815,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401301519
+      "lastAttemptTs": 1794402639815
     },
     "Probability and conditional probability": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1794401347940,
           "correct": true
+        },
+        {
+          "ts": 1794402667991,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401347940
+      "lastAttemptTs": 1794402667992
     },
     "Lines, angles, and triangles": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1794401378712,
           "correct": true
+        },
+        {
+          "ts": 1794402674956,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401378712
+      "lastAttemptTs": 1794402674956
     },
     "Right triangles and trigonometry": {
-      "correct": 1,
-      "total": 3,
+      "correct": 2,
+      "total": 4,
       "recent": [
         {
           "ts": 1794401416757,
@@ -324,20 +348,28 @@
         {
           "ts": 1794401498202,
           "correct": true
+        },
+        {
+          "ts": 1794402685208,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401498202
+      "lastAttemptTs": 1794402685208
     },
     "Area and volume": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1794401549521,
           "correct": true
+        },
+        {
+          "ts": 1794402694743,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401549521
+      "lastAttemptTs": 1794402694743
     }
   },
   "progressFocus": [
@@ -350,14 +382,14 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 2522007,
+      "totalMs": 2667293,
       "viewMs": {
         "home": 70085,
-        "browse": 85144,
-        "practice": 1800920,
+        "browse": 90154,
+        "practice": 1936185,
         "test": 30060,
         "mock": 15030,
-        "profile": 230281,
+        "profile": 235292,
         "analysis": 35070,
         "review": 50103,
         "leaderboard": 80090,
@@ -367,9 +399,9 @@
       },
       "categoryMs": {
         "Algebra": 506503,
-        "Advanced Math": 771499,
-        "Problem-Solving and Data Analysis": 162197,
-        "Geometry and Trigonometry": 175354
+        "Advanced Math": 791532,
+        "Problem-Solving and Data Analysis": 247368,
+        "Geometry and Trigonometry": 200404
       }
     }
   },
@@ -687,7 +719,54 @@
         "ts": 1794402526237,
         "ms": 72585
       }
+    ],
+    "3e4e9da8": [
+      {
+        "ts": 1794402585664,
+        "ms": 21403
+      }
+    ],
+    "4f6f2989": [
+      {
+        "ts": 1794402597098,
+        "ms": 9882
+      }
+    ],
+    "0d810cbe": [
+      {
+        "ts": 1794402611552,
+        "ms": 13083
+      }
+    ],
+    "642a02cc": [
+      {
+        "ts": 1794402639815,
+        "ms": 26403
+      }
+    ],
+    "e1c12384": [
+      {
+        "ts": 1794402667992,
+        "ms": 25896
+      }
+    ],
+    "9a00b5dc": [
+      {
+        "ts": 1794402674956,
+        "ms": 4967
+      }
+    ],
+    "2d61bf02": [
+      {
+        "ts": 1794402685208,
+        "ms": 8584
+      }
+    ],
+    "b01d87be": [
+      {
+        "ts": 1794402694743,
+        "ms": 6900
+      }
     ]
-  },
-  "clientUpdatedAt": 1794402550028
+  }
 }
