@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:06:10.212Z",
+  "exportedAt": "2026-11-11T13:09:11.557Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -181,13 +181,9 @@
       "lastAttemptTs": 1794402115389
     },
     "Nonlinear functions": {
-      "correct": 10,
-      "total": 16,
+      "correct": 11,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1794400578842,
-          "correct": true
-        },
         {
           "ts": 1794400689206,
           "correct": true
@@ -231,9 +227,13 @@
         {
           "ts": 1794402309783,
           "correct": true
+        },
+        {
+          "ts": 1794402526236,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402309783
+      "lastAttemptTs": 1794402526236
     },
     "Equivalent expressions": {
       "correct": 2,
@@ -350,11 +350,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 2491954,
+      "totalMs": 2522007,
       "viewMs": {
         "home": 70085,
         "browse": 85144,
-        "practice": 1770867,
+        "practice": 1800920,
         "test": 30060,
         "mock": 15030,
         "profile": 230281,
@@ -367,7 +367,7 @@
       },
       "categoryMs": {
         "Algebra": 506503,
-        "Advanced Math": 741446,
+        "Advanced Math": 771499,
         "Problem-Solving and Data Analysis": 162197,
         "Geometry and Trigonometry": 175354
       }
@@ -681,7 +681,13 @@
         "ts": 1794402309783,
         "ms": 1284
       }
+    ],
+    "f0b332e0": [
+      {
+        "ts": 1794402526237,
+        "ms": 72585
+      }
     ]
   },
-  "clientUpdatedAt": 1794402367233
+  "clientUpdatedAt": 1794402550028
 }
