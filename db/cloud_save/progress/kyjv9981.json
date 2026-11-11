@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T03:17:39.537Z",
+  "exportedAt": "2026-11-11T03:23:03.608Z",
   "progress": {
     "10691563": "review",
     "36783511": "done",
@@ -2600,17 +2600,9 @@
       "lastAttemptTs": 1790956592843
     },
     "Form, Structure, and Sense": {
-      "correct": 16,
-      "total": 21,
+      "correct": 17,
+      "total": 23,
       "recent": [
-        {
-          "ts": 1787285305278,
-          "correct": true
-        },
-        {
-          "ts": 1787285305279,
-          "correct": true
-        },
         {
           "ts": 1787285305280,
           "correct": true
@@ -2650,9 +2642,17 @@
         {
           "ts": 1794362079554,
           "correct": false
+        },
+        {
+          "ts": 1794367275537,
+          "correct": true
+        },
+        {
+          "ts": 1794367300337,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1794362079554
+      "lastAttemptTs": 1794367300337
     },
     "Transitions": {
       "correct": 26,
@@ -2985,14 +2985,6 @@
       "count": 4,
       "lastTs": 1790097270142
     },
-    "96e950f2": {
-      "count": 1,
-      "lastTs": 1790073026005
-    },
-    "e95ae88a": {
-      "count": 1,
-      "lastTs": 1790073069482
-    },
     "03c75a33": {
       "count": 1,
       "lastTs": 1790073113370
@@ -3088,6 +3080,22 @@
     "d54126ab": {
       "count": 1,
       "lastTs": 1794363146585
+    },
+    "fb2bb280": {
+      "count": 4,
+      "lastTs": 1794367137928
+    },
+    "dc92080b": {
+      "count": 1,
+      "lastTs": 1794367239419
+    },
+    "96e950f2": {
+      "count": 1,
+      "lastTs": 1790073026005
+    },
+    "e95ae88a": {
+      "count": 1,
+      "lastTs": 1790073069482
     },
     "42c3e1dd": {
       "count": 1,
@@ -3752,15 +3760,16 @@
       "categoryMs": {}
     },
     "2026-11-11": {
-      "totalMs": 749336,
+      "totalMs": 1069504,
       "viewMs": {
-        "browse": 609314,
+        "browse": 859482,
         "home": 55001,
-        "mock": 10014,
+        "mock": 75014,
         "profile": 15001,
         "leaderboard": 45000,
         "review": 10000,
-        "propose": 5006
+        "propose": 5006,
+        "practice": 5000
       },
       "categoryMs": {}
     }
@@ -3909,7 +3918,17 @@
         "ts": 1794362079554,
         "ms": 2563
       }
+    ],
+    "dc92080b": [
+      {
+        "ts": 1794367275537,
+        "ms": 36117
+      },
+      {
+        "ts": 1794367300337,
+        "ms": 1395
+      }
     ]
   },
-  "clientUpdatedAt": 1794367058766
+  "clientUpdatedAt": 1794367380303
 }
