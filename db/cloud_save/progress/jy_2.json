@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:03:02.406Z",
+  "exportedAt": "2026-11-11T13:06:10.212Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -181,25 +181,9 @@
       "lastAttemptTs": 1794402115389
     },
     "Nonlinear functions": {
-      "correct": 7,
-      "total": 9,
+      "correct": 10,
+      "total": 16,
       "recent": [
-        {
-          "ts": 1794400440443,
-          "correct": true
-        },
-        {
-          "ts": 1794400452946,
-          "correct": true
-        },
-        {
-          "ts": 1794400463250,
-          "correct": true
-        },
-        {
-          "ts": 1794400530883,
-          "correct": false
-        },
         {
           "ts": 1794400578842,
           "correct": true
@@ -219,9 +203,37 @@
         {
           "ts": 1794402180464,
           "correct": false
+        },
+        {
+          "ts": 1794402191182,
+          "correct": false
+        },
+        {
+          "ts": 1794402194633,
+          "correct": true
+        },
+        {
+          "ts": 1794402263408,
+          "correct": false
+        },
+        {
+          "ts": 1794402270026,
+          "correct": false
+        },
+        {
+          "ts": 1794402271493,
+          "correct": true
+        },
+        {
+          "ts": 1794402304366,
+          "correct": false
+        },
+        {
+          "ts": 1794402309783,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402180464
+      "lastAttemptTs": 1794402309783
     },
     "Equivalent expressions": {
       "correct": 2,
@@ -338,11 +350,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 2336641,
+      "totalMs": 2491954,
       "viewMs": {
         "home": 70085,
         "browse": 85144,
-        "practice": 1615554,
+        "practice": 1770867,
         "test": 30060,
         "mock": 15030,
         "profile": 230281,
@@ -355,7 +367,7 @@
       },
       "categoryMs": {
         "Algebra": 506503,
-        "Advanced Math": 586133,
+        "Advanced Math": 741446,
         "Problem-Solving and Data Analysis": 162197,
         "Geometry and Trigonometry": 175354
       }
@@ -638,8 +650,38 @@
       {
         "ts": 1794402180464,
         "ms": 48666
+      },
+      {
+        "ts": 1794402191182,
+        "ms": 7117
+      },
+      {
+        "ts": 1794402194633,
+        "ms": 983
+      }
+    ],
+    "6095e4fc": [
+      {
+        "ts": 1794402263408,
+        "ms": 51893
+      },
+      {
+        "ts": 1794402270026,
+        "ms": 783
+      },
+      {
+        "ts": 1794402271493,
+        "ms": 683
+      },
+      {
+        "ts": 1794402304366,
+        "ms": 2632
+      },
+      {
+        "ts": 1794402309783,
+        "ms": 1284
       }
     ]
   },
-  "clientUpdatedAt": 1794402178234
+  "clientUpdatedAt": 1794402367233
 }
