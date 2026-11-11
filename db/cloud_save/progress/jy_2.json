@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T14:02:48.347Z",
+  "exportedAt": "2026-11-11T15:29:46.341Z",
   "progress": {},
   "tags": {},
   "notes": {},
@@ -625,6 +625,37 @@
         }
       ],
       "lastAttemptTs": 1794405426535
+    },
+    "Form, Structure, and Sense": {
+      "correct": 2,
+      "total": 6,
+      "recent": [
+        {
+          "ts": 1794410844000,
+          "correct": false
+        },
+        {
+          "ts": 1794410848950,
+          "correct": true
+        },
+        {
+          "ts": 1794410931096,
+          "correct": false
+        },
+        {
+          "ts": 1794410932512,
+          "correct": false
+        },
+        {
+          "ts": 1794410934079,
+          "correct": false
+        },
+        {
+          "ts": 1794410935646,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1794410935646
     }
   },
   "progressFocus": [
@@ -657,31 +688,49 @@
     "b0e72232": {
       "count": 1,
       "lastTs": 1794405651248
+    },
+    "5c38a6d5": {
+      "count": 1,
+      "lastTs": 1794405984321
+    },
+    "5046a8e3": {
+      "count": 1,
+      "lastTs": 1794405996460
+    },
+    "19ef53c5": {
+      "count": 1,
+      "lastTs": 1794410835870
+    },
+    "975a4737": {
+      "count": 1,
+      "lastTs": 1794410890779
     }
   },
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 5308989,
+      "totalMs": 5544510,
       "viewMs": {
         "home": 80104,
-        "browse": 95164,
+        "browse": 280613,
         "practice": 3140050,
-        "test": 1017136,
+        "test": 1047197,
         "mock": 25032,
-        "profile": 280300,
+        "profile": 290301,
         "analysis": 65114,
         "review": 55104,
         "leaderboard": 115156,
         "lab": 20040,
         "propose": 55084,
-        "math": 360705
+        "math": 365714,
+        "blueprints": 5001
       },
       "categoryMs": {
         "Algebra": 1192941,
         "Advanced Math": 1583049,
         "Problem-Solving and Data Analysis": 661837,
-        "Geometry and Trigonometry": 363617
+        "Geometry and Trigonometry": 363617,
+        "Transitions": 10020
       }
     }
   },
@@ -1249,6 +1298,35 @@
         "ts": 1794405749393,
         "ms": 1916
       }
+    ],
+    "19ef53c5": [
+      {
+        "ts": 1794410844001,
+        "ms": 8129
+      },
+      {
+        "ts": 1794410848950,
+        "ms": 3081
+      }
+    ],
+    "975a4737": [
+      {
+        "ts": 1794410931096,
+        "ms": 40316
+      },
+      {
+        "ts": 1794410932512,
+        "ms": 616
+      },
+      {
+        "ts": 1794410934079,
+        "ms": 600
+      },
+      {
+        "ts": 1794410935646,
+        "ms": 648
+      }
     ]
-  }
+  },
+  "clientUpdatedAt": 1794410984715
 }
