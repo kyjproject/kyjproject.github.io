@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:48:52.804Z",
+  "exportedAt": "2026-11-11T13:52:38.613Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -490,8 +490,8 @@
       "lastAttemptTs": 1794404917784
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794401301519,
@@ -500,13 +500,21 @@
         {
           "ts": 1794402639815,
           "correct": true
+        },
+        {
+          "ts": 1794404992191,
+          "correct": false
+        },
+        {
+          "ts": 1794405017803,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402639815
+      "lastAttemptTs": 1794405017803
     },
     "Probability and conditional probability": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794401347940,
@@ -515,9 +523,17 @@
         {
           "ts": 1794402667991,
           "correct": true
+        },
+        {
+          "ts": 1794405036106,
+          "correct": false
+        },
+        {
+          "ts": 1794405158450,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402667992
+      "lastAttemptTs": 1794405158450
     },
     "Lines, angles, and triangles": {
       "correct": 2,
@@ -596,11 +612,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 4694927,
+      "totalMs": 4825164,
       "viewMs": {
         "home": 70085,
         "browse": 90154,
-        "practice": 2841590,
+        "practice": 2971827,
         "test": 1012125,
         "mock": 15030,
         "profile": 280300,
@@ -614,7 +630,7 @@
       "categoryMs": {
         "Algebra": 1192941,
         "Advanced Math": 1583049,
-        "Problem-Solving and Data Analysis": 531600,
+        "Problem-Solving and Data Analysis": 661837,
         "Geometry and Trigonometry": 200404
       }
     }
@@ -1113,7 +1129,27 @@
         "ts": 1794404917784,
         "ms": 601
       }
+    ],
+    "cd9fa443": [
+      {
+        "ts": 1794404992192,
+        "ms": 27593
+      },
+      {
+        "ts": 1794405017803,
+        "ms": 920
+      }
+    ],
+    "66bd59b5": [
+      {
+        "ts": 1794405036106,
+        "ms": 15949
+      },
+      {
+        "ts": 1794405158450,
+        "ms": 1317
+      }
     ]
   },
-  "clientUpdatedAt": 1794404931470
+  "clientUpdatedAt": 1794405156353
 }
