@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T12:56:58.311Z",
+  "exportedAt": "2026-11-11T13:00:01.615Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -14,7 +14,7 @@
   "bonusXp": 0,
   "dailyGoal": 10,
   "profile": {
-    "name": "Jy_2",
+    "name": "Jy.2",
     "leaderboardOptOut": false
   },
   "fsrsCards": {},
@@ -23,8 +23,8 @@
   "rwOverrides": {},
   "skillStats": {
     "Linear equations in two variables": {
-      "correct": 2,
-      "total": 3,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794399335422,
@@ -37,13 +37,17 @@
         {
           "ts": 1794401739413,
           "correct": false
+        },
+        {
+          "ts": 1794401922003,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794401739413
+      "lastAttemptTs": 1794401922003
     },
     "Systems of two linear equations in two variables": {
-      "correct": 2,
-      "total": 3,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794399377287,
@@ -56,13 +60,17 @@
         {
           "ts": 1794399441228,
           "correct": true
+        },
+        {
+          "ts": 1794401934985,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794399441228
+      "lastAttemptTs": 1794401934985
     },
     "Linear functions": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1794399455568,
@@ -75,9 +83,13 @@
         {
           "ts": 1794399495108,
           "correct": true
+        },
+        {
+          "ts": 1794401973879,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794399495108
+      "lastAttemptTs": 1794401973879
     },
     "Linear inequalities in one or two variables": {
       "correct": 2,
@@ -294,23 +306,23 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 2025593,
+      "totalMs": 2205926,
       "viewMs": {
         "home": 70085,
         "browse": 85144,
-        "practice": 1379627,
-        "test": 25050,
+        "practice": 1484839,
+        "test": 30060,
         "mock": 15030,
-        "profile": 165170,
+        "profile": 230281,
         "analysis": 35070,
-        "review": 45103,
+        "review": 50103,
         "leaderboard": 80090,
         "lab": 20040,
         "propose": 55084,
         "math": 50100
       },
       "categoryMs": {
-        "Algebra": 350749,
+        "Algebra": 445940,
         "Advanced Math": 515981,
         "Problem-Solving and Data Analysis": 162197,
         "Geometry and Trigonometry": 175354
@@ -535,6 +547,25 @@
         "ts": 1794401739413,
         "ms": 13241
       }
+    ],
+    "a7db23d5": [
+      {
+        "ts": 1794401922003,
+        "ms": 15315
+      }
+    ],
+    "73a92771": [
+      {
+        "ts": 1794401934985,
+        "ms": 11101
+      }
+    ],
+    "468f320e": [
+      {
+        "ts": 1794401973879,
+        "ms": 37226
+      }
     ]
-  }
+  },
+  "clientUpdatedAt": 1794401999399
 }
