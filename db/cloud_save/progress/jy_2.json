@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:55:39.688Z",
+  "exportedAt": "2026-11-11T13:58:38.919Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -586,8 +586,8 @@
       "lastAttemptTs": 1794405302704
     },
     "Area and volume": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 4,
       "recent": [
         {
           "ts": 1794401549521,
@@ -596,9 +596,17 @@
         {
           "ts": 1794402694743,
           "correct": true
+        },
+        {
+          "ts": 1794405401430,
+          "correct": false
+        },
+        {
+          "ts": 1794405426535,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402694743
+      "lastAttemptTs": 1794405426535
     }
   },
   "progressFocus": [
@@ -619,17 +627,21 @@
     "9502a1aa": {
       "count": 1,
       "lastTs": 1794403769531
+    },
+    "6ee5222e": {
+      "count": 1,
+      "lastTs": 1794405471480
     }
   },
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 4895284,
+      "totalMs": 5068538,
       "viewMs": {
         "home": 70085,
-        "browse": 90154,
-        "practice": 3041947,
-        "test": 1012125,
+        "browse": 95164,
+        "practice": 3140050,
+        "test": 1017136,
         "mock": 15030,
         "profile": 280300,
         "analysis": 65114,
@@ -637,13 +649,13 @@
         "leaderboard": 115156,
         "lab": 20040,
         "propose": 55084,
-        "math": 75145
+        "math": 140275
       },
       "categoryMs": {
         "Algebra": 1192941,
         "Advanced Math": 1583049,
         "Problem-Solving and Data Analysis": 661837,
-        "Geometry and Trigonometry": 270524
+        "Geometry and Trigonometry": 363617
       }
     }
   },
@@ -1177,7 +1189,17 @@
         "ts": 1794405302704,
         "ms": 1946
       }
+    ],
+    "f8cb4ee2": [
+      {
+        "ts": 1794405401430,
+        "ms": 55010
+      },
+      {
+        "ts": 1794405426536,
+        "ms": 3452
+      }
     ]
   },
-  "clientUpdatedAt": 1794405336271
+  "clientUpdatedAt": 1794405517643
 }
