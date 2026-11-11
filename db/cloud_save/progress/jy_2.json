@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:42:52.346Z",
+  "exportedAt": "2026-11-11T13:45:52.880Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -393,8 +393,8 @@
       "lastAttemptTs": 1794404518953
     },
     "Equivalent expressions": {
-      "correct": 6,
-      "total": 6,
+      "correct": 7,
+      "total": 7,
       "recent": [
         {
           "ts": 1794400889688,
@@ -415,13 +415,17 @@
         {
           "ts": 1794403717120,
           "correct": true
+        },
+        {
+          "ts": 1794404673398,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794403717120
+      "lastAttemptTs": 1794404673398
     },
     "Percentages": {
-      "correct": 6,
-      "total": 6,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1794401108164,
@@ -442,9 +446,25 @@
         {
           "ts": 1794403717120,
           "correct": true
+        },
+        {
+          "ts": 1794404729737,
+          "correct": false
+        },
+        {
+          "ts": 1794404735577,
+          "correct": false
+        },
+        {
+          "ts": 1794404736909,
+          "correct": false
+        },
+        {
+          "ts": 1794404738576,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794403717120
+      "lastAttemptTs": 1794404738576
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 2,
@@ -568,11 +588,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 4360678,
+      "totalMs": 4540958,
       "viewMs": {
         "home": 70085,
         "browse": 90154,
-        "practice": 2507341,
+        "practice": 2687621,
         "test": 1012125,
         "mock": 15030,
         "profile": 280300,
@@ -585,8 +605,8 @@
       },
       "categoryMs": {
         "Algebra": 1192941,
-        "Advanced Math": 1462890,
-        "Problem-Solving and Data Analysis": 317510,
+        "Advanced Math": 1583049,
+        "Problem-Solving and Data Analysis": 377631,
         "Geometry and Trigonometry": 200404
       }
     }
@@ -1051,7 +1071,31 @@
         "ts": 1794404518953,
         "ms": 46381
       }
+    ],
+    "a65952d9": [
+      {
+        "ts": 1794404673398,
+        "ms": 100833
+      }
+    ],
+    "1a850131": [
+      {
+        "ts": 1794404729737,
+        "ms": 35659
+      },
+      {
+        "ts": 1794404735577,
+        "ms": 1252
+      },
+      {
+        "ts": 1794404736909,
+        "ms": 467
+      },
+      {
+        "ts": 1794404738576,
+        "ms": 502
+      }
     ]
   },
-  "clientUpdatedAt": 1794404570250
+  "clientUpdatedAt": 1794404750627
 }
