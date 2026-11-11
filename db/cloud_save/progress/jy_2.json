@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-11T13:52:38.613Z",
+  "exportedAt": "2026-11-11T13:55:39.688Z",
   "progress": {
     "ace7d6eb": "done"
   },
@@ -536,8 +536,8 @@
       "lastAttemptTs": 1794405158450
     },
     "Lines, angles, and triangles": {
-      "correct": 2,
-      "total": 2,
+      "correct": 3,
+      "total": 3,
       "recent": [
         {
           "ts": 1794401378712,
@@ -546,13 +546,17 @@
         {
           "ts": 1794402674956,
           "correct": true
+        },
+        {
+          "ts": 1794405183575,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402674956
+      "lastAttemptTs": 1794405183575
     },
     "Right triangles and trigonometry": {
-      "correct": 2,
-      "total": 4,
+      "correct": 3,
+      "total": 6,
       "recent": [
         {
           "ts": 1794401416757,
@@ -569,9 +573,17 @@
         {
           "ts": 1794402685208,
           "correct": true
+        },
+        {
+          "ts": 1794405274295,
+          "correct": false
+        },
+        {
+          "ts": 1794405302704,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794402685208
+      "lastAttemptTs": 1794405302704
     },
     "Area and volume": {
       "correct": 2,
@@ -612,11 +624,11 @@
   "blueprints": [],
   "timeStats": {
     "2026-11-11": {
-      "totalMs": 4825164,
+      "totalMs": 4895284,
       "viewMs": {
         "home": 70085,
         "browse": 90154,
-        "practice": 2971827,
+        "practice": 3041947,
         "test": 1012125,
         "mock": 15030,
         "profile": 280300,
@@ -631,7 +643,7 @@
         "Algebra": 1192941,
         "Advanced Math": 1583049,
         "Problem-Solving and Data Analysis": 661837,
-        "Geometry and Trigonometry": 200404
+        "Geometry and Trigonometry": 270524
       }
     }
   },
@@ -1149,7 +1161,23 @@
         "ts": 1794405158450,
         "ms": 1317
       }
+    ],
+    "b954d48e": [
+      {
+        "ts": 1794405183575,
+        "ms": 22722
+      }
+    ],
+    "db81edbb": [
+      {
+        "ts": 1794405274295,
+        "ms": 88597
+      },
+      {
+        "ts": 1794405302704,
+        "ms": 1946
+      }
     ]
   },
-  "clientUpdatedAt": 1794405156353
+  "clientUpdatedAt": 1794405336271
 }
