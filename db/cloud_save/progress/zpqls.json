@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T09:04:45.745Z",
+  "exportedAt": "2026-11-16T09:09:03.867Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2124,7 +2124,7 @@
     "5b24b55d": "done",
     "82c00b89": "done",
     "b1b1e956": "done",
-    "b51f185d": "review",
+    "b51f185d": "done",
     "c686802b": "done",
     "a4f4b3fb": "done",
     "e94bfdc3": "done",
@@ -2525,7 +2525,7 @@
     "76d87f54": "done",
     "eceefa95": "done",
     "dd415de8": "done",
-    "c6da512f": "review",
+    "c6da512f": "done",
     "f6e632fb": "done",
     "368d7615": "done",
     "2e5a7736": "review",
@@ -5113,7 +5113,8 @@
     "a5307779": "2026-11-16T03:55:48.219Z",
     "06346bcd": "2026-11-16T04:01:00.979Z",
     "bf0c8b48": "2026-11-16T08:51:22.841Z",
-    "8b52201d": "2026-11-16T08:58:49.775Z"
+    "8b52201d": "2026-11-16T08:58:49.775Z",
+    "c6da512f": "2026-11-16T09:05:45.129Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6368,17 +6369,9 @@
       "lastAttemptTs": 1793850965445
     },
     "Words in Context": {
-      "correct": 250,
-      "total": 407,
+      "correct": 252,
+      "total": 409,
       "recent": [
-        {
-          "ts": 1793883727232,
-          "correct": false
-        },
-        {
-          "ts": 1793883750584,
-          "correct": false
-        },
         {
           "ts": 1793883751683,
           "correct": false
@@ -6418,9 +6411,17 @@
         {
           "ts": 1794819498406,
           "correct": true
+        },
+        {
+          "ts": 1794819942473,
+          "correct": true
+        },
+        {
+          "ts": 1794820022783,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794819498406
+      "lastAttemptTs": 1794820022783
     },
     "Text Structure and Purpose": {
       "correct": 135,
@@ -9065,11 +9066,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 478913,
+      "totalMs": 568953,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 354152
+        "review": 444192
       },
       "categoryMs": {}
     }
@@ -25411,6 +25412,10 @@
       {
         "ts": 1793579943500,
         "ms": 5300
+      },
+      {
+        "ts": 1794820022784,
+        "ms": 76001
       }
     ],
     "c686802b": [
@@ -28819,6 +28824,10 @@
       {
         "ts": 1793881122317,
         "ms": 201
+      },
+      {
+        "ts": 1794819942474,
+        "ms": 406976
       }
     ],
     "f6e632fb": [
@@ -29296,5 +29305,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794819880878
+  "clientUpdatedAt": 1794820140383
 }
