@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T09:45:53.381Z",
+  "exportedAt": "2026-11-16T09:48:53.686Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1591,7 +1591,7 @@
     "ee7444eb": "done",
     "ffc88014": "done",
     "73935d4f": "done",
-    "4cfd4ab2": "review",
+    "4cfd4ab2": "done",
     "0ee9dd5d": "done",
     "9ec5bbff": "done",
     "c5043ec4": "done",
@@ -5118,7 +5118,8 @@
     "cdd766df": "2026-11-16T09:11:48.387Z",
     "e4c9f55e": "2026-11-16T09:25:00.233Z",
     "4c18f6b4": "2026-11-16T09:40:57.632Z",
-    "835583c7": "2026-11-16T09:42:36.916Z"
+    "835583c7": "2026-11-16T09:42:36.916Z",
+    "4cfd4ab2": "2026-11-16T09:46:46.854Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6318,21 +6319,9 @@
       "lastAttemptTs": 1793871962118
     },
     "Central Ideas and Details": {
-      "correct": 145,
-      "total": 262,
+      "correct": 146,
+      "total": 265,
       "recent": [
-        {
-          "ts": 1793850949582,
-          "correct": false
-        },
-        {
-          "ts": 1793850965445,
-          "correct": true
-        },
-        {
-          "ts": 1794820305612,
-          "correct": true
-        },
         {
           "ts": 1794820929659,
           "correct": true
@@ -6368,9 +6357,21 @@
         {
           "ts": 1794822154921,
           "correct": true
+        },
+        {
+          "ts": 1794822372762,
+          "correct": false
+        },
+        {
+          "ts": 1794822374306,
+          "correct": false
+        },
+        {
+          "ts": 1794822405047,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794822154921
+      "lastAttemptTs": 1794822405047
     },
     "Words in Context": {
       "correct": 252,
@@ -9070,11 +9071,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 1919464,
+      "totalMs": 2059353,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 1794703
+        "review": 1934592
       },
       "categoryMs": {}
     }
@@ -21400,20 +21401,24 @@
     ],
     "4cfd4ab2": [
       {
-        "ts": 1793335068466,
-        "ms": 533687
-      },
-      {
-        "ts": 1793335069691,
-        "ms": 234
-      },
-      {
         "ts": 1793335071231,
         "ms": 276
       },
       {
         "ts": 1793335073073,
         "ms": 967
+      },
+      {
+        "ts": 1794822372762,
+        "ms": 212191
+      },
+      {
+        "ts": 1794822374306,
+        "ms": 270
+      },
+      {
+        "ts": 1794822405048,
+        "ms": 30146
       }
     ],
     "0ee9dd5d": [
@@ -29345,5 +29350,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794822351636
+  "clientUpdatedAt": 1794822529234
 }
