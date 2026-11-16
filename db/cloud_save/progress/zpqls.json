@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T10:31:38.603Z",
+  "exportedAt": "2026-11-16T10:37:05.926Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2248,7 +2248,7 @@
     "0e008c2d": "done",
     "788d91ea": "done",
     "c2e17200": "done",
-    "1a9167e4": "review",
+    "1a9167e4": "done",
     "88b4e212": "done",
     "e2666b77": "done",
     "6d533192": "done",
@@ -5129,7 +5129,8 @@
     "2e5a7736": "2026-11-16T10:15:07.373Z",
     "943bdd80": "2026-11-16T10:15:12.558Z",
     "0b28cf7c": "2026-11-16T10:28:42.542Z",
-    "5b968af0": "2026-11-16T10:29:06.093Z"
+    "5b968af0": "2026-11-16T10:29:06.093Z",
+    "1a9167e4": "2026-11-16T10:32:44.314Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6054,13 +6055,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 143,
-      "total": 203,
+      "correct": 144,
+      "total": 204,
       "recent": [
-        {
-          "ts": 1793780667718,
-          "correct": false
-        },
         {
           "ts": 1793780724194,
           "correct": true
@@ -6104,9 +6101,13 @@
         {
           "ts": 1794824952460,
           "correct": true
+        },
+        {
+          "ts": 1794825161913,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794824952460
+      "lastAttemptTs": 1794825161913
     },
     "Command of Evidence (Textual)": {
       "correct": 119,
@@ -9081,11 +9082,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 3293462,
+      "totalMs": 3363520,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 3168701
+        "review": 3238759
       },
       "categoryMs": {}
     }
@@ -26543,6 +26544,10 @@
       {
         "ts": 1793630458963,
         "ms": 195
+      },
+      {
+        "ts": 1794825161913,
+        "ms": 205317
       }
     ],
     "88b4e212": [
@@ -29428,5 +29433,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794825095420
+  "clientUpdatedAt": 1794825422009
 }
