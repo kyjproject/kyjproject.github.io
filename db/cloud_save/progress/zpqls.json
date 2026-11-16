@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T10:28:37.778Z",
+  "exportedAt": "2026-11-16T10:31:38.603Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2233,15 +2233,15 @@
     "fb2bb280": "done",
     "9f901f94": "done",
     "cc4badba": "done",
-    "0b28cf7c": "review",
+    "0b28cf7c": "done",
     "a2441389": "done",
-    "5b968af0": "review",
+    "5b968af0": "done",
     "92dd36f6": "done",
     "0abd16fa": "done",
     "ae1e4d1d": "done",
     "5ad0b3b6": "done",
     "f7347d3a": "done",
-    "3508affd": "review",
+    "3508affd": "done",
     "014151d0": "done",
     "c7416710": "done",
     "8acb62c2": "done",
@@ -5127,7 +5127,9 @@
     "004680af": "2026-11-16T10:10:06.035Z",
     "2203a60b": "2026-11-16T10:11:24.653Z",
     "2e5a7736": "2026-11-16T10:15:07.373Z",
-    "943bdd80": "2026-11-16T10:15:12.558Z"
+    "943bdd80": "2026-11-16T10:15:12.558Z",
+    "0b28cf7c": "2026-11-16T10:28:42.542Z",
+    "5b968af0": "2026-11-16T10:29:06.093Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6052,25 +6054,9 @@
   "rwOverrides": {},
   "skillStats": {
     "Command of Evidence (Quantitative)": {
-      "correct": 141,
-      "total": 199,
+      "correct": 143,
+      "total": 203,
       "recent": [
-        {
-          "ts": 1793780205929,
-          "correct": true
-        },
-        {
-          "ts": 1793780466382,
-          "correct": true
-        },
-        {
-          "ts": 1793780568730,
-          "correct": false
-        },
-        {
-          "ts": 1793780597366,
-          "correct": true
-        },
         {
           "ts": 1793780667718,
           "correct": false
@@ -6102,9 +6088,25 @@
         {
           "ts": 1794824812456,
           "correct": true
+        },
+        {
+          "ts": 1794824934889,
+          "correct": false
+        },
+        {
+          "ts": 1794824936114,
+          "correct": false
+        },
+        {
+          "ts": 1794824941637,
+          "correct": true
+        },
+        {
+          "ts": 1794824952460,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794824812456
+      "lastAttemptTs": 1794824952460
     },
     "Command of Evidence (Textual)": {
       "correct": 119,
@@ -9079,11 +9081,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 3168440,
+      "totalMs": 3293462,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 3043679
+        "review": 3168701
       },
       "categoryMs": {}
     }
@@ -26403,6 +26405,18 @@
       {
         "ts": 1793626039224,
         "ms": 15850
+      },
+      {
+        "ts": 1794824934890,
+        "ms": 10743
+      },
+      {
+        "ts": 1794824936114,
+        "ms": 504
+      },
+      {
+        "ts": 1794824941637,
+        "ms": 4277
       }
     ],
     "92dd36f6": [
@@ -26451,6 +26465,10 @@
       {
         "ts": 1793627703018,
         "ms": 3400
+      },
+      {
+        "ts": 1794824952460,
+        "ms": 4230
       }
     ],
     "014151d0": [
@@ -29410,5 +29428,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794824913881
+  "clientUpdatedAt": 1794825095420
 }
