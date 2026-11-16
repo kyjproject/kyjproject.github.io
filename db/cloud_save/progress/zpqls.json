@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T10:00:53.936Z",
+  "exportedAt": "2026-11-16T10:03:54.754Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1178,7 +1178,7 @@
     "3011fe39": "done",
     "afc8b561": "done",
     "bc6c4fd8": "done",
-    "52e1ba18": "review",
+    "52e1ba18": "done",
     "9db9a861": "done",
     "fbb805a4": "review",
     "27a249a7": "done",
@@ -5122,7 +5122,8 @@
     "4cfd4ab2": "2026-11-16T09:46:46.854Z",
     "04db28aa": "2026-11-16T09:49:34.791Z",
     "e3d3d5f1": "2026-11-16T09:58:52.096Z",
-    "990bd995": "2026-11-16T10:00:20.432Z"
+    "990bd995": "2026-11-16T10:00:20.432Z",
+    "52e1ba18": "2026-11-16T10:01:49.599Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6542,25 +6543,9 @@
       "lastAttemptTs": 1793893232157
     },
     "Rhetorical Synthesis": {
-      "correct": 203,
-      "total": 311,
+      "correct": 204,
+      "total": 315,
       "recent": [
-        {
-          "ts": 1793457291089,
-          "correct": true
-        },
-        {
-          "ts": 1793457309306,
-          "correct": true
-        },
-        {
-          "ts": 1793457353583,
-          "correct": false
-        },
-        {
-          "ts": 1793457392022,
-          "correct": false
-        },
         {
           "ts": 1793457395415,
           "correct": false
@@ -6592,9 +6577,25 @@
         {
           "ts": 1794823218073,
           "correct": true
+        },
+        {
+          "ts": 1794823259484,
+          "correct": false
+        },
+        {
+          "ts": 1794823261618,
+          "correct": false
+        },
+        {
+          "ts": 1794823266285,
+          "correct": false
+        },
+        {
+          "ts": 1794823307707,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794823218073
+      "lastAttemptTs": 1794823307707
     },
     "Transitions": {
       "correct": 182,
@@ -9074,11 +9075,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 2636799,
+      "totalMs": 2781615,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 2512038
+        "review": 2656854
       },
       "categoryMs": {}
     }
@@ -18346,6 +18347,10 @@
       {
         "ts": 1793188054681,
         "ms": 174
+      },
+      {
+        "ts": 1794823307707,
+        "ms": 35873
       }
     ],
     "9db9a861": [
@@ -18362,6 +18367,18 @@
       {
         "ts": 1793188334792,
         "ms": 2077
+      },
+      {
+        "ts": 1794823259484,
+        "ms": 36730
+      },
+      {
+        "ts": 1794823261618,
+        "ms": 1285
+      },
+      {
+        "ts": 1794823266286,
+        "ms": 3938
       }
     ],
     "27a249a7": [
@@ -29377,5 +29394,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794823250979
+  "clientUpdatedAt": 1794823432514
 }
