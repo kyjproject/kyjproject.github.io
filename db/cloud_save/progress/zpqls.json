@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-16T09:48:53.686Z",
+  "exportedAt": "2026-11-16T09:51:54.278Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -550,7 +550,7 @@
     "b8abc32e": "done",
     "c47a72e9": "done",
     "f7e843d4": "done",
-    "c7e43751": "review",
+    "c7e43751": "done",
     "bf43e45f": "done",
     "497015e1": "done",
     "57fb41c0": "done",
@@ -2113,7 +2113,7 @@
     "943bdd80": "review",
     "aa4d08d6": "done",
     "0d564c7f": "done",
-    "04db28aa": "review",
+    "04db28aa": "done",
     "c71f112d": "done",
     "a8c35eaf": "review",
     "c2b1d787": "done",
@@ -5119,7 +5119,8 @@
     "e4c9f55e": "2026-11-16T09:25:00.233Z",
     "4c18f6b4": "2026-11-16T09:40:57.632Z",
     "835583c7": "2026-11-16T09:42:36.916Z",
-    "4cfd4ab2": "2026-11-16T09:46:46.854Z"
+    "4cfd4ab2": "2026-11-16T09:46:46.854Z",
+    "04db28aa": "2026-11-16T09:49:34.791Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6319,13 +6320,9 @@
       "lastAttemptTs": 1793871962118
     },
     "Central Ideas and Details": {
-      "correct": 146,
-      "total": 265,
+      "correct": 147,
+      "total": 266,
       "recent": [
-        {
-          "ts": 1794820929659,
-          "correct": true
-        },
         {
           "ts": 1794821098039,
           "correct": true
@@ -6369,34 +6366,18 @@
         {
           "ts": 1794822405047,
           "correct": true
+        },
+        {
+          "ts": 1794822554915,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794822405047
+      "lastAttemptTs": 1794822554915
     },
     "Words in Context": {
-      "correct": 252,
-      "total": 409,
+      "correct": 254,
+      "total": 414,
       "recent": [
-        {
-          "ts": 1793883751683,
-          "correct": false
-        },
-        {
-          "ts": 1793883752751,
-          "correct": false
-        },
-        {
-          "ts": 1793883753531,
-          "correct": true
-        },
-        {
-          "ts": 1793883925368,
-          "correct": true
-        },
-        {
-          "ts": 1794646843772,
-          "correct": true
-        },
         {
           "ts": 1794818784461,
           "correct": false
@@ -6424,9 +6405,29 @@
         {
           "ts": 1794820022783,
           "correct": true
+        },
+        {
+          "ts": 1794822573206,
+          "correct": true
+        },
+        {
+          "ts": 1794822684751,
+          "correct": false
+        },
+        {
+          "ts": 1794822693162,
+          "correct": false
+        },
+        {
+          "ts": 1794822697459,
+          "correct": false
+        },
+        {
+          "ts": 1794822699380,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1794820022783
+      "lastAttemptTs": 1794822699380
     },
     "Text Structure and Purpose": {
       "correct": 135,
@@ -9071,11 +9072,11 @@
       "categoryMs": {}
     },
     "2026-11-16": {
-      "totalMs": 2059353,
+      "totalMs": 2239502,
       "viewMs": {
         "browse": 114753,
         "leaderboard": 10008,
-        "review": 1934592
+        "review": 2114741
       },
       "categoryMs": {}
     }
@@ -13893,6 +13894,10 @@
       {
         "ts": 1792822154154,
         "ms": 416059
+      },
+      {
+        "ts": 1794822554915,
+        "ms": 144646
       }
     ],
     "bf43e45f": [
@@ -25333,24 +25338,32 @@
       {
         "ts": 1793575403842,
         "ms": 23638383
+      },
+      {
+        "ts": 1794822573207,
+        "ms": 8298
       }
     ],
     "943bdd80": [
       {
-        "ts": 1793575418048,
-        "ms": 9472
-      },
-      {
-        "ts": 1793575452493,
-        "ms": 333
-      },
-      {
-        "ts": 1793575455551,
-        "ms": 2242
-      },
-      {
         "ts": 1793575708654,
         "ms": 235544
+      },
+      {
+        "ts": 1794822684751,
+        "ms": 175876618
+      },
+      {
+        "ts": 1794822693162,
+        "ms": 7204
+      },
+      {
+        "ts": 1794822697459,
+        "ms": 3167
+      },
+      {
+        "ts": 1794822699381,
+        "ms": 556
       }
     ],
     "c71f112d": [
@@ -29350,5 +29363,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1794822529234
+  "clientUpdatedAt": 1794822709382
 }
