@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T05:42:21.259Z",
+  "exportedAt": "2026-11-21T09:41:16.825Z",
   "progress": {},
   "tags": {},
   "notes": {},
@@ -17,7 +17,23 @@
   "mockHistory": [],
   "testHistory": [],
   "rwOverrides": {},
-  "skillStats": {},
+  "skillStats": {
+    "Words in Context": {
+      "correct": 2,
+      "total": 2,
+      "recent": [
+        {
+          "ts": 1795254021284,
+          "correct": true
+        },
+        {
+          "ts": 1795254037683,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1795254037683
+    }
+  },
   "progressFocus": [
     "Easy",
     "Medium",
@@ -68,8 +84,31 @@
         "mock": 1
       },
       "categoryMs": {}
+    },
+    "2026-11-21": {
+      "totalMs": 180001,
+      "viewMs": {
+        "mock": 5014,
+        "practice": 174987
+      },
+      "categoryMs": {
+        "Vocab": 84999
+      }
     }
   },
-  "answerTimeLog": {},
-  "clientUpdatedAt": 1795239707663
+  "answerTimeLog": {
+    "6ca52080": [
+      {
+        "ts": 1795254021284,
+        "ms": 28306
+      }
+    ],
+    "d87c4362": [
+      {
+        "ts": 1795254037683,
+        "ms": 33395
+      }
+    ]
+  },
+  "clientUpdatedAt": 1795254074371
 }
