@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:03:31.418Z",
+  "exportedAt": "2026-11-21T10:06:31.085Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4079,17 +4079,9 @@
       "lastAttemptTs": 1795255204662
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 15,
-      "total": 20,
+      "correct": 17,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1790153766526,
-          "correct": false
-        },
-        {
-          "ts": 1790153775744,
-          "correct": true
-        },
         {
           "ts": 1790159529371,
           "correct": true
@@ -4129,18 +4121,22 @@
         {
           "ts": 1793956636205,
           "correct": true
-        }
-      ],
-      "lastAttemptTs": 1793956636205
-    },
-    "Nonlinear functions": {
-      "correct": 28,
-      "total": 29,
-      "recent": [
+        },
         {
-          "ts": 1790163628267,
+          "ts": 1795255423036,
           "correct": true
         },
+        {
+          "ts": 1795255456948,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1795255456948
+    },
+    "Nonlinear functions": {
+      "correct": 29,
+      "total": 30,
+      "recent": [
         {
           "ts": 1790164427178,
           "correct": true
@@ -4184,9 +4180,13 @@
         {
           "ts": 1793956636205,
           "correct": true
+        },
+        {
+          "ts": 1795255540324,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636205
+      "lastAttemptTs": 1795255540324
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 5,
@@ -5786,15 +5786,15 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 383872,
+      "totalMs": 553874,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 368870
+        "practice": 538872
       },
       "categoryMs": {
         "Algebra": 258872,
-        "Advanced Math": 94998
+        "Advanced Math": 265000
       }
     }
   },
@@ -6111,6 +6111,10 @@
       {
         "ts": 1789565005334,
         "ms": 54339
+      },
+      {
+        "ts": 1795255540324,
+        "ms": 82001
       }
     ],
     "005e9982": [
@@ -6429,6 +6433,10 @@
       {
         "ts": 1790159529372,
         "ms": 38890
+      },
+      {
+        "ts": 1795255423036,
+        "ms": 217315
       }
     ],
     "669f307b": [
@@ -6750,7 +6758,13 @@
         "ts": 1795255032645,
         "ms": 47841
       }
+    ],
+    "2e655326": [
+      {
+        "ts": 1795255456949,
+        "ms": 31865
+      }
     ]
   },
-  "clientUpdatedAt": 1795255407521
+  "clientUpdatedAt": 1795255587524
 }
