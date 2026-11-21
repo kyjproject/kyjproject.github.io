@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:15:30.352Z",
+  "exportedAt": "2026-11-21T10:18:30.896Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4298,8 +4298,8 @@
       "lastAttemptTs": 1793956636203
     },
     "Percentages": {
-      "correct": 9,
-      "total": 9,
+      "correct": 10,
+      "total": 10,
       "recent": [
         {
           "ts": 1790152583053,
@@ -4336,9 +4336,13 @@
         {
           "ts": 1793956636203,
           "correct": true
+        },
+        {
+          "ts": 1795256244334,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636203
+      "lastAttemptTs": 1795256244334
     },
     "Area and volume": {
       "correct": 6,
@@ -4458,8 +4462,8 @@
       "lastAttemptTs": 1793956636195
     },
     "Equivalent expressions": {
-      "correct": 6,
-      "total": 8,
+      "correct": 7,
+      "total": 9,
       "recent": [
         {
           "ts": 1790154631724,
@@ -4492,9 +4496,13 @@
         {
           "ts": 1793956636204,
           "correct": false
+        },
+        {
+          "ts": 1795256148669,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636204
+      "lastAttemptTs": 1795256148669
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 4,
@@ -5786,15 +5794,16 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 848861,
+      "totalMs": 1028861,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 833859
+        "practice": 1013859
       },
       "categoryMs": {
         "Algebra": 258872,
-        "Advanced Math": 559987
+        "Advanced Math": 579987,
+        "Problem-Solving and Data Analysis": 160000
       }
     }
   },
@@ -6503,6 +6512,10 @@
       {
         "ts": 1790160967833,
         "ms": 60034
+      },
+      {
+        "ts": 1795256148670,
+        "ms": 58488
       }
     ],
     "b2f892c3": [
@@ -6788,7 +6801,13 @@
         "ts": 1795256088496,
         "ms": 12055
       }
+    ],
+    "b22cac33": [
+      {
+        "ts": 1795256244334,
+        "ms": 94305
+      }
     ]
   },
-  "clientUpdatedAt": 1795256127517
+  "clientUpdatedAt": 1795256307519
 }
