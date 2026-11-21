@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:54:30.214Z",
+  "exportedAt": "2026-11-21T10:57:30.767Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4505,8 +4505,8 @@
       "lastAttemptTs": 1795257143945
     },
     "Lines, angles, and triangles": {
-      "correct": 6,
-      "total": 9,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1790153470523,
@@ -4543,9 +4543,13 @@
         {
           "ts": 1795256592897,
           "correct": true
+        },
+        {
+          "ts": 1795258551970,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795256592897
+      "lastAttemptTs": 1795258551970
     },
     "Equivalent expressions": {
       "correct": 8,
@@ -4626,8 +4630,8 @@
       "lastAttemptTs": 1795258398481
     },
     "Probability and conditional probability": {
-      "correct": 4,
-      "total": 4,
+      "correct": 5,
+      "total": 5,
       "recent": [
         {
           "ts": 1790163404333,
@@ -4644,9 +4648,13 @@
         {
           "ts": 1795256498368,
           "correct": true
+        },
+        {
+          "ts": 1795258488687,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795256498368
+      "lastAttemptTs": 1795258488687
     },
     "Circles": {
       "correct": 1,
@@ -5896,19 +5904,19 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 2608862,
+      "totalMs": 2783867,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 2573966,
+        "practice": 2748971,
         "competition": 4897,
         "leaderboard": 14997
       },
       "categoryMs": {
         "Algebra": 578870,
         "Advanced Math": 1004990,
-        "Problem-Solving and Data Analysis": 719997,
-        "Geometry and Trigonometry": 240002
+        "Problem-Solving and Data Analysis": 739997,
+        "Geometry and Trigonometry": 395007
       }
     }
   },
@@ -7062,7 +7070,19 @@
         "ts": 1795258445145,
         "ms": 45440
       }
+    ],
+    "42ad4855": [
+      {
+        "ts": 1795258488687,
+        "ms": 42105
+      }
+    ],
+    "9f664752": [
+      {
+        "ts": 1795258551971,
+        "ms": 61457
+      }
     ]
   },
-  "clientUpdatedAt": 1795258467516
+  "clientUpdatedAt": 1795258647516
 }
