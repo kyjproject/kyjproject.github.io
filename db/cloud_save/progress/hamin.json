@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:18:30.896Z",
+  "exportedAt": "2026-11-21T10:21:30.839Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4189,8 +4189,8 @@
       "lastAttemptTs": 1795256088495
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 5,
-      "total": 7,
+      "correct": 6,
+      "total": 8,
       "recent": [
         {
           "ts": 1790152162641,
@@ -4219,9 +4219,13 @@
         {
           "ts": 1793956636186,
           "correct": true
+        },
+        {
+          "ts": 1795256431699,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636186
+      "lastAttemptTs": 1795256431699
     },
     "Linear equations in two variables": {
       "correct": 8,
@@ -4505,8 +4509,8 @@
       "lastAttemptTs": 1795256148669
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 4,
-      "total": 4,
+      "correct": 5,
+      "total": 5,
       "recent": [
         {
           "ts": 1790161453021,
@@ -4523,9 +4527,13 @@
         {
           "ts": 1793956636204,
           "correct": true
+        },
+        {
+          "ts": 1795256329387,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636204
+      "lastAttemptTs": 1795256329387
     },
     "Probability and conditional probability": {
       "correct": 3,
@@ -5794,16 +5802,16 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 1028861,
+      "totalMs": 1203855,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 1013859
+        "practice": 1188853
       },
       "categoryMs": {
         "Algebra": 258872,
         "Advanced Math": 579987,
-        "Problem-Solving and Data Analysis": 160000
+        "Problem-Solving and Data Analysis": 334994
       }
     }
   },
@@ -6807,7 +6815,19 @@
         "ts": 1795256244334,
         "ms": 94305
       }
+    ],
+    "03c75a33": [
+      {
+        "ts": 1795256329388,
+        "ms": 83778
+      }
+    ],
+    "3f24389a": [
+      {
+        "ts": 1795256431699,
+        "ms": 100939
+      }
     ]
   },
-  "clientUpdatedAt": 1795256307519
+  "clientUpdatedAt": 1795256487517
 }
