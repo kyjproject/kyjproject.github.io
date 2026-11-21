@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:39:31.177Z",
+  "exportedAt": "2026-11-21T10:42:30.671Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -783,7 +783,8 @@
     "10df349c": "done",
     "e5b53db0": "done",
     "252d6b8a": "done",
-    "370ac92d": "done"
+    "370ac92d": "done",
+    "c3e3b12e": "done"
   },
   "tags": {},
   "notes": {
@@ -1608,7 +1609,8 @@
     "10df349c": "2026-11-21T10:34:06.409Z",
     "e5b53db0": "2026-11-21T10:34:07.495Z",
     "252d6b8a": "2026-11-21T10:34:11.837Z",
-    "370ac92d": "2026-11-21T10:34:23.489Z"
+    "370ac92d": "2026-11-21T10:34:23.489Z",
+    "c3e3b12e": "2026-11-21T10:42:06.713Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4170,13 +4172,9 @@
       "lastAttemptTs": 1795257545203
     },
     "Nonlinear functions": {
-      "correct": 32,
-      "total": 35,
+      "correct": 33,
+      "total": 36,
       "recent": [
-        {
-          "ts": 1793956636189,
-          "correct": true
-        },
         {
           "ts": 1793956636191,
           "correct": true
@@ -4220,9 +4218,13 @@
         {
           "ts": 1795256088495,
           "correct": true
+        },
+        {
+          "ts": 1795257725224,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795256088495
+      "lastAttemptTs": 1795257725224
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 6,
@@ -5874,17 +5876,17 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 2038866,
+      "totalMs": 2133864,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 2003970,
+        "practice": 2098968,
         "competition": 4897,
         "leaderboard": 14997
       },
       "categoryMs": {
         "Algebra": 578870,
-        "Advanced Math": 799997,
+        "Advanced Math": 894995,
         "Problem-Solving and Data Analysis": 354994,
         "Geometry and Trigonometry": 240002
       }
@@ -6988,7 +6990,13 @@
         "ts": 1795257545203,
         "ms": 184736
       }
+    ],
+    "c3e3b12e": [
+      {
+        "ts": 1795257725225,
+        "ms": 178278
+      }
     ]
   },
-  "clientUpdatedAt": 1795257567523
+  "clientUpdatedAt": 1795257747517
 }
