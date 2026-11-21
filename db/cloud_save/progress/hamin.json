@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:12:36.260Z",
+  "exportedAt": "2026-11-21T10:15:30.352Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4134,21 +4134,9 @@
       "lastAttemptTs": 1795255456948
     },
     "Nonlinear functions": {
-      "correct": 30,
-      "total": 32,
+      "correct": 32,
+      "total": 35,
       "recent": [
-        {
-          "ts": 1790165188964,
-          "correct": true
-        },
-        {
-          "ts": 1790165202024,
-          "correct": true
-        },
-        {
-          "ts": 1793956636185,
-          "correct": true
-        },
         {
           "ts": 1793956636189,
           "correct": true
@@ -4184,9 +4172,21 @@
         {
           "ts": 1795255607959,
           "correct": true
+        },
+        {
+          "ts": 1795256046867,
+          "correct": true
+        },
+        {
+          "ts": 1795256075772,
+          "correct": false
+        },
+        {
+          "ts": 1795256088495,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795255607959
+      "lastAttemptTs": 1795256088495
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 5,
@@ -5786,15 +5786,15 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 748868,
+      "totalMs": 848861,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 733866
+        "practice": 833859
       },
       "categoryMs": {
         "Algebra": 258872,
-        "Advanced Math": 459994
+        "Advanced Math": 559987
       }
     }
   },
@@ -6477,6 +6477,10 @@
       {
         "ts": 1790160004696,
         "ms": 168411
+      },
+      {
+        "ts": 1795256046869,
+        "ms": 430802
       }
     ],
     "d3151792": [
@@ -6774,7 +6778,17 @@
         "ts": 1795255607959,
         "ms": 5927
       }
+    ],
+    "455fd7e9": [
+      {
+        "ts": 1795256075773,
+        "ms": 26921
+      },
+      {
+        "ts": 1795256088496,
+        "ms": 12055
+      }
     ]
   },
-  "clientUpdatedAt": 1795255952515
+  "clientUpdatedAt": 1795256127517
 }
