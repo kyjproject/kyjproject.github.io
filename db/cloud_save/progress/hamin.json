@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:42:30.671Z",
+  "exportedAt": "2026-11-21T10:45:30.445Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4172,21 +4172,9 @@
       "lastAttemptTs": 1795257545203
     },
     "Nonlinear functions": {
-      "correct": 33,
-      "total": 36,
+      "correct": 36,
+      "total": 39,
       "recent": [
-        {
-          "ts": 1793956636191,
-          "correct": true
-        },
-        {
-          "ts": 1793956636192,
-          "correct": true
-        },
-        {
-          "ts": 1793956636193,
-          "correct": true
-        },
         {
           "ts": 1793956636196,
           "correct": true
@@ -4222,9 +4210,21 @@
         {
           "ts": 1795257725224,
           "correct": true
+        },
+        {
+          "ts": 1795257753022,
+          "correct": true
+        },
+        {
+          "ts": 1795257818673,
+          "correct": true
+        },
+        {
+          "ts": 1795257840857,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795257725224
+      "lastAttemptTs": 1795257840857
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 6,
@@ -4536,8 +4536,8 @@
       "lastAttemptTs": 1795256592897
     },
     "Equivalent expressions": {
-      "correct": 7,
-      "total": 9,
+      "correct": 8,
+      "total": 10,
       "recent": [
         {
           "ts": 1790154631724,
@@ -4574,9 +4574,13 @@
         {
           "ts": 1795256148669,
           "correct": true
+        },
+        {
+          "ts": 1795257860073,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795256148669
+      "lastAttemptTs": 1795257860073
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 5,
@@ -5876,18 +5880,18 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 2133864,
+      "totalMs": 2313868,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 2098968,
+        "practice": 2278972,
         "competition": 4897,
         "leaderboard": 14997
       },
       "categoryMs": {
         "Algebra": 578870,
-        "Advanced Math": 894995,
-        "Problem-Solving and Data Analysis": 354994,
+        "Advanced Math": 1004990,
+        "Problem-Solving and Data Analysis": 425003,
         "Geometry and Trigonometry": 240002
       }
     }
@@ -6996,7 +7000,31 @@
         "ts": 1795257725225,
         "ms": 178278
       }
+    ],
+    "af1aea31": [
+      {
+        "ts": 1795257753022,
+        "ms": 25707
+      }
+    ],
+    "2833ad7d": [
+      {
+        "ts": 1795257818673,
+        "ms": 62826
+      }
+    ],
+    "1caa83ee": [
+      {
+        "ts": 1795257840857,
+        "ms": 21097
+      }
+    ],
+    "fe6b22a2": [
+      {
+        "ts": 1795257860073,
+        "ms": 17989
+      }
     ]
   },
-  "clientUpdatedAt": 1795257747517
+  "clientUpdatedAt": 1795257927517
 }
