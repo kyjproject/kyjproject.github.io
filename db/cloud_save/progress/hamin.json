@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:06:31.085Z",
+  "exportedAt": "2026-11-21T10:09:30.627Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -4134,17 +4134,9 @@
       "lastAttemptTs": 1795255456948
     },
     "Nonlinear functions": {
-      "correct": 29,
-      "total": 30,
+      "correct": 30,
+      "total": 32,
       "recent": [
-        {
-          "ts": 1790164427178,
-          "correct": true
-        },
-        {
-          "ts": 1790165161527,
-          "correct": true
-        },
         {
           "ts": 1790165188964,
           "correct": true
@@ -4184,9 +4176,17 @@
         {
           "ts": 1795255540324,
           "correct": true
+        },
+        {
+          "ts": 1795255601448,
+          "correct": false
+        },
+        {
+          "ts": 1795255607959,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795255540324
+      "lastAttemptTs": 1795255607959
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 5,
@@ -5786,15 +5786,15 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 553874,
+      "totalMs": 673868,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 538872
+        "practice": 658866
       },
       "categoryMs": {
         "Algebra": 258872,
-        "Advanced Math": 265000
+        "Advanced Math": 384994
       }
     }
   },
@@ -6764,7 +6764,17 @@
         "ts": 1795255456949,
         "ms": 31865
       }
+    ],
+    "da9efa2f": [
+      {
+        "ts": 1795255601448,
+        "ms": 59312
+      },
+      {
+        "ts": 1795255607959,
+        "ms": 5927
+      }
     ]
   },
-  "clientUpdatedAt": 1795255587524
+  "clientUpdatedAt": 1795255767521
 }
