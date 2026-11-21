@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:21:30.839Z",
+  "exportedAt": "2026-11-21T10:24:30.859Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -767,7 +767,8 @@
     "c9ecaf7d": "done",
     "3e8ade01": "done",
     "f95c357a": "review",
-    "a2641e5f": "review"
+    "a2641e5f": "review",
+    "1b0b382b": "done"
   },
   "tags": {},
   "notes": {
@@ -1576,7 +1577,8 @@
     "0a6b66b3": "2026-11-04T13:23:33.366Z",
     "857346cd": "2026-11-04T13:23:34.404Z",
     "c9ecaf7d": "2026-11-04T13:23:38.305Z",
-    "3e8ade01": "2026-11-04T13:23:39.541Z"
+    "3e8ade01": "2026-11-04T13:23:39.541Z",
+    "1b0b382b": "2026-11-21T10:23:52.944Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4275,8 +4277,8 @@
       "lastAttemptTs": 1795254981905
     },
     "Right triangles and trigonometry": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1790152399061,
@@ -4297,9 +4299,13 @@
         {
           "ts": 1793956636203,
           "correct": true
+        },
+        {
+          "ts": 1795256631388,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636203
+      "lastAttemptTs": 1795256631388
     },
     "Percentages": {
       "correct": 10,
@@ -4431,8 +4437,8 @@
       "lastAttemptTs": 1795255032645
     },
     "Lines, angles, and triangles": {
-      "correct": 5,
-      "total": 7,
+      "correct": 6,
+      "total": 9,
       "recent": [
         {
           "ts": 1790153470523,
@@ -4461,9 +4467,17 @@
         {
           "ts": 1793956636195,
           "correct": false
+        },
+        {
+          "ts": 1795256562513,
+          "correct": false
+        },
+        {
+          "ts": 1795256592897,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636195
+      "lastAttemptTs": 1795256592897
     },
     "Equivalent expressions": {
       "correct": 7,
@@ -4536,8 +4550,8 @@
       "lastAttemptTs": 1795256329387
     },
     "Probability and conditional probability": {
-      "correct": 3,
-      "total": 3,
+      "correct": 4,
+      "total": 4,
       "recent": [
         {
           "ts": 1790163404333,
@@ -4550,9 +4564,13 @@
         {
           "ts": 1793956636199,
           "correct": true
+        },
+        {
+          "ts": 1795256498368,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636199
+      "lastAttemptTs": 1795256498368
     },
     "Circles": {
       "correct": 1,
@@ -5802,16 +5820,17 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 1203855,
+      "totalMs": 1383855,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 1188853
+        "practice": 1368853
       },
       "categoryMs": {
         "Algebra": 258872,
         "Advanced Math": 579987,
-        "Problem-Solving and Data Analysis": 334994
+        "Problem-Solving and Data Analysis": 344994,
+        "Geometry and Trigonometry": 170000
       }
     }
   },
@@ -6684,6 +6703,10 @@
       {
         "ts": 1790164391626,
         "ms": 38973
+      },
+      {
+        "ts": 1795256498368,
+        "ms": 45359
       }
     ],
     "a0b9a635": [
@@ -6827,7 +6850,23 @@
         "ts": 1795256431699,
         "ms": 100939
       }
+    ],
+    "aac770b4": [
+      {
+        "ts": 1795256562513,
+        "ms": 62816
+      },
+      {
+        "ts": 1795256592898,
+        "ms": 29581
+      }
+    ],
+    "1b0b382b": [
+      {
+        "ts": 1795256631388,
+        "ms": 34231
+      }
     ]
   },
-  "clientUpdatedAt": 1795256487517
+  "clientUpdatedAt": 1795256667515
 }
