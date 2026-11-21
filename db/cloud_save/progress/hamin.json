@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:24:30.859Z",
+  "exportedAt": "2026-11-21T10:27:31.384Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -768,7 +768,16 @@
     "3e8ade01": "done",
     "f95c357a": "review",
     "a2641e5f": "review",
-    "1b0b382b": "done"
+    "1b0b382b": "done",
+    "220e72c1": "done",
+    "aac770b4": "done",
+    "3f24389a": "done",
+    "03c75a33": "done",
+    "b22cac33": "done",
+    "455fd7e9": "done",
+    "da9efa2f": "done",
+    "2e655326": "done",
+    "5cc1eacc": "done"
   },
   "tags": {},
   "notes": {
@@ -1578,7 +1587,16 @@
     "857346cd": "2026-11-04T13:23:34.404Z",
     "c9ecaf7d": "2026-11-04T13:23:38.305Z",
     "3e8ade01": "2026-11-04T13:23:39.541Z",
-    "1b0b382b": "2026-11-21T10:23:52.944Z"
+    "1b0b382b": "2026-11-21T10:23:52.944Z",
+    "220e72c1": "2026-11-21T10:25:37.724Z",
+    "aac770b4": "2026-11-21T10:25:40.031Z",
+    "3f24389a": "2026-11-21T10:25:45.482Z",
+    "03c75a33": "2026-11-21T10:25:46.318Z",
+    "b22cac33": "2026-11-21T10:25:46.902Z",
+    "455fd7e9": "2026-11-21T10:25:52.435Z",
+    "da9efa2f": "2026-11-21T10:25:54.666Z",
+    "2e655326": "2026-11-21T10:25:56.774Z",
+    "5cc1eacc": "2026-11-21T10:26:02.857Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4355,8 +4373,8 @@
       "lastAttemptTs": 1795256244334
     },
     "Area and volume": {
-      "correct": 6,
-      "total": 8,
+      "correct": 7,
+      "total": 10,
       "recent": [
         {
           "ts": 1790153011586,
@@ -4389,9 +4407,17 @@
         {
           "ts": 1793956636202,
           "correct": true
+        },
+        {
+          "ts": 1795256717119,
+          "correct": false
+        },
+        {
+          "ts": 1795256734370,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636202
+      "lastAttemptTs": 1795256734370
     },
     "Systems of two linear equations in two variables": {
       "correct": 9,
@@ -5820,17 +5846,19 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 1383855,
+      "totalMs": 1563855,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 1368853
+        "practice": 1528959,
+        "competition": 4897,
+        "leaderboard": 14997
       },
       "categoryMs": {
-        "Algebra": 258872,
-        "Advanced Math": 579987,
-        "Problem-Solving and Data Analysis": 344994,
-        "Geometry and Trigonometry": 170000
+        "Algebra": 313868,
+        "Advanced Math": 589988,
+        "Problem-Solving and Data Analysis": 354994,
+        "Geometry and Trigonometry": 240002
       }
     }
   },
@@ -6866,7 +6894,17 @@
         "ts": 1795256631388,
         "ms": 34231
       }
+    ],
+    "220e72c1": [
+      {
+        "ts": 1795256717120,
+        "ms": 83408
+      },
+      {
+        "ts": 1795256734371,
+        "ms": 16213
+      }
     ]
   },
-  "clientUpdatedAt": 1795256667515
+  "clientUpdatedAt": 1795256847514
 }
