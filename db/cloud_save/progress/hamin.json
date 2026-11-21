@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-21T10:30:30.548Z",
+  "exportedAt": "2026-11-21T10:33:30.871Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -3938,21 +3938,9 @@
       "lastAttemptTs": 1793959965154
     },
     "Linear functions": {
-      "correct": 16,
-      "total": 19,
+      "correct": 18,
+      "total": 22,
       "recent": [
-        {
-          "ts": 1790161055901,
-          "correct": false
-        },
-        {
-          "ts": 1790161113689,
-          "correct": false
-        },
-        {
-          "ts": 1790161115075,
-          "correct": true
-        },
         {
           "ts": 1790163660484,
           "correct": true
@@ -3988,9 +3976,21 @@
         {
           "ts": 1795255144910,
           "correct": true
+        },
+        {
+          "ts": 1795257172612,
+          "correct": false
+        },
+        {
+          "ts": 1795257182862,
+          "correct": true
+        },
+        {
+          "ts": 1795257195750,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795255144910
+      "lastAttemptTs": 1795257195750
     },
     "Linear inequalities in one or two variables": {
       "correct": 8,
@@ -4248,8 +4248,8 @@
       "lastAttemptTs": 1795256431699
     },
     "Linear equations in two variables": {
-      "correct": 8,
-      "total": 10,
+      "correct": 9,
+      "total": 12,
       "recent": [
         {
           "ts": 1790152290993,
@@ -4290,9 +4290,17 @@
         {
           "ts": 1795254981905,
           "correct": true
+        },
+        {
+          "ts": 1795257073167,
+          "correct": false
+        },
+        {
+          "ts": 1795257090865,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795254981905
+      "lastAttemptTs": 1795257090865
     },
     "Right triangles and trigonometry": {
       "correct": 6,
@@ -4420,8 +4428,8 @@
       "lastAttemptTs": 1795256734370
     },
     "Systems of two linear equations in two variables": {
-      "correct": 9,
-      "total": 9,
+      "correct": 10,
+      "total": 10,
       "recent": [
         {
           "ts": 1790153251800,
@@ -4458,9 +4466,13 @@
         {
           "ts": 1795255032645,
           "correct": true
+        },
+        {
+          "ts": 1795257143945,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795255032645
+      "lastAttemptTs": 1795257143945
     },
     "Lines, angles, and triangles": {
       "correct": 6,
@@ -5846,16 +5858,16 @@
       }
     },
     "2026-11-21": {
-      "totalMs": 1603859,
+      "totalMs": 1773859,
       "viewMs": {
         "mock": 10021,
         "test": 4981,
-        "practice": 1568963,
+        "practice": 1738963,
         "competition": 4897,
         "leaderboard": 14997
       },
       "categoryMs": {
-        "Algebra": 353872,
+        "Algebra": 523872,
         "Advanced Math": 589988,
         "Problem-Solving and Data Analysis": 354994,
         "Geometry and Trigonometry": 240002
@@ -6904,7 +6916,39 @@
         "ts": 1795256734371,
         "ms": 16213
       }
+    ],
+    "252d6b8a": [
+      {
+        "ts": 1795257073167,
+        "ms": 274414
+      },
+      {
+        "ts": 1795257090865,
+        "ms": 16690
+      }
+    ],
+    "e5b53db0": [
+      {
+        "ts": 1795257143945,
+        "ms": 50790
+      }
+    ],
+    "10df349c": [
+      {
+        "ts": 1795257172613,
+        "ms": 27311
+      },
+      {
+        "ts": 1795257182863,
+        "ms": 9418
+      }
+    ],
+    "e1f59a4d": [
+      {
+        "ts": 1795257195750,
+        "ms": 9776
+      }
     ]
   },
-  "clientUpdatedAt": 1795257027517
+  "clientUpdatedAt": 1795257207522
 }
