@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:54:29.096Z",
+  "exportedAt": "2026-11-23T11:57:29.412Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -818,7 +818,11 @@
     "134cf693": "done",
     "443794ac": "done",
     "ac3df64f": "done",
-    "0035c393": "done"
+    "0035c393": "done",
+    "6a18e6b3": "done",
+    "42ad4855": "done",
+    "0a975aa5": "done",
+    "e351a82d": "done"
   },
   "tags": {},
   "notes": {
@@ -1678,7 +1682,11 @@
     "134cf693": "2026-11-23T11:50:35.531Z",
     "443794ac": "2026-11-23T11:50:59.823Z",
     "ac3df64f": "2026-11-23T11:51:38.879Z",
-    "0035c393": "2026-11-23T11:52:56.346Z"
+    "0035c393": "2026-11-23T11:52:56.346Z",
+    "6a18e6b3": "2026-11-23T11:54:43.751Z",
+    "42ad4855": "2026-11-23T11:55:56.128Z",
+    "0a975aa5": "2026-11-23T11:56:15.815Z",
+    "e351a82d": "2026-11-23T11:57:17.527Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4295,8 +4303,8 @@
       "lastAttemptTs": 1795434219709
     },
     "One-variable data: Distributions and measures of center and spread": {
-      "correct": 7,
-      "total": 9,
+      "correct": 8,
+      "total": 10,
       "recent": [
         {
           "ts": 1790152162641,
@@ -4333,9 +4341,13 @@
         {
           "ts": 1795258445144,
           "correct": true
+        },
+        {
+          "ts": 1795434872099,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795258445144
+      "lastAttemptTs": 1795434872099
     },
     "Linear equations in two variables": {
       "correct": 14,
@@ -4734,8 +4746,8 @@
       "lastAttemptTs": 1795434775141
     },
     "Probability and conditional probability": {
-      "correct": 5,
-      "total": 5,
+      "correct": 6,
+      "total": 6,
       "recent": [
         {
           "ts": 1790163404333,
@@ -4756,9 +4768,13 @@
         {
           "ts": 1795258488687,
           "correct": true
+        },
+        {
+          "ts": 1795434956900,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795258488687
+      "lastAttemptTs": 1795434956900
     },
     "Circles": {
       "correct": 1,
@@ -4772,15 +4788,30 @@
       "lastAttemptTs": 1793956636184
     },
     "Two-variable data: Models and scatterplots": {
-      "correct": 1,
-      "total": 1,
+      "correct": 2,
+      "total": 2,
       "recent": [
         {
           "ts": 1793956636206,
           "correct": true
+        },
+        {
+          "ts": 1795434974678,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1793956636206
+      "lastAttemptTs": 1795434974678
+    },
+    "Inference from sample statistics and margin of error": {
+      "correct": 1,
+      "total": 1,
+      "recent": [
+        {
+          "ts": 1795435035335,
+          "correct": true
+        }
+      ],
+      "lastAttemptTs": 1795435035335
     }
   },
   "progressFocus": [
@@ -6024,10 +6055,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 2633410,
+      "totalMs": 2813409,
       "viewMs": {
         "analysis": 205980,
-        "practice": 2407400,
+        "practice": 2587399,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6035,7 +6066,7 @@
       "categoryMs": {
         "Algebra": 715021,
         "Advanced Math": 1204989,
-        "Problem-Solving and Data Analysis": 287417
+        "Problem-Solving and Data Analysis": 467416
       }
     }
   },
@@ -7218,6 +7249,10 @@
       {
         "ts": 1795258488687,
         "ms": 42105
+      },
+      {
+        "ts": 1795434956900,
+        "ms": 45545
       }
     ],
     "9f664752": [
@@ -7417,7 +7452,25 @@
         "ts": 1795434775142,
         "ms": 73126
       }
+    ],
+    "6a18e6b3": [
+      {
+        "ts": 1795434872100,
+        "ms": 94832
+      }
+    ],
+    "0a975aa5": [
+      {
+        "ts": 1795434974678,
+        "ms": 14508
+      }
+    ],
+    "e351a82d": [
+      {
+        "ts": 1795435035335,
+        "ms": 57501
+      }
     ]
   },
-  "clientUpdatedAt": 1795434865900
+  "clientUpdatedAt": 1795435045904
 }
