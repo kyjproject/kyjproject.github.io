@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:27:29.113Z",
+  "exportedAt": "2026-11-23T11:30:29.336Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -802,7 +802,8 @@
     "a4b12e2f": "done",
     "962eb92e": "done",
     "d9799723": "done",
-    "9a182495": "done"
+    "9a182495": "done",
+    "1aec2be9": "done"
   },
   "tags": {},
   "notes": {
@@ -1646,7 +1647,8 @@
     "a4b12e2f": "2026-11-23T11:22:58.769Z",
     "962eb92e": "2026-11-23T11:24:54.822Z",
     "d9799723": "2026-11-23T11:25:05.692Z",
-    "9a182495": "2026-11-23T11:26:06.801Z"
+    "9a182495": "2026-11-23T11:26:06.801Z",
+    "1aec2be9": "2026-11-23T11:27:59.733Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4153,13 +4155,9 @@
       "lastAttemptTs": 1795432803973
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 27,
-      "total": 32,
+      "correct": 28,
+      "total": 33,
       "recent": [
-        {
-          "ts": 1795255423036,
-          "correct": true
-        },
         {
           "ts": 1795255456948,
           "correct": true
@@ -4203,9 +4201,13 @@
         {
           "ts": 1795433165262,
           "correct": true
+        },
+        {
+          "ts": 1795433278462,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795433165262
+      "lastAttemptTs": 1795433278462
     },
     "Nonlinear functions": {
       "correct": 36,
@@ -5976,17 +5978,17 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 1555987,
+      "totalMs": 1675993,
       "viewMs": {
         "analysis": 205980,
-        "practice": 1329977,
+        "practice": 1449983,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
         "Algebra": 715021,
-        "Advanced Math": 414983
+        "Advanced Math": 534989
       }
     }
   },
@@ -7278,7 +7280,13 @@
         "ts": 1795433165262,
         "ms": 59115
       }
+    ],
+    "1aec2be9": [
+      {
+        "ts": 1795433278462,
+        "ms": 111055
+      }
     ]
   },
-  "clientUpdatedAt": 1795433245920
+  "clientUpdatedAt": 1795433425906
 }
