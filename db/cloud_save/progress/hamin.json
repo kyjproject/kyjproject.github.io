@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:45:29.285Z",
+  "exportedAt": "2026-11-23T11:48:29.108Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -811,7 +811,9 @@
     "a2d5ec41": "done",
     "3ae42a32": "done",
     "1ba110f2": "done",
-    "78eae128": "done"
+    "78eae128": "done",
+    "5822c232": "done",
+    "05cec180": "done"
   },
   "tags": {},
   "notes": {
@@ -1664,7 +1666,9 @@
     "a2d5ec41": "2026-11-23T11:41:13.923Z",
     "3ae42a32": "2026-11-23T11:42:21.843Z",
     "1ba110f2": "2026-11-23T11:43:20.159Z",
-    "78eae128": "2026-11-23T11:43:40.866Z"
+    "78eae128": "2026-11-23T11:43:40.866Z",
+    "5822c232": "2026-11-23T11:47:51.790Z",
+    "05cec180": "2026-11-23T11:48:27.120Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4626,8 +4630,8 @@
       "lastAttemptTs": 1795258551970
     },
     "Equivalent expressions": {
-      "correct": 8,
-      "total": 10,
+      "correct": 10,
+      "total": 12,
       "recent": [
         {
           "ts": 1790154631724,
@@ -4668,9 +4672,17 @@
         {
           "ts": 1795257860073,
           "correct": true
+        },
+        {
+          "ts": 1795434470608,
+          "correct": true
+        },
+        {
+          "ts": 1795434505923,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795257860073
+      "lastAttemptTs": 1795434505923
     },
     "Ratios, rates, proportional relationships, and units": {
       "correct": 6,
@@ -5994,17 +6006,17 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 2290998,
+      "totalMs": 2330997,
       "viewMs": {
         "analysis": 205980,
-        "practice": 2064988,
+        "practice": 2104987,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
         "Algebra": 715021,
-        "Advanced Math": 1149994
+        "Advanced Math": 1189993
       }
     }
   },
@@ -7350,7 +7362,19 @@
         "ts": 1795434219709,
         "ms": 18259
       }
+    ],
+    "5822c232": [
+      {
+        "ts": 1795434470609,
+        "ms": 248751
+      }
+    ],
+    "05cec180": [
+      {
+        "ts": 1795434505923,
+        "ms": 33547
+      }
     ]
   },
-  "clientUpdatedAt": 1795434325901
+  "clientUpdatedAt": 1795434505900
 }
