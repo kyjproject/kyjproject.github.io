@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T12:09:29.604Z",
+  "exportedAt": "2026-11-23T12:12:30.638Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -828,7 +828,10 @@
     "ddb62d63": "done",
     "34eb7da8": "done",
     "834ac03f": "done",
-    "aabd482e": "done"
+    "aabd482e": "done",
+    "2901277b": "done",
+    "494cbff8": "done",
+    "9f664752": "done"
   },
   "tags": {},
   "notes": {
@@ -1698,7 +1701,10 @@
     "ddb62d63": "2026-11-23T12:05:05.935Z",
     "34eb7da8": "2026-11-23T12:05:27.203Z",
     "834ac03f": "2026-11-23T12:05:52.333Z",
-    "aabd482e": "2026-11-23T12:09:23.892Z"
+    "aabd482e": "2026-11-23T12:09:23.892Z",
+    "2901277b": "2026-11-23T12:10:11.312Z",
+    "494cbff8": "2026-11-23T12:10:58.737Z",
+    "9f664752": "2026-11-23T12:11:36.229Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4617,17 +4623,9 @@
       "lastAttemptTs": 1795432655980
     },
     "Lines, angles, and triangles": {
-      "correct": 8,
-      "total": 11,
+      "correct": 11,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1790153470523,
-          "correct": true
-        },
-        {
-          "ts": 1790154046408,
-          "correct": true
-        },
         {
           "ts": 1790160157366,
           "correct": false
@@ -4663,9 +4661,21 @@
         {
           "ts": 1795435762588,
           "correct": true
+        },
+        {
+          "ts": 1795435810140,
+          "correct": true
+        },
+        {
+          "ts": 1795435857072,
+          "correct": true
+        },
+        {
+          "ts": 1795435895027,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795435762588
+      "lastAttemptTs": 1795435895027
     },
     "Equivalent expressions": {
       "correct": 11,
@@ -6114,10 +6124,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 3333409,
+      "totalMs": 3513414,
       "viewMs": {
         "analysis": 205980,
-        "practice": 3107399,
+        "practice": 3287404,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6126,7 +6136,7 @@
         "Algebra": 715021,
         "Advanced Math": 1204989,
         "Problem-Solving and Data Analysis": 752420,
-        "Geometry and Trigonometry": 234996
+        "Geometry and Trigonometry": 415001
       }
     }
   },
@@ -7319,6 +7329,10 @@
       {
         "ts": 1795258551971,
         "ms": 61457
+      },
+      {
+        "ts": 1795435895028,
+        "ms": 35481
       }
     ],
     "dce70c97": [
@@ -7582,7 +7596,19 @@
         "ts": 1795435762589,
         "ms": 208568
       }
+    ],
+    "2901277b": [
+      {
+        "ts": 1795435810141,
+        "ms": 45658
+      }
+    ],
+    "494cbff8": [
+      {
+        "ts": 1795435857073,
+        "ms": 44803
+      }
     ]
   },
-  "clientUpdatedAt": 1795435765901
+  "clientUpdatedAt": 1795435945903
 }
