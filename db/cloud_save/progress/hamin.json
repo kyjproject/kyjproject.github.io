@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:12:29.202Z",
+  "exportedAt": "2026-11-23T11:15:29.211Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -787,7 +787,9 @@
     "c3e3b12e": "done",
     "8d7fb037": "done",
     "2d1e5eff": "done",
-    "a8e43ae3": "done"
+    "a8e43ae3": "done",
+    "95cc0b50": "done",
+    "e40b7bdc": "done"
   },
   "tags": {},
   "notes": {
@@ -1616,7 +1618,9 @@
     "c3e3b12e": "2026-11-21T10:42:06.713Z",
     "8d7fb037": "2026-11-23T11:04:14.549Z",
     "2d1e5eff": "2026-11-23T11:09:39.273Z",
-    "a8e43ae3": "2026-11-23T11:11:34.543Z"
+    "a8e43ae3": "2026-11-23T11:11:34.543Z",
+    "95cc0b50": "2026-11-23T11:13:13.700Z",
+    "e40b7bdc": "2026-11-23T11:13:42.735Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4276,21 +4280,9 @@
       "lastAttemptTs": 1795258445144
     },
     "Linear equations in two variables": {
-      "correct": 11,
-      "total": 14,
+      "correct": 13,
+      "total": 17,
       "recent": [
-        {
-          "ts": 1790164040038,
-          "correct": true
-        },
-        {
-          "ts": 1790164465309,
-          "correct": true
-        },
-        {
-          "ts": 1790164675501,
-          "correct": false
-        },
         {
           "ts": 1790164684234,
           "correct": true
@@ -4326,9 +4318,21 @@
         {
           "ts": 1795432293374,
           "correct": true
+        },
+        {
+          "ts": 1795432392196,
+          "correct": true
+        },
+        {
+          "ts": 1795432421464,
+          "correct": true
+        },
+        {
+          "ts": 1795432444975,
+          "correct": false
         }
       ],
-      "lastAttemptTs": 1795432293374
+      "lastAttemptTs": 1795432444975
     },
     "Right triangles and trigonometry": {
       "correct": 7,
@@ -5938,16 +5942,16 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 700996,
+      "totalMs": 875993,
       "viewMs": {
         "analysis": 205980,
-        "practice": 474986,
+        "practice": 649983,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
-        "Algebra": 275013
+        "Algebra": 450010
       }
     }
   },
@@ -7145,7 +7149,25 @@
         "ts": 1795432293374,
         "ms": 14973
       }
+    ],
+    "95cc0b50": [
+      {
+        "ts": 1795432392196,
+        "ms": 96469
+      }
+    ],
+    "e40b7bdc": [
+      {
+        "ts": 1795432421465,
+        "ms": 26965
+      }
+    ],
+    "35978b89": [
+      {
+        "ts": 1795432444978,
+        "ms": 21620
+      }
     ]
   },
-  "clientUpdatedAt": 1795432345903
+  "clientUpdatedAt": 1795432525902
 }
