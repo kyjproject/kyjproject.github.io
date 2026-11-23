@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:21:29.269Z",
+  "exportedAt": "2026-11-23T11:24:29.691Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -796,7 +796,10 @@
     "6285cfe8": "done",
     "0eaed60b": "done",
     "377a6aa4": "done",
-    "e7f2ab9c": "done"
+    "e7f2ab9c": "done",
+    "14787dca": "done",
+    "59cf1dd3": "done",
+    "a4b12e2f": "done"
   },
   "tags": {},
   "notes": {
@@ -1634,7 +1637,10 @@
     "6285cfe8": "2026-11-23T11:18:59.831Z",
     "0eaed60b": "2026-11-23T11:19:28.782Z",
     "377a6aa4": "2026-11-23T11:20:05.294Z",
-    "e7f2ab9c": "2026-11-23T11:20:20.923Z"
+    "e7f2ab9c": "2026-11-23T11:20:20.923Z",
+    "14787dca": "2026-11-23T11:21:43.934Z",
+    "59cf1dd3": "2026-11-23T11:22:14.689Z",
+    "a4b12e2f": "2026-11-23T11:22:58.769Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4141,21 +4147,9 @@
       "lastAttemptTs": 1795432803973
     },
     "Nonlinear equations in one variable and systems of equations in two variables": {
-      "correct": 21,
-      "total": 26,
+      "correct": 24,
+      "total": 29,
       "recent": [
-        {
-          "ts": 1790164232444,
-          "correct": true
-        },
-        {
-          "ts": 1790165245975,
-          "correct": true
-        },
-        {
-          "ts": 1790165284961,
-          "correct": true
-        },
         {
           "ts": 1793956636183,
           "correct": true
@@ -4191,9 +4185,21 @@
         {
           "ts": 1795432819520,
           "correct": true
+        },
+        {
+          "ts": 1795432902516,
+          "correct": true
+        },
+        {
+          "ts": 1795432933637,
+          "correct": true
+        },
+        {
+          "ts": 1795432977617,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795432819520
+      "lastAttemptTs": 1795432977617
     },
     "Nonlinear functions": {
       "correct": 36,
@@ -5964,17 +5970,17 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 1220992,
+      "totalMs": 1400993,
       "viewMs": {
         "analysis": 205980,
-        "practice": 994982,
+        "practice": 1174983,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
         "Algebra": 715021,
-        "Advanced Math": 79988
+        "Advanced Math": 259989
       }
     }
   },
@@ -7234,7 +7240,25 @@
         "ts": 1795432819521,
         "ms": 12570
       }
+    ],
+    "14787dca": [
+      {
+        "ts": 1795432902516,
+        "ms": 80553
+      }
+    ],
+    "59cf1dd3": [
+      {
+        "ts": 1795432933637,
+        "ms": 27193
+      }
+    ],
+    "a4b12e2f": [
+      {
+        "ts": 1795432977617,
+        "ms": 41941
+      }
     ]
   },
-  "clientUpdatedAt": 1795432885906
+  "clientUpdatedAt": 1795433065904
 }
