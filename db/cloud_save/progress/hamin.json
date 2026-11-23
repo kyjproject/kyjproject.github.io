@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T12:15:29.780Z",
+  "exportedAt": "2026-11-23T12:18:30.022Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -832,7 +832,9 @@
     "2901277b": "done",
     "494cbff8": "done",
     "9f664752": "done",
-    "4bedd065": "done"
+    "4bedd065": "done",
+    "e1137c5a": "done",
+    "188370ca": "done"
   },
   "tags": {},
   "notes": {
@@ -1706,7 +1708,9 @@
     "2901277b": "2026-11-23T12:10:11.312Z",
     "494cbff8": "2026-11-23T12:10:58.737Z",
     "9f664752": "2026-11-23T12:11:36.229Z",
-    "4bedd065": "2026-11-23T12:14:53.647Z"
+    "4bedd065": "2026-11-23T12:14:53.647Z",
+    "e1137c5a": "2026-11-23T12:16:30.783Z",
+    "188370ca": "2026-11-23T12:17:33.894Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4425,8 +4429,8 @@
       "lastAttemptTs": 1795432580196
     },
     "Right triangles and trigonometry": {
-      "correct": 7,
-      "total": 8,
+      "correct": 9,
+      "total": 10,
       "recent": [
         {
           "ts": 1790152399061,
@@ -4459,9 +4463,17 @@
         {
           "ts": 1795258675483,
           "correct": true
+        },
+        {
+          "ts": 1795436188077,
+          "correct": true
+        },
+        {
+          "ts": 1795436252391,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795258675483
+      "lastAttemptTs": 1795436252391
     },
     "Percentages": {
       "correct": 13,
@@ -6126,10 +6138,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 3613414,
+      "totalMs": 3767388,
       "viewMs": {
         "analysis": 205980,
-        "practice": 3387404,
+        "practice": 3541378,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6138,7 +6150,7 @@
         "Algebra": 715021,
         "Advanced Math": 1204989,
         "Problem-Solving and Data Analysis": 752420,
-        "Geometry and Trigonometry": 515001
+        "Geometry and Trigonometry": 668975
       }
     }
   },
@@ -7616,7 +7628,19 @@
         "ts": 1795436092130,
         "ms": 194045
       }
+    ],
+    "e1137c5a": [
+      {
+        "ts": 1795436188077,
+        "ms": 93621
+      }
+    ],
+    "188370ca": [
+      {
+        "ts": 1795436252391,
+        "ms": 61052
+      }
     ]
   },
-  "clientUpdatedAt": 1795436125903
+  "clientUpdatedAt": 1795436305900
 }
