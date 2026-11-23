@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:03:29.256Z",
+  "exportedAt": "2026-11-23T11:06:28.726Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -784,7 +784,8 @@
     "e5b53db0": "done",
     "252d6b8a": "done",
     "370ac92d": "done",
-    "c3e3b12e": "done"
+    "c3e3b12e": "done",
+    "8d7fb037": "done"
   },
   "tags": {},
   "notes": {
@@ -1610,7 +1611,8 @@
     "e5b53db0": "2026-11-21T10:34:07.495Z",
     "252d6b8a": "2026-11-21T10:34:11.837Z",
     "370ac92d": "2026-11-21T10:34:23.489Z",
-    "c3e3b12e": "2026-11-21T10:42:06.713Z"
+    "c3e3b12e": "2026-11-21T10:42:06.713Z",
+    "8d7fb037": "2026-11-23T11:04:14.549Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4270,13 +4272,9 @@
       "lastAttemptTs": 1795258445144
     },
     "Linear equations in two variables": {
-      "correct": 9,
-      "total": 12,
+      "correct": 10,
+      "total": 13,
       "recent": [
-        {
-          "ts": 1790152290993,
-          "correct": true
-        },
         {
           "ts": 1790153647480,
           "correct": true
@@ -4320,9 +4318,13 @@
         {
           "ts": 1795257090865,
           "correct": true
+        },
+        {
+          "ts": 1795431843497,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795257090865
+      "lastAttemptTs": 1795431843497
     },
     "Right triangles and trigonometry": {
       "correct": 7,
@@ -5932,13 +5934,15 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 255001,
+      "totalMs": 425004,
       "viewMs": {
-        "analysis": 60009,
-        "practice": 194992
+        "analysis": 80003,
+        "practice": 334991,
+        "profile": 5008,
+        "mock": 5002
       },
       "categoryMs": {
-        "Algebra": 164996
+        "Algebra": 205002
       }
     }
   },
@@ -7120,7 +7124,13 @@
         "ts": 1795258700882,
         "ms": 24289
       }
+    ],
+    "8d7fb037": [
+      {
+        "ts": 1795431843497,
+        "ms": 487663
+      }
     ]
   },
-  "clientUpdatedAt": 1795431805907
+  "clientUpdatedAt": 1795431985910
 }
