@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:42:29.693Z",
+  "exportedAt": "2026-11-23T11:45:29.285Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -809,7 +809,9 @@
     "c9e4bac1": "done",
     "1b30fd79": "done",
     "a2d5ec41": "done",
-    "3ae42a32": "done"
+    "3ae42a32": "done",
+    "1ba110f2": "done",
+    "78eae128": "done"
   },
   "tags": {},
   "notes": {
@@ -1660,7 +1662,9 @@
     "c9e4bac1": "2026-11-23T11:36:30.973Z",
     "1b30fd79": "2026-11-23T11:40:16.173Z",
     "a2d5ec41": "2026-11-23T11:41:13.923Z",
-    "3ae42a32": "2026-11-23T11:42:21.843Z"
+    "3ae42a32": "2026-11-23T11:42:21.843Z",
+    "1ba110f2": "2026-11-23T11:43:20.159Z",
+    "78eae128": "2026-11-23T11:43:40.866Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4222,17 +4226,9 @@
       "lastAttemptTs": 1795433278462
     },
     "Nonlinear functions": {
-      "correct": 42,
-      "total": 45,
+      "correct": 44,
+      "total": 47,
       "recent": [
-        {
-          "ts": 1795256075772,
-          "correct": false
-        },
-        {
-          "ts": 1795256088495,
-          "correct": true
-        },
         {
           "ts": 1795257725224,
           "correct": true
@@ -4272,9 +4268,17 @@
         {
           "ts": 1795434140422,
           "correct": true
+        },
+        {
+          "ts": 1795434198373,
+          "correct": true
+        },
+        {
+          "ts": 1795434219709,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795434140422
+      "lastAttemptTs": 1795434219709
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 7,
@@ -5990,17 +5994,17 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 2126001,
+      "totalMs": 2290998,
       "viewMs": {
         "analysis": 205980,
-        "practice": 1899991,
+        "practice": 2064988,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
         "Algebra": 715021,
-        "Advanced Math": 984997
+        "Advanced Math": 1149994
       }
     }
   },
@@ -7334,7 +7338,19 @@
         "ts": 1795434140423,
         "ms": 63226
       }
+    ],
+    "1ba110f2": [
+      {
+        "ts": 1795434198373,
+        "ms": 54740
+      }
+    ],
+    "78eae128": [
+      {
+        "ts": 1795434219709,
+        "ms": 18259
+      }
     ]
   },
-  "clientUpdatedAt": 1795434145901
+  "clientUpdatedAt": 1795434325901
 }
