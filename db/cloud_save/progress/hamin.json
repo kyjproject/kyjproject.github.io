@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:15:29.211Z",
+  "exportedAt": "2026-11-23T11:18:29.089Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -789,7 +789,10 @@
     "2d1e5eff": "done",
     "a8e43ae3": "done",
     "95cc0b50": "done",
-    "e40b7bdc": "done"
+    "e40b7bdc": "done",
+    "35978b89": "done",
+    "4898aa47": "done",
+    "9609a243": "done"
   },
   "tags": {},
   "notes": {
@@ -1620,7 +1623,10 @@
     "2d1e5eff": "2026-11-23T11:09:39.273Z",
     "a8e43ae3": "2026-11-23T11:11:34.543Z",
     "95cc0b50": "2026-11-23T11:13:13.700Z",
-    "e40b7bdc": "2026-11-23T11:13:42.735Z"
+    "e40b7bdc": "2026-11-23T11:13:42.735Z",
+    "35978b89": "2026-11-23T11:16:21.133Z",
+    "4898aa47": "2026-11-23T11:17:01.321Z",
+    "9609a243": "2026-11-23T11:17:37.748Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4280,13 +4286,9 @@
       "lastAttemptTs": 1795258445144
     },
     "Linear equations in two variables": {
-      "correct": 13,
-      "total": 17,
+      "correct": 14,
+      "total": 18,
       "recent": [
-        {
-          "ts": 1790164684234,
-          "correct": true
-        },
         {
           "ts": 1793956636184,
           "correct": true
@@ -4330,9 +4332,13 @@
         {
           "ts": 1795432444975,
           "correct": false
+        },
+        {
+          "ts": 1795432580196,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795432444975
+      "lastAttemptTs": 1795432580196
     },
     "Right triangles and trigonometry": {
       "correct": 7,
@@ -4480,8 +4486,8 @@
       "lastAttemptTs": 1795258700882
     },
     "Systems of two linear equations in two variables": {
-      "correct": 10,
-      "total": 10,
+      "correct": 12,
+      "total": 12,
       "recent": [
         {
           "ts": 1790153251800,
@@ -4522,9 +4528,17 @@
         {
           "ts": 1795257143945,
           "correct": true
+        },
+        {
+          "ts": 1795432617083,
+          "correct": true
+        },
+        {
+          "ts": 1795432655980,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795257143945
+      "lastAttemptTs": 1795432655980
     },
     "Lines, angles, and triangles": {
       "correct": 7,
@@ -5942,16 +5956,16 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 875993,
+      "totalMs": 1040994,
       "viewMs": {
         "analysis": 205980,
-        "practice": 649983,
+        "practice": 814984,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
-        "Algebra": 450010
+        "Algebra": 615011
       }
     }
   },
@@ -7166,8 +7180,24 @@
       {
         "ts": 1795432444978,
         "ms": 21620
+      },
+      {
+        "ts": 1795432580197,
+        "ms": 134271
+      }
+    ],
+    "4898aa47": [
+      {
+        "ts": 1795432617084,
+        "ms": 30886
+      }
+    ],
+    "9609a243": [
+      {
+        "ts": 1795432655980,
+        "ms": 36408
       }
     ]
   },
-  "clientUpdatedAt": 1795432525902
+  "clientUpdatedAt": 1795432705905
 }
