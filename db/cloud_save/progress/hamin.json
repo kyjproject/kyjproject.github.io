@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T12:12:30.638Z",
+  "exportedAt": "2026-11-23T12:15:29.780Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -831,7 +831,8 @@
     "aabd482e": "done",
     "2901277b": "done",
     "494cbff8": "done",
-    "9f664752": "done"
+    "9f664752": "done",
+    "4bedd065": "done"
   },
   "tags": {},
   "notes": {
@@ -1704,7 +1705,8 @@
     "aabd482e": "2026-11-23T12:09:23.892Z",
     "2901277b": "2026-11-23T12:10:11.312Z",
     "494cbff8": "2026-11-23T12:10:58.737Z",
-    "9f664752": "2026-11-23T12:11:36.229Z"
+    "9f664752": "2026-11-23T12:11:36.229Z",
+    "4bedd065": "2026-11-23T12:14:53.647Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4623,13 +4625,9 @@
       "lastAttemptTs": 1795432655980
     },
     "Lines, angles, and triangles": {
-      "correct": 11,
-      "total": 14,
+      "correct": 12,
+      "total": 15,
       "recent": [
-        {
-          "ts": 1790160157366,
-          "correct": false
-        },
         {
           "ts": 1790160874170,
           "correct": true
@@ -4673,9 +4671,13 @@
         {
           "ts": 1795435895027,
           "correct": true
+        },
+        {
+          "ts": 1795436092130,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795435895027
+      "lastAttemptTs": 1795436092130
     },
     "Equivalent expressions": {
       "correct": 11,
@@ -6124,10 +6126,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 3513414,
+      "totalMs": 3613414,
       "viewMs": {
         "analysis": 205980,
-        "practice": 3287404,
+        "practice": 3387404,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6136,7 +6138,7 @@
         "Algebra": 715021,
         "Advanced Math": 1204989,
         "Problem-Solving and Data Analysis": 752420,
-        "Geometry and Trigonometry": 415001
+        "Geometry and Trigonometry": 515001
       }
     }
   },
@@ -7608,7 +7610,13 @@
         "ts": 1795435857073,
         "ms": 44803
       }
+    ],
+    "4bedd065": [
+      {
+        "ts": 1795436092130,
+        "ms": 194045
+      }
     ]
   },
-  "clientUpdatedAt": 1795435945903
+  "clientUpdatedAt": 1795436125903
 }
