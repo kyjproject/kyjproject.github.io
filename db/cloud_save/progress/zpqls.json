@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T16:01:24.460Z",
+  "exportedAt": "2026-11-23T16:04:36.282Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2619,7 +2619,8 @@
     "b6bd969f": "done",
     "e931b2f0": "done",
     "4c109ce5": "done",
-    "c138ae83": "done"
+    "c138ae83": "done",
+    "f93079ee": "done"
   },
   "tags": {},
   "notes": {},
@@ -5207,7 +5208,8 @@
     "b6bd969f": "2026-11-23T15:51:04.756Z",
     "e931b2f0": "2026-11-23T15:53:49.660Z",
     "4c109ce5": "2026-11-23T15:55:21.993Z",
-    "c138ae83": "2026-11-23T15:58:57.197Z"
+    "c138ae83": "2026-11-23T15:58:57.197Z",
+    "f93079ee": "2026-11-23T16:01:46.951Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6572,17 +6574,9 @@
       "lastAttemptTs": 1795445441545
     },
     "Inferences": {
-      "correct": 90,
-      "total": 155,
+      "correct": 91,
+      "total": 157,
       "recent": [
-        {
-          "ts": 1795447899676,
-          "correct": true
-        },
-        {
-          "ts": 1795449062799,
-          "correct": true
-        },
         {
           "ts": 1795449220332,
           "correct": false
@@ -6622,9 +6616,17 @@
         {
           "ts": 1795449678274,
           "correct": false
+        },
+        {
+          "ts": 1795449686656,
+          "correct": false
+        },
+        {
+          "ts": 1795449705696,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795449678274
+      "lastAttemptTs": 1795449705696
     },
     "Rhetorical Synthesis": {
       "correct": 208,
@@ -9204,9 +9206,9 @@
       "categoryMs": {}
     },
     "2026-11-24": {
-      "totalMs": 39989,
+      "totalMs": 65009,
       "viewMs": {
-        "browse": 39989
+        "browse": 65009
       },
       "categoryMs": {}
     }
@@ -29946,8 +29948,16 @@
       {
         "ts": 1795449678274,
         "ms": 139791
+      },
+      {
+        "ts": 1795449686657,
+        "ms": 7771
+      },
+      {
+        "ts": 1795449705697,
+        "ms": 18358
       }
     ]
   },
-  "clientUpdatedAt": 1795449679598
+  "clientUpdatedAt": 1795449871566
 }
