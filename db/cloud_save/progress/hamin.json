@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:09:38.305Z",
+  "exportedAt": "2026-11-23T11:12:29.202Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -785,7 +785,9 @@
     "252d6b8a": "done",
     "370ac92d": "done",
     "c3e3b12e": "done",
-    "8d7fb037": "done"
+    "8d7fb037": "done",
+    "2d1e5eff": "done",
+    "a8e43ae3": "done"
   },
   "tags": {},
   "notes": {
@@ -1612,7 +1614,9 @@
     "252d6b8a": "2026-11-21T10:34:11.837Z",
     "370ac92d": "2026-11-21T10:34:23.489Z",
     "c3e3b12e": "2026-11-21T10:42:06.713Z",
-    "8d7fb037": "2026-11-23T11:04:14.549Z"
+    "8d7fb037": "2026-11-23T11:04:14.549Z",
+    "2d1e5eff": "2026-11-23T11:09:39.273Z",
+    "a8e43ae3": "2026-11-23T11:11:34.543Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4272,13 +4276,9 @@
       "lastAttemptTs": 1795258445144
     },
     "Linear equations in two variables": {
-      "correct": 10,
-      "total": 13,
+      "correct": 11,
+      "total": 14,
       "recent": [
-        {
-          "ts": 1790153647480,
-          "correct": true
-        },
         {
           "ts": 1790164040038,
           "correct": true
@@ -4322,9 +4322,13 @@
         {
           "ts": 1795431843497,
           "correct": true
+        },
+        {
+          "ts": 1795432293374,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795431843497
+      "lastAttemptTs": 1795432293374
     },
     "Right triangles and trigonometry": {
       "correct": 7,
@@ -5934,16 +5938,16 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 530986,
+      "totalMs": 700996,
       "viewMs": {
-        "analysis": 175965,
-        "practice": 334991,
+        "analysis": 205980,
+        "practice": 474986,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
-        "Algebra": 205002
+        "Algebra": 275013
       }
     }
   },
@@ -7135,7 +7139,13 @@
         "ts": 1795431843497,
         "ms": 487663
       }
+    ],
+    "a8e43ae3": [
+      {
+        "ts": 1795432293374,
+        "ms": 14973
+      }
     ]
   },
-  "clientUpdatedAt": 1795432175900
+  "clientUpdatedAt": 1795432345903
 }
