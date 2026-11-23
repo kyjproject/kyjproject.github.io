@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:51:29.972Z",
+  "exportedAt": "2026-11-23T11:54:29.096Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -816,7 +816,9 @@
     "05cec180": "done",
     "fe6b22a2": "done",
     "134cf693": "done",
-    "443794ac": "done"
+    "443794ac": "done",
+    "ac3df64f": "done",
+    "0035c393": "done"
   },
   "tags": {},
   "notes": {
@@ -1674,7 +1676,9 @@
     "05cec180": "2026-11-23T11:48:27.120Z",
     "fe6b22a2": "2026-11-23T11:48:40.831Z",
     "134cf693": "2026-11-23T11:50:35.531Z",
-    "443794ac": "2026-11-23T11:50:59.823Z"
+    "443794ac": "2026-11-23T11:50:59.823Z",
+    "ac3df64f": "2026-11-23T11:51:38.879Z",
+    "0035c393": "2026-11-23T11:52:56.346Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4691,8 +4695,8 @@
       "lastAttemptTs": 1795434519885
     },
     "Ratios, rates, proportional relationships, and units": {
-      "correct": 6,
-      "total": 6,
+      "correct": 8,
+      "total": 8,
       "recent": [
         {
           "ts": 1790161453021,
@@ -4717,9 +4721,17 @@
         {
           "ts": 1795258398481,
           "correct": true
+        },
+        {
+          "ts": 1795434697926,
+          "correct": true
+        },
+        {
+          "ts": 1795434775141,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795258398481
+      "lastAttemptTs": 1795434775141
     },
     "Probability and conditional probability": {
       "correct": 5,
@@ -6012,10 +6024,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 2475249,
+      "totalMs": 2633410,
       "viewMs": {
         "analysis": 205980,
-        "practice": 2249239,
+        "practice": 2407400,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6023,7 +6035,7 @@
       "categoryMs": {
         "Algebra": 715021,
         "Advanced Math": 1204989,
-        "Problem-Solving and Data Analysis": 129256
+        "Problem-Solving and Data Analysis": 287417
       }
     }
   },
@@ -7190,6 +7202,10 @@
       {
         "ts": 1795258398481,
         "ms": 260206
+      },
+      {
+        "ts": 1795434697926,
+        "ms": 36946
       }
     ],
     "733b819d": [
@@ -7395,7 +7411,13 @@
         "ts": 1795434658186,
         "ms": 11147
       }
+    ],
+    "0035c393": [
+      {
+        "ts": 1795434775142,
+        "ms": 73126
+      }
     ]
   },
-  "clientUpdatedAt": 1795434685904
+  "clientUpdatedAt": 1795434865900
 }
