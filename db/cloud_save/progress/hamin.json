@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T12:00:29.016Z",
+  "exportedAt": "2026-11-23T12:03:29.266Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -822,7 +822,8 @@
     "6a18e6b3": "done",
     "42ad4855": "done",
     "0a975aa5": "done",
-    "e351a82d": "done"
+    "e351a82d": "done",
+    "c50fc439": "review"
   },
   "tags": {},
   "notes": {
@@ -4812,6 +4813,29 @@
         }
       ],
       "lastAttemptTs": 1795435035335
+    },
+    "Evaluating statistical claims: Observational studies and experiments": {
+      "correct": 1,
+      "total": 4,
+      "recent": [
+        {
+          "ts": 1795435305007,
+          "correct": true
+        },
+        {
+          "ts": 1795435377672,
+          "correct": false
+        },
+        {
+          "ts": 1795435383641,
+          "correct": false
+        },
+        {
+          "ts": 1795435399543,
+          "correct": false
+        }
+      ],
+      "lastAttemptTs": 1795435399543
     }
   },
   "progressFocus": [
@@ -6055,10 +6079,10 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 2943407,
+      "totalMs": 3093408,
       "viewMs": {
         "analysis": 205980,
-        "practice": 2717397,
+        "practice": 2867398,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
@@ -6066,7 +6090,7 @@
       "categoryMs": {
         "Algebra": 715021,
         "Advanced Math": 1204989,
-        "Problem-Solving and Data Analysis": 597414
+        "Problem-Solving and Data Analysis": 747415
       }
     }
   },
@@ -7470,7 +7494,25 @@
         "ts": 1795435035335,
         "ms": 57501
       }
+    ],
+    "c50fc439": [
+      {
+        "ts": 1795435305008,
+        "ms": 265597
+      },
+      {
+        "ts": 1795435377672,
+        "ms": 929
+      },
+      {
+        "ts": 1795435383641,
+        "ms": 1324
+      },
+      {
+        "ts": 1795435399543,
+        "ms": 914
+      }
     ]
   },
-  "clientUpdatedAt": 1795435225907
+  "clientUpdatedAt": 1795435405907
 }
