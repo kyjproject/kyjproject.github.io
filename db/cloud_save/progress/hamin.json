@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-23T11:33:28.791Z",
+  "exportedAt": "2026-11-23T11:36:28.973Z",
   "progress": {
     "10691563": "review",
     "18008817": "done",
@@ -804,7 +804,8 @@
     "d9799723": "done",
     "9a182495": "done",
     "1aec2be9": "done",
-    "23923e5b": "done"
+    "23923e5b": "done",
+    "a9e93fa1": "done"
   },
   "tags": {},
   "notes": {
@@ -1650,7 +1651,8 @@
     "d9799723": "2026-11-23T11:25:05.692Z",
     "9a182495": "2026-11-23T11:26:06.801Z",
     "1aec2be9": "2026-11-23T11:27:59.733Z",
-    "23923e5b": "2026-11-23T11:30:53.190Z"
+    "23923e5b": "2026-11-23T11:30:53.190Z",
+    "a9e93fa1": "2026-11-23T11:33:45.480Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -4212,17 +4214,9 @@
       "lastAttemptTs": 1795433278462
     },
     "Nonlinear functions": {
-      "correct": 37,
-      "total": 40,
+      "correct": 39,
+      "total": 42,
       "recent": [
-        {
-          "ts": 1793956636205,
-          "correct": true
-        },
-        {
-          "ts": 1795255540324,
-          "correct": true
-        },
         {
           "ts": 1795255601448,
           "correct": false
@@ -4262,9 +4256,17 @@
         {
           "ts": 1795433452004,
           "correct": true
+        },
+        {
+          "ts": 1795433623927,
+          "correct": true
+        },
+        {
+          "ts": 1795433787583,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795433452004
+      "lastAttemptTs": 1795433787583
     },
     "One-variable data: Distributions and measures of center and spread": {
       "correct": 7,
@@ -5980,17 +5982,17 @@
       }
     },
     "2026-11-23": {
-      "totalMs": 1770993,
+      "totalMs": 1865992,
       "viewMs": {
         "analysis": 205980,
-        "practice": 1544983,
+        "practice": 1639982,
         "profile": 5008,
         "mock": 5002,
         "test": 10020
       },
       "categoryMs": {
         "Algebra": 715021,
-        "Advanced Math": 629989
+        "Advanced Math": 724988
       }
     }
   },
@@ -7294,7 +7296,19 @@
         "ts": 1795433452004,
         "ms": 171485
       }
+    ],
+    "a9e93fa1": [
+      {
+        "ts": 1795433623928,
+        "ms": 170133
+      }
+    ],
+    "c9e4bac1": [
+      {
+        "ts": 1795433787587,
+        "ms": 161544
+      }
     ]
   },
-  "clientUpdatedAt": 1795433605908
+  "clientUpdatedAt": 1795433785901
 }
