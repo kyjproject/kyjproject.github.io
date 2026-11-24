@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-24T11:51:49.366Z",
+  "exportedAt": "2026-11-24T11:54:51.299Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2634,7 +2634,8 @@
     "f396849d": "review",
     "01d4dfd9": "review",
     "21cdd49b": "done",
-    "cdbcb6d4": "done"
+    "cdbcb6d4": "done",
+    "e18e4844": "done"
   },
   "tags": {},
   "notes": {},
@@ -5231,7 +5232,8 @@
     "d6af24b7": "2026-11-24T11:22:17.319Z",
     "0e48e4cb": "2026-11-24T11:35:02.464Z",
     "21cdd49b": "2026-11-24T11:45:35.938Z",
-    "cdbcb6d4": "2026-11-24T11:51:32.890Z"
+    "cdbcb6d4": "2026-11-24T11:51:32.890Z",
+    "e18e4844": "2026-11-24T11:53:08.092Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6596,17 +6598,9 @@
       "lastAttemptTs": 1795445441545
     },
     "Inferences": {
-      "correct": 104,
-      "total": 184,
+      "correct": 105,
+      "total": 186,
       "recent": [
-        {
-          "ts": 1795519903307,
-          "correct": false
-        },
-        {
-          "ts": 1795519918337,
-          "correct": true
-        },
         {
           "ts": 1795520100075,
           "correct": true
@@ -6646,9 +6640,17 @@
         {
           "ts": 1795521087517,
           "correct": true
+        },
+        {
+          "ts": 1795521180526,
+          "correct": false
+        },
+        {
+          "ts": 1795521186229,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795521087517
+      "lastAttemptTs": 1795521186229
     },
     "Rhetorical Synthesis": {
       "correct": 208,
@@ -9228,9 +9230,9 @@
       "categoryMs": {}
     },
     "2026-11-24": {
-      "totalMs": 1598708,
+      "totalMs": 1678772,
       "viewMs": {
-        "browse": 1598708
+        "browse": 1678772
       },
       "categoryMs": {}
     }
@@ -30127,7 +30129,17 @@
         "ts": 1795521087517,
         "ms": 388
       }
+    ],
+    "e18e4844": [
+      {
+        "ts": 1795521180526,
+        "ms": 86753
+      },
+      {
+        "ts": 1795521186230,
+        "ms": 4541
+      }
     ]
   },
-  "clientUpdatedAt": 1795521108750
+  "clientUpdatedAt": 1795521270379
 }
