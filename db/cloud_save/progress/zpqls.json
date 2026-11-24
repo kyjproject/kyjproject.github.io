@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-24T12:39:22.212Z",
+  "exportedAt": "2026-11-24T12:43:01.034Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2644,7 +2644,8 @@
     "3d89704b": "done",
     "88a141f3": "done",
     "0ee7dfb6": "done",
-    "870c7581": "review"
+    "870c7581": "review",
+    "d02ffc30": "done"
   },
   "tags": {},
   "notes": {},
@@ -5249,7 +5250,8 @@
     "f4bfb306": "2026-11-24T12:27:03.491Z",
     "3d89704b": "2026-11-24T12:31:22.069Z",
     "88a141f3": "2026-11-24T12:33:04.719Z",
-    "0ee7dfb6": "2026-11-24T12:35:33.689Z"
+    "0ee7dfb6": "2026-11-24T12:35:33.689Z",
+    "d02ffc30": "2026-11-24T12:41:39.041Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6614,13 +6616,9 @@
       "lastAttemptTs": 1795445441545
     },
     "Inferences": {
-      "correct": 114,
-      "total": 204,
+      "correct": 115,
+      "total": 205,
       "recent": [
-        {
-          "ts": 1795522480846,
-          "correct": true
-        },
         {
           "ts": 1795523003463,
           "correct": false
@@ -6664,9 +6662,13 @@
         {
           "ts": 1795523825966,
           "correct": true
+        },
+        {
+          "ts": 1795524097669,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795523825966
+      "lastAttemptTs": 1795524097669
     },
     "Rhetorical Synthesis": {
       "correct": 208,
@@ -9246,9 +9248,9 @@
       "categoryMs": {}
     },
     "2026-11-24": {
-      "totalMs": 2645927,
+      "totalMs": 2721143,
       "viewMs": {
-        "browse": 2645927
+        "browse": 2721143
       },
       "categoryMs": {}
     }
@@ -30245,7 +30247,13 @@
         "ts": 1795523825967,
         "ms": 212
       }
+    ],
+    "d02ffc30": [
+      {
+        "ts": 1795524097669,
+        "ms": 260179
+      }
     ]
   },
-  "clientUpdatedAt": 1795523960021
+  "clientUpdatedAt": 1795524177692
 }
