@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-24T11:42:56.433Z",
+  "exportedAt": "2026-11-24T11:48:49.276Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2631,7 +2631,9 @@
     "618de889": "review",
     "6829661c": "review",
     "0e48e4cb": "done",
-    "f396849d": "review"
+    "f396849d": "review",
+    "01d4dfd9": "review",
+    "21cdd49b": "done"
   },
   "tags": {},
   "notes": {},
@@ -5226,7 +5228,8 @@
     "b1f9718b": "2026-11-23T16:11:36.778Z",
     "b95037a7": "2026-11-24T11:19:02.373Z",
     "d6af24b7": "2026-11-24T11:22:17.319Z",
-    "0e48e4cb": "2026-11-24T11:35:02.464Z"
+    "0e48e4cb": "2026-11-24T11:35:02.464Z",
+    "21cdd49b": "2026-11-24T11:45:35.938Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -6591,25 +6594,9 @@
       "lastAttemptTs": 1795445441545
     },
     "Inferences": {
-      "correct": 101,
-      "total": 178,
+      "correct": 103,
+      "total": 182,
       "recent": [
-        {
-          "ts": 1795519333652,
-          "correct": true
-        },
-        {
-          "ts": 1795519580078,
-          "correct": false
-        },
-        {
-          "ts": 1795519583339,
-          "correct": false
-        },
-        {
-          "ts": 1795519591376,
-          "correct": false
-        },
         {
           "ts": 1795519598674,
           "correct": true
@@ -6641,9 +6628,25 @@
         {
           "ts": 1795520299361,
           "correct": true
+        },
+        {
+          "ts": 1795520580414,
+          "correct": false
+        },
+        {
+          "ts": 1795520587162,
+          "correct": false
+        },
+        {
+          "ts": 1795520588575,
+          "correct": true
+        },
+        {
+          "ts": 1795520734139,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795520299361
+      "lastAttemptTs": 1795520734139
     },
     "Rhetorical Synthesis": {
       "correct": 208,
@@ -9223,9 +9226,9 @@
       "categoryMs": {}
     },
     "2026-11-24": {
-      "totalMs": 1414546,
+      "totalMs": 1509889,
       "viewMs": {
-        "browse": 1414546
+        "browse": 1509889
       },
       "categoryMs": {}
     }
@@ -30092,7 +30095,27 @@
         "ts": 1795520299361,
         "ms": 297
       }
+    ],
+    "01d4dfd9": [
+      {
+        "ts": 1795520580414,
+        "ms": 81025
+      },
+      {
+        "ts": 1795520587162,
+        "ms": 5539
+      },
+      {
+        "ts": 1795520588576,
+        "ms": 220
+      }
+    ],
+    "21cdd49b": [
+      {
+        "ts": 1795520734139,
+        "ms": 137867
+      }
     ]
   },
-  "clientUpdatedAt": 1795520573030
+  "clientUpdatedAt": 1795520925815
 }
