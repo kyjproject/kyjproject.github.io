@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-24T12:36:22.601Z",
+  "exportedAt": "2026-11-24T12:39:22.212Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2643,7 +2643,8 @@
     "f4bfb306": "done",
     "3d89704b": "done",
     "88a141f3": "done",
-    "0ee7dfb6": "done"
+    "0ee7dfb6": "done",
+    "870c7581": "review"
   },
   "tags": {},
   "notes": {},
@@ -6613,21 +6614,9 @@
       "lastAttemptTs": 1795445441545
     },
     "Inferences": {
-      "correct": 113,
-      "total": 201,
+      "correct": 114,
+      "total": 204,
       "recent": [
-        {
-          "ts": 1795521996594,
-          "correct": false
-        },
-        {
-          "ts": 1795522029067,
-          "correct": true
-        },
-        {
-          "ts": 1795522479314,
-          "correct": false
-        },
         {
           "ts": 1795522480846,
           "correct": true
@@ -6663,9 +6652,21 @@
         {
           "ts": 1795523712276,
           "correct": true
+        },
+        {
+          "ts": 1795523804681,
+          "correct": false
+        },
+        {
+          "ts": 1795523824942,
+          "correct": false
+        },
+        {
+          "ts": 1795523825966,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795523712276
+      "lastAttemptTs": 1795523825966
     },
     "Rhetorical Synthesis": {
       "correct": 208,
@@ -9245,9 +9246,9 @@
       "categoryMs": {}
     },
     "2026-11-24": {
-      "totalMs": 2529930,
+      "totalMs": 2645927,
       "viewMs": {
-        "browse": 2529930
+        "browse": 2645927
       },
       "categoryMs": {}
     }
@@ -30230,7 +30231,21 @@
         "ts": 1795523712277,
         "ms": 4724
       }
+    ],
+    "870c7581": [
+      {
+        "ts": 1795523804681,
+        "ms": 69543
+      },
+      {
+        "ts": 1795523824942,
+        "ms": 19553
+      },
+      {
+        "ts": 1795523825967,
+        "ms": 212
+      }
     ]
   },
-  "clientUpdatedAt": 1795523781163
+  "clientUpdatedAt": 1795523960021
 }
