@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-28T07:45:08.728Z",
+  "exportedAt": "2026-11-28T07:48:09.355Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -5989,6 +5989,26 @@
       "reps": 1,
       "lapses": 1,
       "lastIntervalDays": 1
+    },
+    "c6ec16fb": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-11-29T07:45:13.241Z",
+      "last_review": "2026-11-28T07:45:13.241Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
+    },
+    "950d740f": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-11-29T07:47:04.444Z",
+      "last_review": "2026-11-28T07:47:04.444Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
     }
   },
   "mockHistory": [
@@ -6721,17 +6741,9 @@
       "lastAttemptTs": 1795450614953
     },
     "Text Structure and Purpose": {
-      "correct": 161,
-      "total": 280,
+      "correct": 162,
+      "total": 282,
       "recent": [
-        {
-          "ts": 1795851563099,
-          "correct": false
-        },
-        {
-          "ts": 1795851590329,
-          "correct": false
-        },
         {
           "ts": 1795851592960,
           "correct": false
@@ -6771,9 +6783,17 @@
         {
           "ts": 1795851863153,
           "correct": true
+        },
+        {
+          "ts": 1795852007319,
+          "correct": false
+        },
+        {
+          "ts": 1795852011096,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795851863153
+      "lastAttemptTs": 1795852011096
     },
     "Inferences": {
       "correct": 116,
@@ -9429,11 +9449,11 @@
       "categoryMs": {}
     },
     "2026-11-28": {
-      "totalMs": 2399861,
+      "totalMs": 2574191,
       "viewMs": {
         "browse": 9904,
         "leaderboard": 20016,
-        "review": 2369941
+        "review": 2544271
       },
       "categoryMs": {}
     }
@@ -27757,6 +27777,14 @@
       {
         "ts": 1793687930390,
         "ms": 4239
+      },
+      {
+        "ts": 1795852007319,
+        "ms": 94070
+      },
+      {
+        "ts": 1795852011096,
+        "ms": 2904
       }
     ],
     "815b354f": [
@@ -30536,5 +30564,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1795851905597
+  "clientUpdatedAt": 1795852085821
 }
