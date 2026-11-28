@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-28T07:14:38.779Z",
+  "exportedAt": "2026-11-28T07:17:38.581Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -1203,7 +1203,7 @@
     "da287262": "done",
     "2ee45938": "done",
     "d995ff9d": "done",
-    "401e1856": "review",
+    "401e1856": "done",
     "bfcbec2d": "done",
     "81e5993c": "done",
     "c4bcb292": "done",
@@ -5905,6 +5905,16 @@
       "reps": 1,
       "lapses": 1,
       "lastIntervalDays": 1
+    },
+    "401e1856": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-12-14T07:16:23.628Z",
+      "last_review": "2026-11-28T07:16:23.628Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
     }
   },
   "mockHistory": [
@@ -6637,17 +6647,9 @@
       "lastAttemptTs": 1795450614953
     },
     "Text Structure and Purpose": {
-      "correct": 151,
-      "total": 252,
+      "correct": 152,
+      "total": 254,
       "recent": [
-        {
-          "ts": 1795444495182,
-          "correct": false
-        },
-        {
-          "ts": 1795444497263,
-          "correct": true
-        },
         {
           "ts": 1795444894072,
           "correct": false
@@ -6687,9 +6689,17 @@
         {
           "ts": 1795849885025,
           "correct": true
+        },
+        {
+          "ts": 1795850178054,
+          "correct": false
+        },
+        {
+          "ts": 1795850178719,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795849885025
+      "lastAttemptTs": 1795850178719
     },
     "Inferences": {
       "correct": 116,
@@ -9345,11 +9355,11 @@
       "categoryMs": {}
     },
     "2026-11-28": {
-      "totalMs": 970302,
+      "totalMs": 1115354,
       "viewMs": {
         "browse": 9904,
         "leaderboard": 20016,
-        "review": 940382
+        "review": 1085434
       },
       "categoryMs": {}
     }
@@ -18849,10 +18859,6 @@
     ],
     "401e1856": [
       {
-        "ts": 1793231170505,
-        "ms": 304196
-      },
-      {
         "ts": 1793231173012,
         "ms": 687
       },
@@ -18863,6 +18869,14 @@
       {
         "ts": 1793231176077,
         "ms": 585
+      },
+      {
+        "ts": 1795850178054,
+        "ms": 291953
+      },
+      {
+        "ts": 1795850178720,
+        "ms": 93
       }
     ],
     "bfcbec2d": [
@@ -30388,5 +30402,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1795850075288
+  "clientUpdatedAt": 1795850257894
 }
