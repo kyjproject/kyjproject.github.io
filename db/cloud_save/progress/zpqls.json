@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-28T07:11:20.090Z",
+  "exportedAt": "2026-11-28T07:14:38.779Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -5266,6 +5266,16 @@
     "leaderboardOptOut": false
   },
   "fsrsCards": {
+    "64506024": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-11-29T07:11:26.093Z",
+      "last_review": "2026-11-28T07:11:26.093Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
+    },
     "7f8cec1c": {
       "state": "review",
       "stability": 3.173,
@@ -6627,17 +6637,9 @@
       "lastAttemptTs": 1795450614953
     },
     "Text Structure and Purpose": {
-      "correct": 149,
-      "total": 250,
+      "correct": 151,
+      "total": 252,
       "recent": [
-        {
-          "ts": 1795443481503,
-          "correct": true
-        },
-        {
-          "ts": 1795444493097,
-          "correct": false
-        },
         {
           "ts": 1795444495182,
           "correct": false
@@ -6677,9 +6679,17 @@
         {
           "ts": 1795849876177,
           "correct": false
+        },
+        {
+          "ts": 1795849882429,
+          "correct": true
+        },
+        {
+          "ts": 1795849885025,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795849876177
+      "lastAttemptTs": 1795849885025
     },
     "Inferences": {
       "correct": 116,
@@ -9335,11 +9345,11 @@
       "categoryMs": {}
     },
     "2026-11-28": {
-      "totalMs": 960294,
+      "totalMs": 970302,
       "viewMs": {
         "browse": 9904,
         "leaderboard": 20016,
-        "review": 930374
+        "review": 940382
       },
       "categoryMs": {}
     }
@@ -9549,14 +9559,6 @@
     ],
     "64506024": [
       {
-        "ts": 1793849506680,
-        "ms": 1390
-      },
-      {
-        "ts": 1793849518474,
-        "ms": 8750
-      },
-      {
         "ts": 1795849853945,
         "ms": 190386
       },
@@ -9567,6 +9569,14 @@
       {
         "ts": 1795849876177,
         "ms": 814
+      },
+      {
+        "ts": 1795849882429,
+        "ms": 5704
+      },
+      {
+        "ts": 1795849885025,
+        "ms": 2016
       }
     ],
     "64595457": [
@@ -30378,5 +30388,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1795849875362
+  "clientUpdatedAt": 1795850075288
 }
