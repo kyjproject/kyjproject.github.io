@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-28T07:17:38.581Z",
+  "exportedAt": "2026-11-28T07:20:40.106Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -2564,7 +2564,7 @@
     "674aae7d": "done",
     "83e4ea9a": "done",
     "306f6d2a": "done",
-    "c89da8bc": "review",
+    "c89da8bc": "done",
     "939f1fe8": "done",
     "7ec676d1": "done",
     "4c16e3b0": "done",
@@ -5257,7 +5257,8 @@
     "a2641e5f": "2026-11-27T21:08:17.227Z",
     "f3fe49ff": "2026-11-27T21:09:10.010Z",
     "5f411925": "2026-11-27T21:12:50.494Z",
-    "6459b902": "2026-11-28T07:07:39.858Z"
+    "6459b902": "2026-11-28T07:07:39.858Z",
+    "c89da8bc": "2026-11-28T07:18:09.645Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5912,6 +5913,16 @@
       "difficulty": 3.2245015893713678,
       "due": "2026-12-14T07:16:23.628Z",
       "last_review": "2026-11-28T07:16:23.628Z",
+      "reps": 1,
+      "lapses": 0,
+      "lastIntervalDays": 16
+    },
+    "c89da8bc": {
+      "state": "review",
+      "stability": 15.69105,
+      "difficulty": 3.2245015893713678,
+      "due": "2026-12-14T07:18:12.198Z",
+      "last_review": "2026-11-28T07:18:12.198Z",
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
@@ -6647,17 +6658,9 @@
       "lastAttemptTs": 1795450614953
     },
     "Text Structure and Purpose": {
-      "correct": 152,
-      "total": 254,
+      "correct": 153,
+      "total": 256,
       "recent": [
-        {
-          "ts": 1795444894072,
-          "correct": false
-        },
-        {
-          "ts": 1795444899922,
-          "correct": false
-        },
         {
           "ts": 1795444901624,
           "correct": true
@@ -6697,9 +6700,17 @@
         {
           "ts": 1795850178719,
           "correct": true
+        },
+        {
+          "ts": 1795850277502,
+          "correct": false
+        },
+        {
+          "ts": 1795850287597,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795850178719
+      "lastAttemptTs": 1795850287597
     },
     "Inferences": {
       "correct": 116,
@@ -9355,11 +9366,11 @@
       "categoryMs": {}
     },
     "2026-11-28": {
-      "totalMs": 1115354,
+      "totalMs": 1230853,
       "viewMs": {
         "browse": 9904,
         "leaderboard": 20016,
-        "review": 1085434
+        "review": 1200933
       },
       "categoryMs": {}
     }
@@ -29647,6 +29658,14 @@
       {
         "ts": 1794749979580,
         "ms": 161
+      },
+      {
+        "ts": 1795850277502,
+        "ms": 93865
+      },
+      {
+        "ts": 1795850287597,
+        "ms": 9468
       }
     ],
     "939f1fe8": [
@@ -30402,5 +30421,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1795850257894
+  "clientUpdatedAt": 1795850434643
 }
