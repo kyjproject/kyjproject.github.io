@@ -1,7 +1,7 @@
 {
   "app": "sat-qbank-progress",
   "version": 9,
-  "exportedAt": "2026-11-28T07:05:20.563Z",
+  "exportedAt": "2026-11-28T07:08:20.263Z",
   "progress": {
     "10691563": "review",
     "15928122": "done",
@@ -5256,7 +5256,8 @@
     "ec1cd1d0": "2026-11-24T12:46:29.122Z",
     "a2641e5f": "2026-11-27T21:08:17.227Z",
     "f3fe49ff": "2026-11-27T21:09:10.010Z",
-    "5f411925": "2026-11-27T21:12:50.494Z"
+    "5f411925": "2026-11-27T21:12:50.494Z",
+    "6459b902": "2026-11-28T07:07:39.858Z"
   },
   "bonusXp": 0,
   "dailyGoal": 10,
@@ -5884,6 +5885,16 @@
       "reps": 1,
       "lapses": 0,
       "lastIntervalDays": 16
+    },
+    "6459b902": {
+      "state": "review",
+      "stability": 0.40255,
+      "difficulty": 7.1949,
+      "due": "2026-11-29T07:07:43.556Z",
+      "last_review": "2026-11-28T07:07:43.556Z",
+      "reps": 1,
+      "lapses": 1,
+      "lastIntervalDays": 1
     }
   },
   "mockHistory": [
@@ -6451,13 +6462,9 @@
       "lastAttemptTs": 1793551687010
     },
     "Cross-Text Connections": {
-      "correct": 27,
-      "total": 47,
+      "correct": 28,
+      "total": 48,
       "recent": [
-        {
-          "ts": 1793551687009,
-          "correct": true
-        },
         {
           "ts": 1793708114194,
           "correct": false
@@ -6501,9 +6508,13 @@
         {
           "ts": 1795849270038,
           "correct": true
+        },
+        {
+          "ts": 1795849662399,
+          "correct": true
         }
       ],
-      "lastAttemptTs": 1795849270038
+      "lastAttemptTs": 1795849662399
     },
     "Central Ideas and Details": {
       "correct": 149,
@@ -9324,11 +9335,11 @@
       "categoryMs": {}
     },
     "2026-11-28": {
-      "totalMs": 845366,
+      "totalMs": 875271,
       "viewMs": {
         "browse": 9904,
         "leaderboard": 20016,
-        "review": 815446
+        "review": 845351
       },
       "categoryMs": {}
     }
@@ -12780,10 +12791,6 @@
     ],
     "6459b902": [
       {
-        "ts": 1792507597931,
-        "ms": 815
-      },
-      {
         "ts": 1792507603732,
         "ms": 4050
       },
@@ -12798,6 +12805,10 @@
       {
         "ts": 1795849270039,
         "ms": 972
+      },
+      {
+        "ts": 1795849662399,
+        "ms": 321847
       }
     ],
     "cd7ce86e": [
@@ -30367,5 +30378,5 @@
       }
     ]
   },
-  "clientUpdatedAt": 1795849516604
+  "clientUpdatedAt": 1795849694805
 }
